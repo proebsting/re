@@ -1,0 +1,70 @@
+
+# source not recorded
+
+regexp: C(AC|B)D
+tree:   (C((AC)|(B))D)
+length: 3 to 4
+ex(0):  CBD  CBD  CACD  CBD  CACD  CBD  CACD  CACD  CBD  CBD  CBD  CACD  CACD
+ex(1):  CBD  CBD  CACD  CBD  CBD  CBD  CACD  CBD  CBD  CBD  CACD  CBD  CBD  CBD
+ex(2):  CBD  CACD  CBD  CACD  CBD  CBD  CACD  CBD  CBD  CACD  CBD  CACD  CBD
+ex(3):  CBD  CACD  CACD  CBD  CBD  CBD  CACD  CBD  CBD  CBD  CBD  CACD  CBD
+ex(5):  CBD  CBD  CBD  CBD  CACD  CACD  CBD  CBD  CACD  CACD  CBD  CACD  CACD
+ex(8):  CBD  CBD  CACD  CBD  CACD  CACD  CBD  CACD  CACD  CBD  CBD  CBD  CACD
+
+# Dragon2: automata example
+
+regexp: (a|b)*abb
+tree:   (((a)|(b)){0*}abb)
+length: 3 to *
+ex(0):  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb
+ex(1):  abb  abb  babb  babb  aabb  abb  abb  abb  aabb  abb  abb  abb  babb
+ex(2):  abb  bbabb  abb  bbabb  abb  babb  abb  ababb  ababb  aabb  abb  babb
+ex(3):  aaabb  abb  abb  ababb  abb  baabb  abb  babb  abb  abb  aaabb  baabb
+ex(5):  bbaabb  aabaabb  bbbabb  babb  bbbabb  abb  bbabb  bbababb  abb  aabb
+ex(8):  babb  bbbaaabb  abbabb  abb  abb  abb  baaaaabb  abaabbabb  aababb  abb
+
+# Sedgewick: genome marker
+
+regexp: gcg(cgg|agg)*ctg
+tree:   (gcg((cgg)|(agg)){0*}ctg)
+length: 6 to *
+ex(0):  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg
+ex(1):  gcgctg  gcgctg  gcgaggctg  gcgaggctg  gcgcggctg  gcgctg  gcgctg  gcgctg
+ex(2):  gcgctg  gcgctg  gcgctg  gcgaggaggctg  gcgctg  gcgaggaggctg  gcgctg
+ex(3):  gcgctg  gcgaggcggaggctg  gcgaggctg  gcgcggaggctg  gcgcggaggctg
+ex(5):  gcgcggctg  gcgctg  gcgctg  gcgctg  gcgaggaggaggctg  gcgcggaggcggaggctg
+ex(8):  gcgcggaggaggcggcggctg  gcgcggcggctg  gcgaggaggcggctg  gcgcggctg
+
+# Sedgewick: multiples of 3, in binary
+
+regexp: (0|1(01*0)*1)*
+tree:   (((0)|(1(01{0*}0){0*}1)){0*})
+length: 0 to *
+ex(0):                                                                        
+ex(1):      1001  0        0        11    11    11    1001  11  11  1001      0
+ex(2):        111001    100011010  1010011010  0    010100101          011
+ex(3):      011  0  0  10101  1010010111  0011  0    110  010010
+ex(5):  0  0  010101  1010111  10111100111100001100111101010100001101011
+ex(8):  000  0  100001101100010
+
+# Experiments with word construction
+
+regexp: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
+tree:   ([bcfpt][lr]{01}(([aeiou])|(oo)|(ee))[dmnt])
+length: 3 to 5
+ex(0):  cam  fon  poon  tam  peen  peen  boon  tum  foot  fam  teem  feem  feen
+ex(1):  treed  ceed  beem  boom  bam  foom  flin  pen  flood  preen  cleet
+ex(2):  clom  ceed  beed  bam  prood  tod  teed  breed  floot  treem  trad
+ex(3):  creet  foot  peed  pem  cleen  poon  prit  cloon  tood  creen  blem
+ex(5):  beet  feen  beed  plon  beem  pled  coot  food  creem  tloon  croot
+ex(8):  bood  food  coot  beem  ped  bloot  breem  tad  tlon  froot  cleen
+
+regexp: W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
+tree:   (W((hit)|(ens)|(at)|(in)|(est)|(al))[aeio][lmnrsx]((ford)|(by)|(dale)|(bot)|(man)|(son)|(gard)|(hold)))
+length: 7 to 10
+ex(0):  Walashold  Walirby  Whitirbot  Watirson  Westesgard  Winimhold
+ex(1):  Watalman  Walasby  Winisdale  Westomby  Wensemgard  Watisgard  Walisson
+ex(2):  Westasford  Wensenbot  Wensolman  Walosdale  Watinby  Winanson  Winenby
+ex(3):  Watasman  Walexgard  Whitashold  Wenserman  Walesford  Winosby
+ex(5):  Wensamman  Whitoldale  Watandale  Whitenhold  Winonby  Wensarford
+ex(8):  Wensexdale  Wensandale  Westarman  Wensixhold  Winashold  Walambot

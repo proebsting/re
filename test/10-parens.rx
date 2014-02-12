@@ -1,0 +1,15 @@
+# simple uses of parentheses
+(a)
+((a))
+a(b)*
+a((b))*
+(ab)*
+a(bb)?c
+((ab))*
+((ab)*)
+a(bc)*d
+a(bcd)+e
+(ab)*(cd)*(ef)*
+(ab)+(cd)+(ef)+
+(ab)?(cd)?(ef)?
+(ab)+(cd)*(ef)?

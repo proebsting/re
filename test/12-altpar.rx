@@ -1,0 +1,11 @@
+# parentheses with alternation
+(ab)|c
+a(b|c)d
+(ab)|c|(de)
+a|(bc|de|fg)|h
+a(b|c)(d|e)(f|g)h
+(ab|cd)(ef|gh)
+(ab|cd)|(ef|gh)
+(ab|cd|ef)(gh|ij|kp)
+x(ab|cd|ef)y(gh|ij|kp)z
+(a|bc)d(e|fg)|(w|x)(y|z)

@@ -1,0 +1,11 @@
+# ugly cset (bracket expression) forms
+[
+[]
+[-]
+[-x]
+[x-]
+[[x]
+[[x-]
+[]x]
+[]x-]
+[]x[-]

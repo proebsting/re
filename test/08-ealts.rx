@@ -1,0 +1,9 @@
+# alternation with empty alternatives
+a|
+|a
+a|b|
+a||b
+a|b|c|
+|a|b|c|d
+a||c||e
+ab|c||def|g

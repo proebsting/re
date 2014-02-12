@@ -1,0 +1,17 @@
+[a]+
+[bc]+
+[def]+
+[ghij]+
+[lmnop]+
+[tuvwxyz]+
+[ACDFGHJKLMOPQRSUVWXYZ]+
+[aeiuo]+
+[aeiuo]+y?
+[a-z]+
+[A-Z]+
+[a-zA-Z]+
+[_a-zA-Z]+
+[0-9]+
+[_a-zA-Z0-9]+
+[_a-zA-Z][_a-zA-Z0-9]*
+[A-HO-Z][A-Z]*

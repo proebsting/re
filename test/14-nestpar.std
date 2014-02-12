@@ -1,0 +1,92 @@
+
+# nested parentheses
+
+regexp: ((a))
+tree:   (((a)))
+length: 1 to 1
+ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+
+regexp: (((a)))
+tree:   ((((a))))
+length: 1 to 1
+ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+
+regexp: (((a*)))
+tree:   ((((a{0*}))))
+length: 0 to *
+ex(0):                                                                        
+ex(1):      a    a    a  a        a  a        a        a        a        a    a
+ex(2):  aa  a  aa  a  aa  a  aa    a      aa  a  a          aa  a    a  a    
+ex(3):      aa  aaa  a  aa  aa  aaa  aaa    a  a  aaa  aa    aaa  aa  a  a  
+ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
+ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
+
+regexp: (((a)*))
+tree:   ((((a){0*})))
+length: 0 to *
+ex(0):                                                                        
+ex(1):      a    a    a  a        a  a        a        a        a        a    a
+ex(2):  aa  a  aa  a  aa  a  aa    a      aa  a  a          aa  a    a  a    
+ex(3):      aa  aaa  a  aa  aa  aaa  aaa    a  a  aaa  aa    aaa  aa  a  a  
+ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
+ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
+
+regexp: (((a))*)
+tree:   ((((a)){0*}))
+length: 0 to *
+ex(0):                                                                        
+ex(1):      a    a    a  a        a  a        a        a        a        a    a
+ex(2):  aa  a  aa  a  aa  a  aa    a      aa  a  a          aa  a    a  a    
+ex(3):      aa  aaa  a  aa  aa  aaa  aaa    a  a  aaa  aa    aaa  aa  a  a  
+ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
+ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
+
+regexp: (((a)))*
+tree:   ((((a))){0*})
+length: 0 to *
+ex(0):                                                                        
+ex(1):      a    a    a  a        a  a        a        a        a        a    a
+ex(2):  aa  a  aa  a  aa  a  aa    a      aa  a  a          aa  a    a  a    
+ex(3):      aa  aaa  a  aa  aa  aaa  aaa    a  a  aaa  aa    aaa  aa  a  a  
+ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
+ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
+
+regexp: ((a*b)@(c*d)#)*
+tree:   (((a{0*}b)@(c{0*}d)#){0*})
+length: 0 to *
+ex(0):                                                                        
+ex(1):      b@cd#    ab@d#      ab@d#      b@d#    b@d#    b@d#    b@cd#  
+ex(2):  b@d#  b@cd#b@d#  ab@cd#b@d#      ab@d#ab@cd#      aab@ccd#b@ccd#  
+ex(3):  ab@cd#  aab@d#ab@ccd#  b@cd#  aab@ccd#b@cccd#b@cd#  aab@d#b@ccd#      
+ex(5):    b@ccd#ab@cccd#ab@cd#  b@cccd#aaab@ccccd#aaaab@ccd#aaaab@ccccd#b@cccd#
+ex(8):    aab@cccd#aaab@cccd#ab@d#ab@d#aaab@cccccd#
+
+regexp: ((b|f)(a|e))*
+tree:   ((((b)|(f))((a)|(e))){0*})
+length: 0 to *
+ex(0):                                                                        
+ex(1):      fa    be      be      fe    fe    fe    fa    fe  fe  fa        be
+ex(2):      fefa      fefa    fabe  bafe    ba  ba      bebe  fefe  fefa  fa
+ex(3):  fa  fefefe  babefa  fefaba  fa  bafe    befeba  bafafa  fefafe  fa    
+ex(5):  befafe  feba  fabafafefa  fefebe  fefefafefe  febeba  febefabe  fe
+ex(8):  bafefebebafabafa  bebe  fafefebefa  befafefa  fabebe  fabebafefebe  ba
+
+regexp: ((n|t)(o|e)+)*
+tree:   ((((n)|(t))((o)|(e)){1*}){0*})
+length: 0 to *
+ex(0):                                                                        
+ex(1):      to    ne      ne      te    te    te    to    te  te  to        ne
+ex(2):      teno  tenee  nonee    no  no      note    teto  to  no  toete  to  
+ex(3):  tooetooono  neetoe  tooneo  neetee  to      totoe  nete  no    neneto  
+ex(5):  tote  neoeneeteeneo  teteo  ne  toeonoootooeote  te    nenoeteeeonooe
+ex(8):  no  neteneooeeteooeneeonooeeneooeoo  tenoe

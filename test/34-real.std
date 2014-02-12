@@ -1,0 +1,76 @@
+
+# words
+
+regexp: [a-zA-Z][a-z]+
+tree:   ([A-Za-z][a-z]{1*})
+length: 2 to *
+ex(0):  Zu  gy  vj  ez  Kq  Ni  Yo  Xm  pr  Hd  lr  va  zv  pq  sp  Gj  dr  pp
+ex(1):  ml  bj  Ir  un  wy  ex  Is  td  wj  fn  Lr  af  Ru  wu  Iw  pc  mx  nh
+ex(2):  Ue  Ct  nhj  gb  cbc  Scv  Nt  wy  vmn  Mt  mqz  Bal  Qfr  jk  tz  eds
+ex(3):  Fv  jf  Wrc  lq  ut  zick  rzrd  vr  qmjz  Uyiy  gr  Mv  Up  Njb  Lb
+ex(5):  Gl  digotp  Rgacxj  Wcirm  Ztpwpo  msik  kuvh  Dtct  Nzies  jhe  vvyf
+ex(8):  Aoe  jhy  rlh  Ng  Pwtcegyjm  Azlf  Vgf  uommm  Zwvejx  uwi  bitrneyb
+
+regexp: [a-zA-Z][a-z]*
+tree:   ([A-Za-z][a-z]{0*})
+length: 1 to *
+ex(0):  Z  d  K  N  P  q  n  E  K  H  Y  N  u  b  A  C  H  B  W  a  Y  z  z  Y
+ex(1):  S  Gv  vh  C  lz  W  w  E  I  Mx  G  Ly  v  Jb  K  t  Ly  G  lk  ry  Ib
+ex(2):  m  y  Y  B  Jk  Jk  Jn  sya  Qsm  ccx  gv  vjf  fy  sfg  Za  a  O  z
+ex(3):  egs  Uboy  E  e  guj  Vex  hx  sep  Dzr  Uf  Aqx  Dweu  jjuo  jdoz  hpo
+ex(5):  A  ffirej  snqal  Yu  gyxa  Slg  Zd  Ehbou  Q  ty  ewvsbu  rtyjqz  Vc
+ex(8):  ly  Mdmgplt  Rhyso  ibfjbm  lnflzxuud  N  Vqel  nkc  Lyklku  d  Gfusdf
+
+regexp: [a-zA-Z][a-z]*('[a-z]+)?
+tree:   ([A-Za-z][a-z]{0*}('[a-z]{1*}){01})
+length: 1 to *
+ex(0):  Z  d  K  N  P  q  n  E  K  H  Y  N  u  b  A  C  H  B  W  a  Y  z  z  Y
+ex(1):  S  n'k  s'y  Hd  c'g  Wr  Z'k  Ig  v  Y'f  R'w  Gb'l  mm  js  po  R  D
+ex(2):  Z'm  Lav's  Z'k  nye  fd'o  l'j  vi  B'v  m'c  Ubz  deg'x  Qx  rww'd
+ex(3):  y  Phvn  b  ttcb'n  Rt'd  Vs  ofxa'h  Ytvx'g  Kaj  M'q  Irs'd  S  Dr'b
+ex(5):  ltyd'n  Svrwp  Msyd'j  bwrwz  Qhnqr'z  obuldm  Bknba  x't  Yoai's
+ex(8):  Dtc  Nz  Yifkycqo  yy'r  Vogj  b's  Vdrqnn  Huhysg'y  Yyi'q  rrd  I'q
+
+# phrases
+
+regexp: [a-zA-Z ]+
+tree:   ([ A-Za-z]{1*})
+length: 1 to *
+ex(0):  Y  H  N  J  T  r  N  K  L  n  J  q  f  k  I  G  T  o  L  o  d  P  B  x
+ex(1):  O  F  u  Z  S  y  k  A  p  k  Z  Z  d  s  W  M  m  m  s  o  M  Q  l  e
+ex(2):  LN  M  a  D  My  Ag  ro  LD  Y  M  N   ea  a  dm  Ye  l  v  tz  Z  ls
+ex(3):  v  ROe  uH  r  mmo  rgF  a  tm  PPM  r  c  Hqj  cZ  I  F  e  h U  VRp
+ex(5):  nNe  QSh  TeX  j vu  f  v  UsgAr  IXyH  j  SBYCb  npz  rtT  ND  LaA 
+ex(8):  BUfKqzoP  oFdJ  SWicyfW  YoDozAq  vmzl  uYXXrPm  fJ  ZcEP  nGpqYsu  Lo
+
+# identifiers
+
+# [-_\.a-zA-Z0-9]+
+
+# [a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+
+
+# # ssn
+
+# [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]
+
+# telno
+
+regexp: \([0-9][0-9][0-9]\)[2-9][0-9][0-9]-[0-9][0-9][0-9][0-9]
+tree:   (([0-9][0-9][0-9])[2-9][0-9][0-9]-[0-9][0-9][0-9][0-9])
+length: 13 to 13
+ex(0):  (187)454-8621  (679)508-7785  (538)774-3734  (855)875-9069
+ex(1):  (375)677-4782  (546)804-7658  (127)729-6326  (172)262-1298
+ex(2):  (470)956-3646  (329)850-1294  (350)212-2623  (263)395-6165
+ex(3):  (373)536-0134  (814)203-7646  (395)489-5745  (538)941-9687
+ex(5):  (651)526-8151  (694)836-8806  (890)588-0764  (656)634-4137
+ex(8):  (366)646-4074  (710)475-4703  (307)516-3521  (537)531-4608
+
+# # www 
+
+# (http://|)[a-zA-Z0-9]+(\.[a-zA-Z0-9]*)+(/[-_\.\?a-zA-Z0-9]*)*
+
+# # email
+
+# [a-zA-Z][-_\.a-zA-Z0-9]*@[a-zA-Z0-9]*(\.[a-zA-Z0-9]*)*
+
+# [a-zA-Z][-_\.a-zA-Z0-9]*@[a-zA-Z0-9]*(\.[a-zA-Z0-9]*)+

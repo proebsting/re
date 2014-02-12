@@ -1,0 +1,14 @@
+# basic alternation
+a|b
+ab|c
+a|bc
+ab|cd
+a|b|c
+a|b|c|d
+ab|cd|ef
+ab|cd|ef|gh
+abc|def
+abc|def|ghi
+a|bc|def|ghij
+pqrs|tuv|wx|yz
+abc|d|efgh|ij|kmlno|pqr|s|tuv|wxy|z

@@ -1,0 +1,17 @@
+# simple posfix replication
+a?
+a+
+a*
+a?b
+a+b
+a*b
+ab?
+ab+
+ab*
+a?b?
+a+b+
+a*b*
+a?b?c?
+a*b*c*
+a+b+c+
+wh?o+p!

@@ -1,0 +1,14 @@
+)
+(
+abc)
+(def
+g|h)
+i|j|k)
+(m|n
+(o|p|q
+\
+abc\
+[]
+[\]
+[abc
+[def\]
