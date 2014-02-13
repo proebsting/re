@@ -15,7 +15,7 @@ type Cset struct {
 	//#%#% maybe more later: n, low, high???
 }
 
-func NewCset(s string) *Cset {	// make new cset from string
+func NewCset(s string) *Cset { // make new cset from string
 	cs := new(Cset)
 	for _, ch := range s {
 		cs.Set(uint(ch))
@@ -48,7 +48,7 @@ func (b Cset) Choose() byte {
 	//#%#%#% really inefficient!
 	h := b.bits.BitLen() - 1
 	if h < 0 {
-		return '#'	//#%#%#% ERROR cset was empty
+		return '#' //#%#%#% ERROR cset was empty
 	}
 	c := byte(h)
 	n := 1
@@ -69,14 +69,14 @@ func (b Cset) String() string {
 	h := b.bits.BitLen()
 	s := make([]byte, 0)
 	s = append(s, '[')
-	for i := 0; i <= h; i++ {		// for all chars up to highest
-		if b.Test(uint(i)) {		// if char is included
-			s = append(s, byte(i))	// show char	
+	for i := 0; i <= h; i++ { // for all chars up to highest
+		if b.Test(uint(i)) { // if char is included
+			s = append(s, byte(i)) // show char
 			var j int
 			for j = i + 1; b.Test(uint(j)); j++ {
-				;		// count consecutive inclusions
+				// count consecutive inclusions
 			}
-			if j - i > 3 {		// if worth using [a-z] form
+			if j-i > 3 { // if worth using [a-z] form
 				i = j - 1
 				s = append(s, '-', byte(i))
 			}

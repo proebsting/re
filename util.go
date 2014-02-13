@@ -10,11 +10,15 @@ import (
 
 func Escape(c byte) byte { // interpret meaning of \c
 	switch c {
-		// #%#%#% need to flesh this out
-		case 'e':	return '\033'
-		case 't':	return '\t'
-		case 'n':	return '\n'
-		default:	return c
+	// #%#%#% need to flesh this out
+	case 'e':
+		return '\033'
+	case 't':
+		return '\t'
+	case 'n':
+		return '\n'
+	default:
+		return c
 	}
 }
 

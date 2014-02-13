@@ -17,7 +17,7 @@ type Node interface { // "parent class" of Node subtypes
 // MatchNode matches exactly one character from a predefined set
 
 type MatchNode struct {
-	cset *Cset	 // the characters that will match
+	cset *Cset // the characters that will match
 }
 
 func (d MatchNode) MinLen() int { return 1 }
@@ -32,7 +32,7 @@ func (d MatchNode) Example(s []byte, n int) []byte {
 func (d MatchNode) String() string {
 	s := d.cset.String()
 	if len(s) == 3 {
-		return s[1:2]		// abbreviate set of one char
+		return s[1:2] // abbreviate set of one char
 	} else {
 		return s
 	}
@@ -193,7 +193,7 @@ func (d ReplNode) Example(s []byte, n int) []byte {
 	}
 	// choose desired replication count randomly within legal range
 	if n > d.Min {
-		n = d.Min + rand.Intn(n - d.Min + 1)
+		n = d.Min + rand.Intn(n-d.Min+1)
 	} else {
 		n = d.Min
 	}

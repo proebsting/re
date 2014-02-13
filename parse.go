@@ -6,13 +6,12 @@ import (
 	"fmt"
 )
 
-
 //  Parse parses a regular expression and returns a return tree of Nodes.
 
 var rexpr []byte // remaining characters to parse
 var postfix byte // postfix replication char, if any: * + ?
 
-var curr Node        // current tree under construction
+var curr Node // current tree under construction
 
 // oprstack and exprstack are stacks that move in synchrony
 var oprstack []byte  // operators associated with pushed expressions
@@ -20,19 +19,19 @@ var exprstack []Node // stack of pushed expressions
 
 func Parse(rexpr string) Node {
 
-	var lside, rside Node		// left and right side subtrees
-	curr = Epsilon()		// initialize empty parse tree
-	oprstack = make([]byte, 0)	// initialize empty operator stack
-	exprstack = make([]Node, 0)	// initialize empty expresion stack
+	var lside, rside Node       // left and right side subtrees
+	curr = Epsilon()            // initialize empty parse tree
+	oprstack = make([]byte, 0)  // initialize empty operator stack
+	exprstack = make([]Node, 0) // initialize empty expresion stack
 
-	for len(rexpr) > 0 {		// for every character in regexp
+	for len(rexpr) > 0 { // for every character in regexp
 		// invariant: curr holds the parse tree completed so far
 		// invariant: rexpr holds remaining unprocessed characters
 
 		// dispatch based on next character
-		thischar := rexpr[0]		// get character
-		rexpr = rexpr[1:]		// trim from string
-		switch thischar {		// dispatch
+		thischar := rexpr[0] // get character
+		rexpr = rexpr[1:]    // trim from string
+		switch thischar {    // dispatch
 
 		case '?', '*', '+':
 			// ignore:  if seen here, any of these characters
@@ -45,17 +44,17 @@ func Parse(rexpr string) Node {
 			oprstack = append(oprstack, thischar)
 			exprstack = append(exprstack, curr)
 			curr = Epsilon()
-			continue	// don't check/allow postfix replication
+			continue // don't check/allow postfix replication
 
 		case ')':
 			// close parenthesis: gather parts together
-			curr = popAlts(curr)	// first handle alternation
-			j := len(oprstack) - 1	// pop the opening paren
+			curr = popAlts(curr)   // first handle alternation
+			j := len(oprstack) - 1 // pop the opening paren
 			if j >= 0 && oprstack[j] == '(' {
-				lside = exprstack[j]		// predecessor
-				exprstack = exprstack[0:j]	// pop stack
-				oprstack = oprstack[0:j]	// pop opr
-				rside, rexpr = replicate(curr, rexpr) 
+				lside = exprstack[j]       // predecessor
+				exprstack = exprstack[0:j] // pop stack
+				oprstack = oprstack[0:j]   // pop opr
+				rside, rexpr = replicate(curr, rexpr)
 				curr = Concatenate(lside, rside)
 				continue
 			}
@@ -94,7 +93,7 @@ func Parse(rexpr string) Node {
 		curr = Concatenate(curr, rside)
 	}
 
-	curr = popAlts(curr)	// check unpopped alternatives at end of string
+	curr = popAlts(curr) // check unpopped alternatives at end of string
 	//#%#%#% should then check that stack is now empty (no unclosed parens)
 	return curr
 }
@@ -114,7 +113,7 @@ func popAlts(d Node) Node {
 //  always return resulting node and remaining string
 func replicate(d Node, p string) (Node, string) {
 	if len(p) == 0 {
-	    return d, p
+		return d, p
 	}
 	switch p[0] {
 	case '?':
