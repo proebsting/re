@@ -1,0 +1,4 @@
+# Files for Mercurial to ignore
+syntax:glob
+.git
+*.out
