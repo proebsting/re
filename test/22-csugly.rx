@@ -1,6 +1,4 @@
-# ugly cset (bracket expression) forms
-[
-[]
+# ugly but legal cset (bracket expression) forms
 [-]
 [-x]
 [x-]
@@ -9,3 +7,4 @@
 []x]
 []x-]
 []x[-]
+[][]

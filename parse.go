@@ -19,22 +19,24 @@ var oprstack []byte  // operators associated with pushed expressions
 var exprstack []Node // stack of pushed expressions
 
 func Parse(rexpr string) Node {
-	var lside, rside Node
-	i := 0				// initialize character position
+
+	var lside, rside Node		// left and right side subtrees
 	curr = Epsilon()		// initialize empty parse tree
 	oprstack = make([]byte, 0)	// initialize empty operator stack
 	exprstack = make([]Node, 0)	// initialize empty expresion stack
 
-	for i < len(rexpr) {		// for every character in regexp
+	for len(rexpr) > 0 {		// for every character in regexp
+		// invariant: curr holds the parse tree completed so far
+		// invariant: rexpr holds remaining unprocessed characters
 
 		// dispatch based on next character
-		thischar := rexpr[i]
-		switch thischar {
+		thischar := rexpr[0]		// get character
+		rexpr = rexpr[1:]		// trim from string
+		switch thischar {		// dispatch
 
 		case '?', '*', '+':
 			// ignore:  if seen here, any of these characters
 			// just replicates an empty string to no effect
-			i++
 			continue
 
 		case '|', '(':
@@ -43,7 +45,6 @@ func Parse(rexpr string) Node {
 			oprstack = append(oprstack, thischar)
 			exprstack = append(exprstack, curr)
 			curr = Epsilon()
-			i++
 			continue	// don't check/allow postfix replication
 
 		case ')':
@@ -54,45 +55,43 @@ func Parse(rexpr string) Node {
 				lside = exprstack[j]		// predecessor
 				exprstack = exprstack[0:j]	// pop stack
 				oprstack = oprstack[0:j]	// pop opr
-				rside, incr := replicate(curr, rexpr[i+1:]) 
+				rside, rexpr = replicate(curr, rexpr) 
 				curr = Concatenate(lside, rside)
-				i += incr + 1
 				continue
 			}
-			// #%#%#% ERROR! need to signal somehow
+			// #%#%#% ERROR: no preceding '('!  #%#% need to handle
 			rside = Epsilon()
 
 		case '[':
 			// bracket expression
-			cset, snew := bracketx(rexpr[i:])
+			var cset *Cset
+			cset, rexpr = bracketx(rexpr)
 			rside = MatchNode{cset}
-			i += len(rexpr[i:]) - len(snew) - 1
 
 		case '.':
 			// wild character
 			// #%#%#% for now treat as [ -~] (ascii printables only)
-			cset, _ := bracketx("[ -~]")
+			cset, _ := bracketx(" -~]")
 			rside = MatchNode{cset}
 
 		case '\\':
 			// escaped character
-			if i+1 < len(rexpr) {
-				i++
-				cset := NewCset(string(Escape(rexpr[i])))
+			if len(rexpr) > 0 {
+				cset := NewCset(string(Escape(rexpr[0])))
 				rside = MatchNode{cset}
+				rexpr = rexpr[1:]
 			} else {
 				//#%#%#% ERROR, \ at end
 				rside = Epsilon()
 			}
 		default:
 			// single literal character
-			rside = MatchNode{NewCset(rexpr[i:i+1])}
+			rside = MatchNode{NewCset(string(thischar))}
 		}
 
 		// common code for handling postfix replication
-		rside, incr := replicate(rside, rexpr[i+1:])
+		rside, rexpr = replicate(rside, rexpr)
 		curr = Concatenate(curr, rside)
-		i += incr + 1
 	}
 
 	curr = popAlts(curr)	// check unpopped alternatives at end of string
@@ -112,20 +111,20 @@ func popAlts(d Node) Node {
 }
 
 //  wrap a replication node around a subtree if followed by posfix ?, *, +
-//  always return resulting node and increment (1 or 0) for string pointer
-func replicate(d Node, p string) (Node, int) {
+//  always return resulting node and remaining string
+func replicate(d Node, p string) (Node, string) {
 	if len(p) == 0 {
-	    return d, 0
+	    return d, p
 	}
 	switch p[0] {
 	case '?':
-		return ReplNode{Min: 0, Max: 1, Child: d}, 1
+		return ReplNode{Min: 0, Max: 1, Child: d}, p[1:]
 	case '*':
-		return ReplNode{Min: 0, Max: -1, Child: d}, 1
+		return ReplNode{Min: 0, Max: -1, Child: d}, p[1:]
 	case '+':
-		return ReplNode{Min: 1, Max: -1, Child: d}, 1
+		return ReplNode{Min: 1, Max: -1, Child: d}, p[1:]
 	default:
-		return d, 0
+		return d, p
 	}
 }
 

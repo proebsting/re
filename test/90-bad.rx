@@ -1,3 +1,4 @@
+# irregular (i.e. illegal) expressions
 )
 (
 abc)
@@ -8,6 +9,7 @@ i|j|k)
 (o|p|q
 \
 abc\
+[
 []
 [\]
 [abc

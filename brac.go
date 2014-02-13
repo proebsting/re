@@ -7,25 +7,24 @@ import (
 )
 
 //  bracketx(s) parses string s as a bracket expression,
-//  returning the computed Cset and the remaining unprocessed string.
+//  returning the computed Cset and the remaining unprocessed part of s.
+//  Assumes the introductory '[' has already been stripped from s.
 
 //#%#% incomplete; does not yet handle [^abc] or [\x] or [:digits:] etc
 
 func bracketx(s string) (*Cset, string) {
 
-	if len(s) == 0 || s[0] != '[' {
-		panic(fmt.Sprintf("not a bracket expr: \"%s\"", s))
-	}
 	chars := make([]byte, 0)
-
-	for i := 1; i < len(s); i++ {
-		ch := s[i]
+	for len(s) > 0 {
+		ch := s[0]
+		s = s[1:]
 		switch (ch) {
 			case '-':
 				// range of chars
-				if i > 1 && i+1 < len(s) && s[i+1] != ']' {
-					i++;
-					for j := s[i-2]; j <= s[i]; j++ {
+				if len(chars)>0 && len(s)>0 && s[0]!=']' {
+					ch = s[0]
+					s = s[1:]
+					for j := chars[len(chars)-1]; j <= ch; j++ {
 						chars = append(chars, j)
 					}
 				} else {
@@ -33,23 +32,25 @@ func bracketx(s string) (*Cset, string) {
 				}
 			case ']':
 				// set is complete unless this is first char
-				if i > 1 {
-					return NewCset(string(chars)), s[i+1:]
+				if len(chars) > 0 {
+					return NewCset(string(chars)), s
 				} else {
 					// initial ']' is ordinary
-					chars = append(chars, s[i])
+					chars = append(chars, ']')
 				}
 			case '\\':
-				if i+1 < len(s) {
-					i++
-					chars = append(chars, Escape(s[i]))
+				if len(s) > 0 {
+					chars = append(chars, Escape(s[0]))
+					s = s[1:]
 				} // else: error caught on next iteration
 			default:
 				// an ordinary char; add to set
-				chars = append(chars, s[i])
+				chars = append(chars, ch)
 		}
 	}
 	// #%#% ERROR: no terminating ']'
-	// for now, just treat as '[[]'
-	return NewCset(s[0:1]), s[1:]
+	// for now, just treat as "[][]" (a cset of two chars ']' and '[')
+	return NewCset("][]"), s
 }
+
+func unwanted() { fmt.Println(00) } //#%#% just to ensure a fmt reference
