@@ -1,7 +1,7 @@
 #  makefile for rx programs
 
 PROG=rxr
-BIN=../../bin/$(PROG)
+BIN=$$GOPATH/bin/$(PROG)
 
 default: build test expt
 
