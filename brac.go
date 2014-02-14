@@ -40,7 +40,7 @@ func bracketx(s string) (*Cset, string) {
 			}
 		case '\\':
 			if len(s) > 0 {
-				chars = append(chars, Escape(s[0]))
+				chars = append(chars, Escape(s[0])...)
 				s = s[1:]
 			} // else: error caught on next iteration
 		default:

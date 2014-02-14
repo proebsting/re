@@ -1,3 +1,15 @@
+# character set escapes
+# n.b. in POSIX, \ in [] should not be special
 [\-]+
 [\]]*
 [ab\[cd\-ef\]gh]+
+# perl inventions
+\d+
+[\d]+
+[\d0IZESB]+
+0x([\dABCDEF][\dABCDEF])+
+\w+
+[\w]+
+\w+-\w+
+# \s makes an ugly output due to embedded formatting characters
+=====================<\s>=====================

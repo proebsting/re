@@ -1,4 +1,8 @@
 
+# character set escapes
+
+# n.b. in POSIX, \ in [] should not be special
+
 regexp: [\-]+
 tree:   (-+)
 length: 1 to *
@@ -28,3 +32,88 @@ ex(2):  e  de  e  ]a  ]  b  hh  ef  g  a]  ]d  h  -  [-  d  fe  e  h  h  h  ]a
 ex(3):  g  [df  g  b  e]  aa-  dcd  e[  -g[  ]  e  d-  df  ba]  b]f  h  ]f  c-e
 ex(5):  -c-  chf]g  -a]g[  cgcd  gcebe  d  f  ad[  a  hdg  fhfc  g[hc  [  fa
 ex(8):  gf]bda]]  f  a[hcafbc  h  [eagg-a  fcef  c--fa  da-bh  [cfad[  baf-[]-
+
+# perl inventions
+
+regexp: \d+
+tree:   ([0-9]+)
+length: 1 to *
+ex(0):  1  8  7  2  0  6  1  0  7  8  8  9  4  4  5  4  8  3  4  9  8  2  2  8
+ex(1):  0  7  1  8  3  7  9  0  3  1  0  2  6  4  0  7  9  7  3  1  0  6  8  2
+ex(2):  8  2  7  6  0  7  6  01  58  20  79  9  8  9  1  93  27  2  1  61  09
+ex(3):  17  278  00  5  229  5  83  8  1  056  8  53  18  6  419  94  9  7  12
+ex(5):  69  2  9619  89  84  086  46  09  795  91  5  45  4  820  21666  03
+ex(8):  28  306493  7259956  2794  1789  16744  9254042  44  357158  8776422
+
+regexp: [\d]+
+tree:   ([0-9]+)
+length: 1 to *
+ex(0):  1  8  7  2  0  6  1  0  7  8  8  9  4  4  5  4  8  3  4  9  8  2  2  8
+ex(1):  0  7  1  8  3  7  9  0  3  1  0  2  6  4  0  7  9  7  3  1  0  6  8  2
+ex(2):  8  2  7  6  0  7  6  01  58  20  79  9  8  9  1  93  27  2  1  61  09
+ex(3):  17  278  00  5  229  5  83  8  1  056  8  53  18  6  419  94  9  7  12
+ex(5):  69  2  9619  89  84  086  46  09  795  91  5  45  4  820  21666  03
+ex(8):  28  306493  7259956  2794  1789  16744  9254042  44  357158  8776422
+
+regexp: [\d0IZESB]+
+tree:   ([0-9BEISZ]+)
+length: 1 to *
+ex(0):  B  S  8  S  9  I  E  5  7  S  E  4  3  S  3  S  S  1  B  I  E  4  6  9
+ex(1):  4  E  7  4  S  8  7  9  S  4  B  E  6  6  6  9  6  0  S  1  3  I  0  2
+ex(2):  B4  76  89  30  5  1  9S  S5  09  60  82  S  9B  1  59  ZZ  5  E  46  Z
+ex(3):  6I5  86B  ZI  86  2  0E  I  1S6  3B  S  35  65  3E  5  0  I  211  7
+ex(5):  419  21IBI  B  18IS7  12  764I9  785B1  9ZSE8  14  6I846  1475E  6193E
+ex(8):  S6463  E6  03  9SE3Z408  793  4ESIS8S7  7E  8BZ5  Z02219S8  98S4II4
+
+regexp: 0x([\dABCDEF][\dABCDEF])+
+tree:   (0x([0-9A-F][0-9A-F])+)
+length: 4 to *
+ex(0):  0xA8  0x9B  0x02  0x81  0x89  0x51  0xBD  0xDD  0x14  0x75  0x7B  0x46
+ex(1):  0x7D  0xEE  0x61  0x1B  0x9C  0xCB  0xAA  0x50  0x3B  0xE2  0xB6  0x23
+ex(2):  0x3B  0x73  0xCD72  0x696F  0x68C0  0x27EF  0x70  0xF5  0xB3  0xDB
+ex(3):  0x37  0x6F  0x66C8  0xEF55  0x4474  0x65  0x5F5323  0x5B  0xFAC3F9
+ex(5):  0xECCD19CE3E  0xFAC8008859  0x11ACF00F  0xD3C16F  0xE7  0xFE
+ex(8):  0x5660  0xF37DFC4CD7  0x643FEAD72E  0x1836  0xBB999983FDB2351F
+
+regexp: \w+
+tree:   ([0-9A-Z_a-z]+)
+length: 1 to *
+ex(0):  P  9  n  a  M  U  u  h  M  M  2  F  6  c  p  l  L  u  Z  l  d  J  o  m
+ex(1):  i  a  k  M  k  l  X  V  8  o  S  V  C  H  j  U  u  x  q  T  B  N  q  P
+ex(2):  P  g  L  O  d  RA  m  KA  tR  50  a  yy  H  f  S  N  L  l  Yj  I  T  B
+ex(3):  AVL  14  t  Q  xvU  H  H6  k  _O  3Qi  W  6V  M6  e  vCR  H  l  I  EwJ
+ex(5):  WiE  C3LY8  0Zbe  MBsha  fYIpy  BMVGI  Lfx  TX1  KXhbs  Kvb1l  0wFCA
+ex(8):  t  4B  Wl  jJ  _y47zZJ8  6dapp  9ae  4H21IlCC  gLK  _3N  pMJAHYz
+
+regexp: [\w]+
+tree:   ([0-9A-Z_a-z]+)
+length: 1 to *
+ex(0):  P  9  n  a  M  U  u  h  M  M  2  F  6  c  p  l  L  u  Z  l  d  J  o  m
+ex(1):  i  a  k  M  k  l  X  V  8  o  S  V  C  H  j  U  u  x  q  T  B  N  q  P
+ex(2):  P  g  L  O  d  RA  m  KA  tR  50  a  yy  H  f  S  N  L  l  Yj  I  T  B
+ex(3):  AVL  14  t  Q  xvU  H  H6  k  _O  3Qi  W  6V  M6  e  vCR  H  l  I  EwJ
+ex(5):  WiE  C3LY8  0Zbe  MBsha  fYIpy  BMVGI  Lfx  TX1  KXhbs  Kvb1l  0wFCA
+ex(8):  t  4B  Wl  jJ  _y47zZJ8  6dapp  9ae  4H21IlCC  gLK  _3N  pMJAHYz
+
+regexp: \w+-\w+
+tree:   ([0-9A-Z_a-z]+-[0-9A-Z_a-z]+)
+length: 3 to *
+ex(0):  P-9  n-a  M-U  u-h  M-M  2-F  6-c  p-l  L-u  Z-l  d-J  o-m  3-i  a-k
+ex(1):  l-X  V-8  o-S  V-C  H-j  U-u  x-q  T-B  N-q  P-v  J-2  o-N  s-G  G-I
+ex(2):  Ob-R  Fn-d7  6-4  yL-C  l-v  a-0_  H-P  Pi-vs  f-VI  da-S5  D-f  SX-j
+ex(3):  S4-7BS  _-4  WJ2-xG  YpU-Gw  2G-h  N-PgN  CNL-wS1  eh-y  29g-A  nQ-H
+ex(5):  nZ8-KA18X  yiED-4puq0  yWV-AfzF  kMW-3GT  rCs-riks  KW3-aL9Q
+ex(8):  lCCXOaCf-4QP  60Mhsw-QqUllU  5kh-_lSu2dWz  EjYsUa5a-a4IurPx  5NbOL-Gz
+
+# \s makes an ugly output due to embedded formatting characters
+
+regexp: =====================<\s>=====================
+tree:   (=====================<[	- ]>=====================)
+length: 45 to 45
+ex(0):  =====================<
+>=====================
+ex(1):  =====================<>=====================
+ex(2):  =====================<>=====================
+ex(3):  =====================< >=====================
+ex(5):  =====================<>=====================
+ex(8):  =====================<	>=====================

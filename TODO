@@ -2,9 +2,12 @@ RX TODO
 
 Need to figure out exactly WHICH RE spec to follow
 
+Fix both interpretation and display of '.'
 Add {n}
-Add \s \S \d \D etc
+Add [^....] and \D \W \S
 Add POSIX classes??
+Add \b?  Other Perl stuff?
+Add anchors (^....$)?  How?
 etc etc
 
 Figure out how to handle erroneous regexps

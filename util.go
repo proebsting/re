@@ -8,17 +8,17 @@ import (
 	"os"
 )
 
-func Escape(c byte) byte { // interpret meaning of \c
+func Escape(c byte) string { // interpret meaning of \c
+	// #%#%#% works only for escapes that repr a set of characters, not \b
 	switch c {
-	// #%#%#% need to flesh this out
-	case 'e':
-		return '\033'
-	case 't':
-		return '\t'
-	case 'n':
-		return '\n'
+	case 'd':
+		return "0123456789"
+	case 's':
+		return "\t\n\v\f\r "
+	case 'w':
+		return "0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 	default:
-		return c
+		return string(c)
 	}
 }
 
