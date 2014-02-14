@@ -205,9 +205,19 @@ func (d ReplNode) Example(s []byte, n int) []byte {
 }
 
 func (d ReplNode) String() string {
-	if d.Max >= 0 {
-		return fmt.Sprintf("%s{%d%d}", d.Child, d.Min, d.Max)
+	if d.Max < 0 {
+		if d.Min == 0 {
+			return fmt.Sprintf("%s*", d.Child)
+		} else if d.Min == 1 {
+			return fmt.Sprintf("%s+", d.Child)
+		} else {
+			return fmt.Sprintf("%s{%d,}", d.Child, d.Min)
+		}
+	} else if d.Max == d.Min {
+		return fmt.Sprintf("%s{%d}", d.Child, d.Min)
+	} else if d.Max == 1 && d.Min == 0 {
+		return fmt.Sprintf("%s?", d.Child)
 	} else {
-		return fmt.Sprintf("%s{%d*}", d.Child, d.Min)
+		return fmt.Sprintf("%s{%d,%d}", d.Child, d.Min, d.Max)
 	}
 }

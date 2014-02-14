@@ -2,7 +2,7 @@
 # words
 
 regexp: [a-zA-Z][a-z]+
-tree:   ([A-Za-z][a-z]{1*})
+tree:   ([A-Za-z][a-z]+)
 length: 2 to *
 ex(0):  Zu  gy  vj  ez  Kq  Ni  Yo  Xm  pr  Hd  lr  va  zv  pq  sp  Gj  dr  pp
 ex(1):  ml  bj  Ir  un  wy  ex  Is  td  wj  fn  Lr  af  Ru  wu  Iw  pc  mx  nh
@@ -12,7 +12,7 @@ ex(5):  Gl  digotp  Rgacxj  Wcirm  Ztpwpo  msik  kuvh  Dtct  Nzies  jhe  vvyf
 ex(8):  Aoe  jhy  rlh  Ng  Pwtcegyjm  Azlf  Vgf  uommm  Zwvejx  uwi  bitrneyb
 
 regexp: [a-zA-Z][a-z]*
-tree:   ([A-Za-z][a-z]{0*})
+tree:   ([A-Za-z][a-z]*)
 length: 1 to *
 ex(0):  Z  d  K  N  P  q  n  E  K  H  Y  N  u  b  A  C  H  B  W  a  Y  z  z  Y
 ex(1):  S  Gv  vh  C  lz  W  w  E  I  Mx  G  Ly  v  Jb  K  t  Ly  G  lk  ry  Ib
@@ -22,7 +22,7 @@ ex(5):  A  ffirej  snqal  Yu  gyxa  Slg  Zd  Ehbou  Q  ty  ewvsbu  rtyjqz  Vc
 ex(8):  ly  Mdmgplt  Rhyso  ibfjbm  lnflzxuud  N  Vqel  nkc  Lyklku  d  Gfusdf
 
 regexp: [a-zA-Z][a-z]*('[a-z]+)?
-tree:   ([A-Za-z][a-z]{0*}('[a-z]{1*}){01})
+tree:   ([A-Za-z][a-z]*('[a-z]+)?)
 length: 1 to *
 ex(0):  Z  d  K  N  P  q  n  E  K  H  Y  N  u  b  A  C  H  B  W  a  Y  z  z  Y
 ex(1):  S  n'k  s'y  Hd  c'g  Wr  Z'k  Ig  v  Y'f  R'w  Gb'l  mm  js  po  R  D
@@ -34,7 +34,7 @@ ex(8):  Dtc  Nz  Yifkycqo  yy'r  Vogj  b's  Vdrqnn  Huhysg'y  Yyi'q  rrd  I'q
 # phrases
 
 regexp: [a-zA-Z ]+
-tree:   ([ A-Za-z]{1*})
+tree:   ([ A-Za-z]+)
 length: 1 to *
 ex(0):  Y  H  N  J  T  r  N  K  L  n  J  q  f  k  I  G  T  o  L  o  d  P  B  x
 ex(1):  O  F  u  Z  S  y  k  A  p  k  Z  Z  d  s  W  M  m  m  s  o  M  Q  l  e

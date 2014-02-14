@@ -2,7 +2,7 @@
 # simple posfix replication
 
 regexp: a?
-tree:   (a{01})
+tree:   (a?)
 length: 0 to 1
 ex(0):                                                                        
 ex(1):      a    a    a  a        a  a        a        a        a        a    a
@@ -12,7 +12,7 @@ ex(5):    a      a  a  a  a  a    a  a              a  a  a  a      a  a
 ex(8):  a  a  a    a    a  a        a  a        a  a  a  a  a    a    a  a    
 
 regexp: a+
-tree:   (a{1*})
+tree:   (a+)
 length: 1 to *
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -22,7 +22,7 @@ ex(5):  aaa  aaaaa  aa  aaaa  aaaaa  aaa  aaaa  a  aaa  aaa  a  aaaa  aaaaa
 ex(8):  aaaa  aaaaa  aa  aaaaaaa  aaaaa  a  aaaaaaa  aaaa  aaaaaa  aaa  aaaaaaa
 
 regexp: a*
-tree:   (a{0*})
+tree:   (a*)
 length: 0 to *
 ex(0):                                                                        
 ex(1):      a    a    a  a        a  a        a        a        a        a    a
@@ -32,7 +32,7 @@ ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
 ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
 
 regexp: a?b
-tree:   (a{01}b)
+tree:   (a?b)
 length: 1 to 2
 ex(0):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
 ex(1):  b  b  ab  b  ab  b  ab  ab  b  b  b  ab  ab  b  b  b  ab  b  b  b  ab
@@ -42,7 +42,7 @@ ex(5):  b  ab  ab  ab  b  b  ab  b  ab  ab  b  ab  ab  b  b  b  ab  b  ab  b  b
 ex(8):  b  b  b  b  b  b  b  ab  b  b  ab  ab  ab  ab  ab  b  ab  ab  b  b  b
 
 regexp: a+b
-tree:   (a{1*}b)
+tree:   (a+b)
 length: 2 to *
 ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(1):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
@@ -52,7 +52,7 @@ ex(5):  ab  aaaaab  aaaab  aaaab  ab  ab  aaaaab  aaaaab  aaab  aaaaab  aab
 ex(8):  aaaaaaaab  aaaaaaaab  aaaaab  ab  aaaaaaab  aab  aaaaaaab  ab  aaab  ab
 
 regexp: a*b
-tree:   (a{0*}b)
+tree:   (a*b)
 length: 1 to *
 ex(0):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
 ex(1):  b  b  ab  b  ab  b  ab  ab  b  b  b  ab  ab  b  b  b  ab  b  b  b  ab
@@ -62,7 +62,7 @@ ex(5):  aab  aab  b  aaaaab  aaab  aab  aaaab  aaaaab  ab  aab  aaaaab  ab
 ex(8):  aaab  aaaaaaaab  b  ab  aab  aaaab  aaaab  aaab  b  b  aaaaaab  aab
 
 regexp: ab?
-tree:   (ab{01})
+tree:   (ab?)
 length: 1 to 2
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  ab  a  ab  a  ab  ab  a  a  a  ab  ab  a  a  a  ab  a  a  a  ab
@@ -72,7 +72,7 @@ ex(5):  a  ab  ab  ab  a  a  ab  a  ab  ab  a  ab  ab  a  a  a  ab  a  ab  a  a
 ex(8):  a  a  a  a  a  a  a  ab  a  a  ab  ab  ab  ab  ab  a  ab  ab  a  a  a
 
 regexp: ab+
-tree:   (ab{1*})
+tree:   (ab+)
 length: 2 to *
 ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(1):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
@@ -82,7 +82,7 @@ ex(5):  ab  abbbbb  abbbb  abbbb  ab  ab  abbbbb  abbbbb  abbb  abbbbb  abb
 ex(8):  abbbbbbbb  abbbbbbbb  abbbbb  ab  abbbbbbb  abb  abbbbbbb  ab  abbb  ab
 
 regexp: ab*
-tree:   (ab{0*})
+tree:   (ab*)
 length: 1 to *
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  ab  a  ab  a  ab  ab  a  a  a  ab  ab  a  a  a  ab  a  a  a  ab
@@ -92,7 +92,7 @@ ex(5):  abb  abb  a  abbbbb  abbb  abb  abbbb  abbbbb  ab  abb  abbbbb  ab
 ex(8):  abbb  abbbbbbbb  a  ab  abb  abbbb  abbbb  abbb  a  a  abbbbbb  abb
 
 regexp: a?b?
-tree:   (a{01}b{01})
+tree:   (a?b?)
 length: 0 to 2
 ex(0):                                                                        
 ex(1):    a  a  ab    b  a    a    a    a    a  a  a  b    a  a    ab    b    
@@ -102,7 +102,7 @@ ex(5):  b      b  b  a  b      b  ab  b  ab  b    b  a    b  b      b      a  b
 ex(8):  a    a  b  a  a      a  ab  a    b  b  a  ab  a  ab  a  a    a    b  
 
 regexp: a+b+
-tree:   (a{1*}b{1*})
+tree:   (a+b+)
 length: 2 to *
 ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(1):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
@@ -112,7 +112,7 @@ ex(5):  aabbbbb  abbb  aaabbbb  aaaaabbbb  aaaaab  aaaaabb  aaaabb  aaaaabbb
 ex(8):  aabbbbb  aaaaaaaabbbb  aaaaaaabbbbbbb  aaaaabbbb  aaaaabb  aaabbb
 
 regexp: a*b*
-tree:   (a{0*}b{0*})
+tree:   (a*b*)
 length: 0 to *
 ex(0):                                                                        
 ex(1):    a  a  ab    b  a    a    a    a    a  a  a  b    a  a    ab    b    
@@ -122,7 +122,7 @@ ex(5):  aabb  aaabbb  aaab  b  bbb  aaaaabb    aaab    aabbbbb  abbb  ab  aabbb
 ex(8):  aaaabbbbbbbb  aaaab  aaaaaaabbbbbbb  bbbbb  aaaaaabbbbb  aaaaaaabbbbbbb
 
 regexp: a?b?c?
-tree:   (a{01}b{01}c{01})
+tree:   (a?b?c?)
 length: 0 to 3
 ex(0):                                                                        
 ex(1):  c  b  ab  c  a  b  c    a  b  ac  c  c  b  c  a  b    ac    bc  c  ac
@@ -132,7 +132,7 @@ ex(5):  b  ab  c  c  ac    c  bc  a  c  bc  bc  ac  ab  a  b    a  abc  c    ab
 ex(8):  ac  bc  bc    b  bc    c  ac  a  abc  ab  bc  bc  bc  a  bc  ac  a    c
 
 regexp: a*b*c*
-tree:   (a{0*}b{0*}c{0*})
+tree:   (a*b*c*)
 length: 0 to *
 ex(0):                                                                        
 ex(1):  c  b  ab  c  a  b  c    a  b  ac  c  c  b  c  a  b    ac    bc  c  ac
@@ -142,7 +142,7 @@ ex(5):  aaaabcccc  bbbbb  aaaaabbbbcccc  bbcccc  accc  abbcccc  aaaaabb
 ex(8):  aabcc  aaabbbbbcccc  aaaaaabcc  aaabbbbccc  c  aaaaaaabbbbb
 
 regexp: a+b+c+
-tree:   (a{1*}b{1*}c{1*})
+tree:   (a+b+c+)
 length: 3 to *
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(1):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -152,7 +152,7 @@ ex(5):  aabbbbcc  aaaaabbbcccc  aaaabbbbbccccc  aaaabbbbccccc  aaaabbbcc
 ex(8):  aaabbbbbccccccc  aaaaabc  aaaaabccc  aabbbbbccc  aaaaaabbbbcccccc
 
 regexp: wh?o+p!
-tree:   (wh{01}o{1*}p!)
+tree:   (wh?o+p!)
 length: 4 to *
 ex(0):  wop!  wop!  wop!  wop!  wop!  wop!  wop!  wop!  wop!  wop!  wop!  wop!
 ex(1):  wop!  wop!  whop!  wop!  whop!  wop!  whop!  whop!  wop!  wop!  wop!

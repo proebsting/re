@@ -1,13 +1,15 @@
 RX TODO
 
-Add \c in [.....]
-Add escaped classes
+Need to figure out exactly WHICH RE spec to follow
+
+Add {n}
+Add \s \S \d \D etc
+Add POSIX classes??
 etc etc
 
 Figure out how to handle erroneous regexps
 
 Fix #%#% items
-Incr vs slice in main parse loop
 Understand chars, bytes, and runes better
 More consistency in use of pointers vs struct values
 General code cleanup

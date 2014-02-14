@@ -14,7 +14,7 @@ ex(8):  CBD  CBD  CACD  CBD  CACD  CACD  CBD  CACD  CACD  CBD  CBD  CBD  CACD
 # Dragon2: automata example
 
 regexp: (a|b)*abb
-tree:   (((a)|(b)){0*}abb)
+tree:   (((a)|(b))*abb)
 length: 3 to *
 ex(0):  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb
 ex(1):  abb  abb  babb  babb  aabb  abb  abb  abb  aabb  abb  abb  abb  babb
@@ -26,7 +26,7 @@ ex(8):  babb  bbbaaabb  abbabb  abb  abb  abb  baaaaabb  abaabbabb  aababb  abb
 # Sedgewick: genome marker
 
 regexp: gcg(cgg|agg)*ctg
-tree:   (gcg((cgg)|(agg)){0*}ctg)
+tree:   (gcg((cgg)|(agg))*ctg)
 length: 6 to *
 ex(0):  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg
 ex(1):  gcgctg  gcgctg  gcgaggctg  gcgaggctg  gcgcggctg  gcgctg  gcgctg  gcgctg
@@ -38,7 +38,7 @@ ex(8):  gcgcggaggaggcggcggctg  gcgcggcggctg  gcgaggaggcggctg  gcgcggctg
 # Sedgewick: multiples of 3, in binary
 
 regexp: (0|1(01*0)*1)*
-tree:   (((0)|(1(01{0*}0){0*}1)){0*})
+tree:   (((0)|(1(01*0)*1))*)
 length: 0 to *
 ex(0):                                                                        
 ex(1):      1001  0        0        11    11    11    1001  11  11  1001      0
@@ -50,7 +50,7 @@ ex(8):  000  0  100001101100010
 # Experiments with word construction
 
 regexp: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
-tree:   ([bcfpt][lr]{01}(([aeiou])|(oo)|(ee))[dmnt])
+tree:   ([bcfpt][lr]?(([aeiou])|(oo)|(ee))[dmnt])
 length: 3 to 5
 ex(0):  cam  fon  poon  tam  peen  peen  boon  tum  foot  fam  teem  feem  feen
 ex(1):  treed  ceed  beem  boom  bam  foom  flin  pen  flood  preen  cleet
