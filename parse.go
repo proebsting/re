@@ -4,6 +4,8 @@ package rx
 
 import (
 	"fmt"
+	"regexp"
+	"strconv"
 )
 
 //  Parse parses a regular expression and returns a return tree of Nodes.
@@ -109,19 +111,44 @@ func popAlts(d Node) Node {
 	return d
 }
 
+var replx = regexp.MustCompile("{(\\d*)(,?)(\\d*)}")	// expr for {n,m}
+
 //  wrap a replication node around a subtree if followed by posfix ?, *, +
 //  always return resulting node and remaining string
+
 func replicate(d Node, p string) (Node, string) {
 	if len(p) == 0 {
 		return d, p
 	}
 	switch p[0] {
 	case '?':
-		return ReplNode{Min: 0, Max: 1, Child: d}, p[1:]
+		return ReplNode{0, 1, d}, p[1:]
 	case '*':
-		return ReplNode{Min: 0, Max: -1, Child: d}, p[1:]
+		return ReplNode{0, -1, d}, p[1:]
 	case '+':
-		return ReplNode{Min: 1, Max: -1, Child: d}, p[1:]
+		return ReplNode{1, -1, d}, p[1:]
+	case '{':
+		result := replx.FindStringSubmatch(p)
+		if result == nil {
+			// #%#%#%#% error: badly formatted {... 
+			return d, p	// ignore, return original state
+		}
+		p = p[len(result[0]):]	// remove matched pattern
+		minrep, err1 := strconv.Atoi(result[1])
+		maxrep, err3 := strconv.Atoi(result[3])
+		if err1 == nil && err3 == nil && minrep <= maxrep {	// {n,m}
+			return ReplNode{minrep, maxrep, d}, p
+		}
+		if err1 == nil && len(result[3]) == 0 {
+			if len(result[2]) == 1 {			// {n,}
+				return ReplNode{minrep, -1, d}, p
+			} else {					// {n}
+				return ReplNode{minrep, minrep, d}, p
+			}
+		}
+		//#%#% ERROR: treat as {1,1}
+		return ReplNode{1, 1, d}, p
+		
 	default:
 		return d, p
 	}

@@ -3,7 +3,7 @@ RX TODO
 Need to figure out exactly WHICH RE spec to follow
 
 Fix both interpretation and display of '.'
-Add {n}
+Add "{n}?" ??
 Add [^....] and \D \W \S
 Add POSIX classes??
 Add \b?  Other Perl stuff?

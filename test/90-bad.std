@@ -150,3 +150,153 @@ ex(2):  [  [  [  [  ]  [  ]  [  [  [  [  ]  ]  [  [  ]  ]  [  ]  ]  ]  [  [  ]
 ex(3):  ]  ]  [  ]  ]  [  [  [  ]  [  ]  [  [  [  [  [  [  [  [  [  [  ]  [  [
 ex(5):  ]  ]  ]  ]  [  ]  ]  [  [  [  [  [  [  ]  ]  ]  ]  [  [  ]  ]  [  [  [
 ex(8):  ]  ]  ]  [  ]  [  ]  ]  [  [  [  ]  ]  [  [  [  ]  ]  ]  ]  ]  [  ]  [
+
+regexp: a{z
+tree:   (a{z)
+length: 3 to 3
+ex(0):  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z
+ex(1):  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z
+ex(2):  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z
+ex(3):  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z
+ex(5):  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z
+ex(8):  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z  a{z
+
+regexp: a{1z
+tree:   (a{1z)
+length: 4 to 4
+ex(0):  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z
+ex(1):  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z
+ex(2):  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z
+ex(3):  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z
+ex(5):  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z
+ex(8):  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z  a{1z
+
+regexp: a{1,z
+tree:   (a{1,z)
+length: 5 to 5
+ex(0):  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z
+ex(1):  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z
+ex(2):  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z
+ex(3):  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z
+ex(5):  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z
+ex(8):  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z  a{1,z
+
+regexp: a{1,2z
+tree:   (a{1,2z)
+length: 6 to 6
+ex(0):  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z
+ex(1):  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z
+ex(2):  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z
+ex(3):  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z
+ex(5):  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z
+ex(8):  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z  a{1,2z
+
+regexp: a{1,2bz
+tree:   (a{1,2bz)
+length: 7 to 7
+ex(0):  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz
+ex(1):  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz
+ex(2):  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz
+ex(3):  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz
+ex(5):  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz
+ex(8):  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz  a{1,2bz
+
+regexp: a{}z
+tree:   (a{1}z)
+length: 2 to 2
+ex(0):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(1):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(2):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(3):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(5):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(8):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+
+regexp: a{,}z
+tree:   (a{1}z)
+length: 2 to 2
+ex(0):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(1):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(2):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(3):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(5):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(8):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+
+regexp: a{1,,2}z
+tree:   (a{1,,2}z)
+length: 8 to 8
+ex(0):  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z
+ex(1):  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z
+ex(2):  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z
+ex(3):  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z
+ex(5):  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z
+ex(8):  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z  a{1,,2}z
+
+regexp: a{,2}z
+tree:   (a{1}z)
+length: 2 to 2
+ex(0):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(1):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(2):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(3):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(5):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(8):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+
+regexp: a{2,1}z
+tree:   (a{1}z)
+length: 2 to 2
+ex(0):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(1):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(2):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(3):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(5):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+ex(8):  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az  az
+
+regexp: a{p,3}z
+tree:   (a{p,3}z)
+length: 7 to 7
+ex(0):  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z
+ex(1):  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z
+ex(2):  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z
+ex(3):  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z
+ex(5):  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z
+ex(8):  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z  a{p,3}z
+
+regexp: a{4,q}z
+tree:   (a{4,q}z)
+length: 7 to 7
+ex(0):  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z
+ex(1):  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z
+ex(2):  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z
+ex(3):  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z
+ex(5):  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z
+ex(8):  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z  a{4,q}z
+
+regexp: a{x,y}z
+tree:   (a{x,y}z)
+length: 7 to 7
+ex(0):  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z
+ex(1):  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z
+ex(2):  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z
+ex(3):  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z
+ex(5):  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z
+ex(8):  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z  a{x,y}z
+
+regexp: a{x}z
+tree:   (a{x}z)
+length: 5 to 5
+ex(0):  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z
+ex(1):  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z
+ex(2):  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z
+ex(3):  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z
+ex(5):  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z
+ex(8):  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z  a{x}z
+
+regexp: a{xyzzy}z
+tree:   (a{xyzzy}z)
+length: 9 to 9
+ex(0):  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z
+ex(1):  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z
+ex(2):  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z
+ex(3):  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z
+ex(5):  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z
+ex(8):  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z  a{xyzzy}z
