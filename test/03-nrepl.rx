@@ -1,0 +1,13 @@
+# numeric replication {n,m}
+ab{0}c
+ab{0,0}c
+ab{0,}c
+ab{1}c
+ab{0,1}c
+ab{1,1}c
+ab{1,}c
+ab{0,3}c
+ab{2,5}c
+ab{3,}c
+ab{4}c
+ab{12,23}c
