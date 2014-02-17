@@ -72,17 +72,18 @@ func main() {
 
 //  generate a line's worth of examples from a rx
 const linemax = 79
-func examples(rx rx.Node, n int) {
-	s := fmt.Sprintf("ex(%d):  %s", n, rx.Example(make([]byte, 0), n))
+func examples(x rx.Node, n int) {
+	s := fmt.Sprintf("ex(%d):  %s",
+		n, rx.Protect(string(x.Example(make([]byte, 0), n))))
 	cc := len(s)
 	fmt.Print(s)
 	for {
-		t := rx.Example(make([]byte, 0), n)
-		cc += 2 + len(t)
+		s = rx.Protect(string(x.Example(make([]byte, 0), n)))
+		cc += 2 + len(s)
 		if cc > linemax {
 			break
 		}
-		fmt.Printf("  %s", t)
+		fmt.Printf("  %s", s)
 	}
 	fmt.Println()
 }

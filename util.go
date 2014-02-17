@@ -6,6 +6,7 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"strconv"
 )
 
 func Escape(c byte) string { // interpret meaning of \c
@@ -20,6 +21,11 @@ func Escape(c byte) string { // interpret meaning of \c
 	default:
 		return string(c)
 	}
+}
+
+func Protect(s string) string {  // protect unprintables with backslashes
+        s = strconv.Quote(s)
+	return s[1:len(s)-1]
 }
 
 func MkScanner(fname string) *bufio.Scanner { // return scanner for file
