@@ -11,5 +11,4 @@
 \w+
 [\w]+
 \w+-\w+
-# \s makes an ugly output due to embedded formatting characters
-=====================<\s>=====================
+<\s>

@@ -28,6 +28,15 @@ func Protect(s string) string {  // protect unprintables with backslashes
 	return s[1:len(s)-1]
 }
 
+func Cprotect(r rune) string {	// protect single unprintable char w/ backslash
+	if strconv.IsPrint(r) {
+		return string(r)
+	} else {
+		s := strconv.QuoteRune(r)
+		return s[1:len(s)-1]
+	}
+}
+
 func MkScanner(fname string) *bufio.Scanner { // return scanner for file
 	if fname == "-" {
 		return bufio.NewScanner(os.Stdin)

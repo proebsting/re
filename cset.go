@@ -63,22 +63,22 @@ func (b Cset) Choose() byte {
 	return c
 }
 
-//#%#%#% assumes printable characters
-//#%#%%# no escaping done for [ or - or anything else
+//  return string representation, escaping (only) unprintables
 func (b Cset) String() string {
 	h := b.bits.BitLen()
 	s := make([]byte, 0)
 	s = append(s, '[')
 	for i := 0; i <= h; i++ { // for all chars up to highest
 		if b.Test(uint(i)) { // if char is included
-			s = append(s, byte(i)) // show char
+			s = append(s, Cprotect(rune(byte(i)))...) // show char
 			var j int
 			for j = i + 1; b.Test(uint(j)); j++ {
 				// count consecutive inclusions
 			}
 			if j-i > 3 { // if worth using [a-z] form
 				i = j - 1
-				s = append(s, '-', byte(i))
+				s = append(s, '-')
+				s = append(s, Cprotect(rune(byte(i)))...)
 			}
 		}
 	}
