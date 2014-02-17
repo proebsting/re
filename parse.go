@@ -69,10 +69,9 @@ func Parse(rexpr string) Node {
 			cset, rexpr = bracketx(rexpr)
 			rside = MatchNode{cset}
 
-		case '.':
+		case '.':	//#%#%#% no chars above 0x7F; this is a bug
 			// wild character
-			// #%#%#% for now treat as [ -~] (ascii printables only)
-			cset, _ := bracketx(" -~]")
+			cset, _ := bracketx("\x01-\x7F]")	
 			rside = MatchNode{cset}
 
 		case '\\':
