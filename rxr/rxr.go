@@ -5,9 +5,14 @@
 
 	-Z	reset random seed for each regexp (for testing consistency)
 
-	Rxr reads regular expressions, one per line, from efile,
-	and does something with them (details constantly changing).
+	Rxr reads regular expressions, one per line, from efile.
 	A line beginning with '#' is treated as a comment.
+
+	Rxr currently echoes each expression, shows the parse tree,
+	prints some statistics, and generates some examples.
+	This will certainly be evolving over time.
+
+	Spring-2014 / gmt
 */
 
 package main
@@ -39,7 +44,7 @@ func main() {
 	for i := 0; efile.Scan(); i++ {
 		fmt.Println()
 		spec := efile.Text()
-		if len(spec) > 0 && spec[0] == '#' {	// if comment, not RE
+		if len(spec) > 0 && spec[0] == '#' { // if comment, not RE
 			fmt.Println(spec)
 			continue
 		}
@@ -57,21 +62,22 @@ func main() {
 		} else {
 			fmt.Println("*")
 		}
-		if (*zflag) {		// if -Z given, reset random seed
-			rand.Seed(0)	// for independent, reproducible output
+		if *zflag { // if -Z given, reset random seed
+			rand.Seed(0) // for independent, reproducible output
 		}
-		examples(t, 0)		// gen examples with max repl of 0
-		examples(t, 1)		// ... and 1
-		examples(t, 2)		// ... and 2
-		examples(t, 3)		// ... and 3
-		examples(t, 5)		// ... and 5
-		examples(t, 8)		// ... and 8
+		examples(t, 0) // gen examples with max repl of 0
+		examples(t, 1) // ... and 1
+		examples(t, 2) // ... and 2
+		examples(t, 3) // ... and 3
+		examples(t, 5) // ... and 5
+		examples(t, 8) // ... and 8
 	}
 	rx.CkErr(efile.Err())
 }
 
-//  generate a line's worth of examples from a rx
 const linemax = 79
+
+//   Examples generates a line's worth of examples with max replication n.
 func examples(x rx.Node, n int) {
 	s := fmt.Sprintf("ex(%d):  %s",
 		n, rx.Protect(string(x.Example(make([]byte, 0), n))))

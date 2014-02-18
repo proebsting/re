@@ -7,28 +7,32 @@ import (
 	"math/rand"
 )
 
+//  Node is the "parent class" of all parse tree node subtypes.
 type Node interface { // "parent class" of Node subtypes
 	MinLen() int                // minimum length matched (0 if nullable)
 	MaxLen() int                // maximum length matched (-1 for infinity)
-	Example([]byte, int) []byte // append random synthesized example to s
+	Example([]byte, int) []byte // append random synthesized example
 	// (the int arg gives max replication)
 }
 
-// MatchNode matches exactly one character from a predefined set
-
+//  MatchNode matches exactly one character from a predefined set.
 type MatchNode struct {
 	cset *Cset // the characters that will match
 }
 
+//  MatchNode.MinLen always returns 1.
 func (d MatchNode) MinLen() int { return 1 }
 
+//  MatchNode.MaxLen always returns 1.
 func (d MatchNode) MaxLen() int { return 1 }
 
+//  MatchNode.Example appends a single randomly chosen matching character.
 func (d MatchNode) Example(s []byte, n int) []byte {
 	//#%#% assumes cset is not empty
 	return append(s, d.cset.Choose())
 }
 
+//  MatchNode.string returns a singleton character or a bracketed expression.
 func (d MatchNode) String() string {
 	s := d.cset.String()
 	if len(s) == 3 {
@@ -38,12 +42,12 @@ func (d MatchNode) String() string {
 	}
 }
 
-// ConcatNode matches the concatenation of other patterns
-
+//  ConcatNode matches a concatenation of subpatterns.
 type ConcatNode struct {
 	Parts []Node
 }
 
+//  ConcatNode.MinLen sums the min lengths of its subpatterns.
 func (d ConcatNode) MinLen() int {
 	n := 0
 	for _, e := range d.Parts {
@@ -52,6 +56,8 @@ func (d ConcatNode) MinLen() int {
 	return n
 }
 
+//  ConcatNode.MinLen sums the max lengths of its subpatterns.
+//  A value of -1 means that the length is unbounded.
 func (d ConcatNode) MaxLen() int {
 	n := 0
 	for _, e := range d.Parts {
@@ -64,6 +70,7 @@ func (d ConcatNode) MaxLen() int {
 	return n
 }
 
+//  ConcatNode.Example appends one example from each subpattern.
 func (d ConcatNode) Example(s []byte, n int) []byte {
 	for _, e := range d.Parts {
 		s = e.Example(s, n)
@@ -71,6 +78,7 @@ func (d ConcatNode) Example(s []byte, n int) []byte {
 	return s
 }
 
+//  ConcatNode.String appends a parenthesized concatenation of subpatterns.
 func (d ConcatNode) String() string {
 	b := make([]byte, 0)
 	b = append(b, '(')
@@ -81,6 +89,7 @@ func (d ConcatNode) String() string {
 	return string(b)
 }
 
+//  Concatenate makes a ConcatNode, collapsing multiple concatenations.
 func Concatenate(d Node, e Node) Node { // return smart concatenation
 	if d == nil {
 		return e
@@ -98,16 +107,17 @@ func Concatenate(d Node, e Node) Node { // return smart concatenation
 	}
 }
 
-func Epsilon() Node { // return empty concat usable as epsilon
+//  Epsilon returns an empty concatenation that matches an empty string.
+func Epsilon() Node {
 	return ConcatNode{Parts: make([]Node, 0)}
 }
 
 //  AltNode represents two or more choices in a pattern: ab|pq|xy.
-
 type AltNode struct {
 	Alts []Node
 }
 
+//  AltNode.MinLen returns the smallest minimum of its subpatterns.
 func (d AltNode) MinLen() int {
 	n := 0
 	for i, e := range d.Alts {
@@ -119,6 +129,8 @@ func (d AltNode) MinLen() int {
 	return n
 }
 
+//  AltNode.MaxLen returns the largest maxima of its subpatterns.
+//  A value of -1 means that the length is unbounded.
 func (d AltNode) MaxLen() int {
 	n := 0
 	for _, e := range d.Alts {
@@ -133,11 +145,13 @@ func (d AltNode) MaxLen() int {
 	return n
 }
 
+//  AltNode.Example chooses one subpattern to generate an example.
 func (d AltNode) Example(s []byte, n int) []byte {
 	e := d.Alts[rand.Intn(len(d.Alts))]
 	return e.Example(s, n)
 }
 
+//  AltNode.String shows all subpatterns separated by | in parentheses.
 func (d AltNode) String() string {
 	b := make([]byte, 0)
 	b = append(b, '(')
@@ -152,6 +166,7 @@ func (d AltNode) String() string {
 	return string(b)
 }
 
+//  Alternate makes an AltNode, collapsing multiple alternatives.
 func Alternate(d Node, e Node) Node {
 	rside, ok := e.(AltNode)
 	if ok {
@@ -163,18 +178,20 @@ func Alternate(d Node, e Node) Node {
 	}
 }
 
-//  ReplNode represents controlled (or not) replication: e? or e+ or e*.
-
+//  ReplNode represents controlled (or not) replication: e?, e+, e*, e{n,m}.
 type ReplNode struct {
-	Min   int // minimum number of occurrences (0 or 1)
-	Max   int // maximum (a positive limit, or -1 meaning infinity)
-	Child Node
+	Min   int  // minimum number of occurrences (0 or 1)
+	Max   int  // maximum (a positive limit, or -1 meaning infinity)
+	Child Node // subpattern being replicated
 }
 
+//  ReplNode.MinLen returns the minimum length after replication.
 func (d ReplNode) MinLen() int {
 	return d.Min * d.Child.MinLen()
 }
 
+//  ReplNode.MaxLen returns the maximum length after replication.
+//  A value of -1 means that the length is unbounded.
 func (d ReplNode) MaxLen() int {
 	n := d.Child.MaxLen()
 	if n == 0 || d.Max == 0 { // if only matches empty string
@@ -186,6 +203,7 @@ func (d ReplNode) MaxLen() int {
 	}
 }
 
+//  ReplNode.Example produces an example with maximum replication n.
 func (d ReplNode) Example(s []byte, n int) []byte {
 	// limit n to maximum allowed by the regexp
 	if n > d.Max && d.Max >= 0 {
@@ -204,6 +222,8 @@ func (d ReplNode) Example(s []byte, n int) []byte {
 	return s
 }
 
+//  ReplNode.String produces a string representation using a postfix
+//  replication operator: e* or e+ or e? or e{n} or e{n,} or e{n,m}.
 func (d ReplNode) String() string {
 	if d.Max < 0 {
 		if d.Min == 0 {

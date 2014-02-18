@@ -1,5 +1,6 @@
 //  parse.go -- rx parse tree construction
 
+//  Rx provides facilities for dealing with regular expressions.
 package rx
 
 import (
@@ -8,19 +9,14 @@ import (
 	"strconv"
 )
 
-//  Parse parses a regular expression and returns a return tree of Nodes.
-
-var rexpr []byte // remaining characters to parse
-var postfix byte // postfix replication char, if any: * + ?
-
-var curr Node // current tree under construction
-
 // oprstack and exprstack are stacks that move in synchrony
 var oprstack []byte  // operators associated with pushed expressions
 var exprstack []Node // stack of pushed expressions
 
+//  Parse parses a regular expression and returns a return tree of Nodes.
 func Parse(rexpr string) Node {
 
+	var curr Node               // current parse tree
 	var lside, rside Node       // left and right side subtrees
 	curr = Epsilon()            // initialize empty parse tree
 	oprstack = make([]byte, 0)  // initialize empty operator stack
@@ -69,9 +65,9 @@ func Parse(rexpr string) Node {
 			cset, rexpr = bracketx(rexpr)
 			rside = MatchNode{cset}
 
-		case '.':	//#%#%#% no chars above 0x7F; this is a bug
+		case '.': //#%#%#% no chars above 0x7F; this is a bug
 			// wild character
-			cset, _ := bracketx("\x01-\x7F]")	
+			cset, _ := bracketx("\x01-\x7F]")
 			rside = MatchNode{cset}
 
 		case '\\':
@@ -110,7 +106,7 @@ func popAlts(d Node) Node {
 	return d
 }
 
-var replx = regexp.MustCompile("{(\\d*)(,?)(\\d*)}")	// expr for {n,m}
+var replx = regexp.MustCompile("{(\\d*)(,?)(\\d*)}") // expr for {n,m}
 
 //  wrap a replication node around a subtree if followed by posfix ?, *, +
 //  always return resulting node and remaining string
@@ -129,25 +125,25 @@ func replicate(d Node, p string) (Node, string) {
 	case '{':
 		result := replx.FindStringSubmatch(p)
 		if result == nil {
-			// #%#%#%#% error: badly formatted {... 
-			return d, p	// ignore, return original state
+			// #%#%#%#% error: badly formatted {...
+			return d, p // ignore, return original state
 		}
-		p = p[len(result[0]):]	// remove matched pattern
+		p = p[len(result[0]):] // remove matched pattern
 		minrep, err1 := strconv.Atoi(result[1])
 		maxrep, err3 := strconv.Atoi(result[3])
-		if err1 == nil && err3 == nil && minrep <= maxrep {	// {n,m}
+		if err1 == nil && err3 == nil && minrep <= maxrep { // {n,m}
 			return ReplNode{minrep, maxrep, d}, p
 		}
 		if err1 == nil && len(result[3]) == 0 {
-			if len(result[2]) == 1 {			// {n,}
+			if len(result[2]) == 1 { // {n,}
 				return ReplNode{minrep, -1, d}, p
-			} else {					// {n}
+			} else { // {n}
 				return ReplNode{minrep, minrep, d}, p
 			}
 		}
 		//#%#% ERROR: treat as {1,1}
 		return ReplNode{1, 1, d}, p
-		
+
 	default:
 		return d, p
 	}

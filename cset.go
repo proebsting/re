@@ -10,11 +10,13 @@ import (
 	"math/rand"
 )
 
+//  Cset is a simple bit-mapped representation of a set of characters.
 type Cset struct {
 	bits big.Int
 	//#%#% maybe more later: n, low, high???
 }
 
+//  NewCset makes a Cset from a string of member characters.
 func NewCset(s string) *Cset { // make new cset from string
 	cs := new(Cset)
 	for _, ch := range s {
@@ -23,29 +25,34 @@ func NewCset(s string) *Cset { // make new cset from string
 	return cs
 }
 
+//  Cset.Set sets one bit in a Cset.
 func (b *Cset) Set(bit uint) *Cset {
 	b.bits.SetBit(&b.bits, int(bit), 1)
 	return b
 }
 
+//  Cset.Test returns true if the specified Cset bit is set.
 func (b *Cset) Test(bit uint) bool {
 	return b.bits.Bit(int(bit)) == 1
 }
 
+//  Cset.Or produces a new Cset that is the union of its inputs.
 func (b1 *Cset) Or(b2 *Cset) *Cset {
 	b3 := new(Cset)
 	b3.bits.Or(&b1.bits, &b2.bits)
 	return b3
 }
 
+//  Cset.Or produces a new Cset that is the intersection of its inputs.
 func (b1 *Cset) And(b2 *Cset) *Cset {
 	b3 := new(Cset)
 	b3.bits.And(&b1.bits, &b2.bits)
 	return b3
 }
 
+//  Cset.Choose returns a single randomly chosen Cset element.
+//  #%#%#% It is very inefficient.
 func (b Cset) Choose() byte {
-	//#%#%#% really inefficient!
 	h := b.bits.BitLen() - 1
 	if h < 0 {
 		return '#' //#%#%#% ERROR cset was empty
@@ -63,7 +70,8 @@ func (b Cset) Choose() byte {
 	return c
 }
 
-//  return string representation, escaping (only) unprintables
+//  Cset.Choose() returns a string representation in brackets,
+//  using ranges if appropriate and escaping (only) unprintables.
 func (b Cset) String() string {
 	h := b.bits.BitLen()
 	s := make([]byte, 0)

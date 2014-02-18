@@ -6,12 +6,10 @@ import (
 	"fmt"
 )
 
-//  bracketx(s) parses string s as a bracket expression,
+//  bracketx parses a string as a bracket expression,
 //  returning the computed Cset and the remaining unprocessed part of s.
-//  Assumes the introductory '[' has already been stripped from s.
-
-//#%#% incomplete; does not yet handle [^abc] or [\x] or [:digits:] etc
-
+//  It assumes the introductory '[' has already been stripped from s.
+//  #%#% Incomplete; does not yet handle [^abc] or [:digits:] etc
 func bracketx(s string) (*Cset, string) {
 
 	chars := make([]byte, 0)

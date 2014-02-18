@@ -9,8 +9,9 @@ import (
 	"strconv"
 )
 
-func Escape(c byte) string { // interpret meaning of \c
-	// #%#%#% works only for escapes that repr a set of characters, not \b
+//  Escape returns the set of characters to be matched by \c.
+func Escape(c byte) string {
+	//  #%#%#% works only for escapes that repr a set of characters, not \b
 	switch c {
 	case 'd':
 		return "0123456789"
@@ -23,20 +24,23 @@ func Escape(c byte) string { // interpret meaning of \c
 	}
 }
 
-func Protect(s string) string {  // protect unprintables with backslashes
-        s = strconv.Quote(s)
-	return s[1:len(s)-1]
+//  Protect adds backslash notation, but no quotes, to protect unprintables.
+func Protect(s string) string {
+	s = strconv.Quote(s)
+	return s[1 : len(s)-1]
 }
 
-func Cprotect(r rune) string {	// protect single unprintable char w/ backslash
+//  Cprotect returns its argument if printable, else a backslash form.
+func Cprotect(r rune) string {
 	if strconv.IsPrint(r) {
 		return string(r)
 	} else {
 		s := strconv.QuoteRune(r)
-		return s[1:len(s)-1]
+		return s[1 : len(s)-1]
 	}
 }
 
+//  MkScanner creates a scanner for reading from a file, aborting on error.
 func MkScanner(fname string) *bufio.Scanner { // return scanner for file
 	if fname == "-" {
 		return bufio.NewScanner(os.Stdin)
@@ -47,6 +51,7 @@ func MkScanner(fname string) *bufio.Scanner { // return scanner for file
 	}
 }
 
+//  CkErr aborts with a fatal error if e is not nil.
 func CkErr(e error) { // abort if e is not nil
 	if e != nil {
 		log.Fatal(e)
