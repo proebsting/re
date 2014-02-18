@@ -1,0 +1,14 @@
+# RegExLib.com -- browse -- Strings
+#
+# 535. Social Security numbers within allocated ranges
+(?!000)([0-6]\d{2}|7([0-6]\d|7[012]))([ -]?)(?!00)\d\d\3(?!0000)\d{4}
+# 672. GUID values
+[{|\(]?[0-9a-fA-F]{8}[-]?([0-9a-fA-F]{4}[-]?){3}[0-9a-fA-F]{12}[\)|}]?
+# 580. passwords length 8-20 with at least one digit, cannot start with digit
+(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}
+# 656. spam trap for pseudo-spellings of "Viagra"
+[v,V,(\\/)](\W|)[i,I,1,l,L](\W|)[a,A,@,(\/\\)](\W|)[g,G](\W|)[r,R](\W|)[a,A,@,(\/\\))]
+# 49. major credit cards (AmEx len 15, others len 16)
+((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}
+# 595. UK vehicle registration number from September 2001
+([A-HK-PRSVWY][A-HJ-PR-Y])\s?([0][2-9]|[1-9][0-9])\s?[A-HJ-PR-Z]{3}

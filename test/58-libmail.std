@@ -1,0 +1,40 @@
+
+# RegExLib.com -- browse -- Email
+
+#
+
+# 26. "Email validator that adheres directly to the specification"
+
+regexp: ([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)
+tree:   (([-.0-9A-Z_a-z]+)@((([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.))|((([-0-9A-Za-z]+.)+)))(([A-Za-z]{2,4})|([0-9]{1,3}))(]?))
+length: 5 to *
+ex(0):  N@m.cB  6@1.3  d@X.LG  G@[7.6.7.LP  Y@[1.8.3.8  p@5.OU  M@p.td
+ex(1):  O@[8.8.9.Yx  o@[1.4.1.mI]  P@[9.4.7.ct  5@[7.0.8.Wf  1@[5.4.9.wk
+ex(2):  4@WV.tW.76  9i@DS.RV.uF]  o@BM.oi.74  wH@[73.88.96.bW  G@[8.37.46.10
+ex(3):  vr@RG.l7a.-4-.480]  DhX@[988.89.92.5]  UqN@[36.9.36.62  3C@T.939
+ex(5):  5Vu@4.TG.ok5e.3.16]  ur0-6@[392.56.144.5  l@[305.583.122.53]
+ex(8):  nEHYEJ@aJ7Z.9qlWW.Aa5.-LfVP.hctQ.5qn.16  sZZmp@[44.860.436.DiqA
+
+# 356. "my all-time favourite e-mail validator"
+
+regexp: (\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})
+tree:   (([0-9A-Z_a-z][-.0-9A-Z_a-z]*[0-9A-Z_a-z]@[0-9A-Z_a-z][-.0-9A-Z_a-z]*[0-9A-Z_a-z].[0-9A-Z_a-z]{2,3}))
+length: 8 to *
+ex(0):  P9@na.MU  uh@MM.2F  6c@pl.Lu  Zl@dJ.om  3i@ak.Mk  lX@V8.oS  VC@Hj.Uu
+ex(1):  PVa@B6.Os  WJ@PX.Yh  i0@RyD.1l  _N@kI.B1  8Y@PLy.mX  vbb@qoR.dt
+ex(2):  NsW@03.OS  TBd@Kqv1.zT  FoE@i0W.iE  o3@Ll5.32  MPI@fUc.1v  cHk@uI.jY
+ex(3):  nn48d@NL.hN  KX@UMW.Dj  0td@fvT.pa  WV@ex4_4.SQ  SE@KLe.Sk  dWgk@_k._Y7
+ex(5):  FO9YHK@jOtG.AE  vSWu@NAF1.G3h  rNDe@unmA.n5  ZYT1@XDn4l.GTo
+ex(8):  Pz3PV2BSg@b-6YayrJ.UTf  DI.5aL@H5K.41  _T@yH.6wo  9a8QQXu9O@ALAlXJca.Lo
+
+# 1012. "A short and sweet email address validator"
+
+regexp: ([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}
+tree:   (([0-9A-Za-z]+[&+-.;_amp])*[0-9A-Za-z]+@([-0-9A-Za-z]+.)+[A-Za-z]{2,6})
+length: 6 to *
+ex(0):  P@g.Qa  D@m.NJ  o@G.Wg  2@D.Ue  f@M.cA  n@f.Ii  G@i.Nt  f@Z.Bo  l@H.rn
+ex(1):  C@T.fj  R+5@T.mY  o@T.Rl  m@G.qy  pa6@c.bQ  r&l@W.on  5.x@X.Us  G@l.Tr
+ex(2):  l&ve@2.ab  nX&h;Eq@T.Yn  D@5.s.qk  Yq;iJ.K@bE.oU.Zg  b+ZK@GH.Xf.iZ
+ex(3):  sC-b_r4Y@U.wZ.qS  N-0_ex0+NX@Hsx.a.ykD.gv  6r@u.Rx.R.fbp  S_qo@xw.YU.pG
+ex(5):  X&4+pn7mFgyHk@S.gE.h.TWC  nt5sp8AOHp4q&jaHWwzY-2Jl@NvI.L.R.HLEtL
+ex(8):  NH+G_tOGW.YRdbY;g8RImxhHxyP.UJ@xeWwIo.yc.rB.xSSTF.Sa9a.DU.IpmI

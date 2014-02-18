@@ -1,0 +1,12 @@
+# RegExLib.com -- browse -- Numbers
+#
+# 575. numbers w/ or w/o decimal places and commas
+# BUG: . not escaped
+(((\d{1,3})(,\d{3})*)|(\d+))(.\d+)?
+# 185. numbers w/ or w/o exponential form
+[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?
+# 943. numbers allowing sign and leading zeroes
+# BUGGY
+\-?\(?([0-9]{0,3}(\,?[0-9]{3})*(\.?[0-9]*))\)?
+# 126. "US currency"
+\$(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?

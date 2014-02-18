@@ -1,0 +1,10 @@
+# RegExLib.com -- browse -- Misc
+#
+# 42. Decimal IP numbers
+(([01]?\d?\d|2[0-4]\d|25[0-5])\.){3}([01]?\d?\d|2[0-4]\d|25[0-5])
+# 314. US Phone numbers with area code
+([\(]{1}[0-9]{3}[\)]{1}[ |\-]{0,1}|^[0-9]{3}[\-| ])?[0-9]{3}(\-| ){1}[0-9]{4}
+# 3. US Zip+4 code
+\d{5}-\d{4}
+# 260. UK postcode
+([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)

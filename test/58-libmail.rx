@@ -1,0 +1,8 @@
+# RegExLib.com -- browse -- Email
+#
+# 26. "Email validator that adheres directly to the specification"
+([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)
+# 356. "my all-time favourite e-mail validator"
+(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})
+# 1012. "A short and sweet email address validator"
+([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}
