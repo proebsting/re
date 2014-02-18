@@ -1,0 +1,10 @@
+# complemented character sets
+# ordered by increasing ugliness of output
+[^\-`]*
+[^\-@]*
+[^\- ]*
+[^0-9]*
+[^A-Za-z0-9]*
+# these last two should be identical
+[^A-Za-z0-9_]*
+[^\w]*
