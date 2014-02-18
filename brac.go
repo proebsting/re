@@ -9,10 +9,17 @@ import (
 //  bracketx parses a string as a bracket expression,
 //  returning the computed Cset and the remaining unprocessed part of s.
 //  It assumes the introductory '[' has already been stripped from s.
-//  #%#% Incomplete; does not yet handle [^abc] or [:digits:] etc
+//  #%#% Does not handle [:digits:] or some other esoteric forms.
 func bracketx(s string) (*Cset, string) {
 
 	chars := make([]byte, 0)
+	compl := false
+	// check for initial '^'
+	if len(s) > 0 && s[0] == '^' {
+		compl = true
+		s = s[1:]
+	}
+	// process body of expression
 	for len(s) > 0 {
 		ch := s[0]
 		s = s[1:]
@@ -31,7 +38,11 @@ func bracketx(s string) (*Cset, string) {
 		case ']':
 			// set is complete unless this is first char
 			if len(chars) > 0 {
-				return NewCset(string(chars)), s
+				cs := NewCset(string(chars))
+				if compl {
+					cs = cs.Compl()
+				}
+				return cs, s
 			} else {
 				// initial ']' is ordinary
 				chars = append(chars, ']')

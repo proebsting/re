@@ -1,4 +1,4 @@
-//  cset.go -- character set a la Icon
+//  cset.go -- character set a la Icon, but only 128 bits
 //
 //  based on code from the Go Playground
 //  http://play.golang.org/p/NpHns5EBnQ as of 11-Feb-2014
@@ -14,6 +14,20 @@ import (
 type Cset struct {
 	bits big.Int
 	//#%#% maybe more later: n, low, high???
+}
+
+//  LowMatch is the smallest character matched by "."
+const LowMatch = 0x01 // SOH or ^A
+//  HighMatch is the largest character matched by "."
+const HighMatch = 0x7F // DEL or RUBOUT
+//  AllChars is the set of all matchable characters \x01 - \x7F.
+var AllChars *Cset
+
+func init() {
+	AllChars = new(Cset)
+	for i := LowMatch; i <= HighMatch; i++ {
+		AllChars.Set(uint(i))
+	}
 }
 
 //  NewCset makes a Cset from a string of member characters.
@@ -36,6 +50,14 @@ func (b *Cset) Test(bit uint) bool {
 	return b.bits.Bit(int(bit)) == 1
 }
 
+//  Cset.Compl produces a new Cset that is the complement of its inputs
+//  with respect to the universe of matchable characters \x01-\x7F.
+func (b1 *Cset) Compl() *Cset {
+	b3 := new(Cset)
+	b3.bits.Xor(&b1.bits, &AllChars.bits)
+	return b3
+}
+
 //  Cset.Or produces a new Cset that is the union of its inputs.
 func (b1 *Cset) Or(b2 *Cset) *Cset {
 	b3 := new(Cset)
@@ -43,7 +65,7 @@ func (b1 *Cset) Or(b2 *Cset) *Cset {
 	return b3
 }
 
-//  Cset.Or produces a new Cset that is the intersection of its inputs.
+//  Cset.And produces a new Cset that is the intersection of its inputs.
 func (b1 *Cset) And(b2 *Cset) *Cset {
 	b3 := new(Cset)
 	b3.bits.And(&b1.bits, &b2.bits)

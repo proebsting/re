@@ -2,8 +2,9 @@ RX TODO
 
 Need to figure out exactly WHICH RE spec to follow
 
-Add [^....] and \D \W \S
+Add \D \W \S
 Add POSIX classes??
+Add flags such as "case insensitive"?
 Add \b?  Other Perl stuff?
 Add anchors (^....$)?  How?
 etc etc
@@ -13,6 +14,7 @@ Handle Unicode?  Code so far assmes not.
 
 Fix #%#% items
 More consistency in use of pointers vs struct values
+Which funcs really should be capitalized? 
 General code cleanup
 
 Go-style tests
