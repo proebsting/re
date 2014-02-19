@@ -58,7 +58,7 @@ tree:   ((:[\t-\r ]*((Sun)|(Mon)|(Tue)|(Wed)|(Thu)|(Fri)|(Sat)),[\t-\r ]*)?((0?[
 length: 16 to *
 ex(0):  30 May\v1912 18:28\fGMT  1\rSep\f4448\f04:10\fGMT
 ex(1):  2\fMay\r7985\f23:46::60 GMT  19\fDec\n7489\n23:33::20\v+1616
-ex(2):  :\rThu,30 Feb\r1919\f23:35\v -6741 (\\(C!)\f(\\)C!)\n\r
-ex(3):  :\vSun,\f13 Dec\v\f58\f\r23:01\v\r:UT (C!)\f
-ex(5):  :Fri,06\n\v\n\vApr\v\v\n62\r\f\n21:18\fQ \n(\\)}aC!)\n(<=b(<C><=T)<-C>x/6\\)C!)\r\r(\\(<=)(<C>C!)(<=z(<C>\\( |3<=q)<-C>C!)\v\v\v(\\(C!)\f
-ex(8):  24\r \f\n\f \fMar\n5087\n \r15:51::08\f\n\n\v\v\n\n\v:UT\f\f\f(\\(\\(\\(C!)\v\f (\\(1/~]C!)(<=>)<-C>\\(C!)\n\v\v 
+ex(2):  :Sat, 30 Feb\r1919\f23:35\v -6741 (\\(C!)\f(\\)C!)\n\r
+ex(3):  :Sat,\f15\r\fNov\v21\r\n23:17::41\r\v\vQ (<=Y)<-C>?caC!)\r\r(\\(\\(C!)\f\r\v
+ex(5):  02  \f\n Mar\r\n  8907\n   23:32::60\r\v\r-1027 \n\f\r(<=X)<-C>\\)\\)C!) \v\v \v(\\(<=4)<-C>Ngh\\\\)C!)\n\r\v\v(<=m)<-C>\\(\\(C!) \f\v\n 
+ex(8):  :\n\f \f\n Fri, \v\f3\n\r\rMar\n\f\n\n\v\v93\f\f 20:50\f\f\n\f \r \r-7825 \v\f(\\(\\)<=I(<C><=8)<-C>\\)\\(\\)\\)C!)\v\f\v\n\v\n(YAn\\(<=6)<-C>C!)\f\n 

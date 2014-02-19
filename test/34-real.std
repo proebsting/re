@@ -26,10 +26,10 @@ tree:   ([A-Za-z][a-z]*('[a-z]+)?)
 length: 1 to *
 ex(0):  Z  V  o  l  j  I  L  u  o  r  a  l  E  X  y  w  r  x  c  Y  a  z  z  a
 ex(1):  g  L'o  G'a  rv  W's  ch  Z'o  qs  D  a't  h'c  sx'n  Mm  Pg  Jk  h  v
-ex(2):  Z'm  nyd'g  Z'o  Lau  Tv'k  N'p  Dq  x'd  M'w  exz  Vus'b  ib  Hcc'v
-ex(3):  A  jrdl  X  Ffwx'l  hf'v  dg  Ktby'r  afdb's  oyp  m'i  qhg'v  g  vh'x
-ex(5):  Nfav'l  gdhcj  mgav'p  Xchcz  irlih'z  Kxenvm  xolxy  B'f  akyq'g
-ex(8):  vfw  lz  aqtoawik  Aa'h  dksp  X'g  dvhill  rerags'a  aaq'i  Hhv  q'i
+ex(2):  Z'u  Sp'q  Z'vc  I'd  q  C'sy  u  e  z  xbl  C'a  yx'c  ry  P'ao  n
+ex(3):  Brq'ltf  V  F'um  Yn'fl  Wf  Kzm  twnj'fs  K'bir  Uwsf'zu  Xmq'o  Eape
+ex(5):  Yodp'hwnsh  sf  xjoydd  V'pte  Qzrm'waiyr  Keeta'cnaex  Igk  m  Jzg'rlp
+ex(8):  Znlkguus'jmamn  isjn  Nborx'ao  Zswt'lhbyenb  Suvhnz  irn'zmhrff  zu'hq
 
 # phrases
 
@@ -60,10 +60,10 @@ tree:   ([0-9A-Za-z]+(.[0-9A-Za-z]+)+)
 length: 3 to *
 ex(0):  Z.H  X.L  W.4  8.G  3.E  T.l  i.E  k.Y  5.d  A.X  c.K  w.I  G.u  U.h
 ex(1):  I.E  O.2  s.F  0.n  7.E  i.d  P.d  a.H  Q.g  i.q  1.e  A.u  E.J  X.f
-ex(2):  St.m  X.jE.4c  4k.R.I  Ja.B  ok.Uu.Ng  dz.t  ON.Wj.CR  n6.x.o  S.f  a.c
-ex(3):  k.O  x.m  xK.Y  gaL.8.6.MQ  Qo.u  Ci.a9.k  l.g  u.B  e46.L  ZgX.bI.Q
-ex(5):  UziA.2l.5  EAy.wm.aL.u.ri  f5k.g  Usu.cHeF.81.QU.xek.L  VY5U8.o
-ex(8):  hN.ZSf.8Bx.Y  4UPsA.OZe.1fI.BH
+ex(2):  St.cX  fz.4c.4k  Tr.k  av.ok.fo  l.pd  Xt.4S.Wj  CR.W8.x  o.y  za.0
+ex(3):  O.pm  xK.O  cP9.H  FM.Tn.Ee  Bm.a.GNl  g.p  Ae4.0  1Iy.o  Z8.c.nm
+ex(5):  Tt5p.D2OlQ.g  C6.i.f5k.g.Usu.GKW87  kTh.lCCbc.lnj9  YMpKr.ov
+ex(8):  2NgXs.V.oGmDz.FB.KHz8kiF.NIvEuJf3  jk.hSwg.WxS.eWJ5g7.d4yq8ha.C2x.IV.2u
 
 # ssn
 
@@ -96,10 +96,10 @@ tree:   (((http://)|())(www.)?[0-9A-Za-z]+(.[0-9A-Za-z]+)+(/[-.0-9?A-Z_a-z]*)*)
 length: 3 to *
 ex(0):  L.p  A.1  http://t.X  http://x.L  P.8  Z.P  http://2.z  P.C  http://o.l
 ex(1):  www.o.K  www.y.L  http://www.a.s  3.A/  www.X.a  http://www.s.f/.  3.2/
-ex(2):  http://www.U0.x  http://fS.6.j  xd.L/K/x  E6.8.X  http://www.dT.k//
-ex(3):  http://du.hn6.Fw.nm/_  http://dER.iz.p.Qx/  OX9.oSv.b.J
-ex(5):  www.3kXRj.P//Wg  http://www.I0w.PU.sEvcs.U.0.g  www.mA.S1.ew/
-ex(8):  http://www.BBZks.e.yxf9eVb.wial2lqN.S7l.FOxE4la.X8yN3Q9v.8fVGJg.r/CaF2Ae/l/L/vm/BL/Q8jp/J43c2lx
+ex(2):  http://www.U0.PX  Dx.j.0  http://T.lJ/qp  pB.X  http://www.dT.C
+ex(3):  www.6.4.A.hK1//T  www.D2P.jZ.hA.IN  http://www.U.MU.qO2.ra9
+ex(5):  http://Ih.VKBQ/_b?PO  www.Pa.M2TU6.ASiX/Jp1
+ex(8):  http://www.0jFcDpc.AguvOsgu.qA.DKauoTQ.g1h6.yQQCbRW.eq
 
 # email
 
@@ -108,7 +108,7 @@ tree:   ([A-Za-z][0-9A-Za-z]*([-._][0-9A-Za-z]*)*@([0-9A-Za-z]+.)+[0-9A-Za-z]{2,
 length: 6 to *
 ex(0):  Z@V.fg  r@t.ZB  K@Y.cj  n@M.Dm  m@k.U2  W@W.yj  D@G.RK  V@I.sf  Y@H.TW
 ex(1):  lh.@4.RZ  H@2.VP  ui@E.zZ  B.@R.a6  Az-@9.91  v5.Q@3.jT  mK-r@D.1T
-ex(2):  hZK@M.cM  Pg-.dz@7.mK  WBe_K-p@y.fO  i@ia.I.0w  noS@y.Kn  wle.@2.lS.FG
-ex(3):  IW7_.A_15@k.6D.YQ  yZo@r.3.JOL.Dzg  xmp_.Tt@nu.w.tlk  aq@y.yO
-ex(5):  nNF63-deW_QnB_4H1c.JM.tF@C.zi  esjecO-9.5fev-FU06.BhK@7F.6J.YX
-ex(8):  WEijobA14_O@mL.x.v.luNew
+ex(2):  hZK@Z.1w  QG-7@zD.8F  R--S@9J.6y  fE@Ui.LI.0w  noS@V.fe
+ex(3):  ed9I.jG@1.iZb.ZCn  RFTW@fy.7Z  I2@cU.Ijk  tMa-4@lX.DXZ.YyC  qLm@P.faw
+ex(5):  j-Qy@02I.kr8.ezf.0.Ww2J.7Qq  oFR_T-Wyg@8.1.ea.tSQT
+ex(8):  uB.q4YSBN.YuDGkH_ms5ui.FPSU8wN_PBwyZ.HkII3XS_UlK@OyX.PmUt3Cp.MWGe.9f.MuBsS2.6gXV

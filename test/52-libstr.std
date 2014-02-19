@@ -20,12 +20,12 @@ ex(8):  !000012!00153!00009045  !000658-!00873!00006508
 regexp: [{|\(]?[0-9a-fA-F]{8}[-]?([0-9a-fA-F]{4}[-]?){3}[0-9a-fA-F]{12}[\)|}]?
 tree:   ([({|]?[0-9A-Fa-f]{8}-?([0-9A-Fa-f]{4}-?){3}[0-9A-Fa-f]{12}[)|}]?)
 length: 32 to 38
-ex(0):  5E5e915db170-2acf4E7295d66B1A8bbD  cfB3CD4C82B2-7f0A-F03bCfE26FD54F7D
-ex(1):  {5FAfe2eEd0Afd155bD39-5bBfDFD3bcFA  79CE99DA-2299cd7BC60FDc9aEEeDcb9a|
-ex(2):  |dc2cCB36531c-8025f95aa7319Bef3Ff2  2e9112Fd-2A547feb-7bBCAD775e538EA3
-ex(3):  {34adB0Fea7C0-3d31-5a8eD3F763cE6C2E
-ex(5):  8d7059dE5BdD-cB8C-c5Ae-fEF83cEDf914)
-ex(8):  (6e0C4dE7DDD4-D1bf4d03-0560C6e6BF6d}
+ex(0):  5E5e915db170AFa9AaDB654D93E7eBbB  c9eb980CC7FFe0768Bdf4a95F2AAf31A
+ex(1):  F78739Ba-56Bc-1B8E3eAE-ca0EEF5fa6cF
+ex(2):  (9FcAa8F3-4C0edf6c-f65a-2eFD21C056CB
+ex(3):  8E7d61fC-6C5220e4-df9CfbC6bd102f4d|  e079D9b3695a-90eEEDDb9f643AE61cfE}
+ex(5):  3dA67D79fBF5-C6fba26576bDdd0BE9f3}  Ace7Cb99A0b2-Ecf7-7f52Ed16d2e6FeA3|
+ex(8):  {dE0FAbf2E26a-0a6A-e3Dd5BeAb5A57906
 
 # 580. passwords length 8-20 with at least one digit, cannot start with digit
 

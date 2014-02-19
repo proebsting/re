@@ -66,10 +66,10 @@ tree:   (((a*b)@(c*d)#)*)
 length: 0 to *
 ex(0):                                                                        
 ex(1):      b@cd#    ab@d#      ab@d#      b@d#    b@d#    b@d#    b@cd#  
-ex(2):  b@d#  b@cd#b@d#  ab@cd#b@d#      ab@d#ab@cd#      aab@ccd#b@ccd#  
-ex(3):  ab@cd#  aab@d#ab@ccd#  b@cd#  aab@ccd#b@cccd#b@cd#  aab@d#b@ccd#      
-ex(5):    b@ccd#ab@cccd#ab@cd#  b@cccd#aaab@ccccd#aaaab@ccd#aaaab@ccccd#b@cccd#
-ex(8):    aab@cccd#aaab@cccd#ab@d#ab@d#aaab@cccccd#
+ex(2):  aab@cd#  b@cd#b@d#  ab@cd#b@d#      ab@d#ab@cd#      aab@ccd#b@ccd#  
+ex(3):  ab@cccd#  b@cccd#aab@cd#  b@cccd#  aab@ccd#b@cccd#b@cd#  aab@d#aab@d#  
+ex(5):  aaaab@d#aaab@ccccd#b@cd#ab@cccccd#
+ex(8):  aaab@cccd#aaab@cccccd#aab@d#    
 
 regexp: ((b|f)(a|e))*
 tree:   ((((b)|(f))((a)|(e)))*)
@@ -86,7 +86,7 @@ tree:   ((((n)|(t))((o)|(e))+)*)
 length: 0 to *
 ex(0):                                                                        
 ex(1):      to    ne      ne      te    te    te    to    te  te  to        ne
-ex(2):      teno  tenee  nonee    no  no      note    teto  to  no  toete  to  
-ex(3):  tooetooono  neetoe  tooneo  neetee  to      totoe  nete  no    neneto  
-ex(5):  tote  neoeneeteeneo  teteo  ne  toeonoootooeote  te    nenoeteeeonooe
-ex(8):  no  neteneooeeteooeneeonooeeneooeoo  tenoe
+ex(2):      teno  tenee  nonee    neo        note    teto  too  none  tenoo
+ex(3):  neo  neeenee  noonoeo  teototeee  teoneoe  teoneoo  teee  nee  
+ex(5):  nooeeteeoo    tee  noneeeeo    noooenoteeeo  teoeeoneeoeetotoeoe
+ex(8):  neeeeeooe    toooooeeneooenoeeeoooeneeeeeetoooo

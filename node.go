@@ -205,6 +205,7 @@ func (d ReplNode) MaxLen() int {
 
 //  ReplNode.Example produces an example with maximum replication n.
 func (d ReplNode) Example(s []byte, n int) []byte {
+	m := n // save original n for propagation to child
 	// limit n to maximum allowed by the regexp
 	if n > d.Max && d.Max >= 0 {
 		n = d.Max
@@ -217,7 +218,7 @@ func (d ReplNode) Example(s []byte, n int) []byte {
 	}
 	// and finally replicate
 	for i := 0; i < n; i++ {
-		s = d.Child.Example(s, n)
+		s = d.Child.Example(s, m)
 	}
 	return s
 }
