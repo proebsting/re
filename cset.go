@@ -73,23 +73,32 @@ func (b1 *Cset) And(b2 *Cset) *Cset {
 }
 
 //  Cset.Choose returns a single randomly chosen Cset element.
-//  #%#%#% It is very inefficient.
+//  Printable characters are preferred to unprintables.
+//  #%#%#% This code is very inefficient.
 func (b Cset) Choose() byte {
-	h := b.bits.BitLen() - 1
+	n := 0                   // number of characters considered
+	h := b.bits.BitLen() - 1 // highest eligible char
 	if h < 0 {
 		return '#' //#%#%#% ERROR cset was empty
 	}
-	c := byte(h)
-	n := 1
-	for i := 0; i < h; i++ {
-		if b.Test(uint(i)) {
-			n++
+	c := byte(h)  // current working choice
+	if c < 0x7F { // if initial ch is not unwanted DEL,
+		n = 1 // count it as found
+	}
+	for h--; h > 0; h-- { // check lower valued characters
+		if b.Test(uint(h)) { // if eligible to be chosen
+			n++ // adjust n for unbiased odds
 			if rand.Intn(n) == 0 {
-				c = byte(i)
+				c = byte(h) // replace tentative choice
 			}
 		}
+		if h <= ' ' && n >= 5 {
+			// now entering the unprintables --
+			// bail out if 5 choices seen earlier
+			break
+		}
 	}
-	return c
+	return c // return surviving choice
 }
 
 //  Cset.Choose() returns a string representation in brackets,

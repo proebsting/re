@@ -1,76 +1,84 @@
 
 # complemented character sets
 
-# ordered by increasing ugliness of output
-
-regexp: [^\-`]*
-tree:   ([a-\u007f]*)
+regexp: [^ -`]*
+tree:   ([\x01-\x1fa-\u007f]*)
 length: 0 to *
 ex(0):                                                                        
-ex(1):      q      k  e      }    u        h    l      y  |  a  c    q  
-ex(2):          l\u007f  a  gs    ~i  n|  cr    r  gi    or    i  rc  mn  ~  x
-ex(3):  d  gr  {  imk  fe  v  |{  buh  cns  z}    xum  ixn    zo  fl  l  m  
-ex(5):    qqjn    kap  t  |  ib  mr  or  }p    zvd  t  zrsco  vfuex  lp    ~
-ex(8):  c{m\u007f\u007fu|~  hwf|  g  f|dr  mqv}~|  k|vhue  ctr  lxda  pyx  ivhh
+ex(1):      r      i  ~      n    f        e    e      r  n  e  }    y    i    
+ex(2):    |r  o  mw    ev  pz  |m    i  lg    |t    {  fx  ~m  r  m  |  t  d  
+ex(3):  ge  zj~  zwp  jpi  o  n    at    wo  q  hcl      {vl  qu  g  w  |fd  il
+ex(5):  fht  gzg  uzeo  uan  q  hzb  ie  k  jahx  i}  }x~t  g}wc    o{  t  |rt
+ex(8):  jch    zxhmqa  snrmkqa  fi  bbbj  akulpp  hguo}t  nuef  a|  ~}fljrl
 
-regexp: [^\-@]*
-tree:   ([A-\u007f]*)
+regexp: [^ -@]*
+tree:   ([\x01-\x1fA-\u007f]*)
 length: 0 to *
 ex(0):                                                                        
-ex(1):      z  T    k        _        \\  z  r    R  j  s  P  K      |      P
-ex(2):  rO  v  jN    p    ]a  TE    H{  z  M|  G}  n  F  xc            s
-ex(3):    U`A  njs  ad    H  J  W  PV  tXx  aQ  uU  a  bsa  Dv  |  Rv  GO  s
-ex(5):    I  cZRg  Y]cN    }OMrb  \\KR  ebTb  }  t  s\u007fqt  zIGJ  B  Kvg
-ex(8):  \\}sr  MbcI  {  VdL    mVDPg  CHdEnS\u007f  E~pcHnK  SvsYqIm  GYZ[nFz
+ex(1):      r  L    u        P        n  o  H    O  H  |  b  i      M      R  S
+ex(2):  O  hk  jN  ro  uP    x    HD  qB    Z_  f  ~  }u            r  j    mz
+ex(3):  QAd  Iv  t^p  Er        QR    ]X  d  \\[  X|}    Hx  p|M  QfN  kr|  w  
+ex(5):  x  FDe\\d    VfWH  Hb  fXl    MZa  pO}zb  Iru^S  {  xPXIv  J}q  kDCog
+ex(8):  KZ]~~YQh  hs  b`sogpU  UuHzco]T  EFWqYIU  cbZfxtp  JOQr]  wKgGcK  WgeN
 
-regexp: [^\- ]*
-tree:   ([!-\u007f]*)
+regexp: [^ -/]*
+tree:   ([\x01-\x1f0-\u007f]*)
 length: 0 to *
 ex(0):                                                                        
-ex(1):      u      =    ~      b  {    !  \"        |  z  \"  P    U  l  j    v
-ex(2):  o{  w      j  hN  :Z  *  6-  dD  5  )f    \u007fS    X    v:    8w  A1
-ex(3):  L:n  W'\\  =(F  G?  j  @VI  e    f>    lt  j  +  A[  OT  T$a  Ai)  [  C
-ex(5):  vB{%  Me!pn  h  8  r  \u007fu=Y  {H  |g\">M  ><  M(  \\t  =  c  8Fs2  E
-ex(8):  ,  2y  V  JwK.3sDj  I(Oy=gR    l:L  SBO  M  =4  sK,  :<(Wo3b:  ~n)mU
+ex(1):      r    M      1  x        y  O  a    y    j  m        @    <        @
+ex(2):    C  g  n  <e  U    {  ~Q  [<  u  O  {r      f  wz  vr  :z  k  5J    
+ex(3):  EF<  [k;  >;}  OrY  h2  v{5  a  xdM  u  v  y  Uu  t        Zp3  8i    
+ex(5):  0U1D1  _0y  7OY  |Ib  ehS      Dfes  @8C~  H1c  Pta  f  ~\\v9    BCA7
+ex(8):  zm`h[PrB  Gr  L  od=sa  fM  8wIL9  >  tQZ  u\\}:<^  Hj`t  a9E      
+
+regexp: [^ -/:-@[-`{-~]*
+tree:   ([\x01-\x1f0-9A-Za-z\u007f]*)
+length: 0 to *
+ex(0):                                                                        
+ex(1):      n  B    q        F        j  k  7    E  7  x  X  e      C      H  I
+ex(2):  E  dg  fD  nk  qF    t    73  m1    PU  b  z  yq            n  f    iv
+ex(3):  G0Z  8r  pTl  4n        GH    SN  Z  RQ  Nxy    7t  lxC  GbD  gnx  s  
+ex(5):  t  53aRZ    LbM7  7X  bNh    CPW  lEyvX  8nqTI  w  tFN8r  9ym  g32kc
+ex(8):  APSzzOGd  do  XVokclK  Kq7vYkSJ  45MmO8K  YXPbtpl  9EGnS  sAc6YA  McaD
 
 regexp: [^0-9]*
 tree:   ([\x01-/:-\u007f]*)
 length: 0 to *
 ex(0):                                                                        
-ex(1):      _  O        a  e  z  &    \x03  S  z  \x12      .    \x1d      r  
-ex(2):  N{  zs        Y  }Y    y\x04  !    a       \n  \x13  {%  />  u    n\\
-ex(3):    f\x06  !y)  \x01C  \x1d\"  ssU  \x1b  e>  Q  \x1a  \x01  Sd  R\x16
-ex(5):  zT\x1eX  [\x12\x03  >lj  D\x15#%T  F-    wFSN  Q;?  \x1a\x0eM  I  f 
-ex(8):  \x1f\x15`J\x1e+pF  u@+jqt\x1e  N\a\a-  k~dgs\x1e\x1bo  \r    F\x10dC
+ex(1):      r                  x  &    E  y  >    o  $  r  =  +    f    _  >  
+ex(2):  D    )    /   HA  d?  F|        )  !f    /(  PP    PG      V   V    A  
+ex(3):  >]  d  VR    |  <=!    |rS    yo  A  .;,  Y*  >N|  C>?  r`  @;r  ?mE  
+ex(5):  ~^  :m'e  b#  IkRM  AM  O  >-ST  |z'tF  #F!E  Uc  ed}Y  wt|A  WbB  
+ex(8):  KX  ^  f~jX  y!.N  |QTLE.  jJg]  d  eT|J.}u  n  FCd's  `}  j-g)O)
 
 regexp: [^A-Za-z0-9]*
 tree:   ([\x01-/:-@[-`{-\u007f]*)
 length: 0 to *
 ex(0):                                                                        
-ex(1):      ^    \x02        \x06      \x10    \b                \x1a    \v  
-ex(2):  >\x18  \x1c  \u007f@  $\x15  \v+  \x04>        .        \x11  \x15
-ex(3):    \"\x10\x13      ';  \x0f  \r      \x1e\x02  _=  |\r\x18      $
-ex(5):  \v{\f,;  )\x1d.  \x01`(\x18\x12  \v+$>?  ~\n  \v  \x17\x1d@%\x18  }
-ex(8):  :\x19\\*;\"\x04  >\x04(\b  {\a={  \x1a  \t~  \x05\x02\x19
+ex(1):      >           \"              ,  =  @           *  :  @    _  #  )  
+ex(2):  %]  @<        #    `^  |~    ~/    $\\  ^  @     |    !  }  {       {
+ex(3):  :.    #[   `^      '_     <  ]<`    &(!      %;  /  (  [,:    @`    %][
+ex(5):  $<>      )&']`    ^}(*~  $[|  &^_  @|,`<  #  '  *?   ]  <  _ }(\\  (? 
+ex(8):  %:\"}@  %_#'#/:{    ].?_*>  =-/:_  [)  (~'\\:=*_  ,=/%  (}  [\\,@,+<#  
 
-# these last two should be identical
+# these last two should be identical (under -Z)
 
 regexp: [^A-Za-z0-9_]*
 tree:   ([\x01-/:-@[-^`{-\u007f]*)
 length: 0 to *
 ex(0):                                                                        
-ex(1):      ^  <    \x15  ~      \x1c        \x17  '            \x1c    \x12  &
-ex(2):  \x02/    >        ~\x03      \x1e  \x02}  \f  =  \b   !\x1a        *  
-ex(3):  ;  |    }\x1f  \x1c  !  (  |\x1f  {&~  \x06{;  \x18\x15\"  $  ;^\x0e  
-ex(5):    *  {`!\x0e  \x11+ \x0e  \x1e'\x1c\x10-  {\x12\x1b%\x01
-ex(8):      \x13  \x06^^\r\x11\f  \x0e\f>\x18!  ,\x16\x03\x16\x0f}\x1c\x11    
+ex(1):      =  *  \"  :      \"      ,          \"  +  ,      *  >  ?  &  \\  &
+ex(2):      &    &]    %  &  ':  #  :    =@    *  (  )      ~\"  }  |\"  )}  '
+ex(3):  [  \\,  <  \";  !$   ^@^  @}   ]?  %    #=  #+  \\?^  \\  +  ,)  <{  $
+ex(5):  \"*(@  |'>#  {`$\"*  '  >  #-  .{|<  ?[;{}  %:-*  '$!}  [|^.*  }]\\!  
+ex(8):  +\\    [:!.  ),$/:  <<(*<~  `@&~#/|*  )],-].\"@  ~@@:,&  @#,)'\"!$   ;>
 
 regexp: [^\w]*
 tree:   ([\x01-/:-@[-^`{-\u007f]*)
 length: 0 to *
 ex(0):                                                                        
-ex(1):      ^  <    \x15  ~      \x1c        \x17  '            \x1c    \x12  &
-ex(2):  \x02/    >        ~\x03      \x1e  \x02}  \f  =  \b   !\x1a        *  
-ex(3):  ;  |    }\x1f  \x1c  !  (  |\x1f  {&~  \x06{;  \x18\x15\"  $  ;^\x0e  
-ex(5):    *  {`!\x0e  \x11+ \x0e  \x1e'\x1c\x10-  {\x12\x1b%\x01
-ex(8):      \x13  \x06^^\r\x11\f  \x0e\f>\x18!  ,\x16\x03\x16\x0f}\x1c\x11    
+ex(1):      =  *  \"  :      \"      ,          \"  +  ,      *  >  ?  &  \\  &
+ex(2):      &    &]    %  &  ':  #  :    =@    *  (  )      ~\"  }  |\"  )}  '
+ex(3):  [  \\,  <  \";  !$   ^@^  @}   ]?  %    #=  #+  \\?^  \\  +  ,)  <{  $
+ex(5):  \"*(@  |'>#  {`$\"*  '  >  #-  .{|<  ?[;{}  %:-*  '$!}  [|^.*  }]\\!  
+ex(8):  +\\    [:!.  ),$/:  <<(*<~  `@&~#/|*  )],-].\"@  ~@@:,&  @#,)'\"!$   ;>

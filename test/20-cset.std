@@ -22,149 +22,149 @@ ex(8):  cbbcc  cbbbbbc  ccc  bbb  bccb  cc  ccc  cbbbc  bbb  bbcccbbc  b
 regexp: [def]+
 tree:   ([def]+)
 length: 1 to *
-ex(0):  e  f  f  f  e  d  e  e  f  e  e  e  e  e  f  f  f  d  d  e  e  d  f  e
-ex(1):  d  d  e  f  d  d  f  d  f  f  e  e  d  f  e  e  d  e  d  e  d  d  e  f
-ex(2):  fe  fd  e  ef  e  d  ee  ef  e  ed  ff  df  d  d  f  d  e  fd  d  d  ef
-ex(3):  e  de  fdd  dd  d  df  e  de  dd  fff  ee  e  f  fe  dde  d  d  fd  e
-ex(5):  efff  fdeed  eddff  ef  ed  efff  d  feedd  ffedd  ddffe  fde  edf  dfd
-ex(8):  eeffd  d  ddff  eed  dddefed  efeeddd  eddfdedf  dedeedd  dedfeee
+ex(0):  d  f  f  f  d  e  d  d  f  d  d  d  d  d  f  f  f  e  e  d  d  e  f  d
+ex(1):  e  e  d  f  e  e  f  e  f  f  d  d  e  f  d  d  e  d  e  d  e  e  d  f
+ex(2):  fd  fe  d  df  d  e  dd  df  d  de  ff  ef  e  e  f  e  d  fe  e  e  df
+ex(3):  d  ed  fee  ee  e  ef  d  ed  ee  fff  dd  d  f  fd  eed  e  e  fe  d
+ex(5):  dfff  fedde  deeff  df  de  dfff  e  fddee  ffdee  eeffd  fed  def  efe
+ex(8):  ddffe  e  eeff  dde  eeedfde  dfddeee  deefedef  ededdee  edefddd
 
 regexp: [ghij]+
 tree:   ([g-j]+)
 length: 1 to *
-ex(0):  h  i  i  h  i  g  h  i  i  i  j  g  g  i  g  i  h  i  h  i  g  g  j  h
-ex(1):  i  h  g  h  h  i  g  j  j  j  h  i  h  h  g  h  h  i  h  j  h  h  j  i
-ex(2):  gj  ih  h  gi  g  gj  h  ii  ig  g  gg  h  g  i  g  j  h  hh  hh  g  i
-ex(3):  ihg  j  ij  hgi  gjh  j  gj  g  gjh  i  gj  g  hh  gh  hhh  jg  gi  jg
-ex(5):  hg  gjjig  ghhgg  jhi  jig  i  hjhh  ijg  hgii  jhhgj  iji  ghji  high
-ex(8):  jhgij  hgh  gghgjii  jij  hjijjjg  g  gijgg  ii  jgjhg  gj  igijggg
+ex(0):  h  g  g  h  g  i  h  g  g  g  j  i  i  g  i  g  h  g  h  g  i  i  j  h
+ex(1):  g  h  i  h  h  g  i  j  j  j  h  g  h  h  i  h  h  g  h  j  h  h  j  g
+ex(2):  ij  gh  h  ig  i  ij  h  gg  gi  i  ii  h  i  g  i  j  h  hh  hh  i  g
+ex(3):  ghi  j  gj  hig  ijh  j  ij  i  ijh  g  ij  i  hh  ih  hhh  ji  ig  ji
+ex(5):  hi  ijjgi  ihhii  jhg  jgi  g  hjhh  gji  higg  jhhij  gjg  ihjg  hgih
+ex(8):  jhigj  hih  iihijgg  jgj  hjgjjji  i  igjii  gg  jijhi  ij  gigjiii
 
 regexp: [lmnop]+
 tree:   ([l-p]+)
 length: 1 to *
-ex(0):  m  p  n  n  p  o  o  p  p  l  n  o  m  o  n  l  o  p  m  p  n  m  n  n
-ex(1):  p  m  n  m  n  m  m  l  p  o  l  n  l  l  l  l  n  o  n  l  l  l  o  o
-ex(2):  l  l  m  m  o  l  lo  mp  no  n  l  o  m  ll  mo  ol  n  pl  n  np  mn
-ex(3):  lo  mm  p  pn  pol  ml  llp  n  pnm  oom  lp  lpl  mp  m  nm  nnp  mmo
-ex(5):  pll  ln  pnmm  mln  mpnpm  lnmpl  m  ppo  lol  lll  mnlm  olp  l  lm
-ex(8):  ppm  onlp  mnl  nlpponnl  mllmn  mpnnmom  mmnn  o  pn  olmmllm  pmnl
+ex(0):  n  p  m  m  p  l  l  p  p  o  m  l  n  l  m  o  l  p  n  p  m  n  m  m
+ex(1):  p  n  m  n  m  n  n  o  p  l  o  m  o  o  o  o  m  l  m  o  o  o  l  l
+ex(2):  o  o  n  n  l  o  ol  np  ml  m  o  l  n  oo  nl  lo  m  po  m  mp  nm
+ex(3):  ol  nn  p  pm  plo  no  oop  m  pmn  lln  op  opo  np  n  mn  mmp  nnl
+ex(5):  poo  om  pmnn  nom  npmpn  omnpo  n  ppl  olo  ooo  nmon  lop  o  on
+ex(8):  ppn  lmop  nmo  mopplmmo  noonm  npmmnln  nnmm  l  pm  lonnoon  pnmo
 
 regexp: [tuvwxyz]+
 tree:   ([t-z]+)
 length: 1 to *
-ex(0):  u  x  v  u  w  z  t  x  x  u  t  z  u  u  x  v  z  z  x  u  u  y  z  u
-ex(1):  y  y  x  w  t  y  t  w  v  v  w  u  w  w  x  u  w  y  x  w  y  u  y  t
-ex(2):  w  y  t  z  zv  xz  w  z  z  tv  vu  uv  xx  w  x  ww  uv  x  zz  u  xx
-ex(3):  tx  uy  yzv  w  uuu  uy  uxz  xw  z  xv  uvw  zz  z  z  uv  uvz  wyv  v
-ex(5):  zt  wxt  ux  t  vuvuy  uwwwz  vx  xzuxu  w  v  vwt  t  x  w  zzty  ttyv
-ex(8):  vvuwvtw  twztzyv  yuyuvz  xvvy  tyu  z  uvwvzuvy  w  vzwuxttu  vvy  xwy
+ex(0):  x  u  w  x  v  z  y  u  u  x  y  z  x  x  u  w  z  z  u  x  x  t  z  x
+ex(1):  t  t  u  v  y  t  y  v  w  w  v  x  v  v  u  x  v  t  u  v  t  x  t  y
+ex(2):  v  t  y  z  zw  uz  v  z  z  yw  wx  xw  uu  v  u  vv  xw  u  zz  x  uu
+ex(3):  yu  xt  tzw  v  xxx  xt  xuz  uv  z  uw  xwv  zz  z  z  xw  xwz  vtw  w
+ex(5):  zy  vuy  xu  y  wxwxt  xvvvz  wu  uzxux  v  w  wvy  y  u  v  zzyt  yytw
+ex(8):  wwxvwyv  yvzyztw  txtxwz  uwwt  ytx  z  xwvwzxwt  v  wzvxuyyx  wwt  uvt
 
 regexp: [ACDFGHJKLMOPQRSUVWXYZ]+
 tree:   ([ACDFGHJ-MO-SU-Z]+)
 length: 1 to *
-ex(0):  U  Y  D  A  H  X  L  V  Q  P  V  J  C  R  P  Y  W  A  K  R  X  S  V  U
-ex(1):  X  O  Q  M  K  H  D  W  S  K  C  D  R  G  K  Z  D  L  G  G  Y  A  C  X
-ex(2):  AY  D  KS  G  PS  P  Y  H  A  J  KD  R  MV  S  H  JY  S  RL  UU  YU  H
-ex(3):  RYF  SCY  X  AO  RC  WAO  MA  L  UA  WYY  HVX  AX  MQL  USM  YL  AUO
-ex(5):  JD  VP  CYLC  SWQO  VFSA  FRCZR  L  XM  SZMW  XQMKD  KYM  VUW  KYKX
-ex(8):  SZOVY  GZU  HG  AVHDCZ  JYP  KAMWMXJ  QCVARC  M  C  SRRVQSGU  QJP  MX
+ex(0):  G  A  W  Y  S  C  P  F  K  L  F  R  X  J  L  A  D  Y  Q  J  C  H  F  G
+ex(1):  C  M  K  O  Q  S  W  D  H  Q  X  W  J  U  Q  Z  W  P  U  U  A  Y  X  C
+ex(2):  YA  W  QH  U  LH  L  A  S  Y  R  QW  J  OF  H  S  RA  H  JP  GG  AG  S
+ex(3):  JAV  HXA  C  YM  JX  DYM  OY  P  GY  DAA  SFC  YC  OKP  GHO  AP  YGM
+ex(5):  RW  FL  XAPX  HDKM  FVHY  VJXZJ  P  CO  HZOD  CKOQW  QAO  FGD  QAQC
+ex(8):  HZMFA  UZG  SU  YFSWXZ  RAL  QYODOCR  KXFYJX  O  X  HJJFKHUG  KRL  OC
 
 regexp: [aeiuo]+
 tree:   ([aeiou]+)
 length: 1 to *
-ex(0):  e  u  i  i  u  o  o  u  u  a  i  o  e  o  i  a  o  u  e  u  i  e  i  i
-ex(1):  u  e  i  e  i  e  e  a  u  o  a  i  a  a  a  a  i  o  i  a  a  a  o  o
-ex(2):  a  a  e  e  o  a  ao  eu  io  i  a  o  e  aa  eo  oa  i  ua  i  iu  ei
-ex(3):  ao  ee  u  ui  uoa  ea  aau  i  uie  ooe  au  aua  eu  e  ie  iiu  eeo
-ex(5):  uaa  ai  uiee  eai  euiue  aieua  e  uuo  aoa  aaa  eiae  oau  a  ae
-ex(8):  uue  oiau  eia  iauuoiia  eaaei  euiieoe  eeii  o  ui  oaeeaae  ueia
+ex(0):  i  u  e  e  u  a  a  u  u  o  e  a  i  a  e  o  a  u  i  u  e  i  e  e
+ex(1):  u  i  e  i  e  i  i  o  u  a  o  e  o  o  o  o  e  a  e  o  o  o  a  a
+ex(2):  o  o  i  i  a  o  oa  iu  ea  e  o  a  i  oo  ia  ao  e  uo  e  eu  ie
+ex(3):  oa  ii  u  ue  uao  io  oou  e  uei  aai  ou  ouo  iu  i  ei  eeu  iia
+ex(5):  uoo  oe  ueii  ioe  iueui  oeiuo  i  uua  oao  ooo  ieoi  aou  o  oi
+ex(8):  uui  aeou  ieo  eouuaeeo  iooie  iueeiai  iiee  a  ue  aoiiooi  uieo
 
 regexp: [aeiuo]+y?
 tree:   ([aeiou]+y?)
 length: 1 to *
-ex(0):  e  u  i  i  u  o  o  u  u  a  i  o  e  o  i  a  o  u  e  u  i  e  i  i
-ex(1):  u  e  iy  oy  ey  oy  o  e  ay  uy  oy  ey  a  e  i  ay  a  oy  u  u  a
-ex(2):  e  oy  aa  eey  ee  ooy  a  oy  auy  ao  i  oy  ou  ua  a  eiy  ua  e
-ex(3):  uy  iiuy  iu  u  aau  ey  oii  oeiy  uoi  a  oy  ey  iey  eey  aeu  iy
-ex(5):  eioau  oiu  ay  uy  ueoy  eeeiy  uoey  ouy  iey  a  uia  i  aeeouy  ay
-ex(8):  iuio  ieuaoei  aoeieoy  eio  aueuiie  oeeioey  eiuoaey  iuuy  eioeau
+ex(0):  i  u  e  e  u  a  a  u  u  o  e  a  i  a  e  o  a  u  i  u  e  i  e  e
+ex(1):  u  i  ey  ay  iy  ay  a  i  oy  uy  ay  iy  o  i  e  oy  o  ay  u  u  o
+ex(2):  i  ay  oo  iiy  ii  aay  o  ay  ouy  oa  e  ay  au  uo  o  iey  uo  i
+ex(3):  uy  eeuy  eu  u  oou  iy  aee  aiey  uae  o  ay  iy  eiy  iiy  oiu  ey
+ex(5):  ieaou  aeu  oy  uy  uiay  iiiey  uaiy  auy  eiy  o  ueo  e  oiiauy  oy
+ex(8):  euea  eiuoaie  oaieiay  iea  ouiueei  aiieaiy  ieuaoiy  euuy  ieaiou
 
 regexp: [a-z]+
 tree:   ([a-z]+)
 length: 1 to *
-ex(0):  p  w  a  p  s  l  y  n  q  n  m  q  t  a  r  f  s  w  w  m  s  r  c  u
-ex(1):  y  c  c  b  y  l  a  z  o  l  m  t  n  t  s  v  h  b  f  x  l  a  x  x
-ex(2):  dj  tg  q  vs  jg  cp  ln  np  p  d  z  hs  yp  jb  h  g  pc  ps  jh  k
-ex(3):  eax  cgy  g  gqz  ww  ph  fli  cvo  qsc  d  den  hjj  rgj  qc  w  p  ma
-ex(5):  r  k  wm  g  dftqh  zobuw  uf  cwlcf  rrv  aodu  ducut  h  fbzt  kmo  f
-ex(8):  xx  pmxrwf  p  clpn  yozhocc  ejcqzrdk  bkvjk  plsrzwl  flnd  djr  yxkm
+ex(0):  j  c  y  j  g  n  a  l  i  l  m  i  f  y  h  t  g  c  c  m  g  h  w  e
+ex(1):  a  w  w  x  a  n  y  z  k  n  m  f  l  f  g  d  r  x  t  b  n  y  b  b
+ex(2):  vp  fs  i  dg  ps  wj  nl  lj  j  v  z  rg  aj  px  r  s  jw  jg  pr  o
+ex(3):  uyb  wsa  s  siz  cc  jr  tnq  wdk  igw  v  vul  rpp  hsp  iw  c  j  my
+ex(5):  h  o  cm  s  vtfir  zkxec  et  wcnwt  hhd  ykve  vewef  r  txzf  omk  t
+ex(8):  bb  jmbhct  j  wnjl  akzrkww  upwizhvo  xodpo  jnghzcn  tnlv  vph  abom
 
 regexp: [A-Z]+
 tree:   ([A-Z]+)
 length: 1 to *
-ex(0):  P  W  A  P  S  L  Y  N  Q  N  M  Q  T  A  R  F  S  W  W  M  S  R  C  U
-ex(1):  Y  C  C  B  Y  L  A  Z  O  L  M  T  N  T  S  V  H  B  F  X  L  A  X  X
-ex(2):  DJ  TG  Q  VS  JG  CP  LN  NP  P  D  Z  HS  YP  JB  H  G  PC  PS  JH  K
-ex(3):  EAX  CGY  G  GQZ  WW  PH  FLI  CVO  QSC  D  DEN  HJJ  RGJ  QC  W  P  MA
-ex(5):  R  K  WM  G  DFTQH  ZOBUW  UF  CWLCF  RRV  AODU  DUCUT  H  FBZT  KMO  F
-ex(8):  XX  PMXRWF  P  CLPN  YOZHOCC  EJCQZRDK  BKVJK  PLSRZWL  FLND  DJR  YXKM
+ex(0):  J  C  Y  J  G  N  A  L  I  L  M  I  F  Y  H  T  G  C  C  M  G  H  W  E
+ex(1):  A  W  W  X  A  N  Y  Z  K  N  M  F  L  F  G  D  R  X  T  B  N  Y  B  B
+ex(2):  VP  FS  I  DG  PS  WJ  NL  LJ  J  V  Z  RG  AJ  PX  R  S  JW  JG  PR  O
+ex(3):  UYB  WSA  S  SIZ  CC  JR  TNQ  WDK  IGW  V  VUL  RPP  HSP  IW  C  J  MY
+ex(5):  H  O  CM  S  VTFIR  ZKXEC  ET  WCNWT  HHD  YKVE  VEWEF  R  TXZF  OMK  T
+ex(8):  BB  JMBHCT  J  WNJL  AKZRKWW  UPWIZHVO  XODPO  JNGHZCN  TNLV  VPH  ABOM
 
 regexp: [a-zA-Z]+
 tree:   ([A-Za-z]+)
 length: 1 to *
-ex(0):  Z  d  K  N  P  q  n  E  K  H  Y  N  u  b  A  C  H  B  W  a  Y  z  z  Y
-ex(1):  S  t  F  G  o  N  M  V  w  X  p  d  Q  v  j  D  z  j  H  v  A  z  G  U
-ex(2):  vB  n  N  gf  IC  Xv  cB  Vc  jG  x  U  ER  Ab  aV  B  gw  iV  N  R  OL
-ex(3):  bv  wUN  Qb  FVG  Kk  Mc  tD  Svj  JJ  j  U  aNA  FRT  q  iL  wX  XxP
-ex(5):  m  Nd  DHe  go  sZR  lIe  xybbU  w  Mub  OvlEe  Yx  ADWz  IZm  AUV
-ex(8):  Y  E  SGOwr  OVal  H  GSBL  eOoOGZ  WOsMVb  cRB  lNmRpBiO  F  qTv  DEdu
+ex(0):  Z  V  o  l  j  I  L  u  o  r  a  l  E  X  y  w  r  x  c  Y  a  z  z  a
+ex(1):  g  F  t  s  K  l  m  d  C  b  J  V  i  D  P  v  z  P  r  D  y  z  s  e
+ex(2):  Dx  L  l  ST  qw  bD  Wx  dW  Ps  B  e  uh  yX  Yd  x  SC  Qd  l  h  kn
+ex(3):  XD  Cel  iX  tds  oO  mW  Fv  gDP  pp  P  e  Yly  thf  I  Qn  Cb  bBj
+ex(5):  M  lV  vrU  SK  GZh  NqU  BAXXe  C  mEX  kDNuU  aB  yvcz  qZM  yed
+ex(8):  a  u  gskCH  kdYN  r  sgxn  UkKksZ  ckGmdX  Whx  NlMhJxQk  t  IfD  vuVE
 
 regexp: [_a-zA-Z]+
 tree:   ([A-Z_a-z]+)
 length: 1 to *
-ex(0):  Z  I  O  K  U  r  O  L  M  n  K  q  f  k  J  H  U  o  M  o  d  Q  C  x
-ex(1):  P  G  u  _  T  y  k  B  p  k  _  _  d  s  X  N  m  m  s  o  N  R  l  e
-ex(2):  MO  N  a  E  Ny  Bg  ro  ME  Z  N  OA  ea  a  dm  Ze  l  v  tz  _  ls
-ex(3):  v  SPe  uI  r  mmo  rgG  a  tm  QQN  r  c  Iqj  c_  J  G  e  hAV  WSp
-ex(5):  nOe  RTh  UeY  jAvu  f  v  VsgBr  JYyI  j  TCZDb  npz  rtU  OE  MaBA
-ex(8):  CVfLqzoQ  oGdK  TXicyfX  ZoEozBq  vmzl  uZYYrQm  fK  _cFQ  nHpqZsu  Mo
+ex(0):  _  q  k  o  e  H  k  n  m  L  o  I  T  O  p  r  e  K  m  K  V  i  w  B
+ex(1):  j  s  E  Z  f  A  O  x  J  O  Z  Z  V  G  b  l  M  M  G  K  l  h  N  U
+ex(2):  mk  l  Y  u  lA  xS  HK  mu  _  l  ky  UY  Y  VM  _U  N  D  Fz  Z  NG
+ex(3):  D  gjU  Eq  H  MMK  HSs  Y  FM  iil  H  W  qIP  WZ  p  s  U  Ryd  cgJ
+ex(5):  LkU  hfR  eUa  PyDE  T  D  dGSxH  paAq  P  fw_vX  LJz  HFe  ku  mYxy
+ex(8):  wdTnIzKi  KsVo  fbQWATb  _KuKzxI  DMzN  E_aaHiM  To  ZWti  LrJI_GE  mK
 
 regexp: [0-9]+
 tree:   ([0-9]+)
 length: 1 to *
-ex(0):  1  8  7  2  0  6  1  0  7  8  8  9  4  4  5  4  8  3  4  9  8  2  2  8
-ex(1):  0  7  1  8  3  7  9  0  3  1  0  2  6  4  0  7  9  7  3  1  0  6  8  2
-ex(2):  8  2  7  6  0  7  6  01  58  20  79  9  8  9  1  93  27  2  1  61  09
-ex(3):  17  278  00  5  229  5  83  8  1  056  8  53  18  6  419  94  9  7  12
-ex(5):  69  2  9619  89  84  086  46  09  795  91  5  45  4  820  21666  03
-ex(8):  28  306493  7259956  2794  1789  16744  9254042  44  357158  8776422
+ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
+ex(1):  8  1  7  0  5  1  9  8  5  7  8  6  2  4  8  1  9  1  5  7  8  2  0  6
+ex(2):  0  6  1  2  8  1  2  87  30  68  19  9  0  9  7  95  61  6  7  27  89
+ex(3):  71  610  88  3  669  3  05  0  7  832  0  35  70  2  479  94  9  1  76
+ex(5):  29  6  9279  09  04  802  42  89  193  97  3  43  4  068  67222  85
+ex(8):  60  582495  1639932  6194  7109  72144  9634846  44  531730  0112466
 
 regexp: [_a-zA-Z0-9]+
 tree:   ([0-9A-Z_a-z]+)
 length: 1 to *
-ex(0):  P  9  n  a  M  U  u  h  M  M  2  F  6  c  p  l  L  u  Z  l  d  J  o  m
-ex(1):  i  a  k  M  k  l  X  V  8  o  S  V  C  H  j  U  u  x  q  T  B  N  q  P
-ex(2):  P  g  L  O  d  RA  m  KA  tR  50  a  yy  H  f  S  N  L  l  Yj  I  T  B
-ex(3):  AVL  14  t  Q  xvU  H  H6  k  _O  3Qi  W  6V  M6  e  vCR  H  l  I  EwJ
-ex(5):  WiE  C3LY8  0Zbe  MBsha  fYIpy  BMVGI  Lfx  TX1  KXhbs  Kvb1l  0wFCA
-ex(8):  t  4B  Wl  jJ  _y47zZJ8  6dapp  9ae  4H21IlCC  gLK  _3N  pMJAHYz
+ex(0):  _  p  B  O  c  V  4  H  c  c  w  j  s  M  9  D  d  4  Q  D  L  f  A  C
+ex(1):  G  O  E  c  E  D  S  U  q  A  X  U  m  h  F  V  4  1  8  W  n  b  8  _
+ex(2):  _  I  d  a  L  Yo  C  eo  5Y  ty  O  00  h  J  X  b  d  D  RF  g  W  n
+ex(3):  oUd  xu  5  Z  13V  h  hs  E  Pa  vZG  T  sU  cs  K  3mY  h  D  g  k2f
+ex(5):  TGk  mvdRq  yQNK  cn6HO  JRg90  ncUig  dJ1  WSx  eSHN6  e3NxD  y2jmo
+ex(8):  5  un  TD  Ff  P0urzQfq  sLO99  pOK  uhwxgDmm  Ide  Pvb  9cfohRz
 
 regexp: [_a-zA-Z][_a-zA-Z0-9]*
 tree:   ([A-Z_a-z][0-9A-Z_a-z]*)
 length: 1 to *
-ex(0):  Z  I  O  K  U  r  O  L  M  n  K  q  f  k  J  H  U  o  M  o  d  Q  C  x
-ex(1):  P  _  rO  I  lg  p  k  bR  Q  D0  LW  HK  b5  U  GX  t  Y  L  bD  Ns
-ex(2):  PV  Q  j  eJ  Z  cKx  fn6  ZBz  q  oCp  Ra  lhm  iIU  RH  qb  so  G  y
-ex(3):  kyX1  usC2  U  QZ  OuS  EfK  nKJo  up2g  UpfE  rgl  bsP  P  M  bRKF
-ex(5):  jxwj  f9goa5  zq3Q  OlhjF  Ltz  zN  f  ey  s  mDy_8  q  YN  R  le  Zq3
-ex(8):  OyVdDK  _H7O0xiuB  J  Bq2jx  Dd  pSzHPI  SftbQMNm  MWPr1u2sd  PQKNU
+ex(0):  _  q  k  o  e  H  k  n  m  L  o  I  T  O  p  r  e  K  m  K  V  i  w  B
+ex(1):  j  Z  Ha  q  NI  J  O  XY  i  vy  nT  re  Xt  e  sS  F  a  n  Xl  l6
+ex(2):  jU  i  P  Uf  _  We1  TBs  _nz  I  Km9  hO  NHC  QgV  hh  IN  GA  s  A
+ex(3):  O0Sx  E6mw  e  iQ  k4X  uJe  LefA  E9wI  e9Jk  HID  X6_  j  m  XYej
+ex(5):  P12F  TpIAOt  z8vZ  kDHFj  n5z  zb  T  U0  G  Ml0Pq  I  ab  h  NK  _8v
+ex(8):  k0ULle  Zhray1G4n  p  x8wF1  vL  JXzh_g  gJ5NZcbC  mT_7x4w6L  jZebV
 
 regexp: [A-HO-Z][A-Z]*
 tree:   ([A-HO-Z][A-Z]*)
 length: 1 to *
-ex(0):  V  S  E  V  T  D  H  D  O  Z  S  H  P  F  S  F  Q  V  R  H  T  P  C  Q
-ex(1):  SL  QM  C  Q  Q  VL  BL  ED  EH  Z  UK  Q  FU  R  C  Y  VF  ER  YS  B
-ex(2):  POK  R  Z  T  VQ  QO  P  F  PF  BLS  X  CZ  G  W  TR  EJ  ZXO  T  FBX
-ex(3):  OFN  DNP  F  USVD  XGN  ACN  BA  V  R  WX  YY  OIT  Z  UOP  AYH  VLD
-ex(5):  H  TD  HO  WIHG  ESYA  WVH  W  HZFC  ESQ  S  EF  EDPKFA  UTNMD  AVRPKI
-ex(8):  RUYT  FMJIVSK  FDSMXNJ  TLA  EVTYX  AV  VKW  QSFGKAFI  CFXXHYSG
+ex(0):  D  G  U  D  F  V  R  V  Q  Z  G  R  P  T  G  T  O  D  H  R  F  P  W  O
+ex(1):  GN  OM  W  O  O  DN  XN  UV  UR  Z  EO  O  TE  H  W  A  DT  UH  AG  X
+ex(2):  PKO  H  Z  F  DI  OK  P  T  PT  XNG  B  WZ  S  C  FH  UP  ZBK  F  TXB
+ex(3):  QTL  VLJ  T  EGDV  BSL  YWL  XY  D  H  CB  AA  QQF  Z  EKJ  YAR  DNV
+ex(5):  R  FV  RK  CQRS  UGAY  CDR  C  RZTW  UGI  G  UT  UVJOTY  EFLMV  YDHJOQ
+ex(8):  HEAF  TMPQDGO  TVGMBLP  FNY  UDFAB  YD  DOC  OGTSOYTQ  WTBBRAGS

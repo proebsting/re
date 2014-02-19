@@ -52,19 +52,19 @@ ex(8):  000  0  100001101100010
 regexp: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
 tree:   ([bcfpt][lr]?(([aeiou])|(oo)|(ee))[dmnt])
 length: 3 to 5
-ex(0):  cam  fon  poon  tam  peen  peen  boon  tum  foot  fam  teem  feem  feen
-ex(1):  treed  ceed  beem  boom  bam  foom  flin  pen  flood  preen  cleet
-ex(2):  clom  ceed  beed  bam  prood  tod  teed  breed  floot  treem  trad
-ex(3):  creet  foot  peed  pem  cleen  poon  prit  cloon  tood  creen  blem
-ex(5):  beet  feen  beed  plon  beem  pled  coot  food  creem  tloon  croot
-ex(8):  bood  food  coot  beem  ped  bloot  breem  tad  tlon  froot  cleen
+ex(0):  fom  cad  bood  tom  beed  beed  pood  tum  coot  com  teem  ceem  ceed
+ex(1):  treen  feen  peem  poom  pom  coom  cled  bid  cloon  breed  fleet
+ex(2):  flam  feen  peen  pom  broon  tan  teen  preen  cloot  treem  tron
+ex(3):  freet  coot  been  bim  fleed  bood  bret  flood  toon  freed  plim
+ex(5):  peet  ceed  peen  blad  peem  blin  foot  coon  freem  tlood  froot
+ex(8):  poon  coon  foot  peem  bin  ploot  preem  ton  tlad  croot  fleed
 
 regexp: W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
 tree:   (W((hit)|(ens)|(at)|(in)|(est)|(al))[aeio][lmnrsx]((ford)|(by)|(dale)|(bot)|(man)|(son)|(gard)|(hold)))
 length: 7 to 10
-ex(0):  Walashold  Walirby  Whitirbot  Watirson  Westesgard  Winimhold
-ex(1):  Watalman  Walasby  Winisdale  Westomby  Wensemgard  Watisgard  Walisson
-ex(2):  Westasford  Wensenbot  Wensolman  Walosdale  Watinby  Winanson  Winenby
-ex(3):  Watasman  Walexgard  Whitashold  Wenserman  Walesford  Winosby
-ex(5):  Wensamman  Whitoldale  Watandale  Whitenhold  Winonby  Wensarford
-ex(8):  Wensexdale  Wensandale  Westarman  Wensixhold  Winashold  Walambot
+ex(0):  Walilhold  Walamby  Whitambot  Watamson  Westelgard  Winarhold
+ex(1):  Watisman  Walilby  Winaldale  Westorby  Wensergard  Watalgard  Walalson
+ex(2):  Westilford  Wensenbot  Wensosman  Waloldale  Watanby  Wininson  Winenby
+ex(3):  Watilman  Walexgard  Whitilhold  Wensemman  Walelford  Winolby
+ex(5):  Wensirman  Whitosdale  Watindale  Whitenhold  Winonby  Wensimford
+ex(8):  Wensexdale  Wensindale  Westimman  Wensaxhold  Winilhold  Walirbot
