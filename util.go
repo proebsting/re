@@ -9,39 +9,6 @@ import (
 	"strconv"
 )
 
-//  Escape returns the set of characters to be matched by \c inside a
-//  bracket expression.  This works for \d \s \w which represent small
-//  finite sets, but not their complements \D \S \W.
-//  In this context \b is a backspace and other C escapes are similar.
-func Escape(c byte) string {
-	switch c {
-	case 'a':
-		return "\a"
-	case 'b':
-		return "\b"
-	case 'd':
-		return "0123456789"
-	case 'e':
-		return "\033"
-	case 'f':
-		return "\f"
-	case 'n':
-		return "\n"
-	case 'r':
-		return "\r"
-	case 's':
-		return "\t\n\v\f\r "
-	case 't':
-		return "\t"
-	case 'v':
-		return "\v"
-	case 'w':
-		return "0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-	default:
-		return string(c)
-	}
-}
-
 //  Protect adds backslash notation, but no quotes, to protect unprintables.
 func Protect(s string) string {
 	s = strconv.Quote(s)

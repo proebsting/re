@@ -10,57 +10,109 @@ import (
 //  computed set of characters and the remaining unprocessed part of s.
 //  It assumes the introductory '[' has already been stripped from s.
 //
-//  Implements:  [abc] [^abc] [a-c] [\d\s\w] 
+//  Implements:  [abc] [^abc] [a-c] [\x]
 func Bracketx(s string) (*Cset, string) {
 
-	chars := make([]byte, 0)
+	result := &Cset{}
 	compl := false
 	// check for initial '^'
 	if len(s) > 0 && s[0] == '^' {
 		compl = true
 		s = s[1:]
 	}
+	cprev := uint(0) // no previous character
 	// process body of expression
 	for len(s) > 0 {
-		ch := s[0]
+		ch := uint(s[0])
 		s = s[1:]
 		switch ch {
 		case '-':
 			// range of chars
-			if len(chars) > 0 && len(s) > 0 && s[0] != ']' {
-				ch = s[0]
+			if cprev != 0 && len(s) > 0 && s[0] != ']' {
+				ch = uint(s[0])
 				s = s[1:]
-				for j := chars[len(chars)-1]; j <= ch; j++ {
-					chars = append(chars, j)
+				for j := cprev; j <= ch; j++ {
+					result = result.Set(uint(j))
 				}
 			} else {
-				chars = append(chars, '-')
+				//#%#%#%#% need result=?
+				result = result.Set(ch)
 			}
 		case ']':
 			// set is complete unless this is first char
-			if len(chars) > 0 {
-				cs := NewCset(string(chars))
+			if cprev != 0 {
 				if compl {
-					cs = cs.Compl()
+					result = result.Compl()
 				}
-				return cs, s
+				return result, s
 			} else {
 				// initial ']' is ordinary
-				chars = append(chars, ']')
+				result = result.Set(ch)
 			}
 		case '\\':
 			if len(s) > 0 {
-				chars = append(chars, Escape(s[0])...)
+				result = result.Or(Escape(s[0]))
 				s = s[1:]
 			} // else: error caught on next iteration
 		default:
 			// an ordinary char; add to set
-			chars = append(chars, ch)
+			result = result.Set(ch)
 		}
+		cprev = ch
 	}
 	// #%#% ERROR: no terminating ']'
 	// for now, just treat as "[][]" (a cset of two chars ']' and '[')
-	return NewCset("][]"), s
+	return NewCset("[]"), s
+}
+
+var dset, sset, wset, dcompl, scompl, wcompl *Cset
+
+func init() {
+	dset = NewCset("0123456789")
+	sset = NewCset("\t\n\v\f\r ")
+	wset = NewCset("0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
+	dcompl = dset.Compl()
+	scompl = sset.Compl()
+	wcompl = wset.Compl()
+
+}
+
+//  Escape returns the set of characters to be matched by \c inside
+//  a bracket expression.  In this context \b is a backspace.
+func Escape(c byte) *Cset {
+	switch c {
+	case 'a':
+		return (&Cset{}).Set('\a')
+	case 'b':
+		return (&Cset{}).Set('\b')
+	case 'd':
+		return dset
+	case 'e':
+		return (&Cset{}).Set('\033')
+	case 'f':
+		return (&Cset{}).Set('\f')
+	case 'n':
+		return (&Cset{}).Set('\n')
+	case 'r':
+		return (&Cset{}).Set('\r')
+	case 's':
+		return sset
+	case 't':
+		return (&Cset{}).Set('\t')
+	case 'v':
+		return (&Cset{}).Set('\v')
+	case 'w':
+		return wset
+	case 'D':
+		return dcompl
+	case 'S':
+		return scompl
+	case 'W':
+		return wcompl
+
+	default:
+		return (&Cset{}).Set(uint(c))
+	}
 }
 
 func unwanted() { fmt.Println(00) } //#%#% just to ensure a fmt reference

@@ -77,7 +77,7 @@ func Parse(rexpr string) Node {
 		case '\\':
 			// escaped character
 			if len(rexpr) > 0 {
-				cset := NewCset(Escape(rexpr[0]))
+				cset := Escape(rexpr[0])
 				rside = MatchNode{cset}
 				rexpr = rexpr[1:]
 			} else {

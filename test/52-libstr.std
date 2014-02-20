@@ -42,14 +42,14 @@ ex(8):  =p;kqpUQ12A%hs0@s  =+pC9K7D#!$%w!  =~pd_Z=B4K@aV%h@J
 # 656. spam trap for pseudo-spellings of "Viagra"
 
 regexp: [v,V,(\\/)](\W|)[i,I,1,l,L](\W|)[a,A,@,(\/\\)](\W|)[g,G](\W|)[r,R](\W|)[a,A,@,(\/\\))]
-tree:   ([(),/V\v]((W)|())[,1ILil]((W)|())[(),/@A\a]((W)|())[,Gg]((W)|())[,Rr]((W)|())[(),/@A\a])
+tree:   ([(),/V\v](([\x01-/:-@[-^`{-\u007f])|())[,1ILil](([\x01-/:-@[-^`{-\u007f])|())[(),/@A\a](([\x01-/:-@[-^`{-\u007f])|())[,Gg](([\x01-/:-@[-^`{-\u007f])|())[,Rr](([\x01-/:-@[-^`{-\u007f])|())[(),/@A\a])
 length: 6 to 11
-ex(0):  VWIWAWG,@  (WL(W,R(  vI)GR/  viW/,Wr)  (W1/,WR/  /lW)WG,)  /L/WGRW\\
-ex(1):  VlW)WGWr\\  VWI@GWrW(  \\,AW,W,W,  vi/,r)  /W,,Gr,  ,iWAWGRWa  )1WA,RW)
-ex(2):  /WiW(GRW,  /LW,g,A  ,Wl@WgrW(  ,iaGW,W@  )WL\\WGW,,  \\Wl)WgWrW(
-ex(3):  \\,W),W,(  VlaWg,W/  (WLW/gRW@  \\iWAWGW,A  VL(,r@  ,,W(gR(  vWI@WGWRW)
-ex(5):  /WL@GRW@  vWIW@,RW/  vlW/WGWR(  vW,W,Gra  )I),,a  )I,WgW,W/
-ex(8):  VL)W,W,(  )WiWAgWr,  vI(W,,W,  \\LW(gra  ViW,WGW,W(  VIAGWra  ,W1/W,r@
+ex(0):  V!I|)g,,  (L(,R//  /la,,*\\  vL\"\\gr,  (>Ia-G~,A  /(L),[,@  \\L,G#R)
+ex(1):  /I%\\'g+ra  V,\\:G'R-A  )}I:)$G, a  \\1(gR#,  /i\\a,,)  \\l[(,!,/
+ex(2):  v]I/gRa  ,1#\\>,`r^)  ,I,(,$,@  /~,\\,R )  /1)@gRA  vI{\\,,],,
+ex(3):  )1\\?gR@  \\|l*);g~R(  \\,=agR\\  \\!i=,^g,[(  \\IaGR\\  v~l/\"Gr/(
+ex(5):  V|i+/,R//  (1\\g\"R)  ,I<a-Gr)  \\I)/(g`r@  ViA,r-)  /i()+g`R;\\
+ex(8):  v!laG;r)  ,,aGR)  v,[a@G,#@  V,i)*g<,@\\  ,\"l)^G$R,(  v?L?(<Gr/
 
 # 49. major credit cards (AmEx len 15, others len 16)
 

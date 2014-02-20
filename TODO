@@ -1,6 +1,5 @@
 RX TODO
 
-1.  Refactor cset handling and implement \D \W \S
 2.  Figure out how to handle errors.
 3.  Detect unimplemented constructs as errors.
 4.  Add  ^  \b  $  anchors

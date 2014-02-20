@@ -21,3 +21,14 @@
 <[\r]>
 <[\t]>
 <[\v]>
+# big sets \D \W \S
+[\D]+
+[\W]+
+[\S]+
+# the following pairs should be identical
+[\d]+
+[^\D]+
+[\w]+
+[^\W]+
+[\s]+
+[^\S]+
