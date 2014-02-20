@@ -6,11 +6,12 @@ import (
 	"fmt"
 )
 
-//  bracketx parses a string as a bracket expression,
-//  returning the computed Cset and the remaining unprocessed part of s.
+//  Bracketx parses a string as a bracket expression, returning the
+//  computed set of characters and the remaining unprocessed part of s.
 //  It assumes the introductory '[' has already been stripped from s.
-//  #%#% Does not handle [:digits:] or some other esoteric forms.
-func bracketx(s string) (*Cset, string) {
+//
+//  Implements:  [abc] [^abc] [a-c] [\d\s\w] 
+func Bracketx(s string) (*Cset, string) {
 
 	chars := make([]byte, 0)
 	compl := false

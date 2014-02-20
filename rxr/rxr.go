@@ -12,9 +12,12 @@
 	prints some statistics, and generates some examples.
 	This will certainly be evolving over time.
 
+	The output is indented to be informative, and unprintables are escaped,
+	but will not always be unambiguous if pattern metacharacters are used
+	as ordinary matching characters
+
 	Spring-2014 / gmt
 */
-
 package main
 
 import (

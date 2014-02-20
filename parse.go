@@ -14,6 +14,10 @@ var oprstack []byte  // operators associated with pushed expressions
 var exprstack []Node // stack of pushed expressions
 
 //  Parse parses a regular expression and returns a return tree of Nodes.
+//  Implements:
+//	abc  a|b|c  a(b|c)d
+//	a?  b*  c+  d{m,n}
+//	.  \d  \s  \w  [...]
 func Parse(rexpr string) Node {
 
 	var curr Node               // current parse tree
@@ -62,12 +66,12 @@ func Parse(rexpr string) Node {
 		case '[':
 			// bracket expression
 			var cset *Cset
-			cset, rexpr = bracketx(rexpr)
+			cset, rexpr = Bracketx(rexpr)
 			rside = MatchNode{cset}
 
 		case '.': //#%#%#% no chars above 0x7F; this is a bug
 			// wild character
-			cset, _ := bracketx("\x01-\x7F]")
+			cset, _ := Bracketx("\x01-\x7F]")
 			rside = MatchNode{cset}
 
 		case '\\':
