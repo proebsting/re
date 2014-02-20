@@ -1,16 +1,15 @@
 RX TODO
 
-Need to figure out exactly WHICH RE spec to follow
+1.  Refactor cset handling and implement \D \W \S
+2.  Figure out how to handle errors.
+3.  Detect unimplemented constructs as errors.
+4.  Add  ^  \b  $  anchors
+5.  Check against larger collection of regexps.
 
-Add \D \W \S
 Add POSIX classes??
 Add flags such as "case insensitive"?
-Add \b?  Other Perl stuff?
-Add anchors (^....$)?  How?
+Other Perl stuff?
 etc etc
-
-Figure out how to handle erroneous regexps
-Handle Unicode?  Code so far assmes not.
 
 Fix #%#% items
 More consistency in use of pointers vs struct values
