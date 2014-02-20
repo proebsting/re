@@ -6,6 +6,7 @@ RX TODO
 4.  Add  ^  \b  $  anchors
 5.  Check against larger collection of regexps.
 
+Implement \037 \x3F \uxxxx \cX
 Add POSIX classes??
 Add flags such as "case insensitive"?
 Other Perl stuff?

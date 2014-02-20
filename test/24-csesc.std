@@ -23,15 +23,15 @@ ex(3):      ]]  ]]]  ]  ]]  ]]  ]]]  ]]]    ]  ]  ]]]  ]]    ]]]  ]]  ]  ]
 ex(5):  ]]]      ]]  ]  ]]]]  ]]]  ]]  ]]      ]]  ]]  ]]  ]]]]  ]]]]    ]]]
 ex(8):  ]]]  ]  ]  ]]]]]]]]  ]]]]]  ]]]]]    ]]]]]]  ]]]  ]  ]]]]]]]  ]]]]]
 
-regexp: [ab\[cd\-ef\]gh]+
-tree:   ([-[]a-h]+)
+regexp: [ab\[cd\-gh\]ij]+
+tree:   ([-[]a-dg-j]+)
 length: 1 to *
-ex(0):  f  [  ]  -  e  g  g  e  b  [  c  [  [  c  ]  b  g  e  [  b  a  ]  a  [
-ex(1):  f  e  ]  e  f  ]  c  a  c  g  c  ]  f  g  ]  -  [  [  h  d  a  a  e  f
-ex(2):  ]  a]  ]  ed  e  c  hh  ][  -  de  ea  h  g  fg  a  []  ]  h  h  h  ed
-ex(3):  -  fa[  -  c  ]e  ddg  aba  ]f  g-f  e  ]  ag  a[  cde  ce[  h  e[  bg]
-ex(5):  gbg  bh[e-  gde-f  b-ba  -b]c]  a  [  daf  d  ha-  [h[b  -fhb  f  [d
-ex(8):  -[ecadee  [  dfhbd[cb  h  f]d--gd  [b][  bgg[d  adgch  fb[daf  cd[gfeg
+ex(0):  h  [  ]  -  g  i  i  g  b  [  c  [  [  c  ]  b  i  g  [  b  a  ]  a  [
+ex(1):  h  g  ]  g  h  ]  c  a  c  i  c  ]  h  i  ]  -  [  [  j  d  a  a  g  h
+ex(2):  ]  a]  ]  gd  g  c  jj  ][  -  dg  ga  j  i  hi  a  []  ]  j  j  j  gd
+ex(3):  -  ha[  -  c  ]g  ddi  aba  ]h  i-h  g  ]  ai  a[  cdg  cg[  j  g[  bi]
+ex(5):  ibi  bj[g-  idg-h  b-ba  -b]c]  a  [  dah  d  ja-  [j[b  -hjb  h  [d
+ex(8):  -[gcadgg  [  dhjbd[cb  j  h]d--id  [b][  bii[d  adicj  hb[dah  cd[ihgi
 
 # perl inventions
 
@@ -114,3 +114,85 @@ ex(2):  <\f>  <\v>  <\f>  <\v>  <\f>  <\f>  <\r>  < >  <\n>  <\r>  <\v>  <\r>
 ex(3):  <\r>  <\r>  <\v>  <\n>  <\v>  <\r>  <\r>  <\r>  <\n>  <\n>  <\n>  <\r>
 ex(5):  <\v>  <\n>  <\f>  <\n>  <\v>  <\n>  <\n>  <\f>  <\f>  < >  < >  <\v>
 ex(8):  <\v>  <\n>  <\n>  <\f>  <\f>  <\v>  < >  <\r>  <\n>  <\n>  <\r>  <\f>
+
+# C-style escapes
+
+regexp: <[\a]>
+tree:   (<[\a]>)
+length: 3 to 3
+ex(0):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
+ex(1):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
+ex(2):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
+ex(3):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
+ex(5):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
+ex(8):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
+
+regexp: <[\b]>
+tree:   (<[\b]>)
+length: 3 to 3
+ex(0):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
+ex(1):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
+ex(2):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
+ex(3):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
+ex(5):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
+ex(8):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
+
+regexp: <[\e]>
+tree:   (<[\x1b]>)
+length: 3 to 3
+ex(0):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
+ex(1):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
+ex(2):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
+ex(3):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
+ex(5):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
+ex(8):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
+
+regexp: <[\f]>
+tree:   (<[\f]>)
+length: 3 to 3
+ex(0):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
+ex(1):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
+ex(2):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
+ex(3):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
+ex(5):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
+ex(8):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
+
+regexp: <[\n]>
+tree:   (<[\n]>)
+length: 3 to 3
+ex(0):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
+ex(1):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
+ex(2):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
+ex(3):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
+ex(5):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
+ex(8):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
+
+regexp: <[\r]>
+tree:   (<[\r]>)
+length: 3 to 3
+ex(0):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
+ex(1):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
+ex(2):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
+ex(3):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
+ex(5):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
+ex(8):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
+
+regexp: <[\t]>
+tree:   (<[\t]>)
+length: 3 to 3
+ex(0):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
+ex(1):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
+ex(2):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
+ex(3):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
+ex(5):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
+ex(8):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
+
+regexp: <[\v]>
+tree:   (<[\v]>)
+length: 3 to 3
+ex(0):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>
+ex(1):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>
+ex(2):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>
+ex(3):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>
+ex(5):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>
+ex(8):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>

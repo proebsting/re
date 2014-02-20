@@ -2,7 +2,7 @@
 # n.b. in POSIX, \ in [] should not be special
 [\-]+
 [\]]*
-[ab\[cd\-ef\]gh]+
+[ab\[cd\-gh\]ij]+
 # perl inventions
 \d+
 [\d]+
@@ -12,3 +12,12 @@
 [\w]+
 \w+-\w+
 <\s>
+# C-style escapes
+<[\a]>
+<[\b]>
+<[\e]>
+<[\f]>
+<[\n]>
+<[\r]>
+<[\t]>
+<[\v]>
