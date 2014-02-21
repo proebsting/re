@@ -34,11 +34,10 @@ func Bracketx(s string) (*Cset, string) {
 				ch = uint(s[0])
 				s = s[1:]
 				for j := cprev; j <= ch; j++ {
-					result = result.Set(uint(j))
+					result.Set(uint(j))
 				}
 			} else {
-				//#%#%#%#% need result=?
-				result = result.Set(ch)
+				result.Set(ch)
 			}
 		case ']':
 			// set is complete unless this is first char
@@ -49,7 +48,7 @@ func Bracketx(s string) (*Cset, string) {
 				return result, s
 			} else {
 				// initial ']' is ordinary
-				result = result.Set(ch)
+				result.Set(ch)
 			}
 		case '\\':
 			if len(s) > 0 {
@@ -58,7 +57,7 @@ func Bracketx(s string) (*Cset, string) {
 			} // else: error caught on next iteration
 		default:
 			// an ordinary char; add to set
-			result = result.Set(ch)
+			result.Set(ch)
 		}
 		cprev = ch
 	}
