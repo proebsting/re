@@ -42,23 +42,9 @@ ex(8):  06/09/81  8/7/85  11-2/1974  11/30-1983  03-3/1974  6-1-2010
 # 406. Full names of the months
 
 regexp: (?:J(anuary|u(ne|ly))|February|Ma(rch|y)|A(pril|ugust)|(((Sept|Nov|Dec)em)|Octo)ber)
-tree:   (((:J((anuary)|(u((ne)|(ly)))))|(February)|(Ma((rch)|(y)))|(A((pril)|(ugust)))|((((((Sept)|(Nov)|(Dec))em))|(Octo))ber)))
-length: 3 to 9
-ex(0):  :June  April  April  May  February  February  March  February  May
-ex(1):  October  October  August  August  May  August  May  October  February
-ex(2):  October  :June  :July  :January  February  October  May  February
-ex(3):  September  August  December  February  :January  :June  April  August
-ex(5):  February  :June  February  :July  August  February  May  May  August
-ex(8):  February  February  :July  April  :January  August  :January  August
+ERROR:  rx: '(?...' unimplemented: in "(?:J(anuary|u(ne|ly))|February|Ma(rch|y)|A(pril|ugust)|(((Sept|Nov|Dec)em)|Octo)ber)"
 
 # 969. RFC2822 date
 
 regexp: (?:\s*(Sun|Mon|Tue|Wed|Thu|Fri|Sat),\s*)?(0?[1-9]|[1-2][0-9]|3[01])\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(19[0-9]{2}|[2-9][0-9]{3}|[0-9]{2})\s+(2[0-3]|[0-1][0-9]):([0-5][0-9])(?::(60|[0-5][0-9]))?\s+([-\+][0-9]{2}[0-5][0-9]|(?:UT|GMT|(?:E|C|M|P)(?:ST|DT)|[A-IK-Z]))(\s*\((\\\(|\\\)|(?<=[^\\])\((?<C>)|(?<=[^\\])\)(?<-C>)|[^\(\)]*)*(?(C)(?!))\))*\s*
-tree:   ((:[\t-\r ]*((Sun)|(Mon)|(Tue)|(Wed)|(Thu)|(Fri)|(Sat)),[\t-\r ]*)?((0?[1-9])|([12][0-9])|(3[01]))[\t-\r ]+((Jan)|(Feb)|(Mar)|(Apr)|(May)|(Jun)|(Jul)|(Aug)|(Sep)|(Oct)|(Nov)|(Dec))[\t-\r ]+((19[0-9]{2})|([2-9][0-9]{3})|([0-9]{2}))[\t-\r ]+((2[0-3])|([01][0-9])):([0-5][0-9])(::((60)|([0-5][0-9])))?[\t-\r ]+(([+-][0-9]{2}[0-5][0-9])|(((:UT)|(GMT)|(((:E)|(C)|(M)|(P))((:ST)|(DT)))|([A-IK-Z]))))([\t-\r ]*(((\()|(\))|((<=[\x01-[]-\u007f])((<C>))|((<=[\x01-[]-\u007f]))(<-C>))|([\x01-'*-\u007f]*))*((C)(!))))*[\t-\r ]*)
-length: 16 to *
-ex(0):  30 May\v1912 18:28\fGMT  1\rSep\f4448\f04:10\fGMT
-ex(1):  2\fMay\r7985\f23:46::60 GMT  19\fDec\n7489\n23:33::20\v+1616
-ex(2):  :Sat, 30 Feb\r1919\f23:35\v -6741 (\\(C!)\f(\\)C!)\n\r
-ex(3):  :Sat,\f15\r\fNov\v21\r\n23:17::41\r\v\vQ (<=Y)<-C>?caC!)\r\r(\\(\\(C!)\f\r\v
-ex(5):  02  \f\n Mar\r\n  8907\n   23:32::60\r\v\r-1027 \n\f\r(<=X)<-C>\\)\\)C!) \v\v \v(\\(<=4)<-C>Ngh\\\\)C!)\n\r\v\v(<=m)<-C>\\(\\(C!) \f\v\n 
-ex(8):  :\n\f \f\n Fri, \v\f3\n\r\rMar\n\f\n\n\v\v93\f\f 20:50\f\f\n\f \r \r-7825 \v\f(\\(\\)<=I(<C><=8)<-C>\\)\\(\\)\\)C!)\v\f\v\n\v\n(YAn\\(<=6)<-C>C!)\f\n 
+ERROR:  rx: '(?...' unimplemented: in "(?:\s*(Sun|Mon|Tue|Wed|Thu|Fri|Sat),\s*)?(0?[1-9]|[1-2][0-9]|3[01])\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(19[0-9]{2}|[2-9][0-9]{3}|[0-9]{2})\s+(2[0-3]|[0-1][0-9]):([0-5][0-9])(?::(60|[0-5][0-9]))?\s+([-\+][0-9]{2}[0-5][0-9]|(?:UT|GMT|(?:E|C|M|P)(?:ST|DT)|[A-IK-Z]))(\s*\((\\\(|\\\)|(?<=[^\\])\((?<C>)|(?<=[^\\])\)(?<-C>)|[^\(\)]*)*(?(C)(?!))\))*\s*"

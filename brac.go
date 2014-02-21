@@ -4,6 +4,7 @@ package rx
 
 import (
 	"fmt"
+	"unicode"
 )
 
 var _ = fmt.Printf //#%#% for debugging
@@ -31,6 +32,14 @@ func Bracketx(s string) (*Cset, string) {
 		ch := uint(s[0])
 		s = s[1:]
 		switch ch {
+		case '[':
+			// ordinary, but diagnose [:class:]
+			if len(s) > 2 && s[0] == ':' &&
+				unicode.IsLetter(rune(s[1])) {
+				return nil, "[:class:] unimplemented"
+			} else {
+				result.Set(ch)
+			}
 		case '-':
 			// range of chars
 			if cprev != 0 && len(s) > 0 && s[0] != ']' {
@@ -95,10 +104,14 @@ func Escape(s string) (*Cset, string) {
 	c := s[0]
 	s = s[1:]
 	switch c {
+	case '0', '1', '2', '3', '4', '5', '6', '7':
+		return nil, "'\\0nn' unimplemented"
 	case 'a':
 		return (&Cset{}).Set('\a'), s
 	case 'b':
 		return (&Cset{}).Set('\b'), s
+	case 'c':
+		return nil, "'\\cx' unimplemented"
 	case 'd':
 		return dset, s
 	case 'e':
@@ -107,18 +120,26 @@ func Escape(s string) (*Cset, string) {
 		return (&Cset{}).Set('\f'), s
 	case 'n':
 		return (&Cset{}).Set('\n'), s
+	case 'p':
+		return nil, "'\\px' unimplemented"
 	case 'r':
 		return (&Cset{}).Set('\r'), s
 	case 's':
 		return sset, s
 	case 't':
 		return (&Cset{}).Set('\t'), s
+	case 'u':
+		return nil, "'\\uhhhh' unimplemented"
 	case 'v':
 		return (&Cset{}).Set('\v'), s
 	case 'w':
 		return wset, s
+	case 'x':
+		return nil, "'\\xhh' unimplemented"
 	case 'D':
 		return dcompl, s
+	case 'P':
+		return nil, "'\\Px' unimplemented"
 	case 'S':
 		return scompl, s
 	case 'W':

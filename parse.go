@@ -51,6 +51,10 @@ func Parse(rexpr string) (Node, error) {
 			oprstack = append(oprstack, thischar)
 			exprstack = append(exprstack, curr)
 			curr = Epsilon()
+			if thischar == '(' && len(rexpr) > 0 && rexpr[0] == '?' {
+				return nil, ParseError{
+					orgstr, "'(?...' unimplemented"}
+			}
 			continue // don't check/allow postfix replication
 
 		case ')':
@@ -138,11 +142,11 @@ func replicate(d Node, p string) (Node, string) {
 	}
 	switch p[0] {
 	case '?':
-		return ReplNode{0, 1, d}, p[1:]
+		return replval(0, 1, d, p[1:])
 	case '*':
-		return ReplNode{0, -1, d}, p[1:]
+		return replval(0, -1, d, p[1:])
 	case '+':
-		return ReplNode{1, -1, d}, p[1:]
+		return replval(1, -1, d, p[1:])
 	case '{':
 		result := replx.FindStringSubmatch(p)
 		if result == nil {
@@ -152,19 +156,29 @@ func replicate(d Node, p string) (Node, string) {
 		minrep, err1 := strconv.Atoi(result[1])
 		maxrep, err3 := strconv.Atoi(result[3])
 		if err1 == nil && err3 == nil && minrep <= maxrep { // {n,m}
-			return ReplNode{minrep, maxrep, d}, p
+			return replval(minrep, maxrep, d, p)
 		}
 		if err1 == nil && len(result[3]) == 0 {
 			if len(result[2]) == 1 { // {n,}
-				return ReplNode{minrep, -1, d}, p
+				return replval(minrep, -1, d, p)
 			} else { // {n}
-				return ReplNode{minrep, minrep, d}, p
+				return replval(minrep, minrep, d, p)
 			}
 		}
 		return nil, "malformed '{m,n}'"
 
 	default:
 		return d, p
+	}
+}
+
+// replval constructs the return value for replicate and checks for
+// an unimplemented "prefer fewer" postfix '?'
+func replval(min int, max int, d Node, remdr string) (Node, string) {
+	if len(remdr) > 0 && remdr[0] == '?' {
+		return nil, "prefer-fewer '?' unimplemented"
+	} else {
+		return ReplNode{min, max, d}, remdr
 	}
 }
 
