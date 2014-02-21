@@ -52,9 +52,9 @@ func main() {
 			continue
 		}
 		fmt.Printf("regexp: %s\n", spec)
-		t := rx.Parse(spec)
-		if t == nil {
-			fmt.Println("(ERROR)")
+		t, e := rx.Parse(spec)
+		if e != nil {
+			fmt.Println("ERROR: ", e)
 			continue
 		}
 		fmt.Printf("tree:   %v\n", t)

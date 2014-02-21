@@ -12,6 +12,8 @@ var _ = fmt.Printf //#%#% for debugging
 //  computed set of characters and the remaining unprocessed part of s.
 //  It assumes the introductory '[' has already been stripped from s.
 //
+//  If an error is found, Bracketx returns (nil, errmsg).
+//
 //  Implements:  [abc] [^abc] [a-c] [\x]
 func Bracketx(s string) (*Cset, string) {
 
@@ -61,9 +63,7 @@ func Bracketx(s string) (*Cset, string) {
 		}
 		cprev = ch
 	}
-	// #%#% ERROR: no terminating ']'
-	// for now, just treat as "[][]" (a cset of two chars ']' and '[')
-	return NewCset("[]"), s
+	return nil, "unclosed '['"
 }
 
 var dset, sset, wset, dcompl, scompl, wcompl *Cset

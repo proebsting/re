@@ -9,24 +9,25 @@ import (
 	"strconv"
 )
 
-var _ = fmt.Printf //#%#% for debugging
-
 // oprstack and exprstack are stacks that move in synchrony
 var oprstack []byte  // operators associated with pushed expressions
 var exprstack []Node // stack of pushed expressions
 
 //  Parse parses a regular expression and returns a return tree of Nodes.
-//  Implements:
+//  If there is an error, it returns nil (and an error).
+//
+//  Parse implements these forms:
 //	abc  a|b|c  a(b|c)d
 //	a?  b*  c+  d{m,n}
 //	.  \d  \s  \w  [...]
-func Parse(rexpr string) Node {
+func Parse(rexpr string) (Node, error) {
 
 	var curr Node               // current parse tree
 	var lside, rside Node       // left and right side subtrees
 	curr = Epsilon()            // initialize empty parse tree
 	oprstack = make([]byte, 0)  // initialize empty operator stack
 	exprstack = make([]Node, 0) // initialize empty expresion stack
+	orgstr := rexpr             // save original string
 
 	for len(rexpr) > 0 { // for every character in regexp
 		// invariant: curr holds the parse tree completed so far
@@ -59,16 +60,22 @@ func Parse(rexpr string) Node {
 				exprstack = exprstack[0:j] // pop stack
 				oprstack = oprstack[0:j]   // pop opr
 				rside, rexpr = replicate(curr, rexpr)
+				if rside == nil {
+					return nil, ParseError{orgstr, rexpr}
+				}
 				curr = Concatenate(lside, rside)
 				continue
 			}
-			// #%#%#% ERROR: no preceding '('!  #%#% need to handle
-			rside = Epsilon()
+			// no preceding '('!
+			return nil, ParseError{orgstr, "unmatched ')'"}
 
 		case '[':
 			// bracket expression
 			var cset *Cset
 			cset, rexpr = Bracketx(rexpr)
+			if cset == nil {
+				return nil, ParseError{orgstr, rexpr}
+			}
 			rside = MatchNode{cset}
 
 		case '.': //#%#%#% no chars above 0x7F; this is a bug
@@ -83,8 +90,7 @@ func Parse(rexpr string) Node {
 				rside = MatchNode{cset}
 				rexpr = rexpr[1:]
 			} else {
-				//#%#%#% ERROR, \ at end
-				rside = Epsilon()
+				return nil, ParseError{orgstr, "'\\' at end"}
 			}
 		default:
 			// single literal character
@@ -93,12 +99,17 @@ func Parse(rexpr string) Node {
 
 		// common code for handling postfix replication
 		rside, rexpr = replicate(rside, rexpr)
+		if rside == nil {
+			return nil, ParseError{orgstr, rexpr}
+		}
 		curr = Concatenate(curr, rside)
 	}
 
 	curr = popAlts(curr) // check unpopped alternatives at end of string
-	//#%#%#% should then check that stack is now empty (no unclosed parens)
-	return curr
+	if len(oprstack) > 0 {
+		return nil, ParseError{orgstr, "unclosed '('"}
+	}
+	return curr, nil
 }
 
 //  pops all consecutive alternatives from the operator/expression stacks
@@ -114,9 +125,10 @@ func popAlts(d Node) Node {
 
 var replx = regexp.MustCompile("{(\\d*)(,?)(\\d*)}") // expr for {n,m}
 
-//  wrap a replication node around a subtree if followed by posfix ?, *, +
-//  always return resulting node and remaining string
-
+//  Replicate wraps a replication node around a subtree if it is followed by
+//  posfix ?, *, +, or {m,n}.  It normally returns the resulting tree and
+//  remaining string (both unmodified in the absence of postfix replication).
+//  If there is an error in {m,n}, Replicate returns (nil, errmsg).
 func replicate(d Node, p string) (Node, string) {
 	if len(p) == 0 {
 		return d, p
@@ -131,8 +143,7 @@ func replicate(d Node, p string) (Node, string) {
 	case '{':
 		result := replx.FindStringSubmatch(p)
 		if result == nil {
-			// #%#%#%#% error: badly formatted {...
-			return d, p // ignore, return original state
+			return nil, "malformed '{m,n}'"
 		}
 		p = p[len(result[0]):] // remove matched pattern
 		minrep, err1 := strconv.Atoi(result[1])
@@ -147,10 +158,19 @@ func replicate(d Node, p string) (Node, string) {
 				return ReplNode{minrep, minrep, d}, p
 			}
 		}
-		//#%#% ERROR: treat as {1,1}
-		return ReplNode{1, 1, d}, p
+		return nil, "malformed '{m,n}'"
 
 	default:
 		return d, p
 	}
+}
+
+// ParseError diagnoses a malformed regular expression
+type ParseError struct {
+	BadExpr string
+	Message string
+}
+
+func (e ParseError) Error() string {
+	return fmt.Sprintf("rx: %s: in \"%s\"", e.Message, e.BadExpr)
 }

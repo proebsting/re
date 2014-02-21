@@ -1,6 +1,5 @@
 RX TODO
 
-2.  Figure out how to handle errors.
 3.  Detect unimplemented constructs as errors.
 4.  Add  ^  \b  $  anchors
 5.  Check against larger collection of regexps.
