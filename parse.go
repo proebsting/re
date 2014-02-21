@@ -22,8 +22,10 @@ var exprstack []Node // stack of pushed expressions
 //	.  \d  \s  \w  [...]
 func Parse(rexpr string) (Node, error) {
 
-	var curr Node               // current parse tree
-	var lside, rside Node       // left and right side subtrees
+	var curr Node         // current parse tree
+	var lside, rside Node // left and right side subtrees
+	var cset *Cset        // computed character set
+
 	curr = Epsilon()            // initialize empty parse tree
 	oprstack = make([]byte, 0)  // initialize empty operator stack
 	exprstack = make([]Node, 0) // initialize empty expresion stack
@@ -71,7 +73,6 @@ func Parse(rexpr string) (Node, error) {
 
 		case '[':
 			// bracket expression
-			var cset *Cset
 			cset, rexpr = Bracketx(rexpr)
 			if cset == nil {
 				return nil, ParseError{orgstr, rexpr}
@@ -80,15 +81,17 @@ func Parse(rexpr string) (Node, error) {
 
 		case '.': //#%#%#% no chars above 0x7F; this is a bug
 			// wild character
-			cset, _ := Bracketx("\x01-\x7F]")
+			cset, _ = Bracketx("\x01-\x7F]")
 			rside = MatchNode{cset}
 
 		case '\\':
 			// escaped character
 			if len(rexpr) > 0 {
-				cset := Escape(rexpr[0])
+				cset, rexpr = Escape(rexpr)
+				if cset == nil {
+					return nil, ParseError{orgstr, rexpr}
+				}
 				rside = MatchNode{cset}
-				rexpr = rexpr[1:]
 			} else {
 				return nil, ParseError{orgstr, "'\\' at end"}
 			}

@@ -19,6 +19,7 @@ func Bracketx(s string) (*Cset, string) {
 
 	result := &Cset{}
 	compl := false
+
 	// check for initial '^'
 	if len(s) > 0 && s[0] == '^' {
 		compl = true
@@ -54,8 +55,12 @@ func Bracketx(s string) (*Cset, string) {
 			}
 		case '\\':
 			if len(s) > 0 {
-				result = result.Or(Escape(s[0]))
-				s = s[1:]
+				var eset *Cset
+				eset, s = Escape(s)
+				if eset == nil {
+					return nil, s
+				}
+				result = result.Or(eset)
 			} // else: error caught on next iteration
 		default:
 			// an ordinary char; add to set
@@ -78,40 +83,48 @@ func init() {
 
 }
 
-//  Escape returns the set of characters to be matched by \c inside
-//  a bracket expression.  In this context \b is a backspace.
-func Escape(c byte) *Cset {
+//  Escape interprets a backslash sequence in the context of a bracket
+//  expression from which the initial \ has already been consumed.
+//  In this context \b is a backspace.  Escape returns the computed
+//  cset and the remaining unescaped portion of the string.
+//  If an error is found, Escape returns (nil, errmsg).
+func Escape(s string) (*Cset, string) {
+	if len(s) == 0 {
+		return nil, "'\\' at end"
+	}
+	c := s[0]
+	s = s[1:]
 	switch c {
 	case 'a':
-		return (&Cset{}).Set('\a')
+		return (&Cset{}).Set('\a'), s
 	case 'b':
-		return (&Cset{}).Set('\b')
+		return (&Cset{}).Set('\b'), s
 	case 'd':
-		return dset
+		return dset, s
 	case 'e':
-		return (&Cset{}).Set('\033')
+		return (&Cset{}).Set('\033'), s
 	case 'f':
-		return (&Cset{}).Set('\f')
+		return (&Cset{}).Set('\f'), s
 	case 'n':
-		return (&Cset{}).Set('\n')
+		return (&Cset{}).Set('\n'), s
 	case 'r':
-		return (&Cset{}).Set('\r')
+		return (&Cset{}).Set('\r'), s
 	case 's':
-		return sset
+		return sset, s
 	case 't':
-		return (&Cset{}).Set('\t')
+		return (&Cset{}).Set('\t'), s
 	case 'v':
-		return (&Cset{}).Set('\v')
+		return (&Cset{}).Set('\v'), s
 	case 'w':
-		return wset
+		return wset, s
 	case 'D':
-		return dcompl
+		return dcompl, s
 	case 'S':
-		return scompl
+		return scompl, s
 	case 'W':
-		return wcompl
+		return wcompl, s
 
 	default:
-		return (&Cset{}).Set(uint(c))
+		return (&Cset{}).Set(uint(c)), s
 	}
 }
