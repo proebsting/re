@@ -9,6 +9,8 @@ import (
 	"strconv"
 )
 
+var _ = fmt.Printf //#%#% for debugging
+
 // oprstack and exprstack are stacks that move in synchrony
 var oprstack []byte  // operators associated with pushed expressions
 var exprstack []Node // stack of pushed expressions
@@ -152,5 +154,3 @@ func replicate(d Node, p string) (Node, string) {
 		return d, p
 	}
 }
-
-func unneeded() { fmt.Println(00) } //#%#% just to ensure a fmt reference

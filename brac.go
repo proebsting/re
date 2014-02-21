@@ -6,6 +6,8 @@ import (
 	"fmt"
 )
 
+var _ = fmt.Printf //#%#% for debugging
+
 //  Bracketx parses a string as a bracket expression, returning the
 //  computed set of characters and the remaining unprocessed part of s.
 //  It assumes the introductory '[' has already been stripped from s.
@@ -114,5 +116,3 @@ func Escape(c byte) *Cset {
 		return (&Cset{}).Set(uint(c))
 	}
 }
-
-func unwanted() { fmt.Println(00) } //#%#% just to ensure a fmt reference
