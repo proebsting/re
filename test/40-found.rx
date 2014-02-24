@@ -2,3 +2,5 @@
 #
 # http://www.regular-expressions.info/ (main page) "any email address"
 [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
+# http://www.regular-expressions.info/email.html (final example)
+[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)

@@ -1,0 +1,92 @@
+
+# "8 Regular Expressions You Should Know" by Vasili    sampled 24-feb-2014
+
+# code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
+
+#
+
+# 1. Matching a Username
+
+regexp: [a-z0-9_-]{3,16}
+tree:   ([-0-9_a-z]{3,16})
+length: 3 to 16
+ex(0):  _eg  66a  vfq  7x6  14f  nbf  trl  bkp  3lk  3-e  rg0  7c7  1m-  3ps
+ex(1):  y04  nf-  i5h  bqf  mlt  bnm  _8r  cvp  22j  bj0  juk  -dw  6tk  tq_
+ex(2):  _-e  1or  e0y  dmd  v43  qt7  jc-  5c6  5au  _3i  38f  ton  yqs  urw
+ex(3):  608  h-0  alq  j3d  _7n  py-  qoh  t42  kob  imi  34e  vbn  ab_  ut_
+ex(5):  _khr  z5ku  spzln  2av  p1i  mr8yd  8cyv  xpkz  szy  ml7  zdoyp  8xr8
+ex(8):  w89  lssxd9  x1w-7a  i6cq8-b  v0t1bye  b3ek8t  xbyegk  x41c2sbu  kin
+
+#
+
+# 2. Matching a Password
+
+regexp: [a-z0-9_-]{6,18}$
+tree:   ([-0-9_a-z]{6,18}$)
+length: 7 to 19
+ex(0):  _eg66a$  vfq7x6$  14fnbf$  trlbkp$  3lk3-e$  rg07c7$  1m-3ps$  93uy04$
+ex(1):  bqfmlt$  bnm_8r$  cvp22j$  bj0juk$  -dw6tk$  tq_jys$  _-e1or$  e0ydmd$
+ex(2):  jc-5c6$  5au_3i$  38fton$  yqsurw$  qzd608$  h-0alq$  j3d_7n$  py-qoh$
+ex(3):  imi34e$  vbnab_$  ut_tkj$  eiar-s$  pa97jj$  ixj8ji$  kja7lo$  1v9sjq$
+ex(5):  tj9rx3$  5h-r_a$  i8gze7$  h7n0k_$  7hs_dw$  v865qy$  xj9md1$  s9b0x8$
+ex(8):  z5onztl5$  k6_f66sa$  b7n-jd$  s99ji-9$  -rreoicu$  fkd0bx$  wbg3sa$
+
+#
+
+# 3. Matching a Hex Value  [a color spec, apparently?]
+
+regexp:  #?([a-f0-9]{6}|[a-f0-9]{3})
+tree:   ( #?(([0-9a-f]{6})|([0-9a-f]{3})))
+length: 4 to 8
+ex(0):   7f4   159   e51   9aa   b86   3bbd62   50c   255888   753   14fcc7
+ex(1):   #9ec77d   #b3c772   #b3d9eb   58f985   #ec7   0c31f9   e61   #c28
+ex(2):   c5222b   e5b8c4   d51   #72f   d98   #8db6ea   #01b   #880   #059
+ex(3):   7e2   #26e   9af   9daf5e   #e8a   #2724d2   e36201   cf377d   1820f3
+ex(5):   #ccb   #4c466e   131   #1dd   dd514e   8c4   b566c1   8a7   3c3   1fc
+ex(8):   #67e   1a9   #e4b   #40bd4b   a19   9e3   #10f   99f   #4f2   #8af
+
+# 4. Matching a Slug
+
+regexp: [a-z0-9-]+
+tree:   ([-0-9a-z]+)
+length: 1 to *
+ex(0):  9  -  i  p  e  8  9  9  j  w  9  x  0  o  3  m  f  v  o  r  w  2  4  7
+ex(1):  f  m  3  m  8  2  -  x  j  r  z  9  0  3  9  d  5  f  3  d  w  s  4  j
+ex(2):  q4  -  7n  3  1i  ok  xz  v  u  7  y  dx  1k  yv  46  gh  9q  -  7  y7
+ex(3):  wa  0ei  s34  62k  nro  z  gf0  sdh  i7  og2  a  8tl  66  jm  m  vh  92
+ex(5):  6c  fkmg  sf3  sb0l  e  nh265  ixbzd  8e1  cqybe  ha-3  1jp  kve  h5
+ex(8):  b  f3pmcgrp  -2df3r-  dcg  -z8lc  q9is1  o  bdm  rzrcjn8y  oj  d5ku74ge
+
+# 5. Matching an Email
+
+regexp: ([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})
+tree:   (([-.0-9_a-z]+)@([-.0-9a-z]+).([.a-z]{2,6}))
+length: 6 to *
+ex(0):  _@u.jj  a@x.gp  -@c.ci  c@9.ap  .@s.mp  3@w.bk  e@z.ad  r@d.tf  i@e.ss
+ex(1):  n@l.on  8@8.eq  f@6.ss  g@o.ua  b@5.kq  m@7.tp  h@0.zg  c@b.dz  n@7.to
+ex(2):  4_@8.iu  7@82.fe  e@nv.gs  qg@4.gm  jq@v.bb  f2@80.wb  k@z4.rx  uk@-.jg
+ex(3):  l4o@o.zg  3@2.hv  l@a6.ux  3@tb.awl  s@8xb.o.z  rr@1i-.pu  v@v.fps
+ex(5):  51-@g1wa.tydlf  k@bks.gae  nyy@8.rqka  vx@rf.er  _warz@b6u.enav.
+ex(8):  p8fdk@r66z.xvg  frmvyj@gf5q.evkll  eede6@zs.nfg  1ntae-m1@a48.kzdmsi
+
+# 6. Matching a URL
+
+regexp: (https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?
+tree:   ((https?://)?([-.0-9a-z]+).([.a-z]{2,6})([ --9A-Z_a-z]*)*/?)
+length: 4 to *
+ex(0):  9.ey  q.je  i.qo  a.ou  i...  w.pc  0.ug  7.kp  w.gy  i.dg  t.dg  c.i.
+ex(1):  s.nt  https://7.jm  http://o.sg  https://m.xvN/  https://f.vqJ  k.am/
+ex(2):  https://7.tpU  http://9c.wn  d.axXBr  dd.mj/  http://29.ua7/
+ex(3):  vro.lvn  http://i7.uz  n3.znt1SRh  http://..aa  https://7.hplg0Ubx
+ex(5):  v.udobrSNoT7/  u.tigdzH5a/  https://off.dof5O6z87  v.senao9e//
+ex(8):  m.uzjiq3RaqelH9VSiY/  t4lzaou.oitEJknZ.r5cQYlXMFrOz0Pc.g
+
+# 7. Matching an IP Address
+
+regexp: (?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)
+ERROR:  rx: '(?...' unimplemented: in "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
+
+# 8. Matching an HTML Tag
+
+regexp: <([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)
+ERROR:  rx: '(?...' unimplemented: in "<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)"

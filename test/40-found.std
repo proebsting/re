@@ -1,0 +1,21 @@
+
+# Miscellaneous samples from the web
+
+#
+
+# http://www.regular-expressions.info/ (main page) "any email address"
+
+regexp: [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
+tree:   ([%+-.0-9A-Z_]+@[-.0-9A-Z]+.[A-Z]{2,4})
+length: 6 to *
+ex(0):  A@2.TO  %@A.JQ  -@A.UI  +@K.CR  .@I.OT  3@W.WQ  F@Y.SG  S@0.LO  J@K.WZ
+ex(1):  O@3.CY  8@3.QY  G@U.TB  H@..JS  C@M.TG  N@G.GW  I@F.MN  D@C.HO  O@K.GD
+ex(2):  4U@CB.JJ  9S@ML.SP  0V@TK.TK  2@25.OY  %@S.LE  1J@D.IL  8E@O.MX
+ex(3):  K_@1O.CB  LI3@ZB.QN  7F4@E.MP  Z@8.QIF  S%Q@2L.YYR  -H@B.VUJ
+ex(5):  6@HJEZ-.OESI  4PW@8RZ.VM  U3@II.KDYV  40T@JSUKH.ZP  +A7+@8.QGYF
+ex(8):  J@D91ZYHCB.GLD  J@5GW60MK.MO  ZPWPBE@NWC0H.ZLQ  DIML@Y7IG.YT
+
+# http://www.regular-expressions.info/email.html (final example)
+
+regexp: [a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
+ERROR:  rx: '(?...' unimplemented: in "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)"
