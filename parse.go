@@ -81,12 +81,12 @@ func Parse(rexpr string) (Node, error) {
 			if cset == nil {
 				return nil, ParseError{orgstr, rexpr}
 			}
-			rside = MatchNode{cset}
+			rside = &MatchNode{cset}
 
 		case '.': //#%#%#% no chars above 0x7F; this is a bug
 			// wild character
 			cset, _ = bracketx("\x01-\x7F]")
-			rside = MatchNode{cset}
+			rside = &MatchNode{cset}
 
 		case '\\':
 			rside, rexpr = rescape(rexpr)
@@ -95,7 +95,7 @@ func Parse(rexpr string) (Node, error) {
 			}
 		default:
 			// single literal character
-			rside = MatchNode{NewCset(string(thischar))}
+			rside = &MatchNode{NewCset(string(thischar))}
 		}
 
 		// common code for handling postfix replication
@@ -185,7 +185,7 @@ func replval(min int, max int, d Node, remdr string) (Node, string) {
 	if len(remdr) > 0 && remdr[0] == '?' {
 		return nil, "prefer-fewer '?' unimplemented"
 	} else {
-		return ReplNode{min, max, d}, remdr
+		return &ReplNode{min, max, d}, remdr
 	}
 }
 
@@ -211,7 +211,7 @@ func rescape(rexpr string) (Node, string) {
 		if cset == nil {
 			return nil, rexpr
 		}
-		return MatchNode{cset}, rexpr
+		return &MatchNode{cset}, rexpr
 	}
 }
 
