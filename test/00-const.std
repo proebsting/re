@@ -71,12 +71,12 @@ ex(3):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(5):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(8):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 
-regexp: __\a__\b__\e__\f__\n__\r__\t__\v__
-tree:   (__[\a]__[\b]__[\x1b]__[\f]__[\n]__[\r]__[\t]__[\v]__)
-length: 26 to 26
-ex(0):  __\a__\b__\x1b__\f__\n__\r__\t__\v__
-ex(1):  __\a__\b__\x1b__\f__\n__\r__\t__\v__
-ex(2):  __\a__\b__\x1b__\f__\n__\r__\t__\v__
-ex(3):  __\a__\b__\x1b__\f__\n__\r__\t__\v__
-ex(5):  __\a__\b__\x1b__\f__\n__\r__\t__\v__
-ex(8):  __\a__\b__\x1b__\f__\n__\r__\t__\v__
+regexp: __\a__\e__\f__\n__\r__\t__\v__
+tree:   (__[\a]__[\x1b]__[\f]__[\n]__[\r]__[\t]__[\v]__)
+length: 23 to 23
+ex(0):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
+ex(1):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
+ex(2):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
+ex(3):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
+ex(5):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
+ex(8):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__

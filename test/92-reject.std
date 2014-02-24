@@ -72,3 +72,15 @@ ERROR:  rx: prefer-fewer '?' unimplemented: in "a+?b"
 
 regexp: (abc)*?
 ERROR:  rx: prefer-fewer '?' unimplemented: in "(abc)*?"
+
+regexp: abc\b.*
+ERROR:  rx: \b (boundary) unimplemented: in "abc\b.*"
+
+regexp: (ab)cd\1
+ERROR:  rx: \1 (backref) unimplemented: in "(ab)cd\1"
+
+regexp: (ab)cd\5
+ERROR:  rx: \5 (backref) unimplemented: in "(ab)cd\5"
+
+regexp: (ab)cd\9
+ERROR:  rx: \9 (backref) unimplemented: in "(ab)cd\9"

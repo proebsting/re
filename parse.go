@@ -77,7 +77,7 @@ func Parse(rexpr string) (Node, error) {
 
 		case '[':
 			// bracket expression
-			cset, rexpr = Bracketx(rexpr)
+			cset, rexpr = bracketx(rexpr)
 			if cset == nil {
 				return nil, ParseError{orgstr, rexpr}
 			}
@@ -85,19 +85,13 @@ func Parse(rexpr string) (Node, error) {
 
 		case '.': //#%#%#% no chars above 0x7F; this is a bug
 			// wild character
-			cset, _ = Bracketx("\x01-\x7F]")
+			cset, _ = bracketx("\x01-\x7F]")
 			rside = MatchNode{cset}
 
 		case '\\':
-			// escaped character
-			if len(rexpr) > 0 {
-				cset, rexpr = Escape(rexpr)
-				if cset == nil {
-					return nil, ParseError{orgstr, rexpr}
-				}
-				rside = MatchNode{cset}
-			} else {
-				return nil, ParseError{orgstr, "'\\' at end"}
+			rside, rexpr = rescape(rexpr)
+			if rside == nil {
+				return nil, ParseError{orgstr, rexpr}
 			}
 		default:
 			// single literal character
@@ -129,6 +123,19 @@ func popAlts(d Node) Node {
 	}
 	return d
 }
+
+//  Helper functions that consume additional regexp characters follow
+//  this convention:  They accept the current remaining portion of the
+//  regexp as a string parameter (possibly not the only parameter)
+//  and they return a tuple where the second part gives the updated
+//  string of remaining characters.  The first part of the tuple is
+//  the "primary" function return, for example a Node.
+//
+//  If an error is detected, however, they signal this by returning
+//  nil as the primary return; and in this case the second return
+//  value is the error message.
+//
+//  This applies to:  replicate(), rescape(), bracketx(), and bescape().
 
 var replx = regexp.MustCompile("{(\\d*)(,?)(\\d*)}") // expr for {n,m}
 
@@ -179,6 +186,32 @@ func replval(min int, max int, d Node, remdr string) (Node, string) {
 		return nil, "prefer-fewer '?' unimplemented"
 	} else {
 		return ReplNode{min, max, d}, remdr
+	}
+}
+
+//  Rescape handles a backslash encountered at the regexxp level
+//  (not inside a bracket expression).  It assumes the backslash
+//  has already consumed, and returns the resulting Node and the
+//  updated string after processing the escaped characters.
+//  In case of error it returns (nil, errmsg).
+func rescape(rexpr string) (Node, string) {
+	if len(rexpr) == 0 {
+		return nil, "'\\' at end"
+	}
+	ch := rexpr[0]
+	switch ch {
+	case 'b':
+		return nil, "\\b (boundary) unimplemented"
+	case '1', '2', '3', '4', '5', '6', '7', '8', '9':
+		return nil, fmt.Sprintf("\\%c (backref) unimplemented", ch)
+	default:
+		//#%#% need to check first for \b \1 etc
+		var cset *Cset
+		cset, rexpr = bescape(rexpr)
+		if cset == nil {
+			return nil, rexpr
+		}
+		return MatchNode{cset}, rexpr
 	}
 }
 

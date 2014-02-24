@@ -23,3 +23,7 @@ a??b
 a*?b
 a+?b
 (abc)*?
+abc\b.*
+(ab)cd\1
+(ab)cd\5
+(ab)cd\9

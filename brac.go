@@ -13,10 +13,10 @@ var _ = fmt.Printf //#%#% for debugging
 //  computed set of characters and the remaining unprocessed part of s.
 //  It assumes the introductory '[' has already been stripped from s.
 //
-//  If an error is found, Bracketx returns (nil, errmsg).
+//  If an error is found, bracketx returns (nil, errmsg).
 //
 //  Implements:  [abc] [^abc] [a-c] [\x]
-func Bracketx(s string) (*Cset, string) {
+func bracketx(s string) (*Cset, string) {
 
 	result := &Cset{}
 	compl := false
@@ -65,7 +65,7 @@ func Bracketx(s string) (*Cset, string) {
 		case '\\':
 			if len(s) > 0 {
 				var eset *Cset
-				eset, s = Escape(s)
+				eset, s = bescape(s)
 				if eset == nil {
 					return nil, s
 				}
@@ -92,12 +92,12 @@ func init() {
 
 }
 
-//  Escape interprets a backslash sequence in the context of a bracket
+//  Bescape interprets a backslash sequence in the context of a bracket
 //  expression from which the initial \ has already been consumed.
-//  In this context \b is a backspace.  Escape returns the computed
+//  In this context \b is a backspace.  Bescape returns the computed
 //  cset and the remaining unescaped portion of the string.
-//  If an error is found, Escape returns (nil, errmsg).
-func Escape(s string) (*Cset, string) {
+//  If an error is found, bescape returns (nil, errmsg).
+func bescape(s string) (*Cset, string) {
 	if len(s) == 0 {
 		return nil, "'\\' at end"
 	}
