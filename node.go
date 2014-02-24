@@ -56,7 +56,7 @@ func (d ConcatNode) MinLen() int {
 	return n
 }
 
-//  ConcatNode.MinLen sums the max lengths of its subpatterns.
+//  ConcatNode.MaxLen sums the max lengths of its subpatterns.
 //  A value of -1 means that the length is unbounded.
 func (d ConcatNode) MaxLen() int {
 	n := 0
