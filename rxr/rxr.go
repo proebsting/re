@@ -1,8 +1,9 @@
 /*
 	rxr.go -- regular expression reader
 
-	usage:  rxr [-Z] [exprfile]
+	usage:  rxr [-A] [-Z] [exprfile]
 
+	-A	disable printing of automata details
 	-Z	reset random seed for each regexp (for testing consistency)
 
 	Rxr reads regular expressions, one per line, from efile.
@@ -31,6 +32,7 @@ import (
 )
 
 func main() {
+	aflag := flag.Bool("A", false, "disable automata printing")
 	zflag := flag.Bool("Z", false, "reset ranseed before each rx")
 	flag.Parse()
 	var efile *bufio.Scanner
@@ -74,6 +76,9 @@ func main() {
 		examples(t, 3) // ... and 3
 		examples(t, 5) // ... and 5
 		examples(t, 8) // ... and 8
+		if ! *aflag { // if -A not given, print automata
+			fmt.Println("automata: not yet")
+		}
 	}
 	rx.CkErr(efile.Err())
 }

@@ -9,6 +9,8 @@ Add flags such as "case insensitive"?
 Other Perl stuff?
 etc etc
 
+Add more examples from the real world (esp cswww)
+
 Fix #%#% items
 More consistency in use of pointers vs struct values
 Which funcs really should be capitalized? 
