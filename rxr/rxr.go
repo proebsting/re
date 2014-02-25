@@ -76,8 +76,8 @@ func main() {
 		examples(t, 3) // ... and 3
 		examples(t, 5) // ... and 5
 		examples(t, 8) // ... and 8
-		if ! *aflag { // if -A not given, print automata
-			fmt.Println("automata: not yet")
+		if !*aflag {   // if -A not given, print automata
+			bigdump(t)
 		}
 	}
 	rx.CkErr(efile.Err())
@@ -100,4 +100,31 @@ func examples(x rx.Node, n int) {
 		fmt.Printf("  %s", s)
 	}
 	fmt.Println()
+}
+
+//  Bigdump prints details of the parse tree.
+func bigdump(x rx.Node) {
+	indent := ""
+	x.Walk(&indent, previsit, postvisit)
+}
+
+func previsit(d rx.Node, v interface{}) {
+	indent := v.(*string)
+	*indent = *indent + "  "
+	a := d.Data()
+	fmt.Printf("%snode: {%t, ", (*indent)[2:], a.Nullable)
+	for _, e := range a.FirstPos {
+		fmt.Print(e)
+	}
+	fmt.Print(", ")
+	for _, e := range a.LastPos {
+		fmt.Print(e)
+	}
+	fmt.Println("}", d)
+
+}
+
+func postvisit(d rx.Node, v interface{}) {
+	indent := v.(*string)
+	*indent = (*indent)[2:]
 }

@@ -8,16 +8,57 @@ import (
 )
 
 //  Node is the "parent class" of all parse tree node subtypes.
-type Node interface { // "parent class" of Node subtypes
-	MinLen() int                // minimum length matched (0 if nullable)
-	MaxLen() int                // maximum length matched (-1 for infinity)
-	Example([]byte, int) []byte // append random synthesized example
-	// (the int arg gives max replication)
+type Node interface {
+	Data() *NodeData                                   // return NodeData pointer
+	Walk(v interface{}, pre VisitFunc, post VisitFunc) // walk tree, calling pre/post visit funcs
+	MinLen() int                                       // minimum length matched (0 if nullable)
+	MaxLen() int                                       // maximum length matched (-1 for infinity)
+	Example([]byte, int) []byte                        // append random synthesized example
+	SetNFL()                                           // set Nullable, FirstPos, LastPos
 }
+
+//#%#% some of the appends in FirstPos/LastPos calcs should really be unions;
+//#%#% but they may later change to Cset types anyway, so this will do for now.
+
+//  NodeData is included (anonymously) in every Node subtype.
+type NodeData struct {
+	Nullable  bool   // can this subtree match an empty string?
+	FirstPos  []Node // set of legal first characters
+	LastPos   []Node // set of legal last characters
+	FollowPos []Node // positions that can follow in DFA
+}
+
+var nildata = NodeData{} // convenient for initilization
+
+//  VisitFunc is a type for visiting tree nodes and passing an arbitrary value.
+type VisitFunc func(d Node, v interface{})
+
+//  Epsilon returns an empty concatenation that matches an empty string.
+func Epsilon() Node {
+	return &ConcatNode{Parts: make([]Node, 0)}
+}
+
+//---------------------------------------------------------------------------
 
 //  MatchNode matches exactly one character from a predefined set.
 type MatchNode struct {
 	cset *Cset // the characters that will match
+	NodeData
+}
+
+//  MatchNode.Data returns a pointer to the embedded NodeData struct.
+func (d *MatchNode) Data() *NodeData { return &d.NodeData }
+
+//  MatchNode.Walk visits nodes in a subtree, calling functions pre and/or post,
+//  if non-nil, before and after walking this node's children.
+func (d *MatchNode) Walk(v interface{}, pre VisitFunc, post VisitFunc) {
+	if pre != nil {
+		pre(d, v)
+	}
+	// no children
+	if post != nil {
+		post(d, v)
+	}
 }
 
 //  MatchNode.MinLen always returns 1.
@@ -25,6 +66,13 @@ func (d *MatchNode) MinLen() int { return 1 }
 
 //  MatchNode.MaxLen always returns 1.
 func (d *MatchNode) MaxLen() int { return 1 }
+
+//  MatchNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
+func (d *MatchNode) SetNFL() {
+	d.Nullable = false
+	d.FirstPos = []Node{d}
+	d.LastPos = []Node{d}
+}
 
 //  MatchNode.Example appends a single randomly chosen matching character.
 func (d *MatchNode) Example(s []byte, n int) []byte {
@@ -42,9 +90,29 @@ func (d *MatchNode) String() string {
 	}
 }
 
+//---------------------------------------------------------------------------
+
 //  ConcatNode matches a concatenation of subpatterns.
 type ConcatNode struct {
 	Parts []Node
+	NodeData
+}
+
+//  ConcatNode.Data returns a pointer to the embedded NodeData struct.
+func (d *ConcatNode) Data() *NodeData { return &d.NodeData }
+
+//  ConcatNode.Walk visits nodes in a subtree, calling functions pre and/or post,
+//  if non-nil, before and after walking this node's children.
+func (d *ConcatNode) Walk(v interface{}, pre VisitFunc, post VisitFunc) {
+	if pre != nil {
+		pre(d, v)
+	}
+	for _, c := range d.Parts {
+		c.Walk(v, pre, post)
+	}
+	if post != nil {
+		post(d, v)
+	}
 }
 
 //  ConcatNode.MinLen sums the min lengths of its subpatterns.
@@ -68,6 +136,25 @@ func (d *ConcatNode) MaxLen() int {
 		n += l
 	}
 	return n
+}
+
+//  ConcatNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
+func (d *ConcatNode) SetNFL() {
+	d.Nullable = true
+	d.FirstPos = []Node{}
+	d.LastPos = []Node{}
+	for _, e := range d.Parts {
+		e.SetNFL()
+		if d.Nullable { // if nullable so far...
+			d.FirstPos = append(d.FirstPos, e.Data().FirstPos...)
+		}
+		if e.Data().Nullable {
+			d.LastPos = append(d.LastPos, e.Data().LastPos...)
+		} else {
+			d.LastPos = e.Data().LastPos
+		}
+		d.Nullable = d.Nullable && e.Data().Nullable
+	}
 }
 
 //  ConcatNode.Example appends one example from each subpattern.
@@ -103,18 +190,33 @@ func Concatenate(d Node, e Node) Node { // return smart concatenation
 		return lcat
 	} else {
 		a := make([]Node, 0)
-		return &ConcatNode{append(a, d, e)}
+		return &ConcatNode{append(a, d, e), nildata}
 	}
 }
 
-//  Epsilon returns an empty concatenation that matches an empty string.
-func Epsilon() Node {
-	return &ConcatNode{Parts: make([]Node, 0)}
-}
+//---------------------------------------------------------------------------
 
 //  AltNode represents two or more choices in a pattern: ab|pq|xy.
 type AltNode struct {
 	Alts []Node
+	NodeData
+}
+
+//  AltNode.Data returns a pointer to the embedded NodeData struct.
+func (d *AltNode) Data() *NodeData { return &d.NodeData }
+
+//  AltNode.Walk visits nodes in a subtree, calling functions pre and/or post,
+//  if non-nil, before and after walking this node's children.
+func (d *AltNode) Walk(v interface{}, pre VisitFunc, post VisitFunc) {
+	if pre != nil {
+		pre(d, v)
+	}
+	for _, c := range d.Alts {
+		c.Walk(v, pre, post)
+	}
+	if post != nil {
+		post(d, v)
+	}
 }
 
 //  AltNode.MinLen returns the smallest minimum of its subpatterns.
@@ -143,6 +245,19 @@ func (d *AltNode) MaxLen() int {
 		}
 	}
 	return n
+}
+
+//  AltNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
+func (d *AltNode) SetNFL() {
+	d.Nullable = false
+	d.FirstPos = []Node{}
+	d.LastPos = []Node{}
+	for _, e := range d.Alts {
+		e.SetNFL()
+		d.Nullable = d.Nullable || e.Data().Nullable
+		d.FirstPos = append(d.FirstPos, e.Data().FirstPos...)
+		d.LastPos = append(d.LastPos, e.Data().LastPos...)
+	}
 }
 
 //  AltNode.Example chooses one subpattern to generate an example.
@@ -174,15 +289,33 @@ func Alternate(d Node, e Node) Node {
 		return rside
 	} else {
 		a := make([]Node, 0)
-		return &AltNode{append(a, e, d)}
+		return &AltNode{append(a, e, d), nildata}
 	}
 }
+
+//---------------------------------------------------------------------------
 
 //  ReplNode represents controlled (or not) replication: e?, e+, e*, e{n,m}.
 type ReplNode struct {
 	Min   int  // minimum number of occurrences (0 or 1)
 	Max   int  // maximum (a positive limit, or -1 meaning infinity)
 	Child Node // subpattern being replicated
+	NodeData
+}
+
+//  ReplNode.Data returns a pointer to the embedded NodeData struct.
+func (d *ReplNode) Data() *NodeData { return &d.NodeData }
+
+//  ReplNode.Walk visits nodes in a subtree, calling functions pre and/or post,
+//  if non-nil, before and after walking this node's children.
+func (d *ReplNode) Walk(v interface{}, pre VisitFunc, post VisitFunc) {
+	if pre != nil {
+		pre(d, v)
+	}
+	d.Child.Walk(v, pre, post)
+	if post != nil {
+		post(d, v)
+	}
 }
 
 //  ReplNode.MinLen returns the minimum length after replication.
@@ -201,6 +334,14 @@ func (d *ReplNode) MaxLen() int {
 	} else {
 		return d.Max * n // calculable maximum length
 	}
+}
+
+//  ReplNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
+func (d *ReplNode) SetNFL() {
+	d.Child.SetNFL()
+	d.Nullable = d.Min == 0 || d.Child.Data().Nullable
+	d.FirstPos = d.Child.Data().FirstPos
+	d.LastPos = d.Child.Data().LastPos
 }
 
 //  ReplNode.Example produces an example with maximum replication n.

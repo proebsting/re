@@ -81,12 +81,12 @@ func Parse(rexpr string) (Node, error) {
 			if cset == nil {
 				return nil, ParseError{orgstr, rexpr}
 			}
-			rside = &MatchNode{cset}
+			rside = &MatchNode{cset, nildata}
 
 		case '.': //#%#%#% no chars above 0x7F; this is a bug
 			// wild character
 			cset, _ = bracketx("\x01-\x7F]")
-			rside = &MatchNode{cset}
+			rside = &MatchNode{cset, nildata}
 
 		case '\\':
 			rside, rexpr = rescape(rexpr)
@@ -95,7 +95,7 @@ func Parse(rexpr string) (Node, error) {
 			}
 		default:
 			// single literal character
-			rside = &MatchNode{NewCset(string(thischar))}
+			rside = &MatchNode{NewCset(string(thischar)), nildata}
 		}
 
 		// common code for handling postfix replication
@@ -110,7 +110,9 @@ func Parse(rexpr string) (Node, error) {
 	if len(oprstack) > 0 {
 		return nil, ParseError{orgstr, "unclosed '('"}
 	}
-	return curr, nil
+	// success!
+	curr.SetNFL()    // set Nullable, FirstPos, LastPos values
+	return curr, nil // return parse tree
 }
 
 //  pops all consecutive alternatives from the operator/expression stacks
@@ -185,7 +187,7 @@ func replval(min int, max int, d Node, remdr string) (Node, string) {
 	if len(remdr) > 0 && remdr[0] == '?' {
 		return nil, "prefer-fewer '?' unimplemented"
 	} else {
-		return &ReplNode{min, max, d}, remdr
+		return &ReplNode{min, max, d, nildata}, remdr
 	}
 }
 
@@ -205,13 +207,12 @@ func rescape(rexpr string) (Node, string) {
 	case '1', '2', '3', '4', '5', '6', '7', '8', '9':
 		return nil, fmt.Sprintf("\\%c (backref) unimplemented", ch)
 	default:
-		//#%#% need to check first for \b \1 etc
-		var cset *Cset
-		cset, rexpr = bescape(rexpr)
+		// otherwise meaning is the same as in a bracket expression
+		cset, rexpr := bescape(rexpr)
 		if cset == nil {
 			return nil, rexpr
 		}
-		return &MatchNode{cset}, rexpr
+		return &MatchNode{cset, nildata}, rexpr
 	}
 }
 
