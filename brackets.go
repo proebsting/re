@@ -1,4 +1,4 @@
-//  brac.go -- parsing of bracket expression
+//  bracets.go -- parsing of bracket expression
 
 package rx
 
@@ -83,9 +83,9 @@ func bracketx(s string) (*Cset, string) {
 var dset, sset, wset, dcompl, scompl, wcompl *Cset
 
 func init() {
-	dset = NewCset("0123456789")
-	sset = NewCset("\t\n\v\f\r ")
-	wset = NewCset("0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
+	dset = CharSet("0123456789")
+	sset = CharSet("\t\n\v\f\r ")
+	wset = CharSet("0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
 	dcompl = dset.Compl()
 	scompl = sset.Compl()
 	wcompl = wset.Compl()

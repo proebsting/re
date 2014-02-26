@@ -76,8 +76,11 @@ func main() {
 		examples(t, 3) // ... and 3
 		examples(t, 5) // ... and 5
 		examples(t, 8) // ... and 8
-		if !*aflag {   // if -A not given, print automata
-			bigdump(t)
+
+		_, t = rx.BuildDFA(t) // make DFA, modifying the tree
+		if !*aflag {          // if -A not given, print automata
+			bigdump(t) // first show tree details
+			//#%#% them dump the DFA itself
 		}
 	}
 	rx.CkErr(efile.Err())

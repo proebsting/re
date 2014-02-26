@@ -18,8 +18,8 @@ type Cset struct {
 	//#%#% maybe more later: n, low, high???
 }
 
-//  NewCset makes a Cset from a string of member characters.
-func NewCset(s string) *Cset { // make new cset from string
+//  CharSet makes a Cset from a string of member characters.
+func CharSet(s string) *Cset { // make new cset from string
 	cs := new(Cset)
 	for _, ch := range s {
 		cs.Set(uint(ch))
@@ -84,7 +84,7 @@ func (b Cset) Choose() byte {
 	n := 0                   // number of characters considered
 	h := b.bits.BitLen() - 1 // highest eligible char
 	if h < 0 {
-		return '#' //#%#%#% ERROR cset was empty
+		return '?' //#%#%#% ERROR cset was empty
 	}
 	c := byte(h)  // current working choice
 	if c < 0x7F { // if initial ch is not unwanted DEL,

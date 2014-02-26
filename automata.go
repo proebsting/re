@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-var _ = fmt.Printf	//#%#%#% for debugging
+var _ = fmt.Printf //#%#%#% for debugging
 
 // DFA is a deterministic finite automaton.
 type DFA struct {
@@ -19,7 +19,7 @@ type DFA struct {
 func BuildDFA(tree Node) (*DFA, Node) {
 	//#%#% augment the tree
 	//#%#% split {m,n} nodes as necessary
-	//#%#% number the leaves
-	tree.SetNFL()    // set Nullable, FirstPos, LastPos values
+	//#%#% number the leaves for comprehensible output
+	tree.SetNFL() // set Nullable, FirstPos, LastPos values
 	return nil, tree
 }

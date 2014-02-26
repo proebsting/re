@@ -1,5 +1,7 @@
 //  node.go -- rx parse tree nodes
 
+//  #%#% perhaps this should be broken into multiple files.  but only perhaps.
+
 package rx
 
 import (
@@ -17,6 +19,9 @@ import (
 //  MaxLen()		return maximum length matched (-1 for infinity)
 //  Example(buf,n)	append random synthesized example of max repl n to buf
 //  SetNFL()            set Nullable, FirstPos, LastPos attributes
+//
+//  The four proper subtypes are MatchNode, ConcatNode, ReplNode, and AltNode.
+//  Epsilon and Accept make special ConcatNode and MatchNode forms respectively.
 //
 type Node interface {
 	Data() *NodeData
@@ -40,11 +45,6 @@ var nildata = NodeData{} // convenient for initilization
 //  VisitFunc is a type for visiting tree nodes and passing an arbitrary value.
 type VisitFunc func(d Node, v interface{})
 
-//  Epsilon returns an empty concatenation that matches an empty string.
-func Epsilon() Node {
-	return &ConcatNode{Parts: make([]Node, 0)}
-}
-
 //  Growset adds (or replaces) all elements from addl into base.
 //  With a nil (or initially empty) base this effects a copy.
 func growset(base map[Node]bool, addl map[Node]bool) map[Node]bool {
@@ -59,10 +59,21 @@ func growset(base map[Node]bool, addl map[Node]bool) map[Node]bool {
 
 //---------------------------------------------------------------------------
 
-//  MatchNode matches exactly one character from a predefined set.
+//  MatchNode is a leaf node that matches exactly one char from a given set.
 type MatchNode struct {
 	cset *Cset // the characters that will match
+	posn int   // integer "position" desgnator of leaf
 	NodeData
+}
+
+//  Match creates a MatchNode for a given set of characters.
+func Match(cs *Cset) Node {
+	return &MatchNode{cs, 0, nildata}
+}
+
+//  Accept returns a special MatchNode with an empty cset.
+func Accept() Node {
+	return &MatchNode{nil, 0, nildata}
 }
 
 //  MatchNode.Data returns a pointer to the embedded NodeData struct.
@@ -103,6 +114,9 @@ func (d *MatchNode) Example(s []byte, n int) []byte {
 
 //  MatchNode.string returns a singleton character or a bracketed expression.
 func (d *MatchNode) String() string {
+	if d.cset == nil {
+		return "#" // special "accept" node
+	}
 	s := d.cset.String()
 	if len(s) == 3 {
 		return s[1:2] // abbreviate set of one char
@@ -213,6 +227,11 @@ func Concatenate(d Node, e Node) Node { // return smart concatenation
 		a := make([]Node, 0)
 		return &ConcatNode{append(a, d, e), nildata}
 	}
+}
+
+//  Epsilon returns an empty concatenation that matches an empty string.
+func Epsilon() Node {
+	return &ConcatNode{Parts: make([]Node, 0)}
 }
 
 //---------------------------------------------------------------------------
