@@ -17,9 +17,23 @@ type DFA struct {
 //  BuildDFA constructs a deterministic finite automaton from a parse tree.
 //  In the process it modifies the parse tree, which is also returned.
 func BuildDFA(tree Node) (*DFA, Node) {
-	//#%#% augment the tree
-	//#%#% split {m,n} nodes as necessary
-	//#%#% number the leaves for comprehensible output
+
+	// concatenate an Accept node to the end, without collapsing
+	nlist := append(make([]Node, 0, 2), tree, Accept())
+	tree = &ConcatNode{nlist, nildata}
+
+	//#%#% split {m,n} nodes as necessary for a correct DFA
+
+	// number the leaf nodes for better comprehension of the DFA
+	n := 0
+	tree.Walk(nil, nil, func(d Node, v interface{}) {
+		if leaf, ok := d.(*MatchNode); ok {
+			n++	
+			leaf.posn = n 
+		}
+	})
+
 	tree.SetNFL() // set Nullable, FirstPos, LastPos values
+
 	return nil, tree
 }
