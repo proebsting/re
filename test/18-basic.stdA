@@ -1,0 +1,324 @@
+
+regexp: 
+tree:   ()
+length: 0 to 0
+ex(0):                                                                        
+ex(1):                                                                        
+ex(2):                                                                        
+ex(3):                                                                        
+ex(5):                                                                        
+ex(8):                                                                        
+node: {true, , } ()
+
+regexp: a
+tree:   (a)
+length: 1 to 1
+ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+node: {false, a, a} (a)
+  node: {false, a, a} a
+
+regexp: ab
+tree:   (ab)
+length: 2 to 2
+ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+ex(1):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+ex(2):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+ex(3):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+ex(5):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+ex(8):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+node: {false, a, b} (ab)
+  node: {false, a, a} a
+  node: {false, b, b} b
+
+regexp: abc
+tree:   (abc)
+length: 3 to 3
+ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
+ex(1):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
+ex(2):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
+ex(3):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
+ex(5):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
+ex(8):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
+node: {false, a, c} (abc)
+  node: {false, a, a} a
+  node: {false, b, b} b
+  node: {false, c, c} c
+
+regexp: ab*c
+tree:   (ab*c)
+length: 2 to *
+ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
+ex(1):  ac  ac  abc  ac  abc  ac  abc  abc  ac  ac  ac  abc  abc  ac  ac  ac
+ex(2):  abbc  abc  ac  abbc  ac  abbc  ac  abbc  ac  abc  ac  abc  abc  ac
+ex(3):  abc  ac  abbc  abc  ac  abbc  abc  abbc  abbbc  ac  ac  abbc  abbbc
+ex(5):  ac  ac  ac  abbbc  abbc  abbbbc  ac  abbbbc  abc  ac  abbbc  abbc  abbc
+ex(8):  abbbc  abbbbbc  abbbbbbc  abbbbbc  abbbbc  abbbbbbbbc  abbbbbbbc  abbc
+node: {false, a, c} (ab*c)
+  node: {false, a, a} a
+  node: {true, b, b} b*
+    node: {false, b, b} b
+  node: {false, c, c} c
+
+regexp: a|b
+tree:   ((a)|(b))
+length: 1 to 1
+ex(0):  b  b  a  b  a  b  a  a  b  b  b  a  a  b  b  b  a  b  b  b  a  b  b  b
+ex(1):  b  b  b  a  b  a  b  a  b  b  a  b  b  a  b  a  b  b  b  a  a  b  b  b
+ex(2):  b  b  b  b  a  b  a  b  b  b  b  a  a  b  b  a  a  b  a  a  a  b  b  a
+ex(3):  a  a  b  a  a  b  b  b  a  b  a  b  b  b  b  b  b  b  b  b  b  a  b  b
+ex(5):  a  a  a  a  b  a  a  b  b  b  b  b  b  a  a  a  a  b  b  a  a  b  b  b
+ex(8):  a  a  a  b  a  b  a  a  b  b  b  a  a  b  b  b  a  a  a  a  a  b  a  b
+node: {false, ba, ba} ((a)|(b))
+  node: {false, b, b} (b)
+    node: {false, b, b} b
+  node: {false, a, a} (a)
+    node: {false, a, a} a
+
+regexp: a|b|c|d
+tree:   ((a)|(b)|(c)|(d))
+length: 1 to 1
+ex(0):  b  b  c  b  a  d  a  c  d  d  d  a  a  d  d  b  a  b  b  b  a  d  b  d
+ex(1):  b  d  d  a  d  c  d  c  d  b  c  d  b  c  b  a  d  d  b  a  a  d  d  b
+ex(2):  b  d  b  d  a  d  c  b  d  d  b  a  c  b  b  a  a  d  c  c  a  b  d  a
+ex(3):  c  c  d  a  a  b  b  d  a  d  c  b  b  d  b  d  d  d  d  d  b  c  d  b
+ex(5):  a  c  c  c  b  a  a  b  b  b  d  b  d  a  a  a  a  d  d  c  a  d  b  d
+ex(8):  c  a  c  d  c  b  a  a  d  b  d  a  c  b  b  b  c  c  a  c  c  d  c  b
+node: {false, dcba, dcba} ((a)|(b)|(c)|(d))
+  node: {false, d, d} (d)
+    node: {false, d, d} d
+  node: {false, c, c} (c)
+    node: {false, c, c} c
+  node: {false, b, b} (b)
+    node: {false, b, b} b
+  node: {false, a, a} (a)
+    node: {false, a, a} a
+
+regexp: ab|cd
+tree:   ((ab)|(cd))
+length: 2 to 2
+ex(0):  cd  cd  ab  cd  ab  cd  ab  ab  cd  cd  cd  ab  ab  cd  cd  cd  ab  cd
+ex(1):  cd  ab  cd  cd  cd  ab  cd  cd  cd  ab  cd  ab  cd  ab  cd  cd  ab  cd
+ex(2):  ab  cd  ab  cd  cd  cd  ab  ab  cd  cd  cd  ab  cd  cd  cd  cd  ab  cd
+ex(3):  cd  cd  cd  cd  ab  ab  cd  cd  ab  ab  cd  ab  ab  ab  cd  cd  ab  cd
+ex(5):  ab  cd  ab  ab  cd  cd  cd  ab  cd  ab  cd  cd  cd  cd  cd  cd  cd  cd
+ex(8):  cd  ab  cd  cd  ab  ab  ab  ab  ab  cd  ab  ab  cd  cd  cd  cd  cd  cd
+node: {false, ca, db} ((ab)|(cd))
+  node: {false, c, d} (cd)
+    node: {false, c, c} c
+    node: {false, d, d} d
+  node: {false, a, b} (ab)
+    node: {false, a, a} a
+    node: {false, b, b} b
+
+regexp: abc|de
+tree:   ((abc)|(de))
+length: 2 to 3
+ex(0):  de  de  abc  de  abc  de  abc  abc  de  de  de  abc  abc  de  de  de
+ex(1):  de  de  de  abc  de  de  de  abc  de  de  de  abc  de  abc  de  abc  de
+ex(2):  abc  de  de  abc  de  abc  de  de  de  abc  abc  de  de  de  abc  de
+ex(3):  de  de  abc  de  abc  de  de  de  de  abc  abc  de  de  abc  abc  de
+ex(5):  abc  abc  de  de  abc  de  abc  abc  de  abc  abc  de  de  de  abc  de
+ex(8):  de  de  de  de  de  de  de  de  de  de  abc  de  de  abc  abc  abc  abc
+node: {false, da, ec} ((abc)|(de))
+  node: {false, d, e} (de)
+    node: {false, d, d} d
+    node: {false, e, e} e
+  node: {false, a, c} (abc)
+    node: {false, a, a} a
+    node: {false, b, b} b
+    node: {false, c, c} c
+
+regexp: |a|bc|def
+tree:   (()|(a)|(bc)|(def))
+length: 0 to 3
+ex(0):  a  a  bc  a    def    bc  def  def  def      def  def  a    a  a  a  
+ex(1):  a  def  bc  a  def  def    def  bc  def  bc  def  a  bc  def  a  bc  a
+ex(2):  def  def  a      def  def  a  bc  a  def  a  def    def  bc  a  def
+ex(3):  a    bc  a  a      def  bc  bc    a  def    a  bc  bc  def      a  a
+ex(5):    def  bc  a  a  def  a  def  def  def  def  def  a  bc  def  a  bc  
+ex(8):  bc  bc  a      a  a  a  def  a  def          def  def  bc    def  a
+node: {true, dba, fca} (()|(a)|(bc)|(def))
+  node: {false, d, f} (def)
+    node: {false, d, d} d
+    node: {false, e, e} e
+    node: {false, f, f} f
+  node: {false, b, c} (bc)
+    node: {false, b, b} b
+    node: {false, c, c} c
+  node: {false, a, a} (a)
+    node: {false, a, a} a
+  node: {true, , } ()
+
+regexp: ()
+tree:   (())
+length: 0 to 0
+ex(0):                                                                        
+ex(1):                                                                        
+ex(2):                                                                        
+ex(3):                                                                        
+ex(5):                                                                        
+ex(8):                                                                        
+node: {true, , } (())
+  node: {true, , } ()
+
+regexp: (a)
+tree:   ((a))
+length: 1 to 1
+ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+node: {false, a, a} ((a))
+  node: {false, a, a} (a)
+    node: {false, a, a} a
+
+regexp: (ab)
+tree:   ((ab))
+length: 2 to 2
+ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+ex(1):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+ex(2):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+ex(3):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+ex(5):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+ex(8):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+node: {false, a, b} ((ab))
+  node: {false, a, b} (ab)
+    node: {false, a, a} a
+    node: {false, b, b} b
+
+regexp: (ab*)
+tree:   ((ab*))
+length: 1 to *
+ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(1):  a  a  ab  a  ab  a  ab  ab  a  a  a  ab  ab  a  a  a  ab  a  a  a  ab
+ex(2):  abb  a  abb  a  ab  a  ab  ab  a  abb  abb  ab  abb  ab  abb  ab  abb
+ex(3):  abbb  a  a  abb  abbb  abbb  a  a  abb  ab  abb  a  abb  a  abbb  a  ab
+ex(5):  abb  abb  a  abbbbb  abbb  abb  abbbb  abbbbb  ab  abb  abbbbb  ab
+ex(8):  abbb  abbbbbbbb  a  ab  abb  abbbb  abbbb  abbb  a  a  abbbbbb  abb
+node: {false, a, ab} ((ab*))
+  node: {false, a, ab} (ab*)
+    node: {false, a, a} a
+    node: {true, b, b} b*
+      node: {false, b, b} b
+
+regexp: (ab)*
+tree:   ((ab)*)
+length: 0 to *
+ex(0):                                                                        
+ex(1):      ab    ab    ab  ab        ab  ab        ab        ab        ab    
+ex(2):  ab  ab    abab  abab  ab  abab  ab  abab  ab  abab    ab      abab  ab
+ex(3):      abab  ab  abab    abab    ababab    ab  abab      abab  ababab  ab
+ex(5):  abababab  ababababab  ab  abab  ababababab  ab  ababab    abab  ababab
+ex(8):  abab  abababab  abababab  ababab      abababababab  abab
+node: {true, a, b} ((ab)*)
+  node: {true, a, b} (ab)*
+    node: {false, a, b} (ab)
+      node: {false, a, a} a
+      node: {false, b, b} b
+
+regexp: (a|b)
+tree:   (((a)|(b)))
+length: 1 to 1
+ex(0):  b  b  a  b  a  b  a  a  b  b  b  a  a  b  b  b  a  b  b  b  a  b  b  b
+ex(1):  b  b  b  a  b  a  b  a  b  b  a  b  b  a  b  a  b  b  b  a  a  b  b  b
+ex(2):  b  b  b  b  a  b  a  b  b  b  b  a  a  b  b  a  a  b  a  a  a  b  b  a
+ex(3):  a  a  b  a  a  b  b  b  a  b  a  b  b  b  b  b  b  b  b  b  b  a  b  b
+ex(5):  a  a  a  a  b  a  a  b  b  b  b  b  b  a  a  a  a  b  b  a  a  b  b  b
+ex(8):  a  a  a  b  a  b  a  a  b  b  b  a  a  b  b  b  a  a  a  a  a  b  a  b
+node: {false, ba, ba} (((a)|(b)))
+  node: {false, ba, ba} ((a)|(b))
+    node: {false, b, b} (b)
+      node: {false, b, b} b
+    node: {false, a, a} (a)
+      node: {false, a, a} a
+
+regexp: (a|b)*
+tree:   (((a)|(b))*)
+length: 0 to *
+ex(0):                                                                        
+ex(1):      b  b  a        a        b      b      b      b  b  b    b    b  b  
+ex(2):  a          bb  a      bb    ab  a  b  aa    ab  ab          ab    bb  
+ex(3):      ab  aa  a  b  abb  bb    aaa      a    ba  a  b  b  abb    abb  aa
+ex(5):  baa  bb  b    babbb  ba    abb  bbbbb  aabaa  bab  baab  bbab  bbbbb  b
+ex(8):  ab  abbbabba  bab  b  ba  aaabbbb  baabaa  baaabab  babbb  abba  abba
+node: {true, ba, ba} (((a)|(b))*)
+  node: {true, ba, ba} ((a)|(b))*
+    node: {false, ba, ba} ((a)|(b))
+      node: {false, b, b} (b)
+        node: {false, b, b} b
+      node: {false, a, a} (a)
+        node: {false, a, a} a
+
+regexp: AB(|)
+tree:   (AB(()|()))
+length: 2 to 2
+ex(0):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
+ex(1):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
+ex(2):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
+ex(3):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
+ex(5):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
+ex(8):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
+node: {false, A, B} (AB(()|()))
+  node: {false, A, A} A
+  node: {false, B, B} B
+  node: {true, , } (()|())
+    node: {true, , } ()
+    node: {true, , } ()
+
+regexp: C(|)
+tree:   (C(()|()))
+length: 1 to 1
+ex(0):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
+ex(1):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
+ex(2):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
+ex(3):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
+ex(5):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
+ex(8):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
+node: {false, C, C} (C(()|()))
+  node: {false, C, C} C
+  node: {true, , } (()|())
+    node: {true, , } ()
+    node: {true, , } ()
+
+regexp: C(A|B)
+tree:   (C((A)|(B)))
+length: 2 to 2
+ex(0):  CB  CB  CA  CB  CA  CB  CA  CA  CB  CB  CB  CA  CA  CB  CB  CB  CA  CB
+ex(1):  CB  CA  CB  CB  CB  CA  CB  CB  CB  CA  CB  CA  CB  CA  CB  CB  CA  CB
+ex(2):  CA  CB  CA  CB  CB  CB  CA  CA  CB  CB  CB  CA  CB  CB  CB  CB  CA  CB
+ex(3):  CB  CB  CB  CB  CA  CA  CB  CB  CA  CA  CB  CA  CA  CA  CB  CB  CA  CB
+ex(5):  CA  CB  CA  CA  CB  CB  CB  CA  CB  CA  CB  CB  CB  CB  CB  CB  CB  CB
+ex(8):  CB  CA  CB  CB  CA  CA  CA  CA  CA  CB  CA  CA  CB  CB  CB  CB  CB  CB
+node: {false, C, BA} (C((A)|(B)))
+  node: {false, C, C} C
+  node: {false, BA, BA} ((A)|(B))
+    node: {false, B, B} (B)
+      node: {false, B, B} B
+    node: {false, A, A} (A)
+      node: {false, A, A} A
+
+regexp: C(AC|B)D
+tree:   (C((AC)|(B))D)
+length: 3 to 4
+ex(0):  CBD  CBD  CACD  CBD  CACD  CBD  CACD  CACD  CBD  CBD  CBD  CACD  CACD
+ex(1):  CBD  CBD  CACD  CBD  CBD  CBD  CACD  CBD  CBD  CBD  CACD  CBD  CBD  CBD
+ex(2):  CBD  CACD  CBD  CACD  CBD  CBD  CACD  CBD  CBD  CACD  CBD  CACD  CBD
+ex(3):  CBD  CACD  CACD  CBD  CBD  CBD  CACD  CBD  CBD  CBD  CBD  CACD  CBD
+ex(5):  CBD  CBD  CBD  CBD  CACD  CACD  CBD  CBD  CACD  CACD  CBD  CACD  CACD
+ex(8):  CBD  CBD  CACD  CBD  CACD  CACD  CBD  CACD  CACD  CBD  CBD  CBD  CACD
+node: {false, C, D} (C((AC)|(B))D)
+  node: {false, C, C} C
+  node: {false, BA, BC} ((AC)|(B))
+    node: {false, B, B} (B)
+      node: {false, B, B} B
+    node: {false, A, C} (AC)
+      node: {false, A, A} A
+      node: {false, C, C} C
+  node: {false, D, D} D
