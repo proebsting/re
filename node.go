@@ -28,12 +28,11 @@ type Node interface {
 }
 
 //  NodeData is included (anonymously) in every Node subtype.
-//  #%#% FirstPos / LastPos should really be sets, not appended lists
 type NodeData struct {
-	Nullable  bool   // can this subtree match an empty string?
-	FirstPos  []Node // set of legal first characters
-	LastPos   []Node // set of legal last characters
-	FollowPos []Node // positions that can follow in DFA
+	Nullable  bool          // can this subtree match an empty string?
+	FirstPos  map[Node]bool // set of possible initial nodes ("positions")
+	LastPos   map[Node]bool // set of possible final nodes ("positions")
+	FollowPos []Node        // positions that can follow in DFA
 }
 
 var nildata = NodeData{} // convenient for initilization
@@ -44,6 +43,18 @@ type VisitFunc func(d Node, v interface{})
 //  Epsilon returns an empty concatenation that matches an empty string.
 func Epsilon() Node {
 	return &ConcatNode{Parts: make([]Node, 0)}
+}
+
+//  Growset adds (or replaces) all elements from addl into base.
+//  With a nil (or initially empty) base this effects a copy.
+func growset(base map[Node]bool, addl map[Node]bool) map[Node]bool {
+	if base == nil {
+		base = make(map[Node]bool, len(addl))
+	}
+	for k, v := range addl {
+		base[k] = v
+	}
+	return base
 }
 
 //---------------------------------------------------------------------------
@@ -78,8 +89,10 @@ func (d *MatchNode) MaxLen() int { return 1 }
 //  MatchNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *MatchNode) SetNFL() {
 	d.Nullable = false
-	d.FirstPos = []Node{d}
-	d.LastPos = []Node{d}
+	d.FirstPos = make(map[Node]bool)
+	d.LastPos = make(map[Node]bool)
+	d.FirstPos[d] = true
+	d.LastPos[d] = true
 }
 
 //  MatchNode.Example appends a single randomly chosen matching character.
@@ -149,17 +162,17 @@ func (d *ConcatNode) MaxLen() int {
 //  ConcatNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *ConcatNode) SetNFL() {
 	d.Nullable = true
-	d.FirstPos = []Node{}
-	d.LastPos = []Node{}
+	d.FirstPos = make(map[Node]bool)
+	d.LastPos = make(map[Node]bool)
 	for _, e := range d.Parts {
 		e.SetNFL()
 		if d.Nullable { // if nullable so far...
-			d.FirstPos = append(d.FirstPos, e.Data().FirstPos...)
+			growset(d.FirstPos, e.Data().FirstPos)
 		}
 		if e.Data().Nullable {
-			d.LastPos = append(d.LastPos, e.Data().LastPos...)
+			growset(d.LastPos, e.Data().LastPos)
 		} else {
-			d.LastPos = e.Data().LastPos
+			d.LastPos = growset(nil, e.Data().LastPos)
 		}
 		d.Nullable = d.Nullable && e.Data().Nullable
 	}
@@ -258,13 +271,13 @@ func (d *AltNode) MaxLen() int {
 //  AltNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *AltNode) SetNFL() {
 	d.Nullable = false
-	d.FirstPos = []Node{}
-	d.LastPos = []Node{}
+	d.FirstPos = make(map[Node]bool)
+	d.LastPos = make(map[Node]bool)
 	for _, e := range d.Alts {
 		e.SetNFL()
 		d.Nullable = d.Nullable || e.Data().Nullable
-		d.FirstPos = append(d.FirstPos, e.Data().FirstPos...)
-		d.LastPos = append(d.LastPos, e.Data().LastPos...)
+		growset(d.FirstPos, e.Data().FirstPos)
+		growset(d.LastPos, e.Data().LastPos)
 	}
 }
 
@@ -348,8 +361,8 @@ func (d *ReplNode) MaxLen() int {
 func (d *ReplNode) SetNFL() {
 	d.Child.SetNFL()
 	d.Nullable = d.Min == 0 || d.Child.Data().Nullable
-	d.FirstPos = d.Child.Data().FirstPos
-	d.LastPos = d.Child.Data().LastPos
+	d.FirstPos = growset(nil, d.Child.Data().FirstPos)
+	d.LastPos = growset(nil, d.Child.Data().LastPos)
 }
 
 //  ReplNode.Example produces an example with maximum replication n.

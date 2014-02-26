@@ -113,12 +113,12 @@ func previsit(d rx.Node, v interface{}) {
 	*indent = *indent + "  "
 	a := d.Data()
 	fmt.Printf("%snode: {%t, ", (*indent)[2:], a.Nullable)
-	for _, e := range a.FirstPos {
-		fmt.Print(e)
+	for k, _ := range a.FirstPos {
+		fmt.Print(k)
 	}
 	fmt.Print(", ")
-	for _, e := range a.LastPos {
-		fmt.Print(e)
+	for k, _ := range a.LastPos {
+		fmt.Print(k)
 	}
 	fmt.Println("}", d)
 
