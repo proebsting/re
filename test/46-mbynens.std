@@ -12,12 +12,12 @@
 regexp: (((http|ftp|https):\/{2})+(([0-9a-z_-]+\.)+(aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cu|cv|cx|cy|cz|cz|de|dj|dk|dm|do|dz|ec|ee|eg|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mk|ml|mn|mn|mo|mp|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|nom|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ra|rs|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw|arpa)(:[0-9]+)?((\/([~0-9a-zA-Z\#\+\%@\.\/_-]+))?(\?[0-9a-zA-Z\+\%@\/&\[\];=_-]+)?)?))
 tree:   (((((http)|(ftp)|(https)):/{2})+(([-0-9_a-z]+.)+((aero)|(asia)|(biz)|(cat)|(com)|(coop)|(edu)|(gov)|(info)|(int)|(jobs)|(mil)|(mobi)|(museum)|(name)|(net)|(org)|(pro)|(tel)|(travel)|(ac)|(ad)|(ae)|(af)|(ag)|(ai)|(al)|(am)|(an)|(ao)|(aq)|(ar)|(as)|(at)|(au)|(aw)|(ax)|(az)|(ba)|(bb)|(bd)|(be)|(bf)|(bg)|(bh)|(bi)|(bj)|(bm)|(bn)|(bo)|(br)|(bs)|(bt)|(bv)|(bw)|(by)|(bz)|(ca)|(cc)|(cd)|(cf)|(cg)|(ch)|(ci)|(ck)|(cl)|(cm)|(cn)|(co)|(cr)|(cu)|(cv)|(cx)|(cy)|(cz)|(cz)|(de)|(dj)|(dk)|(dm)|(do)|(dz)|(ec)|(ee)|(eg)|(er)|(es)|(et)|(eu)|(fi)|(fj)|(fk)|(fm)|(fo)|(fr)|(ga)|(gb)|(gd)|(ge)|(gf)|(gg)|(gh)|(gi)|(gl)|(gm)|(gn)|(gp)|(gq)|(gr)|(gs)|(gt)|(gu)|(gw)|(gy)|(hk)|(hm)|(hn)|(hr)|(ht)|(hu)|(id)|(ie)|(il)|(im)|(in)|(io)|(iq)|(ir)|(is)|(it)|(je)|(jm)|(jo)|(jp)|(ke)|(kg)|(kh)|(ki)|(km)|(kn)|(kp)|(kr)|(kw)|(ky)|(kz)|(la)|(lb)|(lc)|(li)|(lk)|(lr)|(ls)|(lt)|(lu)|(lv)|(ly)|(ma)|(mc)|(md)|(me)|(mg)|(mh)|(mk)|(ml)|(mn)|(mn)|(mo)|(mp)|(mr)|(ms)|(mt)|(mu)|(mv)|(mw)|(mx)|(my)|(mz)|(na)|(nc)|(ne)|(nf)|(ng)|(ni)|(nl)|(no)|(np)|(nr)|(nu)|(nz)|(nom)|(pa)|(pe)|(pf)|(pg)|(ph)|(pk)|(pl)|(pm)|(pn)|(pr)|(ps)|(pt)|(pw)|(py)|(qa)|(re)|(ra)|(rs)|(ru)|(rw)|(sa)|(sb)|(sc)|(sd)|(se)|(sg)|(sh)|(si)|(sj)|(sj)|(sk)|(sl)|(sm)|(sn)|(so)|(sr)|(st)|(su)|(sv)|(sy)|(sz)|(tc)|(td)|(tf)|(tg)|(th)|(tj)|(tk)|(tl)|(tm)|(tn)|(to)|(tp)|(tr)|(tt)|(tv)|(tw)|(tz)|(ua)|(ug)|(uk)|(us)|(uy)|(uz)|(va)|(vc)|(ve)|(vg)|(vi)|(vn)|(vu)|(wf)|(ws)|(ye)|(yt)|(yu)|(za)|(zm)|(zw)|(arpa))(:[0-9]+)?((/([#%+--9@-Z_a-z~]+))?(?[%&+-/-9;=@-[]_a-z]+)?)?)))
 length: 10 to *
-ex(0):  https://d.sa  https://3.my  https://g.sz  http://i.fk  https://i.cv
-ex(1):  https://d.ao:4/u?i  http://s.cv/W  https://9.tl?f  http://s.se:9
-ex(2):  ftp://0z.8.mg:56?t  https://http://3.ar:88?0  https://2j.vn:3?Z
-ex(3):  http://j.vv.1.be  http://https://qe.gm:622
-ex(5):  https://https://ftp://https://e9fm.h8.ss.x_ck.76b4b.va
-ex(8):  https://http://https://https://z_v8ooe.dznqcj.5a.7.53za.yp63hb.ye:80570452
+ex(0):  http://d.cd  http://3.fr  http://g.bb  https://i.nc  http://i.pn
+ex(1):  http://d.tn:4/u?i  https://s.pn/W  http://9.ar?f  https://s.by:9
+ex(2):  ftp://0z.8.gs:56?t  http://https://3.tl:88?0  http://2j.jobs:3?Z
+ex(3):  https://j.vv.1.sv  https://http://qe.mn:622
+ex(5):  http://http://ftp://http://e9fm.h8.ss.x_ck.76b4b.net
+ex(8):  http://https://http://http://z_v8ooe.dznqcj.5a.7.53za.yp63hb.edu:80570452
 
 # @krijnhoetmer (115 chars)
 
@@ -54,12 +54,12 @@ ERROR:  rx: '(?...' unimplemented: in "([a-z][a-z0-9\*\-\.]*):\/\/(?:(?:(?:[\w\.
 regexp: (https?|ftp)://[^\s/$.?#].[^\s]*
 tree:   (((https?)|(ftp))://[\x01-\b\x0e-\x1f!"%--0->@-\u007f][\x01-\u007f][\x01-\b\x0e-\x1f!-\u007f]*)
 length: 8 to *
-ex(0):  ftp://MM  http://<(  ftp://DF  http://Cz  http://Y<  ftp://<?  ftp://<L
-ex(1):  https://D>  http://l4Z  ftp://iK!  ftp://@on  https://1Q9  ftp://]65
-ex(2):  https://F[4@  https://Xy}  http://'a~5  ftp://VBd  ftp://>sJ
-ex(3):  https://pe7k  https://\"$  ftp://}d7}  https://S/C\"  ftp://45
-ex(5):  ftp://}$5  ftp://u7r8  ftp://}kv=%  https://Qc0  ftp://Uwh=  http://B6E
-ex(8):  ftp://[#G  ftp://kMR6  ftp://Z\\TL  http://5Ik  https://%8l&m
+ex(0):  http://MM  ftp://<(  http://DF  ftp://Cz  ftp://Y<  http://<?
+ex(1):  https://K6D  https://`K9  ftp://)   https://u!>  http://\\1
+ex(2):  ftp://8)  https://Rv7  ftp://BRNy  ftp://W\\}&  ftp://vZ]  http://<s
+ex(3):  https://>m8  ftp://_Zx  ftp://Z:+  ftp://4};U7  http://JeSC\"
+ex(5):  http://!Xs8  ftp://VA  http://Gq`  ftp://~dSF  ftp://b,ZR_q  ftp://(=Br
+ex(8):  http://Ov  https://GRfW7x!  https://=Z+)JI3z  ftp://Ii
 
 # @scottgonzales (1347 chars)
 
@@ -76,12 +76,12 @@ ERROR:  rx: prefer-fewer '?' unimplemented: in "((https?://|ftp://|www\.|[^\s:=]
 regexp: (https?|ftp)://(-\.)?([^\s/?\.#-]+\.?)+(/[^\s]*)?
 tree:   (((https?)|(ftp))://(-.)?([\x01-\b\x0e-\x1f!"$-,0->@-\u007f]+.?)+(/[\x01-\b\x0e-\x1f!-\u007f]*)?)
 length: 7 to *
-ex(0):  ftp://M  ftp://{  ftp://W  ftp://X  http://~  ftp://=  ftp://3
-ex(1):  https://N/6  http://-.'/|  ftp://-.$.  http://-.a./  http://-.z.
-ex(2):  ftp://U<.;M./  https://-.M  ftp://1./9  https://-.]  ftp://-.Fjj
-ex(3):  http://16t0w.1k/P  ftp://E$,zo  ftp://UNi.  https://-.9u.|w/:5
-ex(5):  https://-.Oux`.CjOh  http://&s=eI:sm+.ebv.Q\\1%.JM7.
-ex(8):  ftp://|e+k.d./%(b2B  http://-.mLH^@.v1ICC2DS.o/wkLlgM
+ex(0):  http://M  http://{  http://W  http://X  ftp://~  http://=  http://3
+ex(1):  ftp://-.)  ftp://-.5.  https://_  ftp://2/  ftp://)  http://-.C
+ex(2):  ftp://Vb.  ftp://-.(  ftp://-.u0.M!.  https://_9~./,  ftp://WqU0.
+ex(3):  http://-.*.  ftp://@pO.Ph;N  ftp://j.F./3O  ftp://-.'Eo.6>>/y
+ex(5):  http://-.=$mg.yh3e4.2:PgDJ/[G  https://('A[Ae1D%o/X  http://-.{$1./kps
+ex(8):  ftp://@$l'<L'_57;f.%vTNFVY1WpbQ(._yn0e.%/,\\xU  https://-.S(i
 
 # @diegoperini (502 chars)
 

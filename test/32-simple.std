@@ -4,12 +4,12 @@
 regexp: C(AC|B)D
 tree:   (C((AC)|(B))D)
 length: 3 to 4
-ex(0):  CBD  CBD  CACD  CBD  CACD  CBD  CACD  CACD  CBD  CBD  CBD  CACD  CACD
-ex(1):  CBD  CBD  CACD  CBD  CBD  CBD  CACD  CBD  CBD  CBD  CACD  CBD  CBD  CBD
-ex(2):  CBD  CACD  CBD  CACD  CBD  CBD  CACD  CBD  CBD  CACD  CBD  CACD  CBD
-ex(3):  CBD  CACD  CACD  CBD  CBD  CBD  CACD  CBD  CBD  CBD  CBD  CACD  CBD
-ex(5):  CBD  CBD  CBD  CBD  CACD  CACD  CBD  CBD  CACD  CACD  CBD  CACD  CACD
-ex(8):  CBD  CBD  CACD  CBD  CACD  CACD  CBD  CACD  CACD  CBD  CBD  CBD  CACD
+ex(0):  CACD  CACD  CBD  CACD  CBD  CACD  CBD  CBD  CACD  CACD  CACD  CBD  CBD
+ex(1):  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD
+ex(2):  CACD  CBD  CACD  CBD  CACD  CBD  CACD  CACD  CBD  CACD  CACD  CBD  CACD
+ex(3):  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD
+ex(5):  CBD  CACD  CBD  CACD  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CBD  CBD
+ex(8):  CBD  CBD  CBD  CACD  CACD  CBD  CACD  CBD  CBD  CACD  CBD  CBD  CACD
 
 # Dragon2: automata example
 
@@ -17,11 +17,11 @@ regexp: (a|b)*abb
 tree:   (((a)|(b))*abb)
 length: 3 to *
 ex(0):  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb
-ex(1):  abb  abb  babb  babb  aabb  abb  abb  abb  aabb  abb  abb  abb  babb
-ex(2):  abb  bbabb  abb  bbabb  abb  babb  abb  ababb  ababb  aabb  abb  babb
-ex(3):  aaabb  abb  abb  ababb  abb  baabb  abb  babb  abb  abb  aaabb  baabb
-ex(5):  bbaabb  aabaabb  bbbabb  babb  bbbabb  abb  bbabb  bbababb  abb  aabb
-ex(8):  babb  bbbaaabb  abbabb  abb  abb  abb  baaaaabb  abaabbabb  aababb  abb
+ex(1):  abb  abb  aabb  aabb  babb  abb  abb  abb  babb  abb  abb  abb  aabb
+ex(2):  abb  aaabb  abb  aaabb  abb  aabb  abb  baabb  baabb  babb  abb  aabb
+ex(3):  bbabb  abb  abb  baabb  abb  ababb  abb  aabb  abb  abb  bbabb  ababb
+ex(5):  aababb  bbababb  aaaabb  aabb  aaaabb  abb  aaabb  aabaabb  abb  babb
+ex(8):  aabb  aaabbabb  baaabb  abb  abb  abb  abbbbabb  babbaaabb  bbaabb  abb
 
 # Sedgewick: genome marker
 
@@ -29,11 +29,11 @@ regexp: gcg(cgg|agg)*ctg
 tree:   (gcg((cgg)|(agg))*ctg)
 length: 6 to *
 ex(0):  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg
-ex(1):  gcgctg  gcgctg  gcgaggctg  gcgaggctg  gcgcggctg  gcgctg  gcgctg  gcgctg
-ex(2):  gcgctg  gcgctg  gcgctg  gcgaggaggctg  gcgctg  gcgaggaggctg  gcgctg
-ex(3):  gcgctg  gcgaggcggaggctg  gcgaggctg  gcgcggaggctg  gcgcggaggctg
-ex(5):  gcgcggctg  gcgctg  gcgctg  gcgctg  gcgaggaggaggctg  gcgcggaggcggaggctg
-ex(8):  gcgcggaggaggcggcggctg  gcgcggcggctg  gcgaggaggcggctg  gcgcggctg
+ex(1):  gcgctg  gcgctg  gcgcggctg  gcgcggctg  gcgaggctg  gcgctg  gcgctg  gcgctg
+ex(2):  gcgctg  gcgctg  gcgctg  gcgcggcggctg  gcgctg  gcgcggcggctg  gcgctg
+ex(3):  gcgctg  gcgcggaggcggctg  gcgcggctg  gcgaggcggctg  gcgaggcggctg
+ex(5):  gcgaggctg  gcgctg  gcgctg  gcgctg  gcgcggcggcggctg  gcgaggcggaggcggctg
+ex(8):  gcgaggcggcggaggaggctg  gcgaggaggctg  gcgcggcggaggctg  gcgaggctg
 
 # Sedgewick: multiples of 3, in binary
 
@@ -41,30 +41,30 @@ regexp: (0|1(01*0)*1)*
 tree:   (((0)|(1(01*0)*1))*)
 length: 0 to *
 ex(0):                                                                        
-ex(1):      1001  0        0        11    11    11    1001  11  11  1001      0
-ex(2):        111001    100011010  1010011010  0    010100101          011
-ex(3):      01010011101  0  101110011001101  1000111010  0110  10001110100
-ex(5):  011101000001  00  001000100101
-ex(8):  101111001111100111111101011101111101  00  000  0
+ex(1):      0  0  11      11      0      0      0      0  0  0    0    0  0    
+ex(2):        00  11    00    101001101101100101      1011011001        10010
+ex(3):            110  10101  0  101100110100    1011100000110001100011011101
+ex(5):  0  10000110010  1011101101101  01011010  10001111100001111101000  011
+ex(8):  00  10111001111101101001100111001111001110001    0
 
 # Experiments with word construction
 
 regexp: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
 tree:   ([bcfpt][lr]?(([aeiou])|(oo)|(ee))[dmnt])
 length: 3 to 5
-ex(0):  fom  cad  bood  tom  beed  beed  pood  tum  coot  com  teem  ceem  ceed
-ex(1):  treen  feen  peem  poom  pom  coom  cled  bid  cloon  breed  fleet
-ex(2):  flam  feen  peen  pom  broon  tan  teen  preen  cloot  treem  tron
-ex(3):  freet  coot  been  bim  fleed  bood  bret  flood  toon  freed  plim
-ex(5):  peet  ceed  peen  blad  peem  blin  foot  coon  freem  tlood  froot
-ex(8):  poon  coon  foot  peem  bin  ploot  preem  ton  tlad  croot  fleed
+ex(0):  feen  ceem  teed  bood  teen  cood  fed  pood  teet  tot  ceen  toot
+ex(1):  fleed  prid  beem  treen  floon  foot  prud  beed  teet  poon  ceem
+ex(2):  fim  bleen  coom  tloom  plot  bood  crood  frod  tum  ceet  cloon
+ex(3):  feem  teed  coot  plum  peen  tim  cen  breed  prad  croom  fin  poot
+ex(5):  pleem  boon  prit  cood  beet  tleem  breem  peen  froom  broom  fram
+ex(8):  froot  teen  beed  floon  pem  teed  toot  poom  beem  froot  pleet
 
 regexp: W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
 tree:   (W((hit)|(ens)|(at)|(in)|(est)|(al))[aeio][lmnrsx]((ford)|(by)|(dale)|(bot)|(man)|(son)|(gard)|(hold)))
 length: 7 to 10
-ex(0):  Walilhold  Walamby  Whitambot  Watamson  Westelgard  Winarhold
-ex(1):  Watisman  Walilby  Winaldale  Westorby  Wensergard  Watalgard  Walalson
-ex(2):  Westilford  Wensenbot  Wensosman  Waloldale  Watanby  Wininson  Winenby
-ex(3):  Watilman  Walexgard  Whitilhold  Wensemman  Walelford  Winolby
-ex(5):  Wensirman  Whitosdale  Watindale  Whitenhold  Winonby  Wensimford
-ex(8):  Wensexdale  Wensindale  Westimman  Wensaxhold  Winilhold  Walirbot
+ex(0):  Whitilford  Whitamgard  Walamman  Winamdale  Wenselby  Watarford
+ex(1):  Winisbot  Whitilgard  Watalson  Wensorgard  Westerby  Winalby
+ex(2):  Watolbot  Wensilhold  Westenman  Westosbot  Whitolson  Winangard
+ex(3):  Watengard  Watendale  Winilbot  Whitexby  Walilford  Westembot
+ex(5):  Watolgard  Whitilman  Westirbot  Walosson  Wininson  Walenford
+ex(8):  Westimhold  Walelby  Westexson  Westinson  Wensimbot  Westaxford

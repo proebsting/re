@@ -4,99 +4,99 @@
 regexp: (ab)|c
 tree:   (((ab))|(c))
 length: 1 to 2
-ex(0):  c  c  ab  c  ab  c  ab  ab  c  c  c  ab  ab  c  c  c  ab  c  c  c  ab
-ex(1):  c  c  ab  c  c  c  ab  c  ab  c  ab  c  c  ab  c  c  ab  c  ab  c  c  c
-ex(2):  ab  c  c  c  ab  c  c  c  c  ab  c  ab  c  c  c  c  ab  ab  c  c  ab
-ex(3):  c  ab  ab  ab  c  c  ab  c  ab  ab  c  ab  ab  c  c  c  ab  c  ab  c  c
-ex(5):  c  c  c  c  c  c  c  ab  c  c  ab  ab  ab  ab  ab  c  ab  ab  c  c  c
-ex(8):  c  c  ab  ab  ab  ab  c  c  ab  ab  c  c  c  ab  ab  ab  ab  c  ab  c
+ex(0):  ab  ab  c  ab  c  ab  c  c  ab  ab  ab  c  c  ab  ab  ab  c  ab  ab  ab
+ex(1):  ab  ab  ab  c  ab  ab  ab  c  ab  c  ab  c  ab  ab  c  ab  ab  c  ab  c
+ex(2):  ab  ab  c  c  ab  ab  ab  c  ab  ab  ab  ab  c  ab  c  ab  ab  ab  ab
+ex(3):  c  ab  ab  c  c  ab  c  c  c  ab  ab  c  ab  c  c  ab  c  c  ab  ab  ab
+ex(5):  ab  c  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  c  ab  ab  c  c  c  c  c
+ex(8):  c  c  ab  ab  ab  ab  ab  ab  c  c  c  c  ab  ab  c  c  ab  ab  ab  c
 
 regexp: a(b|c)d
 tree:   (a((b)|(c))d)
 length: 3 to 3
-ex(0):  acd  acd  abd  acd  abd  acd  abd  abd  acd  acd  acd  abd  abd  acd
-ex(1):  acd  abd  acd  acd  acd  abd  acd  acd  acd  abd  acd  acd  acd  abd
-ex(2):  abd  acd  abd  acd  acd  abd  acd  acd  abd  acd  abd  acd  acd  acd
-ex(3):  abd  acd  acd  acd  abd  acd  acd  acd  acd  abd  acd  abd  acd  acd
-ex(5):  acd  abd  abd  acd  acd  abd  abd  acd  abd  abd  abd  acd  acd  abd
-ex(8):  abd  abd  acd  abd  abd  acd  acd  acd  abd  acd  abd  acd  acd  acd
+ex(0):  abd  abd  acd  abd  acd  abd  acd  acd  abd  abd  abd  acd  acd  abd
+ex(1):  abd  acd  abd  abd  abd  acd  abd  abd  abd  acd  abd  abd  abd  acd
+ex(2):  acd  abd  acd  abd  abd  acd  abd  abd  acd  abd  acd  abd  abd  abd
+ex(3):  acd  abd  abd  abd  acd  abd  abd  abd  abd  acd  abd  acd  abd  abd
+ex(5):  abd  acd  acd  abd  abd  acd  acd  abd  acd  acd  acd  abd  abd  acd
+ex(8):  acd  acd  abd  acd  acd  abd  abd  abd  acd  abd  acd  abd  abd  abd
 
 regexp: (ab)|c|(de)
 tree:   (((ab))|(c)|((de)))
 length: 1 to 2
-ex(0):  de  de  c  c  ab  c  c  ab  de  de  de  ab  ab  de  de  de  ab  ab  c
-ex(1):  ab  de  ab  de  ab  de  c  de  c  c  de  ab  ab  c  ab  c  ab  c  ab
-ex(2):  c  de  de  ab  c  c  de  de  de  de  ab  c  de  c  c  de  de  ab  ab
-ex(3):  de  ab  de  ab  c  ab  c  ab  ab  c  de  de  ab  de  c  ab  c  c  de
-ex(5):  de  de  ab  c  c  de  ab  ab  de  de  ab  ab  ab  c  c  de  de  c  de
-ex(8):  c  ab  ab  ab  de  de  de  c  c  ab  c  c  de  de  de  de  de  ab  ab
+ex(0):  ab  ab  c  c  de  c  c  de  ab  ab  ab  de  de  ab  ab  ab  de  de  c
+ex(1):  de  ab  de  ab  de  ab  c  ab  c  c  ab  de  de  c  de  c  de  c  de
+ex(2):  c  ab  ab  de  c  c  ab  ab  ab  ab  de  c  ab  c  c  ab  ab  de  de
+ex(3):  ab  de  ab  de  c  de  c  de  de  c  ab  ab  de  ab  c  de  c  c  ab
+ex(5):  ab  ab  de  c  c  ab  de  de  ab  ab  de  de  de  c  c  ab  ab  c  ab
+ex(8):  c  de  de  de  ab  ab  ab  c  c  de  c  c  ab  ab  ab  ab  ab  de  de
 
 regexp: a|(bc|de|fg)|h
 tree:   ((a)|(((bc)|(de)|(fg)))|(h))
 length: 1 to 2
-ex(0):  h  h  de  a  de  a  h  h  h  a  a  h  h  h  a  a  fg  a  h  a  h  a  h
-ex(1):  de  h  a  a  bc  bc  bc  h  fg  h  a  de  h  h  h  h  a  fg  de  h  h
-ex(2):  a  a  h  a  h  a  bc  bc  a  fg  h  a  h  bc  de  h  h  h  h  a  de  h
-ex(3):  a  h  h  a  a  a  de  h  h  fg  de  a  a  a  h  h  h  de  a  de  h  h
-ex(5):  h  h  a  a  h  h  h  a  a  h  h  h  fg  fg  h  a  a  h  h  h  fg  h  a
-ex(8):  fg  de  a  h  h  de  a  de  de  h  a  h  a  de  h  a  de  h  h  bc  bc
+ex(0):  a  a  de  h  de  h  a  a  a  h  h  a  a  a  h  h  bc  h  a  h  a  h  a
+ex(1):  de  a  h  h  fg  fg  fg  a  bc  a  h  de  a  a  a  a  h  bc  de  a  a
+ex(2):  h  h  a  h  a  h  fg  fg  h  bc  a  h  a  fg  de  a  a  a  a  h  de  a
+ex(3):  h  a  a  h  h  h  de  a  a  bc  de  h  h  h  a  a  a  de  h  de  a  a
+ex(5):  a  a  h  h  a  a  a  h  h  a  a  a  bc  bc  a  h  h  a  a  a  bc  a  h
+ex(8):  bc  de  h  a  a  de  h  de  de  a  h  a  h  de  a  h  de  a  a  fg  fg
 
 regexp: a(b|c)(d|e)(f|g)h
 tree:   (a((b)|(c))((d)|(e))((f)|(g))h)
 length: 5 to 5
-ex(0):  acefh  acdgh  abdgh  acefh  abegh  acdgh  acefh  acegh  abegh  acdgh
-ex(1):  acefh  acefh  acdgh  acefh  abegh  acdgh  acegh  abefh  acegh  acdfh
-ex(2):  abefh  abdgh  acdgh  abdgh  abdgh  acefh  acdgh  acegh  acegh  acegh
-ex(3):  abdfh  abdgh  abdgh  acegh  acefh  abdfh  acefh  abegh  acdfh  abdgh
-ex(5):  abegh  acdfh  acegh  abdfh  abdgh  abefh  abegh  acdgh  acdgh  abegh
-ex(8):  abefh  abegh  abegh  acegh  abdfh  acdfh  abefh  acegh  abdgh  acegh
+ex(0):  abdgh  abefh  acefh  abdgh  acdfh  abefh  abdgh  abdfh  acdfh  abefh
+ex(1):  abdgh  abdgh  abefh  abdgh  acdfh  abefh  abdfh  acdgh  abdfh  abegh
+ex(2):  acdgh  acefh  abefh  acefh  acefh  abdgh  abefh  abdfh  abdfh  abdfh
+ex(3):  acegh  acefh  acefh  abdfh  abdgh  acegh  abdgh  acdfh  abegh  acefh
+ex(5):  acdfh  abegh  abdfh  acegh  acefh  acdgh  acdfh  abefh  abefh  acdfh
+ex(8):  acdgh  acdfh  acdfh  abdfh  acegh  abegh  acdgh  abdfh  acefh  abdfh
 
 regexp: (ab|cd)(ef|gh)
 tree:   (((ab)|(cd))((ef)|(gh)))
 length: 4 to 4
-ex(0):  cdgh  abgh  abgh  abef  cdgh  cdef  abgh  cdgh  abgh  cdgh  abgh  cdgh
-ex(1):  cdgh  abgh  abgh  abgh  cdef  cdgh  abgh  abgh  cdgh  abef  cdgh  cdef
-ex(2):  cdgh  abgh  abgh  cdgh  cdef  abgh  cdef  abgh  abef  abgh  cdef  cdef
-ex(3):  abef  cdgh  cdef  cdef  cdgh  cdgh  cdgh  cdgh  cdgh  abgh  cdef  abef
-ex(5):  cdef  abgh  cdgh  cdgh  cdef  abef  abgh  cdef  abgh  cdgh  abef  abef
-ex(8):  cdef  abgh  cdgh  abef  cdgh  cdef  abef  abef  cdef  cdef  abgh  cdgh
+ex(0):  abef  cdef  cdef  cdgh  abef  abgh  cdef  abef  cdef  abef  cdef  abef
+ex(1):  abef  cdef  cdef  cdef  abgh  abef  cdef  cdef  abef  cdgh  abef  abgh
+ex(2):  abef  cdef  cdef  abef  abgh  cdef  abgh  cdef  cdgh  cdef  abgh  abgh
+ex(3):  cdgh  abef  abgh  abgh  abef  abef  abef  abef  abef  cdef  abgh  cdgh
+ex(5):  abgh  cdef  abef  abef  abgh  cdgh  cdef  abgh  cdef  abef  cdgh  cdgh
+ex(8):  abgh  cdef  abef  cdgh  abef  abgh  cdgh  cdgh  abgh  abgh  cdef  abef
 
 regexp: (ab|cd)|(ef|gh)
 tree:   ((((ab)|(cd)))|(((ef)|(gh))))
 length: 2 to 2
-ex(0):  gh  cd  cd  ab  gh  ef  cd  gh  cd  gh  cd  gh  cd  gh  cd  cd  cd  ef
-ex(1):  cd  cd  gh  ab  gh  ef  gh  gh  cd  cd  gh  ef  cd  ef  cd  ab  cd  ef
-ex(2):  cd  ab  gh  ef  ef  gh  gh  gh  gh  gh  cd  ef  ab  ab  ef  cd  gh  gh
-ex(3):  ab  cd  ef  cd  gh  ab  ab  ef  ef  cd  gh  ab  gh  ef  ab  ab  ef  ef
-ex(5):  gh  cd  ef  ef  gh  gh  ef  ef  cd  ef  gh  gh  ef  ab  ef  ab  ef  gh
-ex(8):  cd  gh  ef  ef  gh  gh  ef  gh  gh  cd  ef  ef  cd  gh  cd  ef  cd  cd
+ex(0):  ab  ef  ef  gh  ab  cd  ef  ab  ef  ab  ef  ab  ef  ab  ef  ef  ef  cd
+ex(1):  ef  ef  ab  gh  ab  cd  ab  ab  ef  ef  ab  cd  ef  cd  ef  gh  ef  cd
+ex(2):  ef  gh  ab  cd  cd  ab  ab  ab  ab  ab  ef  cd  gh  gh  cd  ef  ab  ab
+ex(3):  gh  ef  cd  ef  ab  gh  gh  cd  cd  ef  ab  gh  ab  cd  gh  gh  cd  cd
+ex(5):  ab  ef  cd  cd  ab  ab  cd  cd  ef  cd  ab  ab  cd  gh  cd  gh  cd  ab
+ex(8):  ef  ab  cd  cd  ab  ab  cd  ab  ab  ef  cd  cd  ef  ab  ef  cd  ef  ef
 
 regexp: (ab|cd|ef)(gh|ij|kp)
 tree:   (((ab)|(cd)|(ef))((gh)|(ij)|(kp)))
 length: 4 to 4
-ex(0):  efkp  cdij  abij  cdgh  efkp  efgh  abkp  efkp  abgh  cdkp  abkp  abkp
-ex(1):  cdkp  cdij  efgh  abij  abij  abij  abkp  cdkp  efgh  cdij  efkp  efkp
-ex(2):  efij  cdkp  efgh  abgh  efgh  efgh  cdgh  cdgh  abij  efkp  abkp  cdgh
-ex(3):  efkp  efkp  abij  cdkp  abgh  efkp  abgh  abij  cdkp  efij  efij  cdgh
-ex(5):  efkp  efij  cdgh  cdij  efkp  efkp  efgh  abkp  efkp  abgh  efkp  efij
-ex(8):  efkp  abgh  efkp  efij  efkp  abgh  cdkp  cdij  abkp  efij  cdgh  cdij
+ex(0):  abgh  cdij  efij  cdkp  abgh  abkp  efgh  abgh  efkp  cdgh  efgh  efgh
+ex(1):  cdgh  cdij  abkp  efij  efij  efij  efgh  cdgh  abkp  cdij  abgh  abgh
+ex(2):  abij  cdgh  abkp  efkp  abkp  abkp  cdkp  cdkp  efij  abgh  efgh  cdkp
+ex(3):  abgh  abgh  efij  cdgh  efkp  abgh  efkp  efij  cdgh  abij  abij  cdkp
+ex(5):  abgh  abij  cdkp  cdij  abgh  abgh  abkp  efgh  abgh  efkp  abgh  abij
+ex(8):  abgh  efkp  abgh  abij  abgh  efkp  cdgh  cdij  efgh  abij  cdkp  cdij
 
 regexp: x(ab|cd|ef)y(gh|ij|kp)z
 tree:   (x((ab)|(cd)|(ef))y((gh)|(ij)|(kp))z)
 length: 7 to 7
-ex(0):  xefykpz  xcdyijz  xabyijz  xcdyghz  xefykpz  xefyghz  xabykpz  xefykpz
-ex(1):  xcdykpz  xabykpz  xabykpz  xabykpz  xcdykpz  xcdyijz  xefyghz  xabyijz
-ex(2):  xabyijz  xabykpz  xcdykpz  xefyghz  xcdyijz  xefykpz  xefykpz  xabyijz
-ex(3):  xcdykpz  xefyghz  xabyghz  xefyghz  xefyghz  xcdyghz  xcdyghz  xabyijz
-ex(5):  xabykpz  xcdyghz  xcdyijz  xefykpz  xefykpz  xabyijz  xcdykpz  xabyghz
-ex(8):  xabyghz  xabyijz  xcdykpz  xefyijz  xefyijz  xcdyghz  xabyghz  xefykpz
+ex(0):  xabyghz  xcdyijz  xefyijz  xcdykpz  xabyghz  xabykpz  xefyghz  xabyghz
+ex(1):  xcdyghz  xefyghz  xefyghz  xefyghz  xcdyghz  xcdyijz  xabykpz  xefyijz
+ex(2):  xefyijz  xefyghz  xcdyghz  xabykpz  xcdyijz  xabyghz  xabyghz  xefyijz
+ex(3):  xcdyghz  xabykpz  xefykpz  xabykpz  xabykpz  xcdykpz  xcdykpz  xefyijz
+ex(5):  xefyghz  xcdykpz  xcdyijz  xabyghz  xabyghz  xefyijz  xcdyghz  xefykpz
+ex(8):  xefykpz  xefyijz  xcdyghz  xabyijz  xabyijz  xcdykpz  xefykpz  xabyghz
 
 regexp: (a|bc)d(e|fg)|(w|x)(y|z)
 tree:   ((((a)|(bc))d((e)|(fg)))|(((w)|(x))((y)|(z))))
 length: 2 to 5
-ex(0):  xy  wz  adfg  xy  bcdfg  wz  xy  xz  bcdfg  wz  bcde  xy  xy  wz  xy
-ex(1):  wz  xz  bcde  xz  wy  xy  bcde  adfg  wz  adfg  adfg  xy  wz  xz  xz
-ex(2):  bcdfg  ade  adfg  adfg  xz  xy  ade  xy  bcdfg  wy  adfg  bcde  bcdfg
-ex(3):  xz  ade  adfg  bcde  bcdfg  wz  wz  bcdfg  xz  bcde  bcdfg  bcdfg  xz
-ex(5):  wy  bcde  xz  adfg  xz  bcde  xz  xy  xz  wz  wz  adfg  xy  xy  bcde
-ex(8):  xy  wy  bcdfg  xy  wy  wy  bcde  adfg  bcdfg  wz  xz  bcdfg  ade  xy
+ex(0):  adfg  bcde  xy  adfg  wy  bcde  adfg  ade  wy  bcde  wz  adfg  adfg
+ex(1):  adfg  wy  bcde  ade  wz  ade  bcdfg  adfg  wz  xy  bcde  xy  xy  adfg
+ex(2):  ade  ade  ade  wy  xz  xy  xy  ade  adfg  xz  adfg  wy  bcdfg  xy  wz
+ex(3):  bcdfg  ade  xz  xy  wz  wy  bcde  bcde  wy  ade  wz  wy  wy  ade  xz
+ex(5):  wz  ade  xy  ade  wz  ade  adfg  ade  bcde  bcde  xy  adfg  adfg  wz
+ex(8):  adfg  bcdfg  wy  adfg  bcdfg  bcdfg  wz  xy  wy  bcde  ade  wy  xz

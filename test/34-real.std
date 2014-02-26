@@ -94,12 +94,12 @@ ex(8):  (522)442-4814  (178)613-4185  (581)572-5367  (351)557-4280
 regexp: (http://|)(www\.)?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+(/[-_\.\?a-zA-Z0-9]*)*
 tree:   (((http://)|())(www.)?[0-9A-Za-z]+(.[0-9A-Za-z]+)+(/[-.0-9?A-Z_a-z]*)*)
 length: 3 to *
-ex(0):  L.p  A.1  http://t.X  http://x.L  P.8  Z.P  http://2.z  P.C  http://o.l
-ex(1):  www.o.K  www.y.L  http://www.a.s  3.A/  www.X.a  http://www.s.f/.  3.2/
-ex(2):  http://www.U0.PX  Dx.j.0  http://T.lJ/qp  pB.X  http://www.dT.C
-ex(3):  www.6.4.A.hK1//T  www.D2P.jZ.hA.IN  http://www.U.MU.qO2.ra9
-ex(5):  http://Ih.VKBQ/_b?PO  www.Pa.M2TU6.ASiX/Jp1
-ex(8):  http://www.0jFcDpc.AguvOsgu.qA.DKauoTQ.g1h6.yQQCbRW.eq
+ex(0):  http://L.p  http://A.1  t.X  x.L  http://P.8  http://Z.P  2.z
+ex(1):  m.R  http://a.4  www.l.W  www.q.R  http://www.H.D/c  http://F.T  4.N
+ex(2):  http://www.7.TI.S/  0L.XV/  http://www.px.9B.lR/p  kA.Qm/f/Gf  6f.u/
+ex(3):  nlq.7y//  qTz.A.Gx/TD7/U  www.19w.zGQ/p/9J/Yf  http://hZ.GV4//8/
+ex(5):  http://w.VP  www.4f1G9.ImK.104G7.DMuk.A.JZd/m/qttw/_/vI2nJ
+ex(8):  http://www.GWK6AaF1.qcNRI.zo.0t.sXpxKZk.q.Cp0YrESE.Oy94q.w65O
 
 # email
 

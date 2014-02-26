@@ -38,12 +38,12 @@ ex(8):  z5onztl5$  k6_f66sa$  b7n-jd$  s99ji-9$  -rreoicu$  fkd0bx$  wbg3sa$
 regexp:  #?([a-f0-9]{6}|[a-f0-9]{3})
 tree:   ( #?(([0-9a-f]{6})|([0-9a-f]{3})))
 length: 4 to 8
-ex(0):   7f4   159   e51   9aa   b86   3bbd62   50c   255888   753   14fcc7
-ex(1):   #9ec77d   #b3c772   #b3d9eb   58f985   #ec7   0c31f9   e61   #c28
-ex(2):   c5222b   e5b8c4   d51   #72f   d98   #8db6ea   #01b   #880   #059
-ex(3):   7e2   #26e   9af   9daf5e   #e8a   #2724d2   e36201   cf377d   1820f3
-ex(5):   #ccb   #4c466e   131   #1dd   dd514e   8c4   b566c1   8a7   3c3   1fc
-ex(8):   #67e   1a9   #e4b   #40bd4b   a19   9e3   #10f   99f   #4f2   #8af
+ex(0):   7f4d51   ce2969   535   601a24   8ca   ded618   bba1c8   b97   c5a17b
+ex(1):   284   a80   #7ba64c   #699   #e7a   f87e8d   #3bca17   6e7   #ffb598
+ex(2):   389830   #ae2937   #81f   #1d6   #83b013   #3f6   3d0ae8   #0fe   141
+ex(3):   #d4d   #454a6d   #1d8eee   423e7b   #b3e   #250   d32   876   f03
+ex(5):   #e7f777   7dbdbe   #895b65   13cb9d   #185e7b   aab77f   #8cd
+ex(8):   #a47d31   f47   6f3679   a3f04f   #08afd0   #d6d   b37   be0   #c589fa
 
 # 4. Matching a Slug
 

@@ -75,18 +75,18 @@ regexp: ((b|f)(a|e))*
 tree:   ((((b)|(f))((a)|(e)))*)
 length: 0 to *
 ex(0):                                                                        
-ex(1):      fa    be      be      fe    fe    fe    fa    fe  fe  fa        be
-ex(2):      fefa      fefa    fabe  bafe    ba  ba      bebe  fefe  fefa  fa
-ex(3):  fa  fefefe  babefa  fefaba  fa  bafe    befeba  bafafa  fefafe  fa    
-ex(5):  befafe  feba  fabafafefa  fefebe  fefefafefe  febeba  febefabe  fe
-ex(8):  bafefebebafabafa  bebe  fafefebefa  befafefa  fabebe  fabebafefebe  ba
+ex(1):      be    fa      fa      ba    ba    ba    be    ba  ba  be        fa
+ex(2):      babe      babe    befa  feba    fe  fe      fafa  baba  babe  be
+ex(3):  be  bababa  fefabe  babefe  be  feba    fabafe  febebe  babeba  be    
+ex(5):  fabeba  bafe  befebebabe  babafa  bababebaba  bafafe  bafabefa  ba
+ex(8):  febabafafebefebe  fafa  bebabafabe  fabebabe  befafa  befafebabafa  fe
 
 regexp: ((n|t)(o|e)+)*
 tree:   ((((n)|(t))((o)|(e))+)*)
 length: 0 to *
 ex(0):                                                                        
-ex(1):      to    ne      ne      te    te    te    to    te  te  to        ne
-ex(2):      teno  tenee  nonee    neo        note    teto  too  none  tenoo
-ex(3):  neo  neeenee  noonoeo  teototeee  teoneoe  teoneoo  teee  nee  
-ex(5):  nooeeteeoo    tee  noneeeeo    noooenoteeeo  teoeeoneeoeetotoeoe
-ex(8):  neeeeeooe    toooooeeneooenoeeeoooeneeeeeetoooo
+ex(1):      ne    to      to      no    no    no    ne    no  no  ne        to
+ex(2):      note  notoo  tetoo    toe        teno    none  nee  teto  notee
+ex(3):  toe  toootoo  teeteoe  noenenooo  noetoeo  noetoee  nooo  too  
+ex(5):  teeoonooee    noo  tetooooe    teeeotenoooe  noeooetooeooneneoeo
+ex(8):  toooooeeo    neeeeeootoeeoteoooeeeotooooooneeee

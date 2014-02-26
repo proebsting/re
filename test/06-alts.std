@@ -4,129 +4,129 @@
 regexp: a|b
 tree:   ((a)|(b))
 length: 1 to 1
-ex(0):  b  b  a  b  a  b  a  a  b  b  b  a  a  b  b  b  a  b  b  b  a  b  b  b
-ex(1):  b  b  b  a  b  a  b  a  b  b  a  b  b  a  b  a  b  b  b  a  a  b  b  b
-ex(2):  b  b  b  b  a  b  a  b  b  b  b  a  a  b  b  a  a  b  a  a  a  b  b  a
-ex(3):  a  a  b  a  a  b  b  b  a  b  a  b  b  b  b  b  b  b  b  b  b  a  b  b
-ex(5):  a  a  a  a  b  a  a  b  b  b  b  b  b  a  a  a  a  b  b  a  a  b  b  b
-ex(8):  a  a  a  b  a  b  a  a  b  b  b  a  a  b  b  b  a  a  a  a  a  b  a  b
+ex(0):  a  a  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  a  a  a  b  a  a  a
+ex(1):  a  a  a  b  a  b  a  b  a  a  b  a  a  b  a  b  a  a  a  b  b  a  a  a
+ex(2):  a  a  a  a  b  a  b  a  a  a  a  b  b  a  a  b  b  a  b  b  b  a  a  b
+ex(3):  b  b  a  b  b  a  a  a  b  a  b  a  a  a  a  a  a  a  a  a  a  b  a  a
+ex(5):  b  b  b  b  a  b  b  a  a  a  a  a  a  b  b  b  b  a  a  b  b  a  a  a
+ex(8):  b  b  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  b  b  b  b  a  b  a
 
 regexp: ab|c
 tree:   ((ab)|(c))
 length: 1 to 2
-ex(0):  c  c  ab  c  ab  c  ab  ab  c  c  c  ab  ab  c  c  c  ab  c  c  c  ab
-ex(1):  c  c  ab  c  c  c  ab  c  ab  c  ab  c  c  ab  c  c  ab  c  ab  c  c  c
-ex(2):  ab  c  c  c  ab  c  c  c  c  ab  c  ab  c  c  c  c  ab  ab  c  c  ab
-ex(3):  c  ab  ab  ab  c  c  ab  c  ab  ab  c  ab  ab  c  c  c  ab  c  ab  c  c
-ex(5):  c  c  c  c  c  c  c  ab  c  c  ab  ab  ab  ab  ab  c  ab  ab  c  c  c
-ex(8):  c  c  ab  ab  ab  ab  c  c  ab  ab  c  c  c  ab  ab  ab  ab  c  ab  c
+ex(0):  ab  ab  c  ab  c  ab  c  c  ab  ab  ab  c  c  ab  ab  ab  c  ab  ab  ab
+ex(1):  ab  ab  ab  c  ab  ab  ab  c  ab  c  ab  c  ab  ab  c  ab  ab  c  ab  c
+ex(2):  ab  ab  c  c  ab  ab  ab  c  ab  ab  ab  ab  c  ab  c  ab  ab  ab  ab
+ex(3):  c  ab  ab  c  c  ab  c  c  c  ab  ab  c  ab  c  c  ab  c  c  ab  ab  ab
+ex(5):  ab  c  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  c  ab  ab  c  c  c  c  c
+ex(8):  c  c  ab  ab  ab  ab  ab  ab  c  c  c  c  ab  ab  c  c  ab  ab  ab  c
 
 regexp: a|bc
 tree:   ((a)|(bc))
 length: 1 to 2
-ex(0):  bc  bc  a  bc  a  bc  a  a  bc  bc  bc  a  a  bc  bc  bc  a  bc  bc  bc
-ex(1):  bc  bc  bc  a  bc  bc  bc  a  bc  a  bc  a  bc  bc  a  bc  bc  a  bc  a
-ex(2):  bc  bc  a  a  bc  bc  bc  a  bc  bc  bc  bc  a  bc  a  bc  bc  bc  bc
-ex(3):  a  bc  bc  a  a  bc  a  a  a  bc  bc  a  bc  a  a  bc  a  a  bc  bc  bc
-ex(5):  bc  a  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  a  bc  bc  a  a  a  a  a
-ex(8):  a  a  bc  bc  bc  bc  bc  bc  a  a  a  a  bc  bc  a  a  bc  bc  bc  a
+ex(0):  a  a  bc  a  bc  a  bc  bc  a  a  a  bc  bc  a  a  a  bc  a  a  a  bc
+ex(1):  a  a  bc  a  a  a  bc  a  bc  a  bc  a  a  bc  a  a  bc  a  bc  a  a  a
+ex(2):  bc  a  a  a  bc  a  a  a  a  bc  a  bc  a  a  a  a  bc  bc  a  a  bc
+ex(3):  a  bc  bc  bc  a  a  bc  a  bc  bc  a  bc  bc  a  a  a  bc  a  bc  a  a
+ex(5):  a  a  a  a  a  a  a  bc  a  a  bc  bc  bc  bc  bc  a  bc  bc  a  a  a
+ex(8):  a  a  bc  bc  bc  bc  a  a  bc  bc  a  a  a  bc  bc  bc  bc  a  bc  a
 
 regexp: ab|cd
 tree:   ((ab)|(cd))
 length: 2 to 2
-ex(0):  cd  cd  ab  cd  ab  cd  ab  ab  cd  cd  cd  ab  ab  cd  cd  cd  ab  cd
-ex(1):  cd  ab  cd  cd  cd  ab  cd  cd  cd  ab  cd  ab  cd  ab  cd  cd  ab  cd
-ex(2):  ab  cd  ab  cd  cd  cd  ab  ab  cd  cd  cd  ab  cd  cd  cd  cd  ab  cd
-ex(3):  cd  cd  cd  cd  ab  ab  cd  cd  ab  ab  cd  ab  ab  ab  cd  cd  ab  cd
-ex(5):  ab  cd  ab  ab  cd  cd  cd  ab  cd  ab  cd  cd  cd  cd  cd  cd  cd  cd
-ex(8):  cd  ab  cd  cd  ab  ab  ab  ab  ab  cd  ab  ab  cd  cd  cd  cd  cd  cd
+ex(0):  ab  ab  cd  ab  cd  ab  cd  cd  ab  ab  ab  cd  cd  ab  ab  ab  cd  ab
+ex(1):  ab  cd  ab  ab  ab  cd  ab  ab  ab  cd  ab  cd  ab  cd  ab  ab  cd  ab
+ex(2):  cd  ab  cd  ab  ab  ab  cd  cd  ab  ab  ab  cd  ab  ab  ab  ab  cd  ab
+ex(3):  ab  ab  ab  ab  cd  cd  ab  ab  cd  cd  ab  cd  cd  cd  ab  ab  cd  ab
+ex(5):  cd  ab  cd  cd  ab  ab  ab  cd  ab  cd  ab  ab  ab  ab  ab  ab  ab  ab
+ex(8):  ab  cd  ab  ab  cd  cd  cd  cd  cd  ab  cd  cd  ab  ab  ab  ab  ab  ab
 
 regexp: a|b|c
 tree:   ((a)|(b)|(c))
 length: 1 to 1
-ex(0):  c  c  b  b  a  b  b  a  c  c  c  a  a  c  c  c  a  a  b  c  a  c  a  c
-ex(1):  c  b  c  b  b  c  a  a  b  a  b  a  b  a  c  b  c  c  a  b  b  c  c  c
-ex(2):  a  b  c  b  b  c  c  a  a  a  c  a  c  a  b  a  b  a  a  b  c  c  a  c
-ex(3):  a  b  b  c  c  c  c  a  b  b  c  a  a  c  c  a  a  a  b  b  c  c  b  c
-ex(5):  b  a  a  a  c  c  c  b  b  a  b  b  c  c  c  c  c  a  a  c  c  c  a  a
-ex(8):  c  c  b  c  b  c  c  a  a  c  c  c  b  c  c  a  a  b  c  b  b  a  c  c
+ex(0):  a  a  b  b  c  b  b  c  a  a  a  c  c  a  a  a  c  c  b  a  c  a  c  a
+ex(1):  a  b  a  b  b  a  c  c  b  c  b  c  b  c  a  b  a  a  c  b  b  a  a  a
+ex(2):  c  b  a  b  b  a  a  c  c  c  a  c  a  c  b  c  b  c  c  b  a  a  c  a
+ex(3):  c  b  b  a  a  a  a  c  b  b  a  c  c  a  a  c  c  c  b  b  a  a  b  a
+ex(5):  b  c  c  c  a  a  a  b  b  c  b  b  a  a  a  a  a  c  c  a  a  a  c  c
+ex(8):  a  a  b  a  b  a  a  c  c  a  a  a  b  a  a  c  c  b  a  b  b  c  a  a
 
 regexp: a|b|c|d
 tree:   ((a)|(b)|(c)|(d))
 length: 1 to 1
-ex(0):  b  b  c  b  a  d  a  c  d  d  d  a  a  d  d  b  a  b  b  b  a  d  b  d
-ex(1):  b  d  d  a  d  c  d  c  d  b  c  d  b  c  b  a  d  d  b  a  a  d  d  b
-ex(2):  b  d  b  d  a  d  c  b  d  d  b  a  c  b  b  a  a  d  c  c  a  b  d  a
-ex(3):  c  c  d  a  a  b  b  d  a  d  c  b  b  d  b  d  d  d  d  d  b  c  d  b
-ex(5):  a  c  c  c  b  a  a  b  b  b  d  b  d  a  a  a  a  d  d  c  a  d  b  d
-ex(8):  c  a  c  d  c  b  a  a  d  b  d  a  c  b  b  b  c  c  a  c  c  d  c  b
+ex(0):  c  c  b  c  d  a  d  b  a  a  a  d  d  a  a  c  d  c  c  c  d  a  c  a
+ex(1):  c  a  a  d  a  b  a  b  a  c  b  a  c  b  c  d  a  a  c  d  d  a  a  c
+ex(2):  c  a  c  a  d  a  b  c  a  a  c  d  b  c  c  d  d  a  b  b  d  c  a  d
+ex(3):  b  b  a  d  d  c  c  a  d  a  b  c  c  a  c  a  a  a  a  a  c  b  a  c
+ex(5):  d  b  b  b  c  d  d  c  c  c  a  c  a  d  d  d  d  a  a  b  d  a  c  a
+ex(8):  b  d  b  a  b  c  d  d  a  c  a  d  b  c  c  c  b  b  d  b  b  a  b  c
 
 regexp: ab|cd|ef
 tree:   ((ab)|(cd)|(ef))
 length: 2 to 2
-ex(0):  ef  ef  cd  cd  ab  cd  cd  ab  ef  ef  ef  ab  ab  ef  ef  ef  ab  ab
-ex(1):  ef  ab  ef  ab  ef  ab  ef  cd  ef  cd  cd  ef  ab  ab  cd  ab  cd  ab
-ex(2):  ab  ef  cd  ef  ef  ab  cd  cd  ef  ef  ef  ef  ab  cd  ef  cd  cd  ef
-ex(3):  ab  ab  ab  ef  ab  ef  ab  cd  ab  cd  ab  ab  cd  ef  ef  ab  ef  cd
-ex(5):  cd  cd  ef  ef  ef  ef  ab  cd  cd  ef  ab  ab  ef  ef  ab  ab  ab  cd
-ex(8):  ef  ef  cd  ef  cd  cd  ab  ab  ab  ef  ef  ef  cd  cd  ab  cd  cd  ef
+ex(0):  ab  ab  cd  cd  ef  cd  cd  ef  ab  ab  ab  ef  ef  ab  ab  ab  ef  ef
+ex(1):  ab  ef  ab  ef  ab  ef  ab  cd  ab  cd  cd  ab  ef  ef  cd  ef  cd  ef
+ex(2):  ef  ab  cd  ab  ab  ef  cd  cd  ab  ab  ab  ab  ef  cd  ab  cd  cd  ab
+ex(3):  ef  ef  ef  ab  ef  ab  ef  cd  ef  cd  ef  ef  cd  ab  ab  ef  ab  cd
+ex(5):  cd  cd  ab  ab  ab  ab  ef  cd  cd  ab  ef  ef  ab  ab  ef  ef  ef  cd
+ex(8):  ab  ab  cd  ab  cd  cd  ef  ef  ef  ab  ab  ab  cd  cd  ef  cd  cd  ab
 
 regexp: ab|cd|ef|gh
 tree:   ((ab)|(cd)|(ef)|(gh))
 length: 2 to 2
-ex(0):  cd  cd  ef  cd  ab  gh  ab  ef  gh  gh  gh  ab  ab  gh  gh  cd  ab  cd
-ex(1):  cd  ab  gh  cd  gh  ef  cd  gh  gh  ab  gh  ef  gh  ef  gh  cd  ef  gh
-ex(2):  ef  cd  ab  gh  gh  cd  ab  ab  gh  gh  cd  ef  cd  gh  cd  gh  ab  gh
-ex(3):  cd  gh  gh  cd  ab  ef  cd  cd  ab  ab  gh  ef  ef  ab  cd  gh  ab  cd
-ex(5):  ef  gh  ab  ab  cd  cd  gh  ab  gh  ef  cd  cd  gh  cd  gh  gh  gh  gh
-ex(8):  cd  ef  gh  cd  ef  ab  ef  ef  ef  cd  ab  ab  cd  cd  cd  gh  cd  gh
+ex(0):  ef  ef  cd  ef  gh  ab  gh  cd  ab  ab  ab  gh  gh  ab  ab  ef  gh  ef
+ex(1):  ef  gh  ab  ef  ab  cd  ef  ab  ab  gh  ab  cd  ab  cd  ab  ef  cd  ab
+ex(2):  cd  ef  gh  ab  ab  ef  gh  gh  ab  ab  ef  cd  ef  ab  ef  ab  gh  ab
+ex(3):  ef  ab  ab  ef  gh  cd  ef  ef  gh  gh  ab  cd  cd  gh  ef  ab  gh  ef
+ex(5):  cd  ab  gh  gh  ef  ef  ab  gh  ab  cd  ef  ef  ab  ef  ab  ab  ab  ab
+ex(8):  ef  cd  ab  ef  cd  gh  cd  cd  cd  ef  gh  gh  ef  ef  ef  ab  ef  ab
 
 regexp: abc|def
 tree:   ((abc)|(def))
 length: 3 to 3
-ex(0):  def  def  abc  def  abc  def  abc  abc  def  def  def  abc  abc  def
-ex(1):  def  abc  def  def  def  abc  def  def  def  abc  def  def  def  abc
-ex(2):  abc  def  abc  def  def  abc  def  def  abc  def  abc  def  def  def
-ex(3):  abc  def  def  def  abc  def  def  def  def  abc  def  abc  def  def
-ex(5):  def  abc  abc  def  def  abc  abc  def  abc  abc  abc  def  def  abc
-ex(8):  abc  abc  def  abc  abc  def  def  def  abc  def  abc  def  def  def
+ex(0):  abc  abc  def  abc  def  abc  def  def  abc  abc  abc  def  def  abc
+ex(1):  abc  def  abc  abc  abc  def  abc  abc  abc  def  abc  abc  abc  def
+ex(2):  def  abc  def  abc  abc  def  abc  abc  def  abc  def  abc  abc  abc
+ex(3):  def  abc  abc  abc  def  abc  abc  abc  abc  def  abc  def  abc  abc
+ex(5):  abc  def  def  abc  abc  def  def  abc  def  def  def  abc  abc  def
+ex(8):  def  def  abc  def  def  abc  abc  abc  def  abc  def  abc  abc  abc
 
 regexp: abc|def|ghi
 tree:   ((abc)|(def)|(ghi))
 length: 3 to 3
-ex(0):  ghi  ghi  def  def  abc  def  def  abc  ghi  ghi  ghi  abc  abc  ghi
-ex(1):  ghi  abc  abc  def  ghi  abc  ghi  abc  ghi  abc  ghi  def  ghi  def
-ex(2):  ghi  abc  abc  def  abc  def  abc  def  abc  ghi  def  ghi  ghi  abc
-ex(3):  def  ghi  ghi  ghi  ghi  abc  def  ghi  def  def  ghi  ghi  abc  abc
-ex(5):  ghi  abc  ghi  abc  def  abc  def  abc  abc  def  ghi  ghi  abc  ghi
-ex(8):  abc  def  def  ghi  ghi  ghi  ghi  abc  def  def  ghi  abc  abc  ghi
+ex(0):  abc  abc  def  def  ghi  def  def  ghi  abc  abc  abc  ghi  ghi  abc
+ex(1):  abc  ghi  ghi  def  abc  ghi  abc  ghi  abc  ghi  abc  def  abc  def
+ex(2):  abc  ghi  ghi  def  ghi  def  ghi  def  ghi  abc  def  abc  abc  ghi
+ex(3):  def  abc  abc  abc  abc  ghi  def  abc  def  def  abc  abc  ghi  ghi
+ex(5):  abc  ghi  abc  ghi  def  ghi  def  ghi  ghi  def  abc  abc  ghi  abc
+ex(8):  ghi  def  def  abc  abc  abc  abc  ghi  def  def  abc  ghi  ghi  abc
 
 regexp: a|bc|def|ghij
 tree:   ((a)|(bc)|(def)|(ghij))
 length: 1 to 4
-ex(0):  bc  bc  def  bc  a  ghij  a  def  ghij  ghij  ghij  a  a  ghij  ghij
-ex(1):  a  bc  bc  bc  a  ghij  bc  ghij  def  bc  ghij  ghij  a  ghij  def
-ex(2):  def  ghij  bc  def  ghij  bc  def  bc  a  ghij  ghij  bc  a  a  ghij
-ex(3):  bc  def  bc  ghij  bc  ghij  a  ghij  def  bc  ghij  ghij  bc  a  def
-ex(5):  bc  a  a  ghij  def  def  a  bc  ghij  a  bc  def  def  ghij  a  a  bc
-ex(8):  ghij  a  ghij  def  bc  bc  ghij  bc  ghij  ghij  ghij  ghij  ghij  bc
+ex(0):  def  def  bc  def  ghij  a  ghij  bc  a  a  a  ghij  ghij  a  a  def
+ex(1):  def  def  def  ghij  a  def  a  bc  def  a  a  ghij  a  bc  a  bc  a
+ex(2):  bc  a  def  bc  def  ghij  a  a  def  ghij  ghij  a  a  def  bc  def  a
+ex(3):  a  ghij  a  bc  def  a  a  def  ghij  bc  def  def  ghij  ghij  a  bc
+ex(5):  ghij  def  a  ghij  def  bc  bc  a  ghij  ghij  def  def  a  ghij  a
+ex(8):  def  def  a  def  a  a  a  a  a  def  bc  a  def  bc  ghij  bc  bc  bc
 
 regexp: pqrs|tuv|wx|yz
 tree:   ((pqrs)|(tuv)|(wx)|(yz))
 length: 2 to 4
-ex(0):  tuv  tuv  wx  tuv  pqrs  yz  pqrs  wx  yz  yz  yz  pqrs  pqrs  yz  yz
-ex(1):  pqrs  tuv  tuv  tuv  pqrs  yz  tuv  yz  wx  tuv  yz  yz  pqrs  yz  wx
-ex(2):  wx  yz  tuv  wx  yz  tuv  wx  tuv  pqrs  yz  yz  tuv  pqrs  pqrs  yz
-ex(3):  tuv  wx  tuv  yz  tuv  yz  pqrs  yz  wx  tuv  yz  yz  tuv  pqrs  wx
-ex(5):  tuv  pqrs  pqrs  yz  wx  wx  pqrs  tuv  yz  pqrs  tuv  wx  wx  yz  pqrs
-ex(8):  tuv  tuv  yz  pqrs  yz  wx  tuv  tuv  yz  tuv  yz  yz  yz  yz  yz  tuv
+ex(0):  wx  wx  tuv  wx  yz  pqrs  yz  tuv  pqrs  pqrs  pqrs  yz  yz  pqrs
+ex(1):  wx  yz  wx  wx  wx  yz  pqrs  wx  pqrs  tuv  wx  pqrs  pqrs  yz  pqrs
+ex(2):  pqrs  tuv  pqrs  wx  tuv  pqrs  wx  tuv  wx  yz  pqrs  pqrs  wx  yz  yz
+ex(3):  pqrs  wx  tuv  wx  pqrs  wx  pqrs  yz  pqrs  tuv  wx  pqrs  pqrs  wx
+ex(5):  tuv  wx  wx  yz  yz  pqrs  tuv  tuv  yz  wx  pqrs  yz  wx  tuv  tuv
+ex(8):  yz  yz  wx  wx  pqrs  yz  pqrs  tuv  wx  wx  pqrs  wx  pqrs  pqrs  pqrs
 
 regexp: abc|d|efgh|ij|kmlno|pqr|s|tuv|wxy|z
 tree:   ((abc)|(d)|(efgh)|(ij)|(kmlno)|(pqr)|(s)|(tuv)|(wxy)|(z))
 length: 1 to 5
-ex(0):  pqr  pqr  s  ij  kmlno  ij  efgh  efgh  d  d  d  efgh  abc  d  tuv  ij
-ex(1):  z  z  pqr  kmlno  d  ij  z  wxy  ij  tuv  z  wxy  tuv  efgh  d  kmlno
-ex(2):  d  s  z  z  abc  pqr  efgh  pqr  ij  d  abc  efgh  d  z  tuv  efgh  z
-ex(3):  pqr  tuv  abc  z  efgh  pqr  ij  pqr  z  efgh  efgh  d  pqr  s  abc  z
-ex(5):  wxy  s  ij  pqr  efgh  d  s  abc  pqr  s  s  pqr  d  tuv  wxy  tuv  s
-ex(8):  ij  tuv  z  ij  tuv  z  d  d  d  abc  z  z  wxy  wxy  abc  abc  wxy  z
+ex(0):  kmlno  kmlno  ij  s  pqr  s  tuv  tuv  wxy  wxy  wxy  tuv  z  wxy  efgh
+ex(1):  d  abc  abc  kmlno  pqr  wxy  s  abc  d  s  efgh  abc  d  efgh  tuv
+ex(2):  pqr  kmlno  wxy  ij  abc  abc  z  kmlno  tuv  kmlno  s  wxy  z  tuv
+ex(3):  abc  efgh  tuv  abc  wxy  kmlno  efgh  z  abc  tuv  kmlno  s  kmlno
+ex(5):  tuv  tuv  wxy  kmlno  ij  z  abc  z  d  ij  s  kmlno  tuv  wxy  ij  z
+ex(8):  ij  ij  kmlno  wxy  efgh  d  efgh  ij  efgh  s  efgh  abc  s  efgh  abc

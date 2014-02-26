@@ -310,12 +310,11 @@ func (d *AltNode) Example(s []byte, n int) []byte {
 func (d *AltNode) String() string {
 	b := make([]byte, 0)
 	b = append(b, '(')
-	n := len(d.Alts) - 1
-	for i := range d.Alts {
-		if i > 0 {
+	for k, v := range d.Alts {
+		if k > 0 {
 			b = append(b, '|')
 		}
-		b = append(b, fmt.Sprint(d.Alts[n-i])...)
+		b = append(b, fmt.Sprint(v)...)
 	}
 	b = append(b, ')')
 	return string(b)
@@ -323,13 +322,15 @@ func (d *AltNode) String() string {
 
 //  Alternate makes an AltNode, collapsing multiple alternatives.
 func Alternate(d Node, e Node) Node {
-	rside, ok := e.(*AltNode)
-	if ok {
-		rside.Alts = append(rside.Alts, d)
-		return rside
+	if anode, ok := e.(*AltNode); ok {
+		// insert at left end for intuitive ordering
+		alist := append(anode.Alts, nil)
+		copy(alist[1:], alist[0:])
+		alist[0] = d
+		anode.Alts = alist
+		return anode
 	} else {
-		a := make([]Node, 0)
-		return &AltNode{append(a, e, d), nildata}
+		return &AltNode{append(make([]Node, 0), d, e), nildata}
 	}
 }
 
