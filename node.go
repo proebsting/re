@@ -8,19 +8,27 @@ import (
 )
 
 //  Node is the "parent class" of all parse tree node subtypes.
+//  Every Node subtype includes an anonymous NodeData node and
+//  implements the following pointer receiver methods:
+//
+//  Data()		return pointer to NodeData
+//  Walk(v,pre,post)	walk subtree, calling VisitFunc functions pre & post
+//  MinLen()            return minimum length matched (0 if nullable)
+//  MaxLen()		return maximum length matched (-1 for infinity)
+//  Example(buf,n)	append random synthesized example of max repl n to buf
+//  SetNFL()            set Nullable, FirstPos, LastPos attributes
+//
 type Node interface {
-	Data() *NodeData                                   // return NodeData pointer
-	Walk(v interface{}, pre VisitFunc, post VisitFunc) // walk tree, calling pre/post visit funcs
-	MinLen() int                                       // minimum length matched (0 if nullable)
-	MaxLen() int                                       // maximum length matched (-1 for infinity)
-	Example([]byte, int) []byte                        // append random synthesized example
-	SetNFL()                                           // set Nullable, FirstPos, LastPos
+	Data() *NodeData
+	Walk(v interface{}, pre VisitFunc, post VisitFunc)
+	MinLen() int
+	MaxLen() int
+	Example([]byte, int) []byte
+	SetNFL()
 }
 
-//#%#% some of the appends in FirstPos/LastPos calcs should really be unions;
-//#%#% but they may later change to Cset types anyway, so this will do for now.
-
 //  NodeData is included (anonymously) in every Node subtype.
+//  #%#% FirstPos / LastPos should really be sets, not appended lists
 type NodeData struct {
 	Nullable  bool   // can this subtree match an empty string?
 	FirstPos  []Node // set of legal first characters
