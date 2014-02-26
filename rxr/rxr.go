@@ -107,15 +107,16 @@ func examples(x rx.Node, n int) {
 
 //  Bigdump prints details of the parse tree.
 func bigdump(x rx.Node) {
-	indent := ""
-	x.Walk(&indent, previsit, postvisit)
+	indent = ""
+	x.Walk(predump, postdump)
 }
 
-func previsit(d rx.Node, v interface{}) {
-	indent := v.(*string)
-	*indent = *indent + "  "
+var indent string
+
+func predump(d rx.Node) {
+	indent = indent + "  "
 	a := d.Data()
-	fmt.Printf("%snode: {%t, ", (*indent)[2:], a.Nullable)
+	fmt.Printf("%snode: {%t, ", indent[2:], a.Nullable)
 	for k, _ := range a.FirstPos {
 		fmt.Print(k)
 	}
@@ -127,7 +128,6 @@ func previsit(d rx.Node, v interface{}) {
 
 }
 
-func postvisit(d rx.Node, v interface{}) {
-	indent := v.(*string)
-	*indent = (*indent)[2:]
+func postdump(d rx.Node) {
+	indent = indent[2:]
 }

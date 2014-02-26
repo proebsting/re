@@ -24,16 +24,22 @@ func BuildDFA(tree Node) (*DFA, Node) {
 
 	//#%#% split {m,n} nodes as necessary for a correct DFA
 
-	// number the leaf nodes for better comprehension of the DFA
+	// prepare nodes for followpos computation
 	n := 0
-	tree.Walk(nil, nil, func(d Node, v interface{}) {
+	tree.Walk(nil, func(d Node) {
+		d.SetNFL() // set Nullable, FirstPos, LastPos
 		if leaf, ok := d.(*MatchNode); ok {
-			n++	
-			leaf.posn = n 
+			n++ // number the leaf nodes
+			leaf.posn = n
 		}
 	})
 
-	tree.SetNFL() // set Nullable, FirstPos, LastPos values
+	// compute followpos sets
+	tree.Walk(nil, func(d Node) {
+		d.SetFollow()
+	})
+
+	//#%#% constuct and return DFA
 
 	return nil, tree
 }

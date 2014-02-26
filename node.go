@@ -10,26 +10,27 @@ import (
 )
 
 //  Node is the "parent class" of all parse tree node subtypes.
-//  Every Node subtype includes an anonymous NodeData node and
-//  implements the following pointer receiver methods:
-//
-//  Data()		return pointer to NodeData
-//  Walk(v,pre,post)	walk subtree, calling VisitFunc functions pre & post
-//  MinLen()            return minimum length matched (0 if nullable)
-//  MaxLen()		return maximum length matched (-1 for infinity)
-//  Example(buf,n)	append random synthesized example of max repl n to buf
-//  SetNFL()            set Nullable, FirstPos, LastPos attributes
-//
 //  The four proper subtypes are MatchNode, ConcatNode, ReplNode, and AltNode.
 //  Epsilon and Accept make special ConcatNode and MatchNode forms respectively.
 //
+//  Every Node subtype implements the following pointer receiver methods:
+//  Data()		return pointer to NodeData
+//  Walk(pre,post)	walk subtree, calling VisitFunc functions pre & post
+//  MinLen()            return minimum length matched (0 if nullable)
+//  MaxLen()		return maximum length matched (-1 for infinity)
+//  Example(buf,n)	append random synthesized example of max repl n to buf
+//  SetNFL()            set Nullable, FirstPos, LastPos; clear FollowPos
+//  SetFollow()		set FollowPos
+//  SetNFL and SetFollow assume that child values have been previously set.
+//
 type Node interface {
 	Data() *NodeData
-	Walk(v interface{}, pre VisitFunc, post VisitFunc)
+	Walk(pre VisitFunc, post VisitFunc)
 	MinLen() int
 	MaxLen() int
 	Example([]byte, int) []byte
 	SetNFL()
+	SetFollow()
 }
 
 //  NodeData is included (anonymously) in every Node subtype.
@@ -37,13 +38,13 @@ type NodeData struct {
 	Nullable  bool          // can this subtree match an empty string?
 	FirstPos  map[Node]bool // set of possible initial nodes ("positions")
 	LastPos   map[Node]bool // set of possible final nodes ("positions")
-	FollowPos []Node        // positions that can follow in DFA
+	FollowPos map[Node]bool // set of positions that can follow in NFA
 }
 
 var nildata = NodeData{} // convenient for initilization
 
 //  VisitFunc is a type for visiting tree nodes and passing an arbitrary value.
-type VisitFunc func(d Node, v interface{})
+type VisitFunc func(d Node)
 
 //  Growset adds (or replaces) all elements from addl into base.
 //  With a nil (or initially empty) base this effects a copy.
@@ -81,13 +82,13 @@ func (d *MatchNode) Data() *NodeData { return &d.NodeData }
 
 //  MatchNode.Walk visits nodes in a subtree, calling functions pre and/or post,
 //  if non-nil, before and after walking this node's children.
-func (d *MatchNode) Walk(v interface{}, pre VisitFunc, post VisitFunc) {
+func (d *MatchNode) Walk(pre VisitFunc, post VisitFunc) {
 	if pre != nil {
-		pre(d, v)
+		pre(d)
 	}
 	// no children
 	if post != nil {
-		post(d, v)
+		post(d)
 	}
 }
 
@@ -102,8 +103,13 @@ func (d *MatchNode) SetNFL() {
 	d.Nullable = false
 	d.FirstPos = make(map[Node]bool)
 	d.LastPos = make(map[Node]bool)
+	d.FollowPos = make(map[Node]bool)
 	d.FirstPos[d] = true
 	d.LastPos[d] = true
+}
+
+//  MatchNode.SetFollow, applied bottom up, computes followpos sets.
+func (d *MatchNode) SetFollow() {
 }
 
 //  MatchNode.Example appends a single randomly chosen matching character.
@@ -138,15 +144,15 @@ func (d *ConcatNode) Data() *NodeData { return &d.NodeData }
 
 //  ConcatNode.Walk visits nodes in a subtree, calling functions pre and/or post,
 //  if non-nil, before and after walking this node's children.
-func (d *ConcatNode) Walk(v interface{}, pre VisitFunc, post VisitFunc) {
+func (d *ConcatNode) Walk(pre VisitFunc, post VisitFunc) {
 	if pre != nil {
-		pre(d, v)
+		pre(d)
 	}
 	for _, c := range d.Parts {
-		c.Walk(v, pre, post)
+		c.Walk(pre, post)
 	}
 	if post != nil {
-		post(d, v)
+		post(d)
 	}
 }
 
@@ -178,8 +184,8 @@ func (d *ConcatNode) SetNFL() {
 	d.Nullable = true
 	d.FirstPos = make(map[Node]bool)
 	d.LastPos = make(map[Node]bool)
+	d.FollowPos = make(map[Node]bool)
 	for _, e := range d.Parts {
-		e.SetNFL()
 		if d.Nullable { // if nullable so far...
 			growset(d.FirstPos, e.Data().FirstPos)
 		}
@@ -190,6 +196,10 @@ func (d *ConcatNode) SetNFL() {
 		}
 		d.Nullable = d.Nullable && e.Data().Nullable
 	}
+}
+
+//  ConcatNode.SetFollow, applied bottom up, computes followpos sets.
+func (d *ConcatNode) SetFollow() {
 }
 
 //  ConcatNode.Example appends one example from each subpattern.
@@ -247,15 +257,15 @@ func (d *AltNode) Data() *NodeData { return &d.NodeData }
 
 //  AltNode.Walk visits nodes in a subtree, calling functions pre and/or post,
 //  if non-nil, before and after walking this node's children.
-func (d *AltNode) Walk(v interface{}, pre VisitFunc, post VisitFunc) {
+func (d *AltNode) Walk(pre VisitFunc, post VisitFunc) {
 	if pre != nil {
-		pre(d, v)
+		pre(d)
 	}
 	for _, c := range d.Alts {
-		c.Walk(v, pre, post)
+		c.Walk(pre, post)
 	}
 	if post != nil {
-		post(d, v)
+		post(d)
 	}
 }
 
@@ -292,12 +302,16 @@ func (d *AltNode) SetNFL() {
 	d.Nullable = false
 	d.FirstPos = make(map[Node]bool)
 	d.LastPos = make(map[Node]bool)
+	d.FollowPos = make(map[Node]bool)
 	for _, e := range d.Alts {
-		e.SetNFL()
 		d.Nullable = d.Nullable || e.Data().Nullable
 		growset(d.FirstPos, e.Data().FirstPos)
 		growset(d.LastPos, e.Data().LastPos)
 	}
+}
+
+//  AltNode.SetFollow, applied bottom up, computes followpos sets.
+func (d *AltNode) SetFollow() {
 }
 
 //  AltNode.Example chooses one subpattern to generate an example.
@@ -349,13 +363,13 @@ func (d *ReplNode) Data() *NodeData { return &d.NodeData }
 
 //  ReplNode.Walk visits nodes in a subtree, calling functions pre and/or post,
 //  if non-nil, before and after walking this node's children.
-func (d *ReplNode) Walk(v interface{}, pre VisitFunc, post VisitFunc) {
+func (d *ReplNode) Walk(pre VisitFunc, post VisitFunc) {
 	if pre != nil {
-		pre(d, v)
+		pre(d)
 	}
-	d.Child.Walk(v, pre, post)
+	d.Child.Walk(pre, post)
 	if post != nil {
-		post(d, v)
+		post(d)
 	}
 }
 
@@ -379,10 +393,14 @@ func (d *ReplNode) MaxLen() int {
 
 //  ReplNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *ReplNode) SetNFL() {
-	d.Child.SetNFL()
 	d.Nullable = d.Min == 0 || d.Child.Data().Nullable
 	d.FirstPos = growset(nil, d.Child.Data().FirstPos)
 	d.LastPos = growset(nil, d.Child.Data().LastPos)
+	d.FollowPos = make(map[Node]bool)
+}
+
+//  ReplNode.SetFollow, applied bottom up, computes followpos sets.
+func (d *ReplNode) SetFollow() {
 }
 
 //  ReplNode.Example produces an example with maximum replication n.

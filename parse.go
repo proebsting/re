@@ -111,7 +111,6 @@ func Parse(rexpr string) (Node, error) {
 		return nil, ParseError{orgstr, "unclosed '('"}
 	}
 	// success!
-	curr.SetNFL()    // set Nullable, FirstPos, LastPos values
 	return curr, nil // return parse tree
 }
 
