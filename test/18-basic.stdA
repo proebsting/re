@@ -9,6 +9,7 @@ ex(3):
 ex(5):                                                                        
 ex(8):                                                                        
 node: {false, #, #} #
+ 1. #
 
 regexp: a
 tree:   a
@@ -22,6 +23,8 @@ ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 node: {false, a, #} (a#)
   node: {false, a, a} a
   node: {false, #, #} #
+ 1. a
+ 2. #
 
 regexp: ab
 tree:   (ab)
@@ -37,6 +40,9 @@ node: {false, a, #} ((ab)#)
     node: {false, a, a} a
     node: {false, b, b} b
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. #
 
 regexp: abc
 tree:   ((ab)c)
@@ -54,6 +60,10 @@ node: {false, a, #} (((ab)c)#)
       node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. c
+ 4. #
 
 regexp: ab*c
 tree:   ((ab*)c)
@@ -72,6 +82,10 @@ node: {false, a, #} (((ab*)c)#)
         node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. c
+ 4. #
 
 regexp: a|b
 tree:   (a|b)
@@ -87,6 +101,9 @@ node: {false, ab, #} ((a|b)#)
     node: {false, a, a} a
     node: {false, b, b} b
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. #
 
 regexp: a|b|c|d
 tree:   (a|b|c|d)
@@ -104,6 +121,11 @@ node: {false, abcd, #} ((a|b|c|d)#)
     node: {false, c, c} c
     node: {false, d, d} d
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. c
+ 4. d
+ 5. #
 
 regexp: ab|cd
 tree:   ((ab)|(cd))
@@ -123,6 +145,11 @@ node: {false, ac, #} (((ab)|(cd))#)
       node: {false, c, c} c
       node: {false, d, d} d
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. c
+ 4. d
+ 5. #
 
 regexp: abc|de
 tree:   (((ab)c)|(de))
@@ -144,6 +171,12 @@ node: {false, ad, #} ((((ab)c)|(de))#)
       node: {false, d, d} d
       node: {false, e, e} e
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. c
+ 4. d
+ 5. e
+ 6. #
 
 regexp: |a|bc|def
 tree:   (()|a|(bc)|((de)f))
@@ -167,6 +200,13 @@ node: {false, abd#, #} ((()|a|(bc)|((de)f))#)
         node: {false, e, e} e
       node: {false, f, f} f
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. c
+ 4. d
+ 5. e
+ 6. f
+ 7. #
 
 regexp: ()
 tree:   ()
@@ -178,6 +218,7 @@ ex(3):
 ex(5):                                                                        
 ex(8):                                                                        
 node: {false, #, #} #
+ 1. #
 
 regexp: (a)
 tree:   a
@@ -191,6 +232,8 @@ ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 node: {false, a, #} (a#)
   node: {false, a, a} a
   node: {false, #, #} #
+ 1. a
+ 2. #
 
 regexp: (ab)
 tree:   (ab)
@@ -206,6 +249,9 @@ node: {false, a, #} ((ab)#)
     node: {false, a, a} a
     node: {false, b, b} b
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. #
 
 regexp: (ab*)
 tree:   (ab*)
@@ -222,6 +268,9 @@ node: {false, a, #} ((ab*)#)
     node: {true, b, b} b*
       node: {false, b, b} b
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. #
 
 regexp: (ab)*
 tree:   (ab)*
@@ -238,6 +287,9 @@ node: {false, a#, #} ((ab)*#)
       node: {false, a, a} a
       node: {false, b, b} b
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. #
 
 regexp: (a|b)
 tree:   (a|b)
@@ -253,6 +305,9 @@ node: {false, ab, #} ((a|b)#)
     node: {false, a, a} a
     node: {false, b, b} b
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. #
 
 regexp: (a|b)*
 tree:   (a|b)*
@@ -269,6 +324,9 @@ node: {false, ab#, #} ((a|b)*#)
       node: {false, a, a} a
       node: {false, b, b} b
   node: {false, #, #} #
+ 1. a
+ 2. b
+ 3. #
 
 regexp: AB(|)
 tree:   ((AB)(()|()))
@@ -288,6 +346,9 @@ node: {false, A, #} (((AB)(()|()))#)
       node: {true, , } ()
       node: {true, , } ()
   node: {false, #, #} #
+ 1. A
+ 2. B
+ 3. #
 
 regexp: C(|)
 tree:   (C(()|()))
@@ -305,6 +366,8 @@ node: {false, C, #} ((C(()|()))#)
       node: {true, , } ()
       node: {true, , } ()
   node: {false, #, #} #
+ 1. C
+ 2. #
 
 regexp: C(A|B)
 tree:   (C(A|B))
@@ -322,6 +385,10 @@ node: {false, C, #} ((C(A|B))#)
       node: {false, A, A} A
       node: {false, B, B} B
   node: {false, #, #} #
+ 1. C
+ 2. A
+ 3. B
+ 4. #
 
 regexp: C(AC|B)D
 tree:   ((C((AC)|B))D)
@@ -343,3 +410,9 @@ node: {false, C, #} (((C((AC)|B))D)#)
         node: {false, B, B} B
     node: {false, D, D} D
   node: {false, #, #} #
+ 1. C
+ 2. A
+ 3. C
+ 4. B
+ 5. D
+ 6. #

@@ -11,12 +11,15 @@ var _ = fmt.Printf //#%#%#% for debugging
 
 // DFA is a deterministic finite automaton.
 type DFA struct {
+	Leaves []*MatchNode
 	//#%#% TBD
 }
 
 //  BuildDFA constructs a deterministic finite automaton from a parse tree.
 //  In the process it modifies the parse tree, which is also returned.
 func BuildDFA(tree Node) (*DFA, Node) {
+
+	dfa := &DFA{make([]*MatchNode, 0)}
 
 	// concatenate an Accept node to the end
 	tree = Concatenate(tree, Accept())
@@ -29,7 +32,8 @@ func BuildDFA(tree Node) (*DFA, Node) {
 		d.SetNFL() // set Nullable, FirstPos, LastPos
 		if leaf, ok := d.(*MatchNode); ok {
 			n++ // number the leaf nodes
-			leaf.posn = n
+			leaf.Posn = n
+			dfa.Leaves = append(dfa.Leaves, leaf)
 		}
 	})
 
@@ -38,7 +42,6 @@ func BuildDFA(tree Node) (*DFA, Node) {
 		d.SetFollow()
 	})
 
-	//#%#% constuct and return DFA
-
-	return nil, tree
+	// return DFA and augmented tree
+	return dfa, tree
 }

@@ -69,7 +69,7 @@ func IsEpsilon(d Node) bool {
 //  MatchNode is a leaf node that matches exactly one char from a given set.
 type MatchNode struct {
 	cset *Cset // the characters that will match
-	posn int   // integer "position" desgnator of leaf
+	Posn int   // integer "position" desgnator of leaf
 	NodeData
 }
 
@@ -276,7 +276,7 @@ func (d *AltNode) MaxLen() int {
 
 //  AltNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *AltNode) SetNFL() {
-	d.Nullable = (len(d.Alts) == 0)		// only if an Epsilon
+	d.Nullable = (len(d.Alts) == 0) // only if an Epsilon
 	d.FirstPos = make(map[Node]bool)
 	d.LastPos = make(map[Node]bool)
 	d.FollowPos = make(map[Node]bool)

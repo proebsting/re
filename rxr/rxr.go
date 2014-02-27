@@ -77,9 +77,12 @@ func main() {
 		examples(t, 5) // ... and 5
 		examples(t, 8) // ... and 8
 
-		_, t = rx.BuildDFA(t) // make DFA, modifying the tree
-		if !*aflag {          // if -A not given, print automata
-			bigdump(t) // first show tree details
+		dfa, t := rx.BuildDFA(t) // make DFA, modifying the tree
+		if !*aflag {             // if -A not given, print automata
+			treenodes(t) // first show tree details
+			for _, m := range dfa.Leaves {
+				fmt.Printf("% 2d. %s\n", m.Posn, m)
+			}
 			//#%#% them dump the DFA itself
 		}
 	}
@@ -105,8 +108,8 @@ func examples(x rx.Node, n int) {
 	fmt.Println()
 }
 
-//  Bigdump prints details of the parse tree.
-func bigdump(x rx.Node) {
+//  Treenodes prints details of the parse tree.
+func treenodes(x rx.Node) {
 	indent = ""
 	x.Walk(predump, postdump)
 }
