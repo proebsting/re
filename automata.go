@@ -18,9 +18,8 @@ type DFA struct {
 //  In the process it modifies the parse tree, which is also returned.
 func BuildDFA(tree Node) (*DFA, Node) {
 
-	// concatenate an Accept node to the end, without collapsing
-	nlist := append(make([]Node, 0, 2), tree, Accept())
-	tree = &ConcatNode{nlist, nildata}
+	// concatenate an Accept node to the end
+	tree = Concatenate(tree, Accept())
 
 	//#%#% split {m,n} nodes as necessary for a correct DFA
 

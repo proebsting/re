@@ -2,7 +2,7 @@
 # nested parentheses
 
 regexp: ((a))
-tree:   (((a)))
+tree:   a
 length: 1 to 1
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -12,7 +12,7 @@ ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 
 regexp: (((a)))
-tree:   ((((a))))
+tree:   a
 length: 1 to 1
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -22,7 +22,7 @@ ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 
 regexp: (((a*)))
-tree:   ((((a*))))
+tree:   a*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      a    a    a  a        a  a        a        a        a        a    a
@@ -32,7 +32,7 @@ ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
 ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
 
 regexp: (((a)*))
-tree:   ((((a)*)))
+tree:   a*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      a    a    a  a        a  a        a        a        a        a    a
@@ -42,7 +42,7 @@ ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
 ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
 
 regexp: (((a))*)
-tree:   ((((a))*))
+tree:   a*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      a    a    a  a        a  a        a        a        a        a    a
@@ -52,7 +52,7 @@ ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
 ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
 
 regexp: (((a)))*
-tree:   ((((a)))*)
+tree:   a*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      a    a    a  a        a  a        a        a        a        a    a
@@ -62,7 +62,7 @@ ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
 ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
 
 regexp: ((a*b)@(c*d)#)*
-tree:   (((a*b)@(c*d)#)*)
+tree:   ((((a*b)@)(c*d))#)*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      b@cd#    ab@d#      ab@d#      b@d#    b@d#    b@d#    b@cd#  
@@ -72,7 +72,7 @@ ex(5):  aaaab@d#aaab@ccccd#b@cd#ab@cccccd#
 ex(8):  aaab@cccd#aaab@cccccd#aab@d#    
 
 regexp: ((b|f)(a|e))*
-tree:   ((((b)|(f))((a)|(e)))*)
+tree:   ((b|f)(a|e))*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      be    fa      fa      ba    ba    ba    be    ba  ba  be        fa
@@ -82,7 +82,7 @@ ex(5):  fabeba  bafe  befebebabe  babafa  bababebaba  bafafe  bafabefa  ba
 ex(8):  febabafafebefebe  fafa  bebabafabe  fabebabe  befafa  befafebabafa  fe
 
 regexp: ((n|t)(o|e)+)*
-tree:   ((((n)|(t))((o)|(e))+)*)
+tree:   ((n|t)(o|e)+)*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      ne    to      to      no    no    no    ne    no  no  ne        to

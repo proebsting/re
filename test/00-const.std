@@ -12,7 +12,7 @@ ex(5):
 ex(8):                                                                        
 
 regexp: a
-tree:   (a)
+tree:   a
 length: 1 to 1
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -32,7 +32,7 @@ ex(5):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 ex(8):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 
 regexp: def
-tree:   (def)
+tree:   ((de)f)
 length: 3 to 3
 ex(0):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(1):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
@@ -42,7 +42,7 @@ ex(5):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(8):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 
 regexp: 417-00-9423
-tree:   (417-00-9423)
+tree:   ((((((((((41)7)-)0)0)-)9)4)2)3)
 length: 11 to 11
 ex(0):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 ex(1):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
@@ -52,7 +52,7 @@ ex(5):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 ex(8):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 
 regexp: 515-032-6910
-tree:   (515-032-6910)
+tree:   (((((((((((51)5)-)0)3)2)-)6)9)1)0)
 length: 12 to 12
 ex(0):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 ex(1):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
@@ -62,7 +62,7 @@ ex(5):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 ex(8):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 
 regexp: bite the wax tadpole
-tree:   (bite the wax tadpole)
+tree:   (((((((((((((((((((bi)t)e) )t)h)e) )w)a)x) )t)a)d)p)o)l)e)
 length: 20 to 20
 ex(0):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(1):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
@@ -72,7 +72,7 @@ ex(5):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(8):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 
 regexp: __\a__\e__\f__\n__\r__\t__\v__
-tree:   (__[\a]__[\x1b]__[\f]__[\n]__[\r]__[\t]__[\v]__)
+tree:   ((((((((((((((((((((((__)[\a])_)_)[\x1b])_)_)[\f])_)_)[\n])_)_)[\r])_)_)[\t])_)_)[\v])_)_)
 length: 23 to 23
 ex(0):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
 ex(1):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__

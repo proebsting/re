@@ -6,7 +6,7 @@
 # http://www.regular-expressions.info/ (main page) "any email address"
 
 regexp: [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
-tree:   ([%+-.0-9A-Z_]+@[-.0-9A-Z]+.[A-Z]{2,4})
+tree:   (((([%+-.0-9A-Z_]+@)[-.0-9A-Z]+).)[A-Z]{2,4})
 length: 6 to *
 ex(0):  A@2.TO  %@A.JQ  -@A.UI  +@K.CR  .@I.OT  3@W.WQ  F@Y.SG  S@0.LO  J@K.WZ
 ex(1):  O@3.CY  8@3.QY  G@U.TB  H@..JS  C@M.TG  N@G.GW  I@F.MN  D@C.HO  O@K.GD

@@ -2,7 +2,7 @@
 # alternation with empty alternatives
 
 regexp: a|
-tree:   ((a)|())
+tree:   (a|())
 length: 0 to 1
 ex(0):  a  a    a    a      a  a  a      a  a  a    a  a  a    a  a  a    a  a
 ex(1):    a    a    a  a    a  a    a    a  a  a      a  a  a    a  a  a  a  
@@ -12,7 +12,7 @@ ex(5):        a  a      a  a  a          a    a      a  a  a      a  a  a
 ex(8):    a    a      a  a  a    a  a    a    a  a  a  a  a    a      a  a    a
 
 regexp: |a
-tree:   (()|(a))
+tree:   (()|a)
 length: 0 to 1
 ex(0):      a    a    a  a        a  a        a        a        a        a    a
 ex(1):  a      a      a    a        a  a        a          a    a          a  a
@@ -22,7 +22,7 @@ ex(5):  a  a  a    a    a  a        a  a        a  a  a  a  a    a    a  a
 ex(8):  a      a    a            a    a  a      a            a  a  a    a  a  a
 
 regexp: a|b|
-tree:   ((a)|(b)|())
+tree:   (a|b|())
 length: 0 to 1
 ex(0):  a  a  b  b    b  b    a  a  a      a  a  a      b  a    a    a    a  b
 ex(1):  b  b  a      b    b    b    a  b  a  a    b  b  a  a  a  a    b  a  b
@@ -32,7 +32,7 @@ ex(5):  a  a  a  a  a      a  a  a      a  a  a  b  a  b  a  a      a  a  a  b
 ex(8):  a      b  a  b  b    a  a  b  b    b  b  b  b  a    a    b  b  a    b
 
 regexp: a||b
-tree:   ((a)|()|(b))
+tree:   (a|()|b)
 length: 0 to 1
 ex(0):  a  a      b      b  a  a  a  b  b  a  a  a  b  b    a  b  a  b  a  b  a
 ex(1):  a      a  b  b    b    b    b  a    a  a  b      a  a  a  a  b    a    
@@ -42,7 +42,7 @@ ex(5):    a  a  a  a  a  b  b  a  a  a  b  b  a  a  a    a    a  a  b  b  a  a
 ex(8):    a  a  b  b    a      b  a  a      b          a  b  a  b      a  b    
 
 regexp: a|b|c|
-tree:   ((a)|(b)|(c)|())
+tree:   (a|b|c|())
 length: 0 to 1
 ex(0):  c  c  b  c    a    b  a  a  a      a  a  c    c  c  c    a  c  a  b  c
 ex(1):  a    a  b  a  b  a  c  b  a  c  b  c    a  a  c      a  a  c  b  c  a
@@ -52,7 +52,7 @@ ex(5):  c  c  c  a  c  a          a  a  b    a  c  a    b    b  a  b  c      a
 ex(8):  a    b  c  c  c  b  b    b  b  a  b  c      a  c  c    c  c  b  c    a
 
 regexp: |a|b|c|d
-tree:   (()|(a)|(b)|(c)|(d))
+tree:   (()|a|b|c|d)
 length: 0 to 1
 ex(0):  d  d  c  a    a  b  b  c  c  c  b  d  c  b  a  a      d    c  a    a  a
 ex(1):    a  b  b  c    d  c  c      d  d  b  d  a  c  d  b  c    b  b    c  d
@@ -62,7 +62,7 @@ ex(5):  a  d  b  b  a  c  d  c  d  d  d    c  b  c  c  c  b  c    b    b  a  d
 ex(8):    b  b      a    d  d  b  d  a  b    c  d  b  a  d      b  c    c  b  d
 
 regexp: a||c||e
-tree:   ((a)|()|(c)|()|(e))
+tree:   (a|()|c|()|e)
 length: 0 to 1
 ex(0):  e  e      a    c  c        c  e    c      a  a  e  a      a      c  a  
 ex(1):  c    a  e      a  a  e  e  c  e      e  c    a  c  c  a    e  c  e  a
@@ -72,7 +72,7 @@ ex(5):  e  e  e  a    c        c    a  c  a  c    e  c  a  c  c  a  a    a  e
 ex(8):  c  e    c  a    e  c    e  a  a  c    a    c  e  a    e    e    a    c
 
 regexp: ab|c||def|g
-tree:   ((ab)|(c)|()|(def)|(g))
+tree:   ((ab)|c|()|((de)f)|g)
 length: 0 to 3
 ex(0):  g  g  def  c  ab  c      def  def  def    g  def    c  c  ab  ab  g  ab
 ex(1):  c  ab  c  c    ab  c      def  ab  g  def  def  ab  ab  g  g    g  c

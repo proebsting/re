@@ -8,7 +8,7 @@
 # 1. Matching a Username
 
 regexp: [a-z0-9_-]{3,16}
-tree:   ([-0-9_a-z]{3,16})
+tree:   [-0-9_a-z]{3,16}
 length: 3 to 16
 ex(0):  _eg  66a  vfq  7x6  14f  nbf  trl  bkp  3lk  3-e  rg0  7c7  1m-  3ps
 ex(1):  y04  nf-  i5h  bqf  mlt  bnm  _8r  cvp  22j  bj0  juk  -dw  6tk  tq_
@@ -36,7 +36,7 @@ ex(8):  z5onztl5$  k6_f66sa$  b7n-jd$  s99ji-9$  -rreoicu$  fkd0bx$  wbg3sa$
 # 3. Matching a Hex Value  [a color spec, apparently?]
 
 regexp:  #?([a-f0-9]{6}|[a-f0-9]{3})
-tree:   ( #?(([0-9a-f]{6})|([0-9a-f]{3})))
+tree:   (( #?)([0-9a-f]{6}|[0-9a-f]{3}))
 length: 4 to 8
 ex(0):   7f4d51   ce2969   535   601a24   8ca   ded618   bba1c8   b97   c5a17b
 ex(1):   284   a80   #7ba64c   #699   #e7a   f87e8d   #3bca17   6e7   #ffb598
@@ -48,7 +48,7 @@ ex(8):   #a47d31   f47   6f3679   a3f04f   #08afd0   #d6d   b37   be0   #c589fa
 # 4. Matching a Slug
 
 regexp: [a-z0-9-]+
-tree:   ([-0-9a-z]+)
+tree:   [-0-9a-z]+
 length: 1 to *
 ex(0):  9  -  i  p  e  8  9  9  j  w  9  x  0  o  3  m  f  v  o  r  w  2  4  7
 ex(1):  f  m  3  m  8  2  -  x  j  r  z  9  0  3  9  d  5  f  3  d  w  s  4  j
@@ -60,7 +60,7 @@ ex(8):  b  f3pmcgrp  -2df3r-  dcg  -z8lc  q9is1  o  bdm  rzrcjn8y  oj  d5ku74ge
 # 5. Matching an Email
 
 regexp: ([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})
-tree:   (([-.0-9_a-z]+)@([-.0-9a-z]+).([.a-z]{2,6}))
+tree:   (((([-.0-9_a-z]+@)[-.0-9a-z]+).)[.a-z]{2,6})
 length: 6 to *
 ex(0):  _@u.jj  a@x.gp  -@c.ci  c@9.ap  .@s.mp  3@w.bk  e@z.ad  r@d.tf  i@e.ss
 ex(1):  n@l.on  8@8.eq  f@6.ss  g@o.ua  b@5.kq  m@7.tp  h@0.zg  c@b.dz  n@7.to
@@ -72,7 +72,7 @@ ex(8):  p8fdk@r66z.xvg  frmvyj@gf5q.evkll  eede6@zs.nfg  1ntae-m1@a48.kzdmsi
 # 6. Matching a URL
 
 regexp: (https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?
-tree:   ((https?://)?([-.0-9a-z]+).([.a-z]{2,6})([ --9A-Z_a-z]*)*/?)
+tree:   ((((((((((((ht)t)p)s?):)/)/)?[-.0-9a-z]+).)[.a-z]{2,6})[ --9A-Z_a-z]**)/?)
 length: 4 to *
 ex(0):  9.ey  q.je  i.qo  a.ou  i...  w.pc  0.ug  7.kp  w.gy  i.dg  t.dg  c.i.
 ex(1):  s.nt  https://7.jm  http://o.sg  https://m.xvN/  https://f.vqJ  k.am/

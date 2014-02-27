@@ -2,7 +2,7 @@
 # ugly but legal cset (bracket expression) forms
 
 regexp: [-]
-tree:   (-)
+tree:   -
 length: 1 to 1
 ex(0):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(1):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
@@ -12,7 +12,7 @@ ex(5):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(8):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 regexp: [-x]
-tree:   ([-x])
+tree:   [-x]
 length: 1 to 1
 ex(0):  -  -  x  -  x  -  x  x  -  -  -  x  x  -  -  -  x  -  -  -  x  -  -  -
 ex(1):  -  -  -  x  -  x  -  x  -  -  x  -  -  x  -  x  -  -  -  x  x  -  -  -
@@ -22,7 +22,7 @@ ex(5):  x  x  x  x  -  x  x  -  -  -  -  -  -  x  x  x  x  -  -  x  x  -  -  -
 ex(8):  x  x  x  -  x  -  x  x  -  -  -  x  x  -  -  -  x  x  x  x  x  -  x  -
 
 regexp: [x-]
-tree:   ([-x])
+tree:   [-x]
 length: 1 to 1
 ex(0):  -  -  x  -  x  -  x  x  -  -  -  x  x  -  -  -  x  -  -  -  x  -  -  -
 ex(1):  -  -  -  x  -  x  -  x  -  -  x  -  -  x  -  x  -  -  -  x  x  -  -  -
@@ -32,7 +32,7 @@ ex(5):  x  x  x  x  -  x  x  -  -  -  -  -  -  x  x  x  x  -  -  x  x  -  -  -
 ex(8):  x  x  x  -  x  -  x  x  -  -  -  x  x  -  -  -  x  x  x  x  x  -  x  -
 
 regexp: [[x]
-tree:   ([[x])
+tree:   [[x]
 length: 1 to 1
 ex(0):  [  [  x  [  x  [  x  x  [  [  [  x  x  [  [  [  x  [  [  [  x  [  [  [
 ex(1):  [  [  [  x  [  x  [  x  [  [  x  [  [  x  [  x  [  [  [  x  x  [  [  [
@@ -42,7 +42,7 @@ ex(5):  x  x  x  x  [  x  x  [  [  [  [  [  [  x  x  x  x  [  [  x  x  [  [  [
 ex(8):  x  x  x  [  x  [  x  x  [  [  [  x  x  [  [  [  x  x  x  x  x  [  x  [
 
 regexp: [[x-]
-tree:   ([-[x])
+tree:   [-[x]
 length: 1 to 1
 ex(0):  -  x  x  x  -  [  -  -  x  -  -  -  -  -  x  x  x  [  [  -  -  [  x  -
 ex(1):  [  [  -  x  [  [  x  [  x  x  -  -  [  x  -  -  [  -  [  -  [  [  -  x
@@ -52,7 +52,7 @@ ex(5):  [  [  [  [  x  [  [  x  -  x  [  -  x  [  [  x  x  x  -  -  -  -  x  x
 ex(8):  -  x  [  x  -  [  -  x  x  [  [  -  x  -  [  -  [  x  x  [  -  -  [  x
 
 regexp: []x]
-tree:   ([]x])
+tree:   []x]
 length: 1 to 1
 ex(0):  ]  ]  x  ]  x  ]  x  x  ]  ]  ]  x  x  ]  ]  ]  x  ]  ]  ]  x  ]  ]  ]
 ex(1):  ]  ]  ]  x  ]  x  ]  x  ]  ]  x  ]  ]  x  ]  x  ]  ]  ]  x  x  ]  ]  ]
@@ -62,7 +62,7 @@ ex(5):  x  x  x  x  ]  x  x  ]  ]  ]  ]  ]  ]  x  x  x  x  ]  ]  x  x  ]  ]  ]
 ex(8):  x  x  x  ]  x  ]  x  x  ]  ]  ]  x  x  ]  ]  ]  x  x  x  x  x  ]  x  ]
 
 regexp: []x-]
-tree:   ([-]x])
+tree:   [-]x]
 length: 1 to 1
 ex(0):  -  x  x  x  -  ]  -  -  x  -  -  -  -  -  x  x  x  ]  ]  -  -  ]  x  -
 ex(1):  ]  ]  -  x  ]  ]  x  ]  x  x  -  -  ]  x  -  -  ]  -  ]  -  ]  ]  -  x
@@ -72,7 +72,7 @@ ex(5):  ]  ]  ]  ]  x  ]  ]  x  -  x  ]  -  x  ]  ]  x  x  x  -  -  -  -  x  x
 ex(8):  -  x  ]  x  -  ]  -  x  x  ]  ]  -  x  -  ]  -  ]  x  x  ]  -  -  ]  x
 
 regexp: []x[-]
-tree:   ([-[]x])
+tree:   [-[]x]
 length: 1 to 1
 ex(0):  [  -  -  [  -  ]  [  -  -  -  x  ]  ]  -  ]  -  [  -  [  -  ]  ]  x  [
 ex(1):  -  [  ]  [  [  -  ]  x  x  x  [  -  [  [  ]  [  [  -  [  x  [  [  x  -
@@ -82,7 +82,7 @@ ex(5):  ]  x  [  x  -  ]  [  ]  -  ]  x  [  ]  ]  x  [  x  ]  ]  ]  [  -  [  x
 ex(8):  -  -  ]  -  x  x  x  [  x  [  ]  -  ]  x  -  [  x  -  -  -  [  [  x  [
 
 regexp: [][]
-tree:   ([[]])
+tree:   [[]]
 length: 1 to 1
 ex(0):  [  [  ]  [  ]  [  ]  ]  [  [  [  ]  ]  [  [  [  ]  [  [  [  ]  [  [  [
 ex(1):  [  [  [  ]  [  ]  [  ]  [  [  ]  [  [  ]  [  ]  [  [  [  ]  ]  [  [  [

@@ -2,7 +2,7 @@
 # basic alternation
 
 regexp: a|b
-tree:   ((a)|(b))
+tree:   (a|b)
 length: 1 to 1
 ex(0):  a  a  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  a  a  a  b  a  a  a
 ex(1):  a  a  a  b  a  b  a  b  a  a  b  a  a  b  a  b  a  a  a  b  b  a  a  a
@@ -12,7 +12,7 @@ ex(5):  b  b  b  b  a  b  b  a  a  a  a  a  a  b  b  b  b  a  a  b  b  a  a  a
 ex(8):  b  b  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  b  b  b  b  a  b  a
 
 regexp: ab|c
-tree:   ((ab)|(c))
+tree:   ((ab)|c)
 length: 1 to 2
 ex(0):  ab  ab  c  ab  c  ab  c  c  ab  ab  ab  c  c  ab  ab  ab  c  ab  ab  ab
 ex(1):  ab  ab  ab  c  ab  ab  ab  c  ab  c  ab  c  ab  ab  c  ab  ab  c  ab  c
@@ -22,7 +22,7 @@ ex(5):  ab  c  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  c  ab  ab  c  c  c  c  c
 ex(8):  c  c  ab  ab  ab  ab  ab  ab  c  c  c  c  ab  ab  c  c  ab  ab  ab  c
 
 regexp: a|bc
-tree:   ((a)|(bc))
+tree:   (a|(bc))
 length: 1 to 2
 ex(0):  a  a  bc  a  bc  a  bc  bc  a  a  a  bc  bc  a  a  a  bc  a  a  a  bc
 ex(1):  a  a  bc  a  a  a  bc  a  bc  a  bc  a  a  bc  a  a  bc  a  bc  a  a  a
@@ -42,7 +42,7 @@ ex(5):  cd  ab  cd  cd  ab  ab  ab  cd  ab  cd  ab  ab  ab  ab  ab  ab  ab  ab
 ex(8):  ab  cd  ab  ab  cd  cd  cd  cd  cd  ab  cd  cd  ab  ab  ab  ab  ab  ab
 
 regexp: a|b|c
-tree:   ((a)|(b)|(c))
+tree:   (a|b|c)
 length: 1 to 1
 ex(0):  a  a  b  b  c  b  b  c  a  a  a  c  c  a  a  a  c  c  b  a  c  a  c  a
 ex(1):  a  b  a  b  b  a  c  c  b  c  b  c  b  c  a  b  a  a  c  b  b  a  a  a
@@ -52,7 +52,7 @@ ex(5):  b  c  c  c  a  a  a  b  b  c  b  b  a  a  a  a  a  c  c  a  a  a  c  c
 ex(8):  a  a  b  a  b  a  a  c  c  a  a  a  b  a  a  c  c  b  a  b  b  c  a  a
 
 regexp: a|b|c|d
-tree:   ((a)|(b)|(c)|(d))
+tree:   (a|b|c|d)
 length: 1 to 1
 ex(0):  c  c  b  c  d  a  d  b  a  a  a  d  d  a  a  c  d  c  c  c  d  a  c  a
 ex(1):  c  a  a  d  a  b  a  b  a  c  b  a  c  b  c  d  a  a  c  d  d  a  a  c
@@ -82,7 +82,7 @@ ex(5):  cd  ab  gh  gh  ef  ef  ab  gh  ab  cd  ef  ef  ab  ef  ab  ab  ab  ab
 ex(8):  ef  cd  ab  ef  cd  gh  cd  cd  cd  ef  gh  gh  ef  ef  ef  ab  ef  ab
 
 regexp: abc|def
-tree:   ((abc)|(def))
+tree:   (((ab)c)|((de)f))
 length: 3 to 3
 ex(0):  abc  abc  def  abc  def  abc  def  def  abc  abc  abc  def  def  abc
 ex(1):  abc  def  abc  abc  abc  def  abc  abc  abc  def  abc  abc  abc  def
@@ -92,7 +92,7 @@ ex(5):  abc  def  def  abc  abc  def  def  abc  def  def  def  abc  abc  def
 ex(8):  def  def  abc  def  def  abc  abc  abc  def  abc  def  abc  abc  abc
 
 regexp: abc|def|ghi
-tree:   ((abc)|(def)|(ghi))
+tree:   (((ab)c)|((de)f)|((gh)i))
 length: 3 to 3
 ex(0):  abc  abc  def  def  ghi  def  def  ghi  abc  abc  abc  ghi  ghi  abc
 ex(1):  abc  ghi  ghi  def  abc  ghi  abc  ghi  abc  ghi  abc  def  abc  def
@@ -102,7 +102,7 @@ ex(5):  abc  ghi  abc  ghi  def  ghi  def  ghi  ghi  def  abc  abc  ghi  abc
 ex(8):  ghi  def  def  abc  abc  abc  abc  ghi  def  def  abc  ghi  ghi  abc
 
 regexp: a|bc|def|ghij
-tree:   ((a)|(bc)|(def)|(ghij))
+tree:   (a|(bc)|((de)f)|(((gh)i)j))
 length: 1 to 4
 ex(0):  def  def  bc  def  ghij  a  ghij  bc  a  a  a  ghij  ghij  a  a  def
 ex(1):  def  def  def  ghij  a  def  a  bc  def  a  a  ghij  a  bc  a  bc  a
@@ -112,7 +112,7 @@ ex(5):  ghij  def  a  ghij  def  bc  bc  a  ghij  ghij  def  def  a  ghij  a
 ex(8):  def  def  a  def  a  a  a  a  a  def  bc  a  def  bc  ghij  bc  bc  bc
 
 regexp: pqrs|tuv|wx|yz
-tree:   ((pqrs)|(tuv)|(wx)|(yz))
+tree:   ((((pq)r)s)|((tu)v)|(wx)|(yz))
 length: 2 to 4
 ex(0):  wx  wx  tuv  wx  yz  pqrs  yz  tuv  pqrs  pqrs  pqrs  yz  yz  pqrs
 ex(1):  wx  yz  wx  wx  wx  yz  pqrs  wx  pqrs  tuv  wx  pqrs  pqrs  yz  pqrs
@@ -122,7 +122,7 @@ ex(5):  tuv  wx  wx  yz  yz  pqrs  tuv  tuv  yz  wx  pqrs  yz  wx  tuv  tuv
 ex(8):  yz  yz  wx  wx  pqrs  yz  pqrs  tuv  wx  wx  pqrs  wx  pqrs  pqrs  pqrs
 
 regexp: abc|d|efgh|ij|kmlno|pqr|s|tuv|wxy|z
-tree:   ((abc)|(d)|(efgh)|(ij)|(kmlno)|(pqr)|(s)|(tuv)|(wxy)|(z))
+tree:   (((ab)c)|d|(((ef)g)h)|(ij)|((((km)l)n)o)|((pq)r)|s|((tu)v)|((wx)y)|z)
 length: 1 to 5
 ex(0):  kmlno  kmlno  ij  s  pqr  s  tuv  tuv  wxy  wxy  wxy  tuv  z  wxy  efgh
 ex(1):  d  abc  abc  kmlno  pqr  wxy  s  abc  d  s  efgh  abc  d  efgh  tuv

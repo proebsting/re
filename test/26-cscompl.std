@@ -2,7 +2,7 @@
 # complemented character sets
 
 regexp: [^ -`]*
-tree:   ([\x01-\x1fa-\u007f]*)
+tree:   [\x01-\x1fa-\u007f]*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      r      i  ~      n    f        e    e      r  n  e  }    y    i    
@@ -12,7 +12,7 @@ ex(5):  fht  gzg  uzeo  uan  q  hzb  ie  k  jahx  i}  }x~t  g}wc    o{  t  |rt
 ex(8):  jch    zxhmqa  snrmkqa  fi  bbbj  akulpp  hguo}t  nuef  a|  ~}fljrl
 
 regexp: [^ -@]*
-tree:   ([\x01-\x1fA-\u007f]*)
+tree:   [\x01-\x1fA-\u007f]*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      r  L    u        P        n  o  H    O  H  |  b  i      M      R  S
@@ -22,7 +22,7 @@ ex(5):  x  FDe\\d    VfWH  Hb  fXl    MZa  pO}zb  Iru^S  {  xPXIv  J}q  kDCog
 ex(8):  KZ]~~YQh  hs  b`sogpU  UuHzco]T  EFWqYIU  cbZfxtp  JOQr]  wKgGcK  WgeN
 
 regexp: [^ -/]*
-tree:   ([\x01-\x1f0-\u007f]*)
+tree:   [\x01-\x1f0-\u007f]*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      r    M      1  x        y  O  a    y    j  m        @    <        @
@@ -32,7 +32,7 @@ ex(5):  0U1D1  _0y  7OY  |Ib  ehS      Dfes  @8C~  H1c  Pta  f  ~\\v9    BCA7
 ex(8):  zm`h[PrB  Gr  L  od=sa  fM  8wIL9  >  tQZ  u\\}:<^  Hj`t  a9E      
 
 regexp: [^ -/:-@[-`{-~]*
-tree:   ([\x01-\x1f0-9A-Za-z\u007f]*)
+tree:   [\x01-\x1f0-9A-Za-z\u007f]*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      n  B    q        F        j  k  7    E  7  x  X  e      C      H  I
@@ -42,7 +42,7 @@ ex(5):  t  53aRZ    LbM7  7X  bNh    CPW  lEyvX  8nqTI  w  tFN8r  9ym  g32kc
 ex(8):  APSzzOGd  do  XVokclK  Kq7vYkSJ  45MmO8K  YXPbtpl  9EGnS  sAc6YA  McaD
 
 regexp: [^0-9]*
-tree:   ([\x01-/:-\u007f]*)
+tree:   [\x01-/:-\u007f]*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      r                  x  &    E  y  >    o  $  r  =  +    f    _  >  
@@ -52,7 +52,7 @@ ex(5):  ~^  :m'e  b#  IkRM  AM  O  >-ST  |z'tF  #F!E  Uc  ed}Y  wt|A  WbB
 ex(8):  KX  ^  f~jX  y!.N  |QTLE.  jJg]  d  eT|J.}u  n  FCd's  `}  j-g)O)
 
 regexp: [^A-Za-z0-9]*
-tree:   ([\x01-/:-@[-`{-\u007f]*)
+tree:   [\x01-/:-@[-`{-\u007f]*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      >           \"              ,  =  @           *  :  @    _  #  )  
@@ -64,7 +64,7 @@ ex(8):  %:\"}@  %_#'#/:{    ].?_*>  =-/:_  [)  (~'\\:=*_  ,=/%  (}  [\\,@,+<#
 # these last two should be identical (under -Z)
 
 regexp: [^A-Za-z0-9_]*
-tree:   ([\x01-/:-@[-^`{-\u007f]*)
+tree:   [\x01-/:-@[-^`{-\u007f]*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      =  *  \"  :      \"      ,          \"  +  ,      *  >  ?  &  \\  &
@@ -74,7 +74,7 @@ ex(5):  \"*(@  |'>#  {`$\"*  '  >  #-  .{|<  ?[;{}  %:-*  '$!}  [|^.*  }]\\!
 ex(8):  +\\    [:!.  ),$/:  <<(*<~  `@&~#/|*  )],-].\"@  ~@@:,&  @#,)'\"!$   ;>
 
 regexp: [^\w]*
-tree:   ([\x01-/:-@[-^`{-\u007f]*)
+tree:   [\x01-/:-@[-^`{-\u007f]*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      =  *  \"  :      \"      ,          \"  +  ,      *  >  ?  &  \\  &

@@ -8,12 +8,10 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
-node: {false, #, #} (()#)
-  node: {true, , } ()
-  node: {false, #, #} #
+node: {false, #, #} #
 
 regexp: a
-tree:   (a)
+tree:   a
 length: 1 to 1
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -21,9 +19,8 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
-node: {false, a, #} ((a)#)
-  node: {false, a, a} (a)
-    node: {false, a, a} a
+node: {false, a, #} (a#)
+  node: {false, a, a} a
   node: {false, #, #} #
 
 regexp: ab
@@ -42,7 +39,7 @@ node: {false, a, #} ((ab)#)
   node: {false, #, #} #
 
 regexp: abc
-tree:   (abc)
+tree:   ((ab)c)
 length: 3 to 3
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(1):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -50,15 +47,16 @@ ex(2):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(3):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(5):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(8):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
-node: {false, a, #} ((abc)#)
-  node: {false, a, c} (abc)
-    node: {false, a, a} a
-    node: {false, b, b} b
+node: {false, a, #} (((ab)c)#)
+  node: {false, a, c} ((ab)c)
+    node: {false, a, b} (ab)
+      node: {false, a, a} a
+      node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
 
 regexp: ab*c
-tree:   (ab*c)
+tree:   ((ab*)c)
 length: 2 to *
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(1):  ac  ac  abc  ac  abc  ac  abc  abc  ac  ac  ac  abc  abc  ac  ac  ac
@@ -66,16 +64,17 @@ ex(2):  abbc  abc  ac  abbc  ac  abbc  ac  abbc  ac  abc  ac  abc  abc  ac
 ex(3):  abc  ac  abbc  abc  ac  abbc  abc  abbc  abbbc  ac  ac  abbc  abbbc
 ex(5):  ac  ac  ac  abbbc  abbc  abbbbc  ac  abbbbc  abc  ac  abbbc  abbc  abbc
 ex(8):  abbbc  abbbbbc  abbbbbbc  abbbbbc  abbbbc  abbbbbbbbc  abbbbbbbc  abbc
-node: {false, a, #} ((ab*c)#)
-  node: {false, a, c} (ab*c)
-    node: {false, a, a} a
-    node: {true, b, b} b*
-      node: {false, b, b} b
+node: {false, a, #} (((ab*)c)#)
+  node: {false, a, c} ((ab*)c)
+    node: {false, a, ba} (ab*)
+      node: {false, a, a} a
+      node: {true, b, b} b*
+        node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
 
 regexp: a|b
-tree:   ((a)|(b))
+tree:   (a|b)
 length: 1 to 1
 ex(0):  a  a  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  a  a  a  b  a  a  a
 ex(1):  a  a  a  b  a  b  a  b  a  a  b  a  a  b  a  b  a  a  a  b  b  a  a  a
@@ -83,16 +82,14 @@ ex(2):  a  a  a  a  b  a  b  a  a  a  a  b  b  a  a  b  b  a  b  b  b  a  a  b
 ex(3):  b  b  a  b  b  a  a  a  b  a  b  a  a  a  a  a  a  a  a  a  a  b  a  a
 ex(5):  b  b  b  b  a  b  b  a  a  a  a  a  a  b  b  b  b  a  a  b  b  a  a  a
 ex(8):  b  b  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  b  b  b  b  a  b  a
-node: {false, ab, #} (((a)|(b))#)
-  node: {false, ab, ab} ((a)|(b))
-    node: {false, a, a} (a)
-      node: {false, a, a} a
-    node: {false, b, b} (b)
-      node: {false, b, b} b
+node: {false, ab, #} ((a|b)#)
+  node: {false, ab, ab} (a|b)
+    node: {false, a, a} a
+    node: {false, b, b} b
   node: {false, #, #} #
 
 regexp: a|b|c|d
-tree:   ((a)|(b)|(c)|(d))
+tree:   (a|b|c|d)
 length: 1 to 1
 ex(0):  c  c  b  c  d  a  d  b  a  a  a  d  d  a  a  c  d  c  c  c  d  a  c  a
 ex(1):  c  a  a  d  a  b  a  b  a  c  b  a  c  b  c  d  a  a  c  d  d  a  a  c
@@ -100,16 +97,12 @@ ex(2):  c  a  c  a  d  a  b  c  a  a  c  d  b  c  c  d  d  a  b  b  d  c  a  d
 ex(3):  b  b  a  d  d  c  c  a  d  a  b  c  c  a  c  a  a  a  a  a  c  b  a  c
 ex(5):  d  b  b  b  c  d  d  c  c  c  a  c  a  d  d  d  d  a  a  b  d  a  c  a
 ex(8):  b  d  b  a  b  c  d  d  a  c  a  d  b  c  c  c  b  b  d  b  b  a  b  c
-node: {false, abcd, #} (((a)|(b)|(c)|(d))#)
-  node: {false, abcd, abcd} ((a)|(b)|(c)|(d))
-    node: {false, a, a} (a)
-      node: {false, a, a} a
-    node: {false, b, b} (b)
-      node: {false, b, b} b
-    node: {false, c, c} (c)
-      node: {false, c, c} c
-    node: {false, d, d} (d)
-      node: {false, d, d} d
+node: {false, abcd, #} ((a|b|c|d)#)
+  node: {false, abcd, abcd} (a|b|c|d)
+    node: {false, a, a} a
+    node: {false, b, b} b
+    node: {false, c, c} c
+    node: {false, d, d} d
   node: {false, #, #} #
 
 regexp: ab|cd
@@ -132,7 +125,7 @@ node: {false, ac, #} (((ab)|(cd))#)
   node: {false, #, #} #
 
 regexp: abc|de
-tree:   ((abc)|(de))
+tree:   (((ab)c)|(de))
 length: 2 to 3
 ex(0):  abc  abc  de  abc  de  abc  de  de  abc  abc  abc  de  de  abc  abc
 ex(1):  de  abc  abc  abc  de  abc  abc  abc  de  abc  abc  abc  de  abc  de
@@ -140,11 +133,12 @@ ex(2):  de  abc  abc  de  abc  abc  de  abc  de  abc  abc  abc  de  de  abc
 ex(3):  abc  de  abc  abc  abc  abc  de  abc  de  abc  abc  abc  abc  de  de
 ex(5):  abc  de  de  abc  de  de  de  abc  abc  de  abc  de  de  abc  de  de
 ex(8):  abc  abc  de  abc  de  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
-node: {false, ad, #} (((abc)|(de))#)
-  node: {false, ad, ce} ((abc)|(de))
-    node: {false, a, c} (abc)
-      node: {false, a, a} a
-      node: {false, b, b} b
+node: {false, ad, #} ((((ab)c)|(de))#)
+  node: {false, ad, ce} (((ab)c)|(de))
+    node: {false, a, c} ((ab)c)
+      node: {false, a, b} (ab)
+        node: {false, a, a} a
+        node: {false, b, b} b
       node: {false, c, c} c
     node: {false, d, e} (de)
       node: {false, d, d} d
@@ -152,7 +146,7 @@ node: {false, ad, #} (((abc)|(de))#)
   node: {false, #, #} #
 
 regexp: |a|bc|def
-tree:   (()|(a)|(bc)|(def))
+tree:   (()|a|(bc)|((de)f))
 length: 0 to 3
 ex(0):  bc  bc  a  bc  def    def  a        def  def      bc  def  bc  bc  bc
 ex(1):    bc    a  bc      def    a    a    bc  a    bc  a  bc  def      bc
@@ -160,22 +154,22 @@ ex(2):  def      bc  a  bc    bc    def    a  bc      bc  def  a  bc  bc  def
 ex(3):    a  a  def  bc    def  bc  a  a    def  def  bc  bc    def    a  bc
 ex(5):    bc            bc  a    bc  a  def  a  a  a  bc  def  def  bc  bc  bc
 ex(8):  bc    def  def  def  def      a  def    bc    def  a  def  a    a  bc
-node: {false, abd#, #} ((()|(a)|(bc)|(def))#)
-  node: {true, abd, acf} (()|(a)|(bc)|(def))
-    node: {true, , } ()
-    node: {false, a, a} (a)
-      node: {false, a, a} a
+node: {false, abd, #} ((()|a|(bc)|((de)f))#)
+  node: {false, abd, acf} (()|a|(bc)|((de)f))
+    node: {false, , } ()
+    node: {false, a, a} a
     node: {false, b, c} (bc)
       node: {false, b, b} b
       node: {false, c, c} c
-    node: {false, d, f} (def)
-      node: {false, d, d} d
-      node: {false, e, e} e
+    node: {false, d, f} ((de)f)
+      node: {false, d, e} (de)
+        node: {false, d, d} d
+        node: {false, e, e} e
       node: {false, f, f} f
   node: {false, #, #} #
 
 regexp: ()
-tree:   (())
+tree:   ()
 length: 0 to 0
 ex(0):                                                                        
 ex(1):                                                                        
@@ -183,13 +177,10 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
-node: {false, #, #} ((())#)
-  node: {true, , } (())
-    node: {true, , } ()
-  node: {false, #, #} #
+node: {false, #, #} #
 
 regexp: (a)
-tree:   ((a))
+tree:   a
 length: 1 to 1
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -197,14 +188,12 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
-node: {false, a, #} (((a))#)
-  node: {false, a, a} ((a))
-    node: {false, a, a} (a)
-      node: {false, a, a} a
+node: {false, a, #} (a#)
+  node: {false, a, a} a
   node: {false, #, #} #
 
 regexp: (ab)
-tree:   ((ab))
+tree:   (ab)
 length: 2 to 2
 ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(1):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
@@ -212,15 +201,14 @@ ex(2):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(3):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(5):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(8):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
-node: {false, a, #} (((ab))#)
-  node: {false, a, b} ((ab))
-    node: {false, a, b} (ab)
-      node: {false, a, a} a
-      node: {false, b, b} b
+node: {false, a, #} ((ab)#)
+  node: {false, a, b} (ab)
+    node: {false, a, a} a
+    node: {false, b, b} b
   node: {false, #, #} #
 
 regexp: (ab*)
-tree:   ((ab*))
+tree:   (ab*)
 length: 1 to *
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  ab  a  ab  a  ab  ab  a  a  a  ab  ab  a  a  a  ab  a  a  a  ab
@@ -228,16 +216,15 @@ ex(2):  abb  a  abb  a  ab  a  ab  ab  a  abb  abb  ab  abb  ab  abb  ab  abb
 ex(3):  abbb  a  a  abb  abbb  abbb  a  a  abb  ab  abb  a  abb  a  abbb  a  ab
 ex(5):  abb  abb  a  abbbbb  abbb  abb  abbbb  abbbbb  ab  abb  abbbbb  ab
 ex(8):  abbb  abbbbbbbb  a  ab  abb  abbbb  abbbb  abbb  a  a  abbbbbb  abb
-node: {false, a, #} (((ab*))#)
-  node: {false, a, ab} ((ab*))
-    node: {false, a, ab} (ab*)
-      node: {false, a, a} a
-      node: {true, b, b} b*
-        node: {false, b, b} b
+node: {false, a, #} ((ab*)#)
+  node: {false, a, ba} (ab*)
+    node: {false, a, a} a
+    node: {true, b, b} b*
+      node: {false, b, b} b
   node: {false, #, #} #
 
 regexp: (ab)*
-tree:   ((ab)*)
+tree:   (ab)*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      ab    ab    ab  ab        ab  ab        ab        ab        ab    
@@ -245,16 +232,15 @@ ex(2):  ab  ab    abab  abab  ab  abab  ab  abab  ab  abab    ab      abab  ab
 ex(3):      abab  ab  abab    abab    ababab    ab  abab      abab  ababab  ab
 ex(5):  abababab  ababababab  ab  abab  ababababab  ab  ababab    abab  ababab
 ex(8):  abab  abababab  abababab  ababab      abababababab  abab
-node: {false, a#, #} (((ab)*)#)
-  node: {true, a, b} ((ab)*)
-    node: {true, a, b} (ab)*
-      node: {false, a, b} (ab)
-        node: {false, a, a} a
-        node: {false, b, b} b
+node: {false, a#, #} ((ab)*#)
+  node: {true, a, b} (ab)*
+    node: {false, a, b} (ab)
+      node: {false, a, a} a
+      node: {false, b, b} b
   node: {false, #, #} #
 
 regexp: (a|b)
-tree:   (((a)|(b)))
+tree:   (a|b)
 length: 1 to 1
 ex(0):  a  a  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  a  a  a  b  a  a  a
 ex(1):  a  a  a  b  a  b  a  b  a  a  b  a  a  b  a  b  a  a  a  b  b  a  a  a
@@ -262,17 +248,14 @@ ex(2):  a  a  a  a  b  a  b  a  a  a  a  b  b  a  a  b  b  a  b  b  b  a  a  b
 ex(3):  b  b  a  b  b  a  a  a  b  a  b  a  a  a  a  a  a  a  a  a  a  b  a  a
 ex(5):  b  b  b  b  a  b  b  a  a  a  a  a  a  b  b  b  b  a  a  b  b  a  a  a
 ex(8):  b  b  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  b  b  b  b  a  b  a
-node: {false, ab, #} ((((a)|(b)))#)
-  node: {false, ab, ab} (((a)|(b)))
-    node: {false, ab, ab} ((a)|(b))
-      node: {false, a, a} (a)
-        node: {false, a, a} a
-      node: {false, b, b} (b)
-        node: {false, b, b} b
+node: {false, ab, #} ((a|b)#)
+  node: {false, ab, ab} (a|b)
+    node: {false, a, a} a
+    node: {false, b, b} b
   node: {false, #, #} #
 
 regexp: (a|b)*
-tree:   (((a)|(b))*)
+tree:   (a|b)*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      a  a  b        b        a      a      a      a  a  a    a    a  a  
@@ -280,18 +263,15 @@ ex(2):  b          aa  b      aa    ba  b  a  bb    ba  ba          ba    aa
 ex(3):      ba  bb  b  a  baa  aa    bbb      b    ab  b  a  a  baa    baa  bb
 ex(5):  abb  aa  a    abaaa  ab    baa  aaaaa  bbabb  aba  abba  aaba  aaaaa  a
 ex(8):  ba  baaabaab  aba  a  ab  bbbaaaa  abbabb  abbbaba  abaaa  baab  baab
-node: {false, ab#, #} ((((a)|(b))*)#)
-  node: {true, ab, ab} (((a)|(b))*)
-    node: {true, ab, ab} ((a)|(b))*
-      node: {false, ab, ab} ((a)|(b))
-        node: {false, a, a} (a)
-          node: {false, a, a} a
-        node: {false, b, b} (b)
-          node: {false, b, b} b
+node: {false, ab#, #} ((a|b)*#)
+  node: {true, ab, ab} (a|b)*
+    node: {false, ab, ab} (a|b)
+      node: {false, a, a} a
+      node: {false, b, b} b
   node: {false, #, #} #
 
 regexp: AB(|)
-tree:   (AB(()|()))
+tree:   ((AB)(()|()))
 length: 2 to 2
 ex(0):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
 ex(1):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
@@ -299,13 +279,14 @@ ex(2):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
 ex(3):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
 ex(5):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
 ex(8):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
-node: {false, A, #} ((AB(()|()))#)
-  node: {false, A, B} (AB(()|()))
-    node: {false, A, A} A
-    node: {false, B, B} B
-    node: {true, , } (()|())
-      node: {true, , } ()
-      node: {true, , } ()
+node: {false, A, #} (((AB)(()|()))#)
+  node: {false, A, } ((AB)(()|()))
+    node: {false, A, B} (AB)
+      node: {false, A, A} A
+      node: {false, B, B} B
+    node: {false, , } (()|())
+      node: {false, , } ()
+      node: {false, , } ()
   node: {false, #, #} #
 
 regexp: C(|)
@@ -318,15 +299,15 @@ ex(3):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
 ex(5):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
 ex(8):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
 node: {false, C, #} ((C(()|()))#)
-  node: {false, C, C} (C(()|()))
+  node: {false, C, } (C(()|()))
     node: {false, C, C} C
-    node: {true, , } (()|())
-      node: {true, , } ()
-      node: {true, , } ()
+    node: {false, , } (()|())
+      node: {false, , } ()
+      node: {false, , } ()
   node: {false, #, #} #
 
 regexp: C(A|B)
-tree:   (C((A)|(B)))
+tree:   (C(A|B))
 length: 2 to 2
 ex(0):  CA  CA  CB  CA  CB  CA  CB  CB  CA  CA  CA  CB  CB  CA  CA  CA  CB  CA
 ex(1):  CA  CB  CA  CA  CA  CB  CA  CA  CA  CB  CA  CB  CA  CB  CA  CA  CB  CA
@@ -334,18 +315,16 @@ ex(2):  CB  CA  CB  CA  CA  CA  CB  CB  CA  CA  CA  CB  CA  CA  CA  CA  CB  CA
 ex(3):  CA  CA  CA  CA  CB  CB  CA  CA  CB  CB  CA  CB  CB  CB  CA  CA  CB  CA
 ex(5):  CB  CA  CB  CB  CA  CA  CA  CB  CA  CB  CA  CA  CA  CA  CA  CA  CA  CA
 ex(8):  CA  CB  CA  CA  CB  CB  CB  CB  CB  CA  CB  CB  CA  CA  CA  CA  CA  CA
-node: {false, C, #} ((C((A)|(B)))#)
-  node: {false, C, AB} (C((A)|(B)))
+node: {false, C, #} ((C(A|B))#)
+  node: {false, C, AB} (C(A|B))
     node: {false, C, C} C
-    node: {false, AB, AB} ((A)|(B))
-      node: {false, A, A} (A)
-        node: {false, A, A} A
-      node: {false, B, B} (B)
-        node: {false, B, B} B
+    node: {false, AB, AB} (A|B)
+      node: {false, A, A} A
+      node: {false, B, B} B
   node: {false, #, #} #
 
 regexp: C(AC|B)D
-tree:   (C((AC)|(B))D)
+tree:   ((C((AC)|B))D)
 length: 3 to 4
 ex(0):  CACD  CACD  CBD  CACD  CBD  CACD  CBD  CBD  CACD  CACD  CACD  CBD  CBD
 ex(1):  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD
@@ -353,14 +332,14 @@ ex(2):  CACD  CBD  CACD  CBD  CACD  CBD  CACD  CACD  CBD  CACD  CACD  CBD  CACD
 ex(3):  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD
 ex(5):  CBD  CACD  CBD  CACD  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CBD  CBD
 ex(8):  CBD  CBD  CBD  CACD  CACD  CBD  CACD  CBD  CBD  CACD  CBD  CBD  CACD
-node: {false, C, #} ((C((AC)|(B))D)#)
-  node: {false, C, D} (C((AC)|(B))D)
-    node: {false, C, C} C
-    node: {false, AB, CB} ((AC)|(B))
-      node: {false, A, C} (AC)
-        node: {false, A, A} A
-        node: {false, C, C} C
-      node: {false, B, B} (B)
+node: {false, C, #} (((C((AC)|B))D)#)
+  node: {false, C, D} ((C((AC)|B))D)
+    node: {false, C, CB} (C((AC)|B))
+      node: {false, C, C} C
+      node: {false, AB, CB} ((AC)|B)
+        node: {false, A, C} (AC)
+          node: {false, A, A} A
+          node: {false, C, C} C
         node: {false, B, B} B
     node: {false, D, D} D
   node: {false, #, #} #

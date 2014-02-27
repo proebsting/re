@@ -2,7 +2,7 @@
 # source not recorded
 
 regexp: C(AC|B)D
-tree:   (C((AC)|(B))D)
+tree:   ((C((AC)|B))D)
 length: 3 to 4
 ex(0):  CACD  CACD  CBD  CACD  CBD  CACD  CBD  CBD  CACD  CACD  CACD  CBD  CBD
 ex(1):  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD
@@ -14,7 +14,7 @@ ex(8):  CBD  CBD  CBD  CACD  CACD  CBD  CACD  CBD  CBD  CACD  CBD  CBD  CACD
 # Dragon2: automata example
 
 regexp: (a|b)*abb
-tree:   (((a)|(b))*abb)
+tree:   ((((a|b)*a)b)b)
 length: 3 to *
 ex(0):  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb
 ex(1):  abb  abb  aabb  aabb  babb  abb  abb  abb  babb  abb  abb  abb  aabb
@@ -26,7 +26,7 @@ ex(8):  aabb  aaabbabb  baaabb  abb  abb  abb  abbbbabb  babbaaabb  bbaabb  abb
 # Sedgewick: genome marker
 
 regexp: gcg(cgg|agg)*ctg
-tree:   (gcg((cgg)|(agg))*ctg)
+tree:   ((((((gc)g)(((cg)g)|((ag)g))*)c)t)g)
 length: 6 to *
 ex(0):  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg
 ex(1):  gcgctg  gcgctg  gcgcggctg  gcgcggctg  gcgaggctg  gcgctg  gcgctg  gcgctg
@@ -38,7 +38,7 @@ ex(8):  gcgaggcggcggaggaggctg  gcgaggaggctg  gcgcggcggaggctg  gcgaggctg
 # Sedgewick: multiples of 3, in binary
 
 regexp: (0|1(01*0)*1)*
-tree:   (((0)|(1(01*0)*1))*)
+tree:   (0|((1((01*)0)*)1))*
 length: 0 to *
 ex(0):                                                                        
 ex(1):      0  0  11      11      0      0      0      0  0  0    0    0  0    
@@ -50,7 +50,7 @@ ex(8):  00  10111001111101101001100111001111001110001    0
 # Experiments with word construction
 
 regexp: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
-tree:   ([bcfpt][lr]?(([aeiou])|(oo)|(ee))[dmnt])
+tree:   ((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])
 length: 3 to 5
 ex(0):  feen  ceem  teed  bood  teen  cood  fed  pood  teet  tot  ceen  toot
 ex(1):  fleed  prid  beem  treen  floon  foot  prud  beed  teet  poon  ceem
@@ -60,7 +60,7 @@ ex(5):  pleem  boon  prit  cood  beet  tleem  breem  peen  froom  broom  fram
 ex(8):  froot  teen  beed  floon  pem  teed  toot  poom  beem  froot  pleet
 
 regexp: W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
-tree:   (W((hit)|(ens)|(at)|(in)|(est)|(al))[aeio][lmnrsx]((ford)|(by)|(dale)|(bot)|(man)|(son)|(gard)|(hold)))
+tree:   ((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))
 length: 7 to 10
 ex(0):  Whitilford  Whitamgard  Walamman  Winamdale  Wenselby  Watarford
 ex(1):  Winisbot  Whitilgard  Watalson  Wensorgard  Westerby  Winalby

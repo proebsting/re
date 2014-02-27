@@ -11,7 +11,7 @@ import (
 
 //  Node is the "parent class" of all parse tree node subtypes.
 //  The four proper subtypes are MatchNode, ConcatNode, ReplNode, and AltNode.
-//  Epsilon and Accept make special ConcatNode and MatchNode forms respectively.
+//  Epsilon and Accept make special AltNode and MatchNode forms respectively.
 //
 //  Every Node subtype implements the following pointer receiver methods:
 //  Data()		return pointer to NodeData
@@ -56,6 +56,12 @@ func growset(base map[Node]bool, addl map[Node]bool) map[Node]bool {
 		base[k] = v
 	}
 	return base
+}
+
+// IsEpsilon returns true for an Epsilon node
+func IsEpsilon(d Node) bool {
+	anode, ok := d.(*AltNode)
+	return ok && len(anode.Alts) == 0
 }
 
 //---------------------------------------------------------------------------
@@ -133,9 +139,10 @@ func (d *MatchNode) String() string {
 
 //---------------------------------------------------------------------------
 
-//  ConcatNode matches a concatenation of subpatterns.
+//  ConcatNode matches the concatenation of two subpatterns.
 type ConcatNode struct {
-	Parts []Node
+	l Node
+	r Node
 	NodeData
 }
 
@@ -148,9 +155,8 @@ func (d *ConcatNode) Walk(pre VisitFunc, post VisitFunc) {
 	if pre != nil {
 		pre(d)
 	}
-	for _, c := range d.Parts {
-		c.Walk(pre, post)
-	}
+	d.l.Walk(pre, post)
+	d.r.Walk(pre, post)
 	if post != nil {
 		post(d)
 	}
@@ -158,43 +164,33 @@ func (d *ConcatNode) Walk(pre VisitFunc, post VisitFunc) {
 
 //  ConcatNode.MinLen sums the min lengths of its subpatterns.
 func (d *ConcatNode) MinLen() int {
-	n := 0
-	for _, e := range d.Parts {
-		n += e.MinLen()
-	}
-	return n
+	return d.l.MinLen() + d.r.MinLen()
 }
 
 //  ConcatNode.MaxLen sums the max lengths of its subpatterns.
 //  A value of -1 means that the length is unbounded.
 func (d *ConcatNode) MaxLen() int {
-	n := 0
-	for _, e := range d.Parts {
-		l := e.MaxLen()
-		if l < 0 { // if unbounded
-			return l
-		}
-		n += l
+	llen := d.l.MaxLen()
+	rlen := d.r.MaxLen()
+	if llen < 0 || rlen < 0 { // if unbounded
+		return -1
+	} else {
+		return llen + rlen
 	}
-	return n
 }
 
 //  ConcatNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *ConcatNode) SetNFL() {
-	d.Nullable = true
-	d.FirstPos = make(map[Node]bool)
-	d.LastPos = make(map[Node]bool)
-	d.FollowPos = make(map[Node]bool)
-	for _, e := range d.Parts {
-		if d.Nullable { // if nullable so far...
-			growset(d.FirstPos, e.Data().FirstPos)
-		}
-		if e.Data().Nullable {
-			growset(d.LastPos, e.Data().LastPos)
-		} else {
-			d.LastPos = growset(nil, e.Data().LastPos)
-		}
-		d.Nullable = d.Nullable && e.Data().Nullable
+	l := d.l.Data()
+	r := d.r.Data()
+	d.Nullable = l.Nullable && r.Nullable
+	d.FirstPos = growset(nil, l.FirstPos)
+	if l.Nullable {
+		growset(d.FirstPos, r.FirstPos)
+	}
+	d.LastPos = growset(nil, r.LastPos)
+	if r.Nullable {
+		growset(d.LastPos, l.LastPos)
 	}
 }
 
@@ -204,44 +200,25 @@ func (d *ConcatNode) SetFollow() {
 
 //  ConcatNode.Example appends one example from each subpattern.
 func (d *ConcatNode) Example(s []byte, n int) []byte {
-	for _, e := range d.Parts {
-		s = e.Example(s, n)
-	}
+	s = d.l.Example(s, n)
+	s = d.r.Example(s, n)
 	return s
 }
 
 //  ConcatNode.String appends a parenthesized concatenation of subpatterns.
 func (d *ConcatNode) String() string {
-	b := make([]byte, 0)
-	b = append(b, '(')
-	for _, v := range d.Parts {
-		b = append(b, fmt.Sprint(v)...)
-	}
-	b = append(b, ')')
-	return string(b)
+	return fmt.Sprintf("(%s%s)", d.l, d.r)
 }
 
-//  Concatenate makes a ConcatNode, collapsing multiple concatenations.
-func Concatenate(d Node, e Node) Node { // return smart concatenation
-	if d == nil {
+//  Concatenate makes a ConcatNode, optimizing if either arg is an Epsilon
+func Concatenate(d Node, e Node) Node {
+	if d == nil || IsEpsilon(d) {
 		return e
 	}
-	if e == nil {
+	if e == nil || IsEpsilon(e) {
 		return d
 	}
-	lcat, ok := d.(*ConcatNode)
-	if ok {
-		lcat.Parts = append(lcat.Parts, e)
-		return lcat
-	} else {
-		a := make([]Node, 0)
-		return &ConcatNode{append(a, d, e), nildata}
-	}
-}
-
-//  Epsilon returns an empty concatenation that matches an empty string.
-func Epsilon() Node {
-	return &ConcatNode{Parts: make([]Node, 0)}
+	return &ConcatNode{d, e, nildata}
 }
 
 //---------------------------------------------------------------------------
@@ -316,8 +293,11 @@ func (d *AltNode) SetFollow() {
 
 //  AltNode.Example chooses one subpattern to generate an example.
 func (d *AltNode) Example(s []byte, n int) []byte {
-	e := d.Alts[rand.Intn(len(d.Alts))]
-	return e.Example(s, n)
+	if IsEpsilon(d) {
+		return s // was an Epsilon
+	} else {
+		return d.Alts[rand.Intn(len(d.Alts))].Example(s, n)
+	}
 }
 
 //  AltNode.String shows all subpatterns separated by | in parentheses.
@@ -336,16 +316,24 @@ func (d *AltNode) String() string {
 
 //  Alternate makes an AltNode, collapsing multiple alternatives.
 func Alternate(d Node, e Node) Node {
-	if anode, ok := e.(*AltNode); ok {
+	// if right is non-Epsilon AltNode, and left is not, combine
+	altd, okd := d.(*AltNode)
+	alte, oke := e.(*AltNode)
+	if (oke && len(alte.Alts) > 0) && !(okd && len(altd.Alts) > 0) {
 		// insert at left end for intuitive ordering
-		alist := append(anode.Alts, nil)
+		alist := append(alte.Alts, nil)
 		copy(alist[1:], alist[0:])
 		alist[0] = d
-		anode.Alts = alist
-		return anode
+		alte.Alts = alist
+		return alte
 	} else {
 		return &AltNode{append(make([]Node, 0), d, e), nildata}
 	}
+}
+
+//  Epsilon returns a speial AltNode exhibiting no alternatives.
+func Epsilon() Node {
+	return &AltNode{make([]Node, 0), nildata}
 }
 
 //---------------------------------------------------------------------------
