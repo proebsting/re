@@ -106,7 +106,19 @@ func (b Cset) Choose() byte {
 	return c // return surviving choice
 }
 
-//  Cset.Choose() returns a string representation in brackets,
+//  Cset.Members() returns a string listing the characters in the set.
+func (b Cset) Members() string {
+	s := make([]byte, 0)
+	h := b.bits.BitLen()
+	for i := 0; i <= h; i++ { // for all chars up to highest
+		if b.Test(uint(i)) { // if char is included
+			s = append(s, byte(i))
+		}
+	}
+	return string(s)
+}
+
+//  Cset.String() returns a string representation in brackets,
 //  using ranges if appropriate and escaping (only) unprintables.
 func (b Cset) String() string {
 	h := b.bits.BitLen()
