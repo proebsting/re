@@ -81,7 +81,11 @@ func main() {
 		if !*aflag {             // if -A not given, print automata
 			treenodes(t) // first show tree details
 			for _, m := range dfa.Leaves {
-				fmt.Printf("% 2d. %s\n", m.Posn, m)
+				fmt.Printf("% 2d. %s => {", m.Posn, m)
+				for d := range m.FollowPos {
+					fmt.Print(" ", d.Posn)
+				}
+				fmt.Print(" }\n")
 			}
 			//#%#% them dump the DFA itself
 		}

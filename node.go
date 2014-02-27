@@ -35,28 +35,16 @@ type Node interface {
 
 //  NodeData is included (anonymously) in every Node subtype.
 type NodeData struct {
-	Nullable  bool          // can this subtree match an empty string?
-	FirstPos  map[Node]bool // set of possible initial nodes ("positions")
-	LastPos   map[Node]bool // set of possible final nodes ("positions")
-	FollowPos map[Node]bool // set of positions that can follow in NFA
+	Nullable  bool                // can this subtree match empty string?
+	FirstPos  map[*MatchNode]bool // possible initial nodes ("positions")
+	LastPos   map[*MatchNode]bool // possible final nodes ("positions")
+	FollowPos map[*MatchNode]bool // positions that can follow in NFA
 }
 
 var nildata = NodeData{} // convenient for initilization
 
 //  VisitFunc is a type for visiting tree nodes and passing an arbitrary value.
 type VisitFunc func(d Node)
-
-//  Growset adds (or replaces) all elements from addl into base.
-//  With a nil (or initially empty) base this effects a copy.
-func growset(base map[Node]bool, addl map[Node]bool) map[Node]bool {
-	if base == nil {
-		base = make(map[Node]bool, len(addl))
-	}
-	for k, v := range addl {
-		base[k] = v
-	}
-	return base
-}
 
 // IsEpsilon returns true for an Epsilon node
 func IsEpsilon(d Node) bool {
@@ -107,14 +95,14 @@ func (d *MatchNode) MaxLen() int { return 1 }
 //  MatchNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *MatchNode) SetNFL() {
 	d.Nullable = false
-	d.FirstPos = make(map[Node]bool)
-	d.LastPos = make(map[Node]bool)
-	d.FollowPos = make(map[Node]bool)
+	d.FirstPos = make(map[*MatchNode]bool)
+	d.LastPos = make(map[*MatchNode]bool)
+	d.FollowPos = make(map[*MatchNode]bool)
 	d.FirstPos[d] = true
 	d.LastPos[d] = true
 }
 
-//  MatchNode.SetFollow, applied bottom up, computes followpos sets.
+//  MatchNode.SetFollow has nothing to do.
 func (d *MatchNode) SetFollow() {
 }
 
@@ -135,6 +123,18 @@ func (d *MatchNode) String() string {
 	} else {
 		return s
 	}
+}
+
+//  Growset adds (or replaces) all elements from addl into base.
+//  With a nil (or initially empty) base this effects a copy.
+func growset(base map[*MatchNode]bool, addl map[*MatchNode]bool) map[*MatchNode]bool {
+	if base == nil {
+		base = make(map[*MatchNode]bool, len(addl))
+	}
+	for k, v := range addl {
+		base[k] = v
+	}
+	return base
 }
 
 //---------------------------------------------------------------------------
@@ -194,8 +194,13 @@ func (d *ConcatNode) SetNFL() {
 	}
 }
 
-//  ConcatNode.SetFollow, applied bottom up, computes followpos sets.
+//  ConcatNode.SetFollow registers FollowPos nodes due to concatenation.
 func (d *ConcatNode) SetFollow() {
+	for i := range d.l.Data().LastPos {
+		for f := range d.r.Data().FirstPos {
+			i.Data().FollowPos[f] = true
+		}
+	}
 }
 
 //  ConcatNode.Example appends one example from each subpattern.
@@ -277,9 +282,9 @@ func (d *AltNode) MaxLen() int {
 //  AltNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *AltNode) SetNFL() {
 	d.Nullable = (len(d.Alts) == 0) // only if an Epsilon
-	d.FirstPos = make(map[Node]bool)
-	d.LastPos = make(map[Node]bool)
-	d.FollowPos = make(map[Node]bool)
+	d.FirstPos = make(map[*MatchNode]bool)
+	d.LastPos = make(map[*MatchNode]bool)
+	d.FollowPos = make(map[*MatchNode]bool)
 	for _, e := range d.Alts {
 		d.Nullable = d.Nullable || e.Data().Nullable
 		growset(d.FirstPos, e.Data().FirstPos)
@@ -287,7 +292,7 @@ func (d *AltNode) SetNFL() {
 	}
 }
 
-//  AltNode.SetFollow, applied bottom up, computes followpos sets.
+//  AltNode.SetFollow has nothing to do.
 func (d *AltNode) SetFollow() {
 }
 
@@ -384,11 +389,19 @@ func (d *ReplNode) SetNFL() {
 	d.Nullable = d.Min == 0 || d.Child.Data().Nullable
 	d.FirstPos = growset(nil, d.Child.Data().FirstPos)
 	d.LastPos = growset(nil, d.Child.Data().LastPos)
-	d.FollowPos = make(map[Node]bool)
+	d.FollowPos = make(map[*MatchNode]bool)
 }
 
-//  ReplNode.SetFollow, applied bottom up, computes followpos sets.
+//  ReplNode.SetFollow registers FollowPos nodes due to zero replications.
 func (d *ReplNode) SetFollow() {
+	if !d.Nullable {
+		return // nothing to do if not nullable
+	}
+	for i := range d.LastPos {
+		for f := range d.FirstPos {
+			i.Data().FollowPos[f] = true
+		}
+	}
 }
 
 //  ReplNode.Example produces an example with maximum replication n.
