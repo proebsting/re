@@ -1,0 +1,69 @@
+
+# Samples from old www.cs.arizona.edu/scripts by gmt
+
+#
+
+# functions.php: getvalid
+
+regexp: [A-Za-z0-9]+
+tree:   [0-9A-Za-z]+
+length: 1 to *
+ex(0):  Z  H  X  L  W  4  8  G  3  E  T  l  i  E  k  Y  5  d  A  X  c  K  w  I
+ex(1):  u  U  h  b  U  I  E  O  2  s  F  0  n  7  E  i  d  P  d  a  H  Q  g  i
+ex(2):  zZ  g  lM  D  JK  Y  fD  4Y  A  N  XV  h  7  P  5H  kA  D  x  j8  K  V
+ex(3):  r  F7  L  U7  p5B  z9J  MK  b  5  U4  H  N  7k  O  x  m  xK  Y  gaL
+ex(5):  s1Y  gIfk  QL  a  Aql  e  x9s9j  vahl  SX2vQ  rsJR  aWI  cB  S  kb
+ex(8):  DL  DZCATqz  mKkm9  fd9BrKF  FbFwI  Dlx  rNYy  gKmO  GLed  0  6W
+
+# functions.php: fixamps
+
+regexp: \&([[:alnum:]]*([^;[:alnum:]]|
+ERROR:  rx: [:class:] unimplemented: in "\&([[:alnum:]]*([^;[:alnum:]]|"
+
+# functions.php: mailto
+
+regexp: ([^@]+)@(.*)\.arizona\.edu
+tree:   (((((((((((((([\x01-?A-\u007f]+@)[\x01-\u007f]*).)a)r)i)z)o)n)a).)e)d)u)
+length: 14 to *
+ex(0):  V@.arizona.edu  9@.arizona.edu  +@.arizona.edu  T@.arizona.edu
+ex(1):  i@.arizona.edu  *@d.arizona.edu  /@.arizona.edu  t@.arizona.edu
+ex(2):  ;@sw.arizona.edu  I!@X.arizona.edu  fE@.arizona.edu  U@.arizona.edu
+ex(3):  V7@K.arizona.edu  {fr@qiV.arizona.edu  C@Sw.arizona.edu
+ex(5):  4d@cP.arizona.edu  V@0f.arizona.edu  &@p}1no.arizona.edu
+ex(8):  *!%t@!;8s.arizona.edu  s4z#~^E@mx/yE+U.arizona.edu  [ZL@.arizona.edu
+
+# nelson.php: else 'Not a valid integer.'
+
+regexp: [+-]?[0-9]+
+tree:   ([+-]?[0-9]+)
+length: 1 to *
+ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
+ex(1):  8  1  -3  +4  4  +9  4  8  9  6  -4  8  4  -1  7  8  +4  -2  -2  +1  0
+ex(2):  +3  90  73  +06  -7  1  0  4  87  1  28  60  +26  4  +11  6  +36  -9
+ex(3):  +6  +87  -4  +00  8  436  0  0  94  9  25  35  -3  +40  1  -186  303
+ex(5):  +8406  -79844  94183  7601  +9430  -60  34086  8  630  36685  04  -5
+ex(8):  -979  0  505434  -3177  4194  +522322  69653254  -97619576  +94  -4
+
+# nelson.php: else 'Date must be in YYYY-MM-DD form.'
+
+regexp: [12][0-9][0-9][0-9]-[01][0-9]-[0-3][0-9]
+tree:   ((((((((([12][0-9])[0-9])[0-9])-)[01])[0-9])-)[0-3])[0-9])
+length: 10 to 10
+ex(0):  1100-10-12  1387-17-04  2503-03-11  2884-17-10  1314-00-13  2865-09-20
+ex(1):  1819-06-38  1307-02-12  1029-07-18  1106-17-08  2144-17-24  2739-07-30
+ex(2):  2847-13-31  1743-09-16  2600-09-04  2441-05-08  1451-03-02  1893-02-24
+ex(3):  2312-00-32  2119-09-08  1894-16-29  2183-08-30  2599-17-36  1582-01-13
+ex(5):  1735-12-34  1512-01-00  2582-17-20  2987-08-15  1326-11-39  2857-15-34
+ex(8):  2023-11-14  2024-15-31  2365-00-22  2691-10-25  1841-00-26  1935-16-31
+
+# nelson.php: else 'Time must be in HH:MM:SS form.'
+
+regexp: [012][0-9]:[0-5][0-9](:[0-5][0-9])?
+tree:   ((((([012][0-9]):)[0-5])[0-9])((:[0-5])[0-9])?)
+length: 5 to 8
+ex(0):  02:09  16:42  10:31  23:14  29:36  01:11  20:31  19:40  16:31  10:03
+ex(1):  17:00  14:29  19:19  05:09  28:17:40  04:50:22  16:29  14:01  02:24
+ex(2):  06:17  24:27:46  09:11:57  22:07:57  03:22:14  17:06:41  16:59:06
+ex(3):  07:21  27:50  27:32:55  19:40  20:03  08:43:52  01:33:06  06:30:51
+ex(5):  09:12  03:21  03:32  26:35  09:27:09  23:02  06:32  18:15:36  24:06
+ex(8):  28:50:24  19:15  24:17  20:52:21  19:47  11:16:39  04:50:38  06:20

@@ -1,0 +1,14 @@
+# Samples from old www.cs.arizona.edu/scripts by gmt
+#
+# functions.php: getvalid
+[A-Za-z0-9]+
+# functions.php: fixamps
+\&([[:alnum:]]*([^;[:alnum:]]|
+# functions.php: mailto
+([^@]+)@(.*)\.arizona\.edu
+# nelson.php: else 'Not a valid integer.'
+[+-]?[0-9]+
+# nelson.php: else 'Date must be in YYYY-MM-DD form.'
+[12][0-9][0-9][0-9]-[01][0-9]-[0-3][0-9]
+# nelson.php: else 'Time must be in HH:MM:SS form.'
+[012][0-9]:[0-5][0-9](:[0-5][0-9])?
