@@ -276,7 +276,7 @@ func (d *AltNode) MaxLen() int {
 
 //  AltNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *AltNode) SetNFL() {
-	d.Nullable = false
+	d.Nullable = (len(d.Alts) == 0)		// only if an Epsilon
 	d.FirstPos = make(map[Node]bool)
 	d.LastPos = make(map[Node]bool)
 	d.FollowPos = make(map[Node]bool)

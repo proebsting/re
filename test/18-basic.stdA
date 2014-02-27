@@ -154,9 +154,9 @@ ex(2):  def      bc  a  bc    bc    def    a  bc      bc  def  a  bc  bc  def
 ex(3):    a  a  def  bc    def  bc  a  a    def  def  bc  bc    def    a  bc
 ex(5):    bc            bc  a    bc  a  def  a  a  a  bc  def  def  bc  bc  bc
 ex(8):  bc    def  def  def  def      a  def    bc    def  a  def  a    a  bc
-node: {false, abd, #} ((()|a|(bc)|((de)f))#)
-  node: {false, abd, acf} (()|a|(bc)|((de)f))
-    node: {false, , } ()
+node: {false, abd#, #} ((()|a|(bc)|((de)f))#)
+  node: {true, abd, acf} (()|a|(bc)|((de)f))
+    node: {true, , } ()
     node: {false, a, a} a
     node: {false, b, c} (bc)
       node: {false, b, b} b
@@ -280,13 +280,13 @@ ex(3):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
 ex(5):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
 ex(8):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
 node: {false, A, #} (((AB)(()|()))#)
-  node: {false, A, } ((AB)(()|()))
+  node: {false, A, B} ((AB)(()|()))
     node: {false, A, B} (AB)
       node: {false, A, A} A
       node: {false, B, B} B
-    node: {false, , } (()|())
-      node: {false, , } ()
-      node: {false, , } ()
+    node: {true, , } (()|())
+      node: {true, , } ()
+      node: {true, , } ()
   node: {false, #, #} #
 
 regexp: C(|)
@@ -299,11 +299,11 @@ ex(3):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
 ex(5):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
 ex(8):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
 node: {false, C, #} ((C(()|()))#)
-  node: {false, C, } (C(()|()))
+  node: {false, C, C} (C(()|()))
     node: {false, C, C} C
-    node: {false, , } (()|())
-      node: {false, , } ()
-      node: {false, , } ()
+    node: {true, , } (()|())
+      node: {true, , } ()
+      node: {true, , } ()
   node: {false, #, #} #
 
 regexp: C(A|B)
