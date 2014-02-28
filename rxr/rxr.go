@@ -91,23 +91,9 @@ func main() {
 
 			}
 			// dump DFA
-			apos := len(dfa.Leaves) - 1 // "Accept" position
-			for i, d := range dfa.Dstates {
-				if d.Posns.Test(uint(apos)) {
-					fmt.Printf("s%d#", i)
-				} else {
-					fmt.Printf("s%d.", i)
-				}
-				for _, j := range d.Posns.Members() {
-					fmt.Printf(" p%d", j)
-				}
-				fmt.Print(" =>")
-				for c, j := range d.Dnext {
-					fmt.Printf(" %s:s%d", string(c), j.Index)
-				}
-				fmt.Println()
+			for _, d := range dfa.Dstates {
+				showstate(dfa, d)
 			}
-
 		}
 	}
 	rx.CkErr(efile.Err())
@@ -157,4 +143,42 @@ func predump(d rx.Node) {
 
 func postdump(d rx.Node) {
 	indent = indent[2:]
+}
+
+//  Showstate prints the contents of one DFA state.
+func showstate(dfa *rx.DFA, d *rx.DFAstate) {
+
+	// print index with "Accept" flag
+	apos := len(dfa.Leaves) - 1 // "Accept" position
+	if d.Posns.Test(uint(apos)) {
+		fmt.Printf("s%d# {", d.Index)
+	} else {
+		fmt.Printf("s%d. {", d.Index)
+	}
+
+	// print position set
+	for _, j := range d.Posns.Members() {
+		fmt.Printf(" p%d", j)
+	}
+	fmt.Print(" }")
+
+	// invert the transition map
+	slist := rx.CharSet("")
+	xmap := make(map[int]*rx.Cset)
+	for c, d := range d.Dnext {
+		j := d.Index
+		v := xmap[j]
+		if v == nil {
+			v = rx.CharSet("")
+			xmap[j] = v
+			slist.Set(uint(j))
+		}
+		v.Set(uint(c))
+	}
+
+	// now print by next-state with input symbols grouped
+	for _, c := range slist.Members() {
+		fmt.Printf(" %s:s%d", xmap[int(c)], c)
+	}
+	fmt.Println()
 }
