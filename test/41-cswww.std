@@ -67,3 +67,27 @@ ex(2):  06:17  24:27:46  09:11:57  22:07:57  03:22:14  17:06:41  16:59:06
 ex(3):  07:21  27:50  27:32:55  19:40  20:03  08:43:52  01:33:06  06:30:51
 ex(5):  09:12  03:21  03:32  26:35  09:27:09  23:02  06:32  18:15:36  24:06
 ex(8):  28:50:24  19:15  24:17  20:52:21  19:47  11:16:39  04:50:38  06:20
+
+#
+
+# From WHM grading script (Ruby):
+
+regexp: (\/\/[ \t]*)?[Ww][Hh][Mm][ \t]*says[ \t]*:[ \tA-Za-z0-9`~!@\#$%^&\*\(\)\-_\+=\[\]{}\|\:\;'",.<>?\/]+
+tree:   (((((((((((((//)[\t ]*)?[Ww])[Hh])[Mm])[\t ]*)s)a)y)s)[\t ]*):)[\t -[]-~]+)
+length: 9 to *
+ex(0):  WHmsays:(  wHMsays:G  WHMsays:R  WHMsays:Y  WhMsays:P  WhMsays:v
+ex(1):  //WHmsays\t:Z  wHmsays:L  //Whm\tsays:_  //WHmsays:u  WHmsays:4
+ex(2):  //wHMsays:$  //\t wHm \tsays :5=  whMsays\t:q  //\twhMsays\t\t:T6
+ex(3):  //\tWhm\tsays\t :w)  // Whm\t\t\tsays  :#  WHM\t \tsays\t\t :tW
+ex(5):  //\t\twhm  \t \tsays\t  :@]1|D  wHm\t\tsays\t\t  :a
+ex(8):  whM\tsays\t   \t :1  // \t\t\t\t\t WHm \t  \t \tsays   \t   :|C'zb*Y.
+
+regexp: 
+tree:   ()
+length: 0 to 0
+ex(0):                                                                        
+ex(1):                                                                        
+ex(2):                                                                        
+ex(3):                                                                        
+ex(5):                                                                        
+ex(8):                                                                        
