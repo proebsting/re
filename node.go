@@ -35,7 +35,8 @@ type Node interface {
 
 //  NodeData is included (anonymously) in every Node subtype.
 type NodeData struct {
-	Nullable  bool                // can this subtree match empty string?
+	Nullable bool // can this subtree match empty string?
+	//#%#%# make these next to be bitsets?
 	FirstPos  map[*MatchNode]bool // possible initial nodes ("positions")
 	LastPos   map[*MatchNode]bool // possible final nodes ("positions")
 	FollowPos map[*MatchNode]bool // positions that can follow in NFA
@@ -68,7 +69,13 @@ func Match(cs *Cset) Node {
 
 //  Accept returns a special MatchNode with an empty cset.
 func Accept() Node {
-	return &MatchNode{nil, 0, nildata}
+	return &MatchNode{CharSet(""), 0, nildata}
+}
+
+// IsAccept returns true for an Accept node
+func IsAccept(d Node) bool {
+	mnode, ok := d.(*MatchNode)
+	return ok && mnode.cset.IsEmpty()
 }
 
 //  MatchNode.Data returns a pointer to the embedded NodeData struct.
@@ -114,7 +121,7 @@ func (d *MatchNode) Example(s []byte, n int) []byte {
 
 //  MatchNode.string returns a singleton character or a bracketed expression.
 func (d *MatchNode) String() string {
-	if d.cset == nil {
+	if d.cset.IsEmpty() {
 		return "#" // special "accept" node
 	}
 	s := d.cset.String()

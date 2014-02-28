@@ -1,6 +1,9 @@
 //  cset.go -- character set a la Icon, but only 128 bits
 //
-//  based on code from the Go Playground
+//#%#% This is now more of a bitset and should be renamed.  But: some
+//#%#% functions (e.g. Choose, Compl, String) are still charset-oriented.
+//
+//  based originally on code from the Go Playground
 //  http://play.golang.org/p/NpHns5EBnQ as of 11-Feb-2014
 //
 //  #%#% Some of these funcs are unused and therefore untested.
@@ -25,6 +28,11 @@ func CharSet(s string) *Cset { // make new cset from string
 		cs.Set(uint(ch))
 	}
 	return cs
+}
+
+//  Cset.Equals returns true if the argument cset is identical to this one.
+func (b1 *Cset) Equals(b2 *Cset) bool {
+	return (b1.bits.Cmp(&b2.bits) == 0)
 }
 
 //  Cset.Set sets one bit in a Cset.
@@ -107,15 +115,16 @@ func (b Cset) Choose() byte {
 }
 
 //  Cset.Members() returns a string listing the characters in the set.
-func (b Cset) Members() string {
-	s := make([]byte, 0)
+func (b Cset) Members() []uint16 {
+	m := make([]uint16, 0)
 	h := b.bits.BitLen()
+	//#%#% should go low to high instead of 0 to high
 	for i := 0; i <= h; i++ { // for all chars up to highest
 		if b.Test(uint(i)) { // if char is included
-			s = append(s, byte(i))
+			m = append(m, uint16(i))
 		}
 	}
-	return string(s)
+	return m
 }
 
 //  Cset.String() returns a string representation in brackets,

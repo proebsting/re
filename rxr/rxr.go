@@ -79,15 +79,35 @@ func main() {
 
 		dfa, t := rx.BuildDFA(t) // make DFA, modifying the tree
 		if !*aflag {             // if -A not given, print automata
-			treenodes(t) // first show tree details
+			// show tree details
+			treenodes(t)
+			// show followpos sets
 			for _, m := range dfa.Leaves {
-				fmt.Printf("% 2d. %s => {", m.Posn, m)
+				fmt.Printf("p%d. %s => {", m.Posn, m)
 				for d := range m.FollowPos {
 					fmt.Print(" ", d.Posn)
 				}
 				fmt.Print(" }\n")
+
 			}
-			//#%#% them dump the DFA itself
+			// dump DFA
+			apos := len(dfa.Leaves) - 1 // "Accept" position
+			for i, d := range dfa.Dstates {
+				if d.Posns.Test(uint(apos)) {
+					fmt.Printf("s%d#", i)
+				} else {
+					fmt.Printf("s%d.", i)
+				}
+				for _, j := range d.Posns.Members() {
+					fmt.Printf(" p%d", j)
+				}
+				fmt.Print(" =>")
+				for c, j := range d.Dnext {
+					fmt.Printf(" %s:s%d", string(c), j.Index)
+				}
+				fmt.Println()
+			}
+
 		}
 	}
 	rx.CkErr(efile.Err())
