@@ -9,16 +9,16 @@ import (
 
 var _ = fmt.Printf //#%#% for debugging
 
-//  Bracketx parses a string as a bracket expression, returning the
+//  Bxparse parses a string as a bracket expression, returning the
 //  computed set of characters and the remaining unprocessed part of s.
 //  It assumes the introductory '[' has already been stripped from s.
 //
-//  If an error is found, bracketx returns (nil, errmsg).
+//  If an error is found, bxparse returns (nil, errmsg).
 //
 //  Implements:  [abc] [^abc] [a-c] [\x]
-func bracketx(s string) (*Cset, string) {
+func bxparse(s string) (*BitSet, string) {
 
-	result := &Cset{}
+	result := &BitSet{}
 	compl := false
 
 	// check for initial '^'
@@ -55,7 +55,7 @@ func bracketx(s string) (*Cset, string) {
 			// set is complete unless this is first char
 			if cprev != 0 {
 				if compl {
-					result = result.Compl()
+					result = result.CharCompl()
 				}
 				return result, s
 			} else {
@@ -64,7 +64,7 @@ func bracketx(s string) (*Cset, string) {
 			}
 		case '\\':
 			if len(s) > 0 {
-				var eset *Cset
+				var eset *BitSet
 				eset, s = bescape(s)
 				if eset == nil {
 					return nil, s
@@ -80,15 +80,15 @@ func bracketx(s string) (*Cset, string) {
 	return nil, "unclosed '['"
 }
 
-var dset, sset, wset, dcompl, scompl, wcompl *Cset
+var dset, sset, wset, dcompl, scompl, wcompl *BitSet
 
 func init() {
 	dset = CharSet("0123456789")
 	sset = CharSet("\t\n\v\f\r ")
 	wset = CharSet("0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
-	dcompl = dset.Compl()
-	scompl = sset.Compl()
-	wcompl = wset.Compl()
+	dcompl = dset.CharCompl()
+	scompl = sset.CharCompl()
+	wcompl = wset.CharCompl()
 
 }
 
@@ -97,7 +97,7 @@ func init() {
 //  In this context \b is a backspace.  Bescape returns the computed
 //  cset and the remaining unescaped portion of the string.
 //  If an error is found, bescape returns (nil, errmsg).
-func bescape(s string) (*Cset, string) {
+func bescape(s string) (*BitSet, string) {
 	if len(s) == 0 {
 		return nil, "'\\' at end"
 	}
@@ -107,31 +107,31 @@ func bescape(s string) (*Cset, string) {
 	case '0', '1', '2', '3', '4', '5', '6', '7':
 		return nil, "'\\0nn' unimplemented"
 	case 'a':
-		return (&Cset{}).Set('\a'), s
+		return (&BitSet{}).Set('\a'), s
 	case 'b':
-		return (&Cset{}).Set('\b'), s
+		return (&BitSet{}).Set('\b'), s
 	case 'c':
 		return nil, "'\\cx' unimplemented"
 	case 'd':
 		return dset, s
 	case 'e':
-		return (&Cset{}).Set('\033'), s
+		return (&BitSet{}).Set('\033'), s
 	case 'f':
-		return (&Cset{}).Set('\f'), s
+		return (&BitSet{}).Set('\f'), s
 	case 'n':
-		return (&Cset{}).Set('\n'), s
+		return (&BitSet{}).Set('\n'), s
 	case 'p':
 		return nil, "'\\px' unimplemented"
 	case 'r':
-		return (&Cset{}).Set('\r'), s
+		return (&BitSet{}).Set('\r'), s
 	case 's':
 		return sset, s
 	case 't':
-		return (&Cset{}).Set('\t'), s
+		return (&BitSet{}).Set('\t'), s
 	case 'u':
 		return nil, "'\\uhhhh' unimplemented"
 	case 'v':
-		return (&Cset{}).Set('\v'), s
+		return (&BitSet{}).Set('\v'), s
 	case 'w':
 		return wset, s
 	case 'x':
@@ -146,6 +146,6 @@ func bescape(s string) (*Cset, string) {
 		return wcompl, s
 
 	default:
-		return (&Cset{}).Set(uint(c)), s
+		return (&BitSet{}).Set(uint(c)), s
 	}
 }

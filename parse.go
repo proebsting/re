@@ -24,7 +24,7 @@ func Parse(rexpr string) (Node, error) {
 
 	var curr Node         // current parse tree
 	var lside, rside Node // left and right side subtrees
-	var cset *Cset        // computed character set
+	var cset *BitSet      // computed character set
 
 	curr = Epsilon()            // initialize empty parse tree
 	oprstack = make([]byte, 0)  // initialize empty operator stack
@@ -77,7 +77,7 @@ func Parse(rexpr string) (Node, error) {
 
 		case '[':
 			// bracket expression
-			cset, rexpr = bracketx(rexpr)
+			cset, rexpr = bxparse(rexpr)
 			if cset == nil {
 				return nil, ParseError{orgstr, rexpr}
 			}
@@ -85,7 +85,7 @@ func Parse(rexpr string) (Node, error) {
 
 		case '.': //#%#%#% no chars above 0x7F; this is a bug
 			// wild character
-			cset, _ = bracketx("\x01-\x7F]")
+			cset, _ = bxparse("\x01-\x7F]")
 			rside = Match(cset)
 
 		case '\\':
@@ -136,7 +136,7 @@ func popAlts(d Node) Node {
 //  nil as the primary return; and in this case the second return
 //  value is the error message.
 //
-//  This applies to:  replicate(), rescape(), bracketx(), and bescape().
+//  This applies to:  replicate(), rescape(), bxparse(), and bescape().
 
 var replx = regexp.MustCompile("{(\\d*)(,?)(\\d*)}") // expr for {n,m}
 

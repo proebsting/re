@@ -20,11 +20,11 @@ type DFA struct {
 // DFAstate is one state in a DFA
 type DFAstate struct {
 	Index int                  // index (label) of this state
-	Posns *Cset                // set of positions in the state
+	Posns *BitSet              // set of positions in the state
 	Dnext map[uint16]*DFAstate // transition map
 }
 
-// n.b. used a Cset for Posns to allow easy comparison of position sets.
+// n.b. used a BitSet for Posns to allow easy comparison of position sets.
 
 //  BuildDFA constructs a deterministic finite automaton from a parse tree.
 //  In the process it modifies the parse tree, which is also returned.
@@ -58,7 +58,7 @@ func BuildDFA(tree Node) (*DFA, Node) {
 	// compute DFA; see Dragon2 book p141
 
 	// initialize first unmarked Dstate
-	cs := CharSet("") //#%#% ugh(name)
+	cs := &BitSet{}
 	for p := range tree.Data().FirstPos {
 		cs.Set(uint(p.Posn))
 	}
@@ -67,19 +67,14 @@ func BuildDFA(tree Node) (*DFA, Node) {
 	// Process unmarked Dstates until none are left
 	for nmarked := 0; nmarked < len(dfa.Dstates); nmarked++ {
 		d := dfa.Dstates[nmarked] // unmarked Dstate T
-		//#%#% fmt.Printf("s%d: i%d %s\n",nmarked,d.Index,d.Posns)
 		d.Dnext = make(map[uint16]*DFAstate, 0)
-		plist := d.Posns.Members() // list of p in T
-		//#%#% fmt.Printf("  pl: %v\n",plist)
+		plist := d.Posns.Members()      // list of p in T
 		alist := validhere(pmap, plist) // potential a values
-		//#%#% fmt.Printf("  al: %v\n",alist)
-		for _, a := range alist { // for each input symbol a
+		for _, a := range alist {       // for each input symbol a
 			u := followposns(pmap, plist, int(a))
-			//#%#% fmt.Printf("    ch %s: %v\n", string(a), u.Members())
 			if !u.IsEmpty() {
 				ustate := addstate(dfa, u) // add new state?
 				d.Dnext[a] = ustate        // register transition
-				//#%#% fmt.Printf("	    state %d\n",ustate.Index)
 			}
 		}
 	}
@@ -90,7 +85,7 @@ func BuildDFA(tree Node) (*DFA, Node) {
 
 //  Addstate adds position set U to a DFA if it is distinct, returning
 //  its index.  If U is not distinct, it returns the existing index.
-func addstate(dfa *DFA, u *Cset) *DFAstate {
+func addstate(dfa *DFA, u *BitSet) *DFAstate {
 	// start at high end because the most recent has best chance of match
 	for i := len(dfa.Dstates) - 1; i >= 0; i-- {
 		if dfa.Dstates[i].Posns.Equals(u) {
@@ -106,7 +101,7 @@ func addstate(dfa *DFA, u *Cset) *DFAstate {
 //  Followlist returns the union of the csets of all members of plist.
 //  (This gives us fewer potential input symbols a over which to iterate.)
 func validhere(pmap []*MatchNode, plist []uint16) []uint16 {
-	cs := CharSet("")
+	cs := &BitSet{}
 	for _, p := range plist {
 		cs = cs.Or(pmap[p].cset)
 	}
@@ -115,8 +110,8 @@ func validhere(pmap []*MatchNode, plist []uint16) []uint16 {
 
 //  Followposns returns the set U for a new Dstate: the set of positions
 //  that are in followpos(p) for some p in plist on input symbol a.
-func followposns(pmap []*MatchNode, plist []uint16, a int) *Cset {
-	posns := CharSet("")
+func followposns(pmap []*MatchNode, plist []uint16, a int) *BitSet {
+	posns := &BitSet{}
 	for _, p := range plist {
 		if pmap[p].cset.Test(uint(a)) {
 			for q := range pmap[p].FollowPos {

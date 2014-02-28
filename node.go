@@ -57,19 +57,19 @@ func IsEpsilon(d Node) bool {
 
 //  MatchNode is a leaf node that matches exactly one char from a given set.
 type MatchNode struct {
-	cset *Cset // the characters that will match
-	Posn int   // integer "position" desgnator of leaf
+	cset *BitSet // the characters that will match
+	Posn int     // integer "position" desgnator of leaf
 	NodeData
 }
 
 //  Match creates a MatchNode for a given set of characters.
-func Match(cs *Cset) Node {
+func Match(cs *BitSet) Node {
 	return &MatchNode{cs, 0, nildata}
 }
 
 //  Accept returns a special MatchNode with an empty cset.
 func Accept() Node {
-	return &MatchNode{CharSet(""), 0, nildata}
+	return &MatchNode{&BitSet{}, 0, nildata}
 }
 
 // IsAccept returns true for an Accept node
@@ -116,7 +116,7 @@ func (d *MatchNode) SetFollow() {
 //  MatchNode.Example appends a single randomly chosen matching character.
 func (d *MatchNode) Example(s []byte, n int) []byte {
 	//#%#% assumes cset is not empty
-	return append(s, d.cset.Choose())
+	return append(s, d.cset.RandChar())
 }
 
 //  MatchNode.string returns a singleton character or a bracketed expression.
@@ -124,7 +124,7 @@ func (d *MatchNode) String() string {
 	if d.cset.IsEmpty() {
 		return "#" // special "accept" node
 	}
-	s := d.cset.String()
+	s := d.cset.Bracketed()
 	if len(s) == 3 {
 		return s[1:2] // abbreviate set of one char
 	} else {
