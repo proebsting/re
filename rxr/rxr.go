@@ -103,22 +103,23 @@ const linemax = 79
 
 //   Examples generates a line's worth of examples with max replication n.
 func examples(dfa *rx.DFA, tree rx.Node, n int) {
-	s := fmt.Sprintf("ex(%d):  %s",
-		n, rx.Protect(string(tree.Example(make([]byte, 0), n))))
-	cc := len(s)
+	s := fmt.Sprintf("ex(%d):", n)
+	nprinted := 0
 	fmt.Print(s)
+	ncolm := len(s)
 	for {
 		s := string(tree.Example(make([]byte, 0), n))
 		t := rx.Protect(s)
-		cc += 2 + len(t)
-		if cc > linemax {
+		ncolm += 2 + len(t)
+		if nprinted > 0 && ncolm > linemax {
 			break
 		}
 		fmt.Printf("  %s", t)
 		if !dfa.Accepts(s) {
 			fmt.Print(" [FAIL]")
-			cc += 7
+			ncolm += 7
 		}
+		nprinted++
 	}
 	fmt.Println()
 }
