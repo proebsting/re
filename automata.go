@@ -24,7 +24,25 @@ type DFAstate struct {
 	Dnext map[uint16]*DFAstate // transition map
 }
 
-// n.b. used a BitSet for Posns to allow easy comparison of position sets.
+// n.b. DFAstate uses a BitSet to allow easy equality test on posn sets.
+
+//  DFA.Accepts checks whether a string is accepted by the DFA.
+//  #%#% This function (only?) treats the string as Unicode runes.
+func (dfa *DFA) Accepts(s string) bool {
+	state := dfa.Dstates[0]
+	for _, r := range s {
+		state = state.Dnext[uint16(r)]
+		if state == nil {
+			return false // unmatched char
+		}
+	}
+	return dfa.AcceptBy(state) // end of string; in accept state?
+}
+
+//  DFA.AcceptBy checks whether a particular state is an accept state.
+func (dfa *DFA) AcceptBy(ds *DFAstate) bool {
+	return ds.Posns.Test(uint(len(dfa.Leaves) - 1))
+}
 
 //  BuildDFA constructs a deterministic finite automaton from a parse tree.
 //  In the process it modifies the parse tree, which is also returned.

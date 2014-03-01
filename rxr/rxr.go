@@ -70,17 +70,17 @@ func main() {
 		if *zflag { // if -Z given, reset random seed
 			rand.Seed(0) // for independent, reproducible output
 		}
-		examples(t, 0) // gen examples with max repl of 0
-		examples(t, 1) // ... and 1
-		examples(t, 2) // ... and 2
-		examples(t, 3) // ... and 3
-		examples(t, 5) // ... and 5
-		examples(t, 8) // ... and 8
+		dfa, augt := rx.BuildDFA(t) // make DFA, modifying the tree
+		examples(dfa, t, 0)         // gen and test examples with max repl of 0
+		examples(dfa, t, 1)         // ... and 1
+		examples(dfa, t, 2)         // ... and 2
+		examples(dfa, t, 3)         // ... and 3
+		examples(dfa, t, 5)         // ... and 5
+		examples(dfa, t, 8)         // ... and 8
 
-		dfa, t := rx.BuildDFA(t) // make DFA, modifying the tree
-		if !*aflag {             // if -A not given, print automata
+		if !*aflag { // if -A not given, print automata
 			// show tree details
-			treenodes(t)
+			treenodes(augt)
 			// show followpos sets
 			for _, m := range dfa.Leaves {
 				fmt.Printf("p%d. %s => {", m.Posn, m)
@@ -102,26 +102,30 @@ func main() {
 const linemax = 79
 
 //   Examples generates a line's worth of examples with max replication n.
-func examples(x rx.Node, n int) {
+func examples(dfa *rx.DFA, tree rx.Node, n int) {
 	s := fmt.Sprintf("ex(%d):  %s",
-		n, rx.Protect(string(x.Example(make([]byte, 0), n))))
+		n, rx.Protect(string(tree.Example(make([]byte, 0), n))))
 	cc := len(s)
 	fmt.Print(s)
 	for {
-		s = rx.Protect(string(x.Example(make([]byte, 0), n)))
+		s = rx.Protect(string(tree.Example(make([]byte, 0), n)))
 		cc += 2 + len(s)
 		if cc > linemax {
 			break
 		}
 		fmt.Printf("  %s", s)
+		if !dfa.Accepts(s) {
+			fmt.Print(" [FAIL]")
+			cc += 7
+		}
 	}
 	fmt.Println()
 }
 
 //  Treenodes prints details of the parse tree.
-func treenodes(x rx.Node) {
+func treenodes(tree rx.Node) {
 	indent = ""
-	x.Walk(predump, postdump)
+	tree.Walk(predump, postdump)
 }
 
 var indent string
@@ -149,8 +153,7 @@ func postdump(d rx.Node) {
 func showstate(dfa *rx.DFA, d *rx.DFAstate) {
 
 	// print index with "Accept" flag
-	apos := len(dfa.Leaves) - 1 // "Accept" position
-	if d.Posns.Test(uint(apos)) {
+	if dfa.AcceptBy(d) {
 		fmt.Printf("s%d# {", d.Index)
 	} else {
 		fmt.Printf("s%d. {", d.Index)
