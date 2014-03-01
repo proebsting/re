@@ -399,11 +399,8 @@ func (d *ReplNode) SetNFL() {
 	d.FollowPos = make(map[*MatchNode]bool)
 }
 
-//  ReplNode.SetFollow registers FollowPos nodes due to zero replications.
+//  ReplNode.SetFollow registers FollowPos nodes.
 func (d *ReplNode) SetFollow() {
-	if !d.Nullable {
-		return // nothing to do if not nullable
-	}
 	for i := range d.LastPos {
 		for f := range d.FirstPos {
 			i.Data().FollowPos[f] = true
