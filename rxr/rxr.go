@@ -108,12 +108,13 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 	cc := len(s)
 	fmt.Print(s)
 	for {
-		s = rx.Protect(string(tree.Example(make([]byte, 0), n)))
-		cc += 2 + len(s)
+		s := string(tree.Example(make([]byte, 0), n))
+		t := rx.Protect(s)
+		cc += 2 + len(t)
 		if cc > linemax {
 			break
 		}
-		fmt.Printf("  %s", s)
+		fmt.Printf("  %s", t)
 		if !dfa.Accepts(s) {
 			fmt.Print(" [FAIL]")
 			cc += 7
