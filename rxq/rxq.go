@@ -29,11 +29,10 @@ func main() {
 	}
 	spec := os.Args[1]
 	fmt.Printf("regexp: %s\n", spec)
-	t, e := rx.Parse(spec)
-	if e != nil {
-		log.Fatal(e)
+	dfa, err := rx.Compile(spec)
+	if err != nil {
+		log.Fatal(err)
 	}
-	dfa, _ := rx.BuildDFA(t)
 
 	// load and process candidate strings
 	for i := 0; ifile.Scan(); i++ {

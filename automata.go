@@ -43,17 +43,16 @@ func (dfa *DFA) AcceptBy(ds *DFAstate) bool {
 	return ds.Posns.Test(uint(len(dfa.Leaves) - 1))
 }
 
-//  BuildDFA constructs a deterministic finite automaton from a parse tree.
-//  In the process it modifies the parse tree, which is also returned.
-func BuildDFA(tree Node) (*DFA, Node) {
+//  BuildDFA constructs an automaton from an augmented parse tree.
+//  Data fields are set in the parse tree but its structure is not changed.
+func BuildDFA(tree Node) *DFA {
+
+	// make sure that we have an *Augmented* tree
+	if !IsAccept(tree) && !IsAccept(tree.(*ConcatNode).r) {
+		panic("not an augmented parse tree")
+	}
 
 	dfa := &DFA{make([]*MatchNode, 0), make([]*DFAstate, 0)}
-
-	// concatenate an Accept node to the end
-	tree = Concatenate(tree, Accept())
-
-	//#%#% Need to split {m,n} nodes as necessary for a correct DFA.
-	//#%#% I *think* need to split if bounded maximum and/or minimum > 1.
 
 	// prepare nodes for followpos computation
 	n := 0
@@ -96,8 +95,8 @@ func BuildDFA(tree Node) (*DFA, Node) {
 		}
 	}
 
-	// return DFA and augmented tree
-	return dfa, tree
+	// return DFA
+	return dfa
 }
 
 //  Addstate adds position set U to a DFA if it is distinct, returning

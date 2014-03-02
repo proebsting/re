@@ -67,16 +67,19 @@ func main() {
 		} else {
 			fmt.Println("*")
 		}
+
+		augt := rx.Augment(t)    // make augmented tree
+		dfa := rx.BuildDFA(augt) // make DFA from augmented tree
+
 		if *rflag { // if -R given, reset random seed
 			rand.Seed(0) // for independent, reproducible output
 		}
-		dfa, augt := rx.BuildDFA(t) // make DFA, modifying the tree
-		examples(dfa, t, 0)         // gen and test w/ max repl of 0
-		examples(dfa, t, 1)         // ... and 1
-		examples(dfa, t, 2)         // ... and 2
-		examples(dfa, t, 3)         // ... and 3
-		examples(dfa, t, 5)         // ... and 5
-		examples(dfa, t, 8)         // ... and 8
+		examples(dfa, t, 0) // gen and test w/ max repl of 0
+		examples(dfa, t, 1) // ... and 1
+		examples(dfa, t, 2) // ... and 2
+		examples(dfa, t, 3) // ... and 3
+		examples(dfa, t, 5) // ... and 5
+		examples(dfa, t, 8) // ... and 8
 
 		if !*qflag { // if -Q not given, print automata
 			// show tree details
