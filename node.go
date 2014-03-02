@@ -401,9 +401,11 @@ func (d *ReplNode) SetNFL() {
 
 //  ReplNode.SetFollow registers FollowPos nodes.
 func (d *ReplNode) SetFollow() {
-	for i := range d.LastPos {
-		for f := range d.FirstPos {
-			i.Data().FollowPos[f] = true
+	if d.Max != 1 { // if just 1, self can't follow
+		for i := range d.LastPos {
+			for f := range d.FirstPos {
+				i.Data().FollowPos[f] = true
+			}
 		}
 	}
 }
