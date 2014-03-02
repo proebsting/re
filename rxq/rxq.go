@@ -38,9 +38,9 @@ func main() {
 	for i := 0; ifile.Scan(); i++ {
 		s := ifile.Text()
 		if dfa.Accepts(s) {
-			fmt.Println("accept: ", s)
+			fmt.Println("accept:", s)
 		} else {
-			fmt.Println("REJECT: ", s)
+			fmt.Println("REJECT:", s)
 		}
 	}
 	rx.CkErr(ifile.Err())

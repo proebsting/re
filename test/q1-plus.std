@@ -1,0 +1,7 @@
+regexp: ab+c
+REJECT: ac
+accept: abc
+accept: abbc
+REJECT: aabc
+REJECT: abcc
+REJECT: aacc
