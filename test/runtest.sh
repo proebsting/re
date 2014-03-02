@@ -6,7 +6,7 @@
 #	.rx or .rxr -- run "rxr -Q -R"
 #	.rxv -- run "rxr -R"
 #	.rxq -- run "rxq pattern", using first line as the query pattern
-#	.rxx -- run "rxx basename.rxx basename.rxy"
+#	.rxx -- run "rxx basename.rxx basename.rcx"
 
 BIN=$GOPATH/bin
 
@@ -37,7 +37,7 @@ for F in $*; do
 	    REXPR=`sed 1q $I`
 	    cat $I | sed 1d | rxq "$REXPR" - >$F.out;;
 	.rxx)
-	    $BIN/rxx $I ${I%.rxx}.rxy >$F.out;;
+	    $BIN/rxx $I ${I%.rxx}.rcx >$F.out;;
 	.*)
 	    echo 1>&2 "unrecognized extension: $I"
 	    FAILED="$FAILED $I"

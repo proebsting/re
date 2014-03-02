@@ -1,7 +1,7 @@
 #  Makefile for rx programs
 
 PKG = rx
-PROGS = $(PKG)/rxq $(PKG)/rxr
+PROGS = $(PKG)/rxq $(PKG)/rxr $(PKG)/rxx
 GOBIN = $$GOPATH/bin
 
 default: build test expt

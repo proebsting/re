@@ -10,9 +10,6 @@ Add flags such as "case insensitive"?
 Other Perl stuff?
 
 TESTING:
-Add automated test of match failure.
-Add automated test of rxq.
-Add more tests like *.stdA showing data structs?
 Expand test collection
 Add more examples from the real world
 Add Go-style unit tests?
