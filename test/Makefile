@@ -4,7 +4,7 @@ default:  test
 
 test:
 	runtest.sh
-	rxr -Z 18-basic.rx >18-basic.out && cmp 18-basic.stdA 18-basic.out
+	rxr -R 18-basic.rx >18-basic.out && cmp 18-basic.stdA 18-basic.out
 	:
 	:
 

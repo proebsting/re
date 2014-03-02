@@ -2,7 +2,7 @@
 #
 #  runtest [basename[.std]]... - run tests and compare results
 
-RXR="$GOPATH/bin/rxr -A -Z"
+RXR="$GOPATH/bin/rxr -Q -R"
 
 # if no test files specified, run them all
 if [ $# = 0 ]; then

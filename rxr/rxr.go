@@ -1,10 +1,10 @@
 /*
 	rxr.go -- regular expression reader
 
-	usage:  rxr [-A] [-Z] [exprfile]
+	usage:  rxr [-Q] [-R] [exprfile]
 
-	-A	disable printing of automata details
-	-Z	reset random seed for each regexp (for testing consistency)
+	-Q	disable printing of automata details
+	-R	reset random seed for each regexp (for testing consistency)
 
 	Rxr reads regular expressions, one per line, from efile.
 	A line beginning with '#' is treated as a comment.
@@ -32,8 +32,8 @@ import (
 )
 
 func main() {
-	aflag := flag.Bool("A", false, "disable automata printing")
-	zflag := flag.Bool("Z", false, "reset ranseed before each rx")
+	qflag := flag.Bool("Q", false, "disable automata printing")
+	rflag := flag.Bool("R", false, "reset ranseed before each rx")
 	flag.Parse()
 	var efile *bufio.Scanner
 	if len(flag.Args()) == 0 {
@@ -67,7 +67,7 @@ func main() {
 		} else {
 			fmt.Println("*")
 		}
-		if *zflag { // if -Z given, reset random seed
+		if *rflag { // if -R given, reset random seed
 			rand.Seed(0) // for independent, reproducible output
 		}
 		dfa, augt := rx.BuildDFA(t) // make DFA, modifying the tree
@@ -78,7 +78,7 @@ func main() {
 		examples(dfa, t, 5)         // ... and 5
 		examples(dfa, t, 8)         // ... and 8
 
-		if !*aflag { // if -A not given, print automata
+		if !*qflag { // if -Q not given, print automata
 			// show tree details
 			treenodes(augt)
 			// show followpos sets
