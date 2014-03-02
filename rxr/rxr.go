@@ -6,7 +6,7 @@
 	-Q	disable printing of automata details
 	-R	reset random seed for each regexp (for testing consistency)
 
-	Rxr reads regular expressions, one per line, from efile.
+	Rxr reads regular expressions, one per line, from exprfile.
 	A line beginning with '#' is treated as a comment.
 
 	Rxr currently echoes each expression, shows the parse tree,

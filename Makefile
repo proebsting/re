@@ -1,20 +1,21 @@
-#  makefile for rx programs
+#  Makefile for rx programs
 
-PROG=rxr
-BIN=$$GOPATH/bin/$(PROG)
+PKG = rx
+PROGS = $(PKG)/rxq $(PKG)/rxr
+GOBIN = $$GOPATH/bin
 
 default: build test expt
 
 build:
-	go install rx/$(PROG)
+	go install $(PROGS)
 
 test:	build
 	cd test; $(MAKE)
 
-#  if expt.rx exists, run after standard build and test
+#  if expt.rx exists, run with rxr after standard build and test
 expt:
-	test -f expt.rx && $(BIN) expt.rx || :
+	test -f expt.rx && $(GOBIN)/rxr expt.rx || :
 
 clean:
-	rm -f $(BIN)
+	go clean -i $(PKG) $(PROGS)
 	cd test; $(MAKE) clean
