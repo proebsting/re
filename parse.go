@@ -1,6 +1,5 @@
 //  parse.go -- rx parse tree construction
 
-//  Rx provides facilities for dealing with regular expressions.
 package rx
 
 import (
@@ -81,12 +80,12 @@ func Parse(rexpr string) (Node, error) {
 			if cset == nil {
 				return nil, ParseError{orgstr, rexpr}
 			}
-			rside = Match(cset)
+			rside = MatchAny(cset)
 
 		case '.': //#%#%#% no chars above 0x7F; this is a bug
 			// wild character
 			cset, _ = bxparse("\x01-\x7F]")
-			rside = Match(cset)
+			rside = MatchAny(cset)
 
 		case '\\':
 			rside, rexpr = rescape(rexpr)
@@ -95,7 +94,7 @@ func Parse(rexpr string) (Node, error) {
 			}
 		default:
 			// single literal character
-			rside = Match(CharSet(string(thischar)))
+			rside = MatchAny(CharSet(string(thischar)))
 		}
 
 		// common code for handling postfix replication
@@ -211,7 +210,7 @@ func rescape(rexpr string) (Node, string) {
 		if cset == nil {
 			return nil, rexpr
 		}
-		return Match(cset), rexpr
+		return MatchAny(cset), rexpr
 	}
 }
 

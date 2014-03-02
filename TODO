@@ -19,7 +19,7 @@ CLEANUP:
 Declare a Bix type == uint16
 Use bitmaps for First/Last/Follow sets
 Iterate low to high (not 0 to high) over bitmaps
-Repackage to impl rx.Match(re,s) and rx.Illus(re)
+Repackage to impl rx.Illus(re)
 Fix #%#% items
 More consistency in use of pointers vs struct values
 Which funcs really should be capitalized? 

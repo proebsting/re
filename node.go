@@ -62,8 +62,8 @@ type MatchNode struct {
 	NodeData
 }
 
-//  Match creates a MatchNode for a given set of characters.
-func Match(cs *BitSet) Node {
+//  MatchAny creates a MatchNode for a given set of characters.
+func MatchAny(cs *BitSet) Node {
 	return &MatchNode{cs, 0, nildata}
 }
 

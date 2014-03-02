@@ -2,7 +2,6 @@
 
 //#%#% uint16 should be a named type
 
-//  Rx provides facilities for dealing with regular expressions.
 package rx
 
 import (
