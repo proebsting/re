@@ -1,22 +1,29 @@
 RX TODO
 
-4.  Add  ^  \b  $  anchors
-5.  Check against larger collection of regexps.
-
+REGEXPS:
+Fix {m,n} replication -- need to modify the parse tree
 Implement \037 \x3F \uxxxx \cX
+Add \b anchor
+Handle (at least, ignore) ^ $ anchors
 Add POSIX classes??
 Add flags such as "case insensitive"?
 Other Perl stuff?
-etc etc
 
-Add more examples from the real world (esp cswww)
+TESTING:
+Add automated test of match failure.
+Expand test collection
+Add more examples from the real world
+Add Go-style unit tests?
 
+CLEANUP:
+Declare a Bix type == uint16
+Use bitmaps for First/Last/Follow sets
+Iterate low to high (not 0 to high) over bitmaps
+Repackage to impl rx.Match(re,s) and rx.Illus(re)
 Fix #%#% items
 More consistency in use of pointers vs struct values
 Which funcs really should be capitalized? 
 General code cleanup
 
-Go-style tests
-
-Use Git? Hg? 
-Use Eclipse?
+ENVIRONMENT:
+Establish a usable Git repository
