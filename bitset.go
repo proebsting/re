@@ -49,6 +49,23 @@ func (b *BitSet) IsEmpty() bool {
 	return b.bits.BitLen() == 0
 }
 
+//  BitSet.lowbit returns the number of the smallest bit set.
+//  It returns 0 if the BitSet is empty.
+func (b *BitSet) lowbit() int {
+	// inspired by thoughts of HAKMEM...
+	sub := (&big.Int{}).Sub(&b.bits, bigone)
+	xor := (&big.Int{}).Xor(&b.bits, sub)
+	add := (&big.Int{}).Add(bigone, xor)
+	n := add.BitLen() - 2
+	if n >= 0 {
+		return n
+	} else {
+		return 0
+	}
+}
+
+var bigone = big.NewInt(1)
+
 // data structure used (and initialized) by BitSet.CharCompl
 // (was global, but had probs with nondeterministic init() call order)
 const lowMatch = 0x01  // smallest ch matched: SOH or ^A
@@ -88,6 +105,7 @@ func (b1 *BitSet) And(b2 *BitSet) *BitSet {
 //  #%#%#% This code is very inefficient.
 func (b BitSet) RandChar() byte {
 	n := 0                   // number of characters considered
+	l := b.lowbit()          // lowest eligible char
 	h := b.bits.BitLen() - 1 // highest eligible char
 	if h < 0 {
 		return '?' //#%#%#% ERROR cset was empty
@@ -96,7 +114,7 @@ func (b BitSet) RandChar() byte {
 	if c < 0x7F { // if initial ch is not unwanted DEL,
 		n = 1 // count it as found
 	}
-	for h--; h > 0; h-- { // check lower valued characters
+	for h--; h >= l; h-- { // check lower valued characters
 		if b.Test(uint(h)) { // if eligible to be chosen
 			n++ // adjust n for unbiased odds
 			if rand.Intn(n) == 0 {
@@ -115,9 +133,9 @@ func (b BitSet) RandChar() byte {
 //  BitSet.Members() returns a slice containing the values found in the set.
 func (b BitSet) Members() []uint16 {
 	m := make([]uint16, 0)
+	l := b.lowbit()
 	h := b.bits.BitLen()
-	//#%#% should go low to high instead of 0 to high
-	for i := 0; i <= h; i++ { // for all chars up to highest
+	for i := l; i <= h; i++ { // for all chars up to highest
 		if b.Test(uint(i)) { // if char is included
 			m = append(m, uint16(i))
 		}
@@ -139,10 +157,11 @@ func (b BitSet) String() string {
 //  BitSet.Bracketed() returns a bracket-expression form of a character set,
 //  using ranges if appropriate and escaping (only) unprintables.
 func (b BitSet) Bracketed() string {
+	l := b.lowbit()
 	h := b.bits.BitLen()
 	s := make([]byte, 0)
 	s = append(s, '[')
-	for i := 0; i <= h; i++ { // for all chars up to highest
+	for i := l; i <= h; i++ { // for all chars up to highest
 		if b.Test(uint(i)) { // if char is included
 			s = append(s, Cprotect(rune(byte(i)))...) // show char
 			var j int
