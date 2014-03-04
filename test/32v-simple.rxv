@@ -1,0 +1,10 @@
+# source not recorded
+C(AC|B)D
+# Dragon2: automata example
+(a|b)*abb
+# Sedgewick: genome marker
+gcg(cgg|agg)*ctg
+# Sedgewick: multiples of 3, in binary
+(0|1(01*0)*1)*
+# Experiments with word construction
+[bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
