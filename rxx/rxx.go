@@ -1,13 +1,12 @@
 /*
 	rxx.go -- regular expression cross product with candidate list
 
-	usage:  recross efile sfile
+	usage:  rxx efile sfile
 
-	Rexp reads a set of regular expressions, one per line, from efile.
-	It then tests every line from sfile against each regular expression,
-	printing the results on standard output.
+	Rxx reads a set of up to 61 regular expressions, one per line,
+	from efile.  It then tests every line from sfile against each
+	regular expression, printing a grid of results on standard output.
 */
-
 package main
 
 import (
@@ -17,10 +16,10 @@ import (
 	"rx"
 )
 
-type tester struct {
-	label string
-	spec  string
-	dfa   *rx.DFA
+type tester struct { // one regular expression for testing
+	label string  // one-character label
+	spec  string  // regular expression specification
+	dfa   *rx.DFA // compiled autonoma
 }
 
 func main() {
@@ -38,6 +37,9 @@ func main() {
 	// load and compile regexps
 	fmt.Println()
 	for i := 0; efile.Scan(); i++ {
+		if i >= len(labels) {
+			log.Fatal("too many regular expressions")
+		}
 		label := string(labels[i : i+1])
 		spec := efile.Text()
 		dfa, _ := rx.Compile(spec)

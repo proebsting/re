@@ -4,7 +4,8 @@
 	usage:  rxr "rexpr" [file]
 
 	Rxq reads strings, one per line, from file (default stdin).
-	Each string is tested against the regular expression rexpr.
+	Each string is tested against the regular expression rexpr,
+	and is printed with a label of "accept" or "REJECT".
 
 	Spring-2014 / gmt
 */

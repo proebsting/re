@@ -3,19 +3,23 @@
 
 	usage:  rxr [-Q] [-R] [exprfile]
 
-	-Q	disable printing of automata details
-	-R	reset random seed for each regexp (for testing consistency)
+		-Q	disable printing of automata details
+		-R	produce reproducible output for testing purposes
 
-	Rxr reads regular expressions, one per line, from exprfile.
+	Rxr reads regular expressions and illustrates the workings of the
+	rx package.  For each expression, rxr prints:
+		- the original regular expression as read
+		- the expression expressed by the parse tree
+		- the minimum and maximum lengths of matching strings
+		- the parse tree nodes labeled with {nullable, first, last}
+		- the positions (leaves) of the parse tree with followsets
+		- the states of the resulting DFA with transitions
+
+	Regular expressions are read one per line from exprfile.
 	A line beginning with '#' is treated as a comment.
 
-	Rxr currently echoes each expression, shows the parse tree,
-	prints some statistics, and generates some examples.
-	This will certainly be evolving over time.
-
-	The output is indented to be informative, and unprintables are escaped,
-	but will not always be unambiguous if pattern metacharacters are used
-	as ordinary matching characters
+	The output is informative but not rigorous.  Ambiguities may arise
+	if pattern metacharacters are used as ordinary matching characters.
 
 	Spring-2014 / gmt
 */
