@@ -86,7 +86,7 @@ ex(5):  ac  ac  ac  abbbc  abbc  abbbbc  ac  abbbbc  abc  ac  abbbc  abbc  abbc
 ex(8):  abbbc  abbbbbc  abbbbbbc  abbbbbc  abbbbc  abbbbbbbbc  abbbbbbbc  abbc
 node: {false, a, #} (((ab*)c)#)
   node: {false, a, c} ((ab*)c)
-    node: {false, a, ba} (ab*)
+    node: {false, a, ab} (ab*)
       node: {false, a, a} a
       node: {true, b, b} b*
         node: {false, b, b} b
@@ -300,7 +300,7 @@ ex(3):  abbb  a  a  abb  abbb  abbb  a  a  abb  ab  abb  a  abb  a  abbb  a  ab
 ex(5):  abb  abb  a  abbbbb  abbb  abb  abbbb  abbbbb  ab  abb  abbbbb  ab
 ex(8):  abbb  abbbbbbbb  a  ab  abb  abbbb  abbbb  abbb  a  a  abbbbbb  abb
 node: {false, a, #} ((ab*)#)
-  node: {false, a, ba} (ab*)
+  node: {false, a, ab} (ab*)
     node: {false, a, a} a
     node: {true, b, b} b*
       node: {false, b, b} b

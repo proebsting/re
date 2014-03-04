@@ -55,28 +55,29 @@ func BuildDFA(tree Node) *DFA {
 	dfa := &DFA{make([]*MatchNode, 0), make([]*DFAstate, 0)}
 
 	// prepare nodes for followpos computation
-	n := 0
+	n := uint(0)
 	tree.Walk(nil, func(d Node) {
-		d.SetNFL() // set Nullable, FirstPos, LastPos
 		if leaf, ok := d.(*MatchNode); ok {
+			// it's a leaf, so number it and remember it
 			leaf.Posn = n
-			n++ // number the leaf nodes from zero
+			n++
 			dfa.Leaves = append(dfa.Leaves, leaf)
 		}
+		d.SetNFL() // set Nullable, FirstPos, LastPos
 	})
 	pmap := dfa.Leaves // map of indexes to nodes
 
 	// compute followpos sets
 	tree.Walk(nil, func(d Node) {
-		d.SetFollow()
+		d.SetFollow(pmap)
 	})
 
 	// compute DFA; see Dragon2 book p141
 
 	// initialize first unmarked Dstate
 	cs := &BitSet{}
-	for p := range tree.Data().FirstPos {
-		cs.Set(uint(p.Posn))
+	for _, p := range tree.Data().FirstPos.Members() {
+		cs.Set(uint(p))
 	}
 	dfa.Dstates = append(dfa.Dstates, &DFAstate{0, cs, nil})
 
@@ -130,8 +131,8 @@ func followposns(pmap []*MatchNode, plist []uint16, a int) *BitSet {
 	posns := &BitSet{}
 	for _, p := range plist {
 		if pmap[p].cset.Test(uint(a)) {
-			for q := range pmap[p].FollowPos {
-				posns.Set(uint(q.Posn))
+			for _, q := range pmap[p].FollowPos.Members() {
+				posns.Set(uint(q))
 			}
 		}
 	}

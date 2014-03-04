@@ -91,12 +91,12 @@ func main() {
 
 		if !*qflag { // if -Q not given, print automata
 			// show tree details
-			treenodes(augt)
+			treenodes(dfa, augt)
 			// show followpos sets
 			for _, m := range dfa.Leaves {
 				fmt.Printf("p%d. %s => {", m.Posn, m)
-				for d := range m.FollowPos {
-					fmt.Print(" ", d.Posn)
+				for _, d := range m.FollowPos.Members() {
+					fmt.Print(" ", d)
 				}
 				fmt.Print(" }\n")
 
@@ -136,30 +136,23 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 }
 
 //  Treenodes prints details of the parse tree.
-func treenodes(tree rx.Node) {
-	indent = ""
-	tree.Walk(predump, postdump)
-}
-
-var indent string
-
-func predump(d rx.Node) {
-	indent = indent + "  "
-	a := d.Data()
-	fmt.Printf("%snode: {%t, ", indent[2:], a.Nullable)
-	for k, _ := range a.FirstPos {
-		fmt.Print(k)
-	}
-	fmt.Print(", ")
-	for k, _ := range a.LastPos {
-		fmt.Print(k)
-	}
-	fmt.Println("}", d)
-
-}
-
-func postdump(d rx.Node) {
-	indent = indent[2:]
+func treenodes(dfa *rx.DFA, tree rx.Node) {
+	indent := ""
+	tree.Walk(func(d rx.Node) {
+		indent = indent + "  "
+		a := d.Data()
+		fmt.Printf("%snode: {%t, ", indent[2:], a.Nullable)
+		for _, k := range a.FirstPos.Members() {
+			fmt.Print(dfa.Leaves[k])
+		}
+		fmt.Print(", ")
+		for _, k := range a.LastPos.Members() {
+			fmt.Print(dfa.Leaves[k])
+		}
+		fmt.Println("}", d)
+	}, func(d rx.Node) {
+		indent = indent[2:]
+	})
 }
 
 //  Showstate prints the contents of one DFA state.

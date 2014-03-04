@@ -30,16 +30,15 @@ type Node interface {
 	MaxLen() int
 	Example([]byte, int) []byte
 	SetNFL()
-	SetFollow()
+	SetFollow([]*MatchNode)
 }
 
 //  NodeData is included (anonymously) in every Node subtype.
 type NodeData struct {
-	Nullable bool // can this subtree match empty string?
-	//#%#%# make these next to be bitsets?
-	FirstPos  map[*MatchNode]bool // possible initial nodes ("positions")
-	LastPos   map[*MatchNode]bool // possible final nodes ("positions")
-	FollowPos map[*MatchNode]bool // positions that can follow in NFA
+	Nullable  bool    // can this subtree match empty string?
+	FirstPos  *BitSet // possible initial nodes ("positions")
+	LastPos   *BitSet // possible final nodes ("positions")
+	FollowPos *BitSet // positions that can follow in NFA
 }
 
 var nildata = NodeData{} // convenient for initilization
@@ -58,7 +57,7 @@ func IsEpsilon(d Node) bool {
 //  MatchNode is a leaf node that matches exactly one char from a given set.
 type MatchNode struct {
 	cset *BitSet // the characters that will match
-	Posn int     // integer "position" desgnator of leaf
+	Posn uint    // integer "position" desgnator of leaf
 	NodeData
 }
 
@@ -102,15 +101,15 @@ func (d *MatchNode) MaxLen() int { return 1 }
 //  MatchNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *MatchNode) SetNFL() {
 	d.Nullable = false
-	d.FirstPos = make(map[*MatchNode]bool)
-	d.LastPos = make(map[*MatchNode]bool)
-	d.FollowPos = make(map[*MatchNode]bool)
-	d.FirstPos[d] = true
-	d.LastPos[d] = true
+	d.FirstPos = &BitSet{}
+	d.LastPos = &BitSet{}
+	d.FollowPos = &BitSet{}
+	d.FirstPos.Set(d.Posn)
+	d.LastPos.Set(d.Posn)
 }
 
 //  MatchNode.SetFollow has nothing to do.
-func (d *MatchNode) SetFollow() {
+func (d *MatchNode) SetFollow(pmap []*MatchNode) {
 }
 
 //  MatchNode.Example appends a single randomly chosen matching character.
@@ -130,18 +129,6 @@ func (d *MatchNode) String() string {
 	} else {
 		return s
 	}
-}
-
-//  Growset adds (or replaces) all elements from addl into base.
-//  With a nil (or initially empty) base this effects a copy.
-func growset(base map[*MatchNode]bool, addl map[*MatchNode]bool) map[*MatchNode]bool {
-	if base == nil {
-		base = make(map[*MatchNode]bool, len(addl))
-	}
-	for k, v := range addl {
-		base[k] = v
-	}
-	return base
 }
 
 //---------------------------------------------------------------------------
@@ -191,21 +178,23 @@ func (d *ConcatNode) SetNFL() {
 	l := d.l.Data()
 	r := d.r.Data()
 	d.Nullable = l.Nullable && r.Nullable
-	d.FirstPos = growset(nil, l.FirstPos)
 	if l.Nullable {
-		growset(d.FirstPos, r.FirstPos)
+		d.FirstPos = l.FirstPos.Or(r.FirstPos)
+	} else {
+		d.FirstPos = l.FirstPos
 	}
-	d.LastPos = growset(nil, r.LastPos)
 	if r.Nullable {
-		growset(d.LastPos, l.LastPos)
+		d.LastPos = r.LastPos.Or(l.LastPos)
+	} else {
+		d.LastPos = r.LastPos
 	}
 }
 
 //  ConcatNode.SetFollow registers FollowPos nodes due to concatenation.
-func (d *ConcatNode) SetFollow() {
-	for i := range d.l.Data().LastPos {
-		for f := range d.r.Data().FirstPos {
-			i.Data().FollowPos[f] = true
+func (d *ConcatNode) SetFollow(pmap []*MatchNode) {
+	for _, i := range d.l.Data().LastPos.Members() {
+		for _, f := range d.r.Data().FirstPos.Members() {
+			pmap[i].Data().FollowPos.Set(uint(f))
 		}
 	}
 }
@@ -289,18 +278,18 @@ func (d *AltNode) MaxLen() int {
 //  AltNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *AltNode) SetNFL() {
 	d.Nullable = (len(d.Alts) == 0) // only if an Epsilon
-	d.FirstPos = make(map[*MatchNode]bool)
-	d.LastPos = make(map[*MatchNode]bool)
-	d.FollowPos = make(map[*MatchNode]bool)
+	d.FirstPos = &BitSet{}
+	d.LastPos = &BitSet{}
+	d.FollowPos = &BitSet{}
 	for _, e := range d.Alts {
 		d.Nullable = d.Nullable || e.Data().Nullable
-		growset(d.FirstPos, e.Data().FirstPos)
-		growset(d.LastPos, e.Data().LastPos)
+		d.FirstPos = d.FirstPos.Or(e.Data().FirstPos)
+		d.LastPos = d.LastPos.Or(e.Data().LastPos)
 	}
 }
 
 //  AltNode.SetFollow has nothing to do.
-func (d *AltNode) SetFollow() {
+func (d *AltNode) SetFollow(pmap []*MatchNode) {
 }
 
 //  AltNode.Example chooses one subpattern to generate an example.
@@ -394,17 +383,17 @@ func (d *ReplNode) MaxLen() int {
 //  ReplNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *ReplNode) SetNFL() {
 	d.Nullable = d.Min == 0 || d.Child.Data().Nullable
-	d.FirstPos = growset(nil, d.Child.Data().FirstPos)
-	d.LastPos = growset(nil, d.Child.Data().LastPos)
-	d.FollowPos = make(map[*MatchNode]bool)
+	d.FirstPos = d.Child.Data().FirstPos
+	d.LastPos = d.Child.Data().LastPos
+	d.FollowPos = &BitSet{}
 }
 
 //  ReplNode.SetFollow registers FollowPos nodes.
-func (d *ReplNode) SetFollow() {
+func (d *ReplNode) SetFollow(pmap []*MatchNode) {
 	if d.Max != 1 { // if just 1, self can't follow
-		for i := range d.LastPos {
-			for f := range d.FirstPos {
-				i.Data().FollowPos[f] = true
+		for _, i := range d.LastPos.Members() {
+			for _, f := range d.FirstPos.Members() {
+				pmap[i].Data().FollowPos.Set(uint(f))
 			}
 		}
 	}
