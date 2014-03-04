@@ -11,6 +11,7 @@
 		- the original regular expression as read
 		- the expression expressed by the parse tree
 		- the minimum and maximum lengths of matching strings
+		- synthetic examples with varied limits on replication
 		- the parse tree nodes labeled with {nullable, first, last}
 		- the positions (leaves) of the parse tree with followsets
 		- the states of the resulting DFA with transitions
@@ -20,6 +21,9 @@
 
 	The output is informative but not rigorous.  Ambiguities may arise
 	if pattern metacharacters are used as ordinary matching characters.
+
+	Each synthesized example is validated by the DFA; a rejected string
+	prints the word "[FAIL]" and signifies a program bug.
 
 	Spring-2014 / gmt
 */

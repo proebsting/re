@@ -9,6 +9,9 @@ Add POSIX classes??
 Add flags such as "case insensitive"?
 Other Perl stuff?
 
+AUTONOMA:
+Optimize the DFA?
+
 TESTING:
 Expand test collection
 Add more examples from the real world
@@ -23,6 +26,3 @@ Fix #%#% items
 More consistency in use of pointers vs struct values
 Which funcs really should be capitalized? 
 General code cleanup
-
-ENVIRONMENT:
-Establish a usable Git repository

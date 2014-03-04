@@ -6,6 +6,8 @@
 	Rxx reads a set of up to 61 regular expressions, one per line,
 	from efile.  It then tests every line from sfile against each
 	regular expression, printing a grid of results on standard output.
+
+	Spring-2014 / gmt
 */
 package main
 
