@@ -19,6 +19,8 @@ var exprstack []Node // stack of pushed expressions
 //	abc  a|b|c  a(b|c)d
 //	a?  b*  c+  d{m,n}
 //	.  \d  \s  \w  [...]
+//
+//  It ignores (?: non-capturing submatch, but other (? forms are errors.
 func Parse(rexpr string) (Node, error) {
 
 	var curr Node         // current parse tree
@@ -44,16 +46,26 @@ func Parse(rexpr string) (Node, error) {
 			// just replicates an empty string to no effect
 			continue
 
-		case '|', '(':
+
+		case '(':
+			// check for "(?..." forms
+			// treat "(?:" as "(" but abort on other "(?...")
+			if len(rexpr) > 1 && rexpr[0] == '?' {
+				if rexpr[1] == ':' {
+					// just ignore "?:"
+					rexpr = rexpr[2:]
+				} else {
+					return nil, ParseError{
+						orgstr, "'(?...' unimplemented"}
+				}
+			}
+			fallthrough	// the rest is common with '|'
+		case '|': // and '(' falling through
 			// swap of context: clear current expression after
 			// pushing it on a stack (and push opr on another)
 			oprstack = append(oprstack, thischar)
 			exprstack = append(exprstack, curr)
 			curr = Epsilon()
-			if thischar == '(' && len(rexpr) > 0 && rexpr[0] == '?' {
-				return nil, ParseError{
-					orgstr, "'(?...' unimplemented"}
-			}
 			continue // don't check/allow postfix replication
 
 		case ')':

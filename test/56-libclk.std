@@ -42,7 +42,14 @@ ex(8):  10/1/18  10-13/18  7/6/2014  11-3-1951  3/31-2004  10-6/1935  6-03-86
 # 406. Full names of the months
 
 regexp: (?:J(anuary|u(ne|ly))|February|Ma(rch|y)|A(pril|ugust)|(((Sept|Nov|Dec)em)|Octo)ber)
-ERROR:  rx: '(?...' unimplemented: in "(?:J(anuary|u(ne|ly))|February|Ma(rch|y)|A(pril|ugust)|(((Sept|Nov|Dec)em)|Octo)ber)"
+tree:   ((J((((((an)u)a)r)y)|(u((ne)|(ly)))))|(((((((Fe)b)r)u)a)r)y)|((Ma)(((rc)h)|y))|(A((((pr)i)l)|((((ug)u)s)t)))|((((((((((Se)p)t)|((No)v)|((De)c))e)m)|(((Oc)t)o))b)e)r))
+length: 3 to 9
+ex(0):  November  February  January  May  April  August  September  February
+ex(1):  January  October  April  June  March  February  May  August  November
+ex(2):  November  December  October  April  May  January  November  June
+ex(3):  December  March  October  December  February  April  October  August
+ex(5):  April  April  February  May  March  March  February  March  April
+ex(8):  January  February  February  October  February  July  February
 
 # 969. RFC2822 date
 

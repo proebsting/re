@@ -18,4 +18,11 @@ ex(8):  J@D91ZYHCB.GLD  J@5GW60MK.MO  ZPWPBE@NWC0H.ZLQ  DIML@Y7IG.YT
 # http://www.regular-expressions.info/email.html (final example)
 
 regexp: [a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
-ERROR:  rx: '(?...' unimplemented: in "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)"
+tree:   (((([!#-'*+-/-9=?^-~]+(.[!#-'*+-/-9=?^-~]+)*)@)(([0-9a-z]([-0-9a-z]*[0-9a-z])?).)+)([A-Z]{2}|((co)m)|((or)g)|((ne)t)|((ed)u)|((go)v)|((mi)l)|((bi)z)|(((in)f)o)|(((mo)b)i)|(((na)m)e)|(((ae)r)o)|(((as)i)a)|(((jo)b)s)|(((((mu)s)e)u)m)))
+length: 6 to *
+ex(0):  d@0.HF  m@c.org  u@9.mobi  9@7.aero  +@m.mobi  k@v.jobs  !@9.museum
+ex(1):  '@3i.com  1.k@a8.name  ?._@0.net  m@bvv.jobs  t.x@8vl.mobi  n@b.mil
+ex(2):  0&@2.biz  z3.{g.a@mg.aero  a.}|@5.x.gov  h@vn1h.ed1v.org  vf@1p.gov
+ex(3):  dr@9.xt.biz  -`z.q.^pi@76.name  b+@h1fgq.k.1b7h3.biz  s@q.9oc6j.1.net
+ex(5):  x4.2}9*}.mz7+d.4@n.8oo.hsjn77.IA  `0.#.|.u+.z5so@8p3yxc.w5ieg7.ZD
+ex(8):  pp.}r~.7hfzvr.l`_e`1@1.0.EF  **./9fi{@f.9akbi7c.u1bsaiz.jg.net

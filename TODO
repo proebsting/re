@@ -19,7 +19,6 @@ Add Go-style unit tests?
 
 CLEANUP:
 Declare a Bix type == uint16
-Iterate low to high (not 0 to high) over bitmaps
 Repackage to impl rx.Illus(re)
 Fix #%#% items
 More consistency in use of pointers vs struct values
