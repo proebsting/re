@@ -4,3 +4,7 @@
 [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
 # http://www.regular-expressions.info/email.html (final example)
 [a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
+# http://compilers.iecc.com/comparch/article/01-10-072 (telno "Yecchhh")
+(\([0-9]{3}\)[ ]{1}){0,1}[0-9]{3}\-[0-9]{4}
+# http://compilers.iecc.com/comparch/article/01-10-081 (a reformulation)
+(\(\d\d\d\) )?\d\d\d-\d\d\d\d
