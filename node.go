@@ -15,7 +15,7 @@ import (
 //
 //  Every Node subtype implements the following pointer receiver methods:
 //  Data()		return pointer to NodeData
-//  Walk(pre,post)	walk subtree, calling VisitFunc functions pre & post
+//  Children()		return list of children for tree walking
 //  MinLen()            return minimum length matched (0 if nullable)
 //  MaxLen()		return maximum length matched (-1 for infinity)
 //  Example(buf,n)	append random synthesized example of max repl n to buf
@@ -25,7 +25,7 @@ import (
 //
 type Node interface {
 	Data() *NodeData
-	Walk(pre VisitFunc, post VisitFunc)
+	Children() []Node
 	MinLen() int
 	MaxLen() int
 	Example([]byte, int) []byte
@@ -43,13 +43,26 @@ type NodeData struct {
 
 var nildata = NodeData{} // convenient for initilization
 
-//  VisitFunc is a type for visiting tree nodes and passing an arbitrary value.
-type VisitFunc func(d Node)
-
 // IsEpsilon returns true for an Epsilon node
 func IsEpsilon(d Node) bool {
 	anode, ok := d.(*AltNode)
 	return ok && len(anode.Alts) == 0
+}
+
+//  VisitFunc is a type for visiting tree nodes and passing an arbitrary value.
+type VisitFunc func(d Node)
+
+//  Walk calls pre and post for every node, before and after visiting children.
+func Walk(tree Node, pre VisitFunc, post VisitFunc) {
+	if (pre != nil) {
+		pre(tree)
+	}
+	for _, c := range(tree.Children()) {
+		Walk(c, pre, post)
+	}
+	if (post != nil) {
+		post(tree)
+	}
 }
 
 //---------------------------------------------------------------------------
@@ -80,17 +93,11 @@ func IsAccept(d Node) bool {
 //  MatchNode.Data returns a pointer to the embedded NodeData struct.
 func (d *MatchNode) Data() *NodeData { return &d.NodeData }
 
-//  MatchNode.Walk visits nodes in a subtree, calling functions pre and/or post,
-//  if non-nil, before and after walking this node's children.
-func (d *MatchNode) Walk(pre VisitFunc, post VisitFunc) {
-	if pre != nil {
-		pre(d)
-	}
-	// no children
-	if post != nil {
-		post(d)
-	}
+//  MatchNode.Children returns an empty list
+func (d *MatchNode) Children() []Node {
+	return barren
 }
+var barren = make([]Node,0,0) // empty list of children
 
 //  MatchNode.MinLen always returns 1.
 func (d *MatchNode) MinLen() int { return 1 }
@@ -143,17 +150,10 @@ type ConcatNode struct {
 //  ConcatNode.Data returns a pointer to the embedded NodeData struct.
 func (d *ConcatNode) Data() *NodeData { return &d.NodeData }
 
-//  ConcatNode.Walk visits nodes in a subtree, calling functions pre and/or post,
-//  if non-nil, before and after walking this node's children.
-func (d *ConcatNode) Walk(pre VisitFunc, post VisitFunc) {
-	if pre != nil {
-		pre(d)
-	}
-	d.l.Walk(pre, post)
-	d.r.Walk(pre, post)
-	if post != nil {
-		post(d)
-	}
+//  ConcatNode.Children returns a list of the two child nodes
+func (d *ConcatNode) Children() []Node {
+	children := []Node {d.l, d.r}
+	return children
 }
 
 //  ConcatNode.MinLen sums the min lengths of its subpatterns.
@@ -233,18 +233,9 @@ type AltNode struct {
 //  AltNode.Data returns a pointer to the embedded NodeData struct.
 func (d *AltNode) Data() *NodeData { return &d.NodeData }
 
-//  AltNode.Walk visits nodes in a subtree, calling functions pre and/or post,
-//  if non-nil, before and after walking this node's children.
-func (d *AltNode) Walk(pre VisitFunc, post VisitFunc) {
-	if pre != nil {
-		pre(d)
-	}
-	for _, c := range d.Alts {
-		c.Walk(pre, post)
-	}
-	if post != nil {
-		post(d)
-	}
+//  AltNode.Children returns the list of alternative subtrees.
+func (d *AltNode) Children() []Node {
+	return d.Alts
 }
 
 //  AltNode.MinLen returns the smallest minimum of its subpatterns.
@@ -350,16 +341,10 @@ type ReplNode struct {
 //  ReplNode.Data returns a pointer to the embedded NodeData struct.
 func (d *ReplNode) Data() *NodeData { return &d.NodeData }
 
-//  ReplNode.Walk visits nodes in a subtree, calling functions pre and/or post,
-//  if non-nil, before and after walking this node's children.
-func (d *ReplNode) Walk(pre VisitFunc, post VisitFunc) {
-	if pre != nil {
-		pre(d)
-	}
-	d.Child.Walk(pre, post)
-	if post != nil {
-		post(d)
-	}
+//  ReplNode.Children returns a list consisting of the one child.
+func (d *ReplNode) Children() []Node {
+	children := []Node {d.Child}
+	return children
 }
 
 //  ReplNode.MinLen returns the minimum length after replication.

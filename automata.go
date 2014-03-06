@@ -56,7 +56,7 @@ func BuildDFA(tree Node) *DFA {
 
 	// prepare nodes for followpos computation
 	n := uint(0)
-	tree.Walk(nil, func(d Node) {
+	Walk(tree, nil, func(d Node) {
 		if leaf, ok := d.(*MatchNode); ok {
 			// it's a leaf, so number it and remember it
 			leaf.Posn = n
@@ -68,7 +68,7 @@ func BuildDFA(tree Node) *DFA {
 	pmap := dfa.Leaves // map of indexes to nodes
 
 	// compute followpos sets
-	tree.Walk(nil, func(d Node) {
+	Walk(tree, nil, func(d Node) {
 		d.SetFollow(pmap)
 	})
 

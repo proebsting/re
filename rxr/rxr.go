@@ -138,7 +138,7 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 //  Treenodes prints details of the parse tree.
 func treenodes(dfa *rx.DFA, tree rx.Node) {
 	indent := ""
-	tree.Walk(func(d rx.Node) {
+	rx.Walk(tree, func(d rx.Node) {
 		indent = indent + "  "
 		a := d.Data()
 		fmt.Printf("%snode: {%t, ", indent[2:], a.Nullable)
