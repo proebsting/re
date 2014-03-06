@@ -54,13 +54,13 @@ type VisitFunc func(d Node)
 
 //  Walk calls pre and post for every node, before and after visiting children.
 func Walk(tree Node, pre VisitFunc, post VisitFunc) {
-	if (pre != nil) {
+	if pre != nil {
 		pre(tree)
 	}
-	for _, c := range(tree.Children()) {
+	for _, c := range tree.Children() {
 		Walk(c, pre, post)
 	}
-	if (post != nil) {
+	if post != nil {
 		post(tree)
 	}
 }
@@ -97,7 +97,8 @@ func (d *MatchNode) Data() *NodeData { return &d.NodeData }
 func (d *MatchNode) Children() []Node {
 	return barren
 }
-var barren = make([]Node,0,0) // empty list of children
+
+var barren = make([]Node, 0, 0) // empty list of children
 
 //  MatchNode.MinLen always returns 1.
 func (d *MatchNode) MinLen() int { return 1 }
@@ -152,7 +153,7 @@ func (d *ConcatNode) Data() *NodeData { return &d.NodeData }
 
 //  ConcatNode.Children returns a list of the two child nodes
 func (d *ConcatNode) Children() []Node {
-	children := []Node {d.l, d.r}
+	children := []Node{d.l, d.r}
 	return children
 }
 
@@ -343,7 +344,7 @@ func (d *ReplNode) Data() *NodeData { return &d.NodeData }
 
 //  ReplNode.Children returns a list consisting of the one child.
 func (d *ReplNode) Children() []Node {
-	children := []Node {d.Child}
+	children := []Node{d.Child}
 	return children
 }
 
