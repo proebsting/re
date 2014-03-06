@@ -3,9 +3,9 @@
 #
 # unsigned integer
 \d+
-# nonzero integer
+# integer not (ending in!) 0
 \d*[1-9]
-# nonzero, no leading 0
+# nonzero integer, no leading 0
 [1-9]\d*
 # possibly signed integer
 [+-]?\d+
@@ -44,6 +44,8 @@
 # some from: http://www.regular-expressions.info/creditcard.html
 # 16-digit credit card number
 \d{16}
+# slightly more plausible number
+[3456]\d{15}
 # 16-digit credit card number with optional spaces
 \d{4} ?\d{4} ?\d{4} ?\d{4}
 # Visa card including old 13-digit form
@@ -54,6 +56,8 @@
 3[47]\d{13}
 # Discover Card
 6(011|5\d\d)\d{12}   
+# Credit card number of correct length for issuer
+3\d{14}|[456]\d{15}
 #
 # time
 \d{6}
