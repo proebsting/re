@@ -153,8 +153,7 @@ func (d *ConcatNode) Data() *NodeData { return &d.NodeData }
 
 //  ConcatNode.Children returns a list of the two child nodes
 func (d *ConcatNode) Children() []Node {
-	children := []Node{d.l, d.r}
-	return children
+	return []Node{d.l, d.r}
 }
 
 //  ConcatNode.MinLen sums the min lengths of its subpatterns.
@@ -344,8 +343,7 @@ func (d *ReplNode) Data() *NodeData { return &d.NodeData }
 
 //  ReplNode.Children returns a list consisting of the one child.
 func (d *ReplNode) Children() []Node {
-	children := []Node{d.Child}
-	return children
+	return []Node{d.Child}
 }
 
 //  ReplNode.MinLen returns the minimum length after replication.
