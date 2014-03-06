@@ -1,7 +1,12 @@
 RX TODO
 
-REGEXPS:
+PRIORITIES:
 Fix {m,n} replication -- need to modify the parse tree
+Produce Dot/Neato output from DFA
+Combine regexs into one DFA, answer "which ones matched?"
+Synthesize examples from combined DFA, possibly by shortest path
+
+REGEXPS:
 Implement \037 \x3F \uxxxx \cX
 Add \b anchor
 Handle (at least, ignore) ^ $ anchors
@@ -16,6 +21,10 @@ TESTING:
 Expand test collection
 Add more examples from the real world
 Add Go-style unit tests?
+
+UTILITIES:
+More options to control rxr output
+Add headings and spacing to rxr output?
 
 CLEANUP:
 Declare a Bix type == uint16
