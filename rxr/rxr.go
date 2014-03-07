@@ -175,21 +175,8 @@ func showstate(dfa *rx.DFA, d *rx.DFAstate) {
 	}
 	fmt.Print(" }")
 
-	// invert the transition map
-	slist := &rx.BitSet{}
-	xmap := make(map[int]*rx.BitSet)
-	for c, d := range d.Dnext {
-		j := d.Index
-		v := xmap[j]
-		if v == nil {
-			v = &rx.BitSet{}
-			xmap[j] = v
-			slist.Set(uint(j))
-		}
-		v.Set(uint(c))
-	}
-
-	// now print by next-state with input symbols grouped
+	// invert the transition map to group input symbols sharing a dest
+	slist, xmap := dfa.InvertMap(d)
 	for _, c := range slist.Members() {
 		fmt.Printf(" %s:s%d", xmap[int(c)].Bracketed(), c)
 	}

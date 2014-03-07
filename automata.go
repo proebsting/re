@@ -138,3 +138,20 @@ func followposns(pmap []*MatchNode, plist []uint16, a int) *BitSet {
 	}
 	return posns
 }
+
+//  InvertMap returns a list of dest states and a mapping to transition sets
+func (dfa *DFA) InvertMap(d *DFAstate) (*BitSet, map[int]*BitSet) {
+	slist := &BitSet{}
+	xmap := make(map[int]*BitSet)
+	for c, d := range d.Dnext {
+		j := d.Index
+		v := xmap[j]
+		if v == nil {
+			v = &BitSet{}
+			xmap[j] = v
+			slist.Set(uint(j))
+		}
+		v.Set(uint(c))
+	}
+	return slist, xmap
+}

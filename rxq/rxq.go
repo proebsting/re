@@ -1,7 +1,7 @@
 /*
 	rxq.go -- regular expression query
 
-	usage:  rxr "rexpr" [file]
+	usage:  rxq "rexpr" [file]
 
 	Rxq reads strings, one per line, from file (default stdin).
 	Each string is tested against the regular expression rexpr,
