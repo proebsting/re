@@ -5,6 +5,8 @@
 package rx
 
 import (
+	"bytes"
+	"encoding/gob"
 	"fmt"
 	"math/rand"
 )
@@ -23,6 +25,7 @@ import (
 //  SetFollow()		set FollowPos
 //  SetNFL and SetFollow assume that child values have been previously set.
 //
+//  All fields in a concrete node should be exportable for use with package gob.
 type Node interface {
 	Data() *NodeData
 	Children() []Node
@@ -69,7 +72,7 @@ func Walk(tree Node, pre VisitFunc, post VisitFunc) {
 
 //  MatchNode is a leaf node that matches exactly one char from a given set.
 type MatchNode struct {
-	cset *BitSet // the characters that will match
+	Cset *BitSet // the characters that will match
 	Posn uint    // integer "position" desgnator of leaf
 	NodeData
 }
@@ -87,7 +90,7 @@ func Accept() Node {
 // IsAccept returns true for an Accept node
 func IsAccept(d Node) bool {
 	mnode, ok := d.(*MatchNode)
-	return ok && mnode.cset.IsEmpty()
+	return ok && mnode.Cset.IsEmpty()
 }
 
 //  MatchNode.Data returns a pointer to the embedded NodeData struct.
@@ -122,16 +125,20 @@ func (d *MatchNode) SetFollow(pmap []*MatchNode) {
 
 //  MatchNode.Example appends a single randomly chosen matching character.
 func (d *MatchNode) Example(s []byte, n int) []byte {
-	//#%#% assumes cset is not empty
-	return append(s, d.cset.RandChar())
+	if IsAccept(d) {
+		return s // don't alter if Accept node
+	} else {
+		// assumes cset is not empty
+		return append(s, d.Cset.RandChar())
+	}
 }
 
 //  MatchNode.string returns a singleton character or a bracketed expression.
 func (d *MatchNode) String() string {
-	if d.cset.IsEmpty() {
+	if d.Cset.IsEmpty() {
 		return "#" // special "accept" node
 	}
-	s := d.cset.Bracketed()
+	s := d.Cset.Bracketed()
 	if len(s) == 3 {
 		return s[1:2] // abbreviate set of one char
 	} else {
@@ -143,8 +150,8 @@ func (d *MatchNode) String() string {
 
 //  ConcatNode matches the concatenation of two subpatterns.
 type ConcatNode struct {
-	l Node
-	r Node
+	L Node
+	R Node
 	NodeData
 }
 
@@ -153,19 +160,19 @@ func (d *ConcatNode) Data() *NodeData { return &d.NodeData }
 
 //  ConcatNode.Children returns a list of the two child nodes
 func (d *ConcatNode) Children() []Node {
-	return []Node{d.l, d.r}
+	return []Node{d.L, d.R}
 }
 
 //  ConcatNode.MinLen sums the min lengths of its subpatterns.
 func (d *ConcatNode) MinLen() int {
-	return d.l.MinLen() + d.r.MinLen()
+	return d.L.MinLen() + d.R.MinLen()
 }
 
 //  ConcatNode.MaxLen sums the max lengths of its subpatterns.
 //  A value of -1 means that the length is unbounded.
 func (d *ConcatNode) MaxLen() int {
-	llen := d.l.MaxLen()
-	rlen := d.r.MaxLen()
+	llen := d.L.MaxLen()
+	rlen := d.R.MaxLen()
 	if llen < 0 || rlen < 0 { // if unbounded
 		return -1
 	} else {
@@ -175,25 +182,25 @@ func (d *ConcatNode) MaxLen() int {
 
 //  ConcatNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *ConcatNode) SetNFL() {
-	l := d.l.Data()
-	r := d.r.Data()
-	d.Nullable = l.Nullable && r.Nullable
-	if l.Nullable {
-		d.FirstPos = l.FirstPos.Or(r.FirstPos)
+	L := d.L.Data()
+	R := d.R.Data()
+	d.Nullable = L.Nullable && R.Nullable
+	if L.Nullable {
+		d.FirstPos = L.FirstPos.Or(R.FirstPos)
 	} else {
-		d.FirstPos = l.FirstPos
+		d.FirstPos = L.FirstPos
 	}
-	if r.Nullable {
-		d.LastPos = r.LastPos.Or(l.LastPos)
+	if R.Nullable {
+		d.LastPos = R.LastPos.Or(L.LastPos)
 	} else {
-		d.LastPos = r.LastPos
+		d.LastPos = R.LastPos
 	}
 }
 
 //  ConcatNode.SetFollow registers FollowPos nodes due to concatenation.
 func (d *ConcatNode) SetFollow(pmap []*MatchNode) {
-	for _, i := range d.l.Data().LastPos.Members() {
-		for _, f := range d.r.Data().FirstPos.Members() {
+	for _, i := range d.L.Data().LastPos.Members() {
+		for _, f := range d.R.Data().FirstPos.Members() {
 			pmap[i].Data().FollowPos.Set(uint(f))
 		}
 	}
@@ -201,14 +208,14 @@ func (d *ConcatNode) SetFollow(pmap []*MatchNode) {
 
 //  ConcatNode.Example appends one example from each subpattern.
 func (d *ConcatNode) Example(s []byte, n int) []byte {
-	s = d.l.Example(s, n)
-	s = d.r.Example(s, n)
+	s = d.L.Example(s, n)
+	s = d.R.Example(s, n)
 	return s
 }
 
 //  ConcatNode.String appends a parenthesized concatenation of subpatterns.
 func (d *ConcatNode) String() string {
-	return fmt.Sprintf("(%s%s)", d.l, d.r)
+	return fmt.Sprintf("(%s%s)", d.L, d.R)
 }
 
 //  Concatenate makes a ConcatNode, optimizing if either arg is an Epsilon
@@ -330,7 +337,7 @@ func Epsilon() Node {
 
 //---------------------------------------------------------------------------
 
-//  ReplNode represents controlled (or not) replication: e?, e+, e*, e{n,m}.
+//  ReplNode represents controlled (or not) replication: e?, e+, e*, e{m,n}.
 type ReplNode struct {
 	Min   int  // minimum number of occurrences (0 or 1)
 	Max   int  // maximum (a positive limit, or -1 meaning infinity)
@@ -404,7 +411,7 @@ func (d *ReplNode) Example(s []byte, n int) []byte {
 }
 
 //  ReplNode.String produces a string representation using a postfix
-//  replication operator: e* or e+ or e? or e{n} or e{n,} or e{n,m}.
+//  replication operator: e* or e+ or e? or e{n} or e{n,} or e{m,n}.
 func (d *ReplNode) String() string {
 	if d.Max < 0 {
 		if d.Min == 0 {
@@ -421,4 +428,60 @@ func (d *ReplNode) String() string {
 	} else {
 		return fmt.Sprintf("%s{%d,%d}", d.Child, d.Min, d.Max)
 	}
+}
+
+//  Replfix returns a replacement subtree if counting is needed, e.g. a{3}.
+//  The original subtree is returned if it is okay.
+func replfix(d Node) Node {
+	r, ok := d.(*ReplNode)
+	if !ok {
+		return d // nothing to do, not a replication node
+	}
+	if r.Min < 2 && r.Max < 2 {
+		return r // nothing to do, return as is
+	}
+
+	// We need to split this node into a concatenation of two or more
+	// deep copies, each with a modified ReplNode at the top.
+	// Do this by bundling the subtree into a gob and then decoding
+	// as many times as needed.
+	gob.Register(&MatchNode{}) // register concrete types
+	gob.Register(&ConcatNode{})
+	gob.Register(&AltNode{})
+	gob.Register(&ReplNode{})
+	wbuf := new(bytes.Buffer)             // writable output buffer
+	enc := gob.NewEncoder(wbuf)           // create encoder
+	CkErr(enc.Encode(&r.Child))           // encode the tree
+	rbuf := bytes.NewReader(wbuf.Bytes()) // make resettable input buffer
+
+	// Final result will be a concatenation of a left side of duplicate
+	// nodes followed by a final node handling leftovers.
+	var lside Node = nil                                   // init left side empty
+	rside := &ReplNode{r.Min, r.Max, degob(rbuf), nildata} // r side copy
+	for rside.Min > 1 || (rside.Min > 0 && rside.Min < rside.Max) {
+		lside = Concatenate(lside, degob(rbuf))
+		rside.Min--
+		if rside.Max > 0 {
+			rside.Max--
+		}
+	}
+	for rside.Max > 1 {
+		optr := ReplNode{0, 1, degob(rbuf), nildata}
+		lside = Concatenate(lside, &optr)
+		rside.Max--
+	}
+	if rside.Min == 1 && rside.Max == 1 { // if max==min originally
+		return Concatenate(lside, rside.Child) // simpler case
+	} else {
+		return Concatenate(lside, rside) // e.g. regexp{5,*}
+	}
+}
+
+//  Degob converts a gob into a new copy of a subtree.
+func degob(buf *bytes.Reader) Node {
+	var tree Node
+	buf.Seek(0, 0)
+	dec := gob.NewDecoder(buf)
+	CkErr(dec.Decode(&tree))
+	return tree
 }

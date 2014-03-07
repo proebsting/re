@@ -9,11 +9,11 @@ regexp: [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
 tree:   (((([%+-.0-9A-Z_]+@)[-.0-9A-Z]+).)[A-Z]{2,4})
 length: 6 to *
 ex(0):  A@2.TO  %@A.JQ  -@A.UI  +@K.CR  .@I.OT  3@W.WQ  F@Y.SG  S@0.LO  J@K.WZ
-ex(1):  O@3.CY  8@3.QY  G@U.TB  H@..JS  C@M.TG  N@G.GW  I@F.MN  D@C.HO  O@K.GD
-ex(2):  4U@CB.JJ  9S@ML.SP  0V@TK.TK  2@25.OY  %@S.LE  1J@D.IL  8E@O.MX
-ex(3):  K_@1O.CB  LI3@ZB.QN  7F4@E.MP  Z@8.QIF  S%Q@2L.YYR  -H@B.VUJ
-ex(5):  6@HJEZ-.OESI  4PW@8RZ.VM  U3@II.KDYV  40T@JSUKH.ZP  +A7+@8.QGYF
-ex(8):  J@D91ZYHCB.GLD  J@5GW60MK.MO  ZPWPBE@NWC0H.ZLQ  DIML@Y7IG.YT
+ex(1):  O@3.CYAB  1@2.BZW  H@L.GU  _@Z.BMWM  8@2.FGI  B@D.NXU  X@4.PXFM
+ex(2):  22@4..GGG  O0@G.AOPX  R@F.YVG  F@CM.DNSC  FX@CV.USB  H5@F.DN  DB@RP.NIA
+ex(3):  R@AU.ZGGB  .RY@FG.NRDC  J@3.CMLW  V@F.BE  7X@VUS.HZF  4@.B.OTMI
+ex(5):  T5A@4O.GZ.AFV  EUB6@WD.CMP  WF@CS3.LX  J_@E5.JSQD  UJR7@B3-NG.NW
+ex(8):  VRHESA@SJ6O.ADSD  YM@JRBLH2.WKMQ  RR5Y@2EXI.JLDK  23-4BR4U@RSOZ.CAR
 
 # http://www.regular-expressions.info/email.html (final example)
 
@@ -30,7 +30,7 @@ ex(8):  pp.}r~.7hfzvr.l`_e`1@1.0.EF  **./9fi{@f.9akbi7c.u1bsaiz.jg.net
 # http://compilers.iecc.com/comparch/article/01-10-072 (telno "Yecchhh")
 
 regexp: (\([0-9]{3}\)[ ]{1}){0,1}[0-9]{3}\-[0-9]{4}
-tree:   ((((((([0-9]{3}))) {1})?[0-9]{3})-)[0-9]{4})
+tree:   ((((((([0-9]{3}))) )?[0-9]{3})-)[0-9]{4})
 length: 8 to 14
 ex(0):  701-6827  810-0944  340-5490  660-1817  051-9857  862-4819  157-8206
 ex(1):  (146) 286-6853  271-4906  (759) 792-8991  743-8169  (442) 744-1384

@@ -3,7 +3,11 @@
 //  Rx provides facilities for dealing with regular expressions.
 package rx
 
-import ()
+import (
+	"fmt"
+)
+
+var _ = fmt.Printf //#%#%#% for debugging
 
 //  Match tests whether a string is matched by a regular expression.
 func Match(rexpr string, s string) (bool, error) {
@@ -30,7 +34,26 @@ func Compile(rexpr string) (*DFA, error) {
 //  Augment produces a modified parse tree in preparation for building a DFA.
 //  The original tree is modified in place, and a new root is returned.
 func Augment(tree Node) Node {
-	tree = Concatenate(tree, Accept())
-	//#%#% more work is needed to handle fixed-count replication
-	return tree
+	Walk(tree, nil, func(d Node) {
+		switch d.(type) {
+		case *ConcatNode:
+			cnode := d.(*ConcatNode)
+			cnode.L = replfix(cnode.L)
+			cnode.R = replfix(cnode.R)
+		case *AltNode:
+			anode := d.(*AltNode)
+			alts := make([]Node, 0, len(anode.Alts))
+			for _, e := range anode.Alts {
+				alts = append(alts, replfix(e))
+			}
+			anode.Alts = alts
+		case *ReplNode:
+			rnode := d.(*ReplNode)
+			rnode.Child = replfix(rnode.Child)
+		case *MatchNode:
+
+		}
+	})
+	tree = replfix(tree) // need to handle top node, too
+	return Concatenate(tree, Accept())
 }

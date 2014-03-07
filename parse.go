@@ -46,7 +46,6 @@ func Parse(rexpr string) (Node, error) {
 			// just replicates an empty string to no effect
 			continue
 
-
 		case '(':
 			// check for "(?..." forms
 			// treat "(?:" as "(" but abort on other "(?...")
@@ -59,7 +58,7 @@ func Parse(rexpr string) (Node, error) {
 						orgstr, "'(?...' unimplemented"}
 				}
 			}
-			fallthrough	// the rest is common with '|'
+			fallthrough // the rest is common with '|'
 		case '|': // and '(' falling through
 			// swap of context: clear current expression after
 			// pushing it on a stack (and push opr on another)
@@ -149,7 +148,7 @@ func popAlts(d Node) Node {
 //
 //  This applies to:  replicate(), rescape(), bxparse(), and bescape().
 
-var replx = regexp.MustCompile("{(\\d*)(,?)(\\d*)}") // expr for {n,m}
+var replx = regexp.MustCompile("{(\\d*)(,?)(\\d*)}") // expr for {m,n}
 
 //  Replicate wraps a replication node around a subtree if it is followed by
 //  posfix ?, *, +, or {m,n}.  It normally returns the resulting tree and
@@ -174,17 +173,30 @@ func replicate(d Node, p string) (Node, string) {
 		p = p[len(result[0]):] // remove matched pattern
 		minrep, err1 := strconv.Atoi(result[1])
 		maxrep, err3 := strconv.Atoi(result[3])
-		if err1 == nil && err3 == nil && minrep <= maxrep { // {n,m}
-			return replval(minrep, maxrep, d, p)
-		}
-		if err1 == nil && len(result[3]) == 0 {
-			if len(result[2]) == 1 { // {n,}
-				return replval(minrep, -1, d, p)
-			} else { // {n}
-				return replval(minrep, minrep, d, p)
+		if len(result[3]) == 0 {
+			if len(result[2]) == 1 {
+				maxrep, err3 = -1, nil // {m,}
+			} else {
+				maxrep, err3 = minrep, nil // {m} means {m,m}
 			}
 		}
-		return nil, "malformed '{m,n}'"
+		if err1 != nil || err3 != nil {
+			return nil, "malformed '{m,n}'"
+		}
+		if maxrep < 0 || maxrep > minrep { // {m,} or {m,n}
+			return replval(minrep, maxrep, d, p)
+		}
+		if maxrep < minrep {
+			return nil, "malformed '{m,n}'"
+		}
+		// now we have maxrep == minrep and valid
+		if maxrep == 0 {
+			return Epsilon(), p // {0} or {0,0}
+		} else if maxrep == 1 {
+			return d, p // {1} or {1,1}
+		} else {
+			return replval(minrep, maxrep, d, p) // expand later
+		}
 
 	default:
 		return d, p

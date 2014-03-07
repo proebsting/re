@@ -68,6 +68,11 @@ func main() {
 			continue
 		}
 		fmt.Printf("tree:   %v\n", t)
+		augt := rx.Augment(t) // make augmented tree
+		if !*qflag {          // if -Q not given, print it
+			fmt.Printf("augmnt: %v\n", augt)
+		}
+
 		fmt.Printf("length: %d to ", t.MinLen())
 		x := t.MaxLen()
 		if x >= 0 {
@@ -76,7 +81,6 @@ func main() {
 			fmt.Println("*")
 		}
 
-		augt := rx.Augment(t)    // make augmented tree
 		dfa := rx.BuildDFA(augt) // make DFA from augmented tree
 
 		if *rflag { // if -R given, reset random seed

@@ -18,7 +18,7 @@ ex(8):  15.16.0.18  26.253.215.239  04.241.239.253  079.254.04.251
 # 314. US Phone numbers with area code
 
 regexp: ([\(]{1}[0-9]{3}[\)]{1}[ |\-]{0,1}|^[0-9]{3}[\-| ])?[0-9]{3}(\-| ){1}[0-9]{4}
-tree:   (((((((({1}[0-9]{3})){1})[ -|]?)|((^[0-9]{3})[ -|]))?[0-9]{3})(-| ){1})[0-9]{4})
+tree:   (((((((([0-9]{3})))[ -|]?)|((^[0-9]{3})[ -|]))?[0-9]{3})(-| ))[0-9]{4})
 length: 8 to 14
 ex(0):  701-0473  516-6503  837-3780  531-2073  694 1813  295-2473  647-9495
 ex(1):  ^462-051 4123  ^707|926-3618  169 8480  987 6959  274 7056
@@ -45,8 +45,8 @@ regexp: ([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9]
 tree:   ((((((([0-9A-PR-UWYZ][0-9A-HK-Y])[0-9AEHMNPRTVXY]?)[0-9ABEHMNPRV-Y]?) {1,2})[0-9])[ABD-HJLN-UW-Z]{2})|((((((GI)R) )0)A)A))
 length: 6 to 9
 ex(0):  AU 6BD  GIR 0AA  GIR 0AA  GIR 0AA  F7 1PS  K7 0DY  GIR 0AA  ME 0GE
-ex(1):  GIR 0AA  CQ4H 7YW  GIR 0AA  GIR 0AA  GIR 0AA  GIR 0AA  N3X 9XA  GIR 0AA
-ex(2):  Y20 6WB  D4 1EF  GIR 0AA  GIR 0AA  JGAR 3ZJ  GIR 0AA  T7X  3QR
-ex(3):  GIR 0AA  560  2JG  GIR 0AA  D8A 1NG  OE  4OZ  GIR 0AA  GD  7TN  GIR 0AA
+ex(1):  GIR 0AA  CQ4H 1LQ  GIR 0AA  GIR 0AA  GIR 0AA  N3X  4RW  NDW  7JN
+ex(2):  D4 1EF  GIR 0AA  GIR 0AA  JGAR 3ZJ  GIR 0AA  T7X  3QR  SPH7  4UG
+ex(3):  560  2JG  GIR 0AA  D8A 1NG  OE  4OZ  GIR 0AA  GD  7TN  GIR 0AA
 ex(5):  GIR 0AA  GIR 0AA  GIR 0AA  GIR 0AA  YE3 2PO  GIR 0AA  GIR 0AA  RW  7SL
 ex(8):  GIR 0AA  UU  8ZT  GIR 0AA  GIR 0AA  GIR 0AA  030Y 1UQ  IVN 3HO  GIR 0AA

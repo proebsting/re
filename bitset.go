@@ -15,8 +15,7 @@ import (
 
 //  BitSet is a simple bit-mapped representation of a set of characters.
 type BitSet struct {
-	bits big.Int
-	//#%#% maybe more later: n, low, high???
+	Bits big.Int
 }
 
 //  CharSet makes a BitSet from a string of member characters.
@@ -30,31 +29,31 @@ func CharSet(s string) *BitSet {
 
 //  BitSet.Equals returns true if the argument cset is identical to this one.
 func (b1 *BitSet) Equals(b2 *BitSet) bool {
-	return (b1.bits.Cmp(&b2.bits) == 0)
+	return (b1.Bits.Cmp(&b2.Bits) == 0)
 }
 
 //  BitSet.Set sets one bit in a BitSet.
 func (b *BitSet) Set(bit uint) *BitSet {
-	b.bits.SetBit(&b.bits, int(bit), 1)
+	b.Bits.SetBit(&b.Bits, int(bit), 1)
 	return b
 }
 
 //  BitSet.Test returns true if the specified BitSet bit is set.
 func (b *BitSet) Test(bit uint) bool {
-	return b.bits.Bit(int(bit)) == 1
+	return b.Bits.Bit(int(bit)) == 1
 }
 
 //  BitSet.IsEmpty returns true if no bits are set in the BitSet.
 func (b *BitSet) IsEmpty() bool {
-	return b.bits.BitLen() == 0
+	return b.Bits.BitLen() == 0
 }
 
 //  BitSet.lowbit returns the number of the smallest bit set.
 //  It returns 0 if the BitSet is empty.
 func (b *BitSet) lowbit() int {
 	// inspired by thoughts of HAKMEM...
-	sub := (&big.Int{}).Sub(&b.bits, bigone)
-	xor := (&big.Int{}).Xor(&b.bits, sub)
+	sub := (&big.Int{}).Sub(&b.Bits, bigone)
+	xor := (&big.Int{}).Xor(&b.Bits, sub)
 	add := (&big.Int{}).Add(bigone, xor)
 	n := add.BitLen() - 2
 	if n >= 0 {
@@ -82,21 +81,21 @@ func (b1 *BitSet) CharCompl() *BitSet {
 		}
 	}
 	b3 := new(BitSet)
-	b3.bits.Xor(&b1.bits, &allChars.bits)
+	b3.Bits.Xor(&b1.Bits, &allChars.Bits)
 	return b3
 }
 
 //  BitSet.Or produces a new BitSet that is the union of its inputs.
 func (b1 *BitSet) Or(b2 *BitSet) *BitSet {
 	b3 := new(BitSet)
-	b3.bits.Or(&b1.bits, &b2.bits)
+	b3.Bits.Or(&b1.Bits, &b2.Bits)
 	return b3
 }
 
 //  BitSet.And produces a new BitSet that is the intersection of its inputs.
 func (b1 *BitSet) And(b2 *BitSet) *BitSet {
 	b3 := new(BitSet)
-	b3.bits.And(&b1.bits, &b2.bits)
+	b3.Bits.And(&b1.Bits, &b2.Bits)
 	return b3
 }
 
@@ -106,7 +105,7 @@ func (b1 *BitSet) And(b2 *BitSet) *BitSet {
 func (b BitSet) RandChar() byte {
 	n := 0                   // number of characters considered
 	l := b.lowbit()          // lowest eligible char
-	h := b.bits.BitLen() - 1 // highest eligible char
+	h := b.Bits.BitLen() - 1 // highest eligible char
 	if h < 0 {
 		return '?' //#%#%#% ERROR cset was empty
 	}
@@ -134,7 +133,7 @@ func (b BitSet) RandChar() byte {
 func (b BitSet) Members() []uint16 {
 	m := make([]uint16, 0)
 	l := b.lowbit()
-	h := b.bits.BitLen()
+	h := b.Bits.BitLen()
 	for i := l; i <= h; i++ { // for all chars up to highest
 		if b.Test(uint(i)) { // if char is included
 			m = append(m, uint16(i))
@@ -158,7 +157,7 @@ func (b BitSet) String() string {
 //  using ranges if appropriate and escaping (only) unprintables.
 func (b BitSet) Bracketed() string {
 	l := b.lowbit()
-	h := b.bits.BitLen()
+	h := b.Bits.BitLen()
 	s := make([]byte, 0)
 	s = append(s, '[')
 	for i := l; i <= h; i++ { // for all chars up to highest

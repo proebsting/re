@@ -48,7 +48,7 @@ func (dfa *DFA) AcceptBy(ds *DFAstate) bool {
 func BuildDFA(tree Node) *DFA {
 
 	// make sure that we have an *Augmented* tree
-	if !IsAccept(tree) && !IsAccept(tree.(*ConcatNode).r) {
+	if !IsAccept(tree) && !IsAccept(tree.(*ConcatNode).R) {
 		panic("not an augmented parse tree")
 	}
 
@@ -120,7 +120,7 @@ func addstate(dfa *DFA, u *BitSet) *DFAstate {
 func validhere(pmap []*MatchNode, plist []uint16) []uint16 {
 	cs := &BitSet{}
 	for _, p := range plist {
-		cs = cs.Or(pmap[p].cset)
+		cs = cs.Or(pmap[p].Cset)
 	}
 	return cs.Members()
 }
@@ -130,7 +130,7 @@ func validhere(pmap []*MatchNode, plist []uint16) []uint16 {
 func followposns(pmap []*MatchNode, plist []uint16, a int) *BitSet {
 	posns := &BitSet{}
 	for _, p := range plist {
-		if pmap[p].cset.Test(uint(a)) {
+		if pmap[p].Cset.Test(uint(a)) {
 			for _, q := range pmap[p].FollowPos.Members() {
 				posns.Set(uint(q))
 			}

@@ -1,8 +1,8 @@
 
-# numeric replication {n,m}
+# numeric replication {m,n}
 
 regexp: ab{0}c
-tree:   ((ab{0})c)
+tree:   (ac)
 length: 2 to 2
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(1):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
@@ -10,29 +10,9 @@ ex(2):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(3):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(5):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(8):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
-
-regexp: ab{0,0}c
-tree:   ((ab{0})c)
-length: 2 to 2
-ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
-ex(1):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
-ex(2):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
-ex(3):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
-ex(5):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
-ex(8):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
-
-regexp: ab{0,}c
-tree:   ((ab*)c)
-length: 2 to *
-ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
-ex(1):  ac  ac  abc  ac  abc  ac  abc  abc  ac  ac  ac  abc  abc  ac  ac  ac
-ex(2):  abbc  abc  ac  abbc  ac  abbc  ac  abbc  ac  abc  ac  abc  abc  ac
-ex(3):  abc  ac  abbc  abc  ac  abbc  abc  abbc  abbbc  ac  ac  abbc  abbbc
-ex(5):  ac  ac  ac  abbbc  abbc  abbbbc  ac  abbbbc  abc  ac  abbbc  abbc  abbc
-ex(8):  abbbc  abbbbbc  abbbbbbc  abbbbbc  abbbbc  abbbbbbbbc  abbbbbbbc  abbc
 
 regexp: ab{1}c
-tree:   ((ab{1})c)
+tree:   ((ab)c)
 length: 3 to 3
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(1):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -40,6 +20,46 @@ ex(2):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(3):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(5):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(8):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
+
+regexp: ab{2}c
+tree:   ((ab{2})c)
+length: 4 to 4
+ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(1):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(2):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(3):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(5):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(8):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+
+regexp: ab{3}c
+tree:   ((ab{3})c)
+length: 5 to 5
+ex(0):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+ex(1):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+ex(2):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+ex(3):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+ex(5):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+ex(8):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+
+regexp: ab{4}c
+tree:   ((ab{4})c)
+length: 6 to 6
+ex(0):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
+ex(1):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
+ex(2):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
+ex(3):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
+ex(5):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
+ex(8):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
+
+regexp: ab{0,0}c
+tree:   (ac)
+length: 2 to 2
+ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
+ex(1):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
+ex(2):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
+ex(3):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
+ex(5):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
+ex(8):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 
 regexp: ab{0,1}c
 tree:   ((ab?)c)
@@ -52,7 +72,7 @@ ex(5):  ac  ac  abc  ac  abc  ac  ac  ac  ac  abc  abc  ac  ac  abc  abc  ac
 ex(8):  abc  abc  ac  ac  abc  ac  abc  abc  ac  abc  abc  ac  ac  ac  abc  ac
 
 regexp: ab{1,1}c
-tree:   ((ab{1})c)
+tree:   ((ab)c)
 length: 3 to 3
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(1):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -60,6 +80,96 @@ ex(2):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(3):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(5):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(8):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
+
+regexp: ab{0,2}c
+tree:   ((ab{0,2})c)
+length: 2 to 4
+ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
+ex(1):  ac  abc  abc  abbc  ac  abc  abc  ac  abc  ac  abc  ac  abc  ac  abc
+ex(2):  abc  abc  ac  abc  abc  ac  abbc  ac  abc  ac  ac  abc  abc  ac  abc
+ex(3):  abc  abc  abbc  abc  abc  abc  abc  abbc  ac  abc  abc  ac  ac  ac  ac
+ex(5):  abc  abc  abbc  abbc  abc  abc  ac  ac  abc  abbc  abc  abc  abc  ac
+ex(8):  abbc  abc  abc  abc  ac  abbc  ac  abc  abbc  abbc  abc  abc  abc  ac
+
+regexp: ab{1,2}c
+tree:   ((ab{1,2})c)
+length: 3 to 4
+ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
+ex(1):  abc  abc  abbc  abc  abbc  abc  abbc  abbc  abc  abc  abc  abbc  abbc
+ex(2):  abc  abc  abbc  abc  abc  abc  abbc  abc  abc  abc  abbc  abc  abc  abc
+ex(3):  abc  abbc  abc  abbc  abc  abc  abbc  abc  abc  abbc  abc  abbc  abc
+ex(5):  abc  abbc  abbc  abc  abc  abc  abbc  abc  abc  abc  abc  abbc  abc
+ex(8):  abc  abc  abc  abc  abbc  abbc  abc  abc  abbc  abbc  abc  abbc  abbc
+
+regexp: ab{2,2}c
+tree:   ((ab{2})c)
+length: 4 to 4
+ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(1):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(2):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(3):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(5):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(8):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+
+regexp: ab{0,3}c
+tree:   ((ab{0,3})c)
+length: 2 to 5
+ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
+ex(1):  abc  abc  abbc  abc  abc  abc  abc  ac  abc  abc  abbc  abc  abc  abc
+ex(2):  abc  abc  ac  abbc  ac  abbc  abc  abbc  abbc  abc  abbc  abbc  abc
+ex(3):  ac  ac  ac  abc  abbbc  abbc  abbc  ac  abc  abbbc  abc  abc  abbc
+ex(5):  abbc  abc  abbc  ac  abbbc  abbc  abbc  abc  abc  abc  abc  ac  abbc
+ex(8):  abc  ac  abbbc  abbc  abbc  ac  abbc  ac  abbc  ac  abc  ac  abc  abc
+
+regexp: ab{1,3}c
+tree:   ((ab{1,3})c)
+length: 3 to 5
+ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
+ex(1):  abc  abbc  abbc  abbbc  abc  abbc  abbc  abc  abbc  abc  abbc  abc
+ex(2):  abc  abbc  abbc  abbc  abbc  abc  abbc  abbc  abc  abbbc  abc  abbc
+ex(3):  abc  abbc  abbc  abc  abbc  abbc  abbc  abbc  abbbc  abbc  abbc  abbc
+ex(5):  abbbc  abc  abbc  abbc  abc  abc  abc  abc  abc  abbc  abbc  abbbc
+ex(8):  abbc  abbc  abc  abc  abbc  abbbc  abbc  abbc  abbc  abc  abbbc  abbbc
+
+regexp: ab{2,3}c
+tree:   ((ab{2,3})c)
+length: 4 to 5
+ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(1):  abbc  abbc  abbbc  abbc  abbbc  abbc  abbbc  abbbc  abbc  abbc  abbc
+ex(2):  abbbc  abbc  abbc  abbc  abbbc  abbc  abbc  abbc  abbbc  abbc  abbc
+ex(3):  abbbc  abbc  abbc  abbc  abbbc  abbc  abbbc  abbc  abbbc  abbc  abbc
+ex(5):  abbc  abbc  abbbc  abbc  abbbc  abbc  abbc  abbc  abbbc  abbbc  abbc
+ex(8):  abbc  abbbc  abbc  abbc  abbc  abbc  abbbc  abbc  abbbc  abbc  abbc
+
+regexp: ab{3,3}c
+tree:   ((ab{3})c)
+length: 5 to 5
+ex(0):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+ex(1):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+ex(2):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+ex(3):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+ex(5):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+ex(8):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
+
+regexp: ab{2,5}c
+tree:   ((ab{2,5})c)
+length: 4 to 7
+ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
+ex(1):  abbbc  abbbc  abbbbc  abbbc  abbbc  abbbc  abbbc  abbc  abbbc  abbbc
+ex(2):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbc  abbbbc  abbc  abbbbc
+ex(3):  abbbbc  abbbbc  abbbc  abbbbc  abbbbc  abbbc  abbbc  abbc  abbc  abbc
+ex(5):  abbbbbc  abbbbc  abbbbc  abbc  abbbc  abbbbbc  abbbc  abbbc  abbbbc
+ex(8):  abbbbc  abbbc  abbbbc  abbc  abbbbbc  abbbbc  abbbbc  abbbc  abbbc
+
+regexp: ab{0,}c
+tree:   ((ab*)c)
+length: 2 to *
+ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
+ex(1):  ac  ac  abc  ac  abc  ac  abc  abc  ac  ac  ac  abc  abc  ac  ac  ac
+ex(2):  abbc  abc  ac  abbc  ac  abbc  ac  abbc  ac  abc  ac  abc  abc  ac
+ex(3):  abc  ac  abbc  abc  ac  abbc  abc  abbc  abbbc  ac  ac  abbc  abbbc
+ex(5):  ac  ac  ac  abbbc  abbc  abbbbc  ac  abbbbc  abc  ac  abbbc  abbc  abbc
+ex(8):  abbbc  abbbbbc  abbbbbbc  abbbbbc  abbbbc  abbbbbbbbc  abbbbbbbc  abbc
 
 regexp: ab{1,}c
 tree:   ((ab+)c)
@@ -71,52 +181,32 @@ ex(3):  abc  abc  abbbc  abbbc  abbc  abc  abbbc  abc  abbbc  abc  abbbc  abc
 ex(5):  abc  abbc  abbbc  abbbc  abbbbc  abc  abbbbbc  abbbbc  abbbbc  abc  abc
 ex(8):  abbbc  abbbbbbbbc  abbbbbc  abbbbbc  abbbc  abbbbbbbbc  abbbbbbbbc
 
-regexp: ab{0,3}c
-tree:   ((ab{0,3})c)
-length: 2 to 5
-ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
-ex(1):  ac  ac  abc  ac  abc  ac  abc  abc  ac  ac  ac  abc  abc  ac  ac  ac
-ex(2):  abbc  abc  ac  abbc  ac  abbc  ac  abbc  ac  abc  ac  abc  abc  ac
-ex(3):  abc  ac  abbc  abc  ac  abbc  abc  abbc  abbbc  ac  ac  abbc  abbbc
-ex(5):  ac  ac  abbc  abc  abbc  ac  abbc  ac  abbbc  ac  abc  abbc  ac  ac
-ex(8):  abbbc  abc  abbc  abbc  abbbc  abbbc  ac  abc  abc  abbbc  abbc  ac
-
-regexp: ab{2,5}c
-tree:   ((ab{2,5})c)
-length: 4 to 7
+regexp: ab{2,}c
+tree:   ((ab{2,})c)
+length: 4 to *
 ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 ex(1):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
-ex(2):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
-ex(3):  abbc  abbc  abbbc  abbc  abbbc  abbc  abbbc  abbbc  abbc  abbc  abbc
-ex(5):  abbbbbc  abbc  abbc  abbbbc  abbbbbc  abbbbc  abbbbc  abbbbc  abbbbbc
-ex(8):  abbbbc  abbc  abbbc  abbbbc  abbc  abbc  abbbbbc  abbc  abbbc  abbc
+ex(2):  abbc  abbc  abbbc  abbc  abbbc  abbc  abbbc  abbbc  abbc  abbc  abbc
+ex(3):  abbbbc  abbc  abbc  abbc  abbbbc  abbbbc  abbbc  abbc  abbbbc  abbc
+ex(5):  abbc  abbbc  abbbc  abbbbc  abbc  abbbc  abbbbc  abbbbc  abbbbbc  abbc
+ex(8):  abbbbbbbbc  abbbc  abbc  abbbbbbbbc  abbbbbbbc  abbbbc  abbbbbbbbbc
 
 regexp: ab{3,}c
 tree:   ((ab{3,})c)
 length: 5 to *
 ex(0):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
 ex(1):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
-ex(2):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
-ex(3):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
-ex(5):  abbbc  abbbc  abbbbc  abbbbc  abbbbbc  abbbbc  abbbbc  abbbbbc  abbbc
-ex(8):  abbbc  abbbbbbbbc  abbbbbbbbc  abbbc  abbbc  abbbc  abbbbbbbbc  abbbbbc
+ex(2):  abbbc  abbbc  abbbbc  abbbc  abbbbc  abbbc  abbbbc  abbbbc  abbbc
+ex(3):  abbbc  abbbbbc  abbbbbc  abbbc  abbbc  abbbc  abbbbbc  abbbbbc  abbbbc
+ex(5):  abbbc  abbbbbbc  abbbbc  abbbc  abbbbc  abbbbc  abbbbbc  abbbc  abbbbc
+ex(8):  abbbbbbbbc  abbbbbbbc  abbbbc  abbbbbbbc  abbbbbbbbbc  abbbbc  abbbc
 
-regexp: ab{4}c
-tree:   ((ab{4})c)
-length: 6 to 6
+regexp: ab{4,}c
+tree:   ((ab{4,})c)
+length: 6 to *
 ex(0):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
 ex(1):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
-ex(2):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
-ex(3):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
-ex(5):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
-ex(8):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
-
-regexp: ab{12,23}c
-tree:   ((ab{12,23})c)
-length: 14 to 25
-ex(0):  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc
-ex(1):  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc
-ex(2):  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc
-ex(3):  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc
-ex(5):  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc
-ex(8):  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc  abbbbbbbbbbbbc
+ex(2):  abbbbc  abbbbc  abbbbbc  abbbbc  abbbbbc  abbbbc  abbbbbc  abbbbbc
+ex(3):  abbbbc  abbbbc  abbbbbbc  abbbbbbc  abbbbc  abbbbc  abbbbc  abbbbbbc
+ex(5):  abbbbc  abbbbbbbbc  abbbbc  abbbbbbbc  abbbbbc  abbbbc  abbbbbc
+ex(8):  abbbbc  abbbbc  abbbbbbbbbbbc  abbbbbbbbc  abbbbbbbbbc  abbbbbbbbc

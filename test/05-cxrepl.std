@@ -1,0 +1,132 @@
+
+# replication in complex situations
+
+regexp: (){3}
+tree:   (){3}
+length: 0 to 0
+ex(0):                                                                        
+ex(1):                                                                        
+ex(2):                                                                        
+ex(3):                                                                        
+ex(5):                                                                        
+ex(8):                                                                        
+
+regexp: (){2,4}
+tree:   (){2,4}
+length: 0 to 0
+ex(0):                                                                        
+ex(1):                                                                        
+ex(2):                                                                        
+ex(3):                                                                        
+ex(5):                                                                        
+ex(8):                                                                        
+
+regexp: (abc){3}
+tree:   ((ab)c){3}
+length: 9 to 9
+ex(0):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
+ex(1):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
+ex(2):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
+ex(3):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
+ex(5):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
+ex(8):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
+
+regexp: (a|b){3}
+tree:   (a|b){3}
+length: 3 to 3
+ex(0):  aab  aba  bba  aab  baa  aba  aab  aaa  baa  aba  bab  aab  aab  aba
+ex(1):  baa  aba  aaa  bab  aaa  abb  aab  bab  bba  aba  bba  bba  aab  aba
+ex(2):  aaa  aaa  baa  bbb  bba  bba  aaa  aab  bbb  aab  baa  abb  bba  bab
+ex(3):  abb  aaa  bbb  bba  bab  baa  aba  aba  baa  aaa  bab  baa  baa  aaa
+ex(5):  abb  bab  aaa  bba  aaa  bab  aaa  aab  aaa  aba  aba  bba  aab  aab
+ex(8):  aaa  aab  abb  baa  aab  abb  abb  bab  bba  baa  aba  aaa  baa  bbb
+
+regexp: (ab|cd){3}
+tree:   ((ab)|(cd)){3}
+length: 6 to 6
+ex(0):  ababcd  abcdab  cdcdab  ababcd  cdabab  abcdab  ababcd  ababab  cdabab
+ex(1):  cdabcd  ababcd  ababcd  abcdab  ababcd  cdabab  abcdab  ababab  cdabcd
+ex(2):  abcdcd  ababcd  cdabcd  cdcdab  abcdab  cdcdab  cdcdab  ababcd  abcdab
+ex(3):  ababab  ababab  cdabab  cdcdcd  cdcdab  cdcdab  ababab  ababcd  cdcdcd
+ex(5):  cdabab  abcdcd  cdcdab  cdabcd  cdabab  abcdcd  ababab  cdcdcd  cdcdab
+ex(8):  cdabab  abcdab  abcdab  cdabab  ababab  cdabcd  cdabab  cdabab  ababab
+
+regexp: (a*){3}
+tree:   a*{3}
+length: 0 to *
+ex(0):                                                                        
+ex(1):  a  a  aa  a  a  a  a    a  a  aa  a  a  a  a  a  a    aa    aa  a  aa
+ex(2):  aaa  aaaa    aaa  aaa  aa  aaaaaa  aa  a  aaaa  aaaa  a  aaaa  a  
+ex(3):  aaaaa  aaaa  aaaa  aaaaaa  aaaaa  aaaa  aaaaaa  aaaaa  aa  aaaaaa
+ex(5):  aaaaaaaaa  aaaaa  aaaaaaaaaaaaa  aaaaaa  aaaa  aaaaaaa  aaaaaaa
+ex(8):  aaaaa  aaaaaaaaaaaa  aaaaaaaaa  aaaaaaaaaa  a  aaaaaaaaaaaa
+
+regexp: (a{3})*
+tree:   a{3}*
+length: 0 to *
+ex(0):                                                                        
+ex(1):      aaa    aaa    aaa  aaa        aaa  aaa        aaa        aaa      
+ex(2):    aaa    aaa  aaa    aaaaaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaa
+ex(3):  aaaaaa  aaaaaaaaa      aaaaaa  aaaaaaaaa  aaaaaaaaa      aaaaaa  aaa
+ex(5):  aaaaaaaaaaaa    aaaaaaaaaaaa  aaa    aaaaaaaaa  aaaaaa  aaaaaa  aaaaaa
+ex(8):  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaa
+
+regexp: (a{3})+
+tree:   a{3}+
+length: 3 to *
+ex(0):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
+ex(1):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
+ex(2):  aaa  aaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaa  aaa  aaa
+ex(3):  aaaaaaaaa  aaa  aaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaa  aaaaaaaaa
+ex(5):  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaaaaa  aaa  aaaaaa  aaaaaaaaa
+ex(8):  aaaaaaaaaaaaaaa  aaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaaaa  aaaaaa
+
+regexp: (a{3})?
+tree:   a{3}?
+length: 0 to 3
+ex(0):                                                                        
+ex(1):      aaa    aaa    aaa  aaa        aaa  aaa        aaa        aaa      
+ex(2):        aaa    aaa    aaa      aaa      aaa    aaa        aaa  aaa      
+ex(3):          aaa    aaa          aaa  aaa      aaa  aaa    aaa  aaa  aaa    
+ex(5):    aaa  aaa    aaa  aaa        aaa    aaa                      aaa    
+ex(8):  aaa  aaa  aaa  aaa    aaa  aaa              aaa  aaa  aaa  aaa      aaa
+
+regexp: (a{3}){2}
+tree:   a{3}{2}
+length: 6 to 6
+ex(0):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
+ex(1):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
+ex(2):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
+ex(3):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
+ex(5):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
+ex(8):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
+
+regexp: (a{3}){1,5}
+tree:   a{3}{1,5}
+length: 3 to 15
+ex(0):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
+ex(1):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
+ex(2):  aaa  aaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaa  aaa  aaa
+ex(3):  aaaaaaaaa  aaa  aaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaa  aaaaaaaaa
+ex(5):  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaaaaa  aaa  aaaaaa  aaaaaaaaa
+ex(8):  aaaaaaaaaaaa  aaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaa
+
+regexp: a{3}b{4}
+tree:   (a{3}b{4})
+length: 7 to 7
+ex(0):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
+ex(1):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
+ex(2):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
+ex(3):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
+ex(5):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
+ex(8):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
+
+regexp: a{3}|b{4}|c{5}
+tree:   (a{3}|b{4}|c{5})
+length: 3 to 5
+ex(0):  aaa  aaa  bbbb  bbbb  ccccc  bbbb  bbbb  ccccc  aaa  aaa  aaa  ccccc
+ex(1):  aaa  aaa  aaa  ccccc  ccccc  bbbb  aaa  ccccc  aaa  ccccc  aaa  ccccc
+ex(2):  bbbb  aaa  bbbb  bbbb  aaa  ccccc  ccccc  bbbb  ccccc  bbbb  ccccc
+ex(3):  ccccc  aaa  bbbb  aaa  aaa  ccccc  bbbb  bbbb  aaa  aaa  aaa  aaa
+ex(5):  bbbb  aaa  bbbb  bbbb  aaa  aaa  ccccc  ccccc  ccccc  aaa  ccccc  aaa
+ex(8):  bbbb  ccccc  bbbb  ccccc  ccccc  bbbb  aaa  aaa  ccccc  aaa  bbbb

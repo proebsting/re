@@ -25,11 +25,11 @@ regexp: [a-z0-9_-]{6,18}$
 tree:   ([-0-9_a-z]{6,18}$)
 length: 7 to 19
 ex(0):  _eg66a$  vfq7x6$  14fnbf$  trlbkp$  3lk3-e$  rg07c7$  1m-3ps$  93uy04$
-ex(1):  bqfmlt$  bnm_8r$  cvp22j$  bj0juk$  -dw6tk$  tq_jys$  _-e1or$  e0ydmd$
-ex(2):  jc-5c6$  5au_3i$  38fton$  yqsurw$  qzd608$  h-0alq$  j3d_7n$  py-qoh$
-ex(3):  imi34e$  vbnab_$  ut_tkj$  eiar-s$  pa97jj$  ixj8ji$  kja7lo$  1v9sjq$
-ex(5):  tj9rx3$  5h-r_a$  i8gze7$  h7n0k_$  7hs_dw$  v865qy$  xj9md1$  s9b0x8$
-ex(8):  z5onztl5$  k6_f66sa$  b7n-jd$  s99ji-9$  -rreoicu$  fkd0bx$  wbg3sa$
+ex(1):  bqfmltwos__2j6n$  jxhio772l42xtpj$  k7sffg54-p48e$  0ryahi-9n$
+ex(2):  nc20nmzqksfy$  zzr-0vhe73xjmdf$  m-ljh0k7u2z$  5566tw3-zuf5$
+ex(3):  khleotd6sy3$  z64b7adta$  s_kvnipw0onogm$  7oa5forv2ofen$
+ex(5):  tgyilazsqx3x$  -66ryp7orfd8$  t4sy4wuit$  qvopv3t1u9$  dlwfrwy23e$
+ex(8):  d_cyk41vuhe_$  58j_ik-ova$  per0aj_pq_c3pf$  n_919yedkdn66$
 
 #
 
@@ -63,11 +63,11 @@ regexp: ([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})
 tree:   (((([-.0-9_a-z]+@)[-.0-9a-z]+).)[.a-z]{2,6})
 length: 6 to *
 ex(0):  _@u.jj  a@x.gp  -@c.ci  c@9.ap  .@s.mp  3@w.bk  e@z.ad  r@d.tf  i@e.ss
-ex(1):  n@l.on  8@8.eq  f@6.ss  g@o.ua  b@5.kq  m@7.tp  h@0.zg  c@b.dz  n@7.to
-ex(2):  4_@8.iu  7@82.fe  e@nv.gs  qg@4.gm  jq@v.bb  f2@80.wb  k@z4.rx  uk@-.jg
-ex(3):  l4o@o.zg  3@2.hv  l@a6.ux  3@tb.awl  s@8xb.o.z  rr@1i-.pu  v@v.fps
-ex(5):  51-@g1wa.tydlf  k@bks.gae  nyy@8.rqka  vx@rf.er  _warz@b6u.enav.
-ex(8):  p8fdk@r66z.xvg  frmvyj@gf5q.evkll  eede6@zs.nfg  1ntae-m1@a48.kzdmsi
+ex(1):  n@l.onaai  e@s.ajth  0@z.gag  .@2.bsjq  t@v.bptdl  l@w.nhbv  k@0.wgyx
+ex(2):  k@u1.eyip  7v@rl.aaqo  f@h5.wgisz  68@t.xmaw  y8@7.ptrjv  k@8.htiru
+ex(3):  l@wh.qbvnld  -@9lp.axzqx  gr@5.dtoe  4ta@vcl.qnw  .w7@h8..ebpwf
+ex(5):  eg1ej@1iipo.urhkcj  5ddox@7v92.adks  dsa5@c3uhj.pbp  i@rst.nyfe
+ex(8):  1whd@uxu.hckt  h0jc.@6.najgd  kcljqu@e52c.dijte  6uju3xb@twa0vand.xhb
 
 # 6. Matching a URL
 
@@ -75,11 +75,11 @@ regexp: (https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?
 tree:   ((((((((((((ht)t)p)s?):)/)/)?[-.0-9a-z]+).)[.a-z]{2,6})[ --9A-Z_a-z]**)/?)
 length: 4 to *
 ex(0):  9.ey  q.je  i.qo  a.ou  i...  w.pc  0.ug  7.kp  w.gy  i.dg  t.dg  c.i.
-ex(1):  s.nt  https://7.jm  http://o.sg  https://m.xvN/  https://f.vqJ  k.am/
-ex(2):  https://7.tpU  http://9c.wn  d.axXBr  dd.mj/  http://29.ua7/
-ex(3):  vro.lvn  http://i7.uz  n3.znt1SRh  http://..aa  https://7.hplg0Ubx
-ex(5):  v.udobrSNoT7/  u.tigdzH5a/  https://off.dof5O6z87  v.senao9e//
-ex(8):  m.uzjiq3RaqelH9VSiY/  t4lzaou.oitEJknZ.r5cQYlXMFrOz0Pc.g
+ex(1):  s.ntqgf/  http://f.nubi/  http://p.gavcpqY/  s.vfk  s.ihi/  f.tmtuc/
+ex(2):  https://g.ccdm/  z.xswhKz/  http://tr.xhive  q.kr/  http://bz.mk.1
+ex(3):  m5e.qdorm9aRn  https://pm.oreyU3  g.bcdr  t.o.sdj/  0tx.zzx/  yw.lzqJ/
+ex(5):  http://bl.usd_MqL6olCVCF_  https://e.dhkcjy  t.fknqdN9/
+ex(8):  http://m.aaalmfb4.nR bEocl6rgOPI7tR/
 
 # 7. Matching an IP Address
 

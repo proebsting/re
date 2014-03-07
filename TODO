@@ -1,7 +1,6 @@
 RX TODO
 
 PRIORITIES:
-Fix {m,n} replication -- need to modify the parse tree
 Produce Dot/Neato output from DFA
 Combine regexs into one DFA, answer "which ones matched?"
 Synthesize examples from combined DFA, possibly by shortest path

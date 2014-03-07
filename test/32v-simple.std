@@ -3,6 +3,7 @@
 
 regexp: C(AC|B)D
 tree:   ((C((AC)|B))D)
+augmnt: (((C((AC)|B))D)#)
 length: 3 to 4
 ex(0):  CACD  CACD  CBD  CACD  CBD  CACD  CBD  CBD  CACD  CACD  CACD  CBD  CBD
 ex(1):  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD
@@ -37,6 +38,7 @@ s4# { p5 }
 
 regexp: (a|b)*abb
 tree:   ((((a|b)*a)b)b)
+augmnt: (((((a|b)*a)b)b)#)
 length: 3 to *
 ex(0):  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb
 ex(1):  abb  abb  aabb  aabb  babb  abb  abb  abb  babb  abb  abb  abb  aabb
@@ -71,6 +73,7 @@ s3# { p0 p1 p2 p5 } [b]:s0 [a]:s1
 
 regexp: gcg(cgg|agg)*ctg
 tree:   ((((((gc)g)(((cg)g)|((ag)g))*)c)t)g)
+augmnt: (((((((gc)g)(((cg)g)|((ag)g))*)c)t)g)#)
 length: 6 to *
 ex(0):  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg
 ex(1):  gcgctg  gcgctg  gcgcggctg  gcgcggctg  gcgaggctg  gcgctg  gcgctg  gcgctg
@@ -132,6 +135,7 @@ s9# { p12 }
 
 regexp: (0|1(01*0)*1)*
 tree:   (0|((1((01*)0)*)1))*
+augmnt: ((0|((1((01*)0)*)1))*#)
 length: 0 to *
 ex(0):                                                                        
 ex(1):      0  0  11      11      0      0      0      0  0  0    0    0  0    
@@ -170,6 +174,7 @@ s2. { p3 p4 } [0]:s1 [1]:s2
 
 regexp: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
 tree:   ((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])
+augmnt: (((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])#)
 length: 3 to 5
 ex(0):  feen  ceem  teed  bood  teen  cood  fed  pood  teet  tot  ceen  toot
 ex(1):  fleed  prid  beem  treen  floon  foot  prud  beed  teet  poon  ceem
