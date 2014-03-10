@@ -46,7 +46,7 @@ func bxparse(s string) (*BitSet, string) {
 				ch = uint(s[0])
 				s = s[1:]
 				for j := cprev; j <= ch; j++ {
-					result.Set(uint(j))
+					result.Set(j)
 				}
 			} else {
 				result.Set(ch)

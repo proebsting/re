@@ -1,7 +1,5 @@
 //  automata.go -- rx automata construction
 
-//#%#% uint16 should be a named type
-
 package rx
 
 import (
@@ -18,9 +16,9 @@ type DFA struct {
 
 // DFAstate is one state in a DFA
 type DFAstate struct {
-	Index int                  // index (label) of this state
-	Posns *BitSet              // set of positions in the state
-	Dnext map[uint16]*DFAstate // transition map
+	Index uint               // index (label) of this state
+	Posns *BitSet            // set of positions in the state
+	Dnext map[uint]*DFAstate // transition map
 }
 
 // n.b. DFAstate uses a BitSet to allow easy equality test on posn sets.
@@ -30,7 +28,7 @@ type DFAstate struct {
 func (dfa *DFA) Accepts(s string) bool {
 	state := dfa.Dstates[0]
 	for _, r := range s {
-		state = state.Dnext[uint16(r)]
+		state = state.Dnext[uint(r)]
 		if state == nil {
 			return false // unmatched char
 		}
@@ -77,14 +75,14 @@ func BuildDFA(tree Node) *DFA {
 	// initialize first unmarked Dstate
 	cs := &BitSet{}
 	for _, p := range tree.Data().FirstPos.Members() {
-		cs.Set(uint(p))
+		cs.Set(p)
 	}
 	dfa.Dstates = append(dfa.Dstates, &DFAstate{0, cs, nil})
 
 	// Process unmarked Dstates until none are left
 	for nmarked := 0; nmarked < len(dfa.Dstates); nmarked++ {
 		d := dfa.Dstates[nmarked] // unmarked Dstate T
-		d.Dnext = make(map[uint16]*DFAstate, 0)
+		d.Dnext = make(map[uint]*DFAstate, 0)
 		plist := d.Posns.Members()      // list of p in T
 		alist := validhere(pmap, plist) // potential a values
 		for _, a := range alist {       // for each input symbol a
@@ -110,14 +108,14 @@ func addstate(dfa *DFA, u *BitSet) *DFAstate {
 		}
 	}
 	// need to make a new one
-	unew := &DFAstate{len(dfa.Dstates), u, nil}
+	unew := &DFAstate{uint(len(dfa.Dstates)), u, nil}
 	dfa.Dstates = append(dfa.Dstates, unew)
 	return unew
 }
 
 //  Followlist returns the union of the csets of all members of plist.
 //  (This gives us fewer potential input symbols a over which to iterate.)
-func validhere(pmap []*MatchNode, plist []uint16) []uint16 {
+func validhere(pmap []*MatchNode, plist []uint) []uint {
 	cs := &BitSet{}
 	for _, p := range plist {
 		cs = cs.Or(pmap[p].Cset)
@@ -127,12 +125,12 @@ func validhere(pmap []*MatchNode, plist []uint16) []uint16 {
 
 //  Followposns returns the set U for a new Dstate: the set of positions
 //  that are in followpos(p) for some p in plist on input symbol a.
-func followposns(pmap []*MatchNode, plist []uint16, a int) *BitSet {
+func followposns(pmap []*MatchNode, plist []uint, a int) *BitSet {
 	posns := &BitSet{}
 	for _, p := range plist {
 		if pmap[p].Cset.Test(uint(a)) {
 			for _, q := range pmap[p].FollowPos.Members() {
-				posns.Set(uint(q))
+				posns.Set(q)
 			}
 		}
 	}
@@ -140,18 +138,18 @@ func followposns(pmap []*MatchNode, plist []uint16, a int) *BitSet {
 }
 
 //  InvertMap returns a list of dest states and a mapping to transition sets
-func (dfa *DFA) InvertMap(d *DFAstate) (*BitSet, map[int]*BitSet) {
+func (dfa *DFA) InvertMap(d *DFAstate) (*BitSet, map[uint]*BitSet) {
 	slist := &BitSet{}
-	xmap := make(map[int]*BitSet)
+	xmap := make(map[uint]*BitSet)
 	for c, d := range d.Dnext {
 		j := d.Index
 		v := xmap[j]
 		if v == nil {
 			v = &BitSet{}
 			xmap[j] = v
-			slist.Set(uint(j))
+			slist.Set(j)
 		}
-		v.Set(uint(c))
+		v.Set(c)
 	}
 	return slist, xmap
 }

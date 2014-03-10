@@ -40,7 +40,7 @@ func main() {
 		slist, xmap := dfa.InvertMap(src)
 		for _, dst := range slist.Members() {
 			fmt.Printf("s%d->s%d[label=\"%s\"]\n",
-				src.Index, dst, xmap[int(dst)].Bracketed())
+				src.Index, dst, xmap[uint(dst)].Bracketed())
 		}
 	}
 	fmt.Println("}")

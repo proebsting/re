@@ -25,15 +25,15 @@ func Compile(rexpr string) (*DFA, error) {
 	if err != nil {
 		return nil, err
 	}
-	atree := Augment(ptree) // make augmented parse tree
-	dfa := BuildDFA(atree)  // build DFA from augmented tree
+	atree := Augment(ptree, 0) // make augmented parse tree
+	dfa := BuildDFA(atree)     // build DFA from augmented tree
 	return dfa, nil
 
 }
 
 //  Augment produces a modified parse tree in preparation for building a DFA.
 //  The original tree is modified in place, and a new root is returned.
-func Augment(tree Node) Node {
+func Augment(tree Node, rxindex uint) Node {
 	Walk(tree, nil, func(d Node) {
 		switch d.(type) {
 		case *ConcatNode:
@@ -55,5 +55,5 @@ func Augment(tree Node) Node {
 		}
 	})
 	tree = replfix(tree) // need to handle top node, too
-	return Concatenate(tree, Accept())
+	return Concatenate(tree, Accept(rxindex))
 }

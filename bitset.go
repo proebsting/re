@@ -130,13 +130,13 @@ func (b BitSet) RandChar() byte {
 }
 
 //  BitSet.Members() returns a slice containing the values found in the set.
-func (b BitSet) Members() []uint16 {
-	m := make([]uint16, 0)
+func (b BitSet) Members() []uint {
+	m := make([]uint, 0)
 	l := b.lowbit()
 	h := b.Bits.BitLen()
 	for i := l; i <= h; i++ { // for all chars up to highest
 		if b.Test(uint(i)) { // if char is included
-			m = append(m, uint16(i))
+			m = append(m, uint(i))
 		}
 	}
 	return m

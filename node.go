@@ -72,19 +72,20 @@ func Walk(tree Node, pre VisitFunc, post VisitFunc) {
 
 //  MatchNode is a leaf node that matches exactly one char from a given set.
 type MatchNode struct {
-	Cset *BitSet // the characters that will match
-	Posn uint    // integer "position" desgnator of leaf
+	Cset    *BitSet // the characters that will match
+	Posn    uint    // integer "position" desgnator of leaf
+	RxIndex uint    // which RE does this Accept node belong to?
 	NodeData
 }
 
 //  MatchAny creates a MatchNode for a given set of characters.
 func MatchAny(cs *BitSet) Node {
-	return &MatchNode{cs, 0, nildata}
+	return &MatchNode{cs, 0, 0, nildata}
 }
 
 //  Accept returns a special MatchNode with an empty cset.
-func Accept() Node {
-	return &MatchNode{&BitSet{}, 0, nildata}
+func Accept(rxindex uint) Node {
+	return &MatchNode{&BitSet{}, 0, 0, nildata}
 }
 
 // IsAccept returns true for an Accept node
@@ -201,7 +202,7 @@ func (d *ConcatNode) SetNFL() {
 func (d *ConcatNode) SetFollow(pmap []*MatchNode) {
 	for _, i := range d.L.Data().LastPos.Members() {
 		for _, f := range d.R.Data().FirstPos.Members() {
-			pmap[i].Data().FollowPos.Set(uint(f))
+			pmap[i].Data().FollowPos.Set(f)
 		}
 	}
 }
@@ -384,7 +385,7 @@ func (d *ReplNode) SetFollow(pmap []*MatchNode) {
 	if d.Max != 1 { // if just 1, self can't follow
 		for _, i := range d.LastPos.Members() {
 			for _, f := range d.FirstPos.Members() {
-				pmap[i].Data().FollowPos.Set(uint(f))
+				pmap[i].Data().FollowPos.Set(f)
 			}
 		}
 	}

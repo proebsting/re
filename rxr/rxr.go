@@ -68,8 +68,8 @@ func main() {
 			continue
 		}
 		fmt.Printf("tree:   %v\n", t)
-		augt := rx.Augment(t) // make augmented tree
-		if !*qflag {          // if -Q not given, print it
+		augt := rx.Augment(t, 0) // make augmented tree
+		if !*qflag {             // if -Q not given, print it
 			fmt.Printf("augmnt: %v\n", augt)
 		}
 
@@ -178,7 +178,7 @@ func showstate(dfa *rx.DFA, d *rx.DFAstate) {
 	// invert the transition map to group input symbols sharing a dest
 	slist, xmap := dfa.InvertMap(d)
 	for _, c := range slist.Members() {
-		fmt.Printf(" %s:s%d", xmap[int(c)].Bracketed(), c)
+		fmt.Printf(" %s:s%d", xmap[c].Bracketed(), c)
 	}
 	fmt.Println()
 }
