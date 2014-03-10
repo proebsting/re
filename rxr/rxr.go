@@ -97,15 +97,8 @@ func main() {
 		if !*qflag { // if -Q not given, print automata
 			// show tree details
 			treenodes(dfa, augt)
-			// show followpos sets
-			for _, m := range dfa.Leaves {
-				fmt.Printf("p%d. %s => {", m.Posn, m)
-				for _, f := range m.FollowPos.Members() {
-					fmt.Print(" ", f)
-				}
-				fmt.Print(" }\n")
-
-			}
+			// dump positions and follow sets
+			dfa.ShowNFA(os.Stdout)
 			// dump DFA
 			dfa.DumpStates(os.Stdout)
 		}

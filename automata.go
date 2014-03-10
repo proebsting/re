@@ -9,6 +9,7 @@ import (
 
 // DFA is a deterministic finite automaton.
 type DFA struct {
+	Tree    Node         // final compiled augmented parse tree
 	Leaves  []*MatchNode // leaves (positions) from parse tree
 	Dstates []*DFAstate  // sets of positions
 }
@@ -59,7 +60,7 @@ func MultiDFA(tlist []Node) *DFA {
 		}
 		tree = Alternate(tree, t)
 	}
-	dfa := &DFA{make([]*MatchNode, 0), make([]*DFAstate, 0)}
+	dfa := &DFA{tree, make([]*MatchNode, 0), make([]*DFAstate, 0)}
 
 	// prepare nodes for followpos computation
 	n := uint(0)
@@ -174,6 +175,14 @@ func (dfa *DFA) InvertMap(ds *DFAstate) (*BitSet, map[uint]*BitSet) {
 		v.Set(c)
 	}
 	return slist, xmap
+}
+
+//  ShowNFA prints the positions and followsets.
+func (dfa *DFA) ShowNFA(f io.Writer) {
+	fmt.Fprintf(f, "begin => %s\n", dfa.Tree.Data().FirstPos)
+	for _, m := range dfa.Leaves {
+		fmt.Fprintf(f, "p%d. %s => %s\n", m.Posn, m, m.FollowPos)
+	}
 }
 
 //  DumpStates prints a readable list of states.

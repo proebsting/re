@@ -10,6 +10,7 @@ ex(3):
 ex(5):                                                                        
 ex(8):                                                                        
 node: {false, #, #} #
+begin => { 0 }
 p0. # => { }
 s0# { p0 }
 
@@ -26,6 +27,7 @@ ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 node: {false, a, #} (a#)
   node: {false, a, a} a
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. # => { }
 s0. { p0 } [a]:s1
@@ -46,6 +48,7 @@ node: {false, a, #} ((ab)#)
     node: {false, a, a} a
     node: {false, b, b} b
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. # => { }
@@ -70,6 +73,7 @@ node: {false, a, #} (((ab)c)#)
       node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. c => { 3 }
@@ -97,6 +101,7 @@ node: {false, a, #} (((ab*)c)#)
         node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 2 }
 p1. b => { 1 2 }
 p2. c => { 3 }
@@ -120,6 +125,7 @@ node: {false, ab, #} ((a|b)#)
     node: {false, a, a} a
     node: {false, b, b} b
   node: {false, #, #} #
+begin => { 0 1 }
 p0. a => { 2 }
 p1. b => { 2 }
 p2. # => { }
@@ -143,6 +149,7 @@ node: {false, abcd, #} ((a|b|c|d)#)
     node: {false, c, c} c
     node: {false, d, d} d
   node: {false, #, #} #
+begin => { 0 1 2 3 }
 p0. a => { 4 }
 p1. b => { 4 }
 p2. c => { 4 }
@@ -170,6 +177,7 @@ node: {false, ac, #} (((ab)|(cd))#)
       node: {false, c, c} c
       node: {false, d, d} d
   node: {false, #, #} #
+begin => { 0 2 }
 p0. a => { 1 }
 p1. b => { 4 }
 p2. c => { 3 }
@@ -201,6 +209,7 @@ node: {false, ad, #} ((((ab)c)|(de))#)
       node: {false, d, d} d
       node: {false, e, e} e
   node: {false, #, #} #
+begin => { 0 3 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. c => { 5 }
@@ -236,6 +245,7 @@ node: {false, abd#, #} ((()|a|(bc)|((de)f))#)
         node: {false, e, e} e
       node: {false, f, f} f
   node: {false, #, #} #
+begin => { 0 1 3 6 }
 p0. a => { 6 }
 p1. b => { 2 }
 p2. c => { 6 }
@@ -260,6 +270,7 @@ ex(3):
 ex(5):                                                                        
 ex(8):                                                                        
 node: {false, #, #} #
+begin => { 0 }
 p0. # => { }
 s0# { p0 }
 
@@ -276,6 +287,7 @@ ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 node: {false, a, #} (a#)
   node: {false, a, a} a
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. # => { }
 s0. { p0 } [a]:s1
@@ -296,6 +308,7 @@ node: {false, a, #} ((ab)#)
     node: {false, a, a} a
     node: {false, b, b} b
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. # => { }
@@ -319,6 +332,7 @@ node: {false, a, #} ((ab*)#)
     node: {true, b, b} b*
       node: {false, b, b} b
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 2 }
 p1. b => { 1 2 }
 p2. # => { }
@@ -341,6 +355,7 @@ node: {false, a#, #} ((ab)*#)
       node: {false, a, a} a
       node: {false, b, b} b
   node: {false, #, #} #
+begin => { 0 2 }
 p0. a => { 1 }
 p1. b => { 0 2 }
 p2. # => { }
@@ -362,6 +377,7 @@ node: {false, ab, #} ((a|b)#)
     node: {false, a, a} a
     node: {false, b, b} b
   node: {false, #, #} #
+begin => { 0 1 }
 p0. a => { 2 }
 p1. b => { 2 }
 p2. # => { }
@@ -384,6 +400,7 @@ node: {false, ab#, #} ((a|b)*#)
       node: {false, a, a} a
       node: {false, b, b} b
   node: {false, #, #} #
+begin => { 0 1 2 }
 p0. a => { 0 1 2 }
 p1. b => { 0 1 2 }
 p2. # => { }
@@ -408,6 +425,7 @@ node: {false, A, #} (((AB)(()|()))#)
       node: {true, , } ()
       node: {true, , } ()
   node: {false, #, #} #
+begin => { 0 }
 p0. A => { 1 }
 p1. B => { 2 }
 p2. # => { }
@@ -432,6 +450,7 @@ node: {false, C, #} ((C(()|()))#)
       node: {true, , } ()
       node: {true, , } ()
   node: {false, #, #} #
+begin => { 0 }
 p0. C => { 1 }
 p1. # => { }
 s0. { p0 } [C]:s1
@@ -454,6 +473,7 @@ node: {false, C, #} ((C(A|B))#)
       node: {false, A, A} A
       node: {false, B, B} B
   node: {false, #, #} #
+begin => { 0 }
 p0. C => { 1 2 }
 p1. A => { 3 }
 p2. B => { 3 }
@@ -483,6 +503,7 @@ node: {false, C, #} (((C((AC)|B))D)#)
         node: {false, B, B} B
     node: {false, D, D} D
   node: {false, #, #} #
+begin => { 0 }
 p0. C => { 1 3 }
 p1. A => { 2 }
 p2. C => { 4 }

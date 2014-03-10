@@ -16,6 +16,7 @@ node: {false, a, #} ((ac)#)
     node: {false, a, a} a
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. c => { 2 }
 p2. # => { }
@@ -40,6 +41,7 @@ node: {false, a, #} (((ab)c)#)
       node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. c => { 3 }
@@ -68,6 +70,7 @@ node: {false, a, #} (((a(bb))c)#)
         node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 3 }
@@ -100,6 +103,7 @@ node: {false, a, #} (((a((bb)b))c)#)
         node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 3 }
@@ -136,6 +140,7 @@ node: {false, a, #} (((a(((bb)b)b))c)#)
         node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 3 }
@@ -166,6 +171,7 @@ node: {false, a, #} ((ac)#)
     node: {false, a, a} a
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. c => { 2 }
 p2. # => { }
@@ -191,6 +197,7 @@ node: {false, a, #} (((ab?)c)#)
         node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 2 }
 p1. b => { 2 }
 p2. c => { 3 }
@@ -217,6 +224,7 @@ node: {false, a, #} (((ab)c)#)
       node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. c => { 3 }
@@ -247,6 +255,7 @@ node: {false, a, #} (((a(b?b?))c)#)
           node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 2 3 }
 p1. b => { 2 3 }
 p2. b => { 3 }
@@ -278,6 +287,7 @@ node: {false, a, #} (((a(bb?))c)#)
           node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 3 }
 p2. b => { 3 }
@@ -308,6 +318,7 @@ node: {false, a, #} (((a(bb))c)#)
         node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 3 }
@@ -343,6 +354,7 @@ node: {false, a, #} (((a((b?b?)b?))c)#)
           node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 2 3 4 }
 p1. b => { 2 3 4 }
 p2. b => { 3 4 }
@@ -379,6 +391,7 @@ node: {false, a, #} (((a((bb?)b?))c)#)
           node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 3 4 }
 p2. b => { 3 4 }
@@ -414,6 +427,7 @@ node: {false, a, #} (((a((bb)b?))c)#)
           node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 3 4 }
@@ -448,6 +462,7 @@ node: {false, a, #} (((a((bb)b))c)#)
         node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 3 }
@@ -489,6 +504,7 @@ node: {false, a, #} (((a((((bb)b?)b?)b?))c)#)
           node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 3 4 5 6 }
@@ -524,6 +540,7 @@ node: {false, a, #} (((ab*)c)#)
         node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 2 }
 p1. b => { 1 2 }
 p2. c => { 3 }
@@ -550,6 +567,7 @@ node: {false, a, #} (((ab+)c)#)
         node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 1 2 }
 p2. c => { 3 }
@@ -579,6 +597,7 @@ node: {false, a, #} (((a(bb+))c)#)
           node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 2 3 }
@@ -612,6 +631,7 @@ node: {false, a, #} (((a((bb)b+))c)#)
           node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 3 }
@@ -649,6 +669,7 @@ node: {false, a, #} (((a(((bb)b)b+))c)#)
           node: {false, b, b} b
     node: {false, c, c} c
   node: {false, #, #} #
+begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 3 }
