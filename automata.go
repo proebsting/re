@@ -4,9 +4,8 @@ package rx
 
 import (
 	"fmt"
+	"io"
 )
-
-var _ = fmt.Printf //#%#%#% for debugging
 
 // DFA is a deterministic finite automaton.
 type DFA struct {
@@ -43,12 +42,23 @@ func (ds *DFAstate) AcceptBy() *BitSet {
 //  BuildDFA constructs an automaton from an augmented parse tree.
 //  Data fields are set in the parse tree but its structure is not changed.
 func BuildDFA(tree Node) *DFA {
+	return MultiDFA(append(make([]Node, 0, 1), tree))
+}
 
-	// make sure that we have an *Augmented* tree
-	if !IsAccept(tree) && !IsAccept(tree.(*ConcatNode).R) {
-		panic("not an augmented parse tree")
+//  MultiDFA constructs an automoton for parallel checking of augmented trees.
+func MultiDFA(tlist []Node) *DFA {
+	if len(tlist) == 0 {
+		panic("empty parse tree list")
 	}
 
+	// make a supertree considering all input trees as alternatives
+	tree := Node(nil)
+	for _, t := range tlist {
+		if !IsAccept(t) && !IsAccept(t.(*ConcatNode).R) {
+			panic("not an augmented parse tree")
+		}
+		tree = Alternate(tree, t)
+	}
 	dfa := &DFA{make([]*MatchNode, 0), make([]*DFAstate, 0)}
 
 	// prepare nodes for followpos computation
@@ -164,4 +174,30 @@ func (dfa *DFA) InvertMap(ds *DFAstate) (*BitSet, map[uint]*BitSet) {
 		v.Set(c)
 	}
 	return slist, xmap
+}
+
+//  DumpStates prints a readable list of states.
+func (dfa *DFA) DumpStates(f io.Writer) {
+	for _, ds := range dfa.Dstates {
+
+		// print index with "Accept" flag
+		if ds.AcceptBy() != nil {
+			fmt.Fprintf(f, "s%d# {", ds.Index)
+		} else {
+			fmt.Fprintf(f, "s%d. {", ds.Index)
+		}
+
+		// print position set
+		for _, j := range ds.Posns.Members() {
+			fmt.Fprintf(f, " p%d", j)
+		}
+		fmt.Fprint(f, " }")
+
+		// invert the transition map to group input symbols by dest
+		slist, xmap := dfa.InvertMap(ds)
+		for _, c := range slist.Members() {
+			fmt.Fprintf(f, " %s:s%d", xmap[c].Bracketed(), c)
+		}
+		fmt.Fprintln(f)
+	}
 }

@@ -21,7 +21,8 @@ import (
 type tester struct { // one regular expression for testing
 	label string  // one-character label
 	spec  string  // regular expression specification
-	dfa   *rx.DFA // compiled autonoma
+	tree  rx.Node // unaugmented parse tree
+	index int     // result index
 }
 
 func main() {
@@ -38,32 +39,39 @@ func main() {
 
 	// load and compile regexps
 	fmt.Println()
+	tlist := make([]rx.Node, 0) // list of valid parse trees
 	for i := 0; efile.Scan(); i++ {
 		if i >= len(labels) {
 			log.Fatal("too many regular expressions")
 		}
 		label := string(labels[i : i+1])
 		spec := efile.Text()
-		dfa, _ := rx.Compile(spec)
-		re := tester{label, spec, dfa}
-		if dfa == nil {
+		ptree, err := rx.Parse(spec)
+		elist = append(elist, tester{label, spec, ptree, len(tlist)})
+		if err != nil {
 			fmt.Printf("ERR %s\n", spec)
 		} else {
 			fmt.Printf("%s:  %s\n", label, spec)
+			atree := rx.Augment(ptree, uint(len(tlist)))
+			tlist = append(tlist, atree)
 		}
-		elist = append(elist, re)
 	}
 	rx.CkErr(efile.Err())
+	dfa := rx.MultiDFA(tlist)
 
 	// read and test candidate strings
 	fmt.Println()
 	for sfile.Scan() {
 		s := string(sfile.Bytes())
+		results := dfa.Accepts(s)
+		if results == nil {
+			results = &rx.BitSet{}
+		}
 		for _, e := range elist {
-			if e.dfa == nil {
+			if e.tree == nil {
 				fmt.Print(" ")
 			} else {
-				if e.dfa.Accepts(s) != nil {
+				if results.Test(uint(e.index)) {
 					fmt.Print(e.label)
 				} else {
 					fmt.Print("-")

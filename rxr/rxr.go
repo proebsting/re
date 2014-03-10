@@ -35,6 +35,7 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
+	"os"
 	"rx"
 	"time"
 )
@@ -106,9 +107,7 @@ func main() {
 
 			}
 			// dump DFA
-			for _, ds := range dfa.Dstates {
-				showstate(dfa, ds)
-			}
+			dfa.DumpStates(os.Stdout)
 		}
 	}
 	rx.CkErr(efile.Err())
@@ -157,28 +156,4 @@ func treenodes(dfa *rx.DFA, tree rx.Node) {
 	}, func(d rx.Node) {
 		indent = indent[2:]
 	})
-}
-
-//  Showstate prints the contents of one DFA state.
-func showstate(dfa *rx.DFA, ds *rx.DFAstate) {
-
-	// print index with "Accept" flag
-	if ds.AcceptBy() != nil {
-		fmt.Printf("s%d# {", ds.Index)
-	} else {
-		fmt.Printf("s%d. {", ds.Index)
-	}
-
-	// print position set
-	for _, j := range ds.Posns.Members() {
-		fmt.Printf(" p%d", j)
-	}
-	fmt.Print(" }")
-
-	// invert the transition map to group input symbols sharing a dest
-	slist, xmap := dfa.InvertMap(ds)
-	for _, c := range slist.Members() {
-		fmt.Printf(" %s:s%d", xmap[c].Bracketed(), c)
-	}
-	fmt.Println()
 }

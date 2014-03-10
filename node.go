@@ -85,7 +85,7 @@ func MatchAny(cs *BitSet) Node {
 
 //  Accept returns a special MatchNode with an empty cset.
 func Accept(rxindex uint) Node {
-	return &MatchNode{&BitSet{}, 0, 0, nildata}
+	return &MatchNode{&BitSet{}, 0, rxindex, nildata}
 }
 
 // IsAccept returns true for an Accept node
@@ -316,6 +316,11 @@ func (d *AltNode) String() string {
 
 //  Alternate makes an AltNode, collapsing multiple alternatives.
 func Alternate(d Node, e Node) Node {
+	// if left is nil (not Epsilon), just return right
+	// (this makes certain loops easier)
+	if d == nil {
+		return e
+	}
 	// if right is non-Epsilon AltNode, and left is not, combine
 	altd, okd := d.(*AltNode)
 	alte, oke := e.(*AltNode)
