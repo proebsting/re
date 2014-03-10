@@ -6,6 +6,13 @@ GOBIN = $$GOPATH/bin
 
 default: build test expt
 
+fmt:
+	go fmt *.go
+	go fmt rxd/rxd.go
+	go fmt rxq/rxq.go
+	go fmt rxr/rxr.go
+	go fmt rxx/rxx.go
+
 build:
 	go install $(PROGS)
 

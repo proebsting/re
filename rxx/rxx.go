@@ -63,7 +63,7 @@ func main() {
 			if e.dfa == nil {
 				fmt.Print(" ")
 			} else {
-				if e.dfa.Accepts(s) {
+				if e.dfa.Accepts(s) != nil {
 					fmt.Print(e.label)
 				} else {
 					fmt.Print("-")

@@ -34,7 +34,7 @@ func main() {
 	fmt.Println("node [shape=circle, height=.3, margin=0, fontsize=10]")
 	fmt.Println("s0 [shape=triangle, regular=true]")
 	for _, src := range dfa.Dstates {
-		if dfa.AcceptBy(src) {
+		if src.AcceptBy() != nil {
 			fmt.Printf("s%d[shape=doublecircle]\n", src.Index)
 		}
 		slist, xmap := dfa.InvertMap(src)

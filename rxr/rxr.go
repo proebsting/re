@@ -99,15 +99,15 @@ func main() {
 			// show followpos sets
 			for _, m := range dfa.Leaves {
 				fmt.Printf("p%d. %s => {", m.Posn, m)
-				for _, d := range m.FollowPos.Members() {
-					fmt.Print(" ", d)
+				for _, f := range m.FollowPos.Members() {
+					fmt.Print(" ", f)
 				}
 				fmt.Print(" }\n")
 
 			}
 			// dump DFA
-			for _, d := range dfa.Dstates {
-				showstate(dfa, d)
+			for _, ds := range dfa.Dstates {
+				showstate(dfa, ds)
 			}
 		}
 	}
@@ -130,7 +130,7 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 			break
 		}
 		fmt.Printf("  %s", t)
-		if !dfa.Accepts(s) {
+		if dfa.Accepts(s) == nil {
 			fmt.Print(" [FAIL]")
 			ncolm += 7
 		}
@@ -160,23 +160,23 @@ func treenodes(dfa *rx.DFA, tree rx.Node) {
 }
 
 //  Showstate prints the contents of one DFA state.
-func showstate(dfa *rx.DFA, d *rx.DFAstate) {
+func showstate(dfa *rx.DFA, ds *rx.DFAstate) {
 
 	// print index with "Accept" flag
-	if dfa.AcceptBy(d) {
-		fmt.Printf("s%d# {", d.Index)
+	if ds.AcceptBy() != nil {
+		fmt.Printf("s%d# {", ds.Index)
 	} else {
-		fmt.Printf("s%d. {", d.Index)
+		fmt.Printf("s%d. {", ds.Index)
 	}
 
 	// print position set
-	for _, j := range d.Posns.Members() {
+	for _, j := range ds.Posns.Members() {
 		fmt.Printf(" p%d", j)
 	}
 	fmt.Print(" }")
 
 	// invert the transition map to group input symbols sharing a dest
-	slist, xmap := dfa.InvertMap(d)
+	slist, xmap := dfa.InvertMap(ds)
 	for _, c := range slist.Members() {
 		fmt.Printf(" %s:s%d", xmap[c].Bracketed(), c)
 	}

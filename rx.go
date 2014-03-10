@@ -15,7 +15,7 @@ func Match(rexpr string, s string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	return dfa.Accepts(s), nil
+	return (dfa.Accepts(s) != nil), nil
 }
 
 //  Compile makes a DFA from a regular expression.

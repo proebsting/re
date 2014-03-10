@@ -38,7 +38,7 @@ func main() {
 	// load and process candidate strings
 	for i := 0; ifile.Scan(); i++ {
 		s := ifile.Text()
-		if dfa.Accepts(s) {
+		if dfa.Accepts(s) != nil {
 			fmt.Println("accept:", s)
 		} else {
 			fmt.Println("REJECT:", s)
