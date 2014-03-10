@@ -11,11 +11,9 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"rx"
-	"strconv"
 )
 
 func main() {
@@ -27,21 +25,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Println("//", spec)
-	fmt.Println("digraph DFA {")
-	fmt.Printf("label=%s\n", strconv.Quote(spec))
-	fmt.Println("node [shape=circle, height=.3, margin=0, fontsize=10]")
-	fmt.Println("s0 [shape=triangle, regular=true]")
-	for _, src := range dfa.Dstates {
-		if src.AcceptBy() != nil {
-			fmt.Printf("s%d[shape=doublecircle]\n", src.Index)
-		}
-		slist, xmap := dfa.InvertMap(src)
-		for _, dst := range slist.Members() {
-			fmt.Printf("s%d->s%d[label=\"%s\"]\n",
-				src.Index, dst, xmap[uint(dst)].Bracketed())
-		}
-	}
-	fmt.Println("}")
+	dfa.ToDot(os.Stdout, spec)
 }
