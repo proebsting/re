@@ -7,6 +7,8 @@
 	from efile.  It then tests every line from sfile against each
 	regular expression, printing a grid of results on standard output.
 
+	In either input file, a line beginning with '#' is a comment.
+
 	Spring-2014 / gmt
 */
 package main
@@ -40,20 +42,31 @@ func main() {
 	// load and compile regexps
 	fmt.Println()
 	tlist := make([]rx.Node, 0) // list of valid parse trees
-	for i := 0; efile.Scan(); i++ {
-		if i >= len(labels) {
-			log.Fatal("too many regular expressions")
-		}
-		label := string(labels[i : i+1])
+	for efile.Scan() {
 		spec := efile.Text()
-		ptree, err := rx.Parse(spec)
-		elist = append(elist, tester{label, spec, ptree, len(tlist)})
+		var ptree rx.Node
+		var err error
+		if rx.IsComment(spec) {
+			ptree, err = nil, nil
+		} else {
+			ptree, err = rx.Parse(spec)
+		}
 		if err != nil {
 			fmt.Printf("ERR %s\n", spec)
+			elist = append(elist, tester{" ", spec, nil, 0})
+		} else if ptree == nil {
+			fmt.Printf("    %s\n", spec)
+			elist = append(elist, tester{" ", spec, nil, 0})
 		} else {
+			i := len(tlist)
+			if i >= len(labels) {
+				log.Fatal("too many regular expressions")
+			}
+			label := string(labels[i : i+1])
 			fmt.Printf("%s:  %s\n", label, spec)
 			atree := rx.Augment(ptree, uint(len(tlist)))
 			tlist = append(tlist, atree)
+			elist = append(elist, tester{label, spec, ptree, i})
 		}
 	}
 	rx.CkErr(efile.Err())

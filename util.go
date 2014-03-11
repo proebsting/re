@@ -42,3 +42,8 @@ func CkErr(e error) { // abort if e is not nil
 		log.Fatal(e)
 	}
 }
+
+//  IsComment returns true if a line begins with '#'.
+func IsComment(s string) bool {
+	return len(s) > 0 && s[0] == '#'
+}

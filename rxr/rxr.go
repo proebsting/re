@@ -58,7 +58,7 @@ func main() {
 	for i := 0; efile.Scan(); i++ {
 		fmt.Println()
 		spec := efile.Text()
-		if len(spec) > 0 && spec[0] == '#' { // if comment, not RE
+		if rx.IsComment(spec) { // if comment, not RE
 			fmt.Println(spec)
 			continue
 		}
