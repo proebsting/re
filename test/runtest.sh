@@ -40,7 +40,7 @@ for F in $*; do
 	.rxx)
 	    $BIN/rxx $I ${I%.rxx}.rcx >$F.out;;
 	.rxd)
-	    $BIN/rxd `cat $I` >$F.out;;
+	    $BIN/rxd <$I >$F.out;;
 	.*)
 	    echo 1>&2 "unrecognized extension: $I"
 	    FAILED="$FAILED $I"

@@ -1,7 +1,6 @@
 RX TODO
 
 PRIORITIES:
-Combine regexs into one DFA, answer "which ones matched?"
 Synthesize examples from combined DFA, possibly by shortest path
 
 REGEXPS:

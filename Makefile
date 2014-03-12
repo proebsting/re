@@ -19,6 +19,11 @@ build:
 test:	build
 	cd test; $(MAKE)
 
+demo:	
+	rxd '(a|b)*abb' 'b(ab)*a' >tmp.dot
+	dot -Tgif tmp.dot >tmp.gif
+	display tmp.gif
+
 #  if expt.rx exists, run with rxr after standard build and test
 expt:
 	test -f expt.rx && $(GOBIN)/rxr expt.rx || :
