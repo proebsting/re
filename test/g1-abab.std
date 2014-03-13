@@ -1,5 +1,8 @@
-0. (a|b)*abb
-1. b(ab)*a
-
-4 { 1 } ba 
-6 { 0 } abb 
+[
+{"Index":0,"Rexpr":"(a|b)*abb"},
+{"Index":1,"Rexpr":"b(ab)*a"}
+]
+[
+{"State":4,"RXset":[1],"Example":"ba"},
+{"State":6,"RXset":[0],"Example":"abb"}
+]

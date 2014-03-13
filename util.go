@@ -4,8 +4,12 @@ package rx
 
 import (
 	"bufio"
+	"encoding/json"
+	"fmt"
+	"io"
 	"log"
 	"os"
+	"reflect"
 	"strconv"
 )
 
@@ -46,4 +50,25 @@ func CkErr(e error) { // abort if e is not nil
 //  IsComment returns true if a line begins with '#'.
 func IsComment(s string) bool {
 	return len(s) > 0 && s[0] == '#'
+}
+
+// Jlist writes a slice to a file in JSON format, one entry per line
+func Jlist(f io.Writer, slc interface{}) {
+	switch reflect.TypeOf(slc).Kind() {
+	case reflect.Slice:
+		a := reflect.ValueOf(slc)
+		n := a.Len()
+		fmt.Fprintln(f, "[")
+		for i := 0; i < n; i++ {
+			json, err := json.Marshal(a.Index(i).Interface())
+			CkErr(err)
+			if i < n-1 {
+				json = append(json, ',')
+			}
+			fmt.Fprintf(f, "%s\n", string(json))
+		}
+		fmt.Fprintln(f, "]")
+	default:
+		panic("Jlist: unimplemented type")
+	}
 }

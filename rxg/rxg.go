@@ -9,26 +9,27 @@
 	-R	produce reproducible output by using a fixed seed
 
 	Input is one unadorned regular expression per line.
-
-	Output consists of the numbered input expressions followed by the
-	generated examples, with the sections separated by an empty line.
-	Each example is preceded by the state number and contents of the
-	set of regular expressions that accept the generated string.
+	Output is two arrays in JSON format.  The first array lists
+	the regular expressions with input numbers. The second lists
+	examples with state numbers and sets of regular expressions.
 
 	Example:
 	For the input
 		\d+
 		\d*[1-9]
 		[1-9]\d*
-	the output is something like:
-		0. \d+
-		1. \d*[1-9]
-		2. [1-9]\d*
-
-		1 { 0 } 0
-		3 { 0 1 2 } 5
-		2 { 0 1 } 08
-		2 { 0 2 } 30
+	the output is:
+	[
+	{"Index":0,"Rexpr":"\\d+"},
+	{"Index":1,"Rexpr":"\\d*[1-9]"},
+	{"Index":2,"Rexpr":"[1-9]\\d*"}
+	]
+	[
+	{"State":1,"RXset":[0],"Example":"0"},
+	{"State":2,"RXset":[0,1,2],"Example":"7"},
+	{"State":3,"RXset":[0,1],"Example":"02"},
+	{"State":4,"RXset":[0,2],"Example":"70"}
+	]
 
 	Spring-2014 / gmt
 */
@@ -37,12 +38,27 @@ package main
 import (
 	"bufio"
 	"flag"
-	"fmt"
 	"log"
 	"math/rand"
+	"os"
 	"rx"
 	"time"
 )
+
+type Partial struct { // a partially built example
+	ds   *rx.DFAstate // DFA state pointer
+	path string       // how we got here
+}
+
+type RegEx struct { // one rx for JSON output
+	Index int    // index number
+	Rexpr string // regular expression
+}
+type Result struct { // one example for JSON output
+	State   uint   // state number
+	RXset   []uint // set of matching regular expressions
+	Example string // example string
+}
 
 func main() {
 
@@ -64,33 +80,34 @@ func main() {
 	}
 
 	// load and process regexps
-	elist := make([]string, 0)
+	exprs := make([]RegEx, 0)
 	tlist := make([]rx.Node, 0)
 	for efile.Scan() {
 		line := efile.Text()
-		fmt.Printf("%d. %s\n", len(elist), line)
-		elist = append(elist, line)
+		exprs = append(exprs, RegEx{len(exprs), line})
 		ptree, err := rx.Parse(line)
 		rx.CkErr(err)
 		tlist = append(tlist, rx.Augment(ptree, uint(len(tlist))))
 	}
 	rx.CkErr(efile.Err())
 
+	// echo the input with index numbers
+	rx.Jlist(os.Stdout, exprs)
+
 	// build the DFA
 	dfa := rx.MultiDFA(tlist)
-	fmt.Println()
 
-	// initialize task list
-	curr := Partial{dfa.Dstates[0], ""} // current partial example
-	todo := make([]Partial, 0)          // list of things to do
-	todo = append(todo, curr)
+	// initialize the task list
+	todo := make([]Partial, 0) // list of things to do
+	todo = append(todo, Partial{dfa.Dstates[0], ""})
 
 	// process states in breadth-first fashion
+	results := make([]Result, 0)
 	for len(todo) > 0 { // while to-do list non-empty
-		curr = todo[0] // consume one entry
-		todo = todo[1:]
+		curr := todo[0]
+		todo = todo[1:] // consume one entry
 		ds := curr.ds
-		if ds.Marked {
+		if ds.Marked { // if we've already been here
 			continue
 		}
 		ds.Marked = true // mark this state as visited
@@ -99,8 +116,8 @@ func main() {
 		if ds.AccSet != nil {
 			//#%#% re-follow path with different random chars?
 			//#%#% would this variety be better, or worse?
-			fmt.Printf("%d %s %s \n",
-				ds.Index, ds.AccSet, curr.path)
+			results = append(results, Result{
+				ds.Index, ds.AccSet.Members(), curr.path})
 		}
 
 		// add all unmarked nodes reachable in one more step
@@ -116,9 +133,7 @@ func main() {
 			}
 		}
 	}
-}
 
-type Partial struct {
-	ds   *rx.DFAstate // dfa state
-	path string       // how we got here
+	// output the array of synthesized examples
+	rx.Jlist(os.Stdout, results)
 }

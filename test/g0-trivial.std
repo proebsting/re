@@ -1,3 +1,6 @@
-0. ab*c
-
-2 { 0 } ac 
+[
+{"Index":0,"Rexpr":"ab*c"}
+]
+[
+{"State":2,"RXset":[0],"Example":"ac"}
+]
