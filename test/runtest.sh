@@ -4,10 +4,11 @@
 #
 #  The utility tested is determined by the input extension found.
 #	.rx or .rxr -- run "rxr -Q -R"
-#	.rxv -- run "rxr -R"
+#	.rxd -- run "rxd `<basename.rxd`"
+#	.rxg -- run "rxg -R basename.rxg"
 #	.rxq -- run "rxq pattern", using first line as the query pattern
 #	.rxx -- run "rxx basename.rxx basename.rcx"
-#	.rxd -- run "rxd `<basename.rxd`"
+#	.rxv -- run "rxr -R"
 
 BIN=$GOPATH/bin
 
@@ -32,15 +33,17 @@ for F in $*; do
 	    continue;;
 	.rx|.rxr)
 	    $BIN/rxr -Q -R $I >$F.out;;
-	.rxv)
-	    $BIN/rxr -R $I >$F.out;;
+	.rxd)
+	    $BIN/rxd <$I >$F.out;;
+	.rxg)
+	    $BIN/rxg -R $I >$F.out;;
 	.rxq)
 	    REXPR=`sed 1q $I`
 	    cat $I | sed 1d | rxq "$REXPR" - >$F.out;;
 	.rxx)
 	    $BIN/rxx $I ${I%.rxx}.rcx >$F.out;;
-	.rxd)
-	    $BIN/rxd <$I >$F.out;;
+	.rxv)
+	    $BIN/rxr -R $I >$F.out;;
 	.*)
 	    echo 1>&2 "unrecognized extension: $I"
 	    FAILED="$FAILED $I"

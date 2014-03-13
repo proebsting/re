@@ -1,7 +1,7 @@
 RX TODO
 
 PRIORITIES:
-Synthesize examples from combined DFA, possibly by shortest path
+Make rxg output JSON format
 
 REGEXPS:
 Implement \037 \x3F \uxxxx \cX
@@ -20,12 +20,13 @@ Add more examples from the real world
 Add Go-style unit tests?
 
 UTILITIES:
+Add rxd option to generate and display GIF image
 More options to control rxr output
 Add headings and spacing to rxr output?
 
 CLEANUP:
+Chg dfa.InvertMap(ds) to ds.InvertMap()
 Repackage to impl rx.Illus(re)
 Fix #%#% items
 More consistency in use of pointers vs struct values
-Which funcs really should be capitalized? 
 General code cleanup

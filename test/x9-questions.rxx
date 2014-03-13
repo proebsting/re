@@ -51,11 +51,11 @@
 # Visa card including old 13-digit form
 4\d{12}(\d\d\d)?
 # MasterCard
-5[1-5]\d{14} 
+5[1-5]\d{14}
 # American Express
 3[47]\d{13}
 # Discover Card
-6(011|5\d\d)\d{12}   
+6(011|5\d\d)\d{12}
 # Credit card number of correct length for issuer
 3\d{14}|[456]\d{15}
 #

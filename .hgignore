@@ -3,3 +3,5 @@ syntax:glob
 .git
 .nfs*
 *.out
+tmp.*
+dotx

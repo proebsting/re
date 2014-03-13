@@ -18,6 +18,7 @@ type DFA struct {
 // DFAstate is one state in a DFA
 type DFAstate struct {
 	Index  uint               // index (label) of this state
+	Marked bool               // true if node is "marked" by library user
 	Posns  *BitSet            // set of positions in the state
 	AccSet *BitSet            // set of regexs that accept here, or nil
 	Dnext  map[uint]*DFAstate // transition map
@@ -88,7 +89,7 @@ func MultiDFA(tlist []Node) *DFA {
 	for _, p := range tree.Data().FirstPos.Members() {
 		cs.Set(p)
 	}
-	dfa.Dstates = append(dfa.Dstates, &DFAstate{0, cs, nil, nil})
+	dfa.Dstates = append(dfa.Dstates, &DFAstate{Index: 0, Posns: cs})
 
 	// Process unmarked Dstates until none are left
 	for nmarked := 0; nmarked < len(dfa.Dstates); nmarked++ {
@@ -132,7 +133,7 @@ func addstate(dfa *DFA, u *BitSet) *DFAstate {
 		}
 	}
 	// need to make a new one
-	unew := &DFAstate{uint(len(dfa.Dstates)), u, nil, nil}
+	unew := &DFAstate{Index: uint(len(dfa.Dstates)), Posns: u}
 	dfa.Dstates = append(dfa.Dstates, unew)
 	return unew
 }
@@ -161,7 +162,8 @@ func followposns(pmap []*MatchNode, plist []uint, a int) *BitSet {
 	return posns
 }
 
-//  InvertMap returns a list of dest states and a mapping to transition sets
+//  InvertMap returns a list of dest states and a mapping to transition sets.
+//  The list duplicates the map indexes but is more easily traversed in order.
 func (dfa *DFA) InvertMap(ds *DFAstate) (*BitSet, map[uint]*BitSet) {
 	slist := &BitSet{}
 	xmap := make(map[uint]*BitSet)
@@ -178,7 +180,7 @@ func (dfa *DFA) InvertMap(ds *DFAstate) (*BitSet, map[uint]*BitSet) {
 	return slist, xmap
 }
 
-//  ShowNFA prints the positions and followsets.
+//  DFA.ShowNFA prints the positions and followsets.
 func (dfa *DFA) ShowNFA(f io.Writer) {
 	fmt.Fprintf(f, "begin => %s\n", dfa.Tree.Data().FirstPos)
 	for _, m := range dfa.Leaves {
@@ -186,7 +188,7 @@ func (dfa *DFA) ShowNFA(f io.Writer) {
 	}
 }
 
-//  DumpStates prints a readable list of states.
+//  DFA.DumpStates prints a readable list of states.
 func (dfa *DFA) DumpStates(f io.Writer) {
 	for _, ds := range dfa.Dstates {
 
@@ -212,7 +214,7 @@ func (dfa *DFA) DumpStates(f io.Writer) {
 	}
 }
 
-//  ToDot generates a Dot (GraphViz) representation of the DFA.
+//  DFA.ToDot generates a Dot (GraphViz) representation of the DFA.
 func (dfa *DFA) ToDot(f io.Writer, label string) {
 	fmt.Fprintln(f, "//", label)
 	fmt.Fprintln(f, "digraph DFA {")

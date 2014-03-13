@@ -2,3 +2,5 @@
 .hg
 .nfs*
 *.out
+tmp.*
+dotx
