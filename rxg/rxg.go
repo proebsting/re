@@ -19,17 +19,17 @@
 		\d*[1-9]
 		[1-9]\d*
 	the output is:
-	[
-	{"Index":0,"Rexpr":"\\d+"},
-	{"Index":1,"Rexpr":"\\d*[1-9]"},
-	{"Index":2,"Rexpr":"[1-9]\\d*"}
-	]
-	[
-	{"State":1,"RXset":[0],"Example":"0"},
-	{"State":2,"RXset":[0,1,2],"Example":"7"},
-	{"State":3,"RXset":[0,1],"Example":"02"},
-	{"State":4,"RXset":[0,2],"Example":"70"}
-	]
+		[
+		{"Index":0,"Rexpr":"\\d+"},
+		{"Index":1,"Rexpr":"\\d*[1-9]"},
+		{"Index":2,"Rexpr":"[1-9]\\d*"}
+		]
+		[
+		{"State":1,"RXset":[0],"Example":"0"},
+		{"State":2,"RXset":[0,1,2],"Example":"7"},
+		{"State":3,"RXset":[0,1],"Example":"02"},
+		{"State":4,"RXset":[0,2],"Example":"70"}
+		]
 
 	Spring-2014 / gmt
 */
