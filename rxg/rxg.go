@@ -19,17 +19,17 @@
 		\d*[1-9]
 		[1-9]\d*
 	the output is:
-		[
+		{"Expressions":[
 		{"Index":0,"Rexpr":"\\d+"},
 		{"Index":1,"Rexpr":"\\d*[1-9]"},
 		{"Index":2,"Rexpr":"[1-9]\\d*"}
-		]
-		[
+		],
+		"Examples":[
 		{"State":1,"RXset":[0],"Example":"0"},
 		{"State":2,"RXset":[0,1,2],"Example":"7"},
 		{"State":3,"RXset":[0,1],"Example":"02"},
 		{"State":4,"RXset":[0,2],"Example":"70"}
-		]
+		]}
 
 	Spring-2014 / gmt
 */
@@ -38,6 +38,7 @@ package main
 import (
 	"bufio"
 	"flag"
+	"fmt"
 	"log"
 	"math/rand"
 	"os"
@@ -92,7 +93,9 @@ func main() {
 	rx.CkErr(efile.Err())
 
 	// echo the input with index numbers
+	fmt.Print(`{"Expressions":`)
 	rx.Jlist(os.Stdout, exprs)
+	fmt.Println(",")
 
 	// build the DFA
 	dfa := rx.MultiDFA(tlist)
@@ -135,5 +138,7 @@ func main() {
 	}
 
 	// output the array of synthesized examples
+	fmt.Print(`"Examples":`)
 	rx.Jlist(os.Stdout, results)
+	fmt.Println("}")
 }

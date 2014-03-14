@@ -52,7 +52,8 @@ func IsComment(s string) bool {
 	return len(s) > 0 && s[0] == '#'
 }
 
-// Jlist writes a slice to a file in JSON format, one entry per line
+// Jlist writes a slice to a file in JSON format, one entry per line.
+// No newline is written at the end.
 func Jlist(f io.Writer, slc interface{}) {
 	switch reflect.TypeOf(slc).Kind() {
 	case reflect.Slice:
@@ -67,7 +68,7 @@ func Jlist(f io.Writer, slc interface{}) {
 			}
 			fmt.Fprintf(f, "%s\n", string(json))
 		}
-		fmt.Fprintln(f, "]")
+		fmt.Fprint(f, "]")
 	default:
 		panic("Jlist: unimplemented type")
 	}

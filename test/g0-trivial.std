@@ -1,6 +1,6 @@
-[
+{"Expressions":[
 {"Index":0,"Rexpr":"ab*c"}
-]
-[
+],
+"Examples":[
 {"State":2,"RXset":[0],"Example":"ac"}
-]
+]}

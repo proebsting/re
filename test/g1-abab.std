@@ -1,8 +1,8 @@
-[
+{"Expressions":[
 {"Index":0,"Rexpr":"(a|b)*abb"},
 {"Index":1,"Rexpr":"b(ab)*a"}
-]
-[
+],
+"Examples":[
 {"State":4,"RXset":[1],"Example":"ba"},
 {"State":6,"RXset":[0],"Example":"abb"}
-]
+]}

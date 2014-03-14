@@ -1,9 +1,9 @@
-[
+{"Expressions":[
 {"Index":0,"Rexpr":"\\d*\\.\\d+|\\d+\\.\\d*"},
 {"Index":1,"Rexpr":"[+-]?(\\d+\\.\\d*|\\.\\d+)([dDeE][+-]?\\d\\d?\\d?)?"},
 {"Index":2,"Rexpr":"[+-]?(((\\d+\\.\\d*|\\.\\d+)([eE][+-]?\\d+)?)|(\\d+[eE][+-]?\\d+))[fFlL]?"}
-]
-[
+],
+"Examples":[
 {"State":6,"RXset":[0,1,2],"Example":".0"},
 {"State":7,"RXset":[0,1,2],"Example":"1."},
 {"State":9,"RXset":[1,2],"Example":"+.0"},
@@ -17,4 +17,4 @@
 {"State":22,"RXset":[1],"Example":".0D684"},
 {"State":23,"RXset":[1,2],"Example":".0e305"},
 {"State":24,"RXset":[2],"Example":".0e3050"}
-]
+]}
