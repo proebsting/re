@@ -1,6 +1,6 @@
 # things to try to distinguish via "20 questions"
 # some of these are deliberately incomplete, imprecise, or even incorrect
-#
+
 # unsigned integer
 \d+
 # integer not (ending in!) 0
@@ -11,19 +11,19 @@
 [+-]?\d+
 # canonical integer form (-i or i, no +, or 0)
 0|-?[1-9]\d*
-#
+
 # number with decimal point
 \d*\.\d+|\d+\.\d*
 # FORTRAN floating point constant
 [+-]?(\d+\.\d*|\.\d+)([dDeE][+-]?\d\d?\d?)?
 # C floating point constant
 [+-]?(((\d+\.\d*|\.\d+)([eE][+-]?\d+)?)|(\d+[eE][+-]?\d+))[fFlL]?
-#
+
 # US Zip Code
 \d{5}
 \d{5}(-\d{4})?
 \d{5}-\d{4}
-#
+
 # US Phone Number
 \d{7}|\d{10}
 \d{10}
@@ -34,13 +34,13 @@
 \+1 \d\d\d \d\d\d \d\d\d\d
 \+1-\d\d\d-\d\d\d-\d\d\d\d
 \+1\.\d\d\d\.\d\d\d\.\d\d\d\d
-#
+
 #  US Social Security Number
 \d{9}
 \d\d\d-\d\d-\d\d\d\d
 \d\d\d-(\d[1-9]|[1-9]\d)-\d\d\d\d
 ([0-6]\d{2}|7([0-6]\d|7[012]))-\d\d-\d\d\d\d
-#
+
 # some from: http://www.regular-expressions.info/creditcard.html
 # 16-digit credit card number
 \d{16}
@@ -58,7 +58,7 @@
 6(011|5\d\d)\d{12}
 # Credit card number of correct length for issuer
 3\d{14}|[456]\d{15}
-#
+
 # time
 \d{6}
 [0-2][0-9][0-5][0-9][0-5][0-9]
@@ -66,7 +66,7 @@
 [0-2][0-9]:[0-5][0-9](:[0-5][0-9])?
 ([01]\d|2[0-3]):[0-5][0-9](:[0-5][0-9])?
 (0?\d|1[0-2]):[0-5][0-9](:[0-5][0-9])?
-#
+
 # date yyyymmdd
 \d{8}
 [12][90]\d\d[01][0-9][012][0-9]
@@ -83,7 +83,7 @@
 (0[1-9]|[12]\d|3[01])(0[1-9]|1[012])(19|20)\d\d
 (0[1-9]|[12]\d|3[01])/(0[1-9]|1[012])/(19|20)\d\d
 (0?[1-9]|[12]\d|3[01])/(0?[1-9]|1[012])/(19|20)?\d\d
-#
+
 # email (simplified)
 \w+@\w+\.\w+
 \w+@\w+(\.\w+)+
@@ -92,7 +92,7 @@
 # from RegExLib 356 & 1012
 (\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})
 ([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}
-#
+
 # web (simplified)
 www\.[a-z]{3,}\.(com|edu|net|gov|mil|co\.uk)(/.*)?
 www\.[a-z]{3,}+\.[a-z]{1,3}(/.*)?

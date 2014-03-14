@@ -7,7 +7,7 @@
 	from efile.  It then tests every line from sfile against each
 	regular expression, printing a grid of results on standard output.
 
-	In either input file, a line beginning with '#' is a comment.
+	A line beginning with '#', or an empty line, is treated as a comment.
 
 	Spring-2014 / gmt
 */

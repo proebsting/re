@@ -17,7 +17,7 @@
 		- the states of the resulting DFA with transitions
 
 	Regular expressions are read one per line from exprfile.
-	A line beginning with '#' is treated as a comment.
+	A line beginning with '#', or an empty line, is treated as a comment.
 
 	The output is informative but not rigorous.  Ambiguities may arise
 	if pattern metacharacters are used as ordinary matching characters.

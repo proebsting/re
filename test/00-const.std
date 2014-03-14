@@ -1,7 +1,7 @@
 
 # constant regexps including the empty one
 
-regexp: 
+regexp: ()
 tree:   ()
 length: 0 to 0
 ex(0):                                                                        

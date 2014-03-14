@@ -7,8 +7,8 @@
 	and generates Dot (Graphviz) directives for displaying the graph.
 
 	If no expressions are given as command arguments, rxd reads
-	expressions from standard input, one per line, with '#'
-	indicating a comment line.
+	expressions from standard input, one per line.
+	A line beginning with '#', or an empty line, is treated as a comment.
 
 	Spring-2014 / gmt
 */

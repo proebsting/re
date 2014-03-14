@@ -9,7 +9,7 @@
 	-R	produce reproducible output by using a fixed seed
 
 	Input is one unadorned regular expression per line.
-	A line beginning with '#' is treated as a comment.
+	A line beginning with '#', or an empty line, is treated as a comment.
 
 	Output is two arrays in JSON format.  The first array lists
 	the regular expressions with input numbers. The second lists

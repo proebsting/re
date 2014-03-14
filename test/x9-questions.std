@@ -1,7 +1,7 @@
 
     # things to try to distinguish via "20 questions"
     # some of these are deliberately incomplete, imprecise, or even incorrect
-    #
+    
     # unsigned integer
 1:  \d+
     # integer not (ending in!) 0
@@ -12,19 +12,19 @@
 4:  [+-]?\d+
     # canonical integer form (-i or i, no +, or 0)
 5:  0|-?[1-9]\d*
-    #
+    
     # number with decimal point
 6:  \d*\.\d+|\d+\.\d*
     # FORTRAN floating point constant
 7:  [+-]?(\d+\.\d*|\.\d+)([dDeE][+-]?\d\d?\d?)?
     # C floating point constant
 8:  [+-]?(((\d+\.\d*|\.\d+)([eE][+-]?\d+)?)|(\d+[eE][+-]?\d+))[fFlL]?
-    #
+    
     # US Zip Code
 9:  \d{5}
 A:  \d{5}(-\d{4})?
 B:  \d{5}-\d{4}
-    #
+    
     # US Phone Number
 C:  \d{7}|\d{10}
 D:  \d{10}
@@ -35,13 +35,13 @@ H:  ([2-9]\d\d-|\([2-9]\d\d\) ?)\d\d\d-\d\d\d\d
 I:  \+1 \d\d\d \d\d\d \d\d\d\d
 J:  \+1-\d\d\d-\d\d\d-\d\d\d\d
 K:  \+1\.\d\d\d\.\d\d\d\.\d\d\d\d
-    #
+    
     #  US Social Security Number
 L:  \d{9}
 M:  \d\d\d-\d\d-\d\d\d\d
 N:  \d\d\d-(\d[1-9]|[1-9]\d)-\d\d\d\d
 O:  ([0-6]\d{2}|7([0-6]\d|7[012]))-\d\d-\d\d\d\d
-    #
+    
     # some from: http://www.regular-expressions.info/creditcard.html
     # 16-digit credit card number
 P:  \d{16}
@@ -59,7 +59,7 @@ U:  3[47]\d{13}
 V:  6(011|5\d\d)\d{12}
     # Credit card number of correct length for issuer
 W:  3\d{14}|[456]\d{15}
-    #
+    
     # time
 X:  \d{6}
 Y:  [0-2][0-9][0-5][0-9][0-5][0-9]
@@ -67,7 +67,7 @@ Z:  ([01]\d|2[0-3])[0-5][0-9][0-5][0-9]
 a:  [0-2][0-9]:[0-5][0-9](:[0-5][0-9])?
 b:  ([01]\d|2[0-3]):[0-5][0-9](:[0-5][0-9])?
 c:  (0?\d|1[0-2]):[0-5][0-9](:[0-5][0-9])?
-    #
+    
     # date yyyymmdd
 d:  \d{8}
 e:  [12][90]\d\d[01][0-9][012][0-9]
@@ -84,7 +84,7 @@ m:  (0?[1-9]|1[012])/(0?[1-9]|[12]\d|3[01])/((19|20)?\d\d)
 n:  (0[1-9]|[12]\d|3[01])(0[1-9]|1[012])(19|20)\d\d
 o:  (0[1-9]|[12]\d|3[01])/(0[1-9]|1[012])/(19|20)\d\d
 p:  (0?[1-9]|[12]\d|3[01])/(0?[1-9]|1[012])/(19|20)?\d\d
-    #
+    
     # email (simplified)
 q:  \w+@\w+\.\w+
 r:  \w+@\w+(\.\w+)+
@@ -93,7 +93,7 @@ t:  \w[-.'\w]*@\w+(\.\w+)+
     # from RegExLib 356 & 1012
 u:  (\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})
 v:  ([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}
-    #
+    
     # web (simplified)
 w:  www\.[a-z]{3,}\.(com|edu|net|gov|mil|co\.uk)(/.*)?
 x:  www\.[a-z]{3,}+\.[a-z]{1,3}(/.*)?

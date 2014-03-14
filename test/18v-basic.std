@@ -1,19 +1,4 @@
 
-regexp: 
-tree:   ()
-augmnt: #
-length: 0 to 0
-ex(0):                                                                        
-ex(1):                                                                        
-ex(2):                                                                        
-ex(3):                                                                        
-ex(5):                                                                        
-ex(8):                                                                        
-node: {false, #, #} #
-begin => { 0 }
-p0. # => { }
-s0# { p0 }
-
 regexp: a
 tree:   a
 augmnt: (a#)

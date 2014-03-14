@@ -81,13 +81,3 @@ ex(2):  //wHMsays:$  //\t wHm \tsays :5=  whMsays\t:q  //\twhMsays\t\t:T6
 ex(3):  //\tWhm\tsays\t :w)  // Whm\t\t\tsays  :#  WHM\t \tsays\t\t :tW
 ex(5):  //\t\twhm  \t \tsays\t  :@]1|D  wHm\t\tsays\t\t  :a
 ex(8):  whM\tsays\t   \t :1  // \t\t\t\t\t WHm \t  \t \tsays   \t   :|C'zb*Y.
-
-regexp: 
-tree:   ()
-length: 0 to 0
-ex(0):                                                                        
-ex(1):                                                                        
-ex(2):                                                                        
-ex(3):                                                                        
-ex(5):                                                                        
-ex(8):                                                                        

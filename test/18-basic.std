@@ -1,14 +1,4 @@
 
-regexp: 
-tree:   ()
-length: 0 to 0
-ex(0):                                                                        
-ex(1):                                                                        
-ex(2):                                                                        
-ex(3):                                                                        
-ex(5):                                                                        
-ex(8):                                                                        
-
 regexp: a
 tree:   a
 length: 1 to 1

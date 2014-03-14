@@ -1,5 +1,5 @@
 # constant regexps including the empty one
-
+()
 a
 bc
 def

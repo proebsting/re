@@ -47,9 +47,9 @@ func CkErr(e error) { // abort if e is not nil
 	}
 }
 
-//  IsComment returns true if a line begins with '#'.
+//  IsComment returns true if a line begins with '#' or is empty.
 func IsComment(s string) bool {
-	return len(s) > 0 && s[0] == '#'
+	return len(s) == 0 || s[0] == '#'
 }
 
 // Jlist writes a slice to a file in JSON format, one entry per line.
