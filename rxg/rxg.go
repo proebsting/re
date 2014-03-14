@@ -9,6 +9,8 @@
 	-R	produce reproducible output by using a fixed seed
 
 	Input is one unadorned regular expression per line.
+	A line beginning with '#' is treated as a comment.
+
 	Output is two arrays in JSON format.  The first array lists
 	the regular expressions with input numbers. The second lists
 	examples with state numbers and sets of regular expressions.
@@ -85,6 +87,9 @@ func main() {
 	tlist := make([]rx.Node, 0)
 	for efile.Scan() {
 		line := efile.Text()
+		if rx.IsComment(line) {
+			continue
+		}
 		exprs = append(exprs, RegEx{len(exprs), line})
 		ptree, err := rx.Parse(line)
 		rx.CkErr(err)
