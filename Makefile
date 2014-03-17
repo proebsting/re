@@ -29,6 +29,7 @@ demo:
 	display tmp.pdf
 
 #  partial build and test (list not complete)
+rxd:	.FORCE; go install ${PKG}/rxd && cd test && runtest.sh *.rxd
 rxg:	.FORCE; go install ${PKG}/rxg && cd test && runtest.sh *.rxg
 .FORCE:
 

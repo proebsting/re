@@ -1,7 +1,6 @@
 RX TODO
 
 PRIORITIES:
-Make rxg output JSON format
 
 REGEXPS:
 Implement \037 \x3F \uxxxx \cX
@@ -20,9 +19,9 @@ Add more examples from the real world
 Add Go-style unit tests?
 
 UTILITIES:
-Add rxd option to generate and display GIF image
 More options to control rxr output
 Add headings and spacing to rxr output?
+Combine multiple utilities into one (Swiss army knife)?
 
 CLEANUP:
 Chg dfa.InvertMap(ds) to ds.InvertMap()
