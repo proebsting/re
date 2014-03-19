@@ -37,7 +37,7 @@ func (dfa *DFA) Accepts(s string) *BitSet {
 	return state.AcceptBy() // end of string; in accept state?
 }
 
-//  DFA.AcceptBy returns a set of regexs that accept at this node, or nil.
+//  DFAstate.AcceptBy returns a set of regexs that accept at this node, or nil.
 func (ds *DFAstate) AcceptBy() *BitSet {
 	return ds.AccSet
 }
@@ -162,9 +162,9 @@ func followposns(pmap []*MatchNode, plist []uint, a int) *BitSet {
 	return posns
 }
 
-//  InvertMap returns a list of dest states and a mapping to transition sets.
+//  DFAstate.InvertMap lists dest states and maps to transition sets.
 //  The list duplicates the map indexes but is more easily traversed in order.
-func (dfa *DFA) InvertMap(ds *DFAstate) (*BitSet, map[uint]*BitSet) {
+func (ds *DFAstate) InvertMap() (*BitSet, map[uint]*BitSet) {
 	slist := &BitSet{}
 	xmap := make(map[uint]*BitSet)
 	for c, ds := range ds.Dnext {
@@ -206,7 +206,7 @@ func (dfa *DFA) DumpStates(f io.Writer) {
 		fmt.Fprint(f, " }")
 
 		// invert the transition map to group input symbols by dest
-		slist, xmap := dfa.InvertMap(ds)
+		slist, xmap := ds.InvertMap()
 		for _, c := range slist.Members() {
 			fmt.Fprintf(f, " %s:s%d", xmap[c].Bracketed(), c)
 		}
@@ -225,7 +225,7 @@ func (dfa *DFA) ToDot(f io.Writer, label string) {
 		if src.AcceptBy() != nil {
 			fmt.Fprintf(f, "s%d[shape=doublecircle]\n", src.Index)
 		}
-		slist, xmap := dfa.InvertMap(src)
+		slist, xmap := src.InvertMap()
 		for _, dst := range slist.Members() {
 			fmt.Fprintf(f, "s%d->s%d[label=\"%s\"]\n",
 				src.Index, dst, xmap[uint(dst)].Bracketed())

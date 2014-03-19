@@ -24,7 +24,6 @@ Add headings and spacing to rxr output?
 Combine multiple utilities into one (Swiss army knife)?
 
 CLEANUP:
-Chg dfa.InvertMap(ds) to ds.InvertMap()
 Repackage to impl rx.Illus(re)
 Fix #%#% items
 More consistency in use of pointers vs struct values

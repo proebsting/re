@@ -129,7 +129,7 @@ func main() {
 		}
 
 		// add all unmarked nodes reachable in one more step
-		slist, xmap := dfa.InvertMap(curr.ds)
+		slist, xmap := curr.ds.InvertMap()
 		alist := slist.Members()
 		//%#%#% permute the list here for greater variation
 		for _, arc := range alist {
