@@ -10,13 +10,8 @@ Add POSIX classes??
 Add flags such as "case insensitive"?
 Other Perl stuff?
 
-AUTONOMA:
-Optimize the DFA?
-
-TESTING:
-Expand test collection
-Add more examples from the real world
-Add Go-style unit tests?
+AUTOMATA:
+Optimize the DFA
 
 UTILITIES:
 More options to control rxr output

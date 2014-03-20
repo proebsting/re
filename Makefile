@@ -21,6 +21,7 @@ build:
 	go install $(PROGS)
 
 test:	build
+	go test
 	cd test; $(MAKE)
 
 demo:	
