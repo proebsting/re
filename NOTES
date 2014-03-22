@@ -1,0 +1,25 @@
+Some notes about the RX code
+[ 22-Mar-2014 / gmt ]
+
+This file is a dumping place for random thoughts to help understand
+and navigate the code.  See also the TODO file, which is an even more
+cryptic collection of half-baked thoughts about future directions.
+
+
+PACKAGE ORGANIZATION
+The main package rx is for "library" type routines.
+Subpackages rxr, rxd, etc implement command-level programs.
+Most of the significant code should go in the library.
+The programs should just provide an interface to the library.
+(This rule is not entirely followed yet, e.g. rxd.) 
+
+Library source files are perhaps too big and may get reorganized.
+Programs are proliferating and I'm thinking about combining them.
+
+VISIBILITY
+[Recall: Capitalized symbols are exported from a package.]
+Not everything capitalized should be considered an external "feature".
+Some things are exported for access by debugging printfs in commands.
+Parse tree node fields must all be exportable to be "gobbable".
+Consequently, nearly everything is now exported.  This is not ideal.
+
