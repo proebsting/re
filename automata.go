@@ -9,19 +9,35 @@ import (
 )
 
 // DFA is a deterministic finite automaton.
+// The first entry in Dstates is the start state.
 type DFA struct {
-	Tree    Node         // final compiled augmented parse tree
-	Leaves  []*MatchNode // leaves (positions) from parse tree
-	Dstates []*DFAstate  // sets of positions
+	Tree     Node         // final compiled augmented parse tree
+	Leaves   []*MatchNode // leaves (positions) from parse tree
+	Dstates  []*DFAstate  // sets of positions
+	PartList []*Partition // partition list during minimization
+}
+
+// newDFA makes a new, empty DFA
+func newDFA(tree Node) *DFA {
+	return &DFA{tree, make([]*MatchNode, 0), make([]*DFAstate, 0), nil}
 }
 
 // DFAstate is one state in a DFA
 type DFAstate struct {
-	Index  uint               // index (label) of this state
-	Marked bool               // true if node is "marked" by library user
-	Posns  *BitSet            // set of positions in the state
-	AccSet *BitSet            // set of regexs that accept here, or nil
-	Dnext  map[uint]*DFAstate // transition map
+	Index   uint               // index (label) of this state
+	Marked  bool               // true when "marked" during traversal
+	Posns   *BitSet            // set of positions in the state
+	AccSet  *BitSet            // set of regexs that accept here, or nil
+	Dnext   map[uint]*DFAstate // transition map
+	PartNum uint               // partition number during minimization
+}
+
+//  DFA.newState makes a new DFAstate and adds it to a DFA.
+func (dfa *DFA) newState() *DFAstate {
+	ds := &DFAstate{uint(len(dfa.Dstates)), false, &BitSet{}, nil,
+		make(map[uint]*DFAstate, 0), 0}
+	dfa.Dstates = append(dfa.Dstates, ds)
+	return ds
 }
 
 //  DFA.Accepts returns the set of regexs that accept this string, or nil.
@@ -62,7 +78,7 @@ func MultiDFA(tlist []Node) *DFA {
 		}
 		tree = Alternate(tree, t)
 	}
-	dfa := &DFA{tree, make([]*MatchNode, 0), make([]*DFAstate, 0)}
+	dfa := newDFA(tree)
 
 	// prepare nodes for followpos computation
 	n := uint(0)
@@ -85,13 +101,12 @@ func MultiDFA(tlist []Node) *DFA {
 	// compute DFA; see Dragon2 book p141
 
 	// initialize first unmarked Dstate
-	cs := &BitSet{}
+	ds := dfa.newState()
 	for _, p := range tree.Data().FirstPos.Members() {
-		cs.Set(p)
+		ds.Posns.Set(p)
 	}
-	dfa.Dstates = append(dfa.Dstates, &DFAstate{Index: 0, Posns: cs})
 
-	// Process unmarked Dstates until none are left
+	// process unmarked Dstates until none are left
 	for nmarked := 0; nmarked < len(dfa.Dstates); nmarked++ {
 		ds := dfa.Dstates[nmarked] // unmarked Dstate T
 		ds.Dnext = make(map[uint]*DFAstate, 0)
@@ -191,6 +206,8 @@ func (dfa *DFA) ShowNFA(f io.Writer) {
 //  DFA.DumpStates prints a readable list of states.
 func (dfa *DFA) DumpStates(f io.Writer) {
 	for _, ds := range dfa.Dstates {
+		// print partition index
+		//#%#% fmt.Fprintf(f, "[%d] ", ds.PartNum)
 
 		// print index with "Accept" flag
 		if ds.AcceptBy() != nil {

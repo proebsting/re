@@ -1,10 +1,13 @@
 /*
 	rxd.go -- regular expression to Dot
 
-	usage:  rxd [-v] ["rexpr"...]
+	usage:  rxd [-u] [-v] ["rexpr"...]
 
 	Rxd builds a DFA that accepts one or more regular expressions
 	and generates Dot (Graphviz) directives for displaying the graph.
+
+	If -u is given, the unoptimized DFA is drawn.
+	Otherwise, the minimized DFA is drawn.
 
 	If -v is given, the output is written to a temporary file, drawn
 	as a GIF file, and the default viewer is invoked.  For this to work,
@@ -31,7 +34,8 @@ import (
 
 func main() {
 
-	vflag := flag.Bool("v", false, "view PDF graph")
+	uflag := flag.Bool("u", false, "draw unoptimized DFA")
+	vflag := flag.Bool("v", false, "open in viewer")
 	flag.Parse()
 
 	// build a list of regular espressions
@@ -60,6 +64,10 @@ func main() {
 
 	// build the DFA
 	dfa := rx.MultiDFA(tlist)
+	if !*uflag {
+		dfa = dfa.Minimize()
+	}
+
 	// generate Dot output
 	var label string
 	if len(tlist) > 1 {
@@ -94,5 +102,8 @@ func display(dfa *rx.DFA, label string) {
 		err = exec.Command("xdg-open", gifname).Run()
 	}
 	rx.CkErr(err)
-	os.Remove(gifname)
+	// #%#% DISABLED: os.Remove(gifname)
+	// We don't remove the temp file because we don't know when it's safe.
+	// It's expecially problematic when multiple views are open at once.
+	// It would be nice to find a solution for this.
 }

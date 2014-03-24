@@ -34,6 +34,12 @@ s1. { p1 p3 } [A]:s2 [B]:s3
 s2. { p2 } [C]:s3
 s3. { p4 } [D]:s4
 s4# { p5 }
+--[minimizing]--
+s0. { p0 } [C]:s3
+s1# { p5 }
+s2. { p4 } [D]:s1
+s3. { p1 p3 } [B]:s2 [A]:s4
+s4. { p2 } [C]:s2
 
 # Dragon2: automata example
 
@@ -70,6 +76,11 @@ s0. { p0 p1 p2 } [b]:s0 [a]:s1
 s1. { p0 p1 p2 p3 } [a]:s1 [b]:s2
 s2. { p0 p1 p2 p4 } [a]:s1 [b]:s3
 s3# { p0 p1 p2 p5 } [b]:s0 [a]:s1
+--[minimizing]--
+s0. { p0 p1 p2 } [b]:s0 [a]:s3
+s1# { p0 p1 p2 p5 } [b]:s0 [a]:s3
+s2. { p0 p1 p2 p4 } [b]:s1 [a]:s3
+s3. { p0 p1 p2 p3 } [b]:s2 [a]:s3
 
 # Sedgewick: genome marker
 
@@ -133,6 +144,15 @@ s6. { p8 } [g]:s3
 s7. { p5 } [g]:s3
 s8. { p11 } [g]:s9
 s9# { p12 }
+--[minimizing]--
+s0. { p0 } [g]:s6
+s1# { p12 }
+s2. { p11 } [g]:s1
+s3. { p4 p10 } [t]:s2 [g]:s5
+s4. { p3 p6 p9 } [c]:s3 [a]:s7
+s5. { p2 p5 p8 } [g]:s4
+s6. { p1 } [c]:s5
+s7. { p7 } [g]:s5
 
 # Sedgewick: multiples of 3, in binary
 
@@ -170,6 +190,10 @@ p3. 1 => { 3 4 }
 p4. 0 => { 2 5 }
 p5. 1 => { 0 1 6 }
 p6. # => { }
+s0# { p0 p1 p6 } [0]:s0 [1]:s1
+s1. { p2 p5 } [1]:s0 [0]:s2
+s2. { p3 p4 } [0]:s1 [1]:s2
+--[minimizing]--
 s0# { p0 p1 p6 } [0]:s0 [1]:s1
 s1. { p2 p5 } [1]:s0 [0]:s2
 s2. { p3 p4 } [0]:s1 [1]:s2
@@ -220,3 +244,208 @@ s3. { p6 p7 } [e]:s2 [dmnt]:s6
 s4. { p2 p3 p5 } [aiu]:s2 [e]:s3 [o]:s5
 s5. { p4 p7 } [o]:s2 [dmnt]:s6
 s6# { p8 }
+--[minimizing]--
+s0. { p0 } [bcfpt]:s3
+s1# { p8 }
+s2. { p7 } [dmnt]:s1
+s3. { p1 p2 p3 p5 } [aiu]:s2 [e]:s4 [o]:s5 [lr]:s6
+s4. { p6 p7 } [dmnt]:s1 [e]:s2
+s5. { p4 p7 } [dmnt]:s1 [o]:s2
+s6. { p2 p3 p5 } [aiu]:s2 [e]:s4 [o]:s5
+
+regexp: W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
+tree:   ((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))
+augmnt: (((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))#)
+length: 7 to 10
+ex(0):  Whitilford  Whitamgard  Walamman  Winamdale  Wenselby  Watarford
+ex(1):  Winisbot  Whitilgard  Watalson  Wensorgard  Westerby  Winalby
+ex(2):  Watolbot  Wensilhold  Westenman  Westosbot  Whitolson  Winangard
+ex(3):  Watengard  Watendale  Winilbot  Whitexby  Walilford  Westembot
+ex(5):  Watolgard  Whitilman  Westirbot  Walosson  Wininson  Walenford
+ex(8):  Westimhold  Walelby  Westexson  Westinson  Wensimbot  Westaxford
+node: {false, W, #} (((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))#)
+  node: {false, W, dyetnndd} ((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))
+    node: {false, W, [lmnrsx]} (((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])
+      node: {false, W, [aeio]} ((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])
+        node: {false, W, tstntl} (W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))
+          node: {false, W, W} W
+          node: {false, heaiea, tstntl} (((hi)t)|((en)s)|(at)|(in)|((es)t)|(al))
+            node: {false, h, t} ((hi)t)
+              node: {false, h, i} (hi)
+                node: {false, h, h} h
+                node: {false, i, i} i
+              node: {false, t, t} t
+            node: {false, e, s} ((en)s)
+              node: {false, e, n} (en)
+                node: {false, e, e} e
+                node: {false, n, n} n
+              node: {false, s, s} s
+            node: {false, a, t} (at)
+              node: {false, a, a} a
+              node: {false, t, t} t
+            node: {false, i, n} (in)
+              node: {false, i, i} i
+              node: {false, n, n} n
+            node: {false, e, t} ((es)t)
+              node: {false, e, s} (es)
+                node: {false, e, e} e
+                node: {false, s, s} s
+              node: {false, t, t} t
+            node: {false, a, l} (al)
+              node: {false, a, a} a
+              node: {false, l, l} l
+        node: {false, [aeio], [aeio]} [aeio]
+      node: {false, [lmnrsx], [lmnrsx]} [lmnrsx]
+    node: {false, fbdbmsgh, dyetnndd} ((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d))
+      node: {false, f, d} (((fo)r)d)
+        node: {false, f, r} ((fo)r)
+          node: {false, f, o} (fo)
+            node: {false, f, f} f
+            node: {false, o, o} o
+          node: {false, r, r} r
+        node: {false, d, d} d
+      node: {false, b, y} (by)
+        node: {false, b, b} b
+        node: {false, y, y} y
+      node: {false, d, e} (((da)l)e)
+        node: {false, d, l} ((da)l)
+          node: {false, d, a} (da)
+            node: {false, d, d} d
+            node: {false, a, a} a
+          node: {false, l, l} l
+        node: {false, e, e} e
+      node: {false, b, t} ((bo)t)
+        node: {false, b, o} (bo)
+          node: {false, b, b} b
+          node: {false, o, o} o
+        node: {false, t, t} t
+      node: {false, m, n} ((ma)n)
+        node: {false, m, a} (ma)
+          node: {false, m, m} m
+          node: {false, a, a} a
+        node: {false, n, n} n
+      node: {false, s, n} ((so)n)
+        node: {false, s, o} (so)
+          node: {false, s, s} s
+          node: {false, o, o} o
+        node: {false, n, n} n
+      node: {false, g, d} (((ga)r)d)
+        node: {false, g, r} ((ga)r)
+          node: {false, g, a} (ga)
+            node: {false, g, g} g
+            node: {false, a, a} a
+          node: {false, r, r} r
+        node: {false, d, d} d
+      node: {false, h, d} (((ho)l)d)
+        node: {false, h, l} ((ho)l)
+          node: {false, h, o} (ho)
+            node: {false, h, h} h
+            node: {false, o, o} o
+          node: {false, l, l} l
+        node: {false, d, d} d
+  node: {false, #, #} #
+begin => { 0 }
+p0. W => { 1 4 7 9 11 14 }
+p1. h => { 2 }
+p2. i => { 3 }
+p3. t => { 16 }
+p4. e => { 5 }
+p5. n => { 6 }
+p6. s => { 16 }
+p7. a => { 8 }
+p8. t => { 16 }
+p9. i => { 10 }
+p10. n => { 16 }
+p11. e => { 12 }
+p12. s => { 13 }
+p13. t => { 16 }
+p14. a => { 15 }
+p15. l => { 16 }
+p16. [aeio] => { 17 }
+p17. [lmnrsx] => { 18 22 24 28 31 34 37 41 }
+p18. f => { 19 }
+p19. o => { 20 }
+p20. r => { 21 }
+p21. d => { 45 }
+p22. b => { 23 }
+p23. y => { 45 }
+p24. d => { 25 }
+p25. a => { 26 }
+p26. l => { 27 }
+p27. e => { 45 }
+p28. b => { 29 }
+p29. o => { 30 }
+p30. t => { 45 }
+p31. m => { 32 }
+p32. a => { 33 }
+p33. n => { 45 }
+p34. s => { 35 }
+p35. o => { 36 }
+p36. n => { 45 }
+p37. g => { 38 }
+p38. a => { 39 }
+p39. r => { 40 }
+p40. d => { 45 }
+p41. h => { 42 }
+p42. o => { 43 }
+p43. l => { 44 }
+p44. d => { 45 }
+p45. # => { }
+s0. { p0 } [W]:s1
+s1. { p1 p4 p7 p9 p11 p14 } [a]:s2 [e]:s3 [h]:s4 [i]:s5
+s2. { p8 p15 } [lt]:s6
+s3. { p5 p12 } [n]:s7 [s]:s8
+s4. { p2 } [i]:s9
+s5. { p10 } [n]:s6
+s6. { p16 } [aeio]:s10
+s7. { p6 } [s]:s6
+s8. { p13 } [t]:s6
+s9. { p3 } [t]:s6
+s10. { p17 } [lmnrsx]:s11
+s11. { p18 p22 p24 p28 p31 p34 p37 p41 } [b]:s12 [d]:s13 [f]:s14 [g]:s15 [h]:s16 [m]:s17 [s]:s18
+s12. { p23 p29 } [o]:s19 [y]:s20
+s13. { p25 } [a]:s21
+s14. { p19 } [o]:s22
+s15. { p38 } [a]:s23
+s16. { p42 } [o]:s24
+s17. { p32 } [a]:s25
+s18. { p35 } [o]:s26
+s19. { p30 } [t]:s20
+s20# { p45 }
+s21. { p26 } [l]:s27
+s22. { p20 } [r]:s28
+s23. { p39 } [r]:s29
+s24. { p43 } [l]:s30
+s25. { p33 } [n]:s20
+s26. { p36 } [n]:s20
+s27. { p27 } [e]:s20
+s28. { p21 } [d]:s20
+s29. { p40 } [d]:s20
+s30. { p44 } [d]:s20
+--[minimizing]--
+s0. { p0 } [W]:s7
+s1# { p45 }
+s2. { p23 p29 } [y]:s1 [o]:s15
+s3. { p18 p22 p24 p28 p31 p34 p37 p41 } [b]:s2 [d]:s14 [m]:s16 [s]:s17 [f]:s20 [g]:s23 [h]:s24
+s4. { p17 } [lmnrsx]:s3
+s5. { p16 } [aeio]:s4
+s6. { p8 p15 } [lt]:s5
+s7. { p1 p4 p7 p9 p11 p14 } [a]:s6 [e]:s8 [i]:s9 [h]:s11
+s8. { p5 p12 } [n]:s10 [s]:s13
+s9. { p10 } [n]:s5
+s10. { p6 } [s]:s5
+s11. { p2 } [i]:s13
+s12. { p33 p36 } [n]:s1
+s13. { p3 p13 } [t]:s5
+s14. { p25 } [a]:s19
+s15. { p30 } [t]:s1
+s16. { p32 } [a]:s12
+s17. { p35 } [o]:s12
+s18. { p27 } [e]:s1
+s19. { p26 } [l]:s18
+s20. { p19 } [o]:s22
+s21. { p21 p40 p44 } [d]:s1
+s22. { p20 p39 } [r]:s21
+s23. { p38 } [a]:s22
+s24. { p42 } [o]:s25
+s25. { p43 } [l]:s21

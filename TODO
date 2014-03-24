@@ -1,6 +1,11 @@
 RX TODO
 
 PRIORITIES:
+Finish testing DFA minimization.
+    Use it in rxx.
+    Try multiple times.  
+    Verify original DFA still good.
+Reorganize / clean up code.
 
 REGEXPS:
 Implement \037 \x3F \uxxxx \cX
@@ -9,9 +14,6 @@ Handle (at least, ignore) ^ $ anchors
 Add POSIX classes??
 Add flags such as "case insensitive"?
 Other Perl stuff?
-
-AUTOMATA:
-Optimize the DFA
 
 UTILITIES:
 More options to control rxr output

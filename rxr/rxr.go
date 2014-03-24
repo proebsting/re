@@ -101,6 +101,10 @@ func main() {
 			dfa.ShowNFA(os.Stdout)
 			// dump DFA
 			dfa.DumpStates(os.Stdout)
+			// generate minimal DFA and dump that
+			fmt.Println("--[minimizing]--")
+			dfa = dfa.Minimize()
+			dfa.DumpStates(os.Stdout)
 		}
 	}
 	rx.CkErr(efile.Err())

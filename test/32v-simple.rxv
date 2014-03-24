@@ -8,3 +8,4 @@ gcg(cgg|agg)*ctg
 (0|1(01*0)*1)*
 # Experiments with word construction
 [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
+W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
