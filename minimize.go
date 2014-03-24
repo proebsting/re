@@ -34,6 +34,7 @@ func (dfa *DFA) Minimize() *DFA {
 	// make a partition list with one initial partition
 	// give this partition the accept set of the start state
 	// so the resulting DFA will also have the start state first
+	dfa.PartList = make([]*Partition, 0, len(dfa.Dstates)+1)
 	p := dfa.newPartition()
 	amap := make(map[*BitSet]*Partition)
 	amap[dfa.Dstates[0].AcceptBy()] = p
@@ -41,12 +42,13 @@ func (dfa *DFA) Minimize() *DFA {
 	// insert states into partitions;
 	// make a new partition for each distinct set of accept states seen
 	for _, ds := range dfa.Dstates {
-		pset := ds.AcceptBy()
-		p := amap[pset]
-		if p == nil {
+		ds.PartNum = 0        // clear old partition number
+		pset := ds.AcceptBy() // copy accept set
+		p := amap[pset]       // find partition for this set
+		if p == nil {         // if there isn't one yet, make one
 			p = dfa.newPartition()
 		}
-		p.insert(ds)
+		p.insert(ds) // move state to partition
 	}
 
 	// repeatedly subdivide partitions until can do so no more
@@ -68,8 +70,8 @@ func (dfa *DFA) Minimize() *DFA {
 		}
 	}
 
-	// make a new DFA with one state for each partition
-	// except the partition containing the dead state
+	// make a new DFA with one state for each partition,
+	// but exclude the partition containing the dead state
 	// fmt.Println("[merging:]") //#%#%#% TEMP
 	minim := newDFA(dfa.Tree)
 	for _, p = range dfa.PartList {

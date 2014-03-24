@@ -18,7 +18,7 @@ func Match(rexpr string, s string) (bool, error) {
 	return (dfa.Accepts(s) != nil), nil
 }
 
-//  Compile makes a DFA from a regular expression.
+//  Compile makes a minimized DFA from a regular expression.
 //  The DFA can be reused for multiple matches, saving compilation costs.
 func Compile(rexpr string) (*DFA, error) {
 	ptree, err := Parse(rexpr) // make faithful parse tree
@@ -27,7 +27,8 @@ func Compile(rexpr string) (*DFA, error) {
 	}
 	atree := Augment(ptree, 0) // make augmented parse tree
 	dfa := BuildDFA(atree)     // build DFA from augmented tree
-	return dfa, nil
+	dfa = dfa.Minimize()       // minimize the number of states
+	return dfa, nil            // return it
 
 }
 

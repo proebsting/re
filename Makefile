@@ -29,9 +29,13 @@ demo:
 	dot -Tpdf tmp.dot >tmp.pdf
 	display tmp.pdf
 
-#  partial build and test (list not complete)
+#  partial build and test (imperfect but useful)
 rxd:	.FORCE; go install ${PKG}/rxd && cd test && runtest.sh *.rxd
 rxg:	.FORCE; go install ${PKG}/rxg && cd test && runtest.sh *.rxg
+rxq:	.FORCE; go install ${PKG}/rxq && cd test && runtest.sh *.rxq
+rxr:	.FORCE; go install ${PKG}/rxr && cd test && runtest.sh *.rx
+rxv:	.FORCE; go install ${PKG}/rxr && cd test && runtest.sh *.rxv
+rxx:	.FORCE; go install ${PKG}/rxx && cd test && runtest.sh *.rxx
 .FORCE:
 
 #  if expt.rx exists, run with rxr after standard build and test
