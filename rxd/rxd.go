@@ -9,9 +9,9 @@
 	If -u is given, the unoptimized DFA is drawn.
 	Otherwise, the minimized DFA is drawn.
 
-	If -v is given, the output is written to a temporary file, drawn
-	as a GIF file, and the default viewer is invoked.  For this to work,
-	"dot" must be in the command path.
+	If -v is given, the output is written to a temporary file,
+	drawn as a GIF file, and the default viewer is invoked.
+	For this to work, "dot" must be in the command path.
 
 	If no expressions are given as command arguments, rxd reads
 	expressions from standard input, one per line, and combines them.
@@ -38,7 +38,7 @@ func main() {
 	vflag := flag.Bool("v", false, "open in viewer")
 	flag.Parse()
 
-	// build a list of regular espressions
+	// build a list of regular expressions
 	elist := make([]string, 0)
 	for i := 0; i < len(flag.Args()); i++ {
 		elist = append(elist, flag.Args()[i])
@@ -83,7 +83,7 @@ func main() {
 	}
 }
 
-// display on screen by converting dot to PDF and invoking a viewer
+//  display converts the dot output to GIF and starts a viewer.
 func display(dfa *rx.DFA, label string) {
 	syscall.Umask(077) // for temp files, override umask
 	dotfile, err := ioutil.TempFile("", "rxd")
@@ -104,6 +104,6 @@ func display(dfa *rx.DFA, label string) {
 	rx.CkErr(err)
 	// #%#% DISABLED: os.Remove(gifname)
 	// We don't remove the temp file because we don't know when it's safe.
-	// It's expecially problematic when multiple views are open at once.
+	// It's especially problematic when multiple views are open at once.
 	// It would be nice to find a solution for this.
 }

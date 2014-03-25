@@ -74,7 +74,7 @@ func main() {
 	_ = dfa.Minimize()   // should have no effect
 	_ = dfa.Minimize()   // should again have no effect
 	dfa = dfa.Minimize() // not necessary, but a good stress test
-	dfa = dfa.Minimize() // expecially if done more than once
+	dfa = dfa.Minimize() // especially if done more than once
 
 	// read and test candidate strings
 	fmt.Println()

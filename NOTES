@@ -1,8 +1,8 @@
 Some notes about the RX code
-[ 22-Mar-2014 / gmt ]
+[ 25-Mar-2014 / gmt ]
 
-This file is a dumping place for random thoughts to help understand
-and navigate the code.  See also the TODO file, which is an even more
+This file is a dumping place for random thoughts to help understand and
+navigate the RX code.  See also the TODO file, which is an even more
 cryptic collection of half-baked thoughts about future directions.
 
 
@@ -11,15 +11,27 @@ The main package rx is for "library" type routines.
 Subpackages rxr, rxd, etc implement command-level programs.
 Most of the significant code should go in the library.
 The programs should just provide an interface to the library.
-(This rule is not entirely followed yet, e.g. rxd.) 
-
-Library source files are perhaps too big and may get reorganized.
-Programs are proliferating and I'm thinking about combining them.
+(The programs are proliferating and some may be consolidated.)
 
 VISIBILITY
 [Recall: Capitalized symbols are exported from a package.]
 Not everything capitalized should be considered an external "feature".
 Some things are exported for access by debugging printfs in commands.
 Parse tree node fields must all be exportable to be "gobbable".
-Consequently, nearly everything is now exported.  This is not ideal.
 
+STRUCTS
+Structs are uniformly passed by reference (as pointers), not values.
+[Interface types such as Node and error are pointers without explicit '*'.]
+
+CODING STYLE
+Code is formatted according to the standard Go rules.
+"go fmt" should be run before any check-in.
+There is a "pre-commit" Git hook available to check this.
+Lines should be limited to 80 columns for better human comprehension
+(even though we're not limited to punch cards or fixed-width terminals).
+
+COMMENTING
+Terminology is based on the "Dragon book" [Aho & Ullman 1977].
+Struct, func, and package comments should work with "godoc"
+(so: no blank line between header comment and struct or func).
+The comment notation "#%#%" indicates something to be revisited later.

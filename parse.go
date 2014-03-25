@@ -1,4 +1,4 @@
-//  parse.go -- rx parse tree construction
+//  parse.go -- regular expression scanning and parse tree construction
 
 package rx
 
@@ -8,11 +8,11 @@ import (
 	"strconv"
 )
 
-// oprstack and exprstack are stacks that move in synchrony
+//  oprstack and exprstack are stacks that move in synchrony.
 var oprstack []byte  // operators associated with pushed expressions
 var exprstack []Node // stack of pushed expressions
 
-//  Parse parses a regular expression and returns a return tree of Nodes.
+//  Parse parses a regular expression and returns a tree of Nodes.
 //  If there is an error, it returns nil (and an error).
 //
 //  Parse implements these forms:
@@ -20,7 +20,8 @@ var exprstack []Node // stack of pushed expressions
 //	a?  b*  c+  d{m,n}
 //	.  \d  \s  \w  [...]
 //
-//  It ignores (?: non-capturing submatch, but other (? forms are errors.
+//  Parse ignores the Perl non-capturing submatch form "(?:",  but other
+//  "(?" forms are errors.
 func Parse(rexpr string) (Node, error) {
 
 	var curr Node         // current parse tree
@@ -29,7 +30,7 @@ func Parse(rexpr string) (Node, error) {
 
 	curr = Epsilon()            // initialize empty parse tree
 	oprstack = make([]byte, 0)  // initialize empty operator stack
-	exprstack = make([]Node, 0) // initialize empty expresion stack
+	exprstack = make([]Node, 0) // initialize empty expression stack
 	orgstr := rexpr             // save original string
 
 	for len(rexpr) > 0 { // for every character in regexp
@@ -54,7 +55,7 @@ func Parse(rexpr string) (Node, error) {
 					// just ignore "?:"
 					rexpr = rexpr[2:]
 				} else {
-					return nil, ParseError{
+					return nil, &ParseError{
 						orgstr, "'(?...' unimplemented"}
 				}
 			}
@@ -77,19 +78,19 @@ func Parse(rexpr string) (Node, error) {
 				oprstack = oprstack[0:j]   // pop opr
 				rside, rexpr = replicate(curr, rexpr)
 				if rside == nil {
-					return nil, ParseError{orgstr, rexpr}
+					return nil, &ParseError{orgstr, rexpr}
 				}
 				curr = Concatenate(lside, rside)
 				continue
 			}
 			// no preceding '('!
-			return nil, ParseError{orgstr, "unmatched ')'"}
+			return nil, &ParseError{orgstr, "unmatched ')'"}
 
 		case '[':
 			// bracket expression
 			cset, rexpr = bxparse(rexpr)
 			if cset == nil {
-				return nil, ParseError{orgstr, rexpr}
+				return nil, &ParseError{orgstr, rexpr}
 			}
 			rside = MatchAny(cset)
 
@@ -101,7 +102,7 @@ func Parse(rexpr string) (Node, error) {
 		case '\\':
 			rside, rexpr = rescape(rexpr)
 			if rside == nil {
-				return nil, ParseError{orgstr, rexpr}
+				return nil, &ParseError{orgstr, rexpr}
 			}
 		default:
 			// single literal character
@@ -111,21 +112,21 @@ func Parse(rexpr string) (Node, error) {
 		// common code for handling postfix replication
 		rside, rexpr = replicate(rside, rexpr)
 		if rside == nil {
-			return nil, ParseError{orgstr, rexpr}
+			return nil, &ParseError{orgstr, rexpr}
 		}
 		curr = Concatenate(curr, rside)
 	}
 
 	curr = popAlts(curr) // check unpopped alternatives at end of string
 	if len(oprstack) > 0 {
-		return nil, ParseError{orgstr, "unclosed '('"}
+		return nil, &ParseError{orgstr, "unclosed '('"}
 	}
 	// success!
 	return curr, nil // return parse tree
 }
 
-//  pops all consecutive alternatives from the operator/expression stacks
-//  and returns the resulting subtree
+//  popAlts pops all consecutive alternatives from the operator/expression
+//  stacks and returns the resulting subtree.
 func popAlts(d Node) Node {
 	for j := len(oprstack) - 1; j >= 0 && oprstack[j] == '|'; j-- {
 		d = Alternate(exprstack[j], d)
@@ -150,7 +151,7 @@ func popAlts(d Node) Node {
 
 var replx = regexp.MustCompile("{(\\d*)(,?)(\\d*)}") // expr for {m,n}
 
-//  Replicate wraps a replication node around a subtree if it is followed by
+//  replicate wraps a replication node around a subtree if it is followed by
 //  posfix ?, *, +, or {m,n}.  It normally returns the resulting tree and
 //  remaining string (both unmodified in the absence of postfix replication).
 //  If there is an error in {m,n}, Replicate returns (nil, errmsg).
@@ -203,8 +204,8 @@ func replicate(d Node, p string) (Node, string) {
 	}
 }
 
-// replval constructs the return value for replicate and checks for
-// an unimplemented "prefer fewer" postfix '?'
+//  replval constructs the return value for replicate and checks for
+//  an unimplemented "prefer fewer" postfix '?'.
 func replval(min int, max int, d Node, remdr string) (Node, string) {
 	if len(remdr) > 0 && remdr[0] == '?' {
 		return nil, "prefer-fewer '?' unimplemented"
@@ -213,7 +214,7 @@ func replval(min int, max int, d Node, remdr string) (Node, string) {
 	}
 }
 
-//  Rescape handles a backslash encountered at the regexxp level
+//  rescape handles a backslash encountered at the regexp level
 //  (not inside a bracket expression).  It assumes the backslash
 //  has already consumed, and returns the resulting Node and the
 //  updated string after processing the escaped characters.
@@ -238,12 +239,13 @@ func rescape(rexpr string) (Node, string) {
 	}
 }
 
-// ParseError diagnoses a malformed regular expression
+//  ParseError diagnoses a malformed regular expression.
 type ParseError struct {
 	BadExpr string
 	Message string
 }
 
-func (e ParseError) Error() string {
+//  ParseError.Error formats a parser error for printing.
+func (e *ParseError) Error() string {
 	return fmt.Sprintf("rx: %s: in \"%s\"", e.Message, e.BadExpr)
 }

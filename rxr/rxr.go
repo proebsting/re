@@ -112,7 +112,7 @@ func main() {
 
 const linemax = 79
 
-//   Examples generates a line's worth of examples with max replication n.
+//   examples generates a line's worth of examples with max replication n.
 func examples(dfa *rx.DFA, tree rx.Node, n int) {
 	s := fmt.Sprintf("ex(%d):", n)
 	nprinted := 0
@@ -135,7 +135,7 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 	fmt.Println()
 }
 
-//  Treenodes prints details of the parse tree.
+//  treenodes prints details of the parse tree.
 func treenodes(dfa *rx.DFA, tree rx.Node) {
 	indent := ""
 	rx.Walk(tree, func(d rx.Node) {

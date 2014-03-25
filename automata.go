@@ -1,4 +1,4 @@
-//  automata.go -- rx automata construction
+//  automata.go -- deterministic finite state automata construction
 
 package rx
 
@@ -8,8 +8,8 @@ import (
 	"strconv"
 )
 
-// DFA is a deterministic finite automaton.
-// The first entry in Dstates is the start state.
+//  A DFA is a deterministic finite automaton for matching regular expressions.
+//  The first entry in the Dstates array is the start state.
 type DFA struct {
 	Tree     Node         // final compiled augmented parse tree
 	Leaves   []*MatchNode // leaves (positions) from parse tree
@@ -17,17 +17,18 @@ type DFA struct {
 	PartList []*Partition // partition list during minimization
 }
 
-// newDFA makes a new, empty DFA
+//  newDFA makes a new, empty DFA.
 func newDFA(tree Node) *DFA {
 	return &DFA{tree, make([]*MatchNode, 0), make([]*DFAstate, 0), nil}
 }
 
-// DFAstate is one state in a DFA
+//  DFAstate is one state in a DFA.
+//  The Dnext table maps input symbols to successor states.
 type DFAstate struct {
 	Index   uint               // index (label) of this state
 	Marked  bool               // true when "marked" during traversal
 	Posns   *BitSet            // set of positions in the state
-	AccSet  *BitSet            // set of regexs that accept here, or nil
+	AccSet  *BitSet            // set of regexps that accept here, or nil
 	Dnext   map[uint]*DFAstate // transition map
 	PartNum uint               // partition number during minimization
 }
@@ -40,31 +41,13 @@ func (dfa *DFA) newState() *DFAstate {
 	return ds
 }
 
-//  DFA.Accepts returns the set of regexs that accept this string, or nil.
-//  #%#% This function (only?) treats the string as Unicode runes.
-func (dfa *DFA) Accepts(s string) *BitSet {
-	state := dfa.Dstates[0]
-	for _, r := range s {
-		state = state.Dnext[uint(r)]
-		if state == nil {
-			return nil // unmatched char
-		}
-	}
-	return state.AcceptBy() // end of string; in accept state?
-}
-
-//  DFAstate.AcceptBy returns a set of regexs that accept at this node, or nil.
-func (ds *DFAstate) AcceptBy() *BitSet {
-	return ds.AccSet
-}
-
 //  BuildDFA constructs an automaton from an augmented parse tree.
 //  Data fields are set in the parse tree but its structure is not changed.
 func BuildDFA(tree Node) *DFA {
 	return MultiDFA(append(make([]Node, 0, 1), tree))
 }
 
-//  MultiDFA constructs an automoton for parallel checking of augmented trees.
+//  MultiDFA constructs an automaton for parallel checking of augmented trees.
 func MultiDFA(tlist []Node) *DFA {
 	if len(tlist) == 0 {
 		panic("empty parse tree list")
@@ -89,7 +72,8 @@ func MultiDFA(tlist []Node) *DFA {
 			n++
 			dfa.Leaves = append(dfa.Leaves, leaf)
 		}
-		d.SetNFL() // set Nullable, FirstPos, LastPos
+		d.SetNFL()                     // set Nullable, FirstPos, LastPos
+		d.Data().FollowPos = &BitSet{} // init empty FollowPos
 	})
 	pmap := dfa.Leaves // map of indexes to nodes
 
@@ -111,7 +95,7 @@ func MultiDFA(tlist []Node) *DFA {
 		ds := dfa.Dstates[nmarked] // unmarked Dstate T
 		ds.Dnext = make(map[uint]*DFAstate, 0)
 		plist := ds.Posns.Members()     // list of p in T
-		alist := validhere(pmap, plist) // potential a values
+		alist := validHere(pmap, plist) // potential a values
 		for _, a := range alist {       // for each input symbol a
 			u := followposns(pmap, plist, int(a))
 			if !u.IsEmpty() {
@@ -121,7 +105,7 @@ func MultiDFA(tlist []Node) *DFA {
 		}
 	}
 
-	// set the "Accept" set for each state that accepts a regex
+	// set the accepting set for each state that accepts a regexp
 	for _, ds := range dfa.Dstates {
 		for _, px := range ds.Posns.Members() {
 			p := dfa.Leaves[px]
@@ -138,7 +122,7 @@ func MultiDFA(tlist []Node) *DFA {
 	return dfa
 }
 
-//  Addstate adds position set U to a DFA if it is distinct, returning
+//  addstate adds position set U to a DFA if it is distinct, returning
 //  its index.  If U is not distinct, it returns the existing index.
 func addstate(dfa *DFA, u *BitSet) *DFAstate {
 	// start at high end because the most recent has best chance of match
@@ -153,9 +137,9 @@ func addstate(dfa *DFA, u *BitSet) *DFAstate {
 	return unew
 }
 
-//  Followlist returns the union of the csets of all members of plist.
+//  validHere returns the union of the csets of all members of plist.
 //  (This gives us fewer potential input symbols a over which to iterate.)
-func validhere(pmap []*MatchNode, plist []uint) []uint {
+func validHere(pmap []*MatchNode, plist []uint) []uint {
 	cs := &BitSet{}
 	for _, p := range plist {
 		cs = cs.Or(pmap[p].Cset)
@@ -163,7 +147,7 @@ func validhere(pmap []*MatchNode, plist []uint) []uint {
 	return cs.Members()
 }
 
-//  Followposns returns the set U for a new Dstate: the set of positions
+//  followposns returns the set U for a new Dstate: the set of positions
 //  that are in followpos(p) for some p in plist on input symbol a.
 func followposns(pmap []*MatchNode, plist []uint, a int) *BitSet {
 	posns := &BitSet{}
@@ -209,8 +193,8 @@ func (dfa *DFA) DumpStates(f io.Writer) {
 		// print partition index
 		//#%#% fmt.Fprintf(f, "[%d] ", ds.PartNum)
 
-		// print index with "Accept" flag
-		if ds.AcceptBy() != nil {
+		// print index with "accept" flag '#'
+		if ds.AccSet != nil {
 			fmt.Fprintf(f, "s%d# {", ds.Index)
 		} else {
 			fmt.Fprintf(f, "s%d. {", ds.Index)
@@ -239,7 +223,7 @@ func (dfa *DFA) ToDot(f io.Writer, label string) {
 	fmt.Fprintln(f, "node [shape=circle, height=.3, margin=0, fontsize=10]")
 	fmt.Fprintln(f, "s0 [shape=triangle, regular=true]")
 	for _, src := range dfa.Dstates {
-		if src.AcceptBy() != nil {
+		if src.AccSet != nil {
 			fmt.Fprintf(f, "s%d[shape=doublecircle]\n", src.Index)
 		}
 		slist, xmap := src.InvertMap()

@@ -1,4 +1,4 @@
-//  bitset.go -- a bit set with some cset properties in the ASCII range
+//  bitset.go -- a datatype for representing sets of small integers
 //
 //  based originally on code from the Go Playground
 //  http://play.golang.org/p/NpHns5EBnQ as of 11-Feb-2014
@@ -8,17 +8,13 @@ package rx
 import (
 	"fmt"
 	"math/big"
-	"math/rand"
-	"strconv"
 )
 
-//  BitSet is a simple bit-mapped representation of a set of uints or chars.
-//  No explicit constructor is needed; use new(BitSet) or BitSet{}.
+//  A BitSet is a simple bit-mapped representation of a set of small uints.
+//  No explicit constructor is needed; use new(BitSet) or &BitSet{}.
 type BitSet struct {
 	Bits big.Int
 }
-
-//==================== integer oriented functions ====================
 
 //  BitSet.Set sets one bit in a BitSet.
 func (b *BitSet) Set(bit uint) *BitSet {
@@ -49,7 +45,7 @@ func (b *BitSet) Count() int {
 	h := b.Bits.BitLen()
 	for i := l; i <= h; i++ { // for all values up to highest
 		if b.Test(uint(i)) { // if this value is included
-			n++
+			n++ // count it
 		}
 	}
 	return n
@@ -69,6 +65,8 @@ func (b *BitSet) lowbit() int {
 		return 0
 	}
 }
+
+var bigone = big.NewInt(1) // static variable used in lowbit()
 
 //  BitSet.Equals returns true if the argument set is identical to this one.
 func (b1 *BitSet) Equals(b2 *BitSet) bool {
@@ -92,7 +90,7 @@ func (b1 *BitSet) And(b2 *BitSet) *BitSet {
 //  BitSet.Members returns a slice containing the values found in the set.
 //  This is the easiest way to iterate through the members of a bit set:
 //	for _, i := range bset.Members() { ... }
-func (b BitSet) Members() []uint {
+func (b *BitSet) Members() []uint {
 	m := make([]uint, 0)
 	l := b.lowbit()
 	h := b.Bits.BitLen()
@@ -106,7 +104,7 @@ func (b BitSet) Members() []uint {
 
 //  BitSet.String() returns a set-notation representation of the bitset.
 //  This is used automatically when printing a bitset with "%s" format.
-func (b BitSet) String() string {
+func (b *BitSet) String() string {
 	m := b.Members()
 	s := make([]byte, 0, 4*len(m))
 	s = append(s, '{')
@@ -114,101 +112,4 @@ func (b BitSet) String() string {
 		s = append(s, fmt.Sprintf(" %d", i)...)
 	}
 	return string(append(s, " }"...))
-}
-
-//==================== character set oriented functions ====================
-
-//  CharSet makes a BitSet from a string of member characters.
-func CharSet(s string) *BitSet {
-	cs := new(BitSet)
-	for _, ch := range s {
-		cs.Set(uint(ch))
-	}
-	return cs
-}
-
-var bigone = big.NewInt(1)
-
-// data structure used (and initialized) by BitSet.CharCompl
-// (was global, but had probs with nondeterministic init() call order)
-const lowMatch = 0x01  // smallest ch matched: SOH or ^A
-const highMatch = 0x7F // largest ch matched: DEL or RUBOUT
-var allChars *BitSet   // set of all chars
-
-//  BitSet.CharCompl produces a new BitSet that is the complement of its inputs
-//  with respect to the universe of matchable characters \x01-\x7F.
-func (b1 *BitSet) CharCompl() *BitSet {
-	if allChars == nil {
-		allChars = new(BitSet)
-		for i := lowMatch; i <= highMatch; i++ {
-			allChars.Set(uint(i))
-		}
-	}
-	b3 := new(BitSet)
-	b3.Bits.Xor(&b1.Bits, &allChars.Bits)
-	return b3
-}
-
-//  BitSet.RandChar returns a single randomly chosen BitSet element.
-//  Printable characters are preferred to unprintables.
-//  #%#%#% This code is not particularly efficient.
-func (b BitSet) RandChar() byte {
-	n := 0                   // number of characters considered
-	l := b.lowbit()          // lowest eligible char
-	h := b.Bits.BitLen() - 1 // highest eligible char
-	if h < 0 {
-		return '?' //#%#%#% ERROR cset was empty
-	}
-	c := byte(h)  // current working choice
-	if c < 0x7F { // if initial ch is not unwanted DEL,
-		n = 1 // count it as found
-	}
-	for h--; h >= l; h-- { // check lower valued characters
-		if b.Test(uint(h)) { // if eligible to be chosen
-			n++ // adjust n for unbiased odds
-			if rand.Intn(n) == 0 {
-				c = byte(h) // replace tentative choice
-			}
-		}
-		if h <= ' ' && n >= 5 {
-			// now entering the unprintables --
-			// bail out if 5 choices seen earlier
-			break
-		}
-	}
-	return c // return surviving choice
-}
-
-//  BitSet.Bracketed() returns a bracket-expression form of a character set,
-//  using ranges if appropriate and escaping (only) unprintables.
-func (b BitSet) Bracketed() string {
-	l := b.lowbit()
-	h := b.Bits.BitLen()
-	s := make([]byte, 0)
-	s = append(s, '[')
-	for i := l; i <= h; i++ { // for all chars up to highest
-		if b.Test(uint(i)) { // if char is included
-			s = append(s, cprotect(rune(byte(i)))...) // show char
-			var j int
-			for j = i + 1; b.Test(uint(j)); j++ {
-				// count consecutive inclusions
-			}
-			if j-i > 3 { // if worth using [a-z] form
-				i = j - 1
-				s = append(s, '-')
-				s = append(s, cprotect(rune(byte(i)))...)
-			}
-		}
-	}
-	return string(append(s, ']'))
-}
-
-//  cprotect returns its argument if printable, else a backslash form.
-func cprotect(r rune) string {
-	if strconv.IsPrint(r) {
-		return string(r)
-	} else {
-		s := strconv.QuoteRune(r)
-		return s[1 : len(s)-1]
-	}
 }

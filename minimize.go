@@ -1,4 +1,4 @@
-//  minimize.go -- rx minimization of a DFA
+//  minimize.go -- minimization of a DFA
 
 package rx
 
@@ -10,7 +10,7 @@ var _ = fmt.Printf //#%#% for debugging
 
 var deadstate *DFAstate // "dead state" used during minimization
 
-// A Partition is a subset of the states of a DFA
+//  A Partition is a subset of the states of a DFA.
 type Partition struct {
 	Automata *DFA      // the containing DFA
 	Index    uint      // index (label) of this partition
@@ -18,34 +18,36 @@ type Partition struct {
 	NewState *DFAstate // destination state in minimized DFA
 }
 
-//  DFA.newPartition creates a new partition and adds it to a DFA
+//  DFA.newPartition creates a new partition and adds it to a DFA.
 func (dfa *DFA) newPartition() *Partition {
 	p := &Partition{dfa, uint(len(dfa.PartList)), &BitSet{}, nil}
 	dfa.PartList = append(dfa.PartList, p)
 	return p
 }
 
-//  DFA.Minimize modifies a DFA to minimize the number of states.
+//  DFA.Minimize returns an optimized variant with a minimum number of states.
+//  The original DFA remains valid although some of its data structures have
+//  been disturbed in the process.
 func (dfa *DFA) Minimize() *DFA {
 
 	// add and remember a "dead state" with no exits
 	deadstate = dfa.newState()
 
 	// make a partition list with one initial partition
-	// give this partition the accept set of the start state
+	// give this partition the accepting set of the start state
 	// so the resulting DFA will also have the start state first
 	dfa.PartList = make([]*Partition, 0, len(dfa.Dstates)+1)
 	p := dfa.newPartition()
 	amap := make(map[*BitSet]*Partition)
-	amap[dfa.Dstates[0].AcceptBy()] = p
+	amap[dfa.Dstates[0].AccSet] = p
 
 	// insert states into partitions;
-	// make a new partition for each distinct set of accept states seen
+	// make a new partition for each distinct set of accepting states seen
 	for _, ds := range dfa.Dstates {
-		ds.PartNum = 0        // clear old partition number
-		pset := ds.AcceptBy() // copy accept set
-		p := amap[pset]       // find partition for this set
-		if p == nil {         // if there isn't one yet, make one
+		ds.PartNum = 0    // clear old partition number
+		pset := ds.AccSet // copy accepting set
+		p := amap[pset]   // find partition for this set
+		if p == nil {     // if there isn't one yet, make one
 			p = dfa.newPartition()
 		}
 		p.insert(ds) // move state to partition
@@ -129,7 +131,9 @@ func (p *Partition) distinguish() int {
 	return -1
 }
 
-//  DFAstate.distinguish checks every recognized input against another state
+//  DFAstate.distinguish checks every recognized input against another state,
+//  returning an input that leads to a different partition or -1 if there is
+//  none.
 func (s1 *DFAstate) distinguish(s2 *DFAstate) int {
 	for x := range s1.Dnext {
 		if s1.partOn(int(x)) != s2.partOn(int(x)) {
@@ -158,7 +162,7 @@ func (p *Partition) divideBy(x int) {
 	}
 }
 
-//  DFAstate.partOn returns the index of the partition reached by input x
+//  DFAstate.partOn returns the index of the partition reached by input x.
 func (ds *DFAstate) partOn(x int) uint {
 	dd := ds.Dnext[uint(x)]
 	if dd == nil {
@@ -167,7 +171,7 @@ func (ds *DFAstate) partOn(x int) uint {
 	return dd.PartNum
 }
 
-//  DFAstate.mergeFrom makes a merged state in a new DFA from an old partition
+//  DFAstate.mergeFrom makes a merged state in a new DFA from an old partition.
 func (ds *DFAstate) mergeFrom(p *Partition) {
 	ds.PartNum = p.Index                     // just for some history
 	dfa := p.Automata                        // the old DFA
@@ -177,7 +181,7 @@ func (ds *DFAstate) mergeFrom(p *Partition) {
 		if ds.AccSet == nil {
 			ds.AccSet = os.AccSet // first seen, or just nil
 		} else {
-			ds.AccSet = ds.AccSet.Or(os.AccSet) // merge Accepts
+			ds.AccSet = ds.AccSet.Or(os.AccSet) // merge acceptors
 		}
 		for x := range os.Dnext { // for each input
 			odest := os.Dnext[uint(x)] // get old dest state

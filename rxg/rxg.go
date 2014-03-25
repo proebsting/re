@@ -4,16 +4,16 @@
 	usage:  rxg [-R] [exprfile]
 
 	Rxg reads a set of regular expressions and synthesizes one example
-	corresponding to each "accept" state in the combined DFA.
+	corresponding to each accepting state in the combined DFA.
 
-	-R	produce reproducible output by using a fixed seed
+	-R	produce reproducible output by using a fixed random seed
 
 	Input is one unadorned regular expression per line.
 	A line beginning with '#', or an empty line, is treated as a comment.
 
-	Output is two arrays in JSON format.  The first array lists
-	the regular expressions with input numbers. The second lists
-	examples with state numbers and sets of regular expressions.
+	Output is a struct of two arrays in JSON format.  The first array
+	lists the regular expressions with input numbers. The second lists
+	examples with state numbers and sets of matching regular expressions.
 
 	Example:
 	For the input
@@ -48,19 +48,9 @@ import (
 	"time"
 )
 
-type Partial struct { // a partially built example
-	ds   *rx.DFAstate // DFA state pointer
-	path string       // how we got here
-}
-
 type RegEx struct { // one rx for JSON output
 	Index int    // index number
 	Rexpr string // regular expression
-}
-type Result struct { // one example for JSON output
-	State   uint   // state number
-	RXset   []uint // set of matching regular expressions
-	Example string // example string
 }
 
 func main() {
@@ -102,45 +92,8 @@ func main() {
 	rx.Jlist(os.Stdout, exprs)
 	fmt.Println(",")
 
-	// build the DFA
-	dfa := rx.MultiDFA(tlist)
-
-	// initialize the task list
-	todo := make([]Partial, 0) // list of things to do
-	todo = append(todo, Partial{dfa.Dstates[0], ""})
-
-	// process states in breadth-first fashion
-	results := make([]Result, 0)
-	for len(todo) > 0 { // while to-do list non-empty
-		curr := todo[0]
-		todo = todo[1:] // consume one entry
-		ds := curr.ds
-		if ds.Marked { // if we've already been here
-			continue
-		}
-		ds.Marked = true // mark this state as visited
-
-		// if this is an accept state, generate output
-		if ds.AccSet != nil {
-			//#%#% re-follow path with different random chars?
-			//#%#% would this variety be better, or worse?
-			results = append(results, Result{
-				ds.Index, ds.AccSet.Members(), curr.path})
-		}
-
-		// add all unmarked nodes reachable in one more step
-		slist, xmap := curr.ds.InvertMap()
-		alist := slist.Members()
-		//%#%#% permute the list here for greater variation
-		for _, arc := range alist {
-			dest := dfa.Dstates[arc]
-			if !dest.Marked {
-				c := xmap[arc].RandChar()
-				s := curr.path + string(c)
-				todo = append(todo, Partial{dest, s})
-			}
-		}
-	}
+	// build the DFA and produce examples
+	results := rx.MultiDFA(tlist).Synthesize()
 
 	// output the array of synthesized examples
 	fmt.Print(`"Examples":`)

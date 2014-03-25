@@ -1,17 +1,12 @@
 RX TODO
 
 PRIORITIES:
-Finish testing DFA minimization.
-    Use it in rxx.
-    Try multiple times.  
-    Verify original DFA still good.
-Reorganize / clean up code.
+Implement \037 \x3F \uxxxx \cX and try the huge RE
 
 REGEXPS:
-Implement \037 \x3F \uxxxx \cX
-Add \b anchor
+Add POSIX classes?
 Handle (at least, ignore) ^ $ anchors
-Add POSIX classes??
+Add \b anchor
 Add flags such as "case insensitive"?
 Other Perl stuff?
 
@@ -21,10 +16,5 @@ Add headings and spacing to rxr output?
 Combine multiple utilities into one (Swiss army knife)?
 
 CLEANUP:
-Reorganize source (more files, more logical divisions)
-Move example generation from rxg to library
-Repackage to impl rx.Illus(re)
-Fix #%#% items
-More consistency in use of pointers vs struct values
-More consistency in struct construction
-General code cleanup
+Address #%#% annotations in code
+Make gofmt an automatic pre-commit hook

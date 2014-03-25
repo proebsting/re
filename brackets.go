@@ -1,4 +1,4 @@
-//  bracets.go -- parsing of bracket expression
+//  brackets.go -- parsing of bracket expression
 
 package rx
 
@@ -9,13 +9,13 @@ import (
 
 var _ = fmt.Printf //#%#% for debugging
 
-//  Bxparse parses a string as a bracket expression, returning the
+//  bxparse parses a string as a bracket expression, returning the
 //  computed set of characters and the remaining unprocessed part of s.
 //  It assumes the introductory '[' has already been stripped from s.
 //
 //  If an error is found, bxparse returns (nil, errmsg).
 //
-//  Implements:  [abc] [^abc] [a-c] [\x]
+//  bxparse implements:  [abc] [^abc] [a-c] [\x]
 func bxparse(s string) (*BitSet, string) {
 
 	result := &BitSet{}
@@ -92,10 +92,10 @@ func init() {
 
 }
 
-//  Bescape interprets a backslash sequence in the context of a bracket
+//  bescape interprets a backslash sequence in the context of a bracket
 //  expression from which the initial \ has already been consumed.
-//  In this context \b is a backspace.  Bescape returns the computed
-//  cset and the remaining unescaped portion of the string.
+//  In this context \b is a backspace.  bescape returns the computed
+//  charset and the remaining unescaped portion of the string.
 //  If an error is found, bescape returns (nil, errmsg).
 func bescape(s string) (*BitSet, string) {
 	if len(s) == 0 {

@@ -1,4 +1,4 @@
-//  rx.go -- top-level entry points
+//  rx.go -- some top-level entry points for the rx library package
 
 //  Rx provides facilities for dealing with regular expressions.
 package rx
@@ -32,8 +32,24 @@ func Compile(rexpr string) (*DFA, error) {
 
 }
 
+//  DFA.Accepts returns the set of regexps that accept a string, or nil.
+//  This function (#%#% only?) treats the input string as Unicode runes.
+func (dfa *DFA) Accepts(s string) *BitSet {
+	state := dfa.Dstates[0]
+	for _, r := range s {
+		state = state.Dnext[uint(r)]
+		if state == nil {
+			return nil // unmatched char
+		}
+	}
+	return state.AccSet // end of string; return accepting set if any
+}
+
 //  Augment produces a modified parse tree in preparation for building a DFA.
 //  The original tree is modified in place, and a new root is returned.
+//  This new root concatenates an Accept node to the input tree.
+//  Additionally, any fixed {m,n} replications with m>1 or n>1 are replaced
+//  by concatenations of duplicated subtrees.
 func Augment(tree Node, rxindex uint) Node {
 	Walk(tree, nil, func(d Node) {
 		switch d.(type) {

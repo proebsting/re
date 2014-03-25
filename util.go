@@ -1,4 +1,7 @@
 //  util.go -- miscellaneous utility helpers
+//
+//  This file collects small and often unrelated general-purpose helper
+//  functions that are not closely associated with any other file.
 
 package rx
 
@@ -13,13 +16,8 @@ import (
 	"strconv"
 )
 
-//  Protect adds backslash notation, but no quotes, to protect unprintables.
-func Protect(s string) string {
-	s = strconv.Quote(s)
-	return s[1 : len(s)-1]
-}
-
-//  MkScanner creates a scanner for reading from a file, aborting on error.
+//  MkScanner creates a Scanner for reading from a file, aborting on error.
+//  A filename of "-" reads standard input.
 func MkScanner(fname string) *bufio.Scanner { // return scanner for file
 	if fname == "-" {
 		return bufio.NewScanner(os.Stdin)
@@ -42,8 +40,15 @@ func IsComment(s string) bool {
 	return len(s) == 0 || s[0] == '#'
 }
 
-// Jlist writes a slice to a file in JSON format, one entry per line.
-// No newline is written at the end.
+//  Protect adds backslash notation, but no quotes,
+//  to protect unprintables in a string.
+func Protect(s string) string {
+	s = strconv.Quote(s)
+	return s[1 : len(s)-1]
+}
+
+//  Jlist writes a slice of anything Marshalable to a file in JSON format,
+//  one entry per line.  No newline is written at the end.
 func Jlist(f io.Writer, slc interface{}) {
 	switch reflect.TypeOf(slc).Kind() {
 	case reflect.Slice:
