@@ -18,7 +18,9 @@ var exprstack []Node // stack of pushed expressions
 //  Parse implements these forms:
 //	abc  a|b|c  a(b|c)d
 //	a?  b*  c+  d{m,n}
-//	.  \d  \s  \w  [...]
+//	\a \e \f \n \r \t \v \046 \xF7 \u03A8
+//	.  \d \s \w \D \S \W
+//	[abc]  [^abc]  [a-c]  [\x]
 //
 //  Parse ignores the Perl non-capturing submatch form "(?:",  but other
 //  "(?" forms are errors.

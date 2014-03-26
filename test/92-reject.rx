@@ -1,18 +1,5 @@
 #  things that other accept but we don't
 abc[[:digit:]]efg
-abc\041def
-[abc\041def]
-[abc\1def]
-[abc\26def]
-[abc\30def]
-[abc\43def]
-[abc\52def]
-[abc\61def]
-[abc\70def]
-abc\x21def
-[abc\x21def]
-abc\u0021def
-[abc\u0021def]
 abc\cIdef
 [abc\cIdef]
 abc\pDdef

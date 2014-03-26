@@ -4,6 +4,7 @@ package rx
 
 import (
 	"fmt"
+	"strconv"
 	"unicode"
 )
 
@@ -97,6 +98,10 @@ func init() {
 //  In this context \b is a backspace.  bescape returns the computed
 //  charset and the remaining unescaped portion of the string.
 //  If an error is found, bescape returns (nil, errmsg).
+//
+//  bescape implements:
+//	\a \b \e \f \n \r \t \v \046 \xF7 \u03A8
+//	\d \s \w \D \S \W
 func bescape(s string) (*BitSet, string) {
 	if len(s) == 0 {
 		return nil, "'\\' at end"
@@ -105,7 +110,16 @@ func bescape(s string) (*BitSet, string) {
 	s = s[1:]
 	switch c {
 	case '0', '1', '2', '3', '4', '5', '6', '7':
-		return nil, "'\\0nn' unimplemented"
+		v := uint(c - '0')         // first digit
+		if o := octal(s); o >= 0 { // optional 2nd digit
+			v = 8*v + uint(o)
+			s = s[1:]
+		}
+		if o := octal(s); o >= 0 { // optional 3nd digit
+			v = 8*v + uint(o)
+			s = s[1:]
+		}
+		return (&BitSet{}).Set(v), s
 	case 'a':
 		return (&BitSet{}).Set('\a'), s
 	case 'b':
@@ -129,13 +143,23 @@ func bescape(s string) (*BitSet, string) {
 	case 't':
 		return (&BitSet{}).Set('\t'), s
 	case 'u':
-		return nil, "'\\uhhhh' unimplemented"
+		v := hexl(s, 4)
+		if v >= 0 {
+			return (&BitSet{}).Set(uint(v)), s[4:]
+		} else {
+			return nil, "malformed '\\uhhhh'"
+		}
 	case 'v':
 		return (&BitSet{}).Set('\v'), s
 	case 'w':
 		return wset, s
 	case 'x':
-		return nil, "'\\xhh' unimplemented"
+		v := hexl(s, 2)
+		if v >= 0 {
+			return (&BitSet{}).Set(uint(v)), s[2:]
+		} else {
+			return nil, "malformed '\\xhh'"
+		}
 	case 'D':
 		return dcompl, s
 	case 'P':
@@ -147,5 +171,27 @@ func bescape(s string) (*BitSet, string) {
 
 	default:
 		return (&BitSet{}).Set(uint(c)), s
+	}
+}
+
+//  octal returns the value of the first digit of s, or -1 if not octal digit.
+func octal(s string) int {
+	if len(s) > 0 && s[0] >= '0' && s[0] <= '7' {
+		return int(s[0] - '0')
+	} else {
+		return -1
+	}
+}
+
+//  hexl returns the value of the first n hex digits of s, or -1 if bad.
+func hexl(s string, n int) int {
+	if len(s) < n {
+		return -1
+	}
+	v, err := strconv.ParseInt(s[0:n], 16, 64)
+	if err == nil {
+		return int(v)
+	} else {
+		return -1
 	}
 }

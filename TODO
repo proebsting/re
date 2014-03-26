@@ -1,13 +1,14 @@
-RX TODO
+RX TO-DO LIST
+(For consideration: not all of these are clear wins.)
 
 PRIORITIES:
-Implement \037 \x3F \uxxxx \cX and try the huge RE
 
 REGEXPS:
+Add \cX?  Make \* mean * for all punct?
 Add POSIX classes?
-Handle (at least, ignore) ^ $ anchors
-Add \b anchor
-Add flags such as "case insensitive"?
+Handle (at least, ignore) ^ $ anchors?
+Add \b anchor??
+Add flags such as "case insensitive"??
 Other Perl stuff?
 
 UTILITIES:

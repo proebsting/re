@@ -11,6 +11,7 @@ import (
 
 //  TestBits exercises BitSet operations and checks the results.
 func TestBits(t *testing.T) {
+	fmt.Println("bit_test.go: TestBits")
 	bs := &BitSet{}
 	ck(t, "e00", true, bs.IsEmpty())
 	ck(t, "n00", 0, bs.Count())

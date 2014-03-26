@@ -4,45 +4,6 @@
 regexp: abc[[:digit:]]efg
 ERROR:  rx: [:class:] unimplemented: in "abc[[:digit:]]efg"
 
-regexp: abc\041def
-ERROR:  rx: '\0nn' unimplemented: in "abc\041def"
-
-regexp: [abc\041def]
-ERROR:  rx: '\0nn' unimplemented: in "[abc\041def]"
-
-regexp: [abc\1def]
-ERROR:  rx: '\0nn' unimplemented: in "[abc\1def]"
-
-regexp: [abc\26def]
-ERROR:  rx: '\0nn' unimplemented: in "[abc\26def]"
-
-regexp: [abc\30def]
-ERROR:  rx: '\0nn' unimplemented: in "[abc\30def]"
-
-regexp: [abc\43def]
-ERROR:  rx: '\0nn' unimplemented: in "[abc\43def]"
-
-regexp: [abc\52def]
-ERROR:  rx: '\0nn' unimplemented: in "[abc\52def]"
-
-regexp: [abc\61def]
-ERROR:  rx: '\0nn' unimplemented: in "[abc\61def]"
-
-regexp: [abc\70def]
-ERROR:  rx: '\0nn' unimplemented: in "[abc\70def]"
-
-regexp: abc\x21def
-ERROR:  rx: '\xhh' unimplemented: in "abc\x21def"
-
-regexp: [abc\x21def]
-ERROR:  rx: '\xhh' unimplemented: in "[abc\x21def]"
-
-regexp: abc\u0021def
-ERROR:  rx: '\uhhhh' unimplemented: in "abc\u0021def"
-
-regexp: [abc\u0021def]
-ERROR:  rx: '\uhhhh' unimplemented: in "[abc\u0021def]"
-
 regexp: abc\cIdef
 ERROR:  rx: '\cx' unimplemented: in "abc\cIdef"
 
