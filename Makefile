@@ -12,20 +12,19 @@ DEMO='(a|b)*abb' 'b(ab)*a'
 default: build test expt
 
 #  "make build" compiles all programs (and the library).
-build:
+build:  .FORCE
 	go install $(PROGS)
 
 #  These targets accomplish a partial build and test (imperfect but useful).
-rxd:	.FORCE; go install ${PKG}/rxd && cd test && runtest.sh *.rxd
-rxg:	.FORCE; go install ${PKG}/rxg && cd test && runtest.sh *.rxg
-rxq:	.FORCE; go install ${PKG}/rxq && cd test && runtest.sh *.rxq
-rxr:	.FORCE; go install ${PKG}/rxr && cd test && runtest.sh *.rx
-rxv:	.FORCE; go install ${PKG}/rxr && cd test && runtest.sh *.rxv
-rxx:	.FORCE; go install ${PKG}/rxx && cd test && runtest.sh *.rxx
-.FORCE:
+rxd:	.FORCE;  go install ${PKG}/rxd && cd test && runtest.sh *.rxd
+rxg:	.FORCE;  go install ${PKG}/rxg && cd test && runtest.sh *.rxg
+rxq:	.FORCE;  go install ${PKG}/rxq && cd test && runtest.sh *.rxq
+rxr:	.FORCE;  go install ${PKG}/rxr && cd test && runtest.sh *.rx
+rxv:	.FORCE;  go install ${PKG}/rxr && cd test && runtest.sh *.rxv
+rxx:	.FORCE;  go install ${PKG}/rxx && cd test && runtest.sh *.rxx
 
 #  "make test" runs unit tests and the shell-based tests
-test:	build
+test:	.FORCE
 	go test
 	cd test; $(MAKE)
 
@@ -58,3 +57,6 @@ demo:
 clean:
 	go clean -i $(PKG) $(PROGS)
 	cd test; $(MAKE) clean
+
+
+.FORCE:		# target meaning "always run"
