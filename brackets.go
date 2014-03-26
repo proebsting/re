@@ -170,7 +170,11 @@ func bescape(s string) (*BitSet, string) {
 		return wcompl, s
 
 	default:
-		return (&BitSet{}).Set(uint(c)), s
+		if unicode.IsLetter(rune(c)) {
+			return nil, fmt.Sprintf("'\\%c' unrecognized", c)
+		} else {
+			return (&BitSet{}).Set(uint(c)), s
+		}
 	}
 }
 

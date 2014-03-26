@@ -43,10 +43,12 @@ func TestBrackets(t *testing.T) {
 	try(t, `[]x[-]`, `[-[]x]`)
 	try(t, `[][]`, `[[]]`)
 	// character set escapes
-	// n.b. in POSIX, \ in [] should not be special
+	// n.b. in POSIX, \ in [] is not special, but we follow Perl here
 	try(t, `[\-]`, `[-]`)
 	try(t, `[\]]`, `[]]`)
 	try(t, `[ab\[cd\-gh\]ij]`, `[-[]a-dg-j]`)
+	try(t, `[*&=!+]`, `[!&*+=]`)
+	try(t, `[\*\&\=\!\+]`, `[!&*+=]`)
 	// perl inventions
 	try(t, `[\d]`, `[0-9]`)
 	try(t, `[\d0IZESB]`, `[0-9BEISZ]`)
@@ -60,6 +62,7 @@ func TestBrackets(t *testing.T) {
 	try(t, `[\r]`, `[\r]`)
 	try(t, `[\t]`, `[\t]`)
 	try(t, `[\v]`, `[\v]`)
+	try(t, `[\y]`, `'\y' unrecognized`)
 	// octal escapes
 	try(t, `[\0]`, `[\x00]`)
 	try(t, `[\00]`, `[\x00]`)

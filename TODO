@@ -4,7 +4,6 @@ RX TO-DO LIST
 PRIORITIES:
 
 REGEXPS:
-Add \cX?  Make \* mean * for all punct?
 Add POSIX classes?
 Handle (at least, ignore) ^ $ anchors?
 Add \b anchor??
