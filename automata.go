@@ -34,8 +34,8 @@ type DFAstate struct {
 }
 
 //  DFA.newState makes a new DFAstate and adds it to a DFA.
-func (dfa *DFA) newState() *DFAstate {
-	ds := &DFAstate{uint(len(dfa.Dstates)), false, &BitSet{}, nil,
+func (dfa *DFA) newState(posns *BitSet) *DFAstate {
+	ds := &DFAstate{uint(len(dfa.Dstates)), false, posns, nil,
 		make(map[uint]*DFAstate, 0), 0}
 	dfa.Dstates = append(dfa.Dstates, ds)
 	return ds
@@ -82,13 +82,15 @@ func MultiDFA(tlist []Node) *DFA {
 		d.SetFollow(pmap)
 	})
 
-	// compute DFA; see Dragon2 book p141
+	// compute DFA: see Dragon2 book p141
 
 	// initialize first unmarked Dstate
-	ds := dfa.newState()
+	posns := &BitSet{}
 	for _, p := range tree.Data().FirstPos.Members() {
-		ds.Posns.Set(p)
+		posns.Set(p)
 	}
+	knownStates := make(map[string]*DFAstate) // make hashtable of states
+	dfa.lookup(knownStates, posns)            // add initial state
 
 	// process unmarked Dstates until none are left
 	for nmarked := 0; nmarked < len(dfa.Dstates); nmarked++ {
@@ -99,8 +101,9 @@ func MultiDFA(tlist []Node) *DFA {
 		for _, a := range alist {       // for each input symbol a
 			u := followposns(pmap, plist, int(a))
 			if !u.IsEmpty() {
-				ustate := addstate(dfa, u) // add new state?
-				ds.Dnext[a] = ustate       // register transition
+				// find or make a matching state
+				ustate := dfa.lookup(knownStates, u)
+				ds.Dnext[a] = ustate // register transition
 			}
 		}
 	}
@@ -122,19 +125,16 @@ func MultiDFA(tlist []Node) *DFA {
 	return dfa
 }
 
-//  addstate adds position set U to a DFA if it is distinct, returning
-//  its index.  If U is not distinct, it returns the existing index.
-func addstate(dfa *DFA, u *BitSet) *DFAstate {
-	// start at high end because the most recent has best chance of match
-	for i := len(dfa.Dstates) - 1; i >= 0; i-- {
-		if dfa.Dstates[i].Posns.Equals(u) {
-			return dfa.Dstates[i]
-		}
+//  lookup finds a state matching position set U in map m.
+//  If U is distinct from existing entries, a new state is created.
+func (dfa *DFA) lookup(m map[string]*DFAstate, u *BitSet) *DFAstate {
+	k := u.Key()
+	ds := m[k]
+	if ds == nil {
+		ds = dfa.newState(u) // need to make a new one
+		m[k] = ds
 	}
-	// need to make a new one
-	unew := &DFAstate{Index: uint(len(dfa.Dstates)), Posns: u}
-	dfa.Dstates = append(dfa.Dstates, unew)
-	return unew
+	return ds
 }
 
 //  validHere returns the union of the csets of all members of plist.

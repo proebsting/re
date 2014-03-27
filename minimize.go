@@ -31,7 +31,7 @@ func (dfa *DFA) newPartition() *Partition {
 func (dfa *DFA) Minimize() *DFA {
 
 	// add and remember a "dead state" with no exits
-	deadstate = dfa.newState()
+	deadstate = dfa.newState(&BitSet{})
 
 	// make a partition list with one initial partition
 	// give this partition the accepting set of the start state
@@ -78,7 +78,7 @@ func (dfa *DFA) Minimize() *DFA {
 	minim := newDFA(dfa.Tree)
 	for _, p = range dfa.PartList {
 		if p.Index != deadstate.PartNum {
-			p.NewState = minim.newState()
+			p.NewState = minim.newState(&BitSet{})
 		}
 	}
 

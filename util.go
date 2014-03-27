@@ -14,6 +14,8 @@ import (
 	"os"
 	"reflect"
 	"strconv"
+	"syscall"
+	"time"
 )
 
 //  MkScanner creates a Scanner for reading from a file, aborting on error.
@@ -45,6 +47,33 @@ func IsComment(s string) bool {
 func Protect(s string) string {
 	s = strconv.Quote(s)
 	return s[1 : len(s)-1]
+}
+
+//  CPUtime returns the current CPU usage (user time + system time).
+func CPUtime() time.Duration {
+	var ustruct syscall.Rusage
+	CkErr(syscall.Getrusage(0, &ustruct))
+	user := time.Duration(syscall.TimevalToNsec(ustruct.Utime))
+	sys := time.Duration(syscall.TimevalToNsec(ustruct.Stime))
+	return user + sys
+}
+
+//  Interval returns the CPU time (user + system) since the preceding call.
+func Interval() time.Duration {
+	total := CPUtime()
+	delta := total - prevTotal
+	prevTotal = total
+	return delta
+}
+
+var prevTotal time.Duration // total time at list check
+
+//  ShowInterval calcs and (unless label is empty) prints the last interval.
+func ShowInterval(label string) {
+	dt := Interval().Seconds()
+	if label != "" {
+		fmt.Printf("%7.3f %s\n", dt, label)
+	}
 }
 
 //  Jlist writes a slice of anything Marshalable to a file in JSON format,

@@ -87,6 +87,12 @@ func (b1 *BitSet) And(b2 *BitSet) *BitSet {
 	return b3
 }
 
+//  BitSet.Key returns an unprintable string usable as a map key.
+//  (Neither a BitSet nor the underlying big.Int is a legal key type.)
+func (b *BitSet) Key() string {
+	return string(b.Bits.Bytes())
+}
+
 //  BitSet.Members returns a slice containing the values found in the set.
 //  This is the easiest way to iterate through the members of a bit set:
 //	for _, i := range bset.Members() { ... }
