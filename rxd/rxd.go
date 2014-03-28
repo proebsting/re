@@ -10,7 +10,7 @@
 	Otherwise, the minimized DFA is drawn.
 
 	If -v is given, the output is written to a temporary file,
-	drawn as a GIF file, and the default viewer is invoked.
+	drawn as a SVG, file, and the default viewer is invoked.
 	For this to work, "dot" must be in the command path.
 
 	If no expressions are given as command arguments, rxd reads
@@ -83,7 +83,7 @@ func main() {
 	}
 }
 
-//  display converts the dot output to GIF and starts a viewer.
+//  display converts the dot output to SVG and starts a viewer.
 func display(dfa *rx.DFA, label string) {
 	syscall.Umask(077) // for temp files, override umask
 	dotfile, err := ioutil.TempFile("", "rxd")
@@ -91,18 +91,18 @@ func display(dfa *rx.DFA, label string) {
 	dotname := dotfile.Name()
 	dfa.ToDot(dotfile, label)
 	dotfile.Close()
-	gifname := dotname + ".gif"
-	cmd := exec.Command("dot", "-Tgif", dotname, "-o", gifname)
+	svgname := dotname + ".svg"
+	cmd := exec.Command("dot", "-Tsvg", dotname, "-o", svgname)
 	err = cmd.Run()
 	rx.CkErr(err)
 	os.Remove(dotname)
 	if runtime.GOOS == "darwin" { // if Macintosh
-		err = exec.Command("open", "-W", gifname).Run()
+		err = exec.Command("open", "-W", svgname).Run()
 	} else {
-		err = exec.Command("xdg-open", gifname).Run()
+		err = exec.Command("xdg-open", svgname).Run()
 	}
 	rx.CkErr(err)
-	// #%#% DISABLED: os.Remove(gifname)
+	// #%#% DISABLED: os.Remove(svgname)
 	// We don't remove the temp file because we don't know when it's safe.
 	// It's especially problematic when multiple views are open at once.
 	// It would be nice to find a solution for this.
