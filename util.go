@@ -6,40 +6,21 @@
 package rx
 
 import (
-	"bufio"
 	"encoding/json"
 	"fmt"
 	"io"
 	"log"
-	"os"
 	"reflect"
 	"strconv"
 	"syscall"
 	"time"
 )
 
-//  MkScanner creates a Scanner for reading from a file, aborting on error.
-//  A filename of "-" reads standard input.
-func MkScanner(fname string) *bufio.Scanner { // return scanner for file
-	if fname == "-" {
-		return bufio.NewScanner(os.Stdin)
-	} else {
-		f, err := os.Open(fname)
-		CkErr(err)
-		return bufio.NewScanner(f)
-	}
-}
-
 //  CkErr aborts with a fatal error if e is not nil.
 func CkErr(e error) { // abort if e is not nil
 	if e != nil {
 		log.Fatal(e)
 	}
-}
-
-//  IsComment returns true if a line begins with '#' or is empty.
-func IsComment(s string) bool {
-	return len(s) == 0 || s[0] == '#'
 }
 
 //  Protect adds backslash notation, but no quotes,

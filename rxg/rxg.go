@@ -38,10 +38,8 @@
 package main
 
 import (
-	"bufio"
 	"flag"
 	"fmt"
-	"log"
 	"math/rand"
 	"os"
 	"rx"
@@ -57,15 +55,6 @@ func main() {
 
 	rflag := flag.Bool("R", false, "reproducible output")
 	flag.Parse()
-
-	var efile *bufio.Scanner
-	if len(flag.Args()) == 0 {
-		efile = rx.MkScanner("-")
-	} else if len(flag.Args()) == 1 {
-		efile = rx.MkScanner(flag.Args()[0])
-	} else {
-		log.Fatal("usage: rxg [-R] [exprfile]")
-	}
 	if *rflag {
 		rand.Seed(0)
 	} else {
@@ -73,19 +62,16 @@ func main() {
 	}
 
 	// load and process regexps
-	exprs := make([]RegEx, 0)
+	exprs := make([]*RegEx, 0)
 	tlist := make([]rx.Node, 0)
-	for efile.Scan() {
-		line := efile.Text()
-		if rx.IsComment(line) {
-			continue
+	rx.LoadExpressions(rx.OneInputFile(), func(l *rx.RegExParsed) {
+		rx.CkErr(l.Err)
+		if l.Tree != nil {
+			atree := rx.Augment(l.Tree, uint(len(tlist)))
+			tlist = append(tlist, atree)
+			exprs = append(exprs, &RegEx{len(exprs), l.Expr})
 		}
-		exprs = append(exprs, RegEx{len(exprs), line})
-		ptree, err := rx.Parse(line)
-		rx.CkErr(err)
-		tlist = append(tlist, rx.Augment(ptree, uint(len(tlist))))
-	}
-	rx.CkErr(efile.Err())
+	})
 
 	// echo the input with index numbers
 	fmt.Print(`{"Expressions":`)

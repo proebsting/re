@@ -44,14 +44,11 @@ func main() {
 		elist = append(elist, flag.Args()[i])
 	}
 	if len(elist) == 0 {
-		ifile := rx.MkScanner("-")
-		for ifile.Scan() {
-			e := ifile.Text()
-			if !rx.IsComment(e) {
-				elist = append(elist, ifile.Text())
+		rx.LoadExpressions("-", func(x *rx.RegExParsed) {
+			if x.IsExpr() {
+				elist = append(elist, x.Expr)
 			}
-		}
-		rx.CkErr(ifile.Err())
+		})
 	}
 
 	// build a list of augmented parse trees

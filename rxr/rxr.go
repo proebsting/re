@@ -30,10 +30,8 @@
 package main
 
 import (
-	"bufio"
 	"flag"
 	"fmt"
-	"log"
 	"math/rand"
 	"os"
 	"rx"
@@ -43,31 +41,22 @@ import (
 func main() {
 	qflag := flag.Bool("Q", false, "disable automata printing")
 	rflag := flag.Bool("R", false, "reset ranseed before each rx")
-	flag.Parse()
-	var efile *bufio.Scanner
-	if len(flag.Args()) == 0 {
-		efile = rx.MkScanner("-")
-	} else if len(flag.Args()) == 1 {
-		efile = rx.MkScanner(flag.Args()[0])
-	} else {
-		log.Fatal("usage: rxr [efile]")
-	}
 	rand.Seed(int64(time.Now().Nanosecond()))
 
 	// load and process regexps
-	for i := 0; efile.Scan(); i++ {
+	rx.LoadExpressions(rx.OneInputFile(), func(in *rx.RegExParsed) {
 		fmt.Println()
-		spec := efile.Text()
-		if rx.IsComment(spec) { // if comment, not RE
+		spec := in.Expr
+		if !in.IsExpr() {
 			fmt.Println(spec)
-			continue
+			return
 		}
 		fmt.Printf("regexp: %s\n", spec)
-		t, e := rx.Parse(spec)
-		if e != nil {
-			fmt.Println("ERROR: ", e)
-			continue
+		if in.Err != nil {
+			fmt.Println("ERROR: ", in.Err)
+			return
 		}
+		t := in.Tree
 		fmt.Printf("tree:   %v\n", t)
 		augt := rx.Augment(t, 0) // make augmented tree
 		if !*qflag {             // if -Q not given, print it
@@ -106,8 +95,7 @@ func main() {
 			dfa = dfa.Minimize()
 			dfa.DumpStates(os.Stdout)
 		}
-	}
-	rx.CkErr(efile.Err())
+	})
 }
 
 const linemax = 79

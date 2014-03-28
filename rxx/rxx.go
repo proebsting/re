@@ -32,7 +32,7 @@ func main() {
 	if len(args) != 3 {
 		log.Fatal("usage: rxx efile sfile")
 	}
-	efile := rx.MkScanner(args[1])
+	ename := args[1]
 	sfile := rx.MkScanner(args[2])
 
 	labels :=
@@ -42,15 +42,10 @@ func main() {
 	// load and compile regexps
 	fmt.Println()
 	tlist := make([]rx.Node, 0) // list of valid parse trees
-	for efile.Scan() {
-		spec := efile.Text()
-		var ptree rx.Node
-		var err error
-		if rx.IsComment(spec) {
-			ptree, err = nil, nil
-		} else {
-			ptree, err = rx.Parse(spec)
-		}
+	rx.LoadExpressions(ename, func(x *rx.RegExParsed) {
+		spec := x.Expr
+		ptree := x.Tree
+		err := x.Err
 		if err != nil {
 			fmt.Printf("ERR %s\n", spec)
 			elist = append(elist, tester{" ", spec, nil, 0})
@@ -68,8 +63,8 @@ func main() {
 			tlist = append(tlist, atree)
 			elist = append(elist, tester{label, spec, ptree, i})
 		}
-	}
-	rx.CkErr(efile.Err())
+	})
+
 	dfa := rx.MultiDFA(tlist)
 	_ = dfa.Minimize()   // should have no effect
 	_ = dfa.Minimize()   // should again have no effect
