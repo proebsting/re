@@ -2,6 +2,8 @@ RX TO-DO LIST
 (For consideration: not all of these are clear wins.)
 
 PRIORITIES:
+Add metadata to the JSON output of rxg
+(hard part is specifying how the metadata comes IN....)
 
 REGEXPS:
 Add POSIX classes?
@@ -11,6 +13,7 @@ Add flags such as "case insensitive"??
 Other Perl stuff?
 
 UTILITIES:
+Use SVG for rxd -v
 More options to control rxr output
 Add headings and spacing to rxr output?
 Combine multiple utilities into one (Swiss army knife)?

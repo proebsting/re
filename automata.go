@@ -72,7 +72,7 @@ func MultiDFA(tlist []Node) *DFA {
 			n++
 			dfa.Leaves = append(dfa.Leaves, leaf)
 		}
-		d.SetNFL()                     // set Nullable, FirstPos, LastPos
+		d.SetNFL()                     // Nullable, FirstPos, LastPos
 		d.Data().FollowPos = &BitSet{} // init empty FollowPos
 	})
 	pmap := dfa.Leaves // map of indexes to nodes
@@ -94,16 +94,14 @@ func MultiDFA(tlist []Node) *DFA {
 
 	// process unmarked Dstates until none are left
 	for nmarked := 0; nmarked < len(dfa.Dstates); nmarked++ {
-		ds := dfa.Dstates[nmarked] // unmarked Dstate T
-		ds.Dnext = make(map[uint]*DFAstate, 0)
-		plist := ds.Posns.Members()     // list of p in T
-		alist := validHere(pmap, plist) // potential a values
-		for _, a := range alist {       // for each input symbol a
-			u := followposns(pmap, plist, int(a))
+		ds := dfa.Dstates[nmarked]               // next unmkd Dstate T
+		plist := ds.Posns.Members()              // list of p in T
+		for _, a := range dfa.validHere(plist) { // potential input syms
+			u := dfa.followSet(plist, a) // set of follow posns
 			if !u.IsEmpty() {
 				// find or make a matching state
 				ustate := dfa.lookup(knownStates, u)
-				ds.Dnext[a] = ustate // register transition
+				ds.Dnext[a] = ustate // transition on a
 			}
 		}
 	}
@@ -139,7 +137,8 @@ func (dfa *DFA) lookup(m map[string]*DFAstate, u *BitSet) *DFAstate {
 
 //  validHere returns the union of the csets of all members of plist.
 //  (This gives us fewer potential input symbols a over which to iterate.)
-func validHere(pmap []*MatchNode, plist []uint) []uint {
+func (dfa *DFA) validHere(plist []uint) []uint {
+	pmap := dfa.Leaves
 	cs := &BitSet{}
 	for _, p := range plist {
 		cs = cs.Or(pmap[p].Cset)
@@ -147,18 +146,16 @@ func validHere(pmap []*MatchNode, plist []uint) []uint {
 	return cs.Members()
 }
 
-//  followposns returns the set U for a new Dstate: the set of positions
-//  that are in followpos(p) for some p in plist on input symbol a.
-func followposns(pmap []*MatchNode, plist []uint, a int) *BitSet {
-	posns := &BitSet{}
+//  followSet returns those positions in followpos(p) where p matches a
+func (dfa *DFA) followSet(plist []uint, a uint) *BitSet {
+	fset := &BitSet{}
 	for _, p := range plist {
-		if pmap[p].Cset.Test(uint(a)) {
-			for _, q := range pmap[p].FollowPos.Members() {
-				posns.Set(q)
-			}
+		leaf := dfa.Leaves[p]
+		if leaf.Cset.Test(a) {
+			fset = fset.Or(leaf.FollowPos)
 		}
 	}
-	return posns
+	return fset
 }
 
 //  DFAstate.InvertMap lists dest states and maps to transition sets.
