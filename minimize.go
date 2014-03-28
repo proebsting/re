@@ -176,12 +176,12 @@ func (ds *DFAstate) mergeFrom(p *Partition) {
 	ds.PartNum = p.Index                     // just for some history
 	dfa := p.Automata                        // the old DFA
 	for _, i := range p.StateSet.Members() { // for each partition member
-		os := dfa.Dstates[i]             // get old state
-		ds.Posns = ds.Posns.Or(os.Posns) // merge positions
+		os := dfa.Dstates[i]      // get old state
+		ds.Posns.OrWith(os.Posns) // merge positions
 		if ds.AccSet == nil {
 			ds.AccSet = os.AccSet // first seen, or just nil
 		} else {
-			ds.AccSet = ds.AccSet.Or(os.AccSet) // merge acceptors
+			ds.AccSet.OrWith(os.AccSet) // merge acceptors
 		}
 		for x := range os.Dnext { // for each input
 			odest := os.Dnext[uint(x)] // get old dest state

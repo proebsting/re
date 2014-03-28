@@ -1,5 +1,8 @@
 //  bitset.go -- a datatype for representing sets of small integers
 //
+//  Most of these operations are functional in concept,
+//  but a few modify the receiver: Set, Clear, OrWith, AndWith.
+//
 //  based originally on code from the Go Playground
 //  http://play.golang.org/p/NpHns5EBnQ as of 11-Feb-2014
 
@@ -55,10 +58,10 @@ func (b *BitSet) Count() int {
 //  It returns 0 if the BitSet is empty.
 func (b *BitSet) lowbit() int {
 	// inspired by thoughts of HAKMEM...
-	sub := (&big.Int{}).Sub(&b.Bits, bigone)
-	xor := (&big.Int{}).Xor(&b.Bits, sub)
-	add := (&big.Int{}).Add(bigone, xor)
-	n := add.BitLen() - 2
+	bigTemp.Sub(&b.Bits, bigOne)
+	bigTemp.Xor(&b.Bits, bigTemp)
+	bigTemp.Add(bigOne, bigTemp)
+	n := bigTemp.BitLen() - 2
 	if n >= 0 {
 		return n
 	} else {
@@ -66,7 +69,8 @@ func (b *BitSet) lowbit() int {
 	}
 }
 
-var bigone = big.NewInt(1) // static variable used in lowbit()
+var bigOne = big.NewInt(1)  // static constant used in lowbit()
+var bigTemp = big.NewInt(0) // static temporary used in lowbit()
 
 //  BitSet.Equals returns true if the argument set is identical to this one.
 func (b1 *BitSet) Equals(b2 *BitSet) bool {
@@ -80,11 +84,23 @@ func (b1 *BitSet) Or(b2 *BitSet) *BitSet {
 	return b3
 }
 
+//  BitSet.OrWith accomplishes an OR-in-place, eliminating a memory allocation.
+func (b1 *BitSet) OrWith(b2 *BitSet) *BitSet {
+	b1.Bits.Or(&b1.Bits, &b2.Bits)
+	return b1
+}
+
 //  BitSet.And produces a new BitSet that is the intersection of its inputs.
 func (b1 *BitSet) And(b2 *BitSet) *BitSet {
 	b3 := new(BitSet)
 	b3.Bits.And(&b1.Bits, &b2.Bits)
 	return b3
+}
+
+//  BitSet.AndWith accomplishes an And-in-place, eliminating a memory allocn.
+func (b1 *BitSet) AndWith(b2 *BitSet) *BitSet {
+	b1.Bits.And(&b1.Bits, &b2.Bits)
+	return b1
 }
 
 //  BitSet.Key returns an unprintable string usable as a map key.

@@ -141,7 +141,7 @@ func (dfa *DFA) validHere(plist []uint) []uint {
 	pmap := dfa.Leaves
 	cs := &BitSet{}
 	for _, p := range plist {
-		cs = cs.Or(pmap[p].Cset)
+		cs.OrWith(pmap[p].Cset)
 	}
 	return cs.Members()
 }
@@ -152,7 +152,7 @@ func (dfa *DFA) followSet(plist []uint, a uint) *BitSet {
 	for _, p := range plist {
 		leaf := dfa.Leaves[p]
 		if leaf.Cset.Test(a) {
-			fset = fset.Or(leaf.FollowPos)
+			fset.OrWith(leaf.FollowPos)
 		}
 	}
 	return fset

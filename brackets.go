@@ -70,7 +70,7 @@ func bxparse(s string) (*BitSet, string) {
 				if eset == nil {
 					return nil, s
 				}
-				result = result.Or(eset)
+				result.OrWith(eset)
 			} // else: error caught on next iteration
 		default:
 			// an ordinary char; add to set

@@ -71,8 +71,8 @@ func (d *AltNode) SetNFL() {
 	d.LastPos = &BitSet{}
 	for _, e := range d.Alts {
 		d.Nullable = d.Nullable || e.Data().Nullable
-		d.FirstPos = d.FirstPos.Or(e.Data().FirstPos)
-		d.LastPos = d.LastPos.Or(e.Data().LastPos)
+		d.FirstPos.OrWith(e.Data().FirstPos)
+		d.LastPos.OrWith(e.Data().LastPos)
 	}
 }
 
