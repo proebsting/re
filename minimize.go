@@ -49,6 +49,7 @@ func (dfa *DFA) Minimize() *DFA {
 		p := amap[pset]   // find partition for this set
 		if p == nil {     // if there isn't one yet, make one
 			p = dfa.newPartition()
+			amap[pset] = p
 		}
 		p.insert(ds) // move state to partition
 	}

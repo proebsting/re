@@ -6,6 +6,8 @@ C(AC|B)D
 gcg(cgg|agg)*ctg
 # Sedgewick: multiples of 3, in binary
 (0|1(01*0)*1)*
+# A simple expr that had problems minimizing
+(10)*|ac|dc
 # Experiments with word construction
 [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
 W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)

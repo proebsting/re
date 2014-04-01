@@ -1,0 +1,15 @@
+{"Expressions":[
+{"Index":0,"Rexpr":"()"},
+{"Index":1,"Rexpr":"a?"},
+{"Index":2,"Rexpr":"a?(ba)*b?"},
+{"Index":3,"Rexpr":"(a|)(ba)*(b|)"},
+{"Index":4,"Rexpr":"a(ba)*b?|b(ab)*a?"}
+],
+"Examples":[
+{"State":0,"RXset":[0,1,2,3],"Example":""},
+{"State":1,"RXset":[1,2,3,4],"Example":"a"},
+{"State":2,"RXset":[2,3,4],"Example":"b"},
+{"State":3,"RXset":[2,3,4],"Example":"ab"},
+{"State":4,"RXset":[2,3,4],"Example":"ba"},
+{"State":5,"RXset":[2,3,4],"Example":"aba"}
+]}

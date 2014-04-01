@@ -337,9 +337,9 @@ s2. { p2 } [a]:s3
 s3# { p3 }
 --[minimizing]--
 s0# { p0 p3 } [a]:s1
-s1. { p1 } [a]:s2
-s2. { p2 } [a]:s3
-s3# { p3 }
+s1. { p1 } [a]:s3
+s2# { p3 }
+s3. { p2 } [a]:s2
 
 regexp: (a{3}){2}
 tree:   a{3}{2}

@@ -47,6 +47,18 @@ ex(3):            110  10101  0  101100110100    1011100000110001100011011101
 ex(5):  0  10000110010  1011101101101  01011010  10001111100001111101000  011
 ex(8):  00  10111001111101101001100111001111001110001    0
 
+# A simple expr that had problems minimizing
+
+regexp: (10)*|ac|dc
+tree:   ((10)*|(ac)|(dc))
+length: 0 to *
+ex(0):      ac  ac  dc  ac  ac  dc        dc  dc        dc  dc  ac    dc    dc
+ex(1):  dc    10  ac    dc  ac  dc  ac  dc  ac  dc  10    dc  ac  ac    10  dc
+ex(2):  10  ac    dc  dc  dc  1010  1010  ac  dc  ac  dc  dc  ac    dc  10  dc
+ex(3):  ac  101010  1010  dc  ac  ac  1010  dc  1010  dc  dc  dc  ac  ac  10
+ex(5):  10  ac  dc  dc  dc  101010  10101010  ac  dc  ac  ac  101010  101010
+ex(8):  dc    1010101010  dc  101010101010  10101010101010  10101010101010
+
 # Experiments with word construction
 
 regexp: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]

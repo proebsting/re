@@ -1,0 +1,6 @@
+# problems minimizing in combination
+()
+a?
+a?(ba)*b?
+(a|)(ba)*(b|)
+a(ba)*b?|b(ab)*a?

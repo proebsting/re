@@ -198,6 +198,52 @@ s0# { p0 p1 p6 } [0]:s0 [1]:s1
 s1. { p2 p5 } [1]:s0 [0]:s2
 s2. { p3 p4 } [0]:s1 [1]:s2
 
+# A simple expr that had problems minimizing
+
+regexp: (10)*|ac|dc
+tree:   ((10)*|(ac)|(dc))
+augmnt: (((10)*|(ac)|(dc))#)
+length: 0 to *
+ex(0):      ac  ac  dc  ac  ac  dc        dc  dc        dc  dc  ac    dc    dc
+ex(1):  dc    10  ac    dc  ac  dc  ac  dc  ac  dc  10    dc  ac  ac    10  dc
+ex(2):  10  ac    dc  dc  dc  1010  1010  ac  dc  ac  dc  dc  ac    dc  10  dc
+ex(3):  ac  101010  1010  dc  ac  ac  1010  dc  1010  dc  dc  dc  ac  ac  10
+ex(5):  10  ac  dc  dc  dc  101010  10101010  ac  dc  ac  ac  101010  101010
+ex(8):  dc    1010101010  dc  101010101010  10101010101010  10101010101010
+node: {false, 1ad#, #} (((10)*|(ac)|(dc))#)
+  node: {true, 1ad, 0cc} ((10)*|(ac)|(dc))
+    node: {true, 1, 0} (10)*
+      node: {false, 1, 0} (10)
+        node: {false, 1, 1} 1
+        node: {false, 0, 0} 0
+    node: {false, a, c} (ac)
+      node: {false, a, a} a
+      node: {false, c, c} c
+    node: {false, d, c} (dc)
+      node: {false, d, d} d
+      node: {false, c, c} c
+  node: {false, #, #} #
+begin => { 0 2 4 6 }
+p0. 1 => { 1 }
+p1. 0 => { 0 6 }
+p2. a => { 3 }
+p3. c => { 6 }
+p4. d => { 5 }
+p5. c => { 6 }
+p6. # => { }
+s0# { p0 p2 p4 p6 } [1]:s1 [a]:s2 [d]:s3
+s1. { p1 } [0]:s4
+s2. { p3 } [c]:s5
+s3. { p5 } [c]:s5
+s4# { p0 p6 } [1]:s1
+s5# { p6 }
+--[minimizing]--
+s0# { p0 p2 p4 p6 } [1]:s1 [ad]:s4
+s1. { p1 } [0]:s2
+s2# { p0 p6 } [1]:s1
+s3# { p6 }
+s4. { p3 p5 } [c]:s3
+
 # Experiments with word construction
 
 regexp: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
