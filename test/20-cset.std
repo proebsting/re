@@ -2,6 +2,7 @@
 regexp: [a]+
 tree:   a+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(2):  a  a  aa  a  aa  a  aa  aa  a  a  a  aa  aa  a  a  a  aa  a  a  a  aa
@@ -12,6 +13,7 @@ ex(8):  aaaa  aaaaa  aa  aaaaaaa  aaaaa  a  aaaaaaa  aaaa  aaaaaa  aaa  aaaaaaa
 regexp: [bc]+
 tree:   [bc]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  b  b  c  b  c  b  c  c  b  b  b  c  c  b  b  b  c  b  b  b  c  b  b  b
 ex(1):  b  b  b  c  b  c  b  c  b  b  c  b  b  c  b  c  b  b  b  c  c  b  b  b
 ex(2):  b  b  bc  b  b  cb  c  bc  cb  c  c  bc  bb  c  c  b  b  b  b  b  bb
@@ -22,6 +24,7 @@ ex(8):  cbbcc  cbbbbbc  ccc  bbb  bccb  cc  ccc  cbbbc  bbb  bbcccbbc  b
 regexp: [def]+
 tree:   [def]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  d  f  f  f  d  e  d  d  f  d  d  d  d  d  f  f  f  e  e  d  d  e  f  d
 ex(1):  e  e  d  f  e  e  f  e  f  f  d  d  e  f  d  d  e  d  e  d  e  e  d  f
 ex(2):  fd  fe  d  df  d  e  dd  df  d  de  ff  ef  e  e  f  e  d  fe  e  e  df
@@ -32,6 +35,7 @@ ex(8):  ddffe  e  eeff  dde  eeedfde  dfddeee  deefedef  ededdee  edefddd
 regexp: [ghij]+
 tree:   [g-j]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  h  g  g  h  g  i  h  g  g  g  j  i  i  g  i  g  h  g  h  g  i  i  j  h
 ex(1):  g  h  i  h  h  g  i  j  j  j  h  g  h  h  i  h  h  g  h  j  h  h  j  g
 ex(2):  ij  gh  h  ig  i  ij  h  gg  gi  i  ii  h  i  g  i  j  h  hh  hh  i  g
@@ -42,6 +46,7 @@ ex(8):  jhigj  hih  iihijgg  jgj  hjgjjji  i  igjii  gg  jijhi  ij  gigjiii
 regexp: [lmnop]+
 tree:   [l-p]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  n  p  m  m  p  l  l  p  p  o  m  l  n  l  m  o  l  p  n  p  m  n  m  m
 ex(1):  p  n  m  n  m  n  n  o  p  l  o  m  o  o  o  o  m  l  m  o  o  o  l  l
 ex(2):  o  o  n  n  l  o  ol  np  ml  m  o  l  n  oo  nl  lo  m  po  m  mp  nm
@@ -52,6 +57,7 @@ ex(8):  ppn  lmop  nmo  mopplmmo  noonm  npmmnln  nnmm  l  pm  lonnoon  pnmo
 regexp: [tuvwxyz]+
 tree:   [t-z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  x  u  w  x  v  z  y  u  u  x  y  z  x  x  u  w  z  z  u  x  x  t  z  x
 ex(1):  t  t  u  v  y  t  y  v  w  w  v  x  v  v  u  x  v  t  u  v  t  x  t  y
 ex(2):  v  t  y  z  zw  uz  v  z  z  yw  wx  xw  uu  v  u  vv  xw  u  zz  x  uu
@@ -62,6 +68,7 @@ ex(8):  wwxvwyv  yvzyztw  txtxwz  uwwt  ytx  z  xwvwzxwt  v  wzvxuyyx  wwt  uvt
 regexp: [ACDFGHJKLMOPQRSUVWXYZ]+
 tree:   [ACDFGHJ-MO-SU-Z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  G  A  W  Y  S  C  P  F  K  L  F  R  X  J  L  A  D  Y  Q  J  C  H  F  G
 ex(1):  C  M  K  O  Q  S  W  D  H  Q  X  W  J  U  Q  Z  W  P  U  U  A  Y  X  C
 ex(2):  YA  W  QH  U  LH  L  A  S  Y  R  QW  J  OF  H  S  RA  H  JP  GG  AG  S
@@ -72,6 +79,7 @@ ex(8):  HZMFA  UZG  SU  YFSWXZ  RAL  QYODOCR  KXFYJX  O  X  HJJFKHUG  KRL  OC
 regexp: [aeiuo]+
 tree:   [aeiou]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  i  u  e  e  u  a  a  u  u  o  e  a  i  a  e  o  a  u  i  u  e  i  e  e
 ex(1):  u  i  e  i  e  i  i  o  u  a  o  e  o  o  o  o  e  a  e  o  o  o  a  a
 ex(2):  o  o  i  i  a  o  oa  iu  ea  e  o  a  i  oo  ia  ao  e  uo  e  eu  ie
@@ -82,6 +90,7 @@ ex(8):  uui  aeou  ieo  eouuaeeo  iooie  iueeiai  iiee  a  ue  aoiiooi  uieo
 regexp: [aeiuo]+y?
 tree:   ([aeiou]+y?)
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  i  u  e  e  u  a  a  u  u  o  e  a  i  a  e  o  a  u  i  u  e  i  e  e
 ex(1):  u  i  ey  ay  iy  ay  a  i  oy  uy  ay  iy  o  i  e  oy  o  ay  u  u  o
 ex(2):  i  ay  oo  iiy  ii  aay  o  ay  ouy  oa  e  ay  au  uo  o  iey  uo  i
@@ -92,6 +101,7 @@ ex(8):  euea  eiuoaie  oaieiay  iea  ouiueei  aiieaiy  ieuaoiy  euuy  ieaiou
 regexp: [a-z]+
 tree:   [a-z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  j  c  y  j  g  n  a  l  i  l  m  i  f  y  h  t  g  c  c  m  g  h  w  e
 ex(1):  a  w  w  x  a  n  y  z  k  n  m  f  l  f  g  d  r  x  t  b  n  y  b  b
 ex(2):  vp  fs  i  dg  ps  wj  nl  lj  j  v  z  rg  aj  px  r  s  jw  jg  pr  o
@@ -102,6 +112,7 @@ ex(8):  bb  jmbhct  j  wnjl  akzrkww  upwizhvo  xodpo  jnghzcn  tnlv  vph  abom
 regexp: [A-Z]+
 tree:   [A-Z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  J  C  Y  J  G  N  A  L  I  L  M  I  F  Y  H  T  G  C  C  M  G  H  W  E
 ex(1):  A  W  W  X  A  N  Y  Z  K  N  M  F  L  F  G  D  R  X  T  B  N  Y  B  B
 ex(2):  VP  FS  I  DG  PS  WJ  NL  LJ  J  V  Z  RG  AJ  PX  R  S  JW  JG  PR  O
@@ -112,6 +123,7 @@ ex(8):  BB  JMBHCT  J  WNJL  AKZRKWW  UPWIZHVO  XODPO  JNGHZCN  TNLV  VPH  ABOM
 regexp: [a-zA-Z]+
 tree:   [A-Za-z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  Z  V  o  l  j  I  L  u  o  r  a  l  E  X  y  w  r  x  c  Y  a  z  z  a
 ex(1):  g  F  t  s  K  l  m  d  C  b  J  V  i  D  P  v  z  P  r  D  y  z  s  e
 ex(2):  Dx  L  l  ST  qw  bD  Wx  dW  Ps  B  e  uh  yX  Yd  x  SC  Qd  l  h  kn
@@ -122,6 +134,7 @@ ex(8):  a  u  gskCH  kdYN  r  sgxn  UkKksZ  ckGmdX  Whx  NlMhJxQk  t  IfD  vuVE
 regexp: [_a-zA-Z]+
 tree:   [A-Z_a-z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  _  q  k  o  e  H  k  n  m  L  o  I  T  O  p  r  e  K  m  K  V  i  w  B
 ex(1):  j  s  E  Z  f  A  O  x  J  O  Z  Z  V  G  b  l  M  M  G  K  l  h  N  U
 ex(2):  mk  l  Y  u  lA  xS  HK  mu  _  l  ky  UY  Y  VM  _U  N  D  Fz  Z  NG
@@ -132,6 +145,7 @@ ex(8):  wdTnIzKi  KsVo  fbQWATb  _KuKzxI  DMzN  E_aaHiM  To  ZWti  LrJI_GE  mK
 regexp: [0-9]+
 tree:   [0-9]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
 ex(1):  8  1  7  0  5  1  9  8  5  7  8  6  2  4  8  1  9  1  5  7  8  2  0  6
 ex(2):  0  6  1  2  8  1  2  87  30  68  19  9  0  9  7  95  61  6  7  27  89
@@ -142,6 +156,7 @@ ex(8):  60  582495  1639932  6194  7109  72144  9634846  44  531730  0112466
 regexp: [_a-zA-Z0-9]+
 tree:   [0-9A-Z_a-z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  _  p  B  O  c  V  4  H  c  c  w  j  s  M  9  D  d  4  Q  D  L  f  A  C
 ex(1):  G  O  E  c  E  D  S  U  q  A  X  U  m  h  F  V  4  1  8  W  n  b  8  _
 ex(2):  _  I  d  a  L  Yo  C  eo  5Y  ty  O  00  h  J  X  b  d  D  RF  g  W  n
@@ -152,6 +167,7 @@ ex(8):  5  un  TD  Ff  P0urzQfq  sLO99  pOK  uhwxgDmm  Ide  Pvb  9cfohRz
 regexp: [_a-zA-Z][_a-zA-Z0-9]*
 tree:   ([A-Z_a-z][0-9A-Z_a-z]*)
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  _  q  k  o  e  H  k  n  m  L  o  I  T  O  p  r  e  K  m  K  V  i  w  B
 ex(1):  j  Z  Ha  q  NI  J  O  XY  i  vy  nT  re  Xt  e  sS  F  a  n  Xl  l6
 ex(2):  jU  i  P  Uf  _  We1  TBs  _nz  I  Km9  hO  NHC  QgV  hh  IN  GA  s  A
@@ -162,6 +178,7 @@ ex(8):  k0ULle  Zhray1G4n  p  x8wF1  vL  JXzh_g  gJ5NZcbC  mT_7x4w6L  jZebV
 regexp: [A-HO-Z][A-Z]*
 tree:   ([A-HO-Z][A-Z]*)
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  D  G  U  D  F  V  R  V  Q  Z  G  R  P  T  G  T  O  D  H  R  F  P  W  O
 ex(1):  GN  OM  W  O  O  DN  XN  UV  UR  Z  EO  O  TE  H  W  A  DT  UH  AG  X
 ex(2):  PKO  H  Z  F  DI  OK  P  T  PT  XNG  B  WZ  S  C  FH  UP  ZBK  F  TXB

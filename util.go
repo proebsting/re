@@ -57,6 +57,18 @@ func ShowInterval(label string) {
 	}
 }
 
+//  ShowLabel prints a label, if not empty, in a standard format.
+func ShowLabel(f io.Writer, label string) {
+	const decor = "--------------------------------------------------"
+	const total = len(decor)
+	if label != "" {
+		n := len(label) + 2
+		z := (total - n) / 2
+		a := total - n - z
+		fmt.Fprintf(f, "%s %s %s\n", decor[:a], label, decor[:z])
+	}
+}
+
 //  Jlist writes a slice of anything Marshalable to a file in JSON format,
 //  one entry per line.  No newline is written at the end.
 func Jlist(f io.Writer, slc interface{}) {

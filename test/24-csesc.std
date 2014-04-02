@@ -6,6 +6,7 @@
 regexp: [\-]+
 tree:   -+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(1):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(2):  -  -  --  -  --  -  --  --  -  -  -  --  --  -  -  -  --  -  -  -  --
@@ -16,6 +17,7 @@ ex(8):  ----  -----  --  -------  -----  -  -------  ----  ------  ---  -------
 regexp: [\]]*
 tree:   ]*
 length: 0 to *
+-------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      ]    ]    ]  ]        ]  ]        ]        ]        ]        ]    ]
 ex(2):  ]]  ]  ]]  ]  ]]  ]  ]]    ]      ]]  ]  ]          ]]  ]    ]  ]    
@@ -26,6 +28,7 @@ ex(8):  ]]]  ]  ]  ]]]]]]]]  ]]]]]  ]]]]]    ]]]]]]  ]]]  ]  ]]]]]]]  ]]]]]
 regexp: [ab\[cd\-gh\]ij]+
 tree:   [-[]a-dg-j]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  h  [  ]  -  g  i  i  g  b  [  c  [  [  c  ]  b  i  g  [  b  a  ]  a  [
 ex(1):  h  g  ]  g  h  ]  c  a  c  i  c  ]  h  i  ]  -  [  [  j  d  a  a  g  h
 ex(2):  ]  a]  ]  gd  g  c  jj  ][  -  dg  ga  j  i  hi  a  []  ]  j  j  j  gd
@@ -38,6 +41,7 @@ ex(8):  -[gcadgg  [  dhjbd[cb  j  h]d--id  [b][  bii[d  adicj  hb[dah  cd[ihgi
 regexp: \d+
 tree:   [0-9]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
 ex(1):  8  1  7  0  5  1  9  8  5  7  8  6  2  4  8  1  9  1  5  7  8  2  0  6
 ex(2):  0  6  1  2  8  1  2  87  30  68  19  9  0  9  7  95  61  6  7  27  89
@@ -48,6 +52,7 @@ ex(8):  60  582495  1639932  6194  7109  72144  9634846  44  531730  0112466
 regexp: [\d]+
 tree:   [0-9]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
 ex(1):  8  1  7  0  5  1  9  8  5  7  8  6  2  4  8  1  9  1  5  7  8  2  0  6
 ex(2):  0  6  1  2  8  1  2  87  30  68  19  9  0  9  7  95  61  6  7  27  89
@@ -58,6 +63,7 @@ ex(8):  60  582495  1639932  6194  7109  72144  9634846  44  531730  0112466
 regexp: [\d0IZESB]+
 tree:   [0-9BEISZ]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  3  0  5  0  4  1  2  8  6  0  2  9  B  0  B  0  0  I  3  1  2  9  7  4
 ex(1):  9  2  6  9  0  5  6  4  0  9  3  2  7  7  7  4  7  S  0  I  B  1  S  E
 ex(2):  39  67  54  BS  8  I  40  08  S4  7S  5E  0  43  I  84  ZZ  8  2  97  Z
@@ -68,6 +74,7 @@ ex(8):  0797B  27  SB  402BZ9S5  64B  92010506  62  53Z8  ZSEEI405  4509119
 regexp: 0x([\dABCDEF][\dABCDEF])+
 tree:   ((0x)([0-9A-F][0-9A-F])+)
 length: 4 to *
+-------------------- Examples --------------------
 ex(0):  0x46  0x53  0xEC  0x6D  0x65  0x9D  0x31  0x11  0xDA  0x79  0x73  0xA8
 ex(1):  0x71  0x00  0x8D  0xD3  0x52  0x23  0x44  0x9E  0xB3  0x0C  0x38  0xCB
 ex(2):  0xB3  0x7B  0x217C  0x858F  0x862E  0xC70F  0x7E  0xF9  0x3B  0x13
@@ -78,6 +85,7 @@ ex(8):  0x988E  0xFB71F2A217  0x8ABF0417C0  0xD6B8  0x3355556BF13CB9DF
 regexp: \w+
 tree:   [0-9A-Z_a-z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  _  p  B  O  c  V  4  H  c  c  w  j  s  M  9  D  d  4  Q  D  L  f  A  C
 ex(1):  G  O  E  c  E  D  S  U  q  A  X  U  m  h  F  V  4  1  8  W  n  b  8  _
 ex(2):  _  I  d  a  L  Yo  C  eo  5Y  ty  O  00  h  J  X  b  d  D  RF  g  W  n
@@ -88,6 +96,7 @@ ex(8):  5  un  TD  Ff  P0urzQfq  sLO99  pOK  uhwxgDmm  Ide  Pvb  9cfohRz
 regexp: [\w]+
 tree:   [0-9A-Z_a-z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  _  p  B  O  c  V  4  H  c  c  w  j  s  M  9  D  d  4  Q  D  L  f  A  C
 ex(1):  G  O  E  c  E  D  S  U  q  A  X  U  m  h  F  V  4  1  8  W  n  b  8  _
 ex(2):  _  I  d  a  L  Yo  C  eo  5Y  ty  O  00  h  J  X  b  d  D  RF  g  W  n
@@ -98,6 +107,7 @@ ex(8):  5  un  TD  Ff  P0urzQfq  sLO99  pOK  uhwxgDmm  Ide  Pvb  9cfohRz
 regexp: \w+-\w+
 tree:   (([0-9A-Z_a-z]+-)[0-9A-Z_a-z]+)
 length: 3 to *
+-------------------- Examples --------------------
 ex(0):  _-p  B-O  c-V  4-H  c-c  w-j  s-M  9-D  d-4  Q-D  L-f  A-C  v-G  O-E
 ex(1):  D-S  U-q  A-X  U-m  h-F  V-4  1-8  W-n  b-8  _-3  f-w  A-b  6-i  i-g
 ex(2):  aN-Y  jB-Lr  s-u  0d-m  D-3  O-yP  h-_  _G-36  J-Ug  LO-Xt  l-J  XS-F
@@ -108,6 +118,7 @@ ex(8):  DmmSaOmJ-uZ_  sycH62-Z8VDDV  tEH-PDX4wLTz  kFR6VOtO-Oug47_1  tbNad-iz
 regexp: <\s>
 tree:   ((<[\t-\r ])>)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  <\f>  < >  <\v>  <\v>  < >  <\n>  <\n>  < >  < >  <\r>  <\v>  <\n>
 ex(1):  <\n>  <\v>  <\r>  <\n>  < >  <\f>  < >  <\v>  <\f>  <\v>  <\v>  < >
 ex(2):  <\f>  <\v>  <\f>  <\v>  <\f>  <\f>  <\r>  < >  <\n>  <\r>  <\v>  <\r>
@@ -120,6 +131,7 @@ ex(8):  <\v>  <\n>  <\n>  <\f>  <\f>  <\v>  < >  <\r>  <\n>  <\n>  <\r>  <\f>
 regexp: <[\a]>
 tree:   ((<[\a])>)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
 ex(1):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
 ex(2):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
@@ -130,6 +142,7 @@ ex(8):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
 regexp: <[\b]>
 tree:   ((<[\b])>)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
 ex(1):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
 ex(2):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
@@ -140,6 +153,7 @@ ex(8):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
 regexp: <[\e]>
 tree:   ((<[\x1b])>)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
 ex(1):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
 ex(2):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
@@ -150,6 +164,7 @@ ex(8):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
 regexp: <[\f]>
 tree:   ((<[\f])>)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
 ex(1):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
 ex(2):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
@@ -160,6 +175,7 @@ ex(8):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
 regexp: <[\n]>
 tree:   ((<[\n])>)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
 ex(1):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
 ex(2):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
@@ -170,6 +186,7 @@ ex(8):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
 regexp: <[\r]>
 tree:   ((<[\r])>)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
 ex(1):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
 ex(2):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
@@ -180,6 +197,7 @@ ex(8):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
 regexp: <[\t]>
 tree:   ((<[\t])>)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
 ex(1):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
 ex(2):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
@@ -190,6 +208,7 @@ ex(8):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
 regexp: <[\v]>
 tree:   ((<[\v])>)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>
 ex(1):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>
 ex(2):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>
@@ -202,6 +221,7 @@ ex(8):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>
 regexp: [\D]+
 tree:   [\x01-/:-\u007f]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  V  #  `  {  F  !  l  j  \"  x  t  D  Q  b  C  t  u  *  _  j  o  X  j  D
 ex(1):  +  Q  U  }  z  N  {  *  &  z  +  L  '  ]  &  n  b  N  p  R  }  .  n  t
 ex(2):  .y  Ld  y  O  A  @h  e<  *  V   \\  A)  >  ]  X  hE  F  `  O  )y  -  @
@@ -212,6 +232,7 @@ ex(8):  =h&-pF/  s  YSGTa  \"Y;N_H\"  ja+Z   JDaz  xo  x!=J  UM^  !  I,  F
 regexp: [\W]+
 tree:   [\x01-/:-@[-^`{-\u007f]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  )  `  =  *  =  |  <  ;  ]  <  ?  @  ~  :  [  \\  \\  ,  !  ?  /  {  *
 ex(1):  \"  .  \\  )  @  <  '  )  [  ~  {  {  &  #  ~  |  '  \"  >  ]  `     ;
 ex(2):  !+  ,`  ^  :  '@  &  .  \":  :^  !  '  !  >|  (   $/  |  )  >  )-  {#
@@ -222,6 +243,7 @@ ex(8):  =`?\\]<  .  )&,,  $:+^=})  \\%*\\:  #  ?\";  $`{.-![  }}#[:{^>
 regexp: [\S]+
 tree:   [\x01-\b\x0e-\x1f!-\u007f]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  V  :  ,  T  D  i  )  l  ?  ,  W  ?  B  E  ?  P  2  T  R  _  t  9  w  Z
 ex(1):  @  M  >  *  V  .  e  h  X  }  Y  D  n  ~  $  *  $  5  6  }  w  C  (  8
 ex(2):  A.  :  )m  s/  Q  <_  p  m  &M  i&  4c  bt  Id  D?  eM  T`  [  5u  i&
@@ -234,6 +256,7 @@ ex(8):  }To}nD  %MG>f>~g  oY|ds]~  wjs,  ^D@  Cc9  FVaK(Vmh  ]#  @6o  6r7z}C_
 regexp: [\d]+
 tree:   [0-9]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
 ex(1):  8  1  7  0  5  1  9  8  5  7  8  6  2  4  8  1  9  1  5  7  8  2  0  6
 ex(2):  0  6  1  2  8  1  2  87  30  68  19  9  0  9  7  95  61  6  7  27  89
@@ -244,6 +267,7 @@ ex(8):  60  582495  1639932  6194  7109  72144  9634846  44  531730  0112466
 regexp: [^\D]+
 tree:   [0-9]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
 ex(1):  8  1  7  0  5  1  9  8  5  7  8  6  2  4  8  1  9  1  5  7  8  2  0  6
 ex(2):  0  6  1  2  8  1  2  87  30  68  19  9  0  9  7  95  61  6  7  27  89
@@ -254,6 +278,7 @@ ex(8):  60  582495  1639932  6194  7109  72144  9634846  44  531730  0112466
 regexp: [\w]+
 tree:   [0-9A-Z_a-z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  _  p  B  O  c  V  4  H  c  c  w  j  s  M  9  D  d  4  Q  D  L  f  A  C
 ex(1):  G  O  E  c  E  D  S  U  q  A  X  U  m  h  F  V  4  1  8  W  n  b  8  _
 ex(2):  _  I  d  a  L  Yo  C  eo  5Y  ty  O  00  h  J  X  b  d  D  RF  g  W  n
@@ -264,6 +289,7 @@ ex(8):  5  un  TD  Ff  P0urzQfq  sLO99  pOK  uhwxgDmm  Ide  Pvb  9cfohRz
 regexp: [^\W]+
 tree:   [0-9A-Z_a-z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  _  p  B  O  c  V  4  H  c  c  w  j  s  M  9  D  d  4  Q  D  L  f  A  C
 ex(1):  G  O  E  c  E  D  S  U  q  A  X  U  m  h  F  V  4  1  8  W  n  b  8  _
 ex(2):  _  I  d  a  L  Yo  C  eo  5Y  ty  O  00  h  J  X  b  d  D  RF  g  W  n
@@ -274,6 +300,7 @@ ex(8):  5  un  TD  Ff  P0urzQfq  sLO99  pOK  uhwxgDmm  Ide  Pvb  9cfohRz
 regexp: [\s]+
 tree:   [\t-\r ]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  \f     \v  \v     \n  \n        \r  \v  \n  \f  \n  \v  \r  \n     \f
 ex(1):  \v  \f  \v  \v        \f  \v  \f  \v  \f  \f  \r     \n  \r  \v  \r  \r
 ex(2):  \f  \f\v  \r  \r\r  \v  \v  \n  \v\v  \f  \v  \r\r  \n  \f  \f\n  \r\r
@@ -284,6 +311,7 @@ ex(8):  \n\v\v\r\f \f\v  \n\n  \v\n\v \f\n  \r\v  \f\n \r \n  \f\v\r\r
 regexp: [^\S]+
 tree:   [\t-\r ]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  \f     \v  \v     \n  \n        \r  \v  \n  \f  \n  \v  \r  \n     \f
 ex(1):  \v  \f  \v  \v        \f  \v  \f  \v  \f  \f  \r     \n  \r  \v  \r  \r
 ex(2):  \f  \f\v  \r  \r\r  \v  \v  \n  \v\v  \f  \v  \r\r  \n  \f  \f\n  \r\r

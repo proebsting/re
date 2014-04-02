@@ -12,6 +12,7 @@
 regexp: (((http|ftp|https):\/{2})+(([0-9a-z_-]+\.)+(aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cu|cv|cx|cy|cz|cz|de|dj|dk|dm|do|dz|ec|ee|eg|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mk|ml|mn|mn|mo|mp|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|nom|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ra|rs|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw|arpa)(:[0-9]+)?((\/([~0-9a-zA-Z\#\+\%@\.\/_-]+))?(\?[0-9a-zA-Z\+\%@\/&\[\];=_-]+)?)?))
 tree:   (((((((ht)t)p)|((ft)p)|((((ht)t)p)s)):)/{2})+(((([-0-9_a-z]+.)+((((ae)r)o)|(((as)i)a)|((bi)z)|((ca)t)|((co)m)|(((co)o)p)|((ed)u)|((go)v)|(((in)f)o)|((in)t)|(((jo)b)s)|((mi)l)|(((mo)b)i)|(((((mu)s)e)u)m)|(((na)m)e)|((ne)t)|((or)g)|((pr)o)|((te)l)|(((((tr)a)v)e)l)|(ac)|(ad)|(ae)|(af)|(ag)|(ai)|(al)|(am)|(an)|(ao)|(aq)|(ar)|(as)|(at)|(au)|(aw)|(ax)|(az)|(ba)|(bb)|(bd)|(be)|(bf)|(bg)|(bh)|(bi)|(bj)|(bm)|(bn)|(bo)|(br)|(bs)|(bt)|(bv)|(bw)|(by)|(bz)|(ca)|(cc)|(cd)|(cf)|(cg)|(ch)|(ci)|(ck)|(cl)|(cm)|(cn)|(co)|(cr)|(cu)|(cv)|(cx)|(cy)|(cz)|(cz)|(de)|(dj)|(dk)|(dm)|(do)|(dz)|(ec)|(ee)|(eg)|(er)|(es)|(et)|(eu)|(fi)|(fj)|(fk)|(fm)|(fo)|(fr)|(ga)|(gb)|(gd)|(ge)|(gf)|(gg)|(gh)|(gi)|(gl)|(gm)|(gn)|(gp)|(gq)|(gr)|(gs)|(gt)|(gu)|(gw)|(gy)|(hk)|(hm)|(hn)|(hr)|(ht)|(hu)|(id)|(ie)|(il)|(im)|(in)|(io)|(iq)|(ir)|(is)|(it)|(je)|(jm)|(jo)|(jp)|(ke)|(kg)|(kh)|(ki)|(km)|(kn)|(kp)|(kr)|(kw)|(ky)|(kz)|(la)|(lb)|(lc)|(li)|(lk)|(lr)|(ls)|(lt)|(lu)|(lv)|(ly)|(ma)|(mc)|(md)|(me)|(mg)|(mh)|(mk)|(ml)|(mn)|(mn)|(mo)|(mp)|(mr)|(ms)|(mt)|(mu)|(mv)|(mw)|(mx)|(my)|(mz)|(na)|(nc)|(ne)|(nf)|(ng)|(ni)|(nl)|(no)|(np)|(nr)|(nu)|(nz)|((no)m)|(pa)|(pe)|(pf)|(pg)|(ph)|(pk)|(pl)|(pm)|(pn)|(pr)|(ps)|(pt)|(pw)|(py)|(qa)|(re)|(ra)|(rs)|(ru)|(rw)|(sa)|(sb)|(sc)|(sd)|(se)|(sg)|(sh)|(si)|(sj)|(sj)|(sk)|(sl)|(sm)|(sn)|(so)|(sr)|(st)|(su)|(sv)|(sy)|(sz)|(tc)|(td)|(tf)|(tg)|(th)|(tj)|(tk)|(tl)|(tm)|(tn)|(to)|(tp)|(tr)|(tt)|(tv)|(tw)|(tz)|(ua)|(ug)|(uk)|(us)|(uy)|(uz)|(va)|(vc)|(ve)|(vg)|(vi)|(vn)|(vu)|(wf)|(ws)|(ye)|(yt)|(yu)|(za)|(zm)|(zw)|(((ar)p)a)))(:[0-9]+)?)((/[#%+--9@-Z_a-z~]+)?(?[%&+-/-9;=@-[]_a-z]+)?)?))
 length: 10 to *
+-------------------- Examples --------------------
 ex(0):  http://d.cd  http://3.fr  http://g.bb  https://i.nc  http://i.pn
 ex(1):  http://d.tn:4/u?i  https://s.pn/W  http://9.ar?f  https://s.by:9
 ex(2):  ftp://0z.8.gs:56?t  http://https://3.tl:88?0  http://2j.jobs:3?Z
@@ -34,6 +35,7 @@ ERROR:  rx: [:class:] unimplemented: in "(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\
 regexp: ((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))
 tree:   (((((([a-z][-0-9A-Z_a-z]+):)(/{1,3}|[%0-9a-z]))|((((ww)w)[0-9]{0,3}).)|((([-.0-9a-z]+.)[a-z]{2,4})/))([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+|(((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+|((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+))))*))))+)((((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+|((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+))))*)))|[\x01-\b\x0e-\x1f#-&*+-/-9=@-Z\^_a-z|~\u007f\u0080\u0098\u0099\u009c\u009d«»Ââ]))
 length: 6 to *
+-------------------- Examples --------------------
 ex(0):  dp:/{Z  v.eu/()()  ..xk/()()  www.q()  aD:%S^  cC:4*U  y.ff/()Y
 ex(1):  q.spjn/iw  c.bvd/((S))r  www.()/  www47.((o))()  zr:s#Q  www5.gv
 ex(2):  gA:0\\Kd  hpr:/()f+()  www56.((?)(;))()  y.pmnr/(To]{)-
@@ -56,6 +58,7 @@ ERROR:  rx: \b (boundary) unimplemented: in "((ftp|https?)://[-\w]+(\.\w[-\w]*)+
 regexp: ([a-z][a-z0-9\*\-\.]*):\/\/(?:(?:(?:[\w\.\-\+!$&'\(\)*\+,;=]|%[0-9a-f]{2})+:)*(?:[\w\.\-\+%!$&'\(\)*\+,;=]|%[0-9a-f]{2})+@)?(?:(?:[a-z0-9\-\.]|%[0-9a-f]{2})+|(?:\[(?:[0-9a-f]{0,4}:)*(?:[0-9a-f]{0,4})\]))(?::[0-9]+)?(?:[\/|\?](?:[\w#!:\.\?\+=&@!$'~*,;\/\(\)\[\]\-]|%[0-9a-f]{2})*)?
 tree:   (((((((([a-z][*-.0-9a-z]*):)/)/)(((([!$&-.0-9;=A-Z_a-z]|(%[0-9a-f]{2}))+:)*([!$-.0-9;=A-Z_a-z]|(%[0-9a-f]{2}))+)@)?)(([-.0-9a-z]|(%[0-9a-f]{2}))+|((([([0-9a-f]{0,4}:)*)[0-9a-f]{0,4})])))(:[0-9]+)?)([/?|]([!#$&-;=?-[]_a-z~]|(%[0-9a-f]{2}))*)?)
 length: 5 to *
+-------------------- Examples --------------------
 ex(0):  j://1  i://l  g://%50  a://%04  g://v  e://%81  w://[]  e://[]  n://[]
 ex(1):  l://%d0  vb://%b4:O@[86ec:4a]/U  m://[f]:3  yh://J@%9e  q://%a1@i:9|
 ex(2):  t://%56:29  o://[51]  ra://Tv:%02D:%204@%ab:2?%76%0d
@@ -68,6 +71,7 @@ ex(8):  yor*j51://%36'7M%a5:1P%d7h%74n%58:%15%f8Z%d7Q:%43%f8%85%75%78u%61%61:%13
 regexp: (https?|ftp)://[^\s/$.?#].[^\s]*
 tree:   (((((((((((ht)t)p)s?)|((ft)p)):)/)/)[\x01-\b\x0e-\x1f!"%--0->@-\u007f])[\x01-\u007f])[\x01-\b\x0e-\x1f!-\u007f]*)
 length: 8 to *
+-------------------- Examples --------------------
 ex(0):  http://MM  ftp://<(  http://DF  ftp://Cz  ftp://Y<  http://<?
 ex(1):  https://K6D  https://`K9  ftp://)   https://u!>  http://\\1
 ex(2):  ftp://8)  https://Rv7  ftp://BRNy  ftp://W\\}&  ftp://vZ]  http://<s
@@ -80,6 +84,7 @@ ex(8):  http://Ov  https://GRfW7x!  https://=Z+)JI3z  ftp://Ii
 regexp: ([a-z]([a-z]|\d|\+|-|\.)*):(\/\/(((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?((\[(|(v[\da-f]{1,}\.(([a-z]|\d|-|\.|_|~)|[!\$&'\(\)\*\+,;=]|:)+))\])|((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=])*)(:\d*)?)(\/(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*|(\/((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)|((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)|((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)){0})(\?((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\xE000-\xF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?
 tree:   ((((([a-z]([a-z]|[0-9]|+|-|.)*):)((((//)((((([a-z]|[0-9]|-|.|_|~|[\x000-\xùý])|((%[0-9a-f]{2})|[!$&-,;=]|:))*@)?((([(()|(((v[0-9a-f]+).)(([a-z]|[0-9]|-|.|_|~)|([!$&-,;=]|:))+)))])|((((((([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5])).)([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5]))).)([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5]))).)([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5])))|(([a-z]|[0-9]|-|.|_|~|[\x000-\xùý])|((%[0-9a-f]{2})|[!$&-,;=]))*))(:[0-9]*)?))(/(([a-z]|[0-9]|-|.|_|~|[\x000-\xùý])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))*)*)|(/((([a-z]|[0-9]|-|.|_|~|[\x000-\xùý])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))+(/(([a-z]|[0-9]|-|.|_|~|[\x000-\xùý])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))*)*)?)|((([a-z]|[0-9]|-|.|_|~|[\x000-\xùý])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))+(/(([a-z]|[0-9]|-|.|_|~|[\x000-\xùý])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))*)*)|()))(?((([a-z]|[0-9]|-|.|_|~|[\x000-\xùý])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))|([0-\xà]|/|?))*)?)(#((([a-z]|[0-9]|-|.|_|~|[\x000-\xùý])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))|(/|?))*)?)
 length: 2 to *
+-------------------- Examples --------------------
 ex(0):  j:7  j:  j:  a:_  p://  e::  l:H  t:/  e://182.5.138.57  p://  q://
 ex(1):  y-:/@  f3:&#/  c:?  b:/*?#~  p.:#  j:/?  r-:?U  s:U?#2  p:/'#  m:%e0
 ex(2):  b.a://%15  fd://45.250.242.121:/=:?:#  r-.://0.253.138.255  fd:?
@@ -97,6 +102,7 @@ ERROR:  rx: prefer-fewer '?' unimplemented: in "((https?://|ftp://|www\.|[^\s:=]
 regexp: (https?|ftp)://(-\.)?([^\s/?\.#-]+\.?)+(/[^\s]*)?
 tree:   (((((((((((ht)t)p)s?)|((ft)p)):)/)/)(-.)?)([\x01-\b\x0e-\x1f!"$-,0->@-\u007f]+.?)+)(/[\x01-\b\x0e-\x1f!-\u007f]*)?)
 length: 7 to *
+-------------------- Examples --------------------
 ex(0):  http://M  http://{  http://W  http://X  ftp://~  http://=  http://3
 ex(1):  ftp://-.)  ftp://-.5.  https://_  ftp://2/  ftp://)  http://-.C
 ex(2):  ftp://Vb.  ftp://-.(  ftp://-.u0.M!.  https://_9~./,  ftp://WqU0.

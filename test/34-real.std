@@ -4,6 +4,7 @@
 regexp: [a-zA-Z][a-z]+
 tree:   ([A-Za-z][a-z]+)
 length: 2 to *
+-------------------- Examples --------------------
 ex(0):  Ze  Sa  Dp  Uz  oi  lq  ak  bm  Jh  rv  Nh  Dy  zd  Ji  Gj  sp  Vh  Jj
 ex(1):  Mn  Xp  qh  El  Ca  Ub  qg  Fv  Cp  Tl  nh  Yt  he  Ce  qc  Jw  Mb  Lr
 ex(2):  eu  wf  Lrp  Sx  Wxw  gwd  lf  Ca  Dml  mf  Miz  xyn  ith  Po  Fz  Uvg
@@ -14,6 +15,7 @@ ex(8):  yku  Pra  Hnr  ls  jcfwusapm  yznt  dst  Ekmmm  Zcdupb  Ecq  Xqfhluax
 regexp: [a-zA-Z][a-z]*
 tree:   ([A-Za-z][a-z]*)
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  Z  V  o  l  j  I  L  u  o  r  a  l  E  X  y  w  r  x  c  Y  a  z  z  a
 ex(1):  g  sd  Dr  w  Nz  c  C  u  q  mb  s  na  D  px  o  F  na  s  No  Ha  qx
 ex(2):  M  A  a  x  po  po  pl  Gay  igm  Wwb  Sd  Dpt  Ta  Gts  Zy  Y  k  z
@@ -24,6 +26,7 @@ ex(8):  Na  mvmsjnf  hragk  Qxtpxm  Nltnzbeev  l  diun  Low  naonoe  V  stegvt
 regexp: [a-zA-Z][a-z]*('[a-z]+)?
 tree:   (([A-Za-z][a-z]*)('[a-z]+)?)
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  Z  V  o  l  j  I  L  u  o  r  a  l  E  X  y  w  r  x  c  Y  a  z  z  a
 ex(1):  g  L'o  G'a  rv  W's  ch  Z'o  qs  D  a't  h'c  sx'n  Mm  Pg  Jk  h  v
 ex(2):  Z'u  Sp'q  Z'vc  I'd  q  C'sy  u  e  z  xbl  C'a  yx'c  ry  P'ao  n
@@ -36,6 +39,7 @@ ex(8):  Znlkguus'jmamn  isjn  Nborx'ao  Zswt'lhbyenb  Suvhnz  irn'zmhrff  zu'hq
 regexp: [a-zA-Z ]+
 tree:   [ A-Za-z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  Z  q  k  o  e  G  k  n  m  K  o  H  S  N  p  r  e  J  m  J  U  i  w  A
 ex(1):  j  s  D  Y  f     N  x  I  N  Y  Y  U  F  b  l  L  L  F  J  l  h  M  T
 ex(2):  mk  l  X  u  l   xR  GJ  mu  Z  l  ky  TX  X  UL  ZT  M  C  Ez  Y  MF
@@ -48,6 +52,7 @@ ex(8):  wdSnHzJi  JsUo  fbPV Sb  ZJuJzxH  CLzM  DZaaGiL  So  YVti  KrIHZFD  mJ
 regexp: [a-zA-Z0-9]+
 tree:   [0-9A-Za-z]+
 length: 1 to *
+-------------------- Examples --------------------
 ex(0):  Z  H  X  L  W  4  8  G  3  E  T  l  i  E  k  Y  5  d  A  X  c  K  w  I
 ex(1):  u  U  h  b  U  I  E  O  2  s  F  0  n  7  E  i  d  P  d  a  H  Q  g  i
 ex(2):  zZ  g  lM  D  JK  Y  fD  4Y  A  N  XV  h  7  P  5H  kA  D  x  j8  K  V
@@ -58,6 +63,7 @@ ex(8):  DL  DZCATqz  mKkm9  fd9BrKF  FbFwI  Dlx  rNYy  gKmO  GLed  0  6W
 regexp: [a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+
 tree:   ([0-9A-Za-z]+(.[0-9A-Za-z]+)+)
 length: 3 to *
+-------------------- Examples --------------------
 ex(0):  Z.H  X.L  W.4  8.G  3.E  T.l  i.E  k.Y  5.d  A.X  c.K  w.I  G.u  U.h
 ex(1):  I.E  O.2  s.F  0.n  7.E  i.d  P.d  a.H  Q.g  i.q  1.e  A.u  E.J  X.f
 ex(2):  St.cX  fz.4c.4k  Tr.k  av.ok.fo  l.pd  Xt.4S.Wj  CR.W8.x  o.y  za.0
@@ -70,6 +76,7 @@ ex(8):  2NgXs.V.oGmDz.FB.KHz8kiF.NIvEuJf3  jk.hSwg.WxS.eWJ5g7.d4yq8ha.C2x.IV.2u
 regexp: [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]
 tree:   (((((((((([0-9][0-9])[0-9])-)[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])
 length: 11 to 11
+-------------------- Examples --------------------
 ex(0):  701-68-2781  009-44-3405  490-66-0181  705-19-8578  624-81-9157
 ex(1):  444-21-7305  147-68-5952  423-61-8436  326-76-9026  006-69-7213
 ex(2):  421-61-8631  199-96-0759  927-92-6067  018-55-9943  031-64-3117
@@ -82,6 +89,7 @@ ex(8):  632-95-8767  181-76-4581  789-91-2191  976-88-0911  188-17-2011
 regexp: \([0-9][0-9][0-9]\)[2-9][0-9][0-9]-[0-9][0-9][0-9][0-9]
 tree:   ((((((((((((([0-9])[0-9])[0-9])))[2-9])[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])
 length: 13 to 13
+-------------------- Examples --------------------
 ex(0):  (701)634-0267  (219)580-1103  (350)314-5154  (033)213-9829
 ex(1):  (513)411-4106  (342)284-1230  (761)369-2562  (716)826-7690
 ex(2):  (418)932-5242  (569)238-7694  (538)876-6265  (625)793-2723
@@ -94,6 +102,7 @@ ex(8):  (522)442-4814  (178)613-4185  (581)572-5367  (351)557-4280
 regexp: (http://|)(www\.)?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+(/[-_\.\?a-zA-Z0-9]*)*
 tree:   (((((((((((ht)t)p):)/)/)|())(((ww)w).)?)[0-9A-Za-z]+)(.[0-9A-Za-z]+)+)(/[-.0-9?A-Z_a-z]*)*)
 length: 3 to *
+-------------------- Examples --------------------
 ex(0):  http://L.p  http://A.1  t.X  x.L  http://P.8  http://Z.P  2.z
 ex(1):  m.R  http://a.4  www.l.W  www.q.R  http://www.H.D/c  http://F.T  4.N
 ex(2):  http://www.7.TI.S/  0L.XV/  http://www.px.9B.lR/p  kA.Qm/f/Gf  6f.u/
@@ -106,6 +115,7 @@ ex(8):  http://www.GWK6AaF1.qcNRI.zo.0t.sXpxKZk.q.Cp0YrESE.Oy94q.w65O
 regexp: [a-zA-Z][a-zA-Z0-9]*([-_.][a-zA-Z0-9]*)*@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,}
 tree:   ((((([A-Za-z][0-9A-Za-z]*)([-._][0-9A-Za-z]*)*)@)([0-9A-Za-z]+.)+)[0-9A-Za-z]{2,})
 length: 6 to *
+-------------------- Examples --------------------
 ex(0):  Z@V.fg  r@t.ZB  K@Y.cj  n@M.Dm  m@k.U2  W@W.yj  D@G.RK  V@I.sf  Y@H.TW
 ex(1):  lh.@4.RZ  H@2.VP  ui@E.zZ  B.@R.a6  Az-@9.91  v5.Q@3.jT  mK-r@D.1T
 ex(2):  hZK@Z.1BO  jG__Tt@E4.F.Gd  NL@y.fa  o_5E@F.EX  YgE@m2.mo.0R

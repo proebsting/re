@@ -76,6 +76,7 @@ func main() {
 		if *rflag { // if -R given, reset random seed
 			rand.Seed(0) // for independent, reproducible output
 		}
+		rx.ShowLabel(os.Stdout, "Examples")
 		examples(dfa, t, 0) // gen and test w/ max repl of 0
 		examples(dfa, t, 1) // ... and 1
 		examples(dfa, t, 2) // ... and 2
@@ -84,16 +85,15 @@ func main() {
 		examples(dfa, t, 8) // ... and 8
 
 		if !*qflag { // if -Q not given, print automata
-			// show tree details
-			treenodes(dfa, augt)
+			// show tree details incl nullable, firstpos, lastpos
+			dfa.ShowTree(os.Stdout, augt, "Annotated Tree")
 			// dump positions and follow sets
-			dfa.ShowNFA(os.Stdout)
+			dfa.ShowNFA(os.Stdout, "NFA")
 			// dump DFA
-			dfa.DumpStates(os.Stdout)
+			dfa.DumpStates(os.Stdout, "Initial DFA")
 			// generate minimal DFA and dump that
-			fmt.Println("--[minimizing]--")
 			dfa = dfa.Minimize()
-			dfa.DumpStates(os.Stdout)
+			dfa.DumpStates(os.Stdout, "Minimized DFA")
 		}
 	})
 }
@@ -121,24 +121,4 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 		nprinted++
 	}
 	fmt.Println()
-}
-
-//  treenodes prints details of the parse tree.
-func treenodes(dfa *rx.DFA, tree rx.Node) {
-	indent := ""
-	rx.Walk(tree, func(d rx.Node) {
-		indent = indent + "  "
-		a := d.Data()
-		fmt.Printf("%snode: {%t, ", indent[2:], a.Nullable)
-		for _, k := range a.FirstPos.Members() {
-			fmt.Print(dfa.Leaves[k])
-		}
-		fmt.Print(", ")
-		for _, k := range a.LastPos.Members() {
-			fmt.Print(dfa.Leaves[k])
-		}
-		fmt.Println("}", d)
-	}, func(d rx.Node) {
-		indent = indent[2:]
-	})
 }

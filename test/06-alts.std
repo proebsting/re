@@ -4,6 +4,7 @@
 regexp: a|b
 tree:   (a|b)
 length: 1 to 1
+-------------------- Examples --------------------
 ex(0):  a  a  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  a  a  a  b  a  a  a
 ex(1):  a  a  a  b  a  b  a  b  a  a  b  a  a  b  a  b  a  a  a  b  b  a  a  a
 ex(2):  a  a  a  a  b  a  b  a  a  a  a  b  b  a  a  b  b  a  b  b  b  a  a  b
@@ -14,6 +15,7 @@ ex(8):  b  b  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  b  b  b  b  a  b  a
 regexp: ab|c
 tree:   ((ab)|c)
 length: 1 to 2
+-------------------- Examples --------------------
 ex(0):  ab  ab  c  ab  c  ab  c  c  ab  ab  ab  c  c  ab  ab  ab  c  ab  ab  ab
 ex(1):  ab  ab  ab  c  ab  ab  ab  c  ab  c  ab  c  ab  ab  c  ab  ab  c  ab  c
 ex(2):  ab  ab  c  c  ab  ab  ab  c  ab  ab  ab  ab  c  ab  c  ab  ab  ab  ab
@@ -24,6 +26,7 @@ ex(8):  c  c  ab  ab  ab  ab  ab  ab  c  c  c  c  ab  ab  c  c  ab  ab  ab  c
 regexp: a|bc
 tree:   (a|(bc))
 length: 1 to 2
+-------------------- Examples --------------------
 ex(0):  a  a  bc  a  bc  a  bc  bc  a  a  a  bc  bc  a  a  a  bc  a  a  a  bc
 ex(1):  a  a  bc  a  a  a  bc  a  bc  a  bc  a  a  bc  a  a  bc  a  bc  a  a  a
 ex(2):  bc  a  a  a  bc  a  a  a  a  bc  a  bc  a  a  a  a  bc  bc  a  a  bc
@@ -34,6 +37,7 @@ ex(8):  a  a  bc  bc  bc  bc  a  a  bc  bc  a  a  a  bc  bc  bc  bc  a  bc  a
 regexp: ab|cd
 tree:   ((ab)|(cd))
 length: 2 to 2
+-------------------- Examples --------------------
 ex(0):  ab  ab  cd  ab  cd  ab  cd  cd  ab  ab  ab  cd  cd  ab  ab  ab  cd  ab
 ex(1):  ab  cd  ab  ab  ab  cd  ab  ab  ab  cd  ab  cd  ab  cd  ab  ab  cd  ab
 ex(2):  cd  ab  cd  ab  ab  ab  cd  cd  ab  ab  ab  cd  ab  ab  ab  ab  cd  ab
@@ -44,6 +48,7 @@ ex(8):  ab  cd  ab  ab  cd  cd  cd  cd  cd  ab  cd  cd  ab  ab  ab  ab  ab  ab
 regexp: a|b|c
 tree:   (a|b|c)
 length: 1 to 1
+-------------------- Examples --------------------
 ex(0):  a  a  b  b  c  b  b  c  a  a  a  c  c  a  a  a  c  c  b  a  c  a  c  a
 ex(1):  a  b  a  b  b  a  c  c  b  c  b  c  b  c  a  b  a  a  c  b  b  a  a  a
 ex(2):  c  b  a  b  b  a  a  c  c  c  a  c  a  c  b  c  b  c  c  b  a  a  c  a
@@ -54,6 +59,7 @@ ex(8):  a  a  b  a  b  a  a  c  c  a  a  a  b  a  a  c  c  b  a  b  b  c  a  a
 regexp: a|b|c|d
 tree:   (a|b|c|d)
 length: 1 to 1
+-------------------- Examples --------------------
 ex(0):  c  c  b  c  d  a  d  b  a  a  a  d  d  a  a  c  d  c  c  c  d  a  c  a
 ex(1):  c  a  a  d  a  b  a  b  a  c  b  a  c  b  c  d  a  a  c  d  d  a  a  c
 ex(2):  c  a  c  a  d  a  b  c  a  a  c  d  b  c  c  d  d  a  b  b  d  c  a  d
@@ -64,6 +70,7 @@ ex(8):  b  d  b  a  b  c  d  d  a  c  a  d  b  c  c  c  b  b  d  b  b  a  b  c
 regexp: ab|cd|ef
 tree:   ((ab)|(cd)|(ef))
 length: 2 to 2
+-------------------- Examples --------------------
 ex(0):  ab  ab  cd  cd  ef  cd  cd  ef  ab  ab  ab  ef  ef  ab  ab  ab  ef  ef
 ex(1):  ab  ef  ab  ef  ab  ef  ab  cd  ab  cd  cd  ab  ef  ef  cd  ef  cd  ef
 ex(2):  ef  ab  cd  ab  ab  ef  cd  cd  ab  ab  ab  ab  ef  cd  ab  cd  cd  ab
@@ -74,6 +81,7 @@ ex(8):  ab  ab  cd  ab  cd  cd  ef  ef  ef  ab  ab  ab  cd  cd  ef  cd  cd  ab
 regexp: ab|cd|ef|gh
 tree:   ((ab)|(cd)|(ef)|(gh))
 length: 2 to 2
+-------------------- Examples --------------------
 ex(0):  ef  ef  cd  ef  gh  ab  gh  cd  ab  ab  ab  gh  gh  ab  ab  ef  gh  ef
 ex(1):  ef  gh  ab  ef  ab  cd  ef  ab  ab  gh  ab  cd  ab  cd  ab  ef  cd  ab
 ex(2):  cd  ef  gh  ab  ab  ef  gh  gh  ab  ab  ef  cd  ef  ab  ef  ab  gh  ab
@@ -84,6 +92,7 @@ ex(8):  ef  cd  ab  ef  cd  gh  cd  cd  cd  ef  gh  gh  ef  ef  ef  ab  ef  ab
 regexp: abc|def
 tree:   (((ab)c)|((de)f))
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  abc  abc  def  abc  def  abc  def  def  abc  abc  abc  def  def  abc
 ex(1):  abc  def  abc  abc  abc  def  abc  abc  abc  def  abc  abc  abc  def
 ex(2):  def  abc  def  abc  abc  def  abc  abc  def  abc  def  abc  abc  abc
@@ -94,6 +103,7 @@ ex(8):  def  def  abc  def  def  abc  abc  abc  def  abc  def  abc  abc  abc
 regexp: abc|def|ghi
 tree:   (((ab)c)|((de)f)|((gh)i))
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  abc  abc  def  def  ghi  def  def  ghi  abc  abc  abc  ghi  ghi  abc
 ex(1):  abc  ghi  ghi  def  abc  ghi  abc  ghi  abc  ghi  abc  def  abc  def
 ex(2):  abc  ghi  ghi  def  ghi  def  ghi  def  ghi  abc  def  abc  abc  ghi
@@ -104,6 +114,7 @@ ex(8):  ghi  def  def  abc  abc  abc  abc  ghi  def  def  abc  ghi  ghi  abc
 regexp: a|bc|def|ghij
 tree:   (a|(bc)|((de)f)|(((gh)i)j))
 length: 1 to 4
+-------------------- Examples --------------------
 ex(0):  def  def  bc  def  ghij  a  ghij  bc  a  a  a  ghij  ghij  a  a  def
 ex(1):  def  def  def  ghij  a  def  a  bc  def  a  a  ghij  a  bc  a  bc  a
 ex(2):  bc  a  def  bc  def  ghij  a  a  def  ghij  ghij  a  a  def  bc  def  a
@@ -114,6 +125,7 @@ ex(8):  def  def  a  def  a  a  a  a  a  def  bc  a  def  bc  ghij  bc  bc  bc
 regexp: pqrs|tuv|wx|yz
 tree:   ((((pq)r)s)|((tu)v)|(wx)|(yz))
 length: 2 to 4
+-------------------- Examples --------------------
 ex(0):  wx  wx  tuv  wx  yz  pqrs  yz  tuv  pqrs  pqrs  pqrs  yz  yz  pqrs
 ex(1):  wx  yz  wx  wx  wx  yz  pqrs  wx  pqrs  tuv  wx  pqrs  pqrs  yz  pqrs
 ex(2):  pqrs  tuv  pqrs  wx  tuv  pqrs  wx  tuv  wx  yz  pqrs  pqrs  wx  yz  yz
@@ -124,6 +136,7 @@ ex(8):  yz  yz  wx  wx  pqrs  yz  pqrs  tuv  wx  wx  pqrs  wx  pqrs  pqrs  pqrs
 regexp: abc|d|efgh|ij|kmlno|pqr|s|tuv|wxy|z
 tree:   (((ab)c)|d|(((ef)g)h)|(ij)|((((km)l)n)o)|((pq)r)|s|((tu)v)|((wx)y)|z)
 length: 1 to 5
+-------------------- Examples --------------------
 ex(0):  kmlno  kmlno  ij  s  pqr  s  tuv  tuv  wxy  wxy  wxy  tuv  z  wxy  efgh
 ex(1):  d  abc  abc  kmlno  pqr  wxy  s  abc  d  s  efgh  abc  d  efgh  tuv
 ex(2):  pqr  kmlno  wxy  ij  abc  abc  z  kmlno  tuv  kmlno  s  wxy  z  tuv

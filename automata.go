@@ -176,18 +176,20 @@ func (ds *DFAstate) InvertMap() (*BitSet, map[uint]*BitSet) {
 	return slist, xmap
 }
 
-//  DFA.ShowNFA prints the positions and followsets.
-func (dfa *DFA) ShowNFA(f io.Writer) {
+//  DFA.ShowNFA prints the positions and followsets, with optional label.
+func (dfa *DFA) ShowNFA(f io.Writer, label string) {
+	ShowLabel(f, label)
 	fmt.Fprintf(f, "begin => %s\n", dfa.Tree.Data().FirstPos)
 	for _, m := range dfa.Leaves {
 		fmt.Fprintf(f, "p%d. %s => %s\n", m.Posn, m, m.FollowPos)
 	}
 }
 
-//  DFA.DumpStates prints a readable list of states.
-func (dfa *DFA) DumpStates(f io.Writer) {
+//  DFA.DumpStates prints a readable list of states, with optional label.
+func (dfa *DFA) DumpStates(f io.Writer, label string) {
+	ShowLabel(f, label)
 	for _, ds := range dfa.Dstates {
-		// print partition index
+		//#%#% print partition index
 		//#%#% fmt.Fprintf(f, "[%d] ", ds.PartNum)
 
 		// print index with "accept" flag '#'

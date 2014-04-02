@@ -4,6 +4,7 @@
 regexp: ()
 tree:   ()
 length: 0 to 0
+-------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
 ex(2):                                                                        
@@ -14,6 +15,7 @@ ex(8):
 regexp: a
 tree:   a
 length: 1 to 1
+-------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -24,6 +26,7 @@ ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 regexp: bc
 tree:   (bc)
 length: 2 to 2
+-------------------- Examples --------------------
 ex(0):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 ex(1):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 ex(2):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
@@ -34,6 +37,7 @@ ex(8):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 regexp: def
 tree:   ((de)f)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(1):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(2):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
@@ -44,6 +48,7 @@ ex(8):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 regexp: 417-00-9423
 tree:   ((((((((((41)7)-)0)0)-)9)4)2)3)
 length: 11 to 11
+-------------------- Examples --------------------
 ex(0):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 ex(1):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 ex(2):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
@@ -54,6 +59,7 @@ ex(8):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 regexp: 515-032-6910
 tree:   (((((((((((51)5)-)0)3)2)-)6)9)1)0)
 length: 12 to 12
+-------------------- Examples --------------------
 ex(0):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 ex(1):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 ex(2):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
@@ -64,6 +70,7 @@ ex(8):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 regexp: bite the wax tadpole
 tree:   (((((((((((((((((((bi)t)e) )t)h)e) )w)a)x) )t)a)d)p)o)l)e)
 length: 20 to 20
+-------------------- Examples --------------------
 ex(0):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(1):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(2):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
@@ -74,6 +81,7 @@ ex(8):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 regexp: __\a__\e__\f__\n__\r__\t__\v__
 tree:   ((((((((((((((((((((((__)[\a])_)_)[\x1b])_)_)[\f])_)_)[\n])_)_)[\r])_)_)[\t])_)_)[\v])_)_)
 length: 23 to 23
+-------------------- Examples --------------------
 ex(0):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
 ex(1):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
 ex(2):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__

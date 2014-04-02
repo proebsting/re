@@ -4,6 +4,7 @@
 regexp: (ab)|c
 tree:   ((ab)|c)
 length: 1 to 2
+-------------------- Examples --------------------
 ex(0):  ab  ab  c  ab  c  ab  c  c  ab  ab  ab  c  c  ab  ab  ab  c  ab  ab  ab
 ex(1):  ab  ab  ab  c  ab  ab  ab  c  ab  c  ab  c  ab  ab  c  ab  ab  c  ab  c
 ex(2):  ab  ab  c  c  ab  ab  ab  c  ab  ab  ab  ab  c  ab  c  ab  ab  ab  ab
@@ -14,6 +15,7 @@ ex(8):  c  c  ab  ab  ab  ab  ab  ab  c  c  c  c  ab  ab  c  c  ab  ab  ab  c
 regexp: a(b|c)d
 tree:   ((a(b|c))d)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  abd  abd  acd  abd  acd  abd  acd  acd  abd  abd  abd  acd  acd  abd
 ex(1):  abd  acd  abd  abd  abd  acd  abd  abd  abd  acd  abd  abd  abd  acd
 ex(2):  acd  abd  acd  abd  abd  acd  abd  abd  acd  abd  acd  abd  abd  abd
@@ -24,6 +26,7 @@ ex(8):  acd  acd  abd  acd  acd  abd  abd  abd  acd  abd  acd  abd  abd  abd
 regexp: (ab)|c|(de)
 tree:   ((ab)|c|(de))
 length: 1 to 2
+-------------------- Examples --------------------
 ex(0):  ab  ab  c  c  de  c  c  de  ab  ab  ab  de  de  ab  ab  ab  de  de  c
 ex(1):  de  ab  de  ab  de  ab  c  ab  c  c  ab  de  de  c  de  c  de  c  de
 ex(2):  c  ab  ab  de  c  c  ab  ab  ab  ab  de  c  ab  c  c  ab  ab  de  de
@@ -34,6 +37,7 @@ ex(8):  c  de  de  de  ab  ab  ab  c  c  de  c  c  ab  ab  ab  ab  ab  de  de
 regexp: a|(bc|de|fg)|h
 tree:   (a|((bc)|(de)|(fg))|h)
 length: 1 to 2
+-------------------- Examples --------------------
 ex(0):  a  a  de  h  de  h  a  a  a  h  h  a  a  a  h  h  bc  h  a  h  a  h  a
 ex(1):  de  a  h  h  fg  fg  fg  a  bc  a  h  de  a  a  a  a  h  bc  de  a  a
 ex(2):  h  h  a  h  a  h  fg  fg  h  bc  a  h  a  fg  de  a  a  a  a  h  de  a
@@ -44,6 +48,7 @@ ex(8):  bc  de  h  a  a  de  h  de  de  a  h  a  h  de  a  h  de  a  a  fg  fg
 regexp: a(b|c)(d|e)(f|g)h
 tree:   ((((a(b|c))(d|e))(f|g))h)
 length: 5 to 5
+-------------------- Examples --------------------
 ex(0):  abdgh  abefh  acefh  abdgh  acdfh  abefh  abdgh  abdfh  acdfh  abefh
 ex(1):  abdgh  abdgh  abefh  abdgh  acdfh  abefh  abdfh  acdgh  abdfh  abegh
 ex(2):  acdgh  acefh  abefh  acefh  acefh  abdgh  abefh  abdfh  abdfh  abdfh
@@ -54,6 +59,7 @@ ex(8):  acdgh  acdfh  acdfh  abdfh  acegh  abegh  acdgh  abdfh  acefh  abdfh
 regexp: (ab|cd)(ef|gh)
 tree:   (((ab)|(cd))((ef)|(gh)))
 length: 4 to 4
+-------------------- Examples --------------------
 ex(0):  abef  cdef  cdef  cdgh  abef  abgh  cdef  abef  cdef  abef  cdef  abef
 ex(1):  abef  cdef  cdef  cdef  abgh  abef  cdef  cdef  abef  cdgh  abef  abgh
 ex(2):  abef  cdef  cdef  abef  abgh  cdef  abgh  cdef  cdgh  cdef  abgh  abgh
@@ -64,6 +70,7 @@ ex(8):  abgh  cdef  abef  cdgh  abef  abgh  cdgh  cdgh  abgh  abgh  cdef  abef
 regexp: (ab|cd)|(ef|gh)
 tree:   (((ab)|(cd))|((ef)|(gh)))
 length: 2 to 2
+-------------------- Examples --------------------
 ex(0):  ab  ef  ef  gh  ab  cd  ef  ab  ef  ab  ef  ab  ef  ab  ef  ef  ef  cd
 ex(1):  ef  ef  ab  gh  ab  cd  ab  ab  ef  ef  ab  cd  ef  cd  ef  gh  ef  cd
 ex(2):  ef  gh  ab  cd  cd  ab  ab  ab  ab  ab  ef  cd  gh  gh  cd  ef  ab  ab
@@ -74,6 +81,7 @@ ex(8):  ef  ab  cd  cd  ab  ab  cd  ab  ab  ef  cd  cd  ef  ab  ef  cd  ef  ef
 regexp: (ab|cd|ef)(gh|ij|kp)
 tree:   (((ab)|(cd)|(ef))((gh)|(ij)|(kp)))
 length: 4 to 4
+-------------------- Examples --------------------
 ex(0):  abgh  cdij  efij  cdkp  abgh  abkp  efgh  abgh  efkp  cdgh  efgh  efgh
 ex(1):  cdgh  cdij  abkp  efij  efij  efij  efgh  cdgh  abkp  cdij  abgh  abgh
 ex(2):  abij  cdgh  abkp  efkp  abkp  abkp  cdkp  cdkp  efij  abgh  efgh  cdkp
@@ -84,6 +92,7 @@ ex(8):  abgh  efkp  abgh  abij  abgh  efkp  cdgh  cdij  efgh  abij  cdkp  cdij
 regexp: x(ab|cd|ef)y(gh|ij|kp)z
 tree:   ((((x((ab)|(cd)|(ef)))y)((gh)|(ij)|(kp)))z)
 length: 7 to 7
+-------------------- Examples --------------------
 ex(0):  xabyghz  xcdyijz  xefyijz  xcdykpz  xabyghz  xabykpz  xefyghz  xabyghz
 ex(1):  xcdyghz  xefyghz  xefyghz  xefyghz  xcdyghz  xcdyijz  xabykpz  xefyijz
 ex(2):  xefyijz  xefyghz  xcdyghz  xabykpz  xcdyijz  xabyghz  xabyghz  xefyijz
@@ -94,6 +103,7 @@ ex(8):  xefykpz  xefyijz  xcdyghz  xabyijz  xabyijz  xcdykpz  xefykpz  xabyghz
 regexp: (a|bc)d(e|fg)|(w|x)(y|z)
 tree:   ((((a|(bc))d)(e|(fg)))|((w|x)(y|z)))
 length: 2 to 5
+-------------------- Examples --------------------
 ex(0):  adfg  bcde  xy  adfg  wy  bcde  adfg  ade  wy  bcde  wz  adfg  adfg
 ex(1):  adfg  wy  bcde  ade  wz  ade  bcdfg  adfg  wz  xy  bcde  xy  xy  adfg
 ex(2):  ade  ade  ade  wy  xz  xy  xy  ade  adfg  xz  adfg  wy  bcdfg  xy  wz

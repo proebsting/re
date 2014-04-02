@@ -5,6 +5,11 @@
 
 package rx
 
+import (
+	"fmt"
+	"io"
+)
+
 //  Node is the "parent class" of all parse tree node subtypes.
 //  All subtype fields must also be exportable for use with package gob.
 //
@@ -52,4 +57,29 @@ func Walk(tree Node, pre VisitFunc, post VisitFunc) {
 	if post != nil {
 		post(tree)
 	}
+}
+
+//  treenodes prints details of the parse tree.
+func (dfa *DFA) ShowTree(f io.Writer, tree Node, label string) {
+	ShowLabel(f, label)
+	indent := ""
+	Walk(tree, func(d Node) {
+		indent = indent + "   "
+		a := d.Data()
+		c := "F"
+		if a.Nullable {
+			c = "T"
+		}
+		fmt.Fprintf(f, "%s{%s, ", indent[3:], c)
+		for _, k := range a.FirstPos.Members() {
+			fmt.Fprint(f, dfa.Leaves[k])
+		}
+		fmt.Fprint(f, ", ")
+		for _, k := range a.LastPos.Members() {
+			fmt.Fprint(f, dfa.Leaves[k])
+		}
+		fmt.Fprintln(f, "}  ", d)
+	}, func(d Node) {
+		indent = indent[3:]
+	})
 }

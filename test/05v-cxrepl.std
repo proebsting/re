@@ -5,71 +5,82 @@ regexp: (){3}
 tree:   (){3}
 augmnt: #
 length: 0 to 0
+-------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
 ex(2):                                                                        
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
-node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 }
 p0. # => { }
+------------------- Initial DFA ------------------
 s0# { p0 }
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0# { p0 }
 
 regexp: (){2,4}
 tree:   (){2,4}
 augmnt: ((()?()?)#)
 length: 0 to 0
+-------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
 ex(2):                                                                        
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
-node: {false, #, #} ((()?()?)#)
-  node: {true, , } (()?()?)
-    node: {true, , } ()?
-      node: {true, , } ()
-    node: {true, , } ()?
-      node: {true, , } ()
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, #, #}   ((()?()?)#)
+   {T, , }   (()?()?)
+      {T, , }   ()?
+         {T, , }   ()
+      {T, , }   ()?
+         {T, , }   ()
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 }
 p0. # => { }
+------------------- Initial DFA ------------------
 s0# { p0 }
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0# { p0 }
 
 regexp: (abc){3}
 tree:   ((ab)c){3}
 augmnt: (((((ab)c)((ab)c))((ab)c))#)
 length: 9 to 9
+-------------------- Examples --------------------
 ex(0):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(1):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(2):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(3):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(5):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(8):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
-node: {false, a, #} (((((ab)c)((ab)c))((ab)c))#)
-  node: {false, a, c} ((((ab)c)((ab)c))((ab)c))
-    node: {false, a, c} (((ab)c)((ab)c))
-      node: {false, a, c} ((ab)c)
-        node: {false, a, b} (ab)
-          node: {false, a, a} a
-          node: {false, b, b} b
-        node: {false, c, c} c
-      node: {false, a, c} ((ab)c)
-        node: {false, a, b} (ab)
-          node: {false, a, a} a
-          node: {false, b, b} b
-        node: {false, c, c} c
-    node: {false, a, c} ((ab)c)
-      node: {false, a, b} (ab)
-        node: {false, a, a} a
-        node: {false, b, b} b
-      node: {false, c, c} c
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, a, #}   (((((ab)c)((ab)c))((ab)c))#)
+   {F, a, c}   ((((ab)c)((ab)c))((ab)c))
+      {F, a, c}   (((ab)c)((ab)c))
+         {F, a, c}   ((ab)c)
+            {F, a, b}   (ab)
+               {F, a, a}   a
+               {F, b, b}   b
+            {F, c, c}   c
+         {F, a, c}   ((ab)c)
+            {F, a, b}   (ab)
+               {F, a, a}   a
+               {F, b, b}   b
+            {F, c, c}   c
+      {F, a, c}   ((ab)c)
+         {F, a, b}   (ab)
+            {F, a, a}   a
+            {F, b, b}   b
+         {F, c, c}   c
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
@@ -81,6 +92,7 @@ p6. a => { 7 }
 p7. b => { 8 }
 p8. c => { 9 }
 p9. # => { }
+------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
 s2. { p2 } [c]:s3
@@ -91,7 +103,7 @@ s6. { p6 } [a]:s7
 s7. { p7 } [b]:s8
 s8. { p8 } [c]:s9
 s9# { p9 }
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0. { p0 } [a]:s9
 s1# { p9 }
 s2. { p8 } [c]:s1
@@ -107,25 +119,28 @@ regexp: (a|b){3}
 tree:   (a|b){3}
 augmnt: ((((a|b)(a|b))(a|b))#)
 length: 3 to 3
+-------------------- Examples --------------------
 ex(0):  aab  aba  bba  aab  baa  aba  aab  aaa  baa  aba  bab  aab  aab  aba
 ex(1):  baa  aba  aaa  bab  aaa  abb  aab  bab  bba  aba  bba  bba  aab  aba
 ex(2):  aaa  aaa  baa  bbb  bba  bba  aaa  aab  bbb  aab  baa  abb  bba  bab
 ex(3):  abb  aaa  bbb  bba  bab  baa  aba  aba  baa  aaa  bab  baa  baa  aaa
 ex(5):  abb  bab  aaa  bba  aaa  bab  aaa  aab  aaa  aba  aba  bba  aab  aab
 ex(8):  aaa  aab  abb  baa  aab  abb  abb  bab  bba  baa  aba  aaa  baa  bbb
-node: {false, ab, #} ((((a|b)(a|b))(a|b))#)
-  node: {false, ab, ab} (((a|b)(a|b))(a|b))
-    node: {false, ab, ab} ((a|b)(a|b))
-      node: {false, ab, ab} (a|b)
-        node: {false, a, a} a
-        node: {false, b, b} b
-      node: {false, ab, ab} (a|b)
-        node: {false, a, a} a
-        node: {false, b, b} b
-    node: {false, ab, ab} (a|b)
-      node: {false, a, a} a
-      node: {false, b, b} b
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, ab, #}   ((((a|b)(a|b))(a|b))#)
+   {F, ab, ab}   (((a|b)(a|b))(a|b))
+      {F, ab, ab}   ((a|b)(a|b))
+         {F, ab, ab}   (a|b)
+            {F, a, a}   a
+            {F, b, b}   b
+         {F, ab, ab}   (a|b)
+            {F, a, a}   a
+            {F, b, b}   b
+      {F, ab, ab}   (a|b)
+         {F, a, a}   a
+         {F, b, b}   b
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 1 }
 p0. a => { 2 3 }
 p1. b => { 2 3 }
@@ -134,11 +149,12 @@ p3. b => { 4 5 }
 p4. a => { 6 }
 p5. b => { 6 }
 p6. # => { }
+------------------- Initial DFA ------------------
 s0. { p0 p1 } [ab]:s1
 s1. { p2 p3 } [ab]:s2
 s2. { p4 p5 } [ab]:s3
 s3# { p6 }
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0. { p0 p1 } [ab]:s3
 s1# { p6 }
 s2. { p4 p5 } [ab]:s1
@@ -148,37 +164,40 @@ regexp: (ab|cd){3}
 tree:   ((ab)|(cd)){3}
 augmnt: (((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))#)
 length: 6 to 6
+-------------------- Examples --------------------
 ex(0):  ababcd  abcdab  cdcdab  ababcd  cdabab  abcdab  ababcd  ababab  cdabab
 ex(1):  cdabcd  ababcd  ababcd  abcdab  ababcd  cdabab  abcdab  ababab  cdabcd
 ex(2):  abcdcd  ababcd  cdabcd  cdcdab  abcdab  cdcdab  cdcdab  ababcd  abcdab
 ex(3):  ababab  ababab  cdabab  cdcdcd  cdcdab  cdcdab  ababab  ababcd  cdcdcd
 ex(5):  cdabab  abcdcd  cdcdab  cdabcd  cdabab  abcdcd  ababab  cdcdcd  cdcdab
 ex(8):  cdabab  abcdab  abcdab  cdabab  ababab  cdabcd  cdabab  cdabab  ababab
-node: {false, ac, #} (((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))#)
-  node: {false, ac, bd} ((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))
-    node: {false, ac, bd} (((ab)|(cd))((ab)|(cd)))
-      node: {false, ac, bd} ((ab)|(cd))
-        node: {false, a, b} (ab)
-          node: {false, a, a} a
-          node: {false, b, b} b
-        node: {false, c, d} (cd)
-          node: {false, c, c} c
-          node: {false, d, d} d
-      node: {false, ac, bd} ((ab)|(cd))
-        node: {false, a, b} (ab)
-          node: {false, a, a} a
-          node: {false, b, b} b
-        node: {false, c, d} (cd)
-          node: {false, c, c} c
-          node: {false, d, d} d
-    node: {false, ac, bd} ((ab)|(cd))
-      node: {false, a, b} (ab)
-        node: {false, a, a} a
-        node: {false, b, b} b
-      node: {false, c, d} (cd)
-        node: {false, c, c} c
-        node: {false, d, d} d
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, ac, #}   (((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))#)
+   {F, ac, bd}   ((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))
+      {F, ac, bd}   (((ab)|(cd))((ab)|(cd)))
+         {F, ac, bd}   ((ab)|(cd))
+            {F, a, b}   (ab)
+               {F, a, a}   a
+               {F, b, b}   b
+            {F, c, d}   (cd)
+               {F, c, c}   c
+               {F, d, d}   d
+         {F, ac, bd}   ((ab)|(cd))
+            {F, a, b}   (ab)
+               {F, a, a}   a
+               {F, b, b}   b
+            {F, c, d}   (cd)
+               {F, c, c}   c
+               {F, d, d}   d
+      {F, ac, bd}   ((ab)|(cd))
+         {F, a, b}   (ab)
+            {F, a, a}   a
+            {F, b, b}   b
+         {F, c, d}   (cd)
+            {F, c, c}   c
+            {F, d, d}   d
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 2 }
 p0. a => { 1 }
 p1. b => { 4 6 }
@@ -193,6 +212,7 @@ p9. b => { 12 }
 p10. c => { 11 }
 p11. d => { 12 }
 p12. # => { }
+------------------- Initial DFA ------------------
 s0. { p0 p2 } [a]:s1 [c]:s2
 s1. { p1 } [b]:s3
 s2. { p3 } [d]:s3
@@ -203,7 +223,7 @@ s6. { p8 p10 } [a]:s7 [c]:s8
 s7. { p9 } [b]:s9
 s8. { p11 } [d]:s9
 s9# { p12 }
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0. { p0 p2 } [a]:s6 [c]:s7
 s1# { p12 }
 s2. { p9 } [b]:s1
@@ -219,58 +239,66 @@ regexp: (a*){3}
 tree:   a*{3}
 augmnt: (((a*a*)a*)#)
 length: 0 to *
+-------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):  a  a  aa  a  a  a  a    a  a  aa  a  a  a  a  a  a    aa    aa  a  aa
 ex(2):  aaa  aaaa    aaa  aaa  aa  aaaaaa  aa  a  aaaa  aaaa  a  aaaa  a  
 ex(3):  aaaaa  aaaa  aaaa  aaaaaa  aaaaa  aaaa  aaaaaa  aaaaa  aa  aaaaaa
 ex(5):  aaaaaaaaa  aaaaa  aaaaaaaaaaaaa  aaaaaa  aaaa  aaaaaaa  aaaaaaa
 ex(8):  aaaaa  aaaaaaaaaaaa  aaaaaaaaa  aaaaaaaaaa  a  aaaaaaaaaaaa
-node: {false, aaa#, #} (((a*a*)a*)#)
-  node: {true, aaa, aaa} ((a*a*)a*)
-    node: {true, aa, aa} (a*a*)
-      node: {true, a, a} a*
-        node: {false, a, a} a
-      node: {true, a, a} a*
-        node: {false, a, a} a
-    node: {true, a, a} a*
-      node: {false, a, a} a
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, aaa#, #}   (((a*a*)a*)#)
+   {T, aaa, aaa}   ((a*a*)a*)
+      {T, aa, aa}   (a*a*)
+         {T, a, a}   a*
+            {F, a, a}   a
+         {T, a, a}   a*
+            {F, a, a}   a
+      {T, a, a}   a*
+         {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 1 2 3 }
 p0. a => { 0 1 2 3 }
 p1. a => { 1 2 3 }
 p2. a => { 2 3 }
 p3. # => { }
+------------------- Initial DFA ------------------
 s0# { p0 p1 p2 p3 } [a]:s0
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0# { p0 p1 p2 p3 } [a]:s0
 
 regexp: (a{3})*
 tree:   a{3}*
 augmnt: (((aa)a)*#)
 length: 0 to *
+-------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      aaa    aaa    aaa  aaa        aaa  aaa        aaa        aaa      
 ex(2):    aaa    aaa  aaa    aaaaaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaa
 ex(3):  aaaaaa  aaaaaaaaa      aaaaaa  aaaaaaaaa  aaaaaaaaa      aaaaaa  aaa
 ex(5):  aaaaaaaaaaaa    aaaaaaaaaaaa  aaa    aaaaaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(8):  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaa
-node: {false, a#, #} (((aa)a)*#)
-  node: {true, a, a} ((aa)a)*
-    node: {false, a, a} ((aa)a)
-      node: {false, a, a} (aa)
-        node: {false, a, a} a
-        node: {false, a, a} a
-      node: {false, a, a} a
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, a#, #}   (((aa)a)*#)
+   {T, a, a}   ((aa)a)*
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 3 }
 p0. a => { 1 }
 p1. a => { 2 }
 p2. a => { 0 3 }
 p3. # => { }
+------------------- Initial DFA ------------------
 s0# { p0 p3 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s0
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0# { p0 p3 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s0
@@ -279,30 +307,34 @@ regexp: (a{3})+
 tree:   a{3}+
 augmnt: (((aa)a)+#)
 length: 3 to *
+-------------------- Examples --------------------
 ex(0):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
 ex(1):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
 ex(2):  aaa  aaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaa  aaa  aaa
 ex(3):  aaaaaaaaa  aaa  aaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaa  aaaaaaaaa
 ex(5):  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaaaaa  aaa  aaaaaa  aaaaaaaaa
 ex(8):  aaaaaaaaaaaaaaa  aaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaaaa  aaaaaa
-node: {false, a, #} (((aa)a)+#)
-  node: {false, a, a} ((aa)a)+
-    node: {false, a, a} ((aa)a)
-      node: {false, a, a} (aa)
-        node: {false, a, a} a
-        node: {false, a, a} a
-      node: {false, a, a} a
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, a, #}   (((aa)a)+#)
+   {F, a, a}   ((aa)a)+
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 }
 p0. a => { 1 }
 p1. a => { 2 }
 p2. a => { 0 3 }
 p3. # => { }
+------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s3
 s3# { p0 p3 } [a]:s1
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0. { p0 } [a]:s3
 s1# { p0 p3 } [a]:s3
 s2. { p2 } [a]:s1
@@ -312,30 +344,34 @@ regexp: (a{3})?
 tree:   a{3}?
 augmnt: (((aa)a)?#)
 length: 0 to 3
+-------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      aaa    aaa    aaa  aaa        aaa  aaa        aaa        aaa      
 ex(2):        aaa    aaa    aaa      aaa      aaa    aaa        aaa  aaa      
 ex(3):          aaa    aaa          aaa  aaa      aaa  aaa    aaa  aaa  aaa    
 ex(5):    aaa  aaa    aaa  aaa        aaa    aaa                      aaa    
 ex(8):  aaa  aaa  aaa  aaa    aaa  aaa              aaa  aaa  aaa  aaa      aaa
-node: {false, a#, #} (((aa)a)?#)
-  node: {true, a, a} ((aa)a)?
-    node: {false, a, a} ((aa)a)
-      node: {false, a, a} (aa)
-        node: {false, a, a} a
-        node: {false, a, a} a
-      node: {false, a, a} a
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, a#, #}   (((aa)a)?#)
+   {T, a, a}   ((aa)a)?
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 3 }
 p0. a => { 1 }
 p1. a => { 2 }
 p2. a => { 3 }
 p3. # => { }
+------------------- Initial DFA ------------------
 s0# { p0 p3 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s3
 s3# { p3 }
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0# { p0 p3 } [a]:s1
 s1. { p1 } [a]:s3
 s2# { p3 }
@@ -345,25 +381,28 @@ regexp: (a{3}){2}
 tree:   a{3}{2}
 augmnt: ((((aa)a)((aa)a))#)
 length: 6 to 6
+-------------------- Examples --------------------
 ex(0):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(1):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(2):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(3):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(5):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(8):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
-node: {false, a, #} ((((aa)a)((aa)a))#)
-  node: {false, a, a} (((aa)a)((aa)a))
-    node: {false, a, a} ((aa)a)
-      node: {false, a, a} (aa)
-        node: {false, a, a} a
-        node: {false, a, a} a
-      node: {false, a, a} a
-    node: {false, a, a} ((aa)a)
-      node: {false, a, a} (aa)
-        node: {false, a, a} a
-        node: {false, a, a} a
-      node: {false, a, a} a
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, a, #}   ((((aa)a)((aa)a))#)
+   {F, a, a}   (((aa)a)((aa)a))
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 }
 p0. a => { 1 }
 p1. a => { 2 }
@@ -372,6 +411,7 @@ p3. a => { 4 }
 p4. a => { 5 }
 p5. a => { 6 }
 p6. # => { }
+------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s3
@@ -379,7 +419,7 @@ s3. { p3 } [a]:s4
 s4. { p4 } [a]:s5
 s5. { p5 } [a]:s6
 s6# { p6 }
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0. { p0 } [a]:s6
 s1# { p6 }
 s2. { p5 } [a]:s1
@@ -392,47 +432,50 @@ regexp: (a{3}){1,5}
 tree:   a{3}{1,5}
 augmnt: (((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)#)
 length: 3 to 15
+-------------------- Examples --------------------
 ex(0):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
 ex(1):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
 ex(2):  aaa  aaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaa  aaa  aaa
 ex(3):  aaaaaaaaa  aaa  aaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaa  aaaaaaaaa
 ex(5):  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaaaaa  aaa  aaaaaa  aaaaaaaaa
 ex(8):  aaaaaaaaaaaa  aaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaa
-node: {false, a, #} (((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)#)
-  node: {false, a, aaaaa} ((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)
-    node: {false, a, aaaa} (((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)
-      node: {false, a, aaa} ((((aa)a)((aa)a)?)((aa)a)?)
-        node: {false, a, aa} (((aa)a)((aa)a)?)
-          node: {false, a, a} ((aa)a)
-            node: {false, a, a} (aa)
-              node: {false, a, a} a
-              node: {false, a, a} a
-            node: {false, a, a} a
-          node: {true, a, a} ((aa)a)?
-            node: {false, a, a} ((aa)a)
-              node: {false, a, a} (aa)
-                node: {false, a, a} a
-                node: {false, a, a} a
-              node: {false, a, a} a
-        node: {true, a, a} ((aa)a)?
-          node: {false, a, a} ((aa)a)
-            node: {false, a, a} (aa)
-              node: {false, a, a} a
-              node: {false, a, a} a
-            node: {false, a, a} a
-      node: {true, a, a} ((aa)a)?
-        node: {false, a, a} ((aa)a)
-          node: {false, a, a} (aa)
-            node: {false, a, a} a
-            node: {false, a, a} a
-          node: {false, a, a} a
-    node: {true, a, a} ((aa)a)?
-      node: {false, a, a} ((aa)a)
-        node: {false, a, a} (aa)
-          node: {false, a, a} a
-          node: {false, a, a} a
-        node: {false, a, a} a
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, a, #}   (((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)#)
+   {F, a, aaaaa}   ((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)
+      {F, a, aaaa}   (((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)
+         {F, a, aaa}   ((((aa)a)((aa)a)?)((aa)a)?)
+            {F, a, aa}   (((aa)a)((aa)a)?)
+               {F, a, a}   ((aa)a)
+                  {F, a, a}   (aa)
+                     {F, a, a}   a
+                     {F, a, a}   a
+                  {F, a, a}   a
+               {T, a, a}   ((aa)a)?
+                  {F, a, a}   ((aa)a)
+                     {F, a, a}   (aa)
+                        {F, a, a}   a
+                        {F, a, a}   a
+                     {F, a, a}   a
+            {T, a, a}   ((aa)a)?
+               {F, a, a}   ((aa)a)
+                  {F, a, a}   (aa)
+                     {F, a, a}   a
+                     {F, a, a}   a
+                  {F, a, a}   a
+         {T, a, a}   ((aa)a)?
+            {F, a, a}   ((aa)a)
+               {F, a, a}   (aa)
+                  {F, a, a}   a
+                  {F, a, a}   a
+               {F, a, a}   a
+      {T, a, a}   ((aa)a)?
+         {F, a, a}   ((aa)a)
+            {F, a, a}   (aa)
+               {F, a, a}   a
+               {F, a, a}   a
+            {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 }
 p0. a => { 1 }
 p1. a => { 2 }
@@ -450,6 +493,7 @@ p12. a => { 13 }
 p13. a => { 14 }
 p14. a => { 15 }
 p15. # => { }
+------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s3
@@ -466,7 +510,7 @@ s12# { p12 p15 } [a]:s13
 s13. { p13 } [a]:s14
 s14. { p14 } [a]:s15
 s15# { p15 }
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0. { p0 } [a]:s7
 s1# { p3 p6 p9 p12 p15 } [a]:s9
 s2# { p6 p9 p12 p15 } [a]:s11
@@ -488,27 +532,30 @@ regexp: a{3}b{4}
 tree:   (a{3}b{4})
 augmnt: ((((aa)a)(((bb)b)b))#)
 length: 7 to 7
+-------------------- Examples --------------------
 ex(0):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(1):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(2):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(3):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(5):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(8):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
-node: {false, a, #} ((((aa)a)(((bb)b)b))#)
-  node: {false, a, b} (((aa)a)(((bb)b)b))
-    node: {false, a, a} ((aa)a)
-      node: {false, a, a} (aa)
-        node: {false, a, a} a
-        node: {false, a, a} a
-      node: {false, a, a} a
-    node: {false, b, b} (((bb)b)b)
-      node: {false, b, b} ((bb)b)
-        node: {false, b, b} (bb)
-          node: {false, b, b} b
-          node: {false, b, b} b
-        node: {false, b, b} b
-      node: {false, b, b} b
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, a, #}   ((((aa)a)(((bb)b)b))#)
+   {F, a, b}   (((aa)a)(((bb)b)b))
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+      {F, b, b}   (((bb)b)b)
+         {F, b, b}   ((bb)b)
+            {F, b, b}   (bb)
+               {F, b, b}   b
+               {F, b, b}   b
+            {F, b, b}   b
+         {F, b, b}   b
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 }
 p0. a => { 1 }
 p1. a => { 2 }
@@ -518,6 +565,7 @@ p4. b => { 5 }
 p5. b => { 6 }
 p6. b => { 7 }
 p7. # => { }
+------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s3
@@ -526,7 +574,7 @@ s4. { p4 } [b]:s5
 s5. { p5 } [b]:s6
 s6. { p6 } [b]:s7
 s7# { p7 }
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0. { p0 } [a]:s7
 s1# { p7 }
 s2. { p6 } [b]:s1
@@ -540,36 +588,39 @@ regexp: a{3}|b{4}|c{5}
 tree:   (a{3}|b{4}|c{5})
 augmnt: ((((aa)a)|(((bb)b)b)|((((cc)c)c)c))#)
 length: 3 to 5
+-------------------- Examples --------------------
 ex(0):  aaa  aaa  bbbb  bbbb  ccccc  bbbb  bbbb  ccccc  aaa  aaa  aaa  ccccc
 ex(1):  aaa  aaa  aaa  ccccc  ccccc  bbbb  aaa  ccccc  aaa  ccccc  aaa  ccccc
 ex(2):  bbbb  aaa  bbbb  bbbb  aaa  ccccc  ccccc  bbbb  ccccc  bbbb  ccccc
 ex(3):  ccccc  aaa  bbbb  aaa  aaa  ccccc  bbbb  bbbb  aaa  aaa  aaa  aaa
 ex(5):  bbbb  aaa  bbbb  bbbb  aaa  aaa  ccccc  ccccc  ccccc  aaa  ccccc  aaa
 ex(8):  bbbb  ccccc  bbbb  ccccc  ccccc  bbbb  aaa  aaa  ccccc  aaa  bbbb
-node: {false, abc, #} ((((aa)a)|(((bb)b)b)|((((cc)c)c)c))#)
-  node: {false, abc, abc} (((aa)a)|(((bb)b)b)|((((cc)c)c)c))
-    node: {false, a, a} ((aa)a)
-      node: {false, a, a} (aa)
-        node: {false, a, a} a
-        node: {false, a, a} a
-      node: {false, a, a} a
-    node: {false, b, b} (((bb)b)b)
-      node: {false, b, b} ((bb)b)
-        node: {false, b, b} (bb)
-          node: {false, b, b} b
-          node: {false, b, b} b
-        node: {false, b, b} b
-      node: {false, b, b} b
-    node: {false, c, c} ((((cc)c)c)c)
-      node: {false, c, c} (((cc)c)c)
-        node: {false, c, c} ((cc)c)
-          node: {false, c, c} (cc)
-            node: {false, c, c} c
-            node: {false, c, c} c
-          node: {false, c, c} c
-        node: {false, c, c} c
-      node: {false, c, c} c
-  node: {false, #, #} #
+----------------- Annotated Tree -----------------
+{F, abc, #}   ((((aa)a)|(((bb)b)b)|((((cc)c)c)c))#)
+   {F, abc, abc}   (((aa)a)|(((bb)b)b)|((((cc)c)c)c))
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+      {F, b, b}   (((bb)b)b)
+         {F, b, b}   ((bb)b)
+            {F, b, b}   (bb)
+               {F, b, b}   b
+               {F, b, b}   b
+            {F, b, b}   b
+         {F, b, b}   b
+      {F, c, c}   ((((cc)c)c)c)
+         {F, c, c}   (((cc)c)c)
+            {F, c, c}   ((cc)c)
+               {F, c, c}   (cc)
+                  {F, c, c}   c
+                  {F, c, c}   c
+               {F, c, c}   c
+            {F, c, c}   c
+         {F, c, c}   c
+   {F, #, #}   #
+----------------------- NFA ----------------------
 begin => { 0 3 7 }
 p0. a => { 1 }
 p1. a => { 2 }
@@ -584,6 +635,7 @@ p9. c => { 10 }
 p10. c => { 11 }
 p11. c => { 12 }
 p12. # => { }
+------------------- Initial DFA ------------------
 s0. { p0 p3 p7 } [a]:s1 [b]:s2 [c]:s3
 s1. { p1 } [a]:s4
 s2. { p4 } [b]:s5
@@ -595,7 +647,7 @@ s7# { p12 }
 s8. { p6 } [b]:s7
 s9. { p10 } [c]:s10
 s10. { p11 } [c]:s7
---[minimizing]--
+------------------ Minimized DFA -----------------
 s0. { p0 p3 p7 } [a]:s3 [b]:s4 [c]:s7
 s1# { p12 }
 s2. { p2 } [a]:s1
