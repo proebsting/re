@@ -43,7 +43,7 @@ var allChars *BitSet   // set of all chars
 //  Printable characters are preferred to unprintables.
 func (b *BitSet) RandChar() byte {
 	n := 0                   // number of characters considered
-	l := b.lowbit()          // lowest eligible char
+	l := b.Lowbit()          // lowest eligible char
 	h := b.Bits.BitLen() - 1 // highest eligible char
 	if h < 0 {
 		return '?' //#%#%#% ERROR cset was empty
@@ -72,7 +72,7 @@ func (b *BitSet) RandChar() byte {
 //  BitSet.Bracketed() returns a bracket-expression form of a character set,
 //  using ranges if appropriate and escaping (only) unprintables.
 func (b *BitSet) Bracketed() string {
-	l := b.lowbit()
+	l := b.Lowbit()
 	h := b.Bits.BitLen()
 	s := make([]byte, 0)
 	s = append(s, '[')
