@@ -24,6 +24,8 @@ var exprstack []Node // stack of pushed expressions
 //
 //  Parse ignores the Perl non-capturing submatch form "(?:",  but other
 //  "(?" forms are errors.
+//
+//  All trees are "anchored".  An initial '^' and/or final '$' is ignored.
 func Parse(rexpr string) (Node, error) {
 
 	var curr Node         // current parse tree
@@ -34,6 +36,13 @@ func Parse(rexpr string) (Node, error) {
 	oprstack = make([]byte, 0)  // initialize empty operator stack
 	exprstack = make([]Node, 0) // initialize empty expression stack
 	orgstr := rexpr             // save original string
+
+	if len(rexpr) > 0 && rexpr[0] == '^' {
+		rexpr = rexpr[1:]
+	}
+	if len(rexpr) > 0 && rexpr[len(rexpr)-1] == '$' {
+		rexpr = rexpr[:len(rexpr)-1]
+	}
 
 	for len(rexpr) > 0 { // for every character in regexp
 		// invariant: curr holds the parse tree completed so far

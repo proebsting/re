@@ -7,14 +7,13 @@ Add metadata to the JSON output of rxg
 
 REGEXPS:
 Add POSIX classes?
-Handle (at least, ignore) ^ $ anchors?
 Add \b anchor??
 Add flags such as "case insensitive"??
 Other Perl stuff?
 
 UTILITIES:
-More options to control rxr output
-Add headings and spacing to rxr output?
+Show WHICH pattern accepts on DOT output
+Produce DOT for NFA, too
 Combine multiple utilities into one (Swiss army knife)?
 
 CLEANUP:

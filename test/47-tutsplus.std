@@ -23,15 +23,15 @@ ex(8):  w89  lssxd9  x1w-7a  i6cq8-b  v0t1bye  b3ek8t  xbyegk  x41c2sbu  kin
 # 2. Matching a Password
 
 regexp: [a-z0-9_-]{6,18}$
-tree:   ([-0-9_a-z]{6,18}$)
-length: 7 to 19
+tree:   [-0-9_a-z]{6,18}
+length: 6 to 18
 -------------------- Examples --------------------
-ex(0):  _eg66a$  vfq7x6$  14fnbf$  trlbkp$  3lk3-e$  rg07c7$  1m-3ps$  93uy04$
-ex(1):  bqfmltwos__2j6n$  jxhio772l42xtpj$  k7sffg54-p48e$  0ryahi-9n$
-ex(2):  nc20nmzqksfy$  zzr-0vhe73xjmdf$  m-ljh0k7u2z$  5566tw3-zuf5$
-ex(3):  khleotd6sy3$  z64b7adta$  s_kvnipw0onogm$  7oa5forv2ofen$
-ex(5):  tgyilazsqx3x$  -66ryp7orfd8$  t4sy4wuit$  qvopv3t1u9$  dlwfrwy23e$
-ex(8):  d_cyk41vuhe_$  58j_ik-ova$  per0aj_pq_c3pf$  n_919yedkdn66$
+ex(0):  _eg66a  vfq7x6  14fnbf  trlbkp  3lk3-e  rg07c7  1m-3ps  93uy04  nf-i5h
+ex(1):  bnm_8r  cvp22j  bj0juk  -dw6tk  tq_jys  _-e1or  e0ydmd  v43qt7  jc-5c6
+ex(2):  38fton  yqsurw  qzd608  h-0alq  j3d_7n  py-qoh  t42kob  imi34e  vbnab_
+ex(3):  eiar-s  pa97jj  ixj8ji  kja7lo  1v9sjq  pdrkx-  tj9rx3  5h-r_a  i8gze7
+ex(5):  7hs_dw  v865qy  xj9md1  s9b0x8  rq4m7h  3bncha  am3za4  ye9of0  _1gt7e
+ex(8):  0zwsqh  tbeyliua  l3n-udfe  -ovh1m  hmgsmq  fmb9a6  jug4o3  naq0ri
 
 #
 

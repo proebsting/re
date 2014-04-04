@@ -113,7 +113,7 @@ func (b *BitSet) Key() string {
 //  This is the easiest way to iterate through the members of a bit set:
 //	for _, i := range bset.Members() { ... }
 func (b *BitSet) Members() []uint {
-	m := make([]uint, 0)
+	m := make([]uint, 0, 0) // initial capacity 0 is faster than h-l+1
 	l := b.lowbit()
 	h := b.Bits.BitLen()
 	for i := l; i <= h; i++ { // for all values up to highest
