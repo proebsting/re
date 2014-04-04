@@ -15,12 +15,12 @@ func TestBits(t *testing.T) {
 	bs := &BitSet{}
 	ck(t, "e00", true, bs.IsEmpty())
 	ck(t, "n00", 0, bs.Count())
-	ck(t, "l00", 0, bs.lowbit())
+	ck(t, "l00", 0, bs.Lowbit())
 	ck(t, "s00", "{ }", bs)
 	ck(t, "s0", "{ 0 }", bs.Set(0))
 	ck(t, "s2", "{ 0 2 }", bs.Set(2))
 	ck(t, "c0", "{ 2 }", bs.Clear(0))
-	ck(t, "l2", 2, bs.lowbit())
+	ck(t, "l2", 2, bs.Lowbit())
 	ck(t, "s3a", "{ 2 3 }", bs.Set(3))
 	ck(t, "s3b", "{ 2 3 }", bs.Set(3)) // no harm setting twice
 	ck(t, "s5", "{ 2 3 5 }", bs.Set(5))
