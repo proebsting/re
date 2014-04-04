@@ -65,7 +65,9 @@ func main() {
 	exprs := make([]*RegEx, 0)
 	tlist := make([]rx.Node, 0)
 	rx.LoadExpressions(rx.OneInputFile(), func(l *rx.RegExParsed) {
-		rx.CkErr(l.Err)
+		if l.Err != nil {
+			fmt.Fprintln(os.Stderr, l.Err)
+		}
 		if l.Tree != nil {
 			atree := rx.Augment(l.Tree, uint(len(tlist)))
 			tlist = append(tlist, atree)
