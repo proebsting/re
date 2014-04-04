@@ -1,0 +1,88 @@
+
+regexp: ^
+tree:   ()
+length: 0 to 0
+-------------------- Examples --------------------
+ex(0):                                                                        
+ex(1):                                                                        
+ex(2):                                                                        
+ex(3):                                                                        
+ex(5):                                                                        
+ex(8):                                                                        
+
+regexp: $
+tree:   ()
+length: 0 to 0
+-------------------- Examples --------------------
+ex(0):                                                                        
+ex(1):                                                                        
+ex(2):                                                                        
+ex(3):                                                                        
+ex(5):                                                                        
+ex(8):                                                                        
+
+regexp: ^$
+tree:   ()
+length: 0 to 0
+-------------------- Examples --------------------
+ex(0):                                                                        
+ex(1):                                                                        
+ex(2):                                                                        
+ex(3):                                                                        
+ex(5):                                                                        
+ex(8):                                                                        
+
+regexp: ^a
+tree:   a
+length: 1 to 1
+-------------------- Examples --------------------
+ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+
+regexp: b$
+tree:   b
+length: 1 to 1
+-------------------- Examples --------------------
+ex(0):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
+ex(1):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
+ex(2):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
+ex(3):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
+ex(5):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
+ex(8):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
+
+regexp: ^c$
+tree:   c
+length: 1 to 1
+-------------------- Examples --------------------
+ex(0):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
+ex(1):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
+ex(2):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
+ex(3):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
+ex(5):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
+ex(8):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
+
+regexp: ^def$
+tree:   ((de)f)
+length: 3 to 3
+-------------------- Examples --------------------
+ex(0):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
+ex(1):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
+ex(2):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
+ex(3):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
+ex(5):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
+ex(8):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
+
+regexp: ^x+y*z+$
+tree:   ((x+y*)z+)
+length: 2 to *
+-------------------- Examples --------------------
+ex(0):  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz
+ex(1):  xz  xz  xyz  xz  xyz  xz  xyz  xyz  xz  xz  xz  xyz  xyz  xz  xz  xz
+ex(2):  xyz  xxz  xyyz  xzz  xz  xxyz  xxyyz  xxzz  xz  xxyz  xzz  xyz  xyz
+ex(3):  xxxyyzzz  xyyzz  xxxyyyzzz  xxxyz  xz  xxyzz  xxyyyz  xyyzzz  xxz
+ex(5):  xyyzzz  xyyyyzzzz  xxxxyyyz  xyzz  xxxxxyyyyyzz  xyyyzzzzz  xxyyyyzzz
+ex(8):  xxxxxxxxyyyzzzz  xxxxxxxxyyyyyz  xxzzzzz  xxxxxxxyyyyyyyyzzzzzzzz
