@@ -1,7 +1,7 @@
 #  Makefile for RX library and programs
 
 PKG = rx
-PROGS = $(PKG)/rxd $(PKG)/rxg $(PKG)/rxq $(PKG)/rxr $(PKG)/rxx
+PROGS = $(PKG)/rxd $(PKG)/rxg $(PKG)/rxq $(PKG)/rxr $(PKG)/rxx $(PKG)/questions
 GOBIN = $$GOPATH/bin
 
 DEMO='(a|b)*abb' 'b(ab)*a'
@@ -22,6 +22,7 @@ rxq:	.FORCE;  go install ${PKG}/rxq && cd test && runtest.sh *.rxq
 rxr:	.FORCE;  go install ${PKG}/rxr && cd test && runtest.sh *.rx
 rxv:	.FORCE;  go install ${PKG}/rxr && cd test && runtest.sh *.rxv
 rxx:	.FORCE;  go install ${PKG}/rxx && cd test && runtest.sh *.rxx
+questions:	.FORCE;  go install ${PKG}/questions
 
 #  "make test" runs unit tests and the shell-based tests
 test:	.FORCE
@@ -48,6 +49,7 @@ fmt:
 	go fmt rxq/rxq.go
 	go fmt rxr/rxr.go
 	go fmt rxx/rxx.go
+	go fmt questions/questions.go
 
 #  "make demo" displays a graph of the DFA of the exprs defined above.
 demo:	
