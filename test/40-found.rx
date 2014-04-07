@@ -1,10 +1,14 @@
 # Miscellaneous samples from the web
 #
-# http://www.regular-expressions.info/ (main page) "any email address"
+#U: http://www.regular-expressions.info/
+#D: (main page) "any email address"
 [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
-# http://www.regular-expressions.info/email.html (final example)
+#U: http://www.regular-expressions.info/email.html
+#D: (final email example)
 [a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
-# http://compilers.iecc.com/comparch/article/01-10-072 (telno "Yecchhh")
+#U: http://compilers.iecc.com/comparch/article/01-10-072
+#D: (telno "Yecchhh")
 (\([0-9]{3}\)[ ]{1}){0,1}[0-9]{3}\-[0-9]{4}
-# http://compilers.iecc.com/comparch/article/01-10-081 (a reformulation)
+#U: http://compilers.iecc.com/comparch/article/01-10-081
+#D: (a reformulation)
 (\(\d\d\d\) )?\d\d\d-\d\d\d\d

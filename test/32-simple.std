@@ -11,8 +11,8 @@ ex(2):  CACD  CBD  CACD  CBD  CACD  CBD  CACD  CACD  CBD  CACD  CACD  CBD  CACD
 ex(3):  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD
 ex(5):  CBD  CACD  CBD  CACD  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CBD  CBD
 ex(8):  CBD  CBD  CBD  CACD  CACD  CBD  CACD  CBD  CBD  CACD  CBD  CBD  CACD
-
-# Dragon2: automata example
+#A: Aho and Ullman
+#T: Dragon2: automata example
 
 regexp: (a|b)*abb
 tree:   ((((a|b)*a)b)b)
@@ -24,8 +24,8 @@ ex(2):  abb  aaabb  abb  aaabb  abb  aabb  abb  baabb  baabb  babb  abb  aabb
 ex(3):  bbabb  abb  abb  baabb  abb  ababb  abb  aabb  abb  abb  bbabb  ababb
 ex(5):  aababb  bbababb  aaaabb  aabb  aaaabb  abb  aaabb  aabaabb  abb  babb
 ex(8):  aabb  aaabbabb  baaabb  abb  abb  abb  abbbbabb  babbaaabb  bbaabb  abb
-
-# Sedgewick: genome marker
+#A: Sedgewick
+#T: Genome Marker
 
 regexp: gcg(cgg|agg)*ctg
 tree:   ((((((gc)g)(((cg)g)|((ag)g))*)c)t)g)
@@ -37,8 +37,8 @@ ex(2):  gcgctg  gcgctg  gcgctg  gcgcggcggctg  gcgctg  gcgcggcggctg  gcgctg
 ex(3):  gcgctg  gcgcggaggcggctg  gcgcggctg  gcgaggcggctg  gcgaggcggctg
 ex(5):  gcgaggctg  gcgctg  gcgctg  gcgctg  gcgcggcggcggctg  gcgaggcggaggcggctg
 ex(8):  gcgaggcggcggaggaggctg  gcgaggaggctg  gcgcggcggaggctg  gcgaggctg
-
-# Sedgewick: multiples of 3, in binary
+#A: Sedgewick
+#T: multiples of 3, in binary
 
 regexp: (0|1(01*0)*1)*
 tree:   (0|((1((01*)0)*)1))*
@@ -63,8 +63,8 @@ ex(2):  10  ac    dc  dc  dc  1010  1010  ac  dc  ac  dc  dc  ac    dc  10  dc
 ex(3):  ac  101010  1010  dc  ac  ac  1010  dc  1010  dc  dc  dc  ac  ac  10
 ex(5):  10  ac  dc  dc  dc  101010  10101010  ac  dc  ac  ac  101010  101010
 ex(8):  dc    1010101010  dc  101010101010  10101010101010  10101010101010
-
-# Experiments with word construction
+#A: gmt
+#T: Experiments with word construction
 
 regexp: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
 tree:   ((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])

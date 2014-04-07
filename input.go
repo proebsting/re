@@ -5,19 +5,24 @@ package rx
 import (
 	"bufio"
 	"flag"
+	"fmt"
 	"log"
 	"os"
+	"regexp"
 )
+
+var _ = fmt.Printf //#%#%#% for debugging
 
 //  A RegExParsed is a single parsed regular expression.
 //  If Tree is not nil then the expression was parsed as valid.
 //  If Tree is nil and Err is not, Err is a parsing error.
 //  If Tree is nil and Err is nil, the struct can represent a comment.
+//  Metadata for a comment reflects current line only; otherwise cumulative.
 type RegExParsed struct {
-	Expr string // input string
-	Tree Node   // parse tree
-	Err  error  // parse error
-	//#%#% to come: add metadata field(s)
+	Expr string            // input string
+	Tree Node              // parse tree
+	Err  error             // parse error
+	Meta map[string]string // metadata list
 }
 
 //  RegExParsed.IsExpr returns true if the struct represents an expression,
@@ -32,17 +37,31 @@ func (rxp *RegExParsed) IsExpr() bool {
 //  Empty lines and lines beginning with '#' are treated as comments.
 //  If non-nil, the function f is called for each line read.
 //  The returned array contains only successfully parsed expressions.
+//
+//  Metadata from comments matching the pattern "^#\w+:" is accumulated and
+//  returned with the next non-comment line (whether or not it parses).
 func LoadExpressions(fname string, f func(*RegExParsed)) []*RegExParsed {
+	mpat := regexp.MustCompile(`^#(\w+): *(.*)`)
 	efile := MkScanner(fname)
 	elist := make([]*RegExParsed, 0)
+	meta := make(map[string]string)
 	for efile.Scan() {
 		line := efile.Text()
 		e := &RegExParsed{Expr: line}
-		if !IsComment(line) {
+		if IsComment(line) {
+			r := mpat.FindStringSubmatch(line)
+			if r != nil { // if recognized metadata format
+				e.Meta = make(map[string]string)
+				e.Meta[r[1]] = r[2]       // this line only
+				addMeta(meta, r[1], r[2]) // also accumulate
+			}
+		} else {
 			e.Tree, e.Err = Parse(line)
 			if e.Tree != nil {
 				elist = append(elist, e)
 			}
+			e.Meta = meta                  // accumulated metadata
+			meta = make(map[string]string) // reset meta collection
 		}
 		if f != nil {
 			f(e)
@@ -50,6 +69,15 @@ func LoadExpressions(fname string, f func(*RegExParsed)) []*RegExParsed {
 	}
 	CkErr(efile.Err())
 	return elist
+}
+
+// addMeta grows the metadata, concatenating with \n if the key is a duplicate.
+func addMeta(meta map[string]string, key string, val string) {
+	if meta[key] == "" {
+		meta[key] = val
+	} else {
+		meta[key] = meta[key] + "\n" + val
+	}
 }
 
 //  OneInputFile returns the name of the input file from the command line.

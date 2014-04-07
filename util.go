@@ -11,6 +11,7 @@ import (
 	"io"
 	"log"
 	"reflect"
+	"sort"
 	"strconv"
 	"syscall"
 	"time"
@@ -67,6 +68,16 @@ func ShowLabel(f io.Writer, label string) {
 		a := total - n - z
 		fmt.Fprintf(f, "%s %s %s\n", decor[:a], label, decor[:z])
 	}
+}
+
+//  KeyList returns the keys of a string:string map in sorted order.
+func KeyList(m map[string]string) []string {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return keys
 }
 
 //  Jlist writes a slice of anything Marshalable to a file in JSON format,

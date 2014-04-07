@@ -2,8 +2,8 @@
 # Miscellaneous samples from the web
 
 #
-
-# http://www.regular-expressions.info/ (main page) "any email address"
+#D: (main page) "any email address"
+#U: http://www.regular-expressions.info/
 
 regexp: [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
 tree:   (((([%+-.0-9A-Z_]+@)[-.0-9A-Z]+).)[A-Z]{2,4})
@@ -15,8 +15,8 @@ ex(2):  22@4..GGG  O0@G.AOPX  R@F.YVG  F@CM.DNSC  FX@CV.USB  H5@F.DN  DB@RP.NIA
 ex(3):  R@AU.ZGGB  .RY@FG.NRDC  J@3.CMLW  V@F.BE  7X@VUS.HZF  4@.B.OTMI
 ex(5):  T5A@4O.GZ.AFV  EUB6@WD.CMP  WF@CS3.LX  J_@E5.JSQD  UJR7@B3-NG.NW
 ex(8):  VRHESA@SJ6O.ADSD  YM@JRBLH2.WKMQ  RR5Y@2EXI.JLDK  23-4BR4U@RSOZ.CAR
-
-# http://www.regular-expressions.info/email.html (final example)
+#D: (final email example)
+#U: http://www.regular-expressions.info/email.html
 
 regexp: [a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
 tree:   (((([!#-'*+-/-9=?^-~]+(.[!#-'*+-/-9=?^-~]+)*)@)(([0-9a-z]([-0-9a-z]*[0-9a-z])?).)+)([A-Z]{2}|((co)m)|((or)g)|((ne)t)|((ed)u)|((go)v)|((mi)l)|((bi)z)|(((in)f)o)|(((mo)b)i)|(((na)m)e)|(((ae)r)o)|(((as)i)a)|(((jo)b)s)|(((((mu)s)e)u)m)))
@@ -28,8 +28,8 @@ ex(2):  0&@2.biz  z3.{g.a@mg.aero  a.}|@5.x.gov  h@vn1h.ed1v.org  vf@1p.gov
 ex(3):  dr@9.xt.biz  -`z.q.^pi@76.name  b+@h1fgq.k.1b7h3.biz  s@q.9oc6j.1.net
 ex(5):  x4.2}9*}.mz7+d.4@n.8oo.hsjn77.IA  `0.#.|.u+.z5so@8p3yxc.w5ieg7.ZD
 ex(8):  pp.}r~.7hfzvr.l`_e`1@1.0.EF  **./9fi{@f.9akbi7c.u1bsaiz.jg.net
-
-# http://compilers.iecc.com/comparch/article/01-10-072 (telno "Yecchhh")
+#D: (telno "Yecchhh")
+#U: http://compilers.iecc.com/comparch/article/01-10-072
 
 regexp: (\([0-9]{3}\)[ ]{1}){0,1}[0-9]{3}\-[0-9]{4}
 tree:   ((((((([0-9]{3}))) )?[0-9]{3})-)[0-9]{4})
@@ -41,8 +41,8 @@ ex(2):  (028) 393-5163  (060) 984-0637  792-6067  181-1882  814-9179
 ex(3):  859-0439  (862) 353-5067  (829) 225-9377  (500) 574-7326  965-3254
 ex(5):  209-8515  616-0574  875-9941  676-5049  320-8687  689-0293
 ex(8):  (251) 336-6207  671-8176  (392) 737-9572  695-0579  937-1053  655-1464
-
-# http://compilers.iecc.com/comparch/article/01-10-081 (a reformulation)
+#D: (a reformulation)
+#U: http://compilers.iecc.com/comparch/article/01-10-081
 
 regexp: (\(\d\d\d\) )?\d\d\d-\d\d\d\d
 tree:   (((((((((((((([0-9])[0-9])[0-9]))) )?[0-9])[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])

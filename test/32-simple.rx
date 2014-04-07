@@ -1,13 +1,17 @@
 # source not recorded
 C(AC|B)D
-# Dragon2: automata example
+#A: Aho and Ullman
+#T: Dragon2: automata example
 (a|b)*abb
-# Sedgewick: genome marker
+#A: Sedgewick
+#T: Genome Marker
 gcg(cgg|agg)*ctg
-# Sedgewick: multiples of 3, in binary
+#A: Sedgewick
+#T: multiples of 3, in binary
 (0|1(01*0)*1)*
 # A simple expr that had problems minimizing
 (10)*|ac|dc
-# Experiments with word construction
+#A: gmt
+#T: Experiments with word construction
 [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
 W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)

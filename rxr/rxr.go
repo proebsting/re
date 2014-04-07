@@ -45,13 +45,19 @@ func main() {
 
 	// load and process regexps
 	rx.LoadExpressions(rx.OneInputFile(), func(in *rx.RegExParsed) {
-		fmt.Println()
 		spec := in.Expr
 		if !in.IsExpr() {
-			fmt.Println(spec)
+			if in.Meta == nil { // echo if not metadata
+				fmt.Printf("\n%s\n", spec)
+			}
 			return
 		}
-		fmt.Printf("regexp: %s\n", spec)
+		// print accumulated metadata
+		for _, k := range rx.KeyList(in.Meta) {
+			fmt.Printf("#%s: %v\n", k, in.Meta[k])
+		}
+		// print regexp
+		fmt.Printf("\nregexp: %s\n", spec)
 		if in.Err != nil {
 			fmt.Println("ERROR: ", in.Err)
 			return
