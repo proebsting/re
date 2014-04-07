@@ -3,11 +3,10 @@ RX TO-DO LIST
 
 PRIORITIES:
 Add metadata to the JSON output of rxg
-(hard part is specifying how the metadata comes IN....)
 
 REGEXPS:
 Add POSIX classes?
-Add \b anchor??
+Add \b anchor? Embedded ^ and $?
 Add flags such as "case insensitive"??
 Other Perl stuff?
 

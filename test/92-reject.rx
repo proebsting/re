@@ -14,3 +14,5 @@ abc\b.*
 (ab)cd\1
 (ab)cd\5
 (ab)cd\9
+(^ab)|(^cd)
+(ef$)|(gh$)

@@ -45,3 +45,9 @@ ERROR:  rx: \5 (backref) unimplemented: in "(ab)cd\5"
 
 regexp: (ab)cd\9
 ERROR:  rx: \9 (backref) unimplemented: in "(ab)cd\9"
+
+regexp: (^ab)|(^cd)
+ERROR:  rx: Embedded '^' unimplemented: in "(^ab)|(^cd)"
+
+regexp: (ef$)|(gh$)
+ERROR:  rx: Embedded '$' unimplemented: in "(ef$)|(gh$)"

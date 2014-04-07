@@ -38,10 +38,7 @@ func Parse(rexpr string) (Node, error) {
 	orgstr := rexpr             // save original string
 
 	if len(rexpr) > 0 && rexpr[0] == '^' {
-		rexpr = rexpr[1:]
-	}
-	if len(rexpr) > 0 && rexpr[len(rexpr)-1] == '$' {
-		rexpr = rexpr[:len(rexpr)-1]
+		rexpr = rexpr[1:] // remove initial '^'
 	}
 
 	for len(rexpr) > 0 { // for every character in regexp
@@ -56,6 +53,19 @@ func Parse(rexpr string) (Node, error) {
 		case '?', '*', '+':
 			// ignore:  if seen here, any of these characters
 			// just replicates an empty string to no effect
+			continue
+
+		case '^':
+			// '^' is illegal except (handled earlier) when first
+			return nil, &ParseError{
+				orgstr, "Embedded '^' unimplemented"}
+
+		case '$':
+			// '^' is illegal except when last (then ignore)
+			if len(rexpr) != 0 {
+				return nil, &ParseError{
+					orgstr, "Embedded '$' unimplemented"}
+			}
 			continue
 
 		case '(':

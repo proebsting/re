@@ -86,3 +86,14 @@ ex(2):  xyz  xxz  xyyz  xzz  xz  xxyz  xxyyz  xxzz  xz  xxyz  xzz  xyz  xyz
 ex(3):  xxxyyzzz  xyyzz  xxxyyyzzz  xxxyz  xz  xxyzz  xxyyyz  xyyzzz  xxz
 ex(5):  xyyzzz  xyyyyzzzz  xxxxyyyz  xyzz  xxxxxyyyyyzz  xyyyzzzzz  xxyyyyzzz
 ex(8):  xxxxxxxxyyyzzzz  xxxxxxxxyyyyyz  xxzzzzz  xxxxxxxyyyyyyyyzzzzzzzz
+
+regexp: q\$
+tree:   (q$)
+length: 2 to 2
+-------------------- Examples --------------------
+ex(0):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
+ex(1):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
+ex(2):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
+ex(3):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
+ex(5):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
+ex(8):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
