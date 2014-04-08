@@ -1,5 +1,6 @@
 # A large number of expressions scraped 4-Apr-2014 from regxlib.com
 
+
 #U: http://regexlib.com/REDetails.aspx?regexp_id=1
 #T: One Numeric Digit
 #A: Steven Smith
@@ -1451,10 +1452,6 @@ Last.*?(\d+.?\d*)
 #D: For further explanation don't hesitate to write E-Mail.
 ^[^#]([^ ]+ ){6}[^ ]+$
 
-#U: http://regexlib.com/REDetails.aspx?regexp_id=359
-#A: Darren Neimke
-
-
 #U: http://regexlib.com/REDetails.aspx?regexp_id=360
 #A: mana deys
 #D: For testing 24H based time entry.  Tests if there is a colon to separate the hours from the minutes
@@ -1506,11 +1503,6 @@ Last.*?(\d+.?\d*)
 #A: Mladen Mihajlovic
 #D: Matches HTML Color strings. Like #FFFFFF is white and #000000 is black and #FF0000 is red and so on...
 ^(#){1}([a-fA-F0-9]){6}$
-
-#U: http://regexlib.com/REDetails.aspx?regexp_id=373
-#A: Darren Neimke
-#D: Matches and segments the sections of an opening tag. For more detailed information refer to this blog entry: http://weblogs.asp.net/dneimke/posts/25616.aspx
-
 
 #U: http://regexlib.com/REDetails.aspx?regexp_id=374
 #A: Mathews Inga
@@ -2364,12 +2356,6 @@ src[^>]*[^/].(?:jpg|bmp|gif)(?:\"|\')
 #D: FYI, the fictitious 555- numbers used in the movies and TV are only in the range of 555-0100 through 555-0199. Not very many, huh?
 ^(?!\d[1]{2}|[5]{3})([2-9]\d{2})([. -]*)\d{4}$
 
-#U: http://regexlib.com/REDetails.aspx?regexp_id=606
-#T: Currency
-#A: Michael Ash
-#D: This regex validates Currency. The base monetary unit (ex. US dollar) followed by option two digit cent denomination. Base unit can't have leading zero. Comma's are optional on base units. Note: Your regex engine must support the \p character class to use this. For example this will work in .net but not javascript which doesn't support \p Also the ¢ is removed from the match by force. Any other cent symbol would need to be added to the exclude to not match.
-
-
 #U: http://regexlib.com/REDetails.aspx?regexp_id=607
 #A: Don Johnston
 #D: US Phone Number: This regular expression for US phone numbers conforms to NANP A-digit and D-digit requirments (ANN-DNN-NNNN). Area Codes 001-199 are not permitted; Central Office Codes 001-199 are not permitted. Format validation accepts 10-digits without delimiters, optional parens on area code, and optional spaces or dashes between area code, central office code and station code. Acceptable formats include 2225551212, 222 555 1212, 222-555-1212, (222) 555 1212, (222) 555-1212, etc. You can add/remove formatting options to meet your needs.
@@ -2435,36 +2421,10 @@ src[^>]*[^/].(?:jpg|bmp|gif)(?:\"|\')
 #D: currency format that allows optional $, optional "-"(MinusSignNegative) OR "()" (ParenNegative) but not both, optional cents, and optional commas separating thousands. Minus sign can be before or after $, but parens must be outside the $. UPDATED: now fails to match a "$" without any further numbers
 ^\$?\-?([1-9]{1}[0-9]{0,2}(\,\d{3})*(\.\d{0,2})?|[1-9]{1}\d{0,}(\.\d{0,2})?|0(\.\d{0,2})?|(\.\d{1,2}))$|^\-?\$?([1-9]{1}\d{0,2}(\,\d{3})*(\.\d{0,2})?|[1-9]{1}\d{0,}(\.\d{0,2})?|0(\.\d{0,2})?|(\.\d{1,2}))$|^\(\$?([1-9]{1}\d{0,2}(\,\d{3})*(\.\d{0,2})?|[1-9]{1}\d{0,}(\.\d{0,2})?|0(\.\d{0,2})?|(\.\d{1,2}))\)$
 
-#U: http://regexlib.com/REDetails.aspx?regexp_id=626
-#T: Enitity notation
-#A: Michael Ash
-#D: This regex can be used to find general entites in HTML, XML and SGML files.
-#D: The entity can consist of
-#D: 1) an ampsand (&)
-#D: 2) followed by
-#D: (a) ASCII alphanumerics or period between 2 and 31  characters  or
-#D: (b) a pound sign #
-#D: (i) followed by an x followed by a unicode value  up to 5 hex digits or
-#D: (ii) followed by a decimal value from 0 to 1048575
-#D: 3) ending with a semi-colon (;)
-
-
 #U: http://regexlib.com/REDetails.aspx?regexp_id=627
 #A: Thomas Keegan
 #D: for checking a value is between 99.99% and 00.00%
 ^((\d{1,2})?([.][\d]{1,2})?){1}[%]{1}$
-
-#U: http://regexlib.com/REDetails.aspx?regexp_id=628
-#A: Ariel Merrell
-
-
-#U: http://regexlib.com/REDetails.aspx?regexp_id=629
-#A: Bret Greenwood
-#D: PCRE (PHP) regular expression for validating US telephone numbers with OPTIONAL area code, and OPTIONAL extension. Promiscuous formatting (parenthesis or slash, space, dash, dot or no separator). Captures the telephone number area code, prefix, suffix, and extension to named groups. Rejects area codes that begin with 0 or 1 and prefixes that begin with 0. Rejects all telephone numbers that do not match on exactly 7 digits, or on exactly 10 digits with the optional area code, not counting the extension or the format. Seperators, when used, must be in the right place. Extension can be preceded by a space(s) and/or "x", "X", or "Ext" and matches on 1 to 5 digits.
-#D: Written from the view that getting phone numbers from customers should be as easy and tolerant as possible. Matched number can be parsed and entered into database correctly on the business end.
-#D: Based on similar regex by Jerry Schmersahl in this library. Case insensitivity could simplify this expression, but implementation is left up to you.
-#D: For PHP/PCRE compatibility, put a "P" in front of each capture name (ie: "(?P<AreaCode>"). This server does not recognize the Python/PCRE naming convention.
-
 
 #U: http://regexlib.com/REDetails.aspx?regexp_id=631
 #A: Gaurav Shrivastava
@@ -2481,33 +2441,6 @@ src[^>]*[^/].(?:jpg|bmp|gif)(?:\"|\')
 #D: Used to dynamically find acronyms in a sentence. The first pair of brackets gets the acronym, the second gets the text after the acronym.
 ([A-Zäöü0-9\/][^a-z\:\,\(\)]*[A-Zäöü0-9])($|[\.\:\,\;\)\-\ \+]|s\b)
 
-#U: http://regexlib.com/REDetails.aspx?regexp_id=637
-#A: Darren Neimke
-#D: This pattern matches a simple Decimal Literal.  Leading digits limited to 8 and does not support commification.
-
-
-#U: http://regexlib.com/REDetails.aspx?regexp_id=638
-#A: Darren Neimke
-#D: Match the VB Language specification BNF for DateTime literal.  http://msdn.microsoft.com/library/en-us/vbls7/html/vblrfvbspec2_4_6.asp?frame=true
-#D: DateLiteral ::= # [ Whitespace+ ] DateOrTime [ Whitespace+ ] #
-#D: DateOrTime ::=
-#D: DateValue Whitespace+ TimeValue |
-#D: DateValue |
-#D: TimeValue
-#D: DateValue ::=
-#D: MonthValue / DayValue / YearValue |
-#D: MonthValue – DayValue - YearValue
-#D: TimeValue ::=
-#D: HourValue : MinuteValue [ : SecondValue ] [ WhiteSpace+ ] [ AMPM ]
-#D: MonthValue ::= IntLiteral
-#D: DayValue ::= IntLiteral
-#D: YearValue ::= IntLiteral
-#D: HourValue ::= IntLiteral
-#D: MinuteValue ::= IntLiteral
-#D: SecondValue ::= IntLiteral
-#D: AMPM ::= AM | PM
-
-
 #U: http://regexlib.com/REDetails.aspx?regexp_id=641
 #A: Ricardo Gonzalez
 #D: Filter US telephone numbers.  This particular one accepts only area code 939 or 787.  Area code parentesis or hyphens optional.
@@ -2517,30 +2450,6 @@ src[^>]*[^/].(?:jpg|bmp|gif)(?:\"|\')
 #A: Dave Turner
 #D: Telephone number filter - use to catch and replace phone numbers where you don't want them to appear.
 (\+)?([-\._\(\) ]?[\d]{3,20}[-\._\(\) ]?){2,10}
-
-#U: http://regexlib.com/REDetails.aspx?regexp_id=643
-#A: andrea mele
-#D: Check italian fiscal code (codice fiscale) with "OMOCODIA" control
-
-
-#U: http://regexlib.com/REDetails.aspx?regexp_id=644
-#T: mm/dd/yyyy Julian and Gregrian Datetime
-#A: Michael Ash
-#D: Datetime for Julian and Gregorian Calenders
-#D: Matchs dates from  0001 A.D. to 9999 A.D.
-#D: Days  and months are  1 or 2 digits
-#D: Years are 4 digit with leading zeros if required.
-#D: February is validate in all leap years
-#D: Leap year rules for Julian and Gregorian calendars (http://scienceworld.wolfram.com/astronomy/LeapYear.html)
-#D: Missing days for 1582 and 1752 are not matched.  Though only one set should be applied to a calendar since they are caused by when the calendar was adopted
-#D: Missing days (http://scienceworld.wolfram.com/astronomy/GregorianCalendar.html)
-#D: Time can be either 12 or 24 hour format
-#D: 12 hour format hh:MM:ss AM|PM
-#D: minutes and seconds are optional
-#D: 24 hour format hh:mm:ss
-#D: seconds are optional, hours less than ten require leading zero
-#D: Datetome format is a date, a space then a time.
-
 
 #U: http://regexlib.com/REDetails.aspx?regexp_id=646
 #A: Andrew Lee
@@ -2623,11 +2532,6 @@ href=[\"\'](http:\/\/|\.\/|\/)?\w+(\.\w+)*(\/\w+(\.\w+)?)*(\/|\?\w*=\w*(&\w*=\w*
 #D: Years 0-9 equal years 2000 to 2009 for leap years
 ^(((0?[1-9]|[12]\d|3[01])[\.\-\/](0?[13578]|1[02])[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}|\d))|((0?[1-9]|[12]\d|30)[\.\-\/](0?[13456789]|1[012])[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}|\d))|((0?[1-9]|1\d|2[0-8])[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}|\d))|(29[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)|00|[048])))$
 
-#U: http://regexlib.com/REDetails.aspx?regexp_id=667
-#A: Darren Neimke
-#D: Matches a percentage between 0 and 100 (inclusive).  Accepts up to 2 decimal places.
-
-
 #U: http://regexlib.com/REDetails.aspx?regexp_id=668
 #A: Chandrasing Patil
 #D: This expression is little tricky since the $ sign is includeded in the
@@ -2639,13 +2543,6 @@ href=[\"\'](http:\/\/|\.\/|\/)?\w+(\.\w+)*(\/\w+(\.\w+)?)*(\/|\?\w*=\w*(&\w*=\w*
 #A: Jason N. Gaylord
 #D: This is derived from Steven Smith's Integer expression (http://www.regexlib.com/REDetails.aspx?regexp_id=51). The only difference is that this does not accept blanks. Written by Jason N. Gaylord.
 ^\d+$
-
-#U: http://regexlib.com/REDetails.aspx?regexp_id=670
-#A: yoram o
-#D: DD/MM/YY
-#D: D/M/YY
-#D: DD/MM/YYYY
-
 
 #U: http://regexlib.com/REDetails.aspx?regexp_id=671
 #A: Liu Wei
@@ -2744,13 +2641,6 @@ href=[\"\'](http:\/\/|\.\/|\/)?\w+(\.\w+)*(\/\w+(\.\w+)?)*(\/|\?\w*=\w*(&\w*=\w*
 #D: Zero leading        02
 (?<Day>[0-3][0-9]|[1-9])/(?<Month>[1-9]|1[0-2]|0[1-9])/(?<Year>[12]\d{3}|\d{2})
 
-#U: http://regexlib.com/REDetails.aspx?regexp_id=691
-#T: dd/mm/yyyy hhMMss Julian to Gregorian DateTime
-#A: Michael Ash
-#D: dd-mm-yyyy Datetime for AD, with leap year.
-#D: See http://blogs.regexadvice.com/mash/archive/2004/04/23/1021.aspx for details on this and similar regexs
-
-
 #U: http://regexlib.com/REDetails.aspx?regexp_id=692
 #A: de kleine Gerardus
 ^([0-1]?\d|2[0-3]):([0-5]\d)$
@@ -2785,11 +2675,6 @@ href=[\"\'](http:\/\/|\.\/|\/)?\w+(\.\w+)*(\/\w+(\.\w+)?)*(\/|\?\w*=\w*(&\w*=\w*
 #D: re.Pattern ="(\s|\n|^)(\w+://[^\s\n]+)"
 #D: strResult = re.Replace(strText, "$1<a href='$2' target='_new'>$2</a>")
 (\s|\n|^)(\w+://[^\s\n]+)
-
-#U: http://regexlib.com/REDetails.aspx?regexp_id=704
-#A: Joseph Lamb
-#D: This expression filters all variations of Post Office Box or PO Box.
-
 
 #U: http://regexlib.com/REDetails.aspx?regexp_id=705
 #A: marrik
@@ -2865,11 +2750,6 @@ href=[\"\'](http:\/\/|\.\/|\/)?\w+(\.\w+)*(\/\w+(\.\w+)?)*(\/|\?\w*=\w*(&\w*=\w*
 #D: Height notation for feet (') and inches(")
 ^\d?\d'(\d|1[01])"$
 
-#U: http://regexlib.com/REDetails.aspx?regexp_id=728
-#A: Michael Ash
-#D: Temperature scale.  From ABSOLUTE ZERO  up.  Can use the Fahrenheit, Celsius or Kelvin Scale.  The Degree symbol is required for Fahrenheit and Celsius. Numbers over 1,000 must be comma delimited.
-
-
 #U: http://regexlib.com/REDetails.aspx?regexp_id=729
 #A: Murray Roke
 #D: Matches all positive & negative decimal floating point numbers, to any magnitude. Allows empty string.
@@ -2905,12 +2785,6 @@ href=[\"\'](http:\/\/|\.\/|\/)?\w+(\.\w+)*(\/\w+(\.\w+)?)*(\/|\?\w*=\w*(&\w*=\w*
 #D: align="center"><font face="Times New Roman"
 #D: size="5"><b>UNITED STATES</b></font></p>
 <(?:[^"']+?|.+?(?:"|').*?(?:"|')?.*?)*?>
-
-#U: http://regexlib.com/REDetails.aspx?regexp_id=747
-#A: Michael Ash
-#D: Internationally capable currency formats.  It is NOT local aware.  Should be modify for local specific validations.
-#D: More detail at http://blogs.regexadvice.com/mash/archive/2004/06/08/1246.aspx
-
 
 #U: http://regexlib.com/REDetails.aspx?regexp_id=749
 #A: Mohit  Yadav
@@ -3058,11 +2932,6 @@ href[ ]*=[ ]*('|\")([^\"'])*('|\")
 #D: -999.99 to +999.99 . Positive and Negative integer/ decimal validations. Percentage sign is also supported. Will not allow empty strings. Can increase/decrease the range as you need.
 ^[-+]?[0-9]\d{0,2}(\.\d{1,2})?%?$
 
-#U: http://regexlib.com/REDetails.aspx?regexp_id=945
-#A: Gabriel Fróes
-#D: This RE match the SQL Basics Queries (SELECT, UPDATE, INSERT and DELETE).
-
-
 #U: http://regexlib.com/REDetails.aspx?regexp_id=946
 #A: Jeff Johns
 #D: Validates against a U.S. postal code in either a 5 digit format or a 5 dash 4 format.
@@ -3162,11 +3031,6 @@ href[ ]*=[ ]*('|\")([^\"'])*('|\")
 #D: This will match just about everything after href=
 #D: Its good if you just need a list of all the href= values
 href=[\"\']?((?:[^>]|[^\s]|[^"]|[^'])+)[\"\']?
-
-#U: http://regexlib.com/REDetails.aspx?regexp_id=975
-#A: Cliff Wagner
-#D: Expression validating a Binary string of any length
-
 
 #U: http://regexlib.com/REDetails.aspx?regexp_id=977
 #A: Shahar Bracha
@@ -3337,11 +3201,6 @@ href=[\"\']?((?:[^>]|[^\s]|[^"]|[^'])+)[\"\']?
 #A: Miguel Gutierrez
 #D: Accepts only positive decimal values. Zero and negative numbers are non-matching.Allows zeros after last non-zero numeric value after decimal place for significant digits
 (^[+]?\d*\.?\d*[1-9]+\d*$)|(^[+]?[1-9]+\d*\.\d*$)
-
-#U: http://regexlib.com/REDetails.aspx?regexp_id=1029
-#A: Rosco Pikotrain
-#D: Used to match windows filenames.  Fails if there is leading or trailing spaces. Fails if the input contains /\:*?"<>| . Fails if the input begins or ends with '.'
-
 
 #U: http://regexlib.com/REDetails.aspx?regexp_id=1031
 #A: Nikolay Yordanov
