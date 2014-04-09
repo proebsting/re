@@ -146,18 +146,16 @@ func (s1 *DFAstate) distinguish(s2 *DFAstate) int {
 
 //  Partition.divide repartitions this partition based on input x.
 func (p *Partition) divideBy(x int) {
-	// fmt.Printf("[partition %d]\n", p.Index) //#%#% TEMP
+	// fmt.Printf("[partition %d by %#v]\n", p.Index, string(x)) //#%#% TEMP
 	// get a list of partition members
 	// all distinguishable from the first by x go into a new partition
 	dfa := p.Automata              // DFA being partitioned
 	mlist := p.StateSet.Members()  // list of partition members
-	ds := dfa.Dstates[mlist[0]]    // first member
-	pi := ds.partOn(x)             // partition reached on input x
+	d0 := dfa.Dstates[mlist[0]]    // first member
 	q := p.Automata.newPartition() // new partition for all who differ
 	for i := 1; i < len(mlist); i++ {
-		ds = dfa.Dstates[mlist[i]] // candidate state
-		if ds.partOn(x) != pi {
-			// fmt.Printf("%#v: ", string(x)) //#%#% TEMP
+		ds := dfa.Dstates[mlist[i]] // candidate state
+		if ds.partOn(x) != d0.partOn(x) {
 			q.insert(ds)
 		}
 	}

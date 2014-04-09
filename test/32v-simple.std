@@ -264,6 +264,105 @@ s2. { p3 p5 } [c]:s4
 s3# { p0 p6 } [1]:s1
 s4# { p6 }
 
+# Strings without repeating chars (alphabet size 2)
+
+regexp: a?(ba)*b?
+tree:   ((a?(ba)*)b?)
+augmnt: (((a?(ba)*)b?)#)
+length: 0 to *
+-------------------- Examples --------------------
+ex(0):                                                                        
+ex(1):  b  ba  aba  b  a  ba  b    a  ba  ab  b  b  ba  b  a  ba    ab    bab
+ex(2):  ababab  a    aba  a  babab      baba  ba  aba  abab  ababa  a  baba  b
+ex(3):  b  a  bababab  aba  ababab  a  bababab  baba  abab  aba  ababab  a
+ex(5):  bababababa  ababababa  baba  ab  ababa  ababa  babababa  abab
+ex(8):  abab  babababa  a  bababababa  ababababababababab  bababababa
+----------------- Annotated Tree -----------------
+{F, abb#, #}   (((a?(ba)*)b?)#)
+   {T, abb, aab}   ((a?(ba)*)b?)
+      {T, ab, aa}   (a?(ba)*)
+         {T, a, a}   a?
+            {F, a, a}   a
+         {T, b, a}   (ba)*
+            {F, b, a}   (ba)
+               {F, b, b}   b
+               {F, a, a}   a
+      {T, b, b}   b?
+         {F, b, b}   b
+   {F, #, #}   #
+----------------------- NFA ----------------------
+begin => { 0 1 3 4 }
+p0. a => { 1 3 4 }
+p1. b => { 2 }
+p2. a => { 1 3 4 }
+p3. b => { 4 }
+p4. # => { }
+------------------- Initial DFA ------------------
+s0# { p0 p1 p3 p4 } [a]:s1 [b]:s2
+s1# { p1 p3 p4 } [b]:s2
+s2# { p2 p4 } [a]:s1
+------------------ Minimized DFA -----------------
+s0# { p0 p1 p3 p4 } [a]:s1 [b]:s2
+s1# { p1 p3 p4 } [b]:s2
+s2# { p2 p4 } [a]:s1
+
+# This expr uncovered TWO minimization bugs
+
+regexp: a(ba)*b?|b(ab)*a?
+tree:   (((a(ba)*)b?)|((b(ab)*)a?))
+augmnt: ((((a(ba)*)b?)|((b(ab)*)a?))#)
+length: 1 to *
+-------------------- Examples --------------------
+ex(0):  a  a  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  a  a  a  b  a  a  a
+ex(1):  a  ba  aba  aba  aba  b  abab  a  b  ab  aba  a  bab  abab  abab  b  ba
+ex(2):  b  aba  babab  a  ababa  ab  ab  bababa  ba  bab  aba  ab  b  ab  ababa
+ex(3):  ba  abababab  ababa  bab  ababab  babababa  ba  abababab  ababa  babab
+ex(5):  ababababa  ababababab  abababab  ababababab  a  ababab  bababababab
+ex(8):  ababa  abababab  bab  ab  abababababa  ababa  abababababababa
+----------------- Annotated Tree -----------------
+{F, ab, #}   ((((a(ba)*)b?)|((b(ab)*)a?))#)
+   {F, ab, aabbba}   (((a(ba)*)b?)|((b(ab)*)a?))
+      {F, a, aab}   ((a(ba)*)b?)
+         {F, a, aa}   (a(ba)*)
+            {F, a, a}   a
+            {T, b, a}   (ba)*
+               {F, b, a}   (ba)
+                  {F, b, b}   b
+                  {F, a, a}   a
+         {T, b, b}   b?
+            {F, b, b}   b
+      {F, b, bba}   ((b(ab)*)a?)
+         {F, b, bb}   (b(ab)*)
+            {F, b, b}   b
+            {T, a, b}   (ab)*
+               {F, a, b}   (ab)
+                  {F, a, a}   a
+                  {F, b, b}   b
+         {T, a, a}   a?
+            {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
+begin => { 0 4 }
+p0. a => { 1 3 8 }
+p1. b => { 2 }
+p2. a => { 1 3 8 }
+p3. b => { 8 }
+p4. b => { 5 7 8 }
+p5. a => { 6 }
+p6. b => { 5 7 8 }
+p7. a => { 8 }
+p8. # => { }
+------------------- Initial DFA ------------------
+s0. { p0 p4 } [a]:s1 [b]:s2
+s1# { p1 p3 p8 } [b]:s3
+s2# { p5 p7 p8 } [a]:s4
+s3# { p2 p8 } [a]:s1
+s4# { p6 p8 } [b]:s2
+------------------ Minimized DFA -----------------
+s0. { p0 p4 } [a]:s1 [b]:s2
+s1# { p1 p3 p6 p8 } [b]:s2
+s2# { p2 p5 p7 p8 } [a]:s1
+
 # Experiments with word construction
 
 regexp: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]

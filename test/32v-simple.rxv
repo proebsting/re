@@ -8,6 +8,10 @@ gcg(cgg|agg)*ctg
 (0|1(01*0)*1)*
 # A simple expr that had problems minimizing
 (10)*|ac|dc
+# Strings without repeating chars (alphabet size 2)
+a?(ba)*b?
+# This expr uncovered TWO minimization bugs
+a(ba)*b?|b(ab)*a?
 # Experiments with word construction
 [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
 W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
