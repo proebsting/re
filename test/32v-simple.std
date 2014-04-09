@@ -258,11 +258,11 @@ s3. { p5 } [c]:s5
 s4# { p0 p6 } [1]:s1
 s5# { p6 }
 ------------------ Minimized DFA -----------------
-s0# { p0 p2 p4 p6 } [1]:s1 [ad]:s4
-s1. { p1 } [0]:s2
-s2# { p0 p6 } [1]:s1
-s3# { p6 }
-s4. { p3 p5 } [c]:s3
+s0# { p0 p2 p4 p6 } [1]:s1 [ad]:s2
+s1. { p1 } [0]:s3
+s2. { p3 p5 } [c]:s4
+s3# { p0 p6 } [1]:s1
+s4# { p6 }
 
 # Experiments with word construction
 

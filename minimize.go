@@ -38,16 +38,16 @@ func (dfa *DFA) Minimize() *DFA {
 	// so the resulting DFA will also have the start state first
 	dfa.PartList = make([]*Partition, 0, len(dfa.Dstates)+1)
 	p := dfa.newPartition()
-	amap := make(map[*BitSet]*Partition)
-	amap[dfa.Dstates[0].AccSet] = p
+	amap := make(map[string]*Partition)
+	amap[dfa.Dstates[0].AccSet.Key()] = p
 
 	// insert states into partitions;
 	// make a new partition for each distinct set of accepting states seen
 	for _, ds := range dfa.Dstates {
-		ds.PartNum = 0    // clear old partition number
-		pset := ds.AccSet // copy accepting set
-		p := amap[pset]   // find partition for this set
-		if p == nil {     // if there isn't one yet, make one
+		ds.PartNum = 0          // clear old partition number
+		pset := ds.AccSet.Key() // get key from accepting set
+		p := amap[pset]         // find partition for this set
+		if p == nil {           // if there isn't one yet, make one
 			p = dfa.newPartition()
 			amap[pset] = p
 		}
