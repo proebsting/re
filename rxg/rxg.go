@@ -46,9 +46,15 @@ import (
 	"time"
 )
 
-type RegEx struct { // one rx for JSON output
+type RegEx struct { // one regexp for JSON output
 	Index int    // index number
 	Rexpr string // regular expression
+}
+
+type Example struct { // one example for JSON output
+	State   uint   // index of accepting state in DFA
+	RXset   []uint // set of matching regular expression indexes
+	Example string // example string
 }
 
 func main() {
@@ -81,7 +87,14 @@ func main() {
 	fmt.Println(",")
 
 	// build the DFA and produce examples
-	results := rx.MultiDFA(tlist).Synthesize()
+	synthx := rx.MultiDFA(tlist).Synthesize()
+
+	// convert into expected form with uint array replacing BitSet
+	results := make([]*Example, 0, len(synthx))
+	for _, x := range synthx {
+		results = append(results,
+			&Example{x.State, x.RXset.Members(), x.Example})
+	}
 
 	// output the array of synthesized examples
 	fmt.Print(`"Examples":`)

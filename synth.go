@@ -4,9 +4,9 @@ package rx
 
 //  A DFAexample is a matching string synthesized from a DFA.
 type DFAexample struct {
-	State   uint   // index of accepting state in DFA
-	RXset   []uint // set of matching regular expression indexes
-	Example string // example string
+	State   uint    // index of accepting state in DFA
+	RXset   *BitSet // set of matching regular expression indexes
+	Example string  // example string
 }
 
 //  A partx is a partially built example used on the task list.
@@ -41,7 +41,7 @@ func (dfa *DFA) Synthesize() []DFAexample {
 			// we could re-follow the path to change random chars,
 			// but would that variety be better, or worse?
 			results = append(results, DFAexample{
-				ds.Index, ds.AccSet.Members(), curr.path})
+				ds.Index, ds.AccSet, curr.path})
 		}
 
 		// add all unmarked nodes reachable in one more step
