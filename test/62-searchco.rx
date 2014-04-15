@@ -1,0 +1,1178 @@
+# from a search (re.IGNORECASE lang:python) made around 10-apr-2014
+# http://searchco.de/api/codesearch_I/?q=re.IGNORECASE+lang%3Apython 
+
+#S: GitHub
+#U: http://github.com/dryan/twitter-text-py
+#L: /twitter_text
+#F: regex.py
+#N: twitter-text-py
+#I: 17241975
+(%s)(#|?)(%s*%s%s*)
+
+#S: GitHub
+#U: http://github.com/dryan/twitter-text-py
+#L: /twitter_text
+#F: regex.py
+#N: twitter-text-py
+#I: 17241975
+\A(?:[#?]|:\/\/)
+
+#S: GitHub
+#U: http://github.com/dryan/twitter-text-py
+#L: /twitter_text
+#F: regex.py
+#N: twitter-text-py
+#I: 17241975
+^[\d]+$
+
+#S: Bitbucket
+#U: https://bitbucket.org/androguard/community
+#L: 
+#F: filescan.py
+#N: community
+#I: 38665262
+^(.*[^a-z0-9\n])?cp +.+ system/app/.*
+
+#S: Bitbucket
+#U: https://bitbucket.org/androguard/community
+#L: 
+#F: filescan.py
+#N: community
+#I: 38665262
+^(.*[^a-z0-9\n])?(chown|chmod) +.*
+
+#S: Bitbucket
+#U: https://bitbucket.org/androguard/community
+#L: 
+#F: filescan.py
+#N: community
+#I: 38665262
+(^.*[^a-z0-9\n])?setprop +.*
+
+#S: Bitbucket
+#U: https://bitbucket.org/androguard/community
+#L: 
+#F: filescan.py
+#N: community
+#I: 38665262
+^(.*[^a-z0-9\n])?pm +install[^a-z0-9\n].*
+
+#S: Bitbucket
+#U: https://bitbucket.org/androguard/community
+#L: 
+#F: filescan.py
+#N: community
+#I: 38665262
+^(.*[^a-z0-9\n])?mount +.* *remount+.*
+
+#S: Bitbucket
+#U: https://bitbucket.org/androguard/community
+#L: 
+#F: filescan.py
+#N: community
+#I: 38665262
+^.*system/bin/.*
+
+#S: Bitbucket
+#U: https://bitbucket.org/androguard/community
+#L: 
+#F: filescan.py
+#N: community
+#I: 38665262
+^(.*[^a-z0-9\n])?am +start[^a-z0-9\n].*
+
+#S: Bitbucket
+#U: https://bitbucket.org/androguard/community
+#L: 
+#F: filescan.py
+#N: community
+#I: 38665262
+^(.*[^a-z0-9\n])?(sudo|su +-c|system/bin/su) +.*
+
+#S: Bitbucket
+#U: https://bitbucket.org/androguard/community
+#L: 
+#F: filescan.py
+#N: community
+#I: 38665262
+^(.*[^a-z0-9\n])?insmod .*
+
+#S: Bitbucket
+#U: https://bitbucket.org/androguard/community
+#L: 
+#F: filescan.py
+#N: community
+#I: 38665262
+^(#!/.*)
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+\s*Name\s+(\S+)\s*
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^(\s*)Preamble
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^(\s*)EndLangPreamble
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^(\s*)(LabelType)(\s+)(\S+)
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^\s*UseModule\s+(.*)
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^(\s*)EndPreamble
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^(\s*)LangPreamble
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^(\s*)(MaxCounter)(\s+)(\S+)
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^(\s*)#
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^(\s*)$
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^(\s*)EndBabelPreamble
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+\s*Counter\s*
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^(\s*)(Format)(\s+)(\S+)
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/lib/scripts
+#F: layout2layout.py
+#N: lyx
+#I: 19007183
+^(\s*)BabelPreamble
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/po
+#F: lyx_pot.py
+#N: lyx
+#I: 19007206
+^[^#]*Submenu\s+"([^"]*)"
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/po
+#F: lyx_pot.py
+#N: lyx
+#I: 19007206
+^[^#]*LabelString\S*\s+(.*)\s*$
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/po
+#F: lyx_pot.py
+#N: lyx
+#I: 19007206
+^[^#]*Toolbar\s+"[^"]+"\s+"([^"]*)"
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/po
+#F: lyx_pot.py
+#N: lyx
+#I: 19007206
+[^#]*Item\s+"([^"]*)"
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/po
+#F: lyx_pot.py
+#N: lyx
+#I: 19007206
+^[^#]*IconPalette\s+"[^"]+"\s+"([^"]*)"
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/po
+#F: lyx_pot.py
+#N: lyx
+#I: 19007206
+[^#]*TableInsert\s+"([^"]*)"
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/po
+#F: lyx_pot.py
+#N: lyx
+#I: 19007206
+^\s*Style\s+(.*)\s*$
+
+#S: Fedora Project
+#U: #
+#L: /lyx-2.0.4/po
+#F: lyx_pot.py
+#N: lyx
+#I: 19007206
+^[^#]*PopupMenu\s+"[^"]+"\s+"([^"]*)"
+
+#S: Bitbucket
+#U: https://bitbucket.org/blackdragonhunt/the-super-duper-script-editor
+#L: 
+#F: chapter_lengths.py
+#N: the-super-duper-script-editor
+#I: 44806074
+e00_\d\d\d_\d\d\d\.lin|script_pak_e00.pak
+
+#S: Bitbucket
+#U: https://bitbucket.org/blackdragonhunt/the-super-duper-script-editor
+#L: 
+#F: chapter_lengths.py
+#N: the-super-duper-script-editor
+#I: 44806074
+e04_\d\d\d_\d\d\d\.lin|script_pak_e04.pak
+
+#S: Bitbucket
+#U: https://bitbucket.org/blackdragonhunt/the-super-duper-script-editor
+#L: 
+#F: chapter_lengths.py
+#N: the-super-duper-script-editor
+#I: 44806074
+e08_0(0[1-9]|1[0-9])_\d\d\d\.lin
+
+#S: Bitbucket
+#U: https://bitbucket.org/blackdragonhunt/the-super-duper-script-editor
+#L: 
+#F: chapter_lengths.py
+#N: the-super-duper-script-editor
+#I: 44806074
+e03_\d\d\d_\d\d\d\.lin|script_pak_e03.pak
+
+#S: Bitbucket
+#U: https://bitbucket.org/blackdragonhunt/the-super-duper-script-editor
+#L: 
+#F: chapter_lengths.py
+#N: the-super-duper-script-editor
+#I: 44806074
+e07_\d\d\d_\d\d\d\.lin|script_pak_e07.pak
+
+#S: Bitbucket
+#U: https://bitbucket.org/blackdragonhunt/the-super-duper-script-editor
+#L: 
+#F: chapter_lengths.py
+#N: the-super-duper-script-editor
+#I: 44806074
+.*
+
+#S: Bitbucket
+#U: https://bitbucket.org/blackdragonhunt/the-super-duper-script-editor
+#L: 
+#F: chapter_lengths.py
+#N: the-super-duper-script-editor
+#I: 44806074
+e02_\d\d\d_\d\d\d\.lin|script_pak_e02.pak
+
+#S: Bitbucket
+#U: https://bitbucket.org/blackdragonhunt/the-super-duper-script-editor
+#L: 
+#F: chapter_lengths.py
+#N: the-super-duper-script-editor
+#I: 44806074
+e06_\d\d\d_\d\d\d\.lin|script_pak_e06.pak
+
+#S: Bitbucket
+#U: https://bitbucket.org/blackdragonhunt/the-super-duper-script-editor
+#L: 
+#F: chapter_lengths.py
+#N: the-super-duper-script-editor
+#I: 44806074
+e01_\d\d\d_\d\d\d\.lin|script_pak_e01.pak
+
+#S: Bitbucket
+#U: https://bitbucket.org/blackdragonhunt/the-super-duper-script-editor
+#L: 
+#F: chapter_lengths.py
+#N: the-super-duper-script-editor
+#I: 44806074
+e05_\d\d\d_\d\d\d\.lin|script_pak_e05.pak
+
+#S: Bitbucket
+#U: https://bitbucket.org/blackdragonhunt/the-super-duper-script-editor
+#L: 
+#F: chapter_lengths.py
+#N: the-super-duper-script-editor
+#I: 44806074
+e08_000_\d\d\d\.lin
+
+#S: Fedora Project
+#U: #
+#L: /gramps-3.3.2/src/DateHandler
+#F: _DateParser.py
+#N: gramps
+#I: 21257642
+(.*)\s+\(%s\)( ?.*)
+
+#S: Fedora Project
+#U: #
+#L: /gramps-3.3.2/src/DateHandler
+#F: _DateParser.py
+#N: gramps
+#I: 21257642
+(.*)\s+\(%s,\s*%s\)( ?.*)
+
+#S: Fedora Project
+#U: #
+#L: /gramps-3.3.2/src/DateHandler
+#F: _DateParser.py
+#N: gramps
+#I: 21257642
+(.*)\s+\((\d{1,2}-\d{1,2})\)( ?.*)
+
+#S: Fedora Project
+#U: #
+#L: /gramps-3.3.2/src/DateHandler
+#F: _DateParser.py
+#N: gramps
+#I: 21257642
+(.*)\s+\(%s,\s*(\d{1,2}-\d{1,2})\)( ?.*)
+
+#S: Fedora Project
+#U: #
+#L: /gramps-3.3.2/src/DateHandler
+#F: _DateParser.py
+#N: gramps
+#I: 21257642
+(.* ?)%s\s+(.+)
+
+#S: Fedora Project
+#U: #
+#L: /gramps-3.3.2/src/DateHandler
+#F: _DateParser.py
+#N: gramps
+#I: 21257642
+(.*)\s+\(%s\)( ?.*)
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/lrf/html
+#F: convert_from.py
+#N: calibre
+#I: 18435023
+page-break-(?:after|before)\s*:\s*(\w+)
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/lrf/html
+#F: convert_from.py
+#N: calibre
+#I: 18435023
+<\s*a\s+[^<>]*href\s*=[^<>]*>(.*?)<\s*/\s*a\s*>
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/lrf/html
+#F: convert_from.py
+#N: calibre
+#I: 18435023
+<a(\s[^>]*)?/>
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/lrf/html
+#F: convert_from.py
+#N: calibre
+#I: 18435023
+([A-Za-z0-9\-\_\:\.]+[A-Za-z0-9\-\_\:\.\s\,]*)\s*\{([^\}]*)\}
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/lrf/html
+#F: convert_from.py
+#N: calibre
+#I: 18435023
+<\s*style.*?>(.*?)<\/\s*style\s*>
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^r(\d+)-agent(\d+)-kind
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^agent(\d+)-desc
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^agent(\d+)-type
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^agent(\d+)-health$
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^r(\d+)-agent(\d+)-type
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^r(\d+)-agent(\d+)-sku
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^agent(\d+)-kind
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^agent(\d+)-health-desc
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^agent(\d+)-dvc
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^agent(\d+)-hp-ink
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^agent(\d+)-known
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^agent(\d+)-virgin
+
+#S: Fedora Project
+#U: #
+#L: /hplip-3.12.6/base
+#F: models.py
+#N: hplip
+#I: 19933139
+^agent(\d+)-id
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^r(\d+)-agent(\d+)-kind
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^agent(\d+)-desc
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^agent(\d+)-type
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^agent(\d+)-health$
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^r(\d+)-agent(\d+)-type
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^agent(\d+)-kind
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^agent(\d+)-health-desc
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^r(\d+)-agent(\d+)-sku
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^agent(\d+)-dvc
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^agent(\d+)-hp-ink
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^agent(\d+)-virgin
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^agent(\d+)-id
+
+#S: Tizen
+#U: https://review.tizen.org/git/
+#L: /hplip/base
+#F: models.py
+#N: Tizin
+#I: 27448096
+^agent(\d+)-known
+
+#S: Fedora Project
+#U: #
+#L: /xen-4.1.2/tools/python/xen/util/xsm/acm
+#F: acm.py
+#N: xen
+#I: 19042383
+\s*LABEL->SSID\s+RES\s+.*
+
+#S: Fedora Project
+#U: #
+#L: /xen-4.1.2/tools/python/xen/util/xsm/acm
+#F: acm.py
+#N: xen
+#I: 19042383
+.*security_label_template.xml
+
+#S: Fedora Project
+#U: #
+#L: /xen-4.1.2/tools/python/xen/util/xsm/acm
+#F: acm.py
+#N: xen
+#I: 19042383
+.*\.map
+
+#S: Fedora Project
+#U: #
+#L: /xen-4.1.2/tools/python/xen/util/xsm/acm
+#F: acm.py
+#N: xen
+#I: 19042383
+\s*LABEL->SSID\s+.*
+
+#S: Fedora Project
+#U: #
+#L: /xen-4.1.2/tools/python/xen/util/xsm/acm
+#F: acm.py
+#N: xen
+#I: 19042383
+\s*title\s+XEN
+
+#S: Fedora Project
+#U: #
+#L: /xen-4.1.2/tools/python/xen/util/xsm/acm
+#F: acm.py
+#N: xen
+#I: 19042383
+\s*SECONDARY\s+.*
+
+#S: Fedora Project
+#U: #
+#L: /xen-4.1.2/tools/python/xen/util/xsm/acm
+#F: acm.py
+#N: xen
+#I: 19042383
+\s*POLICYREFERENCENAME\s+.*
+
+#S: Fedora Project
+#U: #
+#L: /xen-4.1.2/tools/python/xen/util/xsm/acm
+#F: acm.py
+#N: xen
+#I: 19042383
+\s*access_control\s*=
+
+#S: Fedora Project
+#U: #
+#L: /xen-4.1.2/tools/python/xen/util/xsm/acm
+#F: acm.py
+#N: xen
+#I: 19042383
+\s*title\s
+
+#S: Fedora Project
+#U: #
+#L: /xen-4.1.2/tools/python/xen/util/xsm/acm
+#F: acm.py
+#N: xen
+#I: 19042383
+\s*PRIMARY\s+.*
+
+#S: Fedora Project
+#U: #
+#L: /xen-4.1.2/tools/python/xen/util/xsm/acm
+#F: acm.py
+#N: xen
+#I: 19042383
+\s*LABEL->SSID\s.+[VM|ANY]\s+.*
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: utils.py
+#N: calibre
+#I: 18435184
+\s*(?P<openline><p[^>]*>)\s*(?P<closeline></p>)
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: utils.py
+#N: calibre
+#I: 18435184
+(\s*<p[^>]*>\s*</p>(\s*<div[^>]*>\s*</div>\s*)*){2,}(?!\s*<h\d)
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: utils.py
+#N: calibre
+#I: 18435184
+(\s*<(p|div)[^>]*>\s*</(p|div)>)
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: utils.py
+#N: calibre
+#I: 18435184
+\s*(?P<openline><p(?!\sclass=\"(softbreak|whitespace)\")[^>]*>)\s*(?P<closeline></p>)
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: utils.py
+#N: calibre
+#I: 18435184
+(\s*<p[^>]*>\s*</p>(\s*<div[^>]*>\s*</div>\s*)*){2,}
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: utils.py
+#N: calibre
+#I: 18435184
+(?<=<p).*?(?=</p>)
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: utils.py
+#N: calibre
+#I: 18435184
+<h[1-3][^>]*>
+
+#S: GitHub
+#U: http://github.com/xyan075/cm
+#L: /bindings/generate_bindings
+#F: parse.py
+#N: cm
+#I: 25232376
+
+
+#S: GitHub
+#U: http://github.com/xyan075/cm
+#L: /bindings/generate_bindings
+#F: parse.py
+#N: cm
+#I: 25232376
+^\s*TYPE\s+([A-Z0-9_]+)
+
+#S: GitHub
+#U: http://github.com/xyan075/cm
+#L: /bindings/generate_bindings
+#F: parse.py
+#N: cm
+#I: 25232376
+^\s*END\s*SUBROUTINE
+
+#S: GitHub
+#U: http://github.com/xyan075/cm
+#L: /bindings/generate_bindings
+#F: parse.py
+#N: cm
+#I: 25232376
+
+
+#S: GitHub
+#U: http://github.com/xyan075/cm
+#L: /bindings/generate_bindings
+#F: parse.py
+#N: cm
+#I: 25232376
+^\s*END\s*INTERFACE
+
+#S: GitHub
+#U: http://github.com/nickerso/cm
+#L: /bindings/generate_bindings
+#F: parse.py
+#N: cm
+#I: 25232545
+^\s*END\s*SUBROUTINE
+
+#S: GitHub
+#U: http://github.com/nickerso/cm
+#L: /bindings/generate_bindings
+#F: parse.py
+#N: cm
+#I: 25232545
+
+
+#S: GitHub
+#U: http://github.com/nickerso/cm
+#L: /bindings/generate_bindings
+#F: parse.py
+#N: cm
+#I: 25232545
+^\s*TYPE\s+([A-Z0-9_]+)
+
+#S: GitHub
+#U: http://github.com/nickerso/cm
+#L: /bindings/generate_bindings
+#F: parse.py
+#N: cm
+#I: 25232545
+
+
+#S: GitHub
+#U: http://github.com/nickerso/cm
+#L: /bindings/generate_bindings
+#F: parse.py
+#N: cm
+#I: 25232545
+^\s*END\s*INTERFACE
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/mobi/reader
+#F: markup.py
+#N: calibre
+#I: 18434883
+''\said\s*=['"][^'"]*['"]''
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/mobi/reader
+#F: markup.py
+#N: calibre
+#I: 18434883
+
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/mobi/reader
+#F: markup.py
+#N: calibre
+#I: 18434883
+br'''['"]kindle:pos:fid:([0-9|A-V]+):off:([0-9|A-V]+).*?["']''')
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/mobi/reader
+#F: markup.py
+#N: calibre
+#I: 18434883
+''(<[^>]*\said\s*=[^>]*>)''
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/mobi/reader
+#F: markup.py
+#N: calibre
+#I: 18434883
+''(<a.*?href=.*?>)''
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/mobi/reader
+#F: markup.py
+#N: calibre
+#I: 18434883
+
+
+#S: Fedora Project
+#U: #
+#L: /fence-agents-3.1.8/fence/agents/apc
+#F: fence_apc.py
+#N: fence-agents
+#I: 18042633
+.* MasterSwitch plus.*
+
+#S: Fedora Project
+#U: #
+#L: /fence-agents-3.1.8/fence/agents/apc
+#F: fence_apc.py
+#N: fence-agents
+#I: 18042633
+.*Outlet Control/Configuration.*
+
+#S: Fedora Project
+#U: #
+#L: /fence-agents-3.1.8/fence/agents/apc
+#F: fence_apc.py
+#N: fence-agents
+#I: 18042633
+.* MasterSwitch plus 2
+
+#S: Fedora Project
+#U: #
+#L: /fence-agents-3.1.8/fence/agents/apc
+#F: fence_apc.py
+#N: fence-agents
+#I: 18042633
+.*Outlet Management.*
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: preprocess.py
+#N: calibre
+#I: 18435179
+<span.*?</span>
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: preprocess.py
+#N: calibre
+#I: 18435179
+^%s
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: preprocess.py
+#N: calibre
+#I: 18435179
+%s$
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: preprocess.py
+#N: calibre
+#I: 18435179
+%s
+
+#S: Fedora Project
+#U: #
+#L: /calibre/src/calibre/ebooks/conversion
+#F: preprocess.py
+#N: calibre
+#I: 18435179
+%s
+
+#S: Fedora Project
+#U: #
+#L: /rpmlint-1.4
+#F: SpecCheck.py
+#N: rpmlint
+#I: 22738168
+^%patch(\d*)
+
+#S: Fedora Project
+#U: #
+#L: /rpmlint-1.4
+#F: SpecCheck.py
+#N: rpmlint
+#I: 22738168
+^(Copyright|Serial)\s*:\s*(\S+)
+
+#S: Fedora Project
+#U: #
+#L: /rpmlint-1.4
+#F: SpecCheck.py
+#N: rpmlint
+#I: 22738168
+^Packager\s*:\s*(\S+)
+
+#S: Fedora Project
+#U: #
+#L: /rpmlint-1.4
+#F: SpecCheck.py
+#N: rpmlint
+#I: 22738168
+^Patch(\d*)\s*:\s*(\S+)
+
+#S: Fedora Project
+#U: #
+#L: /rpmlint-1.4
+#F: SpecCheck.py
+#N: rpmlint
+#I: 22738168
+^[^#]*(\$RPM_SOURCE_DIR|%{?_sourcedir}?)
+
+#S: Fedora Project
+#U: #
+#L: /rpmlint-1.4
+#F: SpecCheck.py
+#N: rpmlint
+#I: 22738168
+^BuildArch(itectures)?\s*:\s*(.+?)\s*$
+
+#S: Fedora Project
+#U: #
+#L: /rpmlint-1.4
+#F: SpecCheck.py
+#N: rpmlint
+#I: 22738168
+^Prefix\s*:\s*(\S+)
+
+#S: Fedora Project
+#U: #
+#L: /rpmlint-1.4
+#F: SpecCheck.py
+#N: rpmlint
+#I: 22738168
+(^|\s|%{?__)make}?\s+(check|test)
+
+#S: Fedora Project
+#U: #
+#L: /rpmlint-1.4
+#F: SpecCheck.py
+#N: rpmlint
+#I: 22738168
+\s-P\s+(\d+)\\b
+
+#S: Fedora Project
+#U: #
+#L: /rpmlint-1.4
+#F: SpecCheck.py
+#N: rpmlint
+#I: 22738168
+^BuildRoot\s*:\s*(\S+)
+
+#S: Fedora Project
+#U: #
+#L: /rpmlint-1.4
+#F: SpecCheck.py
+#N: rpmlint
+#I: 22738168
+(^|\s)((.*/)?rm|%{?__rm}?) 
+
+#S: GitHub
+#U: http://github.com/apache/lucene-solr
+#L: /dev-tools/scripts
+#F: checkJavaDocs.py
+#N: lucene-solr
+#I: 25293467
+<a.*?>(.*?)</a>
+
+#S: GitHub
+#U: http://github.com/apache/lucene-solr
+#L: /dev-tools/scripts
+#F: checkJavaDocs.py
+#N: lucene-solr
+#I: 25293467
+<div class="block">(.*?)</div>
+
+#S: GitHub
+#U: http://github.com/apache/lucene-solr
+#L: /dev-tools/scripts
+#F: checkJavaDocs.py
+#N: lucene-solr
+#I: 25293467
+^<td class="colOne"><code><strong><a href="[^>]*#([^>]*?)">
+
+#S: GitHub
+#U: http://github.com/apache/lucene-solr
+#L: /dev-tools/scripts
+#F: checkJavaDocs.py
+#N: lucene-solr
+#I: 25293467
+<caption><span>(.*?)</span>
+
+#S: GitHub
+#U: http://github.com/apache/lucene-solr
+#L: /dev-tools/scripts
+#F: checkJavaDocs.py
+#N: lucene-solr
+#I: 25293467
+^<td class="colLast"><code><strong><a href="[^>]*\.([^>]*?)\.html" title="class in[^>]*">
+
+#S: GitHub
+#U: http://github.com/apache/lucene-solr
+#L: /dev-tools/scripts
+#F: checkJavaDocs.py
+#N: lucene-solr
+#I: 25293467
+^<dt><strong>(Specified by:|Overrides:)</strong></dt>$
+
+#S: GitHub
+#U: http://github.com/apache/lucene-solr
+#L: /dev-tools/scripts
+#F: checkJavaDocs.py
+#N: lucene-solr
+#I: 25293467
+<.*?>
+
+#S: GitHub
+#U: http://github.com/apache/lucene-solr
+#L: /dev-tools/scripts
+#F: checkJavaDocs.py
+#N: lucene-solr
+#I: 25293467
+^<td class="colLast"><code><strong><a href="[^>]*#([^>]*?)">
+
+#S: GitHub
+#U: http://github.com/apache/lucene-solr
+#L: /dev-tools/scripts
+#F: checkJavaDocs.py
+#N: lucene-solr
+#I: 25293467
+^<h3>Method Detail</h3>$
+
+#S: GitHub
+#U: http://github.com/apache/lucene-solr
+#L: /dev-tools/scripts
+#F: checkJavaDocs.py
+#N: lucene-solr
+#I: 25293467
+^(?:</a>)?<a name="([^>]*?)">$
