@@ -60,9 +60,8 @@ func (b *BitSet) RandChar() byte {
 				c = byte(h) // replace tentative choice
 			}
 		}
-		if h <= ' ' && n >= 5 {
-			// now entering the unprintables --
-			// bail out if 5 choices seen earlier
+		if h <= ' ' {
+			// now entering the unprintables -- bail out
 			break
 		}
 	}

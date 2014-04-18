@@ -119,12 +119,12 @@ regexp: <\s>
 tree:   ((<[\t-\r ])>)
 length: 3 to 3
 -------------------- Examples --------------------
-ex(0):  <\f>  < >  <\v>  <\v>  < >  <\n>  <\n>  < >  < >  <\r>  <\v>  <\n>
-ex(1):  <\n>  <\v>  <\r>  <\n>  < >  <\f>  < >  <\v>  <\f>  <\v>  <\v>  < >
-ex(2):  <\f>  <\v>  <\f>  <\v>  <\f>  <\f>  <\r>  < >  <\n>  <\r>  <\v>  <\r>
-ex(3):  <\r>  <\r>  <\v>  <\n>  <\v>  <\r>  <\r>  <\r>  <\n>  <\n>  <\n>  <\r>
-ex(5):  <\v>  <\n>  <\f>  <\n>  <\v>  <\n>  <\n>  <\f>  <\f>  < >  < >  <\v>
-ex(8):  <\v>  <\n>  <\n>  <\f>  <\f>  <\v>  < >  <\r>  <\n>  <\n>  <\r>  <\f>
+ex(0):  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >
+ex(1):  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >
+ex(2):  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >
+ex(3):  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >
+ex(5):  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >
+ex(8):  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >
 
 # C-style escapes
 
@@ -301,20 +301,20 @@ regexp: [\s]+
 tree:   [\t-\r ]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  \f     \v  \v     \n  \n        \r  \v  \n  \f  \n  \v  \r  \n     \f
-ex(1):  \v  \f  \v  \v        \f  \v  \f  \v  \f  \f  \r     \n  \r  \v  \r  \r
-ex(2):  \f  \f\v  \r  \r\r  \v  \v  \n  \v\v  \f  \v  \r\r  \n  \f  \f\n  \r\r
-ex(3):   \n\f  \r  \v\f  \n  \n\n\v     \r  \n  \r \f  \n   \r  \v  \r\f  \f
-ex(5):  \r\v \v  \f\v  \r\r   \f  \f\n\v  \r \v\r   \r   \r\f \f  \r\f   \v 
-ex(8):  \n\v\v\r\f \f\v  \n\n  \v\n\v \f\n  \r\v  \f\n \r \n  \f\v\r\r 
+ex(0):                                                                        
+ex(1):                                                                        
+ex(2):                                                                       
+ex(3):                                                                       
+ex(5):                                                                     
+ex(8):                                                                         
 
 regexp: [^\S]+
 tree:   [\t-\r ]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  \f     \v  \v     \n  \n        \r  \v  \n  \f  \n  \v  \r  \n     \f
-ex(1):  \v  \f  \v  \v        \f  \v  \f  \v  \f  \f  \r     \n  \r  \v  \r  \r
-ex(2):  \f  \f\v  \r  \r\r  \v  \v  \n  \v\v  \f  \v  \r\r  \n  \f  \f\n  \r\r
-ex(3):   \n\f  \r  \v\f  \n  \n\n\v     \r  \n  \r \f  \n   \r  \v  \r\f  \f
-ex(5):  \r\v \v  \f\v  \r\r   \f  \f\n\v  \r \v\r   \r   \r\f \f  \r\f   \v 
-ex(8):  \n\v\v\r\f \f\v  \n\n  \v\n\v \f\n  \r\v  \f\n \r \n  \f\v\r\r 
+ex(0):                                                                        
+ex(1):                                                                        
+ex(2):                                                                       
+ex(3):                                                                       
+ex(5):                                                                     
+ex(8):                                                                         
