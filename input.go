@@ -13,6 +13,10 @@ import (
 
 var _ = fmt.Printf //#%#%#% for debugging
 
+//  Globals set as a side effect of loading input
+var InputRegExCount uint // number of expressions successfully loaded
+var InputErrorCount uint // number of unacceptable expressions rejected
+
 //  A RegExParsed is a single parsed regular expression.
 //  If Tree is not nil then the expression was parsed as valid.
 //  If Tree is nil and Err is not, Err is a parsing error.
@@ -46,10 +50,14 @@ func LoadExpressions(fname string, f func(*RegExParsed)) []*RegExParsed {
 //
 //  Metadata from comments matching the pattern "^#\w+:" is accumulated and
 //  returned with the next non-comment line (whether or not it parses).
+//
+//  The globals InputRegExCount and InputExprErrors are set by this function.
 func LoadFromScanner(efile *bufio.Scanner, f func(*RegExParsed)) []*RegExParsed {
 	mpat := regexp.MustCompile(`^#(\w+): *(.*)`)
 	elist := make([]*RegExParsed, 0)
 	meta := make(map[string]string)
+	InputRegExCount = 0
+	InputErrorCount = 0
 	for efile.Scan() {
 		line := efile.Text()
 		e := &RegExParsed{Expr: line}
@@ -61,9 +69,12 @@ func LoadFromScanner(efile *bufio.Scanner, f func(*RegExParsed)) []*RegExParsed 
 				addMeta(meta, r[1], r[2]) // also accumulate
 			}
 		} else {
-			e.Tree, e.Err = Parse(line)
-			if e.Tree != nil {
-				elist = append(elist, e)
+			e.Tree, e.Err = Parse(line) // parse input
+			if e.Tree != nil {          // if okay
+				elist = append(elist, e) // save parse tree
+				InputRegExCount++        // count success
+			} else {
+				InputErrorCount++ // else count error
 			}
 			e.Meta = meta                  // accumulated metadata
 			meta = make(map[string]string) // reset meta collection
