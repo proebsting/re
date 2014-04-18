@@ -33,6 +33,12 @@ func (rxp *RegExParsed) IsExpr() bool {
 
 //  LoadExpressions reads a file and parses the expressions found.
 //  A filename of "" or "-" reads from standard input.  Any file error is fatal.
+//  See LoadFromScanner for details.
+func LoadExpressions(fname string, f func(*RegExParsed)) []*RegExParsed {
+	return LoadFromScanner(MkScanner(fname), f)
+}
+
+//  LoadFromScanner reads and parses expressions from a bufio.Scanner.
 //
 //  Empty lines and lines beginning with '#' are treated as comments.
 //  If non-nil, the function f is called for each line read.
@@ -40,9 +46,8 @@ func (rxp *RegExParsed) IsExpr() bool {
 //
 //  Metadata from comments matching the pattern "^#\w+:" is accumulated and
 //  returned with the next non-comment line (whether or not it parses).
-func LoadExpressions(fname string, f func(*RegExParsed)) []*RegExParsed {
+func LoadFromScanner(efile *bufio.Scanner, f func(*RegExParsed)) []*RegExParsed {
 	mpat := regexp.MustCompile(`^#(\w+): *(.*)`)
-	efile := MkScanner(fname)
 	elist := make([]*RegExParsed, 0)
 	meta := make(map[string]string)
 	for efile.Scan() {
