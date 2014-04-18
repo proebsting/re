@@ -4,6 +4,7 @@
 #
 #  The utility tested is determined by the input extension found.
 #	.rx or .rxr -- run "rxr -Q -R"
+#	.rxc -- run "rxcluster -i 1 basename.rxc"
 #	.rxd -- run "rxd `<basename.rxd`"
 #	.rxg -- run "rxg -R basename.rxg"
 #	.rxq -- run "rxq pattern", using first line as the query pattern
@@ -33,6 +34,8 @@ for F in $*; do
 	    continue;;
 	.rx|.rxr)
 	    $BIN/rxr -Q -R $I >$F.out;;
+	.rxc)
+	    $BIN/rxcluster -i 1 $I >$F.out;;
 	.rxd)
 	    $BIN/rxd <$I >$F.out;;
 	.rxg)

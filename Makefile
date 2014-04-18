@@ -1,7 +1,9 @@
 #  Makefile for RX library and programs
 
 PKG = rx
-PROGS = $(PKG)/rxd $(PKG)/rxg $(PKG)/rxq $(PKG)/rxr $(PKG)/rxx $(PKG)/questions
+PG1 = $(PKG)/rxd $(PKG)/rxg $(PKG)/rxq $(PKG)/rxr $(PKG)/rxx
+PG2 = $(PKG)/rxcluster $(PKG)/questions
+PROGS = $(PG1) $(PG2)
 GOBIN = $$GOPATH/bin
 
 DEMO='(a|b)*abb' 'b(ab)*a'
@@ -16,6 +18,7 @@ build:  .FORCE
 	go install $(PROGS)
 
 #  These targets accomplish a partial build and test (imperfect but useful).
+rxc:	.FORCE;  go install ${PKG}/rxcluster && cd test && runtest.sh *.rxc
 rxd:	.FORCE;  go install ${PKG}/rxd && cd test && runtest.sh *.rxd
 rxg:	.FORCE;  go install ${PKG}/rxg && cd test && runtest.sh *.rxg
 rxq:	.FORCE;  go install ${PKG}/rxq && cd test && runtest.sh *.rxq
@@ -44,6 +47,7 @@ bundle:
 #  If "go fmt" echoes a filename, it has modified that file.
 fmt:
 	go fmt *.go
+	go fmt rxcluster/rxcluster.go
 	go fmt rxd/rxd.go
 	go fmt rxg/rxg.go
 	go fmt rxq/rxq.go
