@@ -69,6 +69,12 @@ func (b *BitSet) Lowbit() int {
 	}
 }
 
+//  BitSet.Highbit returns the number of the highest bit set.
+//  It returns -1 if the BitSet is empty.
+func (b *BitSet) Highbit() int {
+	return b.Bits.BitLen() - 1
+}
+
 var bigOne = big.NewInt(1)  // static constant used in Lowbit()
 var bigTemp = big.NewInt(0) // static temporary used in Lowbit()
 

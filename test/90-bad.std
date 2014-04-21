@@ -52,6 +52,9 @@ ERROR:  rx: unclosed '[': in "[abc"
 regexp: [def\]
 ERROR:  rx: unclosed '[': in "[def\]"
 
+regexp: [t-f]
+ERROR:  rx: invalid range: in "[t-f]"
+
 regexp: a{z
 ERROR:  rx: malformed '{m,n}': in "a{z"
 

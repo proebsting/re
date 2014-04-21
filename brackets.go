@@ -46,6 +46,17 @@ func bxparse(s string) (*BitSet, string) {
 			if cprev != 0 && len(s) > 0 && s[0] != ']' {
 				ch = uint(s[0])
 				s = s[1:]
+				if ch == '\\' {
+					var eset *BitSet
+					eset, s = bescape(s)
+					if eset == nil {
+						return nil, s
+					}
+					ch = uint(eset.Lowbit())
+				}
+				if ch < cprev {
+					return nil, "invalid range"
+				}
 				for j := cprev; j <= ch; j++ {
 					result.Set(j)
 				}
@@ -54,7 +65,7 @@ func bxparse(s string) (*BitSet, string) {
 			}
 		case ']':
 			// set is complete unless this is first char
-			if cprev != 0 {
+			if !result.IsEmpty() {
 				if compl {
 					result = result.CharCompl()
 				}
@@ -71,6 +82,7 @@ func bxparse(s string) (*BitSet, string) {
 					return nil, s
 				}
 				result.OrWith(eset)
+				ch = uint(eset.Highbit())
 			} // else: error caught on next iteration
 		default:
 			// an ordinary char; add to set

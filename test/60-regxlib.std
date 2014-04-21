@@ -225,15 +225,7 @@ ex(8):  4  3  2  1  2  5  4  2  4  2  3  2  1  1  5  1  2  4  3  4  2  3  4  3
 #U: http://regexlib.com/REDetails.aspx?regexp_id=21
 
 regexp: ^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$
-tree:   ((([.0-9A-Z\_a-z]+@)([-0-9A-Z_a-z]+.)+)[-0-9A-Z_a-z]{2,4})
-length: 6 to *
--------------------- Examples --------------------
-ex(0):  _@i.MV  Q@h.lO  .@G.vD  4@c.jz  2@R.XZ  S@B.qH  1@A.2b  1@-.Lh  F@h.qo
-ex(1):  K@f.n2  _@k.w0SO  \\@E.sIE  3@Y.3A-6  8@9.aWF9  U@_.Udi  Y@h.DOQ
-ex(2):  5@Xl.aS.P6l  YF@z.Vl  r6@PK.nw_s  Mf@sk.L.a70  R@nY.e.JZP  Ib@j.V.Mxs
-ex(3):  a@lV0.Yo  3a6@iUw.u22  \\j0@B.ys.omb.dHb  cD@r-t.vr.yBk  vS@v.0Sk.oi5
-ex(5):  B6\\N@f.Ms8_.FT-.l.Rl3W  t@b.Qn.p.a.DS1n  bEkX@N5hXD.KW_gx.h6  cd@f.Bj
-ex(8):  kANQ@09xKn.Qr0.vscFa.MWF5TGGO.xIu  rAdJE@-crA7.H3yU  ZjZg@V3r.0kE
+ERROR:  rx: invalid range: in "^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
 
 
 #A: Steven Smith
@@ -388,15 +380,7 @@ ex(8):  (0xx18)  5817 - 2407  (0x295)        203 9989
 #U: http://regexlib.com/REDetails.aspx?regexp_id=35
 
 regexp: ^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$
-tree:   (((((([0-9A-Z_a-z]+[.0-9A-Z\_a-z]*)@)[0-9A-Z_a-z]+)((-[0-9A-Z_a-z]+)|[0-9A-Z_a-z]*)).)[a-z]{2,3})
-length: 6 to *
--------------------- Examples --------------------
-ex(0):  _@p.na  6@c-Y.zv  z@R-l.ia  9@f-I.fl  j@M-3.eq  E@Y.qj  B@0-9.xm
-ex(1):  D0@N.vfx  Bv@3-j.rg  Kr@w-2.fi  c@5.yb  L@8-9.lc  RY@V-r.ew  X@eM.ah
-ex(2):  JL@j.dw  e@K-C.sz  bdf@E-av.sr  b___@Xv.os  vp@C.fau  AeQT@iy-6o.qh
-ex(3):  JVV@9-fwi.dl  JdF@G-Y5k.zx  iFdVB@3sN-i.qcu  3T8mp@H1-R.gfy
-ex(5):  TsUpRA@acKe.uff  2TN4W@VB6G.yqt  4E@J4-_emrn.rh  0urzQV@1lM-mefD.kzd
-ex(8):  mua457wg5oGnF@dja-zRCWJ.kak  oMGAYeqQ\\CU@aPXab9M.pl
+ERROR:  rx: invalid range: in "^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$"
 
 
 #A: Chris Craft
@@ -742,15 +726,15 @@ ex(8):  18:03  17:41  06:24  20:34  12:29  21:19  21:07  14:40  19:23  09:44
 #U: http://regexlib.com/REDetails.aspx?regexp_id=61
 
 regexp: ((\(\d{3}\)?)|(\d{3}))([\s-./]?)(\d{3})([\s-./]?)(\d{4})
-tree:   (((((((([0-9]{3}))?)|[0-9]{3})[\t-\r /]?)[0-9]{3})[\t-\r /]?)[0-9]{4})
+tree:   (((((((([0-9]{3}))?)|[0-9]{3})[\t-\r -/]?)[0-9]{3})[\t-\r -/]?)[0-9]{4})
 length: 10 to 14
 -------------------- Examples --------------------
 ex(0):  (1000473516  (6503837768  0531451540  4605469685  1994307216
-ex(1):  (306)4763629  069/7118172  524 5682600  (915)/656 6042  (723) 6322988
-ex(2):  063 6254804  802422/7193  (974/064/1596  (407/2998471  (555120/9218
-ex(3):  (540/588 7023  106 254/5630  (9572371980  2589472324  457 3998063
-ex(5):  (448) 570/8722  (937)/5814006  6616372998  802071 3740  121 950 9251
-ex(8):  (113) 173 4053  850750/7050  (006 960/6285  789 720 6347  (981)410 8636
+ex(1):  (306)4763629  069+1846911  (803)816-9824  772+4513501  (1042333817
+ex(2):  250.2721855  827$203%5643  (737)508*1205  (030)1359005  (508)(796)0540
+ex(3):  (559)9281127  466,2519201  065785#3580  (580)*1328304  (728.293%0555
+ex(5):  780/7855539  8043266989  (429)/487\"3179  (464974-7121  (088+672*5102
+ex(8):  (256)*981$0555  1425722674  (234)3595223  427'7364094  (963083)9904
 
 
 #A: Mart Maasikas
@@ -3828,15 +3812,7 @@ ERROR:  rx: Embedded '$' unimplemented: in "^1?[1-9]$|^[1-2]0$"
 #U: http://regexlib.com/REDetails.aspx?regexp_id=364
 
 regexp: ^[\w-\.]+@([\w-]+\.)+[\w-]{2,3}$
-tree:   ((([.0-9A-Z\_a-z]+@)([-0-9A-Z_a-z]+.)+)[-0-9A-Z_a-z]{2,3})
-length: 6 to *
--------------------- Examples --------------------
-ex(0):  _@i.MV  Q@h.lO  .@G.vD  4@c.jz  2@R.XZ  S@B.qH  1@A.2b  1@-.Lh  F@h.qo
-ex(1):  K@f.n2  U@9.X03  _@n.sPK  T@L.Mw  n@0.MTP  N@H.6b  K@q.lq-  E@z.ok0
-ex(2):  G@R.5.WS  Uj@-.Ft  tn@Iw.CJ.TU  r@6.QY  e@o9.Dg.kB  \\u@a.uC  _@i.owy
-ex(3):  S7@g.Vn.d.EZ  y_F@B3s.6.ox  21@9k2.p_B  p@r.pGV.2Tl.0WQ  3@Y.j.l2.x1
-ex(5):  jW@j.pf.K.YsLuS.DGDb.os5  rG@j.r_Y  lH@Ekl.wK
-ex(8):  t@I0uo.v-p  foI@yyZqu.Il.oVO-z1.paVs.P.jY.k-_b-f2K.mVb
+ERROR:  rx: invalid range: in "^[\w-\.]+@([\w-]+\.)+[\w-]{2,3}$"
 
 
 #A: Jos Krause
@@ -4114,15 +4090,15 @@ The rule applies to double byte charactor input validation.
 #U: http://regexlib.com/REDetails.aspx?regexp_id=395
 
 regexp: ^[\u0081-\uFFFF]{1,}$
-tree:   [F\u\u0081]+
+tree:   [\u0081-ÿ]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  \\  u  F  \\  F  u  \\  F  \\  u  \\  \\  \\  F  \\  F  u  \\  F  \\  F
-ex(1):  \\  F  u  u  F  \\  u  F  \\  F  F  u  F  u  \\  F  F  F  \\  F  F  F
-ex(2):  F  u  u\\  \\F  u\\  F  \\\\  u  u\\  F  \\u  \\\\  \\  \\F  F  F  \\
-ex(3):  FF  F  u  u\\  \\F  Fu  FF\\  u  u  FF  \\F\\  F\\  u  \\F  u  FuF  \\
-ex(5):  \\FF  \\F  FFF  u\\  \\Fuu  \\F\\  uu\\uF  F  F\\  F\\\\FF  \\  uF
-ex(8):  FFFFu\\  FuFF  uFFFF\\  \\\\  F\\u\\\\  \\F\\F  u\\FFuF  u\\uFuF\\
+ex(0):  \x8c  y [FAIL]  \x0e [FAIL]  \xf3  \xbe  g [FAIL]  \x83  \x98  h [FAIL]
+ex(1):  \x1f [FAIL]  \xde  \xe5  \xec  \xc7  \xa7  \x12 [FAIL]  ] [FAIL]  9 [FAIL]
+ex(2):  } [FAIL]  \xaf  \x87\u007f [FAIL]  \xe2\xa5  L [FAIL]  \x9a\xf1  \x05 [FAIL]
+ex(3):  /\xc6 [FAIL]  l [FAIL]  \xfc  9b [FAIL]  #+\x12 [FAIL]  \xfc\xf0\x94
+ex(5):  }\x18M\xac [FAIL]  \r\xab\xed[\xbb [FAIL]  \x10Y\x188 [FAIL]
+ex(8):  N [FAIL]  \xa2\x18\x8f\"\x1eۍ [FAIL]  \x953\xbb\x17 [FAIL]  \x84
 
 
 #A: Jason N. Gaylord
@@ -5327,7 +5303,7 @@ No additional "\" may follow afterwards
 #U: http://regexlib.com/REDetails.aspx?regexp_id=542
 
 regexp: ^\\{2}[\w-]+\\(([\w-][\w-\s]*[\w-]+[$$]?$)|([\w-][$$]?$))
-ERROR:  rx: Embedded '$' unimplemented: in "^\\{2}[\w-]+\\(([\w-][\w-\s]*[\w-]+[$$]?$)|([\w-][$$]?$))"
+ERROR:  rx: invalid range: in "^\\{2}[\w-]+\\(([\w-][\w-\s]*[\w-]+[$$]?$)|([\w-][$$]?$))"
 
 
 #A: Andrew van der Stock
@@ -5620,7 +5596,7 @@ ERROR:  rx: '(?...' unimplemented: in "^(?ni:(?=\d)((?'year'((1[6-9])|([2-9]\d))
 #U: http://regexlib.com/REDetails.aspx?regexp_id=582
 
 regexp: \w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$|^([0-9a-zA-Z'\.]{3,40})\*|([0-9a-zA-Z'\.]+)@([0-9a-zA-Z']+)\.([0-9a-zA-Z']+)$|([0-9a-zA-Z'\.]+)@([0-9a-zA-Z']+)\*+$|^$
-ERROR:  rx: Embedded '$' unimplemented: in "\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$|^([0-9a-zA-Z'\.]{3,40})\*|([0-9a-zA-Z'\.]+)@([0-9a-zA-Z']+)\.([0-9a-zA-Z']+)$|([0-9a-zA-Z'\.]+)@([0-9a-zA-Z']+)\*+$|^$"
+ERROR:  rx: invalid range: in "\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$|^([0-9a-zA-Z'\.]{3,40})\*|([0-9a-zA-Z'\.]+)@([0-9a-zA-Z']+)\.([0-9a-zA-Z']+)$|([0-9a-zA-Z'\.]+)@([0-9a-zA-Z']+)\*+$|^$"
 
 
 #A: Senthil Gunabalan
@@ -7955,7 +7931,7 @@ ex(8):  DL  DZCATqz  mKkm9  fd9BrKF  FbFwI  Dlx  rNYy  gKmO  GLed  0  6W
 #U: http://regexlib.com/REDetails.aspx?regexp_id=1016
 
 regexp: ([\d\w-.]+?\.(a[cdefgilmnoqrstuwz]|b[abdefghijmnorstvwyz]|c[acdfghiklmnoruvxyz]|d[ejkmnoz]|e[ceghrst]|f[ijkmnor]|g[abdefghilmnpqrstuwy]|h[kmnrtu]|i[delmnoqrst]|j[emop]|k[eghimnprwyz]|l[abcikrstuvy]|m[acdghklmnopqrstuvwxyz]|n[acefgilopruz]|om|p[aefghklmnrstwy]|qa|r[eouw]|s[abcdeghijklmnortuvyz]|t[cdfghjkmnoprtvwz]|u[augkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw]|aero|arpa|biz|com|coop|edu|info|int|gov|mil|museum|name|net|org|pro)(\b|\W(?<!&|=)(?!\.\s|\.{3}).*?))(\s|$)
-ERROR:  rx: prefer-fewer '?' unimplemented: in "([\d\w-.]+?\.(a[cdefgilmnoqrstuwz]|b[abdefghijmnorstvwyz]|c[acdfghiklmnoruvxyz]|d[ejkmnoz]|e[ceghrst]|f[ijkmnor]|g[abdefghilmnpqrstuwy]|h[kmnrtu]|i[delmnoqrst]|j[emop]|k[eghimnprwyz]|l[abcikrstuvy]|m[acdghklmnopqrstuvwxyz]|n[acefgilopruz]|om|p[aefghklmnrstwy]|qa|r[eouw]|s[abcdeghijklmnortuvyz]|t[cdfghjkmnoprtvwz]|u[augkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw]|aero|arpa|biz|com|coop|edu|info|int|gov|mil|museum|name|net|org|pro)(\b|\W(?<!&|=)(?!\.\s|\.{3}).*?))(\s|$)"
+ERROR:  rx: invalid range: in "([\d\w-.]+?\.(a[cdefgilmnoqrstuwz]|b[abdefghijmnorstvwyz]|c[acdfghiklmnoruvxyz]|d[ejkmnoz]|e[ceghrst]|f[ijkmnor]|g[abdefghilmnpqrstuwy]|h[kmnrtu]|i[delmnoqrst]|j[emop]|k[eghimnprwyz]|l[abcikrstuvy]|m[acdghklmnopqrstuvwxyz]|n[acefgilopruz]|om|p[aefghklmnrstwy]|qa|r[eouw]|s[abcdeghijklmnortuvyz]|t[cdfghjkmnoprtvwz]|u[augkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw]|aero|arpa|biz|com|coop|edu|info|int|gov|mil|museum|name|net|org|pro)(\b|\W(?<!&|=)(?!\.\s|\.{3}).*?))(\s|$)"
 
 
 #A: János Cservenák

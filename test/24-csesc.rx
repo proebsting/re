@@ -21,6 +21,11 @@
 <[\r]>
 <[\t]>
 <[\v]>
+# escapes in ranges
+[a-w]
+[\142-x]
+[c-\x79]
+[\x64-\u007A]
 # big sets \D \W \S
 [\D]+
 [\W]+
