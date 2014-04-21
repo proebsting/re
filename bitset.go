@@ -45,7 +45,7 @@ func (b *BitSet) IsEmpty() bool {
 func (b *BitSet) Count() int {
 	n := 0
 	l := b.Lowbit()
-	h := b.Bits.BitLen()
+	h := b.Highbit()
 	for i := l; i <= h; i++ { // for all values up to highest
 		if b.Test(uint(i)) { // if this value is included
 			n++ // count it
@@ -125,7 +125,7 @@ func (b *BitSet) Key() string {
 func (b *BitSet) Members() []uint {
 	m := make([]uint, 0, 0) // initial capacity 0 is faster than h-l+1
 	l := b.Lowbit()
-	h := b.Bits.BitLen()
+	h := b.Highbit()
 	for i := l; i <= h; i++ { // for all values up to highest
 		if b.Test(uint(i)) { // if this value is included
 			m = append(m, uint(i))
