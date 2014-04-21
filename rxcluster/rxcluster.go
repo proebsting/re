@@ -7,6 +7,7 @@
 	-n nnn	set number of examples generated for each regexp
 	-r nnn	set maximum replication factor for example generation
 	-i nnn	initialize random seed for reproducible results
+	-g	print grids showing how examples matched up
 	-s	print singleton clusters for completeness
 	-v	enable verbose commentary
 
@@ -43,26 +44,31 @@ import (
 )
 
 //  global options from command line
-var verbose bool  // verbosity flag
-var singles bool  // show singletons, too
-var nexamples int // number of examples for each regexp
-var threshold int // threshold percentage
-var maxdist int   // maximum distance derived from threshold
-var maxrepl int   // maximum replication in examples
-var args []string // positional arguments
+var verbose bool   // verbosity flag
+var singles bool   // show singletons, too
+var showgrids bool // show grids of examples with clusters
+var nexamples int  // number of examples for each regexp
+var threshold int  // threshold percentage
+var maxdist int    // maximum distance derived from threshold
+var maxrepl int    // maximum replication in examples
+var args []string  // positional arguments
+
+// other globals
+var exprs []*RegEx // list of expressions
+var nclusters int  // current number of clusters
+
+const labelchars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 //  a RegEx struct holds everything we need per input expression
 type RegEx struct {
 	index          uint     // expression index
 	cnum           uint     // cluster containing this expr
 	next           *RegEx   // next member in this cluster
+	label          byte     // label char within cluster
 	rx.RegExParsed          // Expr, Tree, Err, Meta
 	dfa            *rx.DFA  // matching automaton
 	examples       []string // generated examples
 }
-
-var exprs []*RegEx // list of expressions
-var nclusters int  // current number of clusters
 
 //  main control
 func main() {
@@ -95,12 +101,14 @@ func cmdline() string {
 	n := flag.Int("n", 10, "number of examples per regex")
 	r := flag.Int("r", 5, "maximum replication in examples")
 	i := flag.Int("i", 0, "random seed")
+	g := flag.Bool("g", false, "show grids with clusters")
 	s := flag.Bool("s", false, "show singletons too")
 	v := flag.Bool("v", false, "verbose commentary")
 	flag.Parse()
 	threshold = *t
 	nexamples = *n
 	maxrepl = *r
+	showgrids = *g
 	verbose = *v
 	singles = *s
 	maxdist = ((100 - threshold) * *n) / 100
@@ -146,7 +154,8 @@ func load(filename string) []*RegEx {
 			e.dfa = rx.BuildDFA(t) // build DFA
 			if verbose {
 				fmt.Println()
-				showexpr(e) // show details of expr
+				showexpr(e)     // show details of expr
+				showexamples(e) // show its examples
 			}
 			elist = append(elist, e)
 		}
@@ -221,6 +230,7 @@ func merge(i int, j int) {
 func showcluster(cnum int) {
 	m := 0
 	for x := exprs[cnum]; x != nil; x = x.next {
+		x.label = labelchars[m%len(labelchars)]
 		m++ // count expressions in cluster
 	}
 	if m > 1 || singles {
@@ -228,19 +238,40 @@ func showcluster(cnum int) {
 		fmt.Printf("\ncluster %d:  \"%s\" (%d/%d)\n", cnum, s, n, m)
 		for x := exprs[cnum]; x != nil; x = x.next {
 			showexpr(x)
+			if m > 1 && showgrids {
+				showgrid(cnum, x)
+			}
 		}
 	}
 }
 
 //  show details of one expression
 func showexpr(e *RegEx) {
+	if e.label != 0 && showgrids {
+		fmt.Printf("%c: ", e.label)
+	}
 	fmt.Printf("%d. %s\n", e.index, e.Expr) // print regex
-	if verbose {                            // print examples if verbose
+}
+
+//  show examples for one expression
+func showexamples(e *RegEx) {
+	if verbose { // print examples if verbose
 		for _, s := range e.examples {
 			fmt.Print("  ", s)
 		}
 		fmt.Println()
 	}
+}
+
+// return count of accepting expressions in cluster
+func checkall(cnum int, s string) int {
+	n := 0
+	for x := exprs[cnum]; x != nil; x = x.next {
+		if x.dfa.Accepts(s) != nil {
+			n++
+		}
+	}
+	return n
 }
 
 //  return best cluster example and number of exprs matched
@@ -261,13 +292,18 @@ func bestex(cnum int) (string, int) {
 	return beststring, bestscore / 10000
 }
 
-// return count of accepting expressions in cluster
-func checkall(cnum int, s string) int {
-	n := 0
-	for x := exprs[cnum]; x != nil; x = x.next {
-		if x.dfa.Accepts(s) != nil {
-			n++
+//  show result grid for one cluster
+func showgrid(cnum int, x *RegEx) {
+	for i := 0; i < nexamples; i++ {
+		fmt.Printf("   ")
+		ex := x.examples[i]
+		for y := exprs[cnum]; y != nil; y = y.next {
+			if y.dfa.Accepts(ex) != nil {
+				fmt.Printf("%c", y.label)
+			} else {
+				fmt.Printf("-")
+			}
 		}
+		fmt.Printf("  %s\n", ex)
 	}
-	return n
 }
