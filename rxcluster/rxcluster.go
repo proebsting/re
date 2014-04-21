@@ -170,15 +170,22 @@ func genex(tree rx.Node) []string {
 
 //  calculate distance between expressions i and j
 //  as max number of examples rejected by the other
+//  (quitting early as soon as result exceeds maxdist)
 func distance(i int, j int) int {
 	dij := 0
 	dji := 0
 	for k := 0; k < nexamples; k++ {
 		if exprs[i].dfa.Accepts(exprs[j].examples[k]) == nil {
 			dij++
+			if dij > maxdist {
+				return dij
+			}
 		}
 		if exprs[j].dfa.Accepts(exprs[i].examples[k]) == nil {
 			dji++
+			if dji > maxdist {
+				return dji
+			}
 		}
 	}
 	if dij > dji {
