@@ -1,8 +1,7 @@
 RX TO-DO LIST
 (For consideration: not all of these are clear wins.)
 
-PRIORITIES:
-Add metadata to the JSON output of rxg
+Implement a web interface
 
 REGEXPS:
 Add POSIX classes?
@@ -11,6 +10,8 @@ Add flags such as "case insensitive"??
 Other Perl stuff?
 
 UTILITIES:
+Add metadata to the JSON output of rxg
+In rxcluster, subdivide large clusters
 Show WHICH pattern accepts on DOT output
 Produce DOT for NFA, too
 Combine multiple utilities into one (Swiss army knife)?
@@ -19,4 +20,5 @@ CLEANUP:
 Remove all uints, just use ints?
 Make everything Unicode safe?
 Address #%#% annotations in code
+Rework testing scheme to allow for command options
 Make gofmt an automatic pre-commit hook

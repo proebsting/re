@@ -13,8 +13,6 @@ import (
 	"reflect"
 	"sort"
 	"strconv"
-	"syscall"
-	"time"
 )
 
 //  CkErr aborts with a fatal error if e is not nil.
@@ -29,33 +27,6 @@ func CkErr(e error) { // abort if e is not nil
 func Protect(s string) string {
 	s = strconv.Quote(s)
 	return s[1 : len(s)-1]
-}
-
-//  CPUtime returns the current CPU usage (user time + system time).
-func CPUtime() time.Duration {
-	var ustruct syscall.Rusage
-	CkErr(syscall.Getrusage(0, &ustruct))
-	user := time.Duration(syscall.TimevalToNsec(ustruct.Utime))
-	sys := time.Duration(syscall.TimevalToNsec(ustruct.Stime))
-	return user + sys
-}
-
-//  Interval returns the CPU time (user + system) since the preceding call.
-func Interval() time.Duration {
-	total := CPUtime()
-	delta := total - prevTotal
-	prevTotal = total
-	return delta
-}
-
-var prevTotal time.Duration // total time at list check
-
-//  ShowInterval calcs and (unless label is empty) prints the last interval.
-func ShowInterval(label string) {
-	dt := Interval().Seconds()
-	if label != "" {
-		fmt.Printf("%7.3f %s\n", dt, label)
-	}
 }
 
 //  ShowLabel prints a label, if not empty, in a standard format.
