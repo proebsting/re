@@ -137,12 +137,14 @@ func putform(w io.Writer, label string) {
 //  putfooter outputs our standard HTML page footer
 func putfooter(w io.Writer, r *http.Request) {
 	fmt.Fprintf(w, `
-<P><BR><BR><HR><P>
-<P> RX %d
-<a title="Info" href="/info">I</a>
-<a title="Val" href="http://validator.w3.org/check?uri=referer&amp;ss=1">V</a>
-: 
-<a title="Home" href="/">Home</a>
+<P><BR><BR><HR>
+<P style="text-align:left;">
+<A title="Home" href="/">Home</a>
+<span style="float:right;">
+RX %d
+<A title="Info" href="/info">I</a>
+<A title="Val" href="http://validator.w3.org/check?uri=referer&amp;ss=1">V</a>
+</span> 
 </body></html>
 `, 1000+rand.Intn(9000))
 }
