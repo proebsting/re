@@ -1,68 +1,75 @@
+//  This code implements the beginnings of a web application
+//  using Google App Engine.
 package code
 
 import (
 	"appengine"
 	"fmt"
 	"html"
-	//"html/template"
 	"io"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
 	"rx"
-	"strconv"
 	"time"
 )
 
+//  init registers URLs for dispatching and sets a random seed
 func init() {
 	http.HandleFunc("/info", info)
 	http.HandleFunc("/response", response)
-	http.HandleFunc("/n/", n31)	// 3n+1
-	http.HandleFunc("/", home)		// anything else 
+	http.HandleFunc("/", home) // anything else
 	rand.Seed(int64(time.Now().Nanosecond()))
 }
 
-func home(w http.ResponseWriter, r *http.Request) {
-	header(w, r, "Query")
-	fmt.Fprint(w, `
-<P><form action="/response" method="post">
-<div><input type="text" name="content" size=30 maxlength=100></div>
-<div><input type="submit" value="Submit"></div>
-</form>
-`)
-	footer(w, r)
+//  hx escapes an arbitrary stringable value for output as HTML
+func hx(s interface{}) string {
+	return html.EscapeString(fmt.Sprint(s))
 }
 
+//  home presents the home page
+func home(w http.ResponseWriter, r *http.Request) {
+	putheader(w, r, "Query")
+	putform(w, "Enter a regular expression:")
+	putfooter(w, r)
+}
+
+//  response presents a response to a form submission
 func response(w http.ResponseWriter, r *http.Request) {
 	// must do all reading before any writing
-	content := html.EscapeString(r.FormValue("content"))
+	content := r.FormValue("content")
 
-        header(w, r, "Response")
-	fmt.Fprintf(w, "<P>Query was: %s\n", content)
-	footer(w, r)
+	putheader(w, r, "Response")
+	showexpr(w, content)
+	fmt.Fprintf(w, "<h2>Try another?</h2>")
+	putform(w, "Enter a regular expression:")
+	putfooter(w, r)
 }
 
-func n31(w http.ResponseWriter, r *http.Request) {
-	header(w, r, "3N + 1")
-	bs := &rx.BitSet{}
-	n, _ := strconv.Atoi(r.URL.Path[3:])
-	if n == 0 {
-		n = rand.Intn(100)
+//  showexpr generates information describing a regular expression
+func showexpr(w http.ResponseWriter, s string) {
+	tree, err := rx.Parse(s)
+	if err != nil {
+		fmt.Fprintf(w, "<P>ERROR: %s\n", hx(err))
+		return
 	}
-	fmt.Fprintf(w, "<P><B>%d</B>", n)
-	for n > 1 {
-		bs.Set(uint(n))
-		if n&1 == 1 {
-			n = 3*n + 1
-		} else {
-			n = n / 2
-		}
-		fmt.Fprintf(w, " %d", n)
-	}
-	fmt.Fprintf(w, "\n<BR><BR>%s\n", bs)
-	footer(w, r)
+	//#%#% currently no protection against DOS attempt from huge expr
+	//#%#% likewise input strings are not fully sanitized
+	augt := rx.Augment(tree, 0)
+	dfa := rx.BuildDFA(augt)
+	dmin := dfa.Minimize()
+
+	fmt.Fprintf(w, "<P>Expression: %s\n", hx(s))
+	fmt.Fprintf(w, "<P>Parse Tree: %s\n", hx(tree))
+	fmt.Fprintf(w, "<P>Augmented Tree: %s\n", hx(augt))
+	fmt.Fprintf(w, "<h2>NFA</h2>\n<PRE>\n")
+	dfa.ShowNFA(w, "")
+	fmt.Fprintf(w, "</PRE>\n<h2>DFA</h2>\n<PRE>\n")
+	dmin.DumpStates(w, "")
+	fmt.Fprintf(w, "</PRE>\n")
 }
 
+//  info writes data that is useful in debugging the application
 func info(w http.ResponseWriter, r *http.Request) {
 	// must do all reading before any writing
 	var body []byte
@@ -71,7 +78,7 @@ func info(w http.ResponseWriter, r *http.Request) {
 		body, berr = ioutil.ReadAll(r.Body)
 	}
 
-	header(w, r, "Info")
+	putheader(w, r, "Info")
 	fmt.Fprintf(w, "<P>Host: %#v\n", r.Host)
 	fmt.Fprint(w, "<P>")
 	for k, v := range r.Header {
@@ -81,7 +88,7 @@ func info(w http.ResponseWriter, r *http.Request) {
 	if berr != nil {
 		fmt.Fprintf(w, "<P>BODY ERROR: %s\n", berr)
 	}
-	fmt.Fprintf(w, "<P>Body:<BR>%s\n", html.EscapeString(string(body)))
+	fmt.Fprintf(w, "<P>Body:<BR>%s\n", hx(body))
 
 	fmt.Fprintf(w, "<P>Datacenter: %s\n", appengine.Datacenter())
 
@@ -90,15 +97,15 @@ func info(w http.ResponseWriter, r *http.Request) {
 	var bigtime int64
 	fmt.Sscanf(vid, "%d.%d", &ver, &bigtime)
 	// the following is correct for App Engine but not for SDK
-	t := time.Unix(bigtime >> 28, 0)
+	t := time.Unix(bigtime>>28, 0)
 	fmt.Fprintf(w, "<P>App Version ID: %s (%s)\n", vid,
 		t.Format("01/02 15:04"))
-	 
 
-	footer(w, r)
+	putfooter(w, r)
 }
 
-func header(w io.Writer, r *http.Request, title string) {
+//  putheader outputs our standard HTML page header
+func putheader(w io.Writer, r *http.Request, title string) {
 	prefix := "RX"
 	favicon := "icon.png"
 	if r.Host == "localhost:8080" {
@@ -116,15 +123,26 @@ func header(w io.Writer, r *http.Request, title string) {
 `, prefix, title, favicon, prefix, title)
 }
 
-func footer(w io.Writer, r *http.Request) {
+//  putform outputs a form for submitting an expression
+func putform(w io.Writer, label string) {
 	fmt.Fprintf(w, `
-<P><HR><P>
-<P> RX [%d] :
-<a title="Home" href="/home">Home</a> |
-<a title="Info" href="/info">Info</a> |
-<a title="Validate" href="http://validator.w3.org/check?uri=referer&amp;ss=1"> 
-Validate</a> |
-<a title="27" href="/n/27">27</a>
+<P>%s
+<P><form action="/response" method="post">
+<div><input type="text" name="content" size=30 maxlength=100></div>
+<div><input type="submit" value="Submit"></div>
+</form>
+`, label)
+}
+
+//  putfooter outputs our standard HTML page footer
+func putfooter(w io.Writer, r *http.Request) {
+	fmt.Fprintf(w, `
+<P><BR><BR><HR><P>
+<P> RX %d
+<a title="Info" href="/info">I</a>
+<a title="Val" href="http://validator.w3.org/check?uri=referer&amp;ss=1">V</a>
+: 
+<a title="Home" href="/">Home</a>
 </body></html>
 `, 1000+rand.Intn(9000))
 }
