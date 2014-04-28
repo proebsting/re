@@ -53,20 +53,49 @@ func showexpr(w http.ResponseWriter, s string) {
 		fmt.Fprintf(w, "<P>ERROR: %s\n", hx(err))
 		return
 	}
+	fmt.Fprintf(w, "<P>Expression: %s\n", s)
+	fmt.Fprintf(w, "<P>Parse Tree: %s\n", hx(tree))
+
 	//#%#% currently no protection against DOS attempt from huge expr
 	//#%#% likewise input strings are not fully sanitized
 	augt := rx.Augment(tree, 0)
 	dfa := rx.BuildDFA(augt)
 	dmin := dfa.Minimize()
 
-	fmt.Fprintf(w, "<P>Expression: %s\n", hx(s))
-	fmt.Fprintf(w, "<P>Parse Tree: %s\n", hx(tree))
 	fmt.Fprintf(w, "<P>Augmented Tree: %s\n", hx(augt))
+	fmt.Fprintf(w, "<h2>Examples</h2>\n<P>")
+	showexamples(w, tree, 0)
+	showexamples(w, tree, 1)
+	showexamples(w, tree, 2)
+	showexamples(w, tree, 3)
+	showexamples(w, tree, 5)
+	showexamples(w, tree, 8)
 	fmt.Fprintf(w, "<h2>NFA</h2>\n<PRE>\n")
 	dfa.ShowNFA(w, "")
-	fmt.Fprintf(w, "</PRE>\n<h2>DFA</h2>\n<PRE>\n")
+	fmt.Fprintf(w, "</PRE>\n")
+	fmt.Fprintf(w, "<h2>DFA</h2>\n<PRE>\n")
 	dmin.DumpStates(w, "")
 	fmt.Fprintf(w, "</PRE>\n")
+}
+
+const linemax = 79 // max output line length for examples
+
+//  showexamples writes a line of specimen strings matching the expression
+func showexamples(w http.ResponseWriter, tree rx.Node, maxrepl int) {
+	fmt.Fprintf(w, "<BR>")
+	nprinted := 0
+	ncolm := 0
+	for {
+		s := string(tree.Example(make([]byte, 0), maxrepl))
+		t := rx.Protect(s)
+		ncolm += 2 + len(t)
+		if nprinted > 0 && ncolm > linemax {
+			break
+		}
+		fmt.Fprintf(w, " %s &nbsp; ", hx(t))
+		nprinted++
+	}
+	fmt.Fprintf(w, "\n")
 }
 
 //  info writes data that is useful in debugging the application
@@ -128,7 +157,7 @@ func putform(w io.Writer, label string) {
 	fmt.Fprintf(w, `
 <P>%s
 <P><form action="/response" method="post">
-<div><input type="text" name="content" size=30 maxlength=100></div>
+<div><input type="text" name="content" size=60 maxlength=1000></div>
 <div><input type="submit" value="Submit"></div>
 </form>
 `, label)
