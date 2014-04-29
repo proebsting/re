@@ -16,6 +16,16 @@ import (
 	"time"
 )
 
+var examples = [] struct { Expr, Caption string } {
+{ `(0|1(01*0)*1)*`, "Binary number divisible by 3" },
+{ `-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d{1,3})?`, "JSON number" },
+{ `\([2-9]\d\d\) [2-9]\d\d\-\d{4}`, "US telephone number" },
+{ `([0-6]\d{2}|7([0-6]\d|7[012]))-\d{2}-\d{4}`, "US social security number" },
+{ `(19|20)\d\d\-(0[1-9]|1[012])\-(0[1-9]|[12]\d|3[01])`, "ISO 8601 date" },
+{ `([01]\d|2[0-3]):[0-5][0-9]:[0-5][0-9]Z`, "ISO 8601 time" },
+{ `\w+@\w+(\.\w+)+`, "Naive e-mail address" },
+}
+
 //  init registers URLs for dispatching and sets a random seed
 func init() {
 	http.HandleFunc("/info", info)
@@ -33,8 +43,16 @@ func hx(s interface{}) string {
 func home(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Query")
 	putform(w, "Enter a regular expression:")
+	tExamples.Execute(w, examples)
 	putfooter(w, r)
 }
+
+var tExamples= template.Must(template.New("header").Parse(
+`<P><BR>Or choose one of these examples:<P>{{range .}}
+<form action="/response" method="post"><div>
+<input type="hidden" name="content" value="{{.Expr}}">
+<button class=link>{{.Caption}}</button></div></form>{{end}}
+`))
 
 //  response presents a response to a form submission
 func response(w http.ResponseWriter, r *http.Request) {
@@ -55,8 +73,9 @@ func showexpr(w http.ResponseWriter, s string) {
 		fmt.Fprintf(w, "<P>ERROR: %s\n", hx(err))
 		return
 	}
-	fmt.Fprintf(w, "<P>Expression: %s\n", hx(s))
-	fmt.Fprintf(w, "<P>Parse Tree: %s\n", hx(tree)) // print before augment!
+	fmt.Fprintf(w, "<P>Regular Expression: %s\n", hx(s))
+	// must print (or at least stringize) tree before augmenting
+	fmt.Fprintf(w, "<P>Initial Parse Tree: %s\n", hx(tree))
 
 	//#%#% currently no protection against DOS attempt from huge expr
 	augt := rx.Augment(tree, 0)
