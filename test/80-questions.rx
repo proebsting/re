@@ -1,6 +1,15 @@
 # things to try to distinguish via "20 questions"
 # some of these are deliberately incomplete, imprecise, or even incorrect
 
+# binary number
+[01]+
+# canonical binary number
+0|1[01]*
+# binary number divisible by 3 (Sedgewick)
+(0|1(01*0)*1)*
+# binary number with no doubled digits
+1?(01)*0?
+
 # unsigned integer
 \d+
 # integer not (ending in!) 0
