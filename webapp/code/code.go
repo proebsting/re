@@ -70,7 +70,13 @@ func response(w http.ResponseWriter, r *http.Request) {
 func showexpr(w http.ResponseWriter, s string) {
 	tree, err := rx.Parse(s)
 	if err != nil {
-		fmt.Fprintf(w, "<P>ERROR: %s\n", hx(err))
+		if pe, ok := err.(*rx.ParseError); ok {
+			fmt.Fprintf(w,
+				"<P><B>Error:</B> %s\n<BR>In expression: %s\n",
+				pe.Message, hx(pe.BadExpr))
+		} else {
+			fmt.Fprintf(w, "<P><B>Error:</B> %s\n", hx(err))
+		}
 		return
 	}
 	fmt.Fprintf(w, "<P>Regular Expression: %s\n", hx(s))

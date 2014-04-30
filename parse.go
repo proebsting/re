@@ -267,6 +267,6 @@ type ParseError struct {
 }
 
 //  ParseError.Error formats a parser error for printing.
-func (e *ParseError) Error() string {
+func (e ParseError) Error() string {
 	return fmt.Sprintf("rx: %s: in \"%s\"", e.Message, e.BadExpr)
 }
