@@ -49,7 +49,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 }
 
 var tExamples = template.Must(template.New("header").Parse(
-	`<P><BR>Or choose one of these examples:<P>{{range .}}
+	`<P>Or choose one of these examples:{{range .}}
 <form action="/response" method="post"><div>
 <input type="hidden" name="content" value="{{.Expr}}">
 <button class=link>{{.Caption}}</button></div></form>{{end}}
@@ -171,7 +171,7 @@ var tInfo = template.Must(template.New("header").Parse(
 <H2>Request Header</H2>
 <P>{{range $k, $v := .Req.Header}}{{$k}} : {{$v}}<BR>{{end}}
 <H2>Request Body</H2>
-<P>{{printf "%s" .Body}}
+{{printf "%s" .Body}}
 {{if .BE}}<P><B>BODY ERROR:</B> {{.BE}}{{end}}
 `))
 
@@ -203,7 +203,7 @@ func putform(w io.Writer, label string) {
 
 var tForm = template.Must(template.New("form").Parse(
 	`<P>{{.}}
-<P><form action="/response" method="post">
+<form action="/response" method="post">
 <div><input type="text" name="content" size=60 maxlength=1000></div>
 <div><input type="submit" value="Submit"></div>
 </form>
