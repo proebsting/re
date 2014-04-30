@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"net/http"
+	"runtime"
 	"rx"
 	"time"
 )
@@ -132,16 +133,22 @@ func info(w http.ResponseWriter, r *http.Request) {
 
 	// must do all reading before any writing
 	var data struct {
-		Req   *http.Request
-		Body  []byte
-		BE    error
-		Dctr  string
-		VID   string
-		Vtime string
+		Req    *http.Request
+		Body   []byte
+		BE     error
+		Dctr   string
+		GoArch string
+		GoOs   string
+		GoVer  string
+		VID    string
+		Vtime  string
 	}
 	data.Req = r
 	data.Body, data.BE = ioutil.ReadAll(r.Body)
 	data.Dctr = appengine.Datacenter()
+	data.GoArch = runtime.GOARCH
+	data.GoOs = runtime.GOOS
+	data.GoVer = runtime.Version()
 	data.VID = appengine.VersionID(appengine.NewContext(r))
 
 	var ver int
@@ -158,7 +165,8 @@ func info(w http.ResponseWriter, r *http.Request) {
 
 var tInfo = template.Must(template.New("header").Parse(
 	`<P>Host: {{.Req.Host}}
-<BR>Datacenter: {{.Dctr}}
+<BR>Datacenter: {{.Dctr}} ({{.GoArch}} {{.GoOs}})
+<BR>Go Version: {{.GoVer}}
 <BR>App Version ID: {{.VID}} ({{.Vtime}})
 <H2>Request Header</H2>
 <P>{{range $k, $v := .Req.Header}}{{$k}} : {{$v}}<BR>{{end}}
