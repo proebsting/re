@@ -14,6 +14,7 @@ import (
 	"net/http"
 	"runtime"
 	"rx"
+	"strings"
 	"time"
 )
 
@@ -29,9 +30,11 @@ var examples = []struct{ Expr, Caption string }{
 
 //  init registers URLs for dispatching and sets a random seed
 func init() {
-	http.HandleFunc("/info", info)
-	http.HandleFunc("/response", response)
 	http.HandleFunc("/", home) // anything else
+	http.HandleFunc("/about", about)
+	http.HandleFunc("/info", info)
+	http.HandleFunc("/syntax", syntax)
+	http.HandleFunc("/response", response)
 	rand.Seed(int64(time.Now().Nanosecond()))
 }
 
@@ -128,7 +131,46 @@ func showexamples(w http.ResponseWriter, tree rx.Node, maxrepl int) {
 	fmt.Fprint(w, "<BR>\n")
 }
 
-//  info writes data that is useful in debugging the application
+//  about generates a page describing and crediting the website
+func about(w http.ResponseWriter, r *http.Request) {
+	putheader(w, r, "About")
+	tAbout.Execute(w, r)
+	putfooter(w, r)
+}
+
+var tAbout = template.Must(template.New("header").Parse(`
+<P> This website is a work in progress by:
+<P> <A HREF="http://www.cs.arizona.edu/~proebsting">Todd Proebsting</A>
+<BR> <A HREF="http://www.cs.arizona.edu/~gmt">Gregg Townsend</A>
+<BR> Jasmin Uribe
+<P> <A HREF="http://www.cs.arizona.edu/">Department of Computer Science</A>
+<BR> <A HREF="http://www.arizona.edu/">The University of Arizona</A>
+<BR> Tucson, Arizona, USA
+`))
+
+//  syntax generates a page outlining the accepted syntax
+func syntax(w http.ResponseWriter, r *http.Request) {
+	putheader(w, r, "Syntax")
+	tSyntax.Execute(w, r)
+	putfooter(w, r)
+}
+
+var tSyntax = template.Must(template.New("header").Parse(`
+<P>We implement traditional regular expressions with a few simple extensions.
+<P>The following forms are handled:<PRE>
+      abc  a|b|c  a(b|c)d
+      a?  b*  c+  d{m,n}
+      \a \e \f \n \r \t \v \046 \xF7 \u03A8
+      .  \d \s \w \D \S \W
+      [abc]  [^abc]  [a-c]  [\x]
+</PRE>
+<P>We ignore the Perl non-capturing submatch form <CODE>?:</CODE>,
+but other <CODE>(?</CODE> forms are errors.
+<P>All expressions are &ldquo;anchored&rdquo;.
+An initial <CODE>^</CODE> and/or final <CODE>$</CODE> is ignored.
+`))
+
+//  info generates a page of information useful to the developers
 func info(w http.ResponseWriter, r *http.Request) {
 
 	// must do all reading before any writing
@@ -154,9 +196,14 @@ func info(w http.ResponseWriter, r *http.Request) {
 	var ver int
 	var bigtime int64
 	fmt.Sscanf(data.VID, "%d.%d", &ver, &bigtime)
-	// the following is correct for App Engine but not for SDK
-	t := time.Unix(bigtime>>28, 0)
-	data.Vtime = t.Format("01/02 15:04")
+	if strings.HasPrefix(r.Host, "localhost:") {
+		// don't know how to decode this in SDK environment
+		data.Vtime = "?!"
+	} else {
+		// decode VID to match with appengine admin logs
+		t := time.Unix(bigtime>>28, 0)
+		data.Vtime = t.Format("01/02 15:04")
+	}
 
 	putheader(w, r, "Info")
 	tInfo.Execute(w, data)
@@ -218,6 +265,8 @@ var tFooter = template.Must(template.New("footer").Parse(
 	`<P><BR><BR><HR>
 <P style="text-align:left;">
 <A title="Home" href="/">Home</a>
+| <A title="Syntax" href="/syntax">Syntax</a>
+| <A title="About" href="/about">About</a>
 <span style="float:right;">
 RX {{.}}
 <A title="Info" href="/info">I</a>
