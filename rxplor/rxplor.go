@@ -262,7 +262,7 @@ func options() {
 	flag.Parse() // parse command args to set values
 
 	imply("a", "lpndgtv") // -a implies several others
-	imply("NDXT", "m")     // any of {-N -D -X -T} implies -m
+	imply("NDXT", "m")    // any of {-N -D -X -T} implies -m
 	if !*opt['m'] {
 		*opt['i'] = true // if not -m, then must have -i
 	}
