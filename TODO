@@ -1,9 +1,21 @@
 RX TO-DO LIST
 (For consideration: not all of these are clear wins.)
 
-Implement a web interface
+Fix nondeterministic minimization of id#986!
+
+Which pairs (& triples) of regexps combine most slowly?
+(Why does rxcombos grow memory and thrash?  (60*rx, 2))
+Optimize the DFA minimization code -- slow8.rx
+
+WEB APP:
+Add "diff" interface (2- & 3-way w/ Venn diagram)
+Styling
+Explanatory prose
 
 REGEXPS:
+Review Unicode situation
+Revisit "invalid range" re weirdnesses like [\w-\.]
+Is a{0,3}{0,3} parsed correctly?
 Add POSIX classes?
 Add \b anchor? Embedded ^ and $?
 Add flags such as "case insensitive"??
