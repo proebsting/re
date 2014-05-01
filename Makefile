@@ -2,7 +2,7 @@
 
 PKG = rx
 PG1 = $(PKG)/rxd $(PKG)/rxg $(PKG)/rxq $(PKG)/rxr $(PKG)/rxx
-PG2 = $(PKG)/rxcluster $(PKG)/rxcombos $(PKG)/questions
+PG2 = $(PKG)/rxcluster $(PKG)/rxcombos $(PKG)/rxpick $(PKG)/questions
 PROGS = $(PG1) $(PG2)
 GOBIN = $$GOPATH/bin
 
@@ -52,6 +52,7 @@ fmt:
 	go fmt rxcombos/rxcombos.go
 	go fmt rxd/rxd.go
 	go fmt rxg/rxg.go
+	go fmt rxpick/rxpick.go
 	go fmt rxq/rxq.go
 	go fmt rxr/rxr.go
 	go fmt rxx/rxx.go
