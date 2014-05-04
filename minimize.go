@@ -6,9 +6,9 @@ import (
 	"fmt"
 )
 
-var _ = fmt.Printf //#%#% for debugging
-
 var deadstate *DFAstate // "dead state" used during minimization
+
+var DBG_MIN = false // enable/disable minimization debugging output
 
 //  A Partition is a subset of the states of a DFA.
 type Partition struct {
@@ -57,7 +57,9 @@ func (dfa *DFA) Minimize() *DFA {
 	// repeatedly subdivide partitions until can do so no more
 	nchanged := 1
 	for nchanged != 0 {
-		// fmt.Println("[partitioning:]") //#%#%#% TEMP // once per pass
+		if DBG_MIN {
+			fmt.Println("[partitioning:]") // once per pass
+		}
 		nchanged = 0
 		// loop manually (vs "range" expr) to catch new partns as added
 		for i := 0; i < len(dfa.PartList); i++ {
@@ -75,7 +77,9 @@ func (dfa *DFA) Minimize() *DFA {
 
 	// make a new DFA with one state for each partition,
 	// but exclude the partition containing the dead state
-	// fmt.Println("[merging:]") //#%#%#% TEMP
+	if DBG_MIN {
+		fmt.Println("[merging:]")
+	}
 	minim := newDFA(dfa.Tree)
 	for _, p = range dfa.PartList {
 		if p.Index != deadstate.PartNum {
@@ -105,7 +109,9 @@ func (p *Partition) insert(ds *DFAstate) {
 	dfa.PartList[old].StateSet.Clear(i)
 	p.StateSet.Set(i)
 	ds.PartNum = p.Index
-	// fmt.Printf("move s%d : ptn %d to %d\n", i, old, p.Index) //#%#% TEMP
+	if DBG_MIN {
+		fmt.Printf("move s%d : ptn %d to %d\n", i, old, p.Index)
+	}
 }
 
 //  Partition.distinguish returns an input for partitioning, or -1 for none.
@@ -146,18 +152,25 @@ func (s1 *DFAstate) distinguish(s2 *DFAstate) int {
 
 //  Partition.divide repartitions this partition based on input x.
 func (p *Partition) divideBy(x int) {
-	// fmt.Printf("[partition %d by %#v]\n", p.Index, string(x)) //#%#% TEMP
+	if DBG_MIN {
+		fmt.Printf("[partition %d by %#v]\n", p.Index, string(x))
+	}
 	// get a list of partition members
-	// all distinguishable from the first by x go into a new partition
-	dfa := p.Automata              // DFA being partitioned
-	mlist := p.StateSet.Members()  // list of partition members
-	d0 := dfa.Dstates[mlist[0]]    // first member
-	q := p.Automata.newPartition() // new partition for all who differ
+	// and note all that are distinguishable from the first by input x
+	dfa := p.Automata             // DFA being partitioned
+	mlist := p.StateSet.Members() // list of partition members
+	tomove := &BitSet{}           // set of those to move
+	d0 := dfa.Dstates[mlist[0]]   // first member
 	for i := 1; i < len(mlist); i++ {
 		ds := dfa.Dstates[mlist[i]] // candidate state
 		if ds.partOn(x) != d0.partOn(x) {
-			q.insert(ds)
+			tomove.Set(ds.Index)
 		}
+	}
+	// now (all at once) move the distinguished states to a new partition
+	q := p.Automata.newPartition() // new partition for all who differ
+	for _, i := range tomove.Members() {
+		q.insert(dfa.Dstates[i])
 	}
 }
 

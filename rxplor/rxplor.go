@@ -246,6 +246,7 @@ func options() {
 	// fo('q', "suppress default output")
 	fo('x', "exit immediately on erroneous input")
 	fo('y', "silently ignore errors")
+	fo('z', "enable debug tracing")
 
 	vo('I', "initial seed for randomization")
 	// vo('T', "input file of candidates accept/reject grid")
@@ -275,6 +276,7 @@ func options() {
 	listopt = *opt['l']
 	verbose = *opt['v']
 	errsilent = *opt['y']
+	rx.DBG_MIN = *opt['z'] && *opt['d']
 
 	i, err := strconv.Atoi(*val['I'])
 	rx.CkErr(err)

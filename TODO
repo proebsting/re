@@ -1,10 +1,6 @@
 RX TO-DO LIST
 (For consideration: not all of these are clear wins.)
 
-Fix nondeterministic minimization of id#986!
-
-Which pairs (& triples) of regexps combine most slowly?
-(Why does rxcombos grow memory and thrash?  (60*rx, 2))
 Optimize the DFA minimization code -- slow8.rx
 
 WEB APP:
