@@ -68,10 +68,8 @@ func main() {
 	timestamp(fmt.Sprintf(
 		"make merged DFA of %d states", len(dfa.Dstates)))
 
-	mini := dfa.Minimize()
-
 	if !*opt['u'] {
-		dfa = dfa.Minimize()
+		mini := dfa.Minimize()
 		if *opt['d'] {
 			dfa.DumpStates(os.Stdout, "Minimized DFA")
 		}
