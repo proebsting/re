@@ -622,3 +622,61 @@ s22. { p20 p39 } [r]:s21
 s23. { p38 } [a]:s22
 s24. { p42 } [o]:s25
 s25. { p43 } [l]:s21
+
+# an example that showed the move-while-distinguishing minimization bug
+
+# originally from http://regexlib.com/REDetails.aspx?regexp_id=654
+
+regexp: ^([A-Za-z0-9]\s?)+([,]\s?([A-Za-z0-9]\s?)+)*$
+tree:   (([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)
+augmnt: ((([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)#)
+length: 1 to *
+-------------------- Examples --------------------
+ex(0):  Z  H  X  L  W  4  8  G  3  E  T  l  i  E  k  Y  5  d  A  X  c  K  w  I
+ex(1):  u, r   2   3   m , M  P,l   N, 2  H   e  V  B   e, m   7   z , M  8  Z
+ex(2):  rP,uH ,s  OK  e j, Y   V   nV,Y x   X f, I  H   B   g ,X, l   q, bC 
+ex(3):  bO,t y,O t k , 09   N,0 CV,o , m w  vk   c,m,E,Tx 1  a UV, PN , hg q  I
+ex(5):  Z, hk, n ,M l ej ,xtN, BH Y  ar,gz t ds  Q r F, h S D 7,Nul,f3kOd,u r 
+ex(8):  4 n K 0 F ,2Cvpe ,Z3 G0, N PR 7Tm 0, a ,h v 
+----------------- Annotated Tree -----------------
+{F, [0-9A-Za-z], #}   ((([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)#)
+   {F, [0-9A-Za-z], [0-9A-Za-z][\t-\r ][0-9A-Za-z][\t-\r ]}   (([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)
+      {F, [0-9A-Za-z], [0-9A-Za-z][\t-\r ]}   ([0-9A-Za-z][\t-\r ]?)+
+         {F, [0-9A-Za-z], [0-9A-Za-z][\t-\r ]}   ([0-9A-Za-z][\t-\r ]?)
+            {F, [0-9A-Za-z], [0-9A-Za-z]}   [0-9A-Za-z]
+            {T, [\t-\r ], [\t-\r ]}   [\t-\r ]?
+               {F, [\t-\r ], [\t-\r ]}   [\t-\r ]
+      {T, ,, [0-9A-Za-z][\t-\r ]}   ((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*
+         {F, ,, [0-9A-Za-z][\t-\r ]}   ((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)
+            {F, ,, ,[\t-\r ]}   (,[\t-\r ]?)
+               {F, ,, ,}   ,
+               {T, [\t-\r ], [\t-\r ]}   [\t-\r ]?
+                  {F, [\t-\r ], [\t-\r ]}   [\t-\r ]
+            {F, [0-9A-Za-z], [0-9A-Za-z][\t-\r ]}   ([0-9A-Za-z][\t-\r ]?)+
+               {F, [0-9A-Za-z], [0-9A-Za-z][\t-\r ]}   ([0-9A-Za-z][\t-\r ]?)
+                  {F, [0-9A-Za-z], [0-9A-Za-z]}   [0-9A-Za-z]
+                  {T, [\t-\r ], [\t-\r ]}   [\t-\r ]?
+                     {F, [\t-\r ], [\t-\r ]}   [\t-\r ]
+   {F, #, #}   #
+----------------------- NFA ----------------------
+begin => { 0 }
+p0. [0-9A-Za-z] => { 0 1 2 6 }
+p1. [\t-\r ] => { 0 2 6 }
+p2. , => { 3 4 }
+p3. [\t-\r ] => { 4 }
+p4. [0-9A-Za-z] => { 2 4 5 6 }
+p5. [\t-\r ] => { 2 4 6 }
+p6. # => { }
+------------------- Initial DFA ------------------
+s0. { p0 } [0-9A-Za-z]:s1
+s1# { p0 p1 p2 p6 } [0-9A-Za-z]:s1 [\t-\r ]:s2 [,]:s3
+s2# { p0 p2 p6 } [0-9A-Za-z]:s1 [,]:s3
+s3. { p3 p4 } [\t-\r ]:s4 [0-9A-Za-z]:s5
+s4. { p4 } [0-9A-Za-z]:s5
+s5# { p2 p4 p5 p6 } [,]:s3 [0-9A-Za-z]:s5 [\t-\r ]:s6
+s6# { p2 p4 p6 } [,]:s3 [0-9A-Za-z]:s5
+------------------ Minimized DFA -----------------
+s0. { p0 p4 } [0-9A-Za-z]:s1
+s1# { p0 p1 p2 p4 p5 p6 } [0-9A-Za-z]:s1 [,]:s2 [\t-\r ]:s3
+s2. { p3 p4 } [\t-\r ]:s0 [0-9A-Za-z]:s1
+s3# { p0 p2 p4 p6 } [0-9A-Za-z]:s1 [,]:s2

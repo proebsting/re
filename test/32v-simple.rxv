@@ -15,3 +15,6 @@ a(ba)*b?|b(ab)*a?
 # Experiments with word construction
 [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
 W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
+# an example that showed the move-while-distinguishing minimization bug
+# originally from http://regexlib.com/REDetails.aspx?regexp_id=654
+^([A-Za-z0-9]\s?)+([,]\s?([A-Za-z0-9]\s?)+)*$
