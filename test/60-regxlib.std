@@ -2405,16 +2405,19 @@ ex(8):  {\\f\\^9 [;  {\\f211644\\)D\\?;  {\\f1207053\\s(^@xF]`;  {\\f\\[;
 
 #%#% COMMENTED OUT: THIS ONE IS TOO BIG TO RUN
 
+##U: http://regexlib.com/REDetails.aspx?regexp_id=220
+
+##A: Lewis Moten
+
+##D: Searches for tags and there atributes according to the HTML 2.0 specification to limit length of tags to 72 characters, and length of attribute values to 1024 characters.
+
 # </?([a-zA-Z][-A-Za-z\d\.]{0,71})(\s+(\S+)(\s*=\s*([-\w\.]{1,1024}|"[^"]{0,1024}"|'[^']{0,1024}'))?)*\s*>
 
 
-#A: Lewis Moten
-Henric Rosvall
-#D: Searches for tags and there atributes according to the HTML 2.0 specification to limit length of tags to 72 characters, and length of attribute values to 1024 characters.
-Will locate an URL in a webpage.
+#A: Henric Rosvall
+#D: Will locate an URL in a webpage.
 It'll search in 2 ways - first it will try to locate a href=, and then go to the end of the link. If there is nu href=, it will search for the end of the file instead (.asp, .htm and so on), and then take the data between the "xxxxxx" or 'xxxxxx'
-#U: http://regexlib.com/REDetails.aspx?regexp_id=220
-http://regexlib.com/REDetails.aspx?regexp_id=222
+#U: http://regexlib.com/REDetails.aspx?regexp_id=222
 
 regexp: (("|')[a-z0-9\/\.\?\=\&]*(\.htm|\.asp|\.php|\.jsp)[a-z0-9\/\.\?\=\&]*("|'))|(href=*?[a-z0-9\/\.\?\=\&"']*)
 ERROR:  rx: prefer-fewer '?' unimplemented: in "(("|')[a-z0-9\/\.\?\=\&]*(\.htm|\.asp|\.php|\.jsp)[a-z0-9\/\.\?\=\&]*("|'))|(href=*?[a-z0-9\/\.\?\=\&"']*)"
@@ -7641,26 +7644,28 @@ ex(5):  07953802988  07919532820  07798 125888  078 42187457  07939 180638
 ex(8):  07756 484386  07868273322  07829240798  07920767181  07807444180
 
 
-#A: Ross Hammer
-#D: Based on a regular expression from Michael Ash, this captures US street addresses and mailing addresses, single or multi-line (multi-line is more reliable), and breaks them into discrete parts for address line 1 and 2, city, state, and postal code.  This expression is not perfect - with the interpreter I am using, some addresses refuse to match correctly.  It should however work for most addresses, particularly when lines are delimited with carriage returns, tabs, or some other whitespace line delimiter that is not a space (\x20).  Note: For improved compatibility, this expression does not use named groups.
-**Output**
-\1 = Address 1,
-\2 = Address 2,
-\3 = City,
-\4 = State,
-\5 = Postal Code
-#U: http://regexlib.com/REDetails.aspx?regexp_id=986
 
-regexp: ^\s*((?:(?:\d+(?:\x20+\w+\.?)+(?:(?:\x20+STREET|ST|DRIVE|DR|AVENUE|AVE|ROAD|RD|LOOP|COURT|CT|CIRCLE|LANE|LN|BOULEVARD|BLVD)\.?)?)|(?:(?:P\.\x20?O\.|P\x20?O)\x20*Box\x20+\d+)|(?:General\x20+Delivery)|(?:C[\\\/]O\x20+(?:\w+\x20*)+))\,?\x20*(?:(?:(?:APT|BLDG|DEPT|FL|HNGR|LOT|PIER|RM|S(?:LIP|PC|T(?:E|OP))|TRLR|UNIT|\x23)\.?\x20*(?:[a-zA-Z0-9\-]+))|(?:BSMT|FRNT|LBBY|LOWR|OFC|PH|REAR|SIDE|UPPR))?)\,?\s+((?:(?:\d+(?:\x20+\w+\.?)+(?:(?:\x20+STREET|ST|DRIVE|DR|AVENUE|AVE|ROAD|RD|LOOP|COURT|CT|CIRCLE|LANE|LN|BOULEVARD|BLVD)\.?)?)|(?:(?:P\.\x20?O\.|P\x20?O)\x20*Box\x20+\d+)|(?:General\x20+Delivery)|(?:C[\\\/]O\x20+(?:\w+\x20*)+))\,?\x20*(?:(?:(?:APT|BLDG|DEPT|FL|HNGR|LOT|PIER|RM|S(?:LIP|PC|T(?:E|OP))|TRLR|UNIT|\x23)\.?\x20*(?:[a-zA-Z0-9\-]+))|(?:BSMT|FRNT|LBBY|LOWR|OFC|PH|REAR|SIDE|UPPR))?)?\,?\s+((?:[A-Za-z]+\x20*)+)\,\s+(A[LKSZRAP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])\s+(\d+(?:-\d+)?)\s*$
-tree:   ((((((((((((([\t-\r ]*(((((([0-9]+(( +[0-9A-Z_a-z]+).?)+)(((((((( +S)T)R)E)E)T)|(ST)|((((DR)I)V)E)|(DR)|(((((AV)E)N)U)E)|((AV)E)|(((RO)A)D)|(RD)|(((LO)O)P)|((((CO)U)R)T)|(CT)|(((((CI)R)C)L)E)|(((LA)N)E)|(LN)|((((((((BO)U)L)E)V)A)R)D)|(((BL)V)D)).?)?)|(((((((((((P.) ?)O).)|((P ?)O)) *)B)o)x) +)[0-9]+)|(((((((((((((((Ge)n)e)r)a)l) +)D)e)l)i)v)e)r)y)|((((C[/\])O) +)([0-9A-Z_a-z]+ *)+)),?) *)(((((((AP)T)|(((BL)D)G)|(((DE)P)T)|(FL)|(((HN)G)R)|((LO)T)|(((PI)E)R)|(RM)|(S(((LI)P)|(PC)|(T(E|(OP)))))|(((TR)L)R)|(((UN)I)T)|#).?) *)[-0-9A-Za-z]+)|(((BS)M)T)|(((FR)N)T)|(((LB)B)Y)|(((LO)W)R)|((OF)C)|(PH)|(((RE)A)R)|(((SI)D)E)|(((UP)P)R))?)),?)[\t-\r ]+)(((((([0-9]+(( +[0-9A-Z_a-z]+).?)+)(((((((( +S)T)R)E)E)T)|(ST)|((((DR)I)V)E)|(DR)|(((((AV)E)N)U)E)|((AV)E)|(((RO)A)D)|(RD)|(((LO)O)P)|((((CO)U)R)T)|(CT)|(((((CI)R)C)L)E)|(((LA)N)E)|(LN)|((((((((BO)U)L)E)V)A)R)D)|(((BL)V)D)).?)?)|(((((((((((P.) ?)O).)|((P ?)O)) *)B)o)x) +)[0-9]+)|(((((((((((((((Ge)n)e)r)a)l) +)D)e)l)i)v)e)r)y)|((((C[/\])O) +)([0-9A-Z_a-z]+ *)+)),?) *)(((((((AP)T)|(((BL)D)G)|(((DE)P)T)|(FL)|(((HN)G)R)|((LO)T)|(((PI)E)R)|(RM)|(S(((LI)P)|(PC)|(T(E|(OP)))))|(((TR)L)R)|(((UN)I)T)|#).?) *)[-0-9A-Za-z]+)|(((BS)M)T)|(((FR)N)T)|(((LB)B)Y)|(((LO)W)R)|((OF)C)|(PH)|(((RE)A)R)|(((SI)D)E)|(((UP)P)R))?)?),?)[\t-\r ]+)([A-Za-z]+ *)+),)[\t-\r ]+)((A[AKLPRSZ])|(C[AOT])|(D[CE])|(F[LM])|(G[AU])|(HI)|(I[ADLN])|(K[SY])|(LA)|(M[ADEHINOPST])|(N[CDEHJMVY])|(O[HKR])|(P[ARW])|(RI)|(S[CD])|(T[NX])|(UT)|(V[AIT])|(W[AIVY])))[\t-\r ]+)([0-9]+(-[0-9]+)?))[\t-\r ]*)
-length: 12 to *
--------------------- Examples --------------------
-ex(0):  General Delivery  L, UT 2  P.O.Box 5  G, KY 3  3 M  i, TN 6
-ex(1):   C/O O FRNT , Q, IL 7-3
-ex(2):  P.O.  Box  4  FRNT,  , cJ wW  , FM  23-80 
-ex(3):     8  iKl  g   q.  REAR , lP   j  ,   KS 79 
-ex(5):     General     DeliveryBSMT    C/O t7WXV   wpBx     f6 fC1n    Ic_,    LBBY,     rI    gx   dsJZ    V  eD  ,  AA    8853-3    
-ex(8):      735    Vi6OgxbRD   ,        183372      dfo    1yGy        L.       dY73.  oe        3lGXY5k.,  REAR     CIK       JkDNuU  BAyv   aRGI        ejzGfn Cgl      idcn    l,       NM     048469      
+#%#% COMMENTED OUT: THIS ONE CREATES NEARLY 10x AS MANY STATES AS ANY OTHER
+
+##U: http://regexlib.com/REDetails.aspx?regexp_id=986
+
+##A: Ross Hammer
+
+##D: Based on a regular expression from Michael Ash, this captures US street addresses and mailing addresses, single or multi-line (multi-line is more reliable), and breaks them into discrete parts for address line 1 and 2, city, state, and postal code.  This expression is not perfect - with the interpreter I am using, some addresses refuse to match correctly.  It should however work for most addresses, particularly when lines are delimited with carriage returns, tabs, or some other whitespace line delimiter that is not a space (\x20).  Note: For improved compatibility, this expression does not use named groups.
+
+##D: **Output**
+
+##D: \1 = Address 1,
+
+##D: \2 = Address 2,
+
+##D: \3 = City,
+
+##D: \4 = State,
+
+##D: \5 = Postal Code
+
+# ^\s*((?:(?:\d+(?:\x20+\w+\.?)+(?:(?:\x20+STREET|ST|DRIVE|DR|AVENUE|AVE|ROAD|RD|LOOP|COURT|CT|CIRCLE|LANE|LN|BOULEVARD|BLVD)\.?)?)|(?:(?:P\.\x20?O\.|P\x20?O)\x20*Box\x20+\d+)|(?:General\x20+Delivery)|(?:C[\\\/]O\x20+(?:\w+\x20*)+))\,?\x20*(?:(?:(?:APT|BLDG|DEPT|FL|HNGR|LOT|PIER|RM|S(?:LIP|PC|T(?:E|OP))|TRLR|UNIT|\x23)\.?\x20*(?:[a-zA-Z0-9\-]+))|(?:BSMT|FRNT|LBBY|LOWR|OFC|PH|REAR|SIDE|UPPR))?)\,?\s+((?:(?:\d+(?:\x20+\w+\.?)+(?:(?:\x20+STREET|ST|DRIVE|DR|AVENUE|AVE|ROAD|RD|LOOP|COURT|CT|CIRCLE|LANE|LN|BOULEVARD|BLVD)\.?)?)|(?:(?:P\.\x20?O\.|P\x20?O)\x20*Box\x20+\d+)|(?:General\x20+Delivery)|(?:C[\\\/]O\x20+(?:\w+\x20*)+))\,?\x20*(?:(?:(?:APT|BLDG|DEPT|FL|HNGR|LOT|PIER|RM|S(?:LIP|PC|T(?:E|OP))|TRLR|UNIT|\x23)\.?\x20*(?:[a-zA-Z0-9\-]+))|(?:BSMT|FRNT|LBBY|LOWR|OFC|PH|REAR|SIDE|UPPR))?)?\,?\s+((?:[A-Za-z]+\x20*)+)\,\s+(A[LKSZRAP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])\s+(\d+(?:-\d+)?)\s*$
 
 
 #A: Gideon Engelberth
