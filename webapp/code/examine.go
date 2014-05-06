@@ -1,7 +1,4 @@
-
-//  This code implements the beginnings of a web application
-//  using Google App Engine
-//  for inspecting and comparing regular expressions.
+//  examine.go -- code for inspecting a single expression in detail
 
 package webapp
 
@@ -13,17 +10,7 @@ import (
 	"rx"
 )
 
-
-
-var examples = []struct{ Expr, Caption string }{
-	{`(0|1(01*0)*1)*`, "Binary number divisible by 3"},
-	{`-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d{1,3})?`, "JSON number"},
-	{`\([2-9]\d\d\) [2-9]\d\d\-\d{4}`, "US telephone number"},
-	{`([0-6]\d{2}|7([0-6]\d|7[012]))-\d{2}-\d{4}`, "US social security number"},
-	{`(19|20)\d\d\-(0[1-9]|1[012])\-(0[1-9]|[12]\d|3[01])`, "ISO 8601 date"},
-	{`([01]\d|2[0-3]):[0-5][0-9]:[0-5][0-9]Z`, "ISO 8601 time"},
-	{`\w+@\w+(\.\w+)+`, "Naive e-mail address"},
-}
+const linemax = 79 // max output line length for generated examples
 
 //  examine presents a query page for examining a single expression
 func examine(w http.ResponseWriter, r *http.Request) {
@@ -39,6 +26,16 @@ var tExamples = template.Must(template.New("examples").Parse(
 <input type="hidden" name="a0" value="{{.Expr}}">
 <button class=link>{{.Caption}}</button></div></form>{{end}}
 `))
+
+var examples = []struct{ Expr, Caption string }{
+	{`(0|1(01*0)*1)*`, "Binary number divisible by 3"},
+	{`-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d{1,3})?`, "JSON number"},
+	{`\([2-9]\d\d\) [2-9]\d\d\-\d{4}`, "US telephone number"},
+	{`([0-6]\d{2}|7([0-6]\d|7[012]))-\d{2}-\d{4}`, "US social security number"},
+	{`(19|20)\d\d\-(0[1-9]|1[012])\-(0[1-9]|[12]\d|3[01])`, "ISO 8601 date"},
+	{`([01]\d|2[0-3]):[0-5][0-9]:[0-5][0-9]Z`, "ISO 8601 time"},
+	{`\w+@\w+(\.\w+)+`, "Naive e-mail address"},
+}
 
 //  details responds to an inspection request for a single expression
 func details(w http.ResponseWriter, r *http.Request) {
@@ -81,8 +78,6 @@ func details(w http.ResponseWriter, r *http.Request) {
 	putform(w, 1, "/details", "Enter a regular expression:")
 	putfooter(w, r)
 }
-
-const linemax = 79 // max output line length for examples
 
 //  genexamples writes a line of specimen strings matching the expression
 func genexamples(w http.ResponseWriter, tree rx.Node, maxrepl int) {

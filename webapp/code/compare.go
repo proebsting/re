@@ -1,7 +1,4 @@
-
-//  This code implements the beginnings of a web application
-//  using Google App Engine
-//  for inspecting and comparing regular expressions.
+// compare.go -- code for comparing multiple regular expressions
 
 package webapp
 
@@ -11,22 +8,6 @@ import (
 	"net/http"
 	"rx"
 )
-
-
-
-var multixamples = []struct {
-	Caption string
-	Exprs   []string
-}{
-	{"Decimal numbers", []string{
-		`[1-9]\d*`, `0|-?[1-9]\d*`, `\d*\.\d+|\d+\.\d*`,
-		`-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d{1,3})?`}},
-	{"Binary integers", []string{
-		`[01]+`, `0|1[01]*`, `(0|1(01*0)*1)*`, `1?(01)*0?`}},
-	{"US Social Security Numbers", []string{
-		`\d\d\d-\d\d-\d\d\d\d`, `\d\d\d-(\d[1-9]|[1-9]\d)-\d\d\d\d`,
-		`([0-6]\d{2}|7([0-6]\d|7[012]))-\d\d-\d\d\d\d`}},
-}
 
 //  compare presents a page asking for multiple expressions
 func compare(w http.ResponseWriter, r *http.Request) {
@@ -43,6 +24,28 @@ var tMultiEx = template.Must(template.New("multixamples").Parse(
 {{end}}
 <button class=link>{{.Caption}}</button></div></form>{{end}}
 `))
+
+var multixamples = []struct {
+	Caption string
+	Exprs   []string
+}{
+	{"Binary integers", []string{
+		`[01]+`, `0|1[01]*`, `(0|1(01*0)*1)*`, `1?(01)*0?`}},
+	{"Decimal numbers", []string{
+		`[1-9]\d*`, `0|-?[1-9]\d*`, `\d*\.\d+|\d+\.\d*`,
+		`-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d{1,3})?`}},
+	{"Times of the Day", []string{
+		`\d\d:\d\d`, `[012][0-9]:[0-5][0-9]`,
+		`([01][0-9]|2[0-3]):[0-5][0-9]`,
+		`(0[1-9]|1[012]):[0-5][0-9]`}},
+	{"US Telephone Numbers", []string{
+		`\(\d{3}\)-\d{3}-\d{4}`,
+		`\([2-9]\d\d\)-[2-9]\d\d-\d\d\d\d`,
+		`\([2-9][01]\d\)-[2-9][2-9][2-9]-\d\d\d\d`}},
+	{"US Social Security Numbers", []string{
+		`\d\d\d-\d\d-\d\d\d\d`, `\d\d\d-(\d[1-9]|[1-9]\d)-\d\d\d\d`,
+		`([0-6]\d{2}|7([0-6]\d|7[012]))-\d\d-\d\d\d\d`}},
+}
 
 //  combos responds to a comparison request for multiple expressions
 func combos(w http.ResponseWriter, r *http.Request) {

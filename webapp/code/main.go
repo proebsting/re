@@ -20,32 +20,15 @@ import (
 //  init registers URLs for dispatching and sets a random seed
 func init() {
 	http.HandleFunc("/", examine)        // anything unmatched
-	http.HandleFunc("/examine", examine)
-	http.HandleFunc("/compare", compare)
-	http.HandleFunc("/details", details)
-	http.HandleFunc("/combos", combos)
+	http.HandleFunc("/examine", examine) // examine.go
+	http.HandleFunc("/details", details) // examine.go
+	http.HandleFunc("/compare", compare) // compare.go
+	http.HandleFunc("/combos", combos)   // compare.go
 	http.HandleFunc("/syntax", syntax)
 	http.HandleFunc("/about", about)
 	http.HandleFunc("/info", info)
 	rand.Seed(int64(time.Now().Nanosecond()))
 }
-
-//  about generates a page describing and crediting the website
-func about(w http.ResponseWriter, r *http.Request) {
-	putheader(w, r, "About")
-	tAbout.Execute(w, r)
-	putfooter(w, r)
-}
-
-var tAbout = template.Must(template.New("about").Parse(`
-<P> This website is a work in progress by:
-<P> <A HREF="http://www.cs.arizona.edu/~proebsting">Todd Proebsting</A>
-<BR> <A HREF="http://www.cs.arizona.edu/~gmt">Gregg Townsend</A>
-<BR> Jasmin Uribe
-<P> <A HREF="http://www.cs.arizona.edu/">Department of Computer Science</A>
-<BR> <A HREF="http://www.arizona.edu/">The University of Arizona</A>
-<BR> Tucson, Arizona, USA
-`))
 
 //  syntax generates a page outlining the accepted syntax
 func syntax(w http.ResponseWriter, r *http.Request) {
@@ -67,6 +50,23 @@ var tSyntax = template.Must(template.New("syntax").Parse(`
 but other <CODE>(?</CODE> forms are errors.
 <P>All expressions are &ldquo;anchored&rdquo;.
 An initial <CODE>^</CODE> and/or final <CODE>$</CODE> is ignored.
+`))
+
+//  about generates a page describing and crediting the website
+func about(w http.ResponseWriter, r *http.Request) {
+	putheader(w, r, "About")
+	tAbout.Execute(w, r)
+	putfooter(w, r)
+}
+
+var tAbout = template.Must(template.New("about").Parse(`
+<P> This website is a work in progress by:
+<P> <A HREF="http://www.cs.arizona.edu/~proebsting">Todd Proebsting</A>
+<BR> <A HREF="http://www.cs.arizona.edu/~gmt">Gregg Townsend</A>
+<BR> Jasmin Uribe
+<P> <A HREF="http://www.cs.arizona.edu/">Department of Computer Science</A>
+<BR> <A HREF="http://www.arizona.edu/">The University of Arizona</A>
+<BR> Tucson, Arizona, USA
 `))
 
 //  info generates a page of information useful to the developers
