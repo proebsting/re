@@ -79,6 +79,12 @@ func combos(w http.ResponseWriter, r *http.Request) {
 		for _, x := range synthx { // put results on list
 			xlist = append(xlist, x.Example)
 		}
+		for i := 0; i < n; i++ {
+			xlist = append(xlist, rx.Specimen(tlist[i], 1))
+			xlist = append(xlist, rx.Specimen(tlist[i], 2))
+			xlist = append(xlist, rx.Specimen(tlist[i], 3))
+			xlist = append(xlist, rx.Specimen(tlist[i], 5))
+		}
 		showgrid(w, dfa, n, xlist) // show examples
 	}
 	fmt.Fprint(w, "<h2>Try again?</h2>")
@@ -86,8 +92,9 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	putfooter(w, r)
 }
 
-//  showgrid prints a table showing which expr matched which example
+//  showgrid prints a table matching exprs with specimens (skipping duplicates)
 func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, xlist []string) {
+	seen := make(map[string]bool, 0)
 	fmt.Fprintf(w, "<H2>Results</H2>\n")
 	fmt.Fprintf(w, "<TABLE>\n<TR>")
 	for i := 0; i < nexpr; i++ {
@@ -95,16 +102,19 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, xlist []string) {
 	}
 	fmt.Fprintf(w, "<TH>example</TH></TR>\n")
 	for _, s := range xlist {
-		fmt.Fprintf(w, "<TR>")
-		aset := dfa.Accepts(s)
-		for i := 0; i < nexpr; i++ {
-			if aset.Test(uint(i)) {
-				fmt.Fprintf(w, "<TD>\u2713</TD>") // ckmark
-			} else {
-				fmt.Fprintf(w, "<TD>\u2013</TD>") // ndash
+		if !seen[s] {
+			seen[s] = true
+			fmt.Fprintf(w, "<TR>")
+			aset := dfa.Accepts(s)
+			for i := 0; i < nexpr; i++ {
+				if aset.Test(uint(i)) {
+					fmt.Fprintf(w, "<TD>\u2713</TD>") // ck
+				} else {
+					fmt.Fprintf(w, "<TD>\u2013</TD>") // -
+				}
 			}
+			fmt.Fprintf(w, "<TD>%s</TD></TR>\n", hx(s))
 		}
-		fmt.Fprintf(w, "<TD>%s</TD></TR>\n", hx(s))
 	}
 	fmt.Fprintf(w, "</TABLE>\n")
 }

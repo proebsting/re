@@ -113,7 +113,7 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 	fmt.Print(s)
 	ncolm := len(s)
 	for {
-		s := string(tree.Example(make([]byte, 0), n))
+		s := rx.Specimen(tree, n)
 		t := rx.Protect(s)
 		ncolm += 2 + len(t)
 		if nprinted > 0 && ncolm > linemax {

@@ -42,6 +42,11 @@ type NodeData struct {
 
 var nildata = NodeData{} // convenient for initialization
 
+//  Specimen generates a synthetic example from a parse tree
+func Specimen(tree Node, maxrepl int) string {
+	return string(tree.Example(make([]byte, 0), maxrepl))
+}
+
 //  VisitFunc is a function to be executed at each node when walking a tree.
 type VisitFunc func(d Node)
 

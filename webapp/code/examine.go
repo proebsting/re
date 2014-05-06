@@ -84,7 +84,7 @@ func genexamples(w http.ResponseWriter, tree rx.Node, maxrepl int) {
 	nprinted := 0
 	ncolm := 0
 	for {
-		s := string(tree.Example(make([]byte, 0), maxrepl))
+		s := rx.Specimen(tree, maxrepl)
 		t := rx.Protect(s)
 		ncolm += 2 + len(t)
 		if nprinted > 0 && ncolm > linemax {

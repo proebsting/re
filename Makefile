@@ -58,7 +58,7 @@ fmt:
 	go fmt rxr/rxr.go
 	go fmt rxx/rxx.go
 	go fmt questions/questions.go
-	go fmt webapp/code/code.go
+	go fmt webapp/code/*.go
 
 #  "make demo" displays a graph of the DFA of the exprs defined above.
 demo:	

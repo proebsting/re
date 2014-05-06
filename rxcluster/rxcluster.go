@@ -172,7 +172,7 @@ func genex(tree rx.Node) []string {
 	x := make([]string, 0)
 	for i := 0; i < nexamples; i++ {
 		r := maxrepl - i%maxrepl
-		x = append(x, string(tree.Example(make([]byte, 0), r)))
+		x = append(x, rx.Specimen(tree, r))
 	}
 	return x
 }
