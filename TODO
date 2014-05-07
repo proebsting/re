@@ -2,6 +2,7 @@ RX TO-DO LIST
 (For consideration: not all of these are clear wins.)
 
 Optimize the DFA minimization code -- slow8.rx
+-- iterate over distinct input classes?
 
 WEB APP:
 Styling

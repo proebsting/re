@@ -95,7 +95,7 @@ func load() ([]*rx.RegExParsed, []rx.Node) {
 		}
 	})
 	babble("%d expression(s) loaded\n", rx.InputRegExCount)
-	if rx.InputErrorCount != 0 {
+	if rx.InputErrorCount != 0 && (!errsilent || verbose) {
 		fmt.Printf("(%d expression(s) rejected)\n",
 			rx.InputErrorCount)
 	}
@@ -105,39 +105,43 @@ func load() ([]*rx.RegExParsed, []rx.Node) {
 // echo prints an input record and errors depending on command options
 func echo(l *rx.RegExParsed, i int) {
 	if !l.IsExpr() && l.Meta != nil { // if metadata line
-		return // will print this later
+		return // will print this later; it's been saved
 	}
-	if listopt { // if need to echo
+	if l.Err != nil { // if an error
+		if !errsilent { // print error unless -y
+			fmt.Printf("ERROR:   %s\n    %s\n", l.Expr, l.Err)
+			if *opt['x'] { // if immediate exit requested
+				log.Fatal(l.Err)
+			}
+		}
+		return
+	}
+	if l.Tree == nil { // if a comment
+		if listopt { // print if wanted
+			fmt.Printf("\n         %s\n", l.Expr)
+		}
+		return
+	}
+
+	// must be a real expression
+	if *opt['i'] || listopt {
 		fmt.Println()
-		// print accumulated metadata
-		for _, k := range rx.KeyList(l.Meta) {
-			fmt.Printf("         #%s: %v\n", k, l.Meta[k])
+		if listopt { // if to echo metadata
+			// print accumulated metadata
+			for _, k := range rx.KeyList(l.Meta) {
+				fmt.Printf("         #%s: %v\n", k, l.Meta[k])
+			}
 		}
-	}
-	if l.Err != nil && !errsilent { // print error unless -y
-		fmt.Printf("ERROR:   %s\n    %s\n", l.Expr, l.Err)
-		if *opt['x'] { // if immediate exit requested
-			log.Fatal(l.Err)
-		}
-	} else if listopt { // print any input with -l
-		if l.Tree != nil { // if an expression, show ordinal
-			fmt.Printf("expr %d: %s\n", i, l.Expr)
-		} else { // otherwise print as comment
-			fmt.Printf("         %s\n", l.Expr)
-		}
+		fmt.Printf("expr %d: %s\n", i, l.Expr)
 	}
 }
 
 // individual handles separate processing of each input regex
 func individual(l *rx.RegExParsed, i int) {
-	if listopt {
-		babble("tree:   %v\n", l.Tree)
-	}
+	babble("tree:   %v\n", l.Tree)
 	//#%#% gen examples here?
 	augt := rx.Augment(l.Tree, uint(i))
-	if listopt {
-		babble("augmnt: %v\n", augt)
-	}
+	babble("augmnt: %v\n", augt)
 	dfa := rx.BuildDFA(augt)
 
 	if *opt['g'] {
@@ -232,7 +236,7 @@ func options() {
 	fo('m', "merge all input expressions into one large DFA")
 	fo('u', "don't minimize (optimize) any DFA produced")
 
-	fo('l', "list input as read")
+	fo('l', "list input comments and metadata")
 	fo('p', "show parse tree nodes with nullable, first, last")
 	fo('n', "show positions and followsets of NFA")
 	fo('d', "show states and transitions of DFA")
@@ -262,6 +266,7 @@ func options() {
 
 	imply("a", "lpndgtv") // -a implies several others
 	imply("NDXT", "m")    // any of {-N -D -X -T} implies -m
+
 	if !*opt['m'] {
 		*opt['i'] = true // if not -m, then must have -i
 	}
