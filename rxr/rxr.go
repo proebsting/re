@@ -96,10 +96,10 @@ func main() {
 			// dump positions and follow sets
 			dfa.ShowNFA(os.Stdout, "NFA")
 			// dump DFA
-			dfa.DumpStates(os.Stdout, "Initial DFA")
+			dfa.ShowStates(os.Stdout, "Initial DFA")
 			// generate minimal DFA and dump that
 			dfa = dfa.Minimize()
-			dfa.DumpStates(os.Stdout, "Minimized DFA")
+			dfa.ShowStates(os.Stdout, "Minimized DFA")
 		}
 	})
 }

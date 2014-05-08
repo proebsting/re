@@ -176,7 +176,7 @@ func showDFA(dfa *rx.DFA, treelabel string, showtime bool) {
 		dfa.ShowNFA(os.Stdout, "NFA")
 	}
 	if *opt['d'] {
-		dfa.DumpStates(os.Stdout, "Unoptimized DFA")
+		dfa.ShowStates(os.Stdout, "Unoptimized DFA")
 	}
 	if !*opt['u'] {
 		if showtime {
@@ -188,7 +188,7 @@ func showDFA(dfa *rx.DFA, treelabel string, showtime bool) {
 				"minimize to %d states", len(dfa.Dstates)))
 		}
 		if *opt['d'] {
-			dfa.DumpStates(os.Stdout, "Minimized DFA")
+			dfa.ShowStates(os.Stdout, "Minimized DFA")
 		}
 	}
 	if *opt['h'] {

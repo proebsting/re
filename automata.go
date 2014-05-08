@@ -185,8 +185,8 @@ func (dfa *DFA) ShowNFA(f io.Writer, label string) {
 	}
 }
 
-//  DFA.DumpStates prints a readable list of states, with optional label.
-func (dfa *DFA) DumpStates(f io.Writer, label string) {
+//  DFA.ShowStates prints a readable list of states, with optional label.
+func (dfa *DFA) ShowStates(f io.Writer, label string) {
 	ShowLabel(f, label)
 	for _, ds := range dfa.Dstates {
 		//#%#% print partition index
