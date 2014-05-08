@@ -56,29 +56,9 @@ func main() {
 	}
 
 	dfa := rx.MultiDFA(trees)
-	if *opt['p'] {
-		dfa.ShowTree(os.Stdout, dfa.Tree, "Combined Tree")
-	}
-	if *opt['n'] {
-		dfa.ShowNFA(os.Stdout, "NFA")
-	}
-	if *opt['d'] {
-		dfa.DumpStates(os.Stdout, "Unoptimized DFA")
-	}
 	timestamp(fmt.Sprintf(
 		"make merged DFA of %d states", len(dfa.Dstates)))
-
-	if !*opt['u'] {
-		dfa = dfa.Minimize()
-		if *opt['d'] {
-			dfa.DumpStates(os.Stdout, "Minimized DFA")
-		}
-		timestamp(fmt.Sprintf(
-			"minimize to %d states", len(dfa.Dstates)))
-	}
-	if *opt['h'] {
-		synthx(dfa)
-	}
+	showDFA(dfa, "Combined Tree", *opt['t'])
 }
 
 // load slurps up expressions, returning list and augmented parse tree list
@@ -155,24 +135,7 @@ func individual(l *rx.RegExParsed, i int) {
 		examples(dfa, l.Tree, 5) // ... and 5
 		examples(dfa, l.Tree, 8) // ... and 8
 	}
-	if *opt['p'] {
-		dfa.ShowTree(os.Stdout, augt, "Annotated Tree")
-	}
-	if *opt['n'] {
-		dfa.ShowNFA(os.Stdout, "NFA")
-	}
-	if *opt['d'] {
-		dfa.DumpStates(os.Stdout, "Unoptimized DFA")
-	}
-	if !*opt['u'] {
-		dfa = dfa.Minimize()
-		if *opt['d'] {
-			dfa.DumpStates(os.Stdout, "Minimized DFA")
-		}
-	}
-	if *opt['h'] {
-		synthx(dfa)
-	}
+	showDFA(dfa, "Annotated Tree", false)
 }
 
 //   examples generates a line's worth of examples with max replication n.
@@ -197,6 +160,35 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 		nprinted++
 	}
 	fmt.Println()
+}
+
+// showDFA performs common actions for individual and merged DFAs
+func showDFA(dfa *rx.DFA, treelabel string, showtime bool) {
+	if *opt['p'] {
+		dfa.ShowTree(os.Stdout, dfa.Tree, treelabel)
+	}
+	if *opt['n'] {
+		dfa.ShowNFA(os.Stdout, "NFA")
+	}
+	if *opt['d'] {
+		dfa.DumpStates(os.Stdout, "Unoptimized DFA")
+	}
+	if !*opt['u'] {
+		if showtime {
+			rsys.Interval() // reset for timing
+		}
+		dfa = dfa.Minimize()
+		if showtime {
+			timestamp(fmt.Sprintf(
+				"minimize to %d states", len(dfa.Dstates)))
+		}
+		if *opt['d'] {
+			dfa.DumpStates(os.Stdout, "Minimized DFA")
+		}
+	}
+	if *opt['h'] {
+		synthx(dfa)
+	}
 }
 
 //  synthx generates and prints synthetic examples from a DFA.
@@ -260,7 +252,6 @@ func options() {
 	fo('t', "output timing measurements")
 	fo('v', "enable running commentary")
 	fo('a', "enable all output options") // all of the above
-	// fo('q', "suppress default output")
 	fo('x', "exit immediately on erroneous input")
 	fo('y', "silently ignore errors")
 	fo('z', "enable debug tracing")
