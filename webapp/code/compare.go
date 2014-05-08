@@ -68,7 +68,7 @@ func combos(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "<P><B>e%d:</B> &nbsp; %s\n", i, hx(s))
 		tree, err := rx.Parse(s)
 		if !showerror(w, err) {
-			tlist = append(tlist, rx.Augment(tree, uint(i)))
+			tlist = append(tlist, rx.Augment(tree, i))
 		}
 	}
 
@@ -107,7 +107,7 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, xlist []string) {
 			fmt.Fprintf(w, "<TR>")
 			aset := dfa.Accepts(s)
 			for i := 0; i < nexpr; i++ {
-				if aset.Test(uint(i)) {
+				if aset.Test(i) {
 					fmt.Fprintf(w, "<TD>\u2713</TD>") // ck
 				} else {
 					fmt.Fprintf(w, "<TD>\u2013</TD>") // -

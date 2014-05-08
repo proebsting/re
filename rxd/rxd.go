@@ -56,7 +56,7 @@ func main() {
 	for _, e := range elist {
 		ptree, err := rx.Parse(e)
 		rx.CkErr(err)
-		tlist = append(tlist, rx.Augment(ptree, uint(len(tlist))))
+		tlist = append(tlist, rx.Augment(ptree, len(tlist)))
 	}
 
 	// build the DFA

@@ -13,27 +13,27 @@ import (
 	"math/big"
 )
 
-//  A BitSet is a simple bit-mapped representation of a set of small uints.
+//  A BitSet is a simple bit-mapped representation of a set of small ints.
 //  No explicit constructor is needed; use new(BitSet) or &BitSet{}.
 type BitSet struct {
 	Bits big.Int
 }
 
 //  BitSet.Set sets one bit in a BitSet.
-func (b *BitSet) Set(bit uint) *BitSet {
-	b.Bits.SetBit(&b.Bits, int(bit), 1)
+func (b *BitSet) Set(bit int) *BitSet {
+	b.Bits.SetBit(&b.Bits, bit, 1)
 	return b
 }
 
 //  BitSet.Clear clears one bit in a BitSet.
-func (b *BitSet) Clear(bit uint) *BitSet {
-	b.Bits.SetBit(&b.Bits, int(bit), 0)
+func (b *BitSet) Clear(bit int) *BitSet {
+	b.Bits.SetBit(&b.Bits, bit, 0)
 	return b
 }
 
 //  BitSet.Test returns true if the specified BitSet bit is set.
-func (b *BitSet) Test(bit uint) bool {
-	return b.Bits.Bit(int(bit)) == 1
+func (b *BitSet) Test(bit int) bool {
+	return b.Bits.Bit(bit) == 1
 }
 
 //  BitSet.IsEmpty returns true if no bits are set in the BitSet.
@@ -47,7 +47,7 @@ func (b *BitSet) Count() int {
 	l := b.Lowbit()
 	h := b.Highbit()
 	for i := l; i <= h; i++ { // for all values up to highest
-		if b.Test(uint(i)) { // if this value is included
+		if b.Test(i) { // if this value is included
 			n++ // count it
 		}
 	}
@@ -122,13 +122,13 @@ func (b *BitSet) Key() string {
 //  BitSet.Members returns a slice containing the values found in the set.
 //  This is the easiest way to iterate through the members of a bit set:
 //	for _, i := range bset.Members() { ... }
-func (b *BitSet) Members() []uint {
-	m := make([]uint, 0, 0) // initial capacity 0 is faster than h-l+1
+func (b *BitSet) Members() []int {
+	m := make([]int, 0, 0) // initial capacity 0 is faster than h-l+1
 	l := b.Lowbit()
 	h := b.Highbit()
 	for i := l; i <= h; i++ { // for all values up to highest
-		if b.Test(uint(i)) { // if this value is included
-			m = append(m, uint(i))
+		if b.Test(i) { // if this value is included
+			m = append(m, i)
 		}
 	}
 	return m

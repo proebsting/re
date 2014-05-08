@@ -46,7 +46,7 @@ func main() {
 
 	// make augmented parse trees
 	for i, t := range exprs {
-		t.Tree = rx.Augment(t.Tree, uint(i))
+		t.Tree = rx.Augment(t.Tree, i)
 	}
 
 	// initialize index list for first combination {0,1,2...}

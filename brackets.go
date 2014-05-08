@@ -27,10 +27,10 @@ func bxparse(s string) (*BitSet, string) {
 		compl = true
 		s = s[1:]
 	}
-	cprev := uint(0) // no previous character
+	cprev := 0 // no previous character
 	// process body of expression
 	for len(s) > 0 {
-		ch := uint(s[0])
+		ch := int(s[0])
 		s = s[1:]
 		switch ch {
 		case '[':
@@ -44,7 +44,7 @@ func bxparse(s string) (*BitSet, string) {
 		case '-':
 			// range of chars
 			if cprev != 0 && len(s) > 0 && s[0] != ']' {
-				ch = uint(s[0])
+				ch = int(s[0])
 				s = s[1:]
 				if ch == '\\' {
 					var eset *BitSet
@@ -52,7 +52,7 @@ func bxparse(s string) (*BitSet, string) {
 					if eset == nil {
 						return nil, s
 					}
-					ch = uint(eset.Lowbit())
+					ch = eset.Lowbit()
 				}
 				if ch < cprev {
 					return nil, "invalid range"
@@ -82,7 +82,7 @@ func bxparse(s string) (*BitSet, string) {
 					return nil, s
 				}
 				result.OrWith(eset)
-				ch = uint(eset.Highbit())
+				ch = eset.Highbit()
 			} // else: error caught on next iteration
 		default:
 			// an ordinary char; add to set
@@ -118,17 +118,17 @@ func bescape(s string) (*BitSet, string) {
 	if len(s) == 0 {
 		return nil, "'\\' at end"
 	}
-	c := s[0]
+	c := int(s[0])
 	s = s[1:]
 	switch c {
 	case '0', '1', '2', '3', '4', '5', '6', '7':
-		v := uint(c - '0')         // first digit
+		v := c - '0'               // first digit
 		if o := octal(s); o >= 0 { // optional 2nd digit
-			v = 8*v + uint(o)
+			v = 8*v + o
 			s = s[1:]
 		}
 		if o := octal(s); o >= 0 { // optional 3nd digit
-			v = 8*v + uint(o)
+			v = 8*v + o
 			s = s[1:]
 		}
 		return (&BitSet{}).Set(v), s
@@ -157,7 +157,7 @@ func bescape(s string) (*BitSet, string) {
 	case 'u':
 		v := hexl(s, 4)
 		if v >= 0 {
-			return (&BitSet{}).Set(uint(v)), s[4:]
+			return (&BitSet{}).Set(v), s[4:]
 		} else {
 			return nil, "malformed '\\uhhhh'"
 		}
@@ -168,7 +168,7 @@ func bescape(s string) (*BitSet, string) {
 	case 'x':
 		v := hexl(s, 2)
 		if v >= 0 {
-			return (&BitSet{}).Set(uint(v)), s[2:]
+			return (&BitSet{}).Set(v), s[2:]
 		} else {
 			return nil, "malformed '\\xhh'"
 		}
@@ -185,7 +185,7 @@ func bescape(s string) (*BitSet, string) {
 		if unicode.IsLetter(rune(c)) {
 			return nil, fmt.Sprintf("'\\%c' unrecognized", c)
 		} else {
-			return (&BitSet{}).Set(uint(c)), s
+			return (&BitSet{}).Set(c), s
 		}
 	}
 }
@@ -193,7 +193,7 @@ func bescape(s string) (*BitSet, string) {
 //  octal returns the value of the first digit of s, or -1 if not octal digit.
 func octal(s string) int {
 	if len(s) > 0 && s[0] >= '0' && s[0] <= '7' {
-		return int(s[0] - '0')
+		return int(s[0]) - '0'
 	} else {
 		return -1
 	}

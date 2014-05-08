@@ -14,7 +14,7 @@ import (
 func CharSet(s string) *BitSet {
 	cs := new(BitSet)
 	for _, ch := range s {
-		cs.Set(uint(ch))
+		cs.Set(int(ch))
 	}
 	return cs
 }
@@ -25,7 +25,7 @@ func (b1 *BitSet) CharCompl() *BitSet {
 	if allChars == nil {
 		allChars = new(BitSet)
 		for i := lowMatch; i <= highMatch; i++ {
-			allChars.Set(uint(i))
+			allChars.Set(i)
 		}
 	}
 	b3 := new(BitSet)
@@ -54,7 +54,7 @@ func (b *BitSet) RandChar() byte {
 	}
 	// #%#%#% This code is not particularly efficient.
 	for h--; h >= l; h-- { // check lower valued characters
-		if b.Test(uint(h)) { // if eligible to be chosen
+		if b.Test(h) { // if eligible to be chosen
 			n++ // adjust n for unbiased odds
 			if rand.Intn(n) == 0 {
 				c = byte(h) // replace tentative choice
@@ -76,10 +76,10 @@ func (b *BitSet) Bracketed() string {
 	s := make([]byte, 0)
 	s = append(s, '[')
 	for i := l; i <= h; i++ { // for all chars up to highest
-		if b.Test(uint(i)) { // if char is included
+		if b.Test(i) { // if char is included
 			s = append(s, cprotect(rune(byte(i)))...) // show char
 			var j int
-			for j = i + 1; b.Test(uint(j)); j++ {
+			for j = i + 1; b.Test(j); j++ {
 				// count consecutive inclusions
 			}
 			if j-i > 3 { // if worth using [a-z] form

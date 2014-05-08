@@ -13,14 +13,14 @@ var DBG_MIN = false // enable/disable minimization debugging output
 //  A Partition is a subset of the states of a DFA.
 type Partition struct {
 	Automata *DFA      // the containing DFA
-	Index    uint      // index (label) of this partition
+	Index    int       // index (label) of this partition
 	StateSet *BitSet   // members of this partition
 	NewState *DFAstate // destination state in minimized DFA
 }
 
 //  DFA.newPartition creates a new partition and adds it to a DFA.
 func (dfa *DFA) newPartition() *Partition {
-	p := &Partition{dfa, uint(len(dfa.PartList)), &BitSet{}, nil}
+	p := &Partition{dfa, len(dfa.PartList), &BitSet{}, nil}
 	dfa.PartList = append(dfa.PartList, p)
 	return p
 }
@@ -143,8 +143,8 @@ func (p *Partition) distinguish() int {
 //  none.
 func (s1 *DFAstate) distinguish(s2 *DFAstate) int {
 	for x := range s1.Dnext {
-		if s1.partOn(int(x)) != s2.partOn(int(x)) {
-			return int(x)
+		if s1.partOn(x) != s2.partOn(x) {
+			return x
 		}
 	}
 	return -1
@@ -175,8 +175,8 @@ func (p *Partition) divideBy(x int) {
 }
 
 //  DFAstate.partOn returns the index of the partition reached by input x.
-func (ds *DFAstate) partOn(x int) uint {
-	dd := ds.Dnext[uint(x)]
+func (ds *DFAstate) partOn(x int) int {
+	dd := ds.Dnext[x]
 	if dd == nil {
 		dd = deadstate
 	}
@@ -196,9 +196,9 @@ func (ds *DFAstate) mergeFrom(p *Partition) {
 			ds.AccSet.OrWith(os.AccSet) // merge acceptors
 		}
 		for x := range os.Dnext { // for each input
-			odest := os.Dnext[uint(x)] // get old dest state
+			odest := os.Dnext[x] // get old dest state
 			ndest := dfa.PartList[odest.PartNum].NewState
-			ds.Dnext[uint(x)] = ndest // set new destination
+			ds.Dnext[x] = ndest // set new destination
 		}
 	}
 }

@@ -4,7 +4,7 @@ package rx
 
 //  A DFAexample is a matching string synthesized from a DFA.
 type DFAexample struct {
-	State   uint    // index of accepting state in DFA
+	State   int     // index of accepting state in DFA
 	RXset   *BitSet // set of matching regular expression indexes
 	Example string  // example string
 }

@@ -52,8 +52,8 @@ type RegEx struct { // one regexp for JSON output
 }
 
 type Example struct { // one example for JSON output
-	State   uint   // index of accepting state in DFA
-	RXset   []uint // set of matching regular expression indexes
+	State   int    // index of accepting state in DFA
+	RXset   []int  // set of matching regular expression indexes
 	Example string // example string
 }
 
@@ -75,7 +75,7 @@ func main() {
 			fmt.Fprintln(os.Stderr, l.Err)
 		}
 		if l.Tree != nil {
-			atree := rx.Augment(l.Tree, uint(len(tlist)))
+			atree := rx.Augment(l.Tree, len(tlist))
 			tlist = append(tlist, atree)
 			exprs = append(exprs, &RegEx{len(exprs), l.Expr})
 		}
@@ -89,7 +89,7 @@ func main() {
 	// build the DFA and produce examples
 	synthx := rx.MultiDFA(tlist).Synthesize()
 
-	// convert into expected form with uint array replacing BitSet
+	// convert into expected form with int array replacing BitSet
 	results := make([]*Example, 0, len(synthx))
 	for _, x := range synthx {
 		results = append(results,

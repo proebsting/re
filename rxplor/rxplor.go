@@ -74,7 +74,7 @@ func load() ([]*rx.RegExParsed, []rx.Node) {
 	rx.LoadFromScanner(input, func(l *rx.RegExParsed) {
 		echo(l, len(exprs))
 		if l.Tree != nil { // if a real expression
-			augtree := rx.Augment(l.Tree, uint(len(trees)))
+			augtree := rx.Augment(l.Tree, len(trees))
 			trees = append(trees, augtree)
 			exprs = append(exprs, l)
 			if *opt['i'] {
@@ -127,7 +127,7 @@ func echo(l *rx.RegExParsed, i int) {
 // individual handles separate processing of each input regex
 func individual(l *rx.RegExParsed, i int) {
 	babble("tree:   %v\n", l.Tree)
-	augt := rx.Augment(l.Tree, uint(i))
+	augt := rx.Augment(l.Tree, i)
 	babble("augmnt: %v\n", augt)
 	dfa := rx.BuildDFA(augt)
 

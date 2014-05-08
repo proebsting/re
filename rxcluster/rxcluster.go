@@ -61,8 +61,8 @@ const labelchars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 //  a RegEx struct holds everything we need per input expression
 type RegEx struct {
-	index          uint     // expression index
-	cnum           uint     // cluster containing this expr
+	index          int      // expression index
+	cnum           int      // cluster containing this expr
 	next           *RegEx   // next member in this cluster
 	label          byte     // label char within cluster
 	rx.RegExParsed          // Expr, Tree, Err, Meta
@@ -88,7 +88,7 @@ func main() {
 		fmt.Printf("(%d erroneous expression(s) ignored)\n", e)
 	}
 	for i := 0; i < len(exprs); i++ {
-		if exprs[i].cnum == uint(i) { // if the head of a cluster
+		if exprs[i].cnum == i { // if the head of a cluster
 			showcluster(i) // show the cluster
 		}
 	}
@@ -146,8 +146,8 @@ func load(filename string) []*RegEx {
 	rx.LoadExpressions(filename, func(l *rx.RegExParsed) {
 		if l.Tree != nil { // if a real expression
 			e := &RegEx{}
-			e.index = uint(len(elist))
-			e.cnum = uint(len(elist))
+			e.index = len(elist)
+			e.cnum = len(elist)
 			e.RegExParsed = *l         // save parse tree
 			e.examples = genex(l.Tree) // gen examples unaugmented
 			t := rx.Augment(l.Tree, e.index)

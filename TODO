@@ -7,6 +7,7 @@ Optimize the DFA minimization code -- slow8.rx
 WEB APP:
 Styling
 Explanatory prose
+Resource limit? (state count? replication max?)
 
 REGEXPS:
 Review Unicode situation
@@ -25,7 +26,6 @@ Produce DOT for NFA, too
 Combine multiple utilities into one (Swiss army knife)?
 
 CLEANUP:
-Remove all uints, just use ints?
 Make everything Unicode safe?
 Address #%#% annotations in code
 Rework testing scheme to allow for command options

@@ -25,18 +25,18 @@ func newDFA(tree Node) *DFA {
 //  DFAstate is one state in a DFA.
 //  The Dnext table maps input symbols to successor states.
 type DFAstate struct {
-	Index   uint               // index (label) of this state
-	Marked  bool               // true when "marked" during traversal
-	Posns   *BitSet            // set of positions in the state
-	AccSet  *BitSet            // set of regexps that accept here, or nil
-	Dnext   map[uint]*DFAstate // transition map
-	PartNum uint               // partition number during minimization
+	Index   int               // index (label) of this state
+	Marked  bool              // true when "marked" during traversal
+	Posns   *BitSet           // set of positions in the state
+	AccSet  *BitSet           // set of regexps that accept here, or nil
+	Dnext   map[int]*DFAstate // transition map
+	PartNum int               // partition number during minimization
 }
 
 //  DFA.newState makes a new DFAstate and adds it to a DFA.
 func (dfa *DFA) newState(posns *BitSet) *DFAstate {
-	ds := &DFAstate{uint(len(dfa.Dstates)), false, posns, nil,
-		make(map[uint]*DFAstate, 0), 0}
+	ds := &DFAstate{len(dfa.Dstates), false, posns, nil,
+		make(map[int]*DFAstate, 0), 0}
 	dfa.Dstates = append(dfa.Dstates, ds)
 	return ds
 }
@@ -64,7 +64,7 @@ func MultiDFA(tlist []Node) *DFA {
 	dfa := newDFA(tree)
 
 	// prepare nodes for followpos computation
-	n := uint(0)
+	n := 0
 	Walk(tree, nil, func(d Node) {
 		if leaf, ok := d.(*MatchNode); ok {
 			// it's a leaf, so number it and remember it
@@ -137,7 +137,7 @@ func (dfa *DFA) lookup(m map[string]*DFAstate, u *BitSet) *DFAstate {
 
 //  validHere returns the union of the csets of all members of plist.
 //  (This gives us fewer potential input symbols a over which to iterate.)
-func (dfa *DFA) validHere(plist []uint) []uint {
+func (dfa *DFA) validHere(plist []int) []int {
 	pmap := dfa.Leaves
 	cs := &BitSet{}
 	for _, p := range plist {
@@ -147,7 +147,7 @@ func (dfa *DFA) validHere(plist []uint) []uint {
 }
 
 //  followSet returns those positions in followpos(p) where p matches a
-func (dfa *DFA) followSet(plist []uint, a uint) *BitSet {
+func (dfa *DFA) followSet(plist []int, a int) *BitSet {
 	fset := &BitSet{}
 	for _, p := range plist {
 		leaf := dfa.Leaves[p]
@@ -160,9 +160,9 @@ func (dfa *DFA) followSet(plist []uint, a uint) *BitSet {
 
 //  DFAstate.InvertMap lists dest states and maps to transition sets.
 //  The list duplicates the map indexes but is more easily traversed in order.
-func (ds *DFAstate) InvertMap() (*BitSet, map[uint]*BitSet) {
+func (ds *DFAstate) InvertMap() (*BitSet, map[int]*BitSet) {
 	slist := &BitSet{}
-	xmap := make(map[uint]*BitSet)
+	xmap := make(map[int]*BitSet)
 	for c, ds := range ds.Dnext {
 		j := ds.Index
 		v := xmap[j]
@@ -228,7 +228,7 @@ func (dfa *DFA) ToDot(f io.Writer, label string) {
 		slist, xmap := src.InvertMap()
 		for _, dst := range slist.Members() {
 			fmt.Fprintf(f, "s%d->s%d[label=\"%s\"]\n",
-				src.Index, dst, xmap[uint(dst)].Bracketed())
+				src.Index, dst, xmap[dst].Bracketed())
 		}
 	}
 	fmt.Fprintln(f, "}")

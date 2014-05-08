@@ -14,8 +14,8 @@ import (
 var _ = fmt.Printf //#%#%#% for debugging
 
 //  Globals set as a side effect of loading input
-var InputRegExCount uint // number of expressions successfully loaded
-var InputErrorCount uint // number of unacceptable expressions rejected
+var InputRegExCount int // number of expressions successfully loaded
+var InputErrorCount int // number of unacceptable expressions rejected
 
 //  A RegExParsed is a single parsed regular expression.
 //  If Tree is not nil then the expression was parsed as valid.

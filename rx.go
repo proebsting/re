@@ -37,7 +37,7 @@ func Compile(rexpr string) (*DFA, error) {
 func (dfa *DFA) Accepts(s string) *BitSet {
 	state := dfa.Dstates[0]
 	for _, r := range s {
-		state = state.Dnext[uint(r)]
+		state = state.Dnext[int(r)]
 		if state == nil {
 			return nil // unmatched char
 		}
@@ -50,7 +50,7 @@ func (dfa *DFA) Accepts(s string) *BitSet {
 //  This new root concatenates an Accept node to the input tree.
 //  Additionally, any fixed {m,n} replications with m>1 or n>1 are replaced
 //  by concatenations of duplicated subtrees.
-func Augment(tree Node, rxindex uint) Node {
+func Augment(tree Node, rxindex int) Node {
 	Walk(tree, nil, func(d Node) {
 		switch d.(type) {
 		case *ConcatNode:

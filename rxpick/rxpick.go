@@ -29,7 +29,7 @@ func main() {
 	for i := 2; i < len(os.Args); i++ {
 		n, err := strconv.Atoi(os.Args[i])
 		rx.CkErr(err)
-		xset.Set(uint(n))
+		xset.Set(n)
 	}
 
 	// load expressions from file
@@ -38,7 +38,7 @@ func main() {
 	// print desired entries
 	for _, i := range xset.Members() {
 		fmt.Printf("\n# { %d }\n", i)
-		if int(i) >= len(exprs) {
+		if i >= len(exprs) {
 			fmt.Printf("# OUT OF RANGE\n")
 			continue
 		}

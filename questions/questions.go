@@ -14,8 +14,8 @@ type RegEx struct {
 }
 
 type DFAexample struct {
-	State   uint
-	RXSet   []uint
+	State   int
+	RXSet   []int
 	Example string
 }
 
@@ -132,10 +132,10 @@ begin:
 
 		bs := new(rx.BitSet)
 		for i := 0; i < cap(e); i++ {
-			if nextQn.Test(uint(i)) {
+			if nextQn.Test(i) {
 
 			} else {
-				bs.Set(uint(i))
+				bs.Set(i)
 			}
 		}
 		alive = bs.And(alive)
@@ -215,7 +215,7 @@ func main() {
 	for it := 0; it < len(testExp.Examples); it++ {
 		elem := new(rx.BitSet)
 		for nt := 0; nt < len(testExp.Examples[it].RXSet); nt++ {
-			elem.Set(uint(testExp.Examples[it].RXSet[nt]))
+			elem.Set(testExp.Examples[it].RXSet[nt])
 		}
 		start = append(start, elem)
 	}
@@ -228,7 +228,7 @@ func main() {
 	//Make a bit set for regular expressions that are still alive, initially set to all 1's
 	alive := new(rx.BitSet)
 	for it := 0; it < len(testExp.Expressions); it++ {
-		alive.Set(uint(it))
+		alive.Set(it)
 	}
 	// fmt.Println(alive.String());
 

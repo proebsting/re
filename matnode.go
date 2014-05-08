@@ -7,8 +7,8 @@ package rx
 //  A special MatchNode with an empty set represents an acceptance marker.
 type MatchNode struct {
 	Cset    *BitSet // the characters that will match
-	Posn    uint    // integer "position" designator of leaf
-	RxIndex uint    // which RE does this Accept node belong to?
+	Posn    int     // integer "position" designator of leaf
+	RxIndex int     // which RE does this Accept node belong to?
 	NodeData
 }
 
@@ -18,7 +18,7 @@ func MatchAny(cs *BitSet) Node {
 }
 
 //  Accept returns a special MatchNode with an empty cset.
-func Accept(rxindex uint) Node {
+func Accept(rxindex int) Node {
 	return &MatchNode{&BitSet{}, 0, rxindex, nildata}
 }
 
