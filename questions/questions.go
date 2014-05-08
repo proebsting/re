@@ -36,7 +36,7 @@ func question(u []*rx.BitSet, h []*DFAexample, e []*RegEx, alive *rx.BitSet, tra
 
 	if track == 1 {
 		if alive.Count() == 1 {
-			fmt.Println("The reg ex you are looking for is: ", e[alive.Lowbit()].Rexpr)
+			fmt.Println("The reg ex you are looking for is: ", e[alive.LowBit()].Rexpr)
 			return t, k
 		}
 	}
@@ -56,7 +56,7 @@ func question(u []*rx.BitSet, h []*DFAexample, e []*RegEx, alive *rx.BitSet, tra
 
 		if input1 == "Yes" || input1 == "y" || input1 == "Y" || input1 == "yes" {
 			track++
-			fmt.Println("The reg ex you are looking for is: ", e[alive.Lowbit()].Rexpr)
+			fmt.Println("The reg ex you are looking for is: ", e[alive.LowBit()].Rexpr)
 			return t, k
 		} else if input1 == "No" || input1 == "N" || input1 == "n" || input1 == "no" {
 			fmt.Println("No reg ex in our library matches your query.")
@@ -107,7 +107,7 @@ begin:
 		track++
 		if nextQn.Count() == 1 {
 			t = append(t, nextQn)
-			fmt.Println("The reg ex you are looking for is: ", e[nextQn.Lowbit()].Rexpr)
+			fmt.Println("The reg ex you are looking for is: ", e[nextQn.LowBit()].Rexpr)
 			k = append(k, h[examInt])
 			return t, k
 		}

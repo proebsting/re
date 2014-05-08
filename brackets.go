@@ -52,7 +52,7 @@ func bxparse(s string) (*BitSet, string) {
 					if eset == nil {
 						return nil, s
 					}
-					ch = eset.Lowbit()
+					ch = eset.LowBit()
 				}
 				if ch < cprev {
 					return nil, "invalid range"
@@ -82,7 +82,7 @@ func bxparse(s string) (*BitSet, string) {
 					return nil, s
 				}
 				result.OrWith(eset)
-				ch = eset.Highbit()
+				ch = eset.HighBit()
 			} // else: error caught on next iteration
 		default:
 			// an ordinary char; add to set

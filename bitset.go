@@ -44,8 +44,8 @@ func (b *BitSet) IsEmpty() bool {
 //  BitSet.Count returns the number of bits that are set.
 func (b *BitSet) Count() int {
 	n := 0
-	l := b.Lowbit()
-	h := b.Highbit()
+	l := b.LowBit()
+	h := b.HighBit()
 	for i := l; i <= h; i++ { // for all values up to highest
 		if b.Test(i) { // if this value is included
 			n++ // count it
@@ -54,9 +54,9 @@ func (b *BitSet) Count() int {
 	return n
 }
 
-//  BitSet.Lowbit returns the number of the smallest bit set.
+//  BitSet.LowBit returns the number of the smallest bit set.
 //  It returns 0 if the BitSet is empty.
-func (b *BitSet) Lowbit() int {
+func (b *BitSet) LowBit() int {
 	// inspired by thoughts of HAKMEM...
 	bigTemp.Sub(&b.Bits, bigOne)
 	bigTemp.Xor(&b.Bits, bigTemp)
@@ -69,14 +69,14 @@ func (b *BitSet) Lowbit() int {
 	}
 }
 
-//  BitSet.Highbit returns the number of the highest bit set.
+//  BitSet.HighBit returns the number of the highest bit set.
 //  It returns -1 if the BitSet is empty.
-func (b *BitSet) Highbit() int {
+func (b *BitSet) HighBit() int {
 	return b.Bits.BitLen() - 1
 }
 
-var bigOne = big.NewInt(1)  // static constant used in Lowbit()
-var bigTemp = big.NewInt(0) // static temporary used in Lowbit()
+var bigOne = big.NewInt(1)  // static constant used in LowBit()
+var bigTemp = big.NewInt(0) // static temporary used in LowBit()
 
 //  BitSet.Equals returns true if the argument set is identical to this one.
 func (b1 *BitSet) Equals(b2 *BitSet) bool {
@@ -124,8 +124,8 @@ func (b *BitSet) Key() string {
 //	for _, i := range bset.Members() { ... }
 func (b *BitSet) Members() []int {
 	m := make([]int, 0, 0) // initial capacity 0 is faster than h-l+1
-	l := b.Lowbit()
-	h := b.Highbit()
+	l := b.LowBit()
+	h := b.HighBit()
 	for i := l; i <= h; i++ { // for all values up to highest
 		if b.Test(i) { // if this value is included
 			m = append(m, i)
