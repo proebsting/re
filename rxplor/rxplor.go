@@ -54,6 +54,11 @@ func main() {
 	if !*opt['m'] { // if nothing uses a combined DFA
 		return
 	}
+	if *opt['i'] { // if preceded by individual processing
+		fmt.Println()
+		rx.ShowLabel(os.Stdout, "MERGING EXPRESSIONS")
+		fmt.Println()
+	}
 
 	dfa := rx.MultiDFA(trees)
 	timestamp(fmt.Sprintf(
@@ -193,11 +198,16 @@ func showDFA(dfa *rx.DFA, treelabel string, showtime bool) {
 
 //  synthx generates and prints synthetic examples from a DFA.
 func synthx(dfa *rx.DFA) {
+	_, isMulti := dfa.Tree.(*rx.AltNode) // true if MultiDFA
+	synthx := dfa.Synthesize()           // synthesize examples
 	rx.ShowLabel(os.Stdout, "Examples from DFA")
-	synthx := dfa.Synthesize()
 	for _, x := range synthx {
-		fmt.Printf("(%d) s%d: %s\n",
-			x.RXset.Count(), x.State, rx.Protect(x.Example))
+		fmt.Printf("s%d:  %s", x.State, rx.Protect(x.Example))
+		if isMulti {
+			fmt.Printf("  %s\n", x.RXset)
+		} else {
+			fmt.Println()
+		}
 	}
 }
 
