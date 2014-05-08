@@ -97,7 +97,7 @@ func echo(l *rx.RegExParsed, i int) {
 	}
 	if l.Err != nil { // if an error
 		if !errsilent { // print error unless -y
-			fmt.Printf("ERROR:   %s\n    %s\n", l.Expr, l.Err)
+			fmt.Printf("\nERROR:   %s\n    %s\n", l.Expr, l.Err)
 			if *opt['x'] { // if immediate exit requested
 				log.Fatal(l.Err)
 			}
