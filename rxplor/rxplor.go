@@ -69,12 +69,15 @@ func main() {
 		"make merged DFA of %d states", len(dfa.Dstates)))
 
 	if !*opt['u'] {
-		mini := dfa.Minimize()
+		dfa = dfa.Minimize()
 		if *opt['d'] {
 			dfa.DumpStates(os.Stdout, "Minimized DFA")
 		}
 		timestamp(fmt.Sprintf(
-			"minimize to %d states", len(mini.Dstates)))
+			"minimize to %d states", len(dfa.Dstates)))
+	}
+	if *opt['h'] {
+		synthx(dfa)
 	}
 }
 
@@ -139,7 +142,6 @@ func echo(l *rx.RegExParsed, i int) {
 // individual handles separate processing of each input regex
 func individual(l *rx.RegExParsed, i int) {
 	babble("tree:   %v\n", l.Tree)
-	//#%#% gen examples here?
 	augt := rx.Augment(l.Tree, uint(i))
 	babble("augmnt: %v\n", augt)
 	dfa := rx.BuildDFA(augt)
@@ -168,6 +170,9 @@ func individual(l *rx.RegExParsed, i int) {
 			dfa.DumpStates(os.Stdout, "Minimized DFA")
 		}
 	}
+	if *opt['h'] {
+		synthx(dfa)
+	}
 }
 
 //   examples generates a line's worth of examples with max replication n.
@@ -192,6 +197,16 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 		nprinted++
 	}
 	fmt.Println()
+}
+
+//  synthx generates and prints synthetic examples from a DFA.
+func synthx(dfa *rx.DFA) {
+	rx.ShowLabel(os.Stdout, "Examples from DFA")
+	synthx := dfa.Synthesize()
+	for _, x := range synthx {
+		fmt.Printf("(%d) s%d: %s\n",
+			x.RXset.Count(), x.State, rx.Protect(x.Example))
+	}
 }
 
 // setup performs global initialization actions
@@ -241,7 +256,7 @@ func options() {
 	fo('n', "show positions and followsets of NFA")
 	fo('d', "show states and transitions of DFA")
 	fo('g', "show synthetic examples of matching strings from parse")
-	// fo('h', "show examples with reference to DFA states")
+	fo('h', "show examples with reference to DFA states")
 	fo('t', "output timing measurements")
 	fo('v', "enable running commentary")
 	fo('a', "enable all output options") // all of the above
@@ -264,8 +279,8 @@ func options() {
 
 	flag.Parse() // parse command args to set values
 
-	imply("a", "lpndgtv") // -a implies several others
-	imply("NDXT", "m")    // any of {-N -D -X -T} implies -m
+	imply("a", "lpndghtv") // -a implies several others
+	imply("NDXT", "m")     // any of {-N -D -X -T} implies -m
 
 	if !*opt['m'] {
 		*opt['i'] = true // if not -m, then must have -i
