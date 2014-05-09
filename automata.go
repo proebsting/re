@@ -180,14 +180,16 @@ func (ds *DFAstate) InvertMap() (*BitSet, map[int]*BitSet) {
 //  DFA.ShowNFA prints the positions and followsets, with optional label.
 func (dfa *DFA) ShowNFA(f io.Writer, label string) {
 	cset := CharSet("")
+	for _, m := range dfa.Leaves {
+		cset.OrWith(m.Cset)
+	}
 	ShowLabel(f, label)
+	fmt.Fprintf(f, "Inputs: %s\n", cset.Bracketed())
+	fmt.Fprintf(f, "Witnesses: %s\n", dfa.Witnesses().Bracketed())
 	fmt.Fprintf(f, "begin => %s\n", dfa.Tree.Data().FirstPos)
 	for _, m := range dfa.Leaves {
 		fmt.Fprintf(f, "p%d. %s => %s\n", m.Posn, m, m.FollowPos)
-		cset.OrWith(m.Cset)
 	}
-	fmt.Fprintf(f, "Inputs: %s\n", cset.Bracketed())
-	fmt.Fprintf(f, "Witnesses: %s\n", dfa.Witnesses().Bracketed())
 }
 
 //  DFA.ShowStates prints a readable list of states, with optional label.

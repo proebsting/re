@@ -25,6 +25,8 @@ ex(8):  CBD  CBD  CBD  CACD  CACD  CBD  CACD  CBD  CBD  CACD  CBD  CBD  CACD
       {F, D, D}   D
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [A-D]
+Witnesses: [A-D]
 begin => { 0 }
 p0. C => { 1 3 }
 p1. A => { 2 }
@@ -32,8 +34,6 @@ p2. C => { 4 }
 p3. B => { 4 }
 p4. D => { 5 }
 p5. # => { }
-Inputs: [A-D]
-Witnesses: [A-D]
 ------------------- Initial DFA ------------------
 s0. { p0 } [C]:s1
 s1. { p1 p3 } [A]:s2 [B]:s3
@@ -74,6 +74,8 @@ ex(8):  aabb  aaabbabb  baaabb  abb  abb  abb  abbbbabb  babbaaabb  bbaabb  abb
       {F, b, b}   b
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [ab]
+Witnesses: [ab]
 begin => { 0 1 2 }
 p0. a => { 0 1 2 }
 p1. b => { 0 1 2 }
@@ -81,8 +83,6 @@ p2. a => { 3 }
 p3. b => { 4 }
 p4. b => { 5 }
 p5. # => { }
-Inputs: [ab]
-Witnesses: [ab]
 ------------------- Initial DFA ------------------
 s0. { p0 p1 p2 } [b]:s0 [a]:s1
 s1. { p0 p1 p2 p3 } [a]:s1 [b]:s2
@@ -135,6 +135,8 @@ ex(8):  gcgaggcggcggaggaggctg  gcgaggaggctg  gcgcggcggaggctg  gcgaggctg
       {F, g, g}   g
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [acgt]
+Witnesses: [acgt]
 begin => { 0 }
 p0. g => { 1 }
 p1. c => { 2 }
@@ -149,8 +151,6 @@ p9. c => { 10 }
 p10. t => { 11 }
 p11. g => { 12 }
 p12. # => { }
-Inputs: [acgt]
-Witnesses: [acgt]
 ------------------- Initial DFA ------------------
 s0. { p0 } [g]:s1
 s1. { p1 } [c]:s2
@@ -203,6 +203,8 @@ ex(8):  00  10111001111101101001100111001111001110001    0
             {F, 1, 1}   1
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [01]
+Witnesses: [01]
 begin => { 0 1 6 }
 p0. 0 => { 0 1 6 }
 p1. 1 => { 2 5 }
@@ -211,8 +213,6 @@ p3. 1 => { 3 4 }
 p4. 0 => { 2 5 }
 p5. 1 => { 0 1 6 }
 p6. # => { }
-Inputs: [01]
-Witnesses: [01]
 ------------------- Initial DFA ------------------
 s0# { p0 p1 p6 } [0]:s0 [1]:s1
 s1. { p2 p5 } [1]:s0 [0]:s2
@@ -250,6 +250,8 @@ ex(8):  dc    1010101010  dc  101010101010  10101010101010  10101010101010
          {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [01acd]
+Witnesses: [01acd]
 begin => { 0 2 4 6 }
 p0. 1 => { 1 }
 p1. 0 => { 0 6 }
@@ -258,8 +260,6 @@ p3. c => { 6 }
 p4. d => { 5 }
 p5. c => { 6 }
 p6. # => { }
-Inputs: [01acd]
-Witnesses: [01acd]
 ------------------- Initial DFA ------------------
 s0# { p0 p2 p4 p6 } [1]:s1 [a]:s2 [d]:s3
 s1. { p1 } [0]:s4
@@ -301,14 +301,14 @@ ex(8):  abab  babababa  a  bababababa  ababababababababab  bababababa
          {F, b, b}   b
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [ab]
+Witnesses: [ab]
 begin => { 0 1 3 4 }
 p0. a => { 1 3 4 }
 p1. b => { 2 }
 p2. a => { 1 3 4 }
 p3. b => { 4 }
 p4. # => { }
-Inputs: [ab]
-Witnesses: [ab]
 ------------------- Initial DFA ------------------
 s0# { p0 p1 p3 p4 } [a]:s1 [b]:s2
 s1# { p1 p3 p4 } [b]:s2
@@ -354,6 +354,8 @@ ex(8):  ababa  abababab  bab  ab  abababababa  ababa  abababababababa
             {F, a, a}   a
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [ab]
+Witnesses: [ab]
 begin => { 0 4 }
 p0. a => { 1 3 8 }
 p1. b => { 2 }
@@ -364,8 +366,6 @@ p5. a => { 6 }
 p6. b => { 5 7 8 }
 p7. a => { 8 }
 p8. # => { }
-Inputs: [ab]
-Witnesses: [ab]
 ------------------- Initial DFA ------------------
 s0. { p0 p4 } [a]:s1 [b]:s2
 s1# { p1 p3 p8 } [b]:s3
@@ -409,6 +409,8 @@ ex(8):  froot  teen  beed  floon  pem  teed  toot  poom  beem  froot  pleet
       {F, [dmnt], [dmnt]}   [dmnt]
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [a-fil-prtu]
+Witnesses: [abdelot]
 begin => { 0 }
 p0. [bcfpt] => { 1 2 3 5 }
 p1. [lr] => { 2 3 5 }
@@ -419,8 +421,6 @@ p5. e => { 6 }
 p6. e => { 7 }
 p7. [dmnt] => { 8 }
 p8. # => { }
-Inputs: [a-fil-prtu]
-Witnesses: [abdelot]
 ------------------- Initial DFA ------------------
 s0. { p0 } [bcfpt]:s1
 s1. { p1 p2 p3 p5 } [aiu]:s2 [e]:s3 [lr]:s4 [o]:s5
@@ -532,6 +532,8 @@ ex(8):  Westimhold  Walelby  Westexson  Westinson  Wensimbot  Westaxford
             {F, d, d}   d
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [Wabd-il-orstxy]
+Witnesses: [Wabd-il-orstxy]
 begin => { 0 }
 p0. W => { 1 4 7 9 11 14 }
 p1. h => { 2 }
@@ -579,8 +581,6 @@ p42. o => { 43 }
 p43. l => { 44 }
 p44. d => { 45 }
 p45. # => { }
-Inputs: [Wabd-il-orstxy]
-Witnesses: [Wabd-il-orstxy]
 ------------------- Initial DFA ------------------
 s0. { p0 } [W]:s1
 s1. { p1 p4 p7 p9 p11 p14 } [a]:s2 [e]:s3 [h]:s4 [i]:s5
@@ -677,6 +677,8 @@ ex(8):  4 n K 0 F ,2Cvpe ,Z3 G0, N PR 7Tm 0, a ,h v
                      {F, [\t-\r ], [\t-\r ]}   [\t-\r ]
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [\t-\r ,0-9A-Za-z]
+Witnesses: [\t,0]
 begin => { 0 }
 p0. [0-9A-Za-z] => { 0 1 2 6 }
 p1. [\t-\r ] => { 0 2 6 }
@@ -685,8 +687,6 @@ p3. [\t-\r ] => { 4 }
 p4. [0-9A-Za-z] => { 2 4 5 6 }
 p5. [\t-\r ] => { 2 4 6 }
 p6. # => { }
-Inputs: [\t-\r ,0-9A-Za-z]
-Witnesses: [\t,0]
 ------------------- Initial DFA ------------------
 s0. { p0 } [0-9A-Za-z]:s1
 s1# { p0 p1 p2 p6 } [0-9A-Za-z]:s1 [\t-\r ]:s2 [,]:s3

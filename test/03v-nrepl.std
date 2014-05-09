@@ -19,12 +19,12 @@ ex(8):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [ac]
+Witnesses: [ac]
 begin => { 0 }
 p0. a => { 1 }
 p1. c => { 2 }
 p2. # => { }
-Inputs: [ac]
-Witnesses: [ac]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [c]:s2
@@ -54,13 +54,13 @@ ex(8):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. c => { 3 }
 p3. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -94,14 +94,14 @@ ex(8):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 3 }
 p3. c => { 4 }
 p4. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -139,6 +139,8 @@ ex(8):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
@@ -146,8 +148,6 @@ p2. b => { 3 }
 p3. b => { 4 }
 p4. c => { 5 }
 p5. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -189,6 +189,8 @@ ex(8):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
@@ -197,8 +199,6 @@ p3. b => { 4 }
 p4. b => { 5 }
 p5. c => { 6 }
 p6. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -234,12 +234,12 @@ ex(8):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [ac]
+Witnesses: [ac]
 begin => { 0 }
 p0. a => { 1 }
 p1. c => { 2 }
 p2. # => { }
-Inputs: [ac]
-Witnesses: [ac]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [c]:s2
@@ -270,13 +270,13 @@ ex(8):  abc  abc  ac  ac  abc  ac  abc  abc  ac  abc  abc  ac  ac  ac  abc  ac
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 2 }
 p1. b => { 2 }
 p2. c => { 3 }
 p3. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 p2 } [b]:s2 [c]:s3
@@ -308,13 +308,13 @@ ex(8):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. c => { 3 }
 p3. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -350,14 +350,14 @@ ex(8):  abbc  abc  abc  abc  ac  abbc  ac  abc  abbc  abbc  abc  abc  abc  ac
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 2 3 }
 p1. b => { 2 3 }
 p2. b => { 3 }
 p3. c => { 4 }
 p4. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 p2 p3 } [b]:s2 [c]:s3
@@ -394,14 +394,14 @@ ex(8):  abc  abc  abc  abc  abbc  abbc  abc  abc  abbc  abbc  abc  abbc  abbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 3 }
 p2. b => { 3 }
 p3. c => { 4 }
 p4. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -437,14 +437,14 @@ ex(8):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 3 }
 p3. c => { 4 }
 p4. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -485,6 +485,8 @@ ex(8):  abc  ac  abbbc  abbc  abbc  ac  abbc  ac  abbc  ac  abc  ac  abc  abc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 2 3 4 }
 p1. b => { 2 3 4 }
@@ -492,8 +494,6 @@ p2. b => { 3 4 }
 p3. b => { 4 }
 p4. c => { 5 }
 p5. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 p2 p3 p4 } [b]:s2 [c]:s3
@@ -535,6 +535,8 @@ ex(8):  abbc  abbc  abc  abc  abbc  abbbc  abbc  abbc  abbc  abc  abbbc  abbbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 3 4 }
@@ -542,8 +544,6 @@ p2. b => { 3 4 }
 p3. b => { 4 }
 p4. c => { 5 }
 p5. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -584,6 +584,8 @@ ex(8):  abbc  abbbc  abbc  abbc  abbc  abbc  abbbc  abbc  abbbc  abbc  abbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
@@ -591,8 +593,6 @@ p2. b => { 3 4 }
 p3. b => { 4 }
 p4. c => { 5 }
 p5. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -632,6 +632,8 @@ ex(8):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
@@ -639,8 +641,6 @@ p2. b => { 3 }
 p3. b => { 4 }
 p4. c => { 5 }
 p5. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -687,6 +687,8 @@ ex(8):  abbbbc  abbbc  abbbbc  abbc  abbbbbc  abbbbc  abbbbc  abbbc  abbbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
@@ -696,8 +698,6 @@ p4. b => { 5 6 }
 p5. b => { 6 }
 p6. c => { 7 }
 p7. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -738,13 +738,13 @@ ex(8):  abbbc  abbbbbc  abbbbbbc  abbbbbc  abbbbc  abbbbbbbbc  abbbbbbbc  abbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 2 }
 p1. b => { 1 2 }
 p2. c => { 3 }
 p3. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 p2 } [b]:s1 [c]:s2
@@ -775,13 +775,13 @@ ex(8):  abbbc  abbbbbbbbc  abbbbbc  abbbbbc  abbbc  abbbbbbbbc  abbbbbbbbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 1 2 }
 p2. c => { 3 }
 p3. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -816,14 +816,14 @@ ex(8):  abbbbbbbbc  abbbc  abbc  abbbbbbbbc  abbbbbbbc  abbbbc  abbbbbbbbbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
 p2. b => { 2 3 }
 p3. c => { 4 }
 p4. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -862,6 +862,8 @@ ex(8):  abbbbbbbbc  abbbbbbbc  abbbbc  abbbbbbbc  abbbbbbbbbc  abbbbc  abbbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
@@ -869,8 +871,6 @@ p2. b => { 3 }
 p3. b => { 3 4 }
 p4. c => { 5 }
 p5. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
@@ -913,6 +913,8 @@ ex(8):  abbbbc  abbbbc  abbbbbbbbbbbc  abbbbbbbbc  abbbbbbbbbc  abbbbbbbbc
       {F, c, c}   c
    {F, #, #}   #
 ----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
 begin => { 0 }
 p0. a => { 1 }
 p1. b => { 2 }
@@ -921,8 +923,6 @@ p3. b => { 4 }
 p4. b => { 4 5 }
 p5. c => { 6 }
 p6. # => { }
-Inputs: [abc]
-Witnesses: [abc]
 ------------------- Initial DFA ------------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
