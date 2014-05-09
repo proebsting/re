@@ -67,7 +67,7 @@ func details(w http.ResponseWriter, r *http.Request) {
 			hx(string(nfaBuffer.Bytes())))
 
 		dfaBuffer := &bytes.Buffer{}
-		dmin.DumpStates(dfaBuffer, "")
+		dmin.ShowStates(dfaBuffer, "")
 		fmt.Fprintf(w, "<h2>DFA</h2><PRE>\n%s</PRE>\n",
 			hx(string(dfaBuffer.Bytes())))
 	} else {
