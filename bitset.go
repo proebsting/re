@@ -109,6 +109,13 @@ func (b1 *BitSet) AndWith(b2 *BitSet) *BitSet {
 	return b1
 }
 
+//  BitSet.AndNot produces a new BitSet that clears the bits of b2 from b1.
+func (b1 *BitSet) AndNot(b2 *BitSet) *BitSet {
+	b3 := new(BitSet)
+	b3.Bits.AndNot(&b1.Bits, &b2.Bits)
+	return b3
+}
+
 //  BitSet.Key returns an unprintable string usable as a map key.
 //  (Neither a BitSet nor the underlying big.Int is a legal key type.)
 func (b *BitSet) Key() string {

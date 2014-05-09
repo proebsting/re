@@ -81,6 +81,7 @@ func (dfa *DFA) Minimize() *DFA {
 		fmt.Println("[merging:]")
 	}
 	minim := newDFA(dfa.Tree)
+	minim.Leaves = dfa.Leaves
 	for _, p = range dfa.PartList {
 		if p.Index != deadstate.PartNum {
 			p.NewState = minim.newState(&BitSet{})

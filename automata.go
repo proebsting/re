@@ -178,11 +178,15 @@ func (ds *DFAstate) InvertMap() (*BitSet, map[int]*BitSet) {
 
 //  DFA.ShowNFA prints the positions and followsets, with optional label.
 func (dfa *DFA) ShowNFA(f io.Writer, label string) {
+	cset := CharSet("")
 	ShowLabel(f, label)
 	fmt.Fprintf(f, "begin => %s\n", dfa.Tree.Data().FirstPos)
 	for _, m := range dfa.Leaves {
 		fmt.Fprintf(f, "p%d. %s => %s\n", m.Posn, m, m.FollowPos)
+		cset.OrWith(m.Cset)
 	}
+	fmt.Fprintf(f, "Inputs: %s\n", cset.Bracketed())
+	fmt.Fprintf(f, "Witnesses: %s\n", dfa.Witnesses().Bracketed())
 }
 
 //  DFA.ShowStates prints a readable list of states, with optional label.
@@ -232,4 +236,49 @@ func (dfa *DFA) ToDot(f io.Writer, label string) {
 		}
 	}
 	fmt.Fprintln(f, "}")
+}
+
+//  DFA.Witnesses returns a minimal set of characters sufficient to
+//  distinguish all paths through the DFA.
+func (dfa *DFA) Witnesses() *BitSet {
+	needlist := make([]*BitSet, 0) // known needed classes
+	// invariant: needlist holds disjoint non-empty charsets
+	for _, d := range dfa.Leaves {
+		cs := d.Cset // chars accepted at this leaf
+		for {
+			j := overlapper(needlist, cs)
+			if j < 0 { // if no overlap found
+				break
+			}
+			intersection := cs.And(needlist[j]) // bits of interest
+			cs = cs.AndNot(intersection)        // bits deferred
+			if !needlist[j].Equals(intersection) {
+				needlist = append(needlist, intersection)
+				needlist[j] = needlist[j].AndNot(intersection)
+			}
+		}
+		if !cs.IsEmpty() {
+			needlist = append(needlist, cs)
+		}
+	}
+	// now needlist covers all characters accepted by the DFA;
+	// choose one char from each entry to serve as a witness
+	result := &BitSet{}
+	for _, cs := range needlist {
+		result.Set(cs.LowBit())
+	}
+	return result
+}
+
+//  overlapper returns the index of a set that overlaps the new chars
+//  if there is no such index it returns -1
+func overlapper(setlist []*BitSet, newchars *BitSet) int {
+	if !newchars.IsEmpty() {
+		for i := range setlist {
+			if !setlist[i].And(newchars).IsEmpty() {
+				return i
+			}
+		}
+	}
+	return -1
 }
