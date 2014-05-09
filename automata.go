@@ -31,12 +31,13 @@ type DFAstate struct {
 	AccSet  *BitSet           // set of regexps that accept here, or nil
 	Dnext   map[int]*DFAstate // transition map
 	PartNum int               // partition number during minimization
+	InpList []int             // input list used during minimization
 }
 
 //  DFA.newState makes a new DFAstate and adds it to a DFA.
 func (dfa *DFA) newState(posns *BitSet) *DFAstate {
 	ds := &DFAstate{len(dfa.Dstates), false, posns, nil,
-		make(map[int]*DFAstate, 0), 0}
+		make(map[int]*DFAstate, 0), 0, nil}
 	dfa.Dstates = append(dfa.Dstates, ds)
 	return ds
 }

@@ -29,6 +29,11 @@ func (dfa *DFA) newPartition() *Partition {
 //  The original DFA remains valid although some of its data structures have
 //  been disturbed in the process.
 func (dfa *DFA) Minimize() *DFA {
+	// preprocess states to create minimal "input lists"
+	wset := dfa.Witnesses()
+	for _, ds := range dfa.Dstates {
+		ds.setinputs(wset)
+	}
 
 	// add and remember a "dead state" with no exits
 	deadstate = dfa.newState(&BitSet{})
@@ -98,8 +103,23 @@ func (dfa *DFA) Minimize() *DFA {
 	// remove the dead state we added temporarily to the old DFA
 	dfa.Dstates = dfa.Dstates[:len(dfa.Dstates)-1]
 
+	// reclaim partition list and input-list memory
+	dfa.PartList = nil
+	for _, ds := range dfa.Dstates {
+		ds.InpList = nil
+	}
+
 	// return the new minimized DFA
 	return minim
+}
+
+//  DFAstate.setinputs computes representative inputs for each state
+func (ds *DFAstate) setinputs(witnesses *BitSet) {
+	cset := CharSet("")
+	for x := range ds.Dnext {
+		cset.Set(x)
+	}
+	ds.InpList = (cset.AndWith(witnesses)).Members()
 }
 
 //  Partition.insert moves a state into a partition.
@@ -118,34 +138,18 @@ func (p *Partition) insert(ds *DFAstate) {
 //  Partition.distinguish returns an input for partitioning, or -1 for none.
 //  The return value is any input that maps states into two or more groups.
 func (p *Partition) distinguish() int {
-	mlist := p.StateSet.Members()
-	for i := range mlist {
-		for j := i + 1; j < len(mlist); j++ {
-			s1 := p.Automata.Dstates[mlist[i]]
-			s2 := p.Automata.Dstates[mlist[j]]
-			// check every input of s1 against s2 and vice versa;
-			// this makes duplicate checks, but is simpler and
-			// possibly cheaper than avoiding the duplication
-			x := s1.distinguish(s2)
-			if x >= 0 {
-				return x
+	psnums := p.StateSet.Members() // index numbers of states in partition
+	for _, pn1 := range psnums {
+		s1 := p.Automata.Dstates[pn1]
+		for _, pn2 := range psnums {
+			s2 := p.Automata.Dstates[pn2]
+			// check representative inputs of s1 against s2
+			// (and vice versa when they switch roles)
+			for _, x := range s1.InpList {
+				if s1.partOn(x) != s2.partOn(x) {
+					return x
+				}
 			}
-			x = s2.distinguish(s1)
-			if x >= 0 {
-				return x
-			}
-		}
-	}
-	return -1
-}
-
-//  DFAstate.distinguish checks every recognized input against another state,
-//  returning an input that leads to a different partition or -1 if there is
-//  none.
-func (s1 *DFAstate) distinguish(s2 *DFAstate) int {
-	for x := range s1.Dnext {
-		if s1.partOn(x) != s2.partOn(x) {
-			return x
 		}
 	}
 	return -1
