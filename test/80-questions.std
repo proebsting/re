@@ -709,7 +709,7 @@ ex(5):  OQZ73@zwIad.GSA.dqCRa.6.S.tFIGj  dW@uwpB.D.f1mc.xPy  x@m.iJYjf.65FJy
 ex(8):  y_V@LS_7Fw7.2.hPtCueFw.r4X8rJ.hkQ
 
 regexp: [-.'\w]+@\w+(\.\w+)+
-tree:   (((['-.0-9A-Z_a-z]+@)[0-9A-Z_a-z]+)(.[0-9A-Z_a-z]+)+)
+tree:   (((['.0-9A-Z_a-z-]+@)[0-9A-Z_a-z]+)(.[0-9A-Z_a-z]+)+)
 length: 5 to *
 -------------------- Examples --------------------
 ex(0):  _@C.M  f@C.G  d@O.A  D@a.r  T@U.1  e@h.a  -@u.G  I@S._  A@L.2  k@q.5
@@ -720,7 +720,7 @@ ex(5):  wE1@8TYO.1MW.We.9Q2.W  C36S@sb.h6qgv.Ht.wQS.K.F
 ex(8):  PWZ.Tj6@v.Rmzw.eKme.n0zJ.JkvHeg.2Ax.g  U-NgdA@_w.WnPN.9yqorlNo.2
 
 regexp: \w[-.'\w]*@\w+(\.\w+)+
-tree:   (((([0-9A-Z_a-z]['-.0-9A-Z_a-z]*)@)[0-9A-Z_a-z]+)(.[0-9A-Z_a-z]+)+)
+tree:   (((([0-9A-Z_a-z]['.0-9A-Z_a-z-]*)@)[0-9A-Z_a-z]+)(.[0-9A-Z_a-z]+)+)
 length: 5 to *
 -------------------- Examples --------------------
 ex(0):  _@p.B  O@c.V  4@H.c  c@w.j  s@M.9  D@d.4  Q@D.L  f@A.C  v@G.O  E@c.E
@@ -733,7 +733,7 @@ ex(8):  rhO4oeG8@_k5.dRjbgTHy.SwzO.kC.3dEhA_R.q
 # from RegExLib 356 & 1012
 
 regexp: (\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})
-tree:   (((((((([0-9A-Z_a-z][-.0-9A-Z_a-z]*)[0-9A-Z_a-z])@)[0-9A-Z_a-z])[-.0-9A-Z_a-z]*)[0-9A-Z_a-z]).)[0-9A-Z_a-z]{2,3})
+tree:   (((((((([0-9A-Z_a-z][.0-9A-Z_a-z-]*)[0-9A-Z_a-z])@)[0-9A-Z_a-z])[.0-9A-Z_a-z-]*)[0-9A-Z_a-z]).)[0-9A-Z_a-z]{2,3})
 length: 8 to *
 -------------------- Examples --------------------
 ex(0):  _p@BO.cV  4H@cc.wj  sM@9D.d4  QD@Lf.AC  vG@OE.cE  DS@Uq.AX  Um@hF.V4
@@ -744,7 +744,7 @@ ex(5):  mKdcjJ@mBH6.rt0  cPp@o8.QI  908@jVpw.hPG  c4hc@R-WGj2.5d
 ex(8):  Y3UZKG3@qZ.XS  GtFj@RAs0a.lDc  47@3Wzx8M.Rd  Gz7I@numV.eP
 
 regexp: ([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}
-tree:   ((((([0-9A-Za-z]+[&+-.;_amp])*[0-9A-Za-z]+)@)([-0-9A-Za-z]+.)+)[A-Za-z]{2,6})
+tree:   ((((([0-9A-Za-z]+[&+.;_amp-])*[0-9A-Za-z]+)@)([0-9A-Za-z-]+.)+)[A-Za-z]{2,6})
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  Z@H.iY  l@B.lp  A@h.cS  w@k.eU  J@b.Wy  B@I.qQ  i@F.lF  J@O.xK  D@g.HL

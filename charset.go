@@ -70,26 +70,40 @@ func (b *BitSet) RandChar() byte {
 
 //  BitSet.Bracketed() returns a bracket-expression form of a character set,
 //  using ranges if appropriate and escaping (only) unprintables.
+//  ] and - are specially placed at beginning and end respectively.
 func (b *BitSet) Bracketed() string {
 	l := b.LowBit()
 	h := b.HighBit()
+	open := "["
+	close := "]"
 	s := make([]byte, 0)
-	s = append(s, '[')
 	for i := l; i <= h; i++ { // for all chars up to highest
 		if b.Test(i) { // if char is included
+			if i == ']' {
+				open = "[]" // move ']' to front
+				continue
+			}
+			if i == '-' {
+				close = "-]" // defer '-' to end
+				continue
+			}
 			s = append(s, cprotect(rune(byte(i)))...) // show char
 			var j int
 			for j = i + 1; b.Test(j); j++ {
 				// count consecutive inclusions
 			}
 			if j-i > 3 { // if worth using [a-z] form
+				if (j-1) == '-' || (j-1) == ']' {
+					// don't end range with '-' or ']'
+					j--
+				}
 				i = j - 1
 				s = append(s, '-')
 				s = append(s, cprotect(rune(byte(i)))...)
 			}
 		}
 	}
-	return string(append(s, ']'))
+	return open + string(s) + close
 }
 
 //  cprotect returns its argument if printable, else a backslash form.

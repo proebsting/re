@@ -100,7 +100,7 @@ ex(8):  (522)442-4814  (178)613-4185  (581)572-5367  (351)557-4280
 # www 
 
 regexp: (http://|)(www\.)?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+(/[-_\.\?a-zA-Z0-9]*)*
-tree:   (((((((((((ht)t)p):)/)/)|())(((ww)w).)?)[0-9A-Za-z]+)(.[0-9A-Za-z]+)+)(/[-.0-9?A-Z_a-z]*)*)
+tree:   (((((((((((ht)t)p):)/)/)|())(((ww)w).)?)[0-9A-Za-z]+)(.[0-9A-Za-z]+)+)(/[.0-9?A-Z_a-z-]*)*)
 length: 3 to *
 -------------------- Examples --------------------
 ex(0):  http://L.p  http://A.1  t.X  x.L  http://P.8  http://Z.P  2.z
@@ -113,7 +113,7 @@ ex(8):  http://www.GWK6AaF1.qcNRI.zo.0t.sXpxKZk.q.Cp0YrESE.Oy94q.w65O
 # email
 
 regexp: [a-zA-Z][a-zA-Z0-9]*([-_.][a-zA-Z0-9]*)*@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,}
-tree:   ((((([A-Za-z][0-9A-Za-z]*)([-._][0-9A-Za-z]*)*)@)([0-9A-Za-z]+.)+)[0-9A-Za-z]{2,})
+tree:   ((((([A-Za-z][0-9A-Za-z]*)([._-][0-9A-Za-z]*)*)@)([0-9A-Za-z]+.)+)[0-9A-Za-z]{2,})
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  Z@V.fg  r@t.ZB  K@Y.cj  n@M.Dm  m@k.U2  W@W.yj  D@G.RK  V@I.sf  Y@H.TW

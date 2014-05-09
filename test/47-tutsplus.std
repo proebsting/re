@@ -8,7 +8,7 @@
 # 1. Matching a Username
 
 regexp: [a-z0-9_-]{3,16}
-tree:   [-0-9_a-z]{3,16}
+tree:   [0-9_a-z-]{3,16}
 length: 3 to 16
 -------------------- Examples --------------------
 ex(0):  _eg  66a  vfq  7x6  14f  nbf  trl  bkp  3lk  3-e  rg0  7c7  1m-  3ps
@@ -23,7 +23,7 @@ ex(8):  w89  lssxd9  x1w-7a  i6cq8-b  v0t1bye  b3ek8t  xbyegk  x41c2sbu  kin
 # 2. Matching a Password
 
 regexp: [a-z0-9_-]{6,18}$
-tree:   [-0-9_a-z]{6,18}
+tree:   [0-9_a-z-]{6,18}
 length: 6 to 18
 -------------------- Examples --------------------
 ex(0):  _eg66a  vfq7x6  14fnbf  trlbkp  3lk3-e  rg07c7  1m-3ps  93uy04  nf-i5h
@@ -51,7 +51,7 @@ ex(8):   #a47d31   f47   6f3679   a3f04f   #08afd0   #d6d   b37   be0   #c589fa
 # 4. Matching a Slug
 
 regexp: [a-z0-9-]+
-tree:   [-0-9a-z]+
+tree:   [0-9a-z-]+
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  9  -  i  p  e  8  9  9  j  w  9  x  0  o  3  m  f  v  o  r  w  2  4  7
@@ -64,7 +64,7 @@ ex(8):  b  f3pmcgrp  -2df3r-  dcg  -z8lc  q9is1  o  bdm  rzrcjn8y  oj  d5ku74ge
 # 5. Matching an Email
 
 regexp: ([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})
-tree:   (((([-.0-9_a-z]+@)[-.0-9a-z]+).)[.a-z]{2,6})
+tree:   (((([.0-9_a-z-]+@)[.0-9a-z-]+).)[.a-z]{2,6})
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  _@u.jj  a@x.gp  -@c.ci  c@9.ap  .@s.mp  3@w.bk  e@z.ad  r@d.tf  i@e.ss
@@ -77,7 +77,7 @@ ex(8):  1whd@uxu.hckt  h0jc.@6.najgd  kcljqu@e52c.dijte  6uju3xb@twa0vand.xhb
 # 6. Matching a URL
 
 regexp: (https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?
-tree:   ((((((((((((ht)t)p)s?):)/)/)?[-.0-9a-z]+).)[.a-z]{2,6})[ --9A-Z_a-z]**)/?)
+tree:   ((((((((((((ht)t)p)s?):)/)/)?[.0-9a-z-]+).)[.a-z]{2,6})[ .-9A-Z_a-z-]**)/?)
 length: 4 to *
 -------------------- Examples --------------------
 ex(0):  9.ey  q.je  i.qo  a.ou  i...  w.pc  0.ug  7.kp  w.gy  i.dg  t.dg  c.i.

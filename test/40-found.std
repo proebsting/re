@@ -6,7 +6,7 @@
 #U: http://www.regular-expressions.info/
 
 regexp: [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
-tree:   (((([%+-.0-9A-Z_]+@)[-.0-9A-Z]+).)[A-Z]{2,4})
+tree:   (((([%+.0-9A-Z_-]+@)[.0-9A-Z-]+).)[A-Z]{2,4})
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  A@2.TO  %@A.JQ  -@A.UI  +@K.CR  .@I.OT  3@W.WQ  F@Y.SG  S@0.LO  J@K.WZ
@@ -19,7 +19,7 @@ ex(8):  VRHESA@SJ6O.ADSD  YM@JRBLH2.WKMQ  RR5Y@2EXI.JLDK  23-4BR4U@RSOZ.CAR
 #U: http://www.regular-expressions.info/email.html
 
 regexp: [a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
-tree:   (((([!#-'*+-/-9=?^-~]+(.[!#-'*+-/-9=?^-~]+)*)@)(([0-9a-z]([-0-9a-z]*[0-9a-z])?).)+)([A-Z]{2}|((co)m)|((or)g)|((ne)t)|((ed)u)|((go)v)|((mi)l)|((bi)z)|(((in)f)o)|(((mo)b)i)|(((na)m)e)|(((ae)r)o)|(((as)i)a)|(((jo)b)s)|(((((mu)s)e)u)m)))
+tree:   (((([!#-'*+/-9=?^-~-]+(.[!#-'*+/-9=?^-~-]+)*)@)(([0-9a-z]([0-9a-z-]*[0-9a-z])?).)+)([A-Z]{2}|((co)m)|((or)g)|((ne)t)|((ed)u)|((go)v)|((mi)l)|((bi)z)|(((in)f)o)|(((mo)b)i)|(((na)m)e)|(((ae)r)o)|(((as)i)a)|(((jo)b)s)|(((((mu)s)e)u)m)))
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  d@0.HF  m@c.org  u@9.mobi  9@7.aero  +@m.mobi  k@v.jobs  !@9.museum

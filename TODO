@@ -27,7 +27,6 @@ Combine multiple utilities into one (Swiss army knife)?
 
 CLEANUP:
 Add func for "canonizing" DFA (clearer output, easier testing)
-Make Bracketed() smarter and unambiguous: escape specials?
 Similarly for other ambiguous outputs e.g. protecting strings
 Make everything Unicode safe?
 Address #%#% annotations in code
