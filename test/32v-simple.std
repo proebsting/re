@@ -6,12 +6,12 @@ tree:   ((C((AC)|B))D)
 augmnt: (((C((AC)|B))D)#)
 length: 3 to 4
 -------------------- Examples --------------------
-ex(0):  CACD  CACD  CBD  CACD  CBD  CACD  CBD  CBD  CACD  CACD  CACD  CBD  CBD
-ex(1):  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD
-ex(2):  CACD  CBD  CACD  CBD  CACD  CBD  CACD  CACD  CBD  CACD  CACD  CBD  CACD
-ex(3):  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD
-ex(5):  CBD  CACD  CBD  CACD  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CBD  CBD
-ex(8):  CBD  CBD  CBD  CACD  CACD  CBD  CACD  CBD  CBD  CACD  CBD  CBD  CACD
+ex(0):  CACD  CBD  CACD  CACD  CBD  CBD  CBD  CBD  CACD  CACD  CACD  CACD  CBD
+ex(1):  CBD  CBD  CBD  CACD  CACD  CACD  CACD  CACD  CBD  CBD  CACD  CBD  CBD
+ex(2):  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CACD  CACD  CBD  CACD  CACD
+ex(3):  CBD  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CBD
+ex(5):  CACD  CACD  CACD  CACD  CBD  CBD  CBD  CACD  CACD  CBD  CACD  CACD  CBD
+ex(8):  CBD  CACD  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CBD  CBD  CBD  CACD
 ----------------- Annotated Tree -----------------
 {F, C, #}   (((C((AC)|B))D)#)
    {F, C, D}   ((C((AC)|B))D)
@@ -55,11 +55,11 @@ augmnt: (((((a|b)*a)b)b)#)
 length: 3 to *
 -------------------- Examples --------------------
 ex(0):  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb
-ex(1):  abb  abb  aabb  aabb  babb  abb  abb  abb  babb  abb  abb  abb  aabb
-ex(2):  abb  aaabb  abb  aaabb  abb  aabb  abb  baabb  baabb  babb  abb  aabb
-ex(3):  bbabb  abb  abb  baabb  abb  ababb  abb  aabb  abb  abb  bbabb  ababb
-ex(5):  aababb  bbababb  aaaabb  aabb  aaaabb  abb  aaabb  aabaabb  abb  babb
-ex(8):  aabb  aaabbabb  baaabb  abb  abb  abb  abbbbabb  babbaaabb  bbaabb  abb
+ex(1):  aabb  abb  abb  abb  abb  abb  abb  babb  abb  aabb  abb  abb  babb
+ex(2):  aabb  ababb  abb  aabb  abb  abb  abb  abb  ababb  aaabb  abb  aaabb
+ex(3):  abb  abb  aaaabb  ababb  babb  ababb  ababb  aaabb  bbabb  abb  baabb
+ex(5):  abbaabb  bbaababb  aaabb  bababb  baabb  babb  babb  abb  abbaabb  abb
+ex(8):  bbbaaaabb  aabb  aabb  bbaababb  bababb  bbaaaabaabb  abababb  abb
 ----------------- Annotated Tree -----------------
 {F, aba, #}   (((((a|b)*a)b)b)#)
    {F, aba, b}   ((((a|b)*a)b)b)
@@ -102,11 +102,11 @@ augmnt: (((((((gc)g)(((cg)g)|((ag)g))*)c)t)g)#)
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg
-ex(1):  gcgctg  gcgctg  gcgcggctg  gcgcggctg  gcgaggctg  gcgctg  gcgctg  gcgctg
-ex(2):  gcgctg  gcgctg  gcgctg  gcgcggcggctg  gcgctg  gcgcggcggctg  gcgctg
-ex(3):  gcgctg  gcgcggaggcggctg  gcgcggctg  gcgaggcggctg  gcgaggcggctg
-ex(5):  gcgaggctg  gcgctg  gcgctg  gcgctg  gcgcggcggcggctg  gcgaggcggaggcggctg
-ex(8):  gcgaggcggcggaggaggctg  gcgaggaggctg  gcgcggcggaggctg  gcgaggctg
+ex(1):  gcgctg  gcgcggctg  gcgctg  gcgctg  gcgctg  gcgaggctg  gcgaggctg
+ex(2):  gcgctg  gcgaggctg  gcgaggctg  gcgaggctg  gcgcggctg  gcgctg
+ex(3):  gcgcggctg  gcgcggaggctg  gcgcggaggcggctg  gcgcggcggctg  gcgctg
+ex(5):  gcgctg  gcgcggaggctg  gcgaggaggcggcggaggctg  gcgcggaggaggcggctg
+ex(8):  gcgaggcggaggcggaggctg  gcgcggaggcggcggcggcggaggcggctg
 ----------------- Annotated Tree -----------------
 {F, g, #}   (((((((gc)g)(((cg)g)|((ag)g))*)c)t)g)#)
    {F, g, g}   ((((((gc)g)(((cg)g)|((ag)g))*)c)t)g)
@@ -180,11 +180,11 @@ augmnt: ((0|((1((01*)0)*)1))*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      0  0  11      11      0      0      0      0  0  0    0    0  0    
-ex(2):        00  11    00    101001101101100101      1011011001        10010
-ex(3):            110  10101  0  101100110100    1011100000110001100011011101
-ex(5):  0  10000110010  1011101101101  01011010  10001111100001111101000  011
-ex(8):  00  10111001111101101001100111001111001110001    0
+ex(1):      0    11  11  0    0    0    0    0  0  0        11  0      0      
+ex(2):  101011010001    110    00      0  1000101            01000101    00  0
+ex(3):  10111000101001    00  101000011101    000    011  1000010  00  0  1100
+ex(5):  1110111110011101101111100111110011100111010  0  0100011111010  10111010
+ex(8):  01011111111001111100111111110000111001111111101101111110110111111110000001111110001010100111111110011100111100111111110110001111111100110010011111101
 ----------------- Annotated Tree -----------------
 {F, 01#, #}   ((0|((1((01*)0)*)1))*#)
    {T, 01, 01}   (0|((1((01*)0)*)1))*
@@ -229,12 +229,12 @@ tree:   ((10)*|(ac)|(dc))
 augmnt: (((10)*|(ac)|(dc))#)
 length: 0 to *
 -------------------- Examples --------------------
-ex(0):      ac  ac  dc  ac  ac  dc        dc  dc        dc  dc  ac    dc    dc
-ex(1):  dc    10  ac    dc  ac  dc  ac  dc  ac  dc  10    dc  ac  ac    10  dc
-ex(2):  10  ac    dc  dc  dc  1010  1010  ac  dc  ac  dc  dc  ac    dc  10  dc
-ex(3):  ac  101010  1010  dc  ac  ac  1010  dc  1010  dc  dc  dc  ac  ac  10
-ex(5):  10  ac  dc  dc  dc  101010  10101010  ac  dc  ac  ac  101010  101010
-ex(8):  dc    1010101010  dc  101010101010  10101010101010  10101010101010
+ex(0):      ac  ac        dc      dc    dc    dc    ac  dc  dc  ac  ac  dc    
+ex(1):    ac  ac  dc  10  ac  dc    dc  dc  10  dc    dc  dc  ac    10  dc  10
+ex(2):      1010  dc    ac    dc    ac  dc  10    ac  ac  ac  1010  ac  10  dc
+ex(3):  dc  101010  10  ac    dc  dc  ac  dc  ac  10    1010  ac  dc  1010  ac
+ex(5):  ac  1010101010  ac  1010101010  dc  10  ac  ac  1010  ac  dc  ac
+ex(8):  ac  ac  101010  1010101010101010  101010101010  ac  1010101010101010
 ----------------- Annotated Tree -----------------
 {F, 1ad#, #}   (((10)*|(ac)|(dc))#)
    {T, 1ad, 0cc}   ((10)*|(ac)|(dc))
@@ -282,11 +282,11 @@ augmnt: (((a?(ba)*)b?)#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):  b  ba  aba  b  a  ba  b    a  ba  ab  b  b  ba  b  a  ba    ab    bab
-ex(2):  ababab  a    aba  a  babab      baba  ba  aba  abab  ababa  a  baba  b
-ex(3):  b  a  bababab  aba  ababab  a  bababab  baba  abab  aba  ababab  a
-ex(5):  bababababa  ababababa  baba  ab  ababa  ababa  babababa  abab
-ex(8):  abab  babababa  a  bababababa  ababababababababab  bababababa
+ex(1):  b  aba  ba  ba  a  a  aba  bab  a  a  ba  ba    a  ab  ab  ab    aba  
+ex(2):    bab  b  babab  ababa  ab  ab  b    ab    ababa  ababa  ab  baba
+ex(3):  a  a  b  ababa    ab  ababa  ababa  bab    bababab  abababa    ababa  a
+ex(5):  abababababa  ababab  bababab  babab  abababababa  babababa  bababababab
+ex(8):  b  aba  babababababababab  abababa  bab    babababababa  babababababa
 ----------------- Annotated Tree -----------------
 {F, abb#, #}   (((a?(ba)*)b?)#)
    {T, abb, aab}   ((a?(ba)*)b?)
@@ -325,12 +325,12 @@ tree:   (((a(ba)*)b?)|((b(ab)*)a?))
 augmnt: ((((a(ba)*)b?)|((b(ab)*)a?))#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  a  a  b  a  b  a  b  b  a  a  a  b  b  a  a  a  b  a  a  a  b  a  a  a
-ex(1):  a  ba  aba  aba  aba  b  abab  a  b  ab  aba  a  bab  abab  abab  b  ba
-ex(2):  b  aba  babab  a  ababa  ab  ab  bababa  ba  bab  aba  ab  b  ab  ababa
-ex(3):  ba  abababab  ababa  bab  ababab  babababa  ba  abababab  ababa  babab
-ex(5):  ababababa  ababababab  abababab  ababababab  a  ababab  bababababab
-ex(8):  ababa  abababab  bab  ab  abababababa  ababa  abababababababa
+ex(0):  a  b  b  b  a  a  b  a  b  a  b  a  b  a  b  b  b  a  a  b  b  a  b  a
+ex(1):  a  bab  abab  aba  baba  ab  b  a  ab  abab  b  a  bab  b  aba  bab
+ex(2):  ba  ab  aba  babab  ba  ababab  babab  ab  ab  babab  aba  bababa  a
+ex(3):  babababa  bababa  bababab  a  babababa  aba  baba  ababab  a  abab
+ex(5):  abab  bababababab  ababababa  bababababa  abababababab  ababab  baba
+ex(8):  babab  babab  ababababababababa  baba  abababababa  babababababa  ab
 ----------------- Annotated Tree -----------------
 {F, ab, #}   ((((a(ba)*)b?)|((b(ab)*)a?))#)
    {F, ab, aabbba}   (((a(ba)*)b?)|((b(ab)*)a?))
@@ -384,12 +384,12 @@ tree:   ((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])
 augmnt: (((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])#)
 length: 3 to 5
 -------------------- Examples --------------------
-ex(0):  feen  ceem  teed  bood  teen  cood  fed  pood  teet  tot  ceen  toot
-ex(1):  fleed  prid  beem  treen  floon  foot  prud  beed  teet  poon  ceem
-ex(2):  fim  bleen  coom  tloom  plot  bood  crood  frod  tum  ceet  cloon
-ex(3):  feem  teed  coot  plum  peen  tim  cen  breed  prad  croom  fin  poot
-ex(5):  pleem  boon  prit  cood  beet  tleem  breem  peen  froom  broom  fram
-ex(8):  froot  teen  beed  floon  pem  teed  toot  poom  beem  froot  pleet
+ex(0):  tit  fun  fot  fot  fid  foom  pood  pim  tood  tet  teem  cid  tom
+ex(1):  feen  food  freem  freem  cam  fum  fod  flan  tlit  poon  feem  preed
+ex(2):  feem  foot  feem  feet  peem  tram  fod  tloot  toon  teed  trood  plit
+ex(3):  pren  plin  floom  trud  food  freem  treen  foom  fleem  pleen  broon
+ex(5):  pood  pom  feed  tud  fim  fleet  teen  ceem  crood  creed  peed  peet
+ex(8):  preet  feen  poom  pem  tran  fun  proom  frid  feed  foom  feet  peed
 ----------------- Annotated Tree -----------------
 {F, [bcfpt], #}   (((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])#)
    {F, [bcfpt], [dmnt]}   ((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])
@@ -443,12 +443,12 @@ tree:   ((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d
 augmnt: (((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))#)
 length: 7 to 10
 -------------------- Examples --------------------
-ex(0):  Whitilford  Whitamgard  Walamman  Winamdale  Wenselby  Watarford
-ex(1):  Winisbot  Whitilgard  Watalson  Wensorgard  Westerby  Winalby
-ex(2):  Watolbot  Wensilhold  Westenman  Westosbot  Whitolson  Winangard
-ex(3):  Watengard  Watendale  Winilbot  Whitexby  Walilford  Westembot
-ex(5):  Watolgard  Whitilman  Westirbot  Walosson  Wininson  Walenford
-ex(8):  Westimhold  Walelby  Westexson  Westinson  Wensimbot  Westaxford
+ex(0):  Whitaxford  Whitonman  Westoxgard  Wensesman  Westalgard  Watemby
+ex(1):  Watexgard  Whitasson  Westenhold  Wininby  Wensimhold  Wenseshold
+ex(2):  Westorby  Walirgard  Whitixdale  Westesgard  Waloxdale  Winasdale
+ex(3):  Whitendale  Winishold  Westilbot  Watonby  Whitirman  Winimford
+ex(5):  Winoxdale  Wensoxby  Winonby  Watirbot  Wensesson  Westonbot  Waloxford
+ex(8):  Whitanbot  Westaxford  Westasgard  Wenserdale  Whitesbot  Wensoxson
 ----------------- Annotated Tree -----------------
 {F, W, #}   (((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))#)
    {F, W, dyetnndd}   ((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))
@@ -650,12 +650,12 @@ tree:   (([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)
 augmnt: ((([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  Z  H  X  L  W  4  8  G  3  E  T  l  i  E  k  Y  5  d  A  X  c  K  w  I
-ex(1):  u, r   2   3   m , M  P,l   N, 2  H   e  V  B   e, m   7   z , M  8  Z
-ex(2):  rP,uH ,s  OK  e j, Y   V   nV,Y x   X f, I  H   B   g ,X, l   q, bC 
-ex(3):  bO,t y,O t k , 09   N,0 CV,o , m w  vk   c,m,E,Tx 1  a UV, PN , hg q  I
-ex(5):  Z, hk, n ,M l ej ,xtN, BH Y  ar,gz t ds  Q r F, h S D 7,Nul,f3kOd,u r 
-ex(8):  4 n K 0 F ,2Cvpe ,Z3 G0, N PR 7Tm 0, a ,h v 
+ex(0):  H  W  L  O  q  Z  2  o  3  B  Z  a  c  A  I  u  q  B  Y  N  J  T  d  Z
+ex(1):  i,a  z,e   B  K  H, h  N   C   Z   x,o   3, J  A  a,9   Y,a  7  u ,3 
+ex(2):  nZ  rZ ,u k  U  Z a,7y   w, 2 , Z   e  8,a,l  O,3 , v  Y,a A,oo 
+ex(3):  9gN ,e 9  aH,Aq9 , 6 Y , u z   b9 Z ,y5 , MC  LO b , m ,c   aeV 
+ex(5):  m hV As ,l  J 9, AW,o o i  s Z ,Z,2 Fu A   f m,3Kk , H Z5 yw 
+ex(8):  z ER, aA0 ,bvA3 ,0A 1,C c9 ouV8 9, J xZZ p 7,K 2 89 V , U0 A eK x,F2 Za W
 ----------------- Annotated Tree -----------------
 {F, [0-9A-Za-z], #}   ((([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)#)
    {F, [0-9A-Za-z], [0-9A-Za-z][\t-\r ][0-9A-Za-z][\t-\r ]}   (([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)

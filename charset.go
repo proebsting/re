@@ -51,32 +51,32 @@ func (b1 *BitSet) CharCompl() *BitSet {
 }
 
 //  BitSet.RandChar returns a single randomly chosen BitSet element.
-//  Printable characters are preferred to unprintables.
+//  A printable character is chosen if possible.
+//  Selection is not unbiased if the BitSet is non-contiguous.
 func (b *BitSet) RandChar() byte {
-	n := 0           // number of characters considered
-	l := b.LowBit()  // lowest eligible char
-	h := b.HighBit() // highest eligible char
-	if h < 0 {
-		return '?' //#%#%#% ERROR cset was empty
-	}
-	c := byte(h)  // current working choice
-	if c < 0x7F { // if initial ch is not unwanted DEL,
-		n = 1 // count it as found
-	}
-	// #%#%#% This code is not particularly efficient.
-	for h--; h >= l; h-- { // check lower valued characters
-		if b.Test(h) { // if eligible to be chosen
-			n++ // adjust n for unbiased odds
-			if rand.Intn(n) == 0 {
-				c = byte(h) // replace tentative choice
-			}
-		}
-		if h <= ' ' {
-			// now entering the unprintables -- bail out
-			break
+	low := b.LowBit()            // lowest eligible char
+	high := b.HighBit()          // highest eligible char
+	if low < ' ' || high > '~' { // if range extends beyond printables
+		b2 := b.And(PrintSet) // check reduced range
+		if !b2.IsEmpty() {    // and use that if non-empty
+			low = b2.LowBit()
+			high = b2.HighBit()
 		}
 	}
-	return c // return surviving choice
+	//  pick a random char between low and high inclusive.
+	//  if it's part of the set, we're done.
+	c := low + rand.Intn(high-low+1)
+	if b.Test(c) {
+		return byte(c)
+	}
+	//  otherwise, pick a direction and start walking
+	d := rand.Intn(2) // 0 or 1
+	d = 1 - 2*d       // 1 or -1
+	c = c + d         // first step
+	for !b.Test(c) {
+		c = c + d
+	}
+	return byte(c)
 }
 
 //  BitSet.Bracketed() returns a bracket-expression form of a character set,

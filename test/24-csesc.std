@@ -9,32 +9,32 @@ length: 1 to *
 -------------------- Examples --------------------
 ex(0):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(1):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-ex(2):  -  -  --  -  --  -  --  --  -  -  -  --  --  -  -  -  --  -  -  -  --
-ex(3):  ---  -  ---  -  --  -  --  --  -  ---  ---  --  ---  --  ---  --  ---
-ex(5):  ---  -----  --  ----  -----  ---  ----  -  ---  ---  -  ----  -----
-ex(8):  ----  -----  --  -------  -----  -  -------  ----  ------  ---  -------
+ex(2):  -  -  --  -  -  --  -  --  --  -  -  --  --  -  -  -  -  -  -  -  --
+ex(3):  ---  -  --  --  -  -  ---  ---  -  -  -  ---  -  -  ---  --  -  --  --
+ex(5):  ---  -----  ---  ---  ----  ---  --  -  --  ----  ----  -----  ---  -
+ex(8):  -----  -------  ---  ---  ----  --  ---  -----  ---  --------  -
 
 regexp: [\]]*
 tree:   ]*
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      ]    ]    ]  ]        ]  ]        ]        ]        ]        ]    ]
-ex(2):  ]]  ]  ]]  ]  ]]  ]  ]]    ]      ]]  ]  ]          ]]  ]    ]  ]    
-ex(3):      ]]  ]]]  ]  ]]  ]]  ]]]  ]]]    ]  ]  ]]]  ]]    ]]]  ]]  ]  ]  
-ex(5):  ]]]      ]]  ]  ]]]]  ]]]  ]]  ]]      ]]  ]]  ]]  ]]]]  ]]]]    ]]]
-ex(8):  ]]]  ]  ]  ]]]]]]]]  ]]]]]  ]]]]]    ]]]]]]  ]]]  ]  ]]]]]]]  ]]]]]
+ex(1):      ]  ]  ]        ]        ]      ]      ]      ]  ]  ]    ]    ]  ]  
+ex(2):  ]          ]]  ]      ]]    ]]  ]  ]  ]]    ]]  ]]          ]]    ]]  
+ex(3):      ]]  ]]  ]  ]  ]]]  ]]    ]]]      ]    ]]  ]  ]  ]  ]]]    ]]]  ]]
+ex(5):  ]]]  ]]  ]    ]]]]]  ]]    ]]]  ]]]]]  ]]]]]  ]]]  ]]]]  ]]]]  ]]]]]  ]
+ex(8):  ]]  ]]]]]]]]  ]]]  ]  ]]  ]]]]]]]  ]]]]]]  ]]]]]]]  ]]]]]  ]]]]  ]]]]
 
 regexp: [ab\[cd\-gh\]ij]+
 tree:   [][a-dg-j-]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  h  [  ]  -  g  i  i  g  b  [  c  [  [  c  ]  b  i  g  [  b  a  ]  a  [
-ex(1):  h  g  ]  g  h  ]  c  a  c  i  c  ]  h  i  ]  -  [  [  j  d  a  a  g  h
-ex(2):  ]  a]  ]  gd  g  c  jj  ][  -  dg  ga  j  i  hi  a  []  ]  j  j  j  gd
-ex(3):  -  ha[  -  c  ]g  ddi  aba  ]h  i-h  g  ]  ai  a[  cdg  cg[  j  g[  bi]
-ex(5):  ibi  bj[g-  idg-h  b-ba  -b]c]  a  [  dah  d  ja-  [j[b  -hjb  h  [d
-ex(8):  -[gcadgg  [  dhjbd[cb  j  h]d--id  [b][  bii[d  adicj  hb[dah  cd[ihgi
+ex(0):  [  [  [  j  [  c  -  [  g  [  [  [  [  [  [  [  [  [  -  [  [  [  [  -
+ex(1):  a  -  ]  ]  [  [  [  [  i  g  -  [  -  [  -  [  -  [  d  h  -  [  ]  -
+ex(2):  [g  [  [  [  -  ]-  [[  [  -[  ]  [  -[  [-  [  [[  d-  --  [-  -  [  g
+ex(3):  [  [[  --  -  -  ]  ]  [i  -  [--  a[[  [-[  [  -i[  a-  h-  [-  -  -
+ex(5):  --[j  ][  [d-  -  [j[  j--i  []  [-[-  [[-  -  g-  -[  a]-  [  -  [-[][
+ex(8):  -[--[j  [-a--[]-  ]-[  j--d[--[  [-  d  -  g---  [g-  -[--[-g  -[-[[--
 
 # perl inventions
 
@@ -42,78 +42,78 @@ regexp: \d+
 tree:   [0-9]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
-ex(1):  8  1  7  0  5  1  9  8  5  7  8  6  2  4  8  1  9  1  5  7  8  2  0  6
-ex(2):  0  6  1  2  8  1  2  87  30  68  19  9  0  9  7  95  61  6  7  27  89
-ex(3):  71  610  88  3  669  3  05  0  7  832  0  35  70  2  479  94  9  1  76
-ex(5):  29  6  9279  09  04  802  42  89  193  97  3  43  4  068  67222  85
-ex(8):  60  582495  1639932  6194  7109  72144  9634846  44  531730  0112466
+ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
+ex(1):  6  2  0  1  2  7  8  5  4  8  3  0  0  9  4  7  4  6  8  9  7  8  0  2
+ex(2):  8  2  07  6  0  78  3  09  36  7  3  43  48  1  3  6  0  2  8  8  00
+ex(3):  109  6  22  89  9  4  378  873  7  7  9  022  5  0  979  70  4  14  07
+ex(5):  908  64103  685  462  7932  998  42  9  06  8523  0220  82865  418  3
+ex(8):  32093  5066827  799  800  4338  93  753  34885  440  46599043  0
 
 regexp: [\d]+
 tree:   [0-9]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
-ex(1):  8  1  7  0  5  1  9  8  5  7  8  6  2  4  8  1  9  1  5  7  8  2  0  6
-ex(2):  0  6  1  2  8  1  2  87  30  68  19  9  0  9  7  95  61  6  7  27  89
-ex(3):  71  610  88  3  669  3  05  0  7  832  0  35  70  2  479  94  9  1  76
-ex(5):  29  6  9279  09  04  802  42  89  193  97  3  43  4  068  67222  85
-ex(8):  60  582495  1639932  6194  7109  72144  9634846  44  531730  0112466
+ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
+ex(1):  6  2  0  1  2  7  8  5  4  8  3  0  0  9  4  7  4  6  8  9  7  8  0  2
+ex(2):  8  2  07  6  0  78  3  09  36  7  3  43  48  1  3  6  0  2  8  8  00
+ex(3):  109  6  22  89  9  4  378  873  7  7  9  022  5  0  979  70  4  14  07
+ex(5):  908  64103  685  462  7932  998  42  9  06  8523  0220  82865  418  3
+ex(8):  32093  5066827  799  800  4338  93  753  34885  440  46599043  0
 
 regexp: [\d0IZESB]+
 tree:   [0-9BEISZ]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  3  0  5  0  4  1  2  8  6  0  2  9  B  0  B  0  0  I  3  1  2  9  7  4
-ex(1):  9  2  6  9  0  5  6  4  0  9  3  2  7  7  7  4  7  S  0  I  B  1  S  E
-ex(2):  39  67  54  BS  8  I  40  08  S4  7S  5E  0  43  I  84  ZZ  8  2  97  Z
-ex(3):  718  573  Z1  57  E  S2  1  I07  B3  0  B8  78  B2  8  S  1  EII  6
-ex(5):  9I4  EI131  3  I5106  IE  67914  6583I  4Z025  I9  71597  I9682  7I4B2
-ex(8):  0797B  27  SB  402BZ9S5  64B  92010506  62  53Z8  ZSEEI405  4509119
+ex(0):  S  S  I  9  S  I  1  4  I  B  B  B  5  2  B  8  Z  I  4  S  I  Z  Z  S
+ex(1):  S  E  7  3  B  9  B  E  1  5  B  S  0  E  Z  I  S  9  4  Z  S  9  4  9
+ex(2):  9  S  I  S  B  SI  EZ  SZ  S  IE  5  S9  SE  SZ  9  8B  E4  BS  ZS  B
+ex(3):  9I  ISS  9SB  B4  6I6  ZZ  I  SS  BSI  IS9  Z1Z  I  BB  Z0  SZ9  4S  I
+ex(5):  9I99  8S  B8ZE  IB  SZSE9  ZIBE  9SE3S  9  BZ9  5  9S  S  SISZ9  S2  BS
+ex(8):  ZB2I6SB  S6I3ZIB  IIBESE  EBS  IZS7B  IEEIZIII  B6  8B9I  I7S86E
 
 regexp: 0x([\dABCDEF][\dABCDEF])+
 tree:   ((0x)([0-9A-F][0-9A-F])+)
 length: 4 to *
 -------------------- Examples --------------------
-ex(0):  0x46  0x53  0xEC  0x6D  0x65  0x9D  0x31  0x11  0xDA  0x79  0x73  0xA8
-ex(1):  0x71  0x00  0x8D  0xD3  0x52  0x23  0x44  0x9E  0xB3  0x0C  0x38  0xCB
-ex(2):  0xB3  0x7B  0x217C  0x858F  0x862E  0xC70F  0x7E  0xF9  0x3B  0x13
-ex(3):  0xB7  0x8F  0x8826  0x0F99  0xAA7A  0x89  0x9F9BCB  0x93  0xF42BF5
-ex(5):  0x0221D520B0  0xF426EE6695  0xDD42FEEF  0x1B2D8F  0x07  0xF0
-ex(8):  0x988E  0xFB71F2A217  0x8ABF0417C0  0xD6B8  0x3355556BF13CB9DF
+ex(0):  0xE0  0x94  0x76  0x9A  0xC0  0xEA  0x8F  0xF4  0x19  0x0D  0x2A  0xA8
+ex(1):  0x1A  0xC6  0x99  0x9B  0x14  0xB9  0x3A  0x6A  0xA7  0x69  0x79  0x7A
+ex(2):  0x9A  0x1068  0x8493  0x3C  0x99E3  0x7A  0x8A  0xEF  0xEA  0x49
+ex(3):  0xAA  0xA1FA7A  0xAF  0xA9  0x9BC65A  0xF931  0x9A  0x91F6  0x10C6AA
+ex(5):  0x0D45A512  0xAAF9B9A6  0x7909  0x19AB  0x6ADED4A3  0x34074AF395
+ex(8):  0x955F99AA35  0xBAFC7058  0x191547A909622FA9  0x98F0A08E10AC1A  0x9E
 
 regexp: \w+
 tree:   [0-9A-Z_a-z]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  _  p  B  O  c  V  4  H  c  c  w  j  s  M  9  D  d  4  Q  D  L  f  A  C
-ex(1):  G  O  E  c  E  D  S  U  q  A  X  U  m  h  F  V  4  1  8  W  n  b  8  _
-ex(2):  _  I  d  a  L  Yo  C  eo  5Y  ty  O  00  h  J  X  b  d  D  RF  g  W  n
-ex(3):  oUd  xu  5  Z  13V  h  hs  E  Pa  vZG  T  sU  cs  K  3mY  h  D  g  k2f
-ex(5):  TGk  mvdRq  yQNK  cn6HO  JRg90  ncUig  dJ1  WSx  eSHN6  e3NxD  y2jmo
-ex(8):  5  un  TD  Ff  P0urzQfq  sLO99  pOK  uhwxgDmm  Ide  Pvb  9cfohRz
+ex(0):  H  W  L  O  q  Z  2  o  3  B  _  k  a  c  A  I  u  q  B  Y  N  J  T  d
+ex(1):  U  i  V  D  p  e  _  9  W  U  u  c  e  C  U  B  0  x  K  b  A  d  C  0
+ex(2):  h  N  xe  G  5Z  r9  t  Ro  u3  O  o  J  A  q  L  f  9  9Y  9  Oa  7  Q
+ex(3):  A  i  e  x_U  7  W  bZ9  r0  kFf  Fq  u  Ok  vU  0t  k  _Y  Ao  wy  _fw
+ex(5):  VZ2af  wfdZ  vm  B_8e  n  SaG  tZd  OBDQv  3BUD  avDOY  niX_  9IAlx
+ex(8):  9bVr  pVLA  9  s  cDR45  t  g  N3YyE_e  y9RZaHr5  XSAEqX9  Xr  rd  qhY4
 
 regexp: [\w]+
 tree:   [0-9A-Z_a-z]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  _  p  B  O  c  V  4  H  c  c  w  j  s  M  9  D  d  4  Q  D  L  f  A  C
-ex(1):  G  O  E  c  E  D  S  U  q  A  X  U  m  h  F  V  4  1  8  W  n  b  8  _
-ex(2):  _  I  d  a  L  Yo  C  eo  5Y  ty  O  00  h  J  X  b  d  D  RF  g  W  n
-ex(3):  oUd  xu  5  Z  13V  h  hs  E  Pa  vZG  T  sU  cs  K  3mY  h  D  g  k2f
-ex(5):  TGk  mvdRq  yQNK  cn6HO  JRg90  ncUig  dJ1  WSx  eSHN6  e3NxD  y2jmo
-ex(8):  5  un  TD  Ff  P0urzQfq  sLO99  pOK  uhwxgDmm  Ide  Pvb  9cfohRz
+ex(0):  H  W  L  O  q  Z  2  o  3  B  _  k  a  c  A  I  u  q  B  Y  N  J  T  d
+ex(1):  U  i  V  D  p  e  _  9  W  U  u  c  e  C  U  B  0  x  K  b  A  d  C  0
+ex(2):  h  N  xe  G  5Z  r9  t  Ro  u3  O  o  J  A  q  L  f  9  9Y  9  Oa  7  Q
+ex(3):  A  i  e  x_U  7  W  bZ9  r0  kFf  Fq  u  Ok  vU  0t  k  _Y  Ao  wy  _fw
+ex(5):  VZ2af  wfdZ  vm  B_8e  n  SaG  tZd  OBDQv  3BUD  avDOY  niX_  9IAlx
+ex(8):  9bVr  pVLA  9  s  cDR45  t  g  N3YyE_e  y9RZaHr5  XSAEqX9  Xr  rd  qhY4
 
 regexp: \w+-\w+
 tree:   (([0-9A-Z_a-z]+-)[0-9A-Z_a-z]+)
 length: 3 to *
 -------------------- Examples --------------------
-ex(0):  _-p  B-O  c-V  4-H  c-c  w-j  s-M  9-D  d-4  Q-D  L-f  A-C  v-G  O-E
-ex(1):  D-S  U-q  A-X  U-m  h-F  V-4  1-8  W-n  b-8  _-3  f-w  A-b  6-i  i-g
-ex(2):  aN-Y  jB-Lr  s-u  0d-m  D-3  O-yP  h-_  _G-36  J-Ug  LO-Xt  l-J  XS-F
-ex(3):  Xu-rnX  P-u  Tfw-1i  R9V-i2  wi-H  b-_Ib  mbd-2Xx  KH-0  wpI-o  BZ-h
-ex(5):  BQq-eoxqS  0Gkl-u948y  0TU-oJzj  EcT-viW  7m6-7GE6  eTv-OdpZ
-ex(8):  DmmSaOmJ-uZ_  sycH62-Z8VDDV  tEH-PDX4wLTz  kFR6VOtO-Oug47_1  tbNad-iz
+ex(0):  H-L  O-Z  2-3  B-k  a-A  I-q  B-N  J-d  Z-i  V-p  e-b  9-U  u-e  C-B
+ex(1):  b-H  d-0  K-h  M-P  x-C  G-5  Z-r  9-t  p-o  a-_  O-o  _-A  J-q  _-f
+ex(2):  kY-uO  P-Q  39-5  i3-x  lU-cW  bZ-vr  Z-1F  B-Ok  v-0  Zk-9  a-o  wy-f
+ex(3):  2-Z  d-c  me-A  e5n-aGF  Zdk-D  v-B  D9-DO  tni-a9I  Nl-3  Q-A9  rGp-A9
+ex(5):  R-9  gNN-yE  CeBy-RZa  r5cXS-EqX  aH-hr  6qh-QYdLy  6Iz9w-9k4  KK9-7yz
+ex(8):  CHALxOp-XYlZe_  xW_jEcCz-m9A  a_TJmdMg-AsE0cAm_  _V-Awsn  7k6A-Jdk
 
 regexp: <\s>
 tree:   ((<[\t-\r ])>)
@@ -222,45 +222,45 @@ regexp: [a-w]
 tree:   [a-w]
 length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  g  u  r  c  f  d  b  r  c  k  p  d  n  d  d  r  f  e  u  t  f  f  v  l
-ex(1):  t  n  t  u  i  h  g  l  d  f  c  p  h  c  i  r  a  v  t  s  c  w  b  h
-ex(2):  l  w  t  k  g  i  l  r  m  j  f  t  t  j  d  m  f  n  d  q  s  d  a  l
-ex(3):  i  m  e  p  b  m  o  r  b  p  b  i  r  e  n  q  q  c  n  s  q  v  k  s
-ex(5):  s  i  c  o  d  r  n  j  s  l  e  j  d  g  n  c  b  f  w  c  r  q  a  i
-ex(8):  u  v  s  s  l  q  s  g  h  h  u  u  t  q  s  f  r  n  o  j  e  j  t  v
+ex(0):  l  h  v  a  h  i  l  b  e  m  p  h  g  h  p  q  r  q  l  p  e  t  a  h
+ex(1):  v  r  u  d  i  w  u  p  w  e  n  l  b  j  f  e  a  u  t  u  c  r  q  e
+ex(2):  m  i  s  v  d  v  b  l  b  m  w  m  k  t  g  t  l  n  o  p  n  u  c  j
+ex(3):  i  l  b  e  m  r  s  j  o  r  d  q  p  h  c  g  r  w  o  k  g  h  i  u
+ex(5):  k  w  o  g  h  n  i  f  i  h  r  v  o  m  v  r  j  a  e  m  i  r  j  d
+ex(8):  b  a  g  i  r  t  c  i  e  j  d  r  f  a  d  t  c  w  r  k  a  k  b  v
 
 regexp: [\142-x]
 tree:   [b-x]
 length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  h  v  s  d  g  e  c  s  d  l  q  e  o  e  e  s  g  f  v  u  g  g  w  m
-ex(1):  u  o  u  v  j  i  h  m  e  g  d  q  i  d  j  s  b  w  u  t  d  x  c  i
-ex(2):  m  x  u  l  h  j  m  s  n  k  g  u  u  k  e  n  g  o  e  r  t  e  b  m
-ex(3):  j  n  f  q  c  n  p  s  c  q  c  j  s  f  o  r  r  d  o  t  r  w  l  t
-ex(5):  t  j  d  p  e  s  o  k  t  m  f  k  e  h  o  d  c  g  x  d  s  r  b  j
-ex(8):  v  w  t  t  m  r  t  h  i  i  v  v  u  r  t  g  s  o  p  k  f  k  u  w
+ex(0):  m  i  w  b  i  j  m  c  f  n  q  i  h  i  q  r  s  r  m  q  f  u  b  i
+ex(1):  w  s  v  e  j  x  v  q  x  f  o  m  c  k  g  f  b  v  u  v  d  s  r  f
+ex(2):  n  j  t  w  e  w  c  m  c  n  x  n  l  u  h  u  m  o  p  q  o  v  d  k
+ex(3):  j  m  c  f  n  s  t  k  p  s  e  r  q  i  d  h  s  x  p  l  h  i  j  v
+ex(5):  l  x  p  h  i  o  j  g  j  i  s  w  p  n  w  s  k  b  f  n  j  s  k  e
+ex(8):  c  b  h  j  s  u  d  j  f  k  e  s  g  b  e  u  d  x  s  l  b  l  c  w
 
 regexp: [c-\x79]
 tree:   [c-y]
 length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  i  w  t  e  h  f  d  t  e  m  r  f  p  f  f  t  h  g  w  v  h  h  x  n
-ex(1):  v  p  v  w  k  j  i  n  f  h  e  r  j  e  k  t  c  x  v  u  e  y  d  j
-ex(2):  n  y  v  m  i  k  n  t  o  l  h  v  v  l  f  o  h  p  f  s  u  f  c  n
-ex(3):  k  o  g  r  d  o  q  t  d  r  d  k  t  g  p  s  s  e  p  u  s  x  m  u
-ex(5):  u  k  e  q  f  t  p  l  u  n  g  l  f  i  p  e  d  h  y  e  t  s  c  k
-ex(8):  w  x  u  u  n  s  u  i  j  j  w  w  v  s  u  h  t  p  q  l  g  l  v  x
+ex(0):  n  j  x  c  j  k  n  d  g  o  r  j  i  j  r  s  t  s  n  r  g  v  c  j
+ex(1):  x  t  w  f  k  y  w  r  y  g  p  n  d  l  h  g  c  w  v  w  e  t  s  g
+ex(2):  o  k  u  x  f  x  d  n  d  o  y  o  m  v  i  v  n  p  q  r  p  w  e  l
+ex(3):  k  n  d  g  o  t  u  l  q  t  f  s  r  j  e  i  t  y  q  m  i  j  k  w
+ex(5):  m  y  q  i  j  p  k  h  k  j  t  x  q  o  x  t  l  c  g  o  k  t  l  f
+ex(8):  d  c  i  k  t  v  e  k  g  l  f  t  h  c  f  v  e  y  t  m  c  m  d  x
 
 regexp: [\x64-\u007A]
 tree:   [d-z]
 length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  j  x  u  f  i  g  e  u  f  n  s  g  q  g  g  u  i  h  x  w  i  i  y  o
-ex(1):  w  q  w  x  l  k  j  o  g  i  f  s  k  f  l  u  d  y  w  v  f  z  e  k
-ex(2):  o  z  w  n  j  l  o  u  p  m  i  w  w  m  g  p  i  q  g  t  v  g  d  o
-ex(3):  l  p  h  s  e  p  r  u  e  s  e  l  u  h  q  t  t  f  q  v  t  y  n  v
-ex(5):  v  l  f  r  g  u  q  m  v  o  h  m  g  j  q  f  e  i  z  f  u  t  d  l
-ex(8):  x  y  v  v  o  t  v  j  k  k  x  x  w  t  v  i  u  q  r  m  h  m  w  y
+ex(0):  o  k  y  d  k  l  o  e  h  p  s  k  j  k  s  t  u  t  o  s  h  w  d  k
+ex(1):  y  u  x  g  l  z  x  s  z  h  q  o  e  m  i  h  d  x  w  x  f  u  t  h
+ex(2):  p  l  v  y  g  y  e  o  e  p  z  p  n  w  j  w  o  q  r  s  q  x  f  m
+ex(3):  l  o  e  h  p  u  v  m  r  u  g  t  s  k  f  j  u  z  r  n  j  k  l  x
+ex(5):  n  z  r  j  k  q  l  i  l  k  u  y  r  p  y  u  m  d  h  p  l  u  m  g
+ex(8):  e  d  j  l  u  w  f  l  h  m  g  u  i  d  g  w  f  z  u  n  d  n  e  y
 
 # big sets \D \W \S
 
@@ -268,34 +268,34 @@ regexp: [\D]+
 tree:   [\x01-/:-\u007f]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  V  #  `  {  F  !  l  j  \"  x  t  D  Q  b  C  t  u  *  _  j  o  X  j  D
-ex(1):  +  Q  U  }  z  N  {  *  &  z  +  L  '  ]  &  n  b  N  p  R  }  .  n  t
-ex(2):  .y  Ld  y  O  A  @h  e<  *  V   \\  A)  >  ]  X  hE  F  `  O  )y  -  @
-ex(3):  _uu  {  I  ko  +  \"  ;  Hu  L  `]>  g}!  U  a'  {ok  q  AX  r  D,*  _[
-ex(5):  ^bX  'h#HZ  ;xVI  `  =[  .U  +'<z  ?  %x  a/gI  =e=`  > [Z  ]zM  r
-ex(8):  =h&-pF/  s  YSGTa  \"Y;N_H\"  ja+Z   JDaz  xo  x!=J  UM^  !  I,  F
+ex(0):  ~  $  (  I  :  ;  w  #  F  x  c  [  s  :  X  :  =  R  :  %  D  I  J  z
+ex(1):  T  m  d  f  .  i  -  M  W  `  )  :  N  i  )  r  :  O  '  u  i  V  E  L
+ex(2):  `{  /  }~  [C  IZ  [  PA  /n  :  Ts  X  H  :  }  $  W  {V  qM  tl  ,  l
+ex(3):  ~  G  _;:  '/^  :  h  JwM  {   o|e  \"\\  G  :/  ;P  :  uK=  .{\\  ;
+ex(5):  +hU/Z  /tx  oO  y  WD  _HO(  \\h'>  d^FX\\  t]A  <  i  #c%$  z>>+  :Y
+ex(8):  e\\iW  ;tP  _xB:wkZ{  Gx/]  $  @  DC)j\\  :  /*U?x  -y(xZS  [d\":~/S/
 
 regexp: [\W]+
 tree:   [\x01-/:-@[-^`{-\u007f]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  )  `  =  *  =  |  <  ;  ]  <  ?  @  ~  :  [  \\  \\  ,  !  ?  /  {  *
-ex(1):  \"  .  \\  )  @  <  '  )  [  ~  {  {  &  #  ~  |  '  \"  >  ]  `     ;
-ex(2):  !+  ,`  ^  :  '@  &  .  \":  :^  !  '  !  >|  (   $/  |  )  >  )-  {#
-ex(3):     #(  ^^>  ~!  =#  ^'^  ?  >'[  |  &  \"  ~ ^  }!}  +*  ~[!  <'  #,
-ex(5):  /(]$   '.  -#<$   ^.  :}  #/*   ]'  &~   &|=&  [  />-  >?  $.#\"  *
-ex(8):  =`?\\]<  .  )&,,  $:+^=})  \\%*\\:  #  ?\";  $`{.-![  }}#[:{^>
+ex(0):  ~  $  (  @  @  {  [  `  {  +  [  [  [  [  [  [  !  @  `  .  `  [  `  )
+ex(1):  [  )  {  [  '  {  [  [  [  {  {  `  }  ~  /  @  @  :  [  [  @  /  {  :
+ex(2):  :[  :  }  $  @  @{  {[  {  }~  [^  [  /^  :  {[  {   `  @\\  @:  /  [:
+ex(3):  .{\\  ;  (\\@  +  @=  `@`  [  {  {[  {{>  {[  :  @<  {#  %$  `  +{`  '~
+ex(5):  [;`[  @]`[  [/][  @  @){@:  *  ?`-{  @^[`   ~/[  [  *[  :`[@?  {`  `[/!
+ex(8):  `@[::`  <;;^  $&{;[:{  @``@[{  ``[@{'~  :  |@@{[\\@`  [{</[+``  ?[]:{@
 
 regexp: [\S]+
 tree:   [\x01-\b\x0e-\x1f!-\u007f]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  V  :  ,  T  D  i  )  l  ?  ,  W  ?  B  E  ?  P  2  T  R  _  t  9  w  Z
-ex(1):  @  M  >  *  V  .  e  h  X  }  Y  D  n  ~  $  *  $  5  6  }  w  C  (  8
-ex(2):  A.  :  )m  s/  Q  <_  p  m  &M  i&  4c  bt  Id  D?  eM  T`  [  5u  i&
-ex(3):  ]  r  pzy  B=N  }+u  e9  kQ  w  qj  ]  h~  fW7  ?\",  b6A  +%  Sx9  $ls
-ex(5):  >  Ei\\  Y\\zF=  ?F  3z  ~  XX  8U3  :z=~  D  ]9}  z~)  lD]  f  8\"{  W
-ex(8):  }To}nD  %MG>f>~g  oY|ds]~  wjs,  ^D@  Cc9  FVaK(Vmh  ]#  @6o  6r7z}C_
+ex(0):  M  1  8  #  R  c  r  ~  -  g  w  p  R  )  Y  7  4  }  e  9  T  e  =  %
+ex(1):  c  e  C  \"  C  :  e  j  #  [  n  #  O  $  #  B  e  W  w  V  l  g  w  ;
+ex(2):  o  '  ER  s  3  X5  B  i@  Ze  X  r  A$  m[  x  2  #  G  _  s  U  Mk
+ex(3):  (gD  +  uO  7,  ^  3  D^i  Wd8  .  :  (  S/7  :  q  j&^  &C  -  D)  _t
+ex(5):  f-I  !wd7\\  AS.  13E  JZJW  8tq  'Y  p  _]  A$EJ  i1C'  uC/{h  U\"w  <
+ex(8):  N{/Vv  hEIMm;v  *\\\\  3q?  SzPW  FB  nxL  V)%yN  S#S  U_*xXKuR  S
 
 # the following pairs should be identical
 
@@ -303,45 +303,45 @@ regexp: [\d]+
 tree:   [0-9]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
-ex(1):  8  1  7  0  5  1  9  8  5  7  8  6  2  4  8  1  9  1  5  7  8  2  0  6
-ex(2):  0  6  1  2  8  1  2  87  30  68  19  9  0  9  7  95  61  6  7  27  89
-ex(3):  71  610  88  3  669  3  05  0  7  832  0  35  70  2  479  94  9  1  76
-ex(5):  29  6  9279  09  04  802  42  89  193  97  3  43  4  068  67222  85
-ex(8):  60  582495  1639932  6194  7109  72144  9634846  44  531730  0112466
+ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
+ex(1):  6  2  0  1  2  7  8  5  4  8  3  0  0  9  4  7  4  6  8  9  7  8  0  2
+ex(2):  8  2  07  6  0  78  3  09  36  7  3  43  48  1  3  6  0  2  8  8  00
+ex(3):  109  6  22  89  9  4  378  873  7  7  9  022  5  0  979  70  4  14  07
+ex(5):  908  64103  685  462  7932  998  42  9  06  8523  0220  82865  418  3
+ex(8):  32093  5066827  799  800  4338  93  753  34885  440  46599043  0
 
 regexp: [^\D]+
 tree:   [0-9]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
-ex(1):  8  1  7  0  5  1  9  8  5  7  8  6  2  4  8  1  9  1  5  7  8  2  0  6
-ex(2):  0  6  1  2  8  1  2  87  30  68  19  9  0  9  7  95  61  6  7  27  89
-ex(3):  71  610  88  3  669  3  05  0  7  832  0  35  70  2  479  94  9  1  76
-ex(5):  29  6  9279  09  04  802  42  89  193  97  3  43  4  068  67222  85
-ex(8):  60  582495  1639932  6194  7109  72144  9634846  44  531730  0112466
+ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
+ex(1):  6  2  0  1  2  7  8  5  4  8  3  0  0  9  4  7  4  6  8  9  7  8  0  2
+ex(2):  8  2  07  6  0  78  3  09  36  7  3  43  48  1  3  6  0  2  8  8  00
+ex(3):  109  6  22  89  9  4  378  873  7  7  9  022  5  0  979  70  4  14  07
+ex(5):  908  64103  685  462  7932  998  42  9  06  8523  0220  82865  418  3
+ex(8):  32093  5066827  799  800  4338  93  753  34885  440  46599043  0
 
 regexp: [\w]+
 tree:   [0-9A-Z_a-z]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  _  p  B  O  c  V  4  H  c  c  w  j  s  M  9  D  d  4  Q  D  L  f  A  C
-ex(1):  G  O  E  c  E  D  S  U  q  A  X  U  m  h  F  V  4  1  8  W  n  b  8  _
-ex(2):  _  I  d  a  L  Yo  C  eo  5Y  ty  O  00  h  J  X  b  d  D  RF  g  W  n
-ex(3):  oUd  xu  5  Z  13V  h  hs  E  Pa  vZG  T  sU  cs  K  3mY  h  D  g  k2f
-ex(5):  TGk  mvdRq  yQNK  cn6HO  JRg90  ncUig  dJ1  WSx  eSHN6  e3NxD  y2jmo
-ex(8):  5  un  TD  Ff  P0urzQfq  sLO99  pOK  uhwxgDmm  Ide  Pvb  9cfohRz
+ex(0):  H  W  L  O  q  Z  2  o  3  B  _  k  a  c  A  I  u  q  B  Y  N  J  T  d
+ex(1):  U  i  V  D  p  e  _  9  W  U  u  c  e  C  U  B  0  x  K  b  A  d  C  0
+ex(2):  h  N  xe  G  5Z  r9  t  Ro  u3  O  o  J  A  q  L  f  9  9Y  9  Oa  7  Q
+ex(3):  A  i  e  x_U  7  W  bZ9  r0  kFf  Fq  u  Ok  vU  0t  k  _Y  Ao  wy  _fw
+ex(5):  VZ2af  wfdZ  vm  B_8e  n  SaG  tZd  OBDQv  3BUD  avDOY  niX_  9IAlx
+ex(8):  9bVr  pVLA  9  s  cDR45  t  g  N3YyE_e  y9RZaHr5  XSAEqX9  Xr  rd  qhY4
 
 regexp: [^\W]+
 tree:   [0-9A-Z_a-z]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  _  p  B  O  c  V  4  H  c  c  w  j  s  M  9  D  d  4  Q  D  L  f  A  C
-ex(1):  G  O  E  c  E  D  S  U  q  A  X  U  m  h  F  V  4  1  8  W  n  b  8  _
-ex(2):  _  I  d  a  L  Yo  C  eo  5Y  ty  O  00  h  J  X  b  d  D  RF  g  W  n
-ex(3):  oUd  xu  5  Z  13V  h  hs  E  Pa  vZG  T  sU  cs  K  3mY  h  D  g  k2f
-ex(5):  TGk  mvdRq  yQNK  cn6HO  JRg90  ncUig  dJ1  WSx  eSHN6  e3NxD  y2jmo
-ex(8):  5  un  TD  Ff  P0urzQfq  sLO99  pOK  uhwxgDmm  Ide  Pvb  9cfohRz
+ex(0):  H  W  L  O  q  Z  2  o  3  B  _  k  a  c  A  I  u  q  B  Y  N  J  T  d
+ex(1):  U  i  V  D  p  e  _  9  W  U  u  c  e  C  U  B  0  x  K  b  A  d  C  0
+ex(2):  h  N  xe  G  5Z  r9  t  Ro  u3  O  o  J  A  q  L  f  9  9Y  9  Oa  7  Q
+ex(3):  A  i  e  x_U  7  W  bZ9  r0  kFf  Fq  u  Ok  vU  0t  k  _Y  Ao  wy  _fw
+ex(5):  VZ2af  wfdZ  vm  B_8e  n  SaG  tZd  OBDQv  3BUD  avDOY  niX_  9IAlx
+ex(8):  9bVr  pVLA  9  s  cDR45  t  g  N3YyE_e  y9RZaHr5  XSAEqX9  Xr  rd  qhY4
 
 regexp: [\s]+
 tree:   [\t-\r ]+
@@ -349,10 +349,10 @@ length: 1 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
-ex(2):                                                                       
-ex(3):                                                                       
-ex(5):                                                                     
-ex(8):                                                                         
+ex(2):                                                                      
+ex(3):                                                                        
+ex(5):                                                                       
+ex(8):                                                                  
 
 regexp: [^\S]+
 tree:   [\t-\r ]+
@@ -360,7 +360,7 @@ length: 1 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
-ex(2):                                                                       
-ex(3):                                                                       
-ex(5):                                                                     
-ex(8):                                                                         
+ex(2):                                                                      
+ex(3):                                                                        
+ex(5):                                                                       
+ex(8):                                                                  

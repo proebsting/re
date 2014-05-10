@@ -81,11 +81,11 @@ tree:   ((x+y*)z+)
 length: 2 to *
 -------------------- Examples --------------------
 ex(0):  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz
-ex(1):  xz  xz  xyz  xz  xyz  xz  xyz  xyz  xz  xz  xz  xyz  xyz  xz  xz  xz
-ex(2):  xyz  xxz  xyyz  xzz  xz  xxyz  xxyyz  xxzz  xz  xxyz  xzz  xyz  xyz
-ex(3):  xxxyyzzz  xyyzz  xxxyyyzzz  xxxyz  xz  xxyzz  xxyyyz  xyyzzz  xxz
-ex(5):  xyyzzz  xyyyyzzzz  xxxxyyyz  xyzz  xxxxxyyyyyzz  xyyyzzzzz  xxyyyyzzz
-ex(8):  xxxxxxxxyyyzzzz  xxxxxxxxyyyyyz  xxzzzzz  xxxxxxxyyyyyyyyzzzzzzzz
+ex(1):  xz  xz  xyz  xyz  xz  xyz  xz  xz  xyz  xyz  xz  xz  xz  xyz  xz  xz
+ex(2):  xyzz  xxzz  xyzz  xxzz  xzz  xxyyz  xxyyzz  xzz  xyz  xyz  xzz  xyyz
+ex(3):  xxz  xyyz  xxxyyzzz  xzz  xz  xxyzz  xxxyyz  xxyyyz  xxyyyzzz  xxzz
+ex(5):  xyyyzz  xxxxyyyyzzzzz  xxxxxyz  xxyyyzzzzz  xxxxxyyzz  xxxxxyyyyzzzzz
+ex(8):  xxxxxxyyyyyyzzz  xxxyzzzzzzzz  xxxxxzz  xxxxxxxxyyzzzzzzzz
 
 regexp: q\$
 tree:   (q$)

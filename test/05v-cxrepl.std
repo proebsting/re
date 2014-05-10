@@ -126,12 +126,12 @@ tree:   (a|b){3}
 augmnt: ((((a|b)(a|b))(a|b))#)
 length: 3 to 3
 -------------------- Examples --------------------
-ex(0):  aab  aba  bba  aab  baa  aba  aab  aaa  baa  aba  bab  aab  aab  aba
-ex(1):  baa  aba  aaa  bab  aaa  abb  aab  bab  bba  aba  bba  bba  aab  aba
-ex(2):  aaa  aaa  baa  bbb  bba  bba  aaa  aab  bbb  aab  baa  abb  bba  bab
-ex(3):  abb  aaa  bbb  bba  bab  baa  aba  aba  baa  aaa  bab  baa  baa  aaa
-ex(5):  abb  bab  aaa  bba  aaa  bab  aaa  aab  aaa  aba  aba  bba  aab  aab
-ex(8):  aaa  aab  abb  baa  aab  abb  abb  bab  bba  baa  aba  aaa  baa  bbb
+ex(0):  abb  baa  bab  aba  bab  bba  abb  aba  aaa  bba  aba  bbb  aab  baa
+ex(1):  aaa  bab  bab  aaa  bba  bab  baa  bab  aab  baa  bab  aaa  aaa  baa
+ex(2):  aba  aab  aaa  aaa  aab  aab  aba  bba  abb  baa  abb  bbb  bab  aaa
+ex(3):  aab  baa  abb  aab  aba  aba  bab  bab  abb  bab  bba  aaa  bba  baa
+ex(5):  bbb  baa  aba  aab  aab  bba  aba  bba  bab  bba  aaa  bab  bab  abb
+ex(8):  aab  aaa  baa  baa  baa  aaa  aba  aba  bab  bba  abb  aab  aab  baa
 ----------------- Annotated Tree -----------------
 {F, ab, #}   ((((a|b)(a|b))(a|b))#)
    {F, ab, ab}   (((a|b)(a|b))(a|b))
@@ -173,12 +173,12 @@ tree:   ((ab)|(cd)){3}
 augmnt: (((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))#)
 length: 6 to 6
 -------------------- Examples --------------------
-ex(0):  ababcd  abcdab  cdcdab  ababcd  cdabab  abcdab  ababcd  ababab  cdabab
-ex(1):  cdabcd  ababcd  ababcd  abcdab  ababcd  cdabab  abcdab  ababab  cdabcd
-ex(2):  abcdcd  ababcd  cdabcd  cdcdab  abcdab  cdcdab  cdcdab  ababcd  abcdab
-ex(3):  ababab  ababab  cdabab  cdcdcd  cdcdab  cdcdab  ababab  ababcd  cdcdcd
-ex(5):  cdabab  abcdcd  cdcdab  cdabcd  cdabab  abcdcd  ababab  cdcdcd  cdcdab
-ex(8):  cdabab  abcdab  abcdab  cdabab  ababab  cdabcd  cdabab  cdabab  ababab
+ex(0):  ababcd  abcdab  ababcd  abcdab  ababab  cdabab  cdabab  abcdcd  abcdcd
+ex(1):  ababcd  cdcdcd  ababcd  abcdab  cdcdcd  ababcd  cdcdcd  ababcd  abcdcd
+ex(2):  abcdab  cdabcd  ababab  ababcd  ababcd  ababab  cdabab  abcdcd  cdabab
+ex(3):  abcdcd  cdabab  ababab  ababcd  cdcdcd  ababab  cdabcd  cdabab  cdcdcd
+ex(5):  cdcdcd  cdabcd  ababab  cdcdcd  abcdcd  abcdab  cdabab  cdcdab  cdabab
+ex(8):  abcdab  abcdab  cdabcd  cdabcd  abcdab  cdcdcd  cdcdab  cdabab  ababcd
 ----------------- Annotated Tree -----------------
 {F, ac, #}   (((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))#)
    {F, ac, bd}   ((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))
@@ -251,11 +251,11 @@ augmnt: (((a*a*)a*)#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):  a  a  aa  a  a  a  a    a  a  aa  a  a  a  a  a  a    aa    aa  a  aa
-ex(2):  aaa  aaaa    aaa  aaa  aa  aaaaaa  aa  a  aaaa  aaaa  a  aaaa  a  
-ex(3):  aaaaa  aaaa  aaaa  aaaaaa  aaaaa  aaaa  aaaaaa  aaaaa  aa  aaaaaa
-ex(5):  aaaaaaaaa  aaaaa  aaaaaaaaaaaaa  aaaaaa  aaaa  aaaaaaa  aaaaaaa
-ex(8):  aaaaa  aaaaaaaaaaaa  aaaaaaaaa  aaaaaaaaaa  a  aaaaaaaaaaaa
+ex(1):  a  aa  a    a  a  a  aaa  a  aa  a  a    aa  a  a  aa  aa  a  a  a    
+ex(2):  aaa  a  aa    aa  aa  aa  aa  aaa  aaa  aaaa  aaa  aa  aa  aaaaa  aaa
+ex(3):  aaaaaa  aaaaaa  aa  aaaa  aaaaa  aaaaaaa  aaaaaa  aaaaa  aa  aaaa  aa
+ex(5):  aaaaaaa  aaaaa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaaaaaaaaa  aaaaaaa
+ex(8):  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaa
 ----------------- Annotated Tree -----------------
 {F, aaa#, #}   (((a*a*)a*)#)
    {T, aaa, aaa}   ((a*a*)a*)
@@ -286,11 +286,11 @@ augmnt: (((aa)a)*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      aaa    aaa    aaa  aaa        aaa  aaa        aaa        aaa      
-ex(2):    aaa    aaa  aaa    aaaaaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaa
-ex(3):  aaaaaa  aaaaaaaaa      aaaaaa  aaaaaaaaa  aaaaaaaaa      aaaaaa  aaa
-ex(5):  aaaaaaaaaaaa    aaaaaaaaaaaa  aaa    aaaaaaaaa  aaaaaa  aaaaaa  aaaaaa
-ex(8):  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaa
+ex(1):      aaa  aaa    aaa    aaa  aaa  aaa  aaa  aaa      aaa      aaa    aaa
+ex(2):  aaa  aaaaaa  aaaaaa  aaaaaa        aaaaaa    aaaaaa  aaa  aaaaaa  aaa  
+ex(3):  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaa  aaa  aaaaaaaaa  aaaaaaaaa    aaaaaa
+ex(5):  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaa  aaaaaaaaaaaa
+ex(8):  aaaaaaaaaaaa  aaaaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaaaaaaa
 ----------------- Annotated Tree -----------------
 {F, a#, #}   (((aa)a)*#)
    {T, a, a}   ((aa)a)*
@@ -324,10 +324,10 @@ length: 3 to *
 -------------------- Examples --------------------
 ex(0):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
 ex(1):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
-ex(2):  aaa  aaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaa  aaa  aaa
-ex(3):  aaaaaaaaa  aaa  aaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaa  aaaaaaaaa
-ex(5):  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaaaaa  aaa  aaaaaa  aaaaaaaaa
-ex(8):  aaaaaaaaaaaaaaa  aaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaaaa  aaaaaa
+ex(2):  aaa  aaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaa  aaa  aaa  aaaaaa
+ex(3):  aaa  aaaaaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaaaaaaaa  aaa  aaa
+ex(5):  aaa  aaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaa  aaa  aaaaaa
+ex(8):  aaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaa
 ----------------- Annotated Tree -----------------
 {F, a, #}   (((aa)a)+#)
    {F, a, a}   ((aa)a)+
@@ -362,11 +362,11 @@ augmnt: (((aa)a)?#)
 length: 0 to 3
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      aaa    aaa    aaa  aaa        aaa  aaa        aaa        aaa      
-ex(2):        aaa    aaa    aaa      aaa      aaa    aaa        aaa  aaa      
-ex(3):          aaa    aaa          aaa  aaa      aaa  aaa    aaa  aaa  aaa    
-ex(5):    aaa  aaa    aaa  aaa        aaa    aaa                      aaa    
-ex(8):  aaa  aaa  aaa  aaa    aaa  aaa              aaa  aaa  aaa  aaa      aaa
+ex(1):      aaa  aaa    aaa    aaa  aaa  aaa  aaa  aaa      aaa      aaa    aaa
+ex(2):  aaa        aaa  aaa  aaa  aaa    aaa    aaa                    aaa  aaa
+ex(3):  aaa          aaa      aaa    aaa    aaa        aaa    aaa  aaa  aaa  
+ex(5):    aaa      aaa      aaa      aaa  aaa  aaa  aaa      aaa          aaa  
+ex(8):    aaa    aaa  aaa          aaa  aaa    aaa    aaa  aaa  aaa  aaa    aaa
 ----------------- Annotated Tree -----------------
 {F, a#, #}   (((aa)a)?#)
    {T, a, a}   ((aa)a)?
@@ -455,10 +455,10 @@ length: 3 to 15
 -------------------- Examples --------------------
 ex(0):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
 ex(1):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
-ex(2):  aaa  aaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaa  aaa  aaa
-ex(3):  aaaaaaaaa  aaa  aaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaa  aaaaaaaaa
-ex(5):  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaaaaa  aaa  aaaaaa  aaaaaaaaa
-ex(8):  aaaaaaaaaaaa  aaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaa
+ex(2):  aaa  aaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaa  aaa  aaa  aaaaaa
+ex(3):  aaa  aaaaaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaaaaaaaa  aaa  aaa
+ex(5):  aaa  aaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaa  aaa  aaaaaa
+ex(8):  aaa  aaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa
 ----------------- Annotated Tree -----------------
 {F, a, #}   (((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)#)
    {F, a, aaaaa}   ((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)
@@ -613,12 +613,12 @@ tree:   (a{3}|b{4}|c{5})
 augmnt: ((((aa)a)|(((bb)b)b)|((((cc)c)c)c))#)
 length: 3 to 5
 -------------------- Examples --------------------
-ex(0):  aaa  aaa  bbbb  bbbb  ccccc  bbbb  bbbb  ccccc  aaa  aaa  aaa  ccccc
-ex(1):  aaa  aaa  aaa  ccccc  ccccc  bbbb  aaa  ccccc  aaa  ccccc  aaa  ccccc
-ex(2):  bbbb  aaa  bbbb  bbbb  aaa  ccccc  ccccc  bbbb  ccccc  bbbb  ccccc
-ex(3):  ccccc  aaa  bbbb  aaa  aaa  ccccc  bbbb  bbbb  aaa  aaa  aaa  aaa
-ex(5):  bbbb  aaa  bbbb  bbbb  aaa  aaa  ccccc  ccccc  ccccc  aaa  ccccc  aaa
-ex(8):  bbbb  ccccc  bbbb  ccccc  ccccc  bbbb  aaa  aaa  ccccc  aaa  bbbb
+ex(0):  aaa  ccccc  aaa  aaa  bbbb  aaa  aaa  ccccc  bbbb  aaa  aaa  ccccc  aaa
+ex(1):  bbbb  bbbb  bbbb  aaa  bbbb  aaa  ccccc  aaa  ccccc  bbbb  aaa  ccccc
+ex(2):  bbbb  aaa  aaa  bbbb  aaa  ccccc  ccccc  ccccc  ccccc  bbbb  aaa  bbbb
+ex(3):  ccccc  ccccc  bbbb  ccccc  aaa  ccccc  bbbb  bbbb  bbbb  aaa  bbbb
+ex(5):  bbbb  bbbb  bbbb  bbbb  bbbb  aaa  bbbb  aaa  bbbb  ccccc  aaa  aaa
+ex(8):  bbbb  bbbb  ccccc  aaa  bbbb  bbbb  ccccc  aaa  ccccc  bbbb  ccccc
 ----------------- Annotated Tree -----------------
 {F, abc, #}   ((((aa)a)|(((bb)b)b)|((((cc)c)c)c))#)
    {F, abc, abc}   (((aa)a)|(((bb)b)b)|((((cc)c)c)c))

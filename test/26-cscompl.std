@@ -6,66 +6,66 @@ tree:   [\x01-\x1fa-\u007f]*
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      r      i  ~      n    f        e    e      r  n  e  }    y    i    
-ex(2):    |r  o  mw    ev  pz  |m    i  lg    |t    {  fx  ~m  r  m  |  t  d  
-ex(3):  ge  zj~  zwp  jpi  o  n    at    wo  q  hcl      {vl  qu  g  w  |fd  il
-ex(5):  fht  gzg  uzeo  uan  q  hzb  ie  k  jahx  i}  }x~t  g}wc    o{  t  |rt
-ex(8):  jch    zxhmqa  snrmkqa  fi  bbbj  akulpp  hguo}t  nuef  a|  ~}fljrl
+ex(1):      q  q  r        ~        u      s      g      w  i  e    u    y  y  
+ex(2):  h          }y  t      {o    |i  x  u  bd    |}  te          bw    {m  
+ex(3):      jk  bb  ~  a  jqe  wq    djj      |    i|  p  a  g  rum    zga  ~h
+ex(5):  yhb  kk  }    m~k}y  eb    h{}  cy{wi  txmrt  }ly  ajvk  ispc  iuccu  i
+ex(8):  bs  dkssdwu~  azu  {  c|  rtjk}aa  yddsdt  q|fxgxe  }zqyy  hygf  tuox
 
 regexp: [^ -@]*
 tree:   [\x01-\x1fA-\u007f]*
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      r  L    u        P        n  o  H    O  H  |  b  i      M      R  S
-ex(2):  O  hk  jN  ro  uP    x    HD  qB    Z_  f  ~  }u            r  j    mz
-ex(3):  QAd  Iv  t^p  Er        QR    ]X  d  \\[  X|}    Hx  p|M  QfN  kr|  w  
-ex(5):  x  FDe\\d    VfWH  Hb  fXl    MZa  pO}zb  Iru^S  {  xPXIv  J}q  kDCog
-ex(8):  KZ]~~YQh  hs  b`sogpU  UuHzco]T  EFWqYIU  cbZfxtp  JOQr]  wKgGcK  WgeN
+ex(1):      _  [  R        n        O      C      Y      [  M  K    g    W  M  
+ex(2):  f          qG  T      o}    |W  \\  o  ~l    ~o  |S          Zu    M{  
+ex(3):      l{  Pd  t  A  nuW  Ac    Nlj      N    {J  x  [  o  BuO    jOS  nx
+ex(5):  Ob|  QE  W    OLGey  }L    ZoC  W]kMW  djIVB  kTi  mr\\C  y}BM  eKAAU
+ex(8):  e{Xi  bc  zki_bQyD  }nW  s  Sv  |HligOE  cDde^v  AD|LcTA  Y~sqW  DG}x
 
 regexp: [^ -/]*
 tree:   [\x01-\x1f0-\u007f]*
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      r    M      1  x        y  O  a    y    j  m        @    <        @
-ex(2):    C  g  n  <e  U    {  ~Q  [<  u  O  {r      f  wz  vr  :z  k  5J    
-ex(3):  EF<  [k;  >;}  OrY  h2  v{5  a  xdM  u  v  y  Uu  t        Zp3  8i    
-ex(5):  0U1D1  _0y  7OY  |Ib  ehS      Dfes  @8C~  H1c  Pta  f  ~\\v9    BCA7
-ex(8):  zm`h[PrB  Gr  L  od=sa  fM  8wIL9  >  tQZ  u\\}:<^  Hj`t  a9E      
+ex(1):      x  D  w        3        S      N      n      e  J  U    8    `  Q  
+ex(2):  b          {{  :      1c    RH  e  Z  S@    ^M  V[          =s    ^I  
+ex(3):      7W  Mr  W  s  em@  _a    F61      c    @N  C  w  ;  _\\a    X:`  CU
+ex(5):  laF  rE  a    CY_we  @k    A;X  e7>C;  Aw=g4  ~;C  2Sh_  ?vd:  {8Kz]  4
+ex(8):  9X  ?2}V\\g_q  |k]  D  Kp  _;cRF]]  @~`sD{  NxCQNCT  7:{HE  0rMP  2@T{
 
 regexp: [^ -/:-@[-`{-~]*
 tree:   [\x01-\x1f0-9A-Za-z\u007f]*
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      n  B    q        F        j  k  7    E  7  x  X  e      C      H  I
-ex(2):  E  dg  fD  nk  qF    t    73  m1    PU  b  z  yq            n  f    iv
-ex(3):  G0Z  8r  pTl  4n        GH    SN  Z  RQ  Nxy    7t  lxC  GbD  gnx  s  
-ex(5):  t  53aRZ    LbM7  7X  bNh    CPW  lEyvX  8nqTI  w  tFN8r  9ym  g32kc
-ex(8):  APSzzOGd  do  XVokclK  Kq7vYkSJ  45MmO8K  YXPbtpl  9EGnS  sAc6YA  McaD
+ex(1):      O  Z  o      k        b      B      T      U  V  p    b    W  u    
+ex(2):          Ad  0    hM    xe  G  5  O3    xL  pR          OF    JA  Aq  L
+ex(3):  v  99  l  uOa  71    39u      i    Gx  l  Z  Wn    9v  0Z  f  F    u
+ex(5):  UAtZ  A9YaA  7wy  awd8n  V    afZfd    cvm  Ba  e5nAS  G  tZdk  B
+ex(8):  D9NvDOY  ni  Z9IAlxf    QoCA9V  GpVLA9  gsWcDR  5  ti  NN3Y  EZeBy9R
 
 regexp: [^0-9]*
 tree:   [\x01-/:-\u007f]*
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      r                  x  &    E  y  >    o  $  r  =  +    f    _  >  
-ex(2):  D    )    /   HA  d?  F|        )  !f    /(  PP    PG      V   V    A  
-ex(3):  >]  d  VR    |  <=!    |rS    yo  A  .;,  Y*  >N|  C>?  r`  @;r  ?mE  
-ex(5):  ~^  :m'e  b#  IkRM  AM  O  >-ST  |z'tF  #F!E  Uc  ed}Y  wt|A  WbB  
-ex(8):  KX  ^  f~jX  y!.N  |QTLE.  jJg]  d  eT|J.}u  n  FCd's  `}  j-g)O)
+ex(1):      I  S  w        [        :    :    I      T  d  .    M    )  G    
+ex(2):          iV  L      {y    m}  /  [I      TP  B/        gT    XO    :P  U
+ex(3):    D{  B  M  tlV  ml    }~V      ;    A'  >  u  q  h:w  a{   o|  N\"\\
+ex(5):  :  /;P/  @GuK=  .{    ;](  @`+hU  =Zm/t  qoOk  lWD  _H  (i  h'  td
+ex(8):  A  <Ri-#c%$  z>>  b  mY  '~e\\iW/  tPP_xB  ]wkZ{_G  /]B$R  .DC)j\\B
 
 regexp: [^A-Za-z0-9]*
 tree:   [\x01-/:-@[-`{-\u007f]*
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      >           \"              ,  =  @           *  :  @    _  #  )  
-ex(2):  %]  @<        #    `^  |~    ~/    $\\  ^  @     |    !  }  {       {
-ex(3):  :.    #[   `^      '_     <  ]<`    &(!      %;  /  (  [,:    @`    %][
-ex(5):  $<>      )&']`    ^}(*~  $[|  &^_  @|,`<  #  '  *?   ]  <  _ }(\\  (? 
-ex(8):  %:\"}@  %_#'#/:{    ].?_*>  =-/:_  [)  (~'\\:=*_  ,=/%  (}  [\\,@,+<#  
+ex(1):      @    {      [        :    :    [    @    .    [  )  [    {      {  
+ex(2):  `  {{  {~  [@  [  [@  @      {{  [{  [@  @  @  @{  ,  {          `;  
+ex(3):  `  `:    { ~  |  @\\(  ^:  /;  /:  {={  \\`]  \\@  +{  =  `@`  [`    {[
+ex(5):  {  @:  @  [-#  %$[>  +{  ['  {  [;`[  @]`  {_[/]      @.@)  \\  :{  [`-
+ex(8):  @^[`:~    [/  ]*[@>`[@  ?{`(`  %/!  [@~`@  .::`[<  ;^  $&{;  ^:{@+``
 
 # these last two should be identical (under -Z)
 
@@ -74,19 +74,19 @@ tree:   [\x01-/:-@[-^`{-\u007f]*
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      =  *  \"  :      \"      ,          \"  +  ,      *  >  ?  &  \\  &
-ex(2):      &    &]    %  &  ':  #  :    =@    *  (  )      ~\"  }  |\"  )}  '
-ex(3):  [  \\,  <  \";  !$   ^@^  @}   ]?  %    #=  #+  \\?^  \\  +  ,)  <{  $
-ex(5):  \"*(@  |'>#  {`$\"*  '  >  #-  .{|<  ?[;{}  %:-*  '$!}  [|^.*  }]\\!  
-ex(8):  +\\    [:!.  ),$/:  <<(*<~  `@&~#/|*  )],-].\"@  ~@@:,&  @#,)'\"!$   ;>
+ex(1):      @    {      [        :    :    [    @    .    [  )  [    {      {  
+ex(2):  `  {{  {~  [@  [  [@  @      {{  [{  [@  @  @  @{  ,  {          `;  
+ex(3):  `  `:    { ~  |  @\\(  ^:  /;  /:  {={  \\`]  \\@  +{  =  `@`  [`    {[
+ex(5):  {  @:  @  [-#  %$[>  +{  ['  {  [;`[  @]`  {`{{[  @.@)  \\  :{  [`-  (
+ex(8):  \":~/[/:  [@>`[@??  {;(`  %/!  [@~`@  .::`[<  ;^  $&{;  ^:{@+``  @){:@[
 
 regexp: [^\w]*
 tree:   [\x01-/:-@[-^`{-\u007f]*
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      =  *  \"  :      \"      ,          \"  +  ,      *  >  ?  &  \\  &
-ex(2):      &    &]    %  &  ':  #  :    =@    *  (  )      ~\"  }  |\"  )}  '
-ex(3):  [  \\,  <  \";  !$   ^@^  @}   ]?  %    #=  #+  \\?^  \\  +  ,)  <{  $
-ex(5):  \"*(@  |'>#  {`$\"*  '  >  #-  .{|<  ?[;{}  %:-*  '$!}  [|^.*  }]\\!  
-ex(8):  +\\    [:!.  ),$/:  <<(*<~  `@&~#/|*  )],-].\"@  ~@@:,&  @#,)'\"!$   ;>
+ex(1):      @    {      [        :    :    [    @    .    [  )  [    {      {  
+ex(2):  `  {{  {~  [@  [  [@  @      {{  [{  [@  @  @  @{  ,  {          `;  
+ex(3):  `  `:    { ~  |  @\\(  ^:  /;  /:  {={  \\`]  \\@  +{  =  `@`  [`    {[
+ex(5):  {  @:  @  [-#  %$[>  +{  ['  {  [;`[  @]`  {`{{[  @.@)  \\  :{  [`-  (
+ex(8):  \":~/[/:  [@>`[@??  {;(`  %/!  [@~`@  .::`[<  ;^  $&{;  ^:{@+``  @){:@[

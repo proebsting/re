@@ -5,34 +5,34 @@ regexp: [a-zA-Z][a-z]+
 tree:   ([A-Za-z][a-z]+)
 length: 2 to *
 -------------------- Examples --------------------
-ex(0):  Ze  Sa  Dp  Uz  oi  lq  ak  bm  Jh  rv  Nh  Dy  zd  Ji  Gj  sp  Vh  Jj
-ex(1):  Mn  Xp  qh  El  Ca  Ub  qg  Fv  Cp  Tl  nh  Yt  he  Ce  qc  Jw  Mb  Lr
-ex(2):  eu  wf  Lrp  Sx  Wxw  gwd  lf  Ca  Dml  mf  Miz  xyn  ith  Po  Fz  Uvg
-ex(3):  td  Pt  chw  Ni  Ef  zqwo  Hzhv  Dh  Impz  eaqa  Sh  md  ej  lpx  nx
-ex(5):  sn  Vqskfj  hsywbp  cwqhm  Zfjcjk  Mgqo  Oedr  vfwf  lzqug  Pru  Ddat
-ex(8):  yku  Pra  Hnr  ls  jcfwusapm  yznt  dst  Ekmmm  Zcdupb  Ecq  Xqfhluax
+ex(0):  mu  Py  bi  Jz  Ga  Kb  ve  an  Uo  Yp  Ei  in  ay  Bw  de  as  ai  Fg
+ex(1):  ya  Xh  Au  Mh  Qc  ye  te  tc  Ke  op  ag  Ph  or  Zz  Ku  Ls  Tn  Yf
+ex(2):  Sx  Wmk  Ii  se  Eb  mb  Vlt  mrs  am  Klx  Xs  Zy  gjt  hx  edi  in
+ex(3):  Plt  rfid  aqz  Uj  Sygk  ifo  Zkbe  segz  hulh  zds  aj  Tqw  ec  Tkky
+ex(5):  Hgdk  lcour  mr  aa  Wye  vt  Nowykr  Gnaxf  lnz  Zdy  Czciy  wcuz  Zs
+ex(8):  jnfu  vzedtcbx  Eqaxuclp  asgpbm  Lyy  Zbfieffat  rhrpoa  Atb
 
 regexp: [a-zA-Z][a-z]*
 tree:   ([A-Za-z][a-z]*)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  Z  V  o  l  j  I  L  u  o  r  a  l  E  X  y  w  r  x  c  Y  a  z  z  a
-ex(1):  g  sd  Dr  w  Nz  c  C  u  q  mb  s  na  D  px  o  F  na  s  No  Ha  qx
-ex(2):  M  A  a  x  po  po  pl  Gay  igm  Wwb  Sd  Dpt  Ta  Gts  Zy  Y  k  z
-ex(3):  Usg  exka  u  U  Sep  dub  Rb  Guj  vzh  et  yib  vcue  Ppek  Pvkz  Rjk
-ex(5):  y  Ttqhup  Gliyn  ae  Saby  gns  Zv  urxke  i  Fa  Ucdgxe  Hfapiz  dw
-ex(8):  Na  mvmsjnf  hragk  Qxtpxm  Nltnzbeev  l  diun  Low  naonoe  V  stegvt
+ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  a  d  U  q  Y  B  E  W  i  j
+ex(1):  ww  d  a  a  F  D  y  Xy  y  F  u  Ue  t  K  ol  m  Po  Vz  K  L  Ty
+ex(2):  Sxk  Tki  aee  E  Dw  Zh  rsf  du  Em  K  H  Xst  x  Kpj  Z  f  Zik  a
+ex(3):  el  fn  Oi  Z  auyj  Sygk  ifo  Z  me  s  mzb  J  Hn  ms  ajj  Gws  l
+ex(5):  arq  Okx  Udk  lcou  dirda  lww  Qjc  nj  uykrg  raxf  lnzpk  jyazc  q
+ex(8):  Yrz  Ibe  yvpgnfu  vzedtcbxa  Aaxuclp  asgpbmhxy  q  vbfief  ltpgh  hoa
 
 regexp: [a-zA-Z][a-z]*('[a-z]+)?
 tree:   (([A-Za-z][a-z]*)('[a-z]+)?)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  Z  V  o  l  j  I  L  u  o  r  a  l  E  X  y  w  r  x  c  Y  a  z  z  a
-ex(1):  g  L'o  G'a  rv  W's  ch  Z'o  qs  D  a't  h'c  sx'n  Mm  Pg  Jk  h  v
-ex(2):  Z'u  Sp'q  Z'vc  I'd  q  C'sy  u  e  z  xbl  C'a  yx'c  ry  P'ao  n
-ex(3):  Brq'ltf  V  F'um  Yn'fl  Wf  Kzm  twnj'fs  K'bir  Uwsf'zu  Xmq'o  Eape
-ex(5):  Yodp'hwnsh  sf  xjoydd  V'pte  Qzrm'waiyr  Keeta'cnaex  Igk  m  Jzg'rlp
-ex(8):  Znlkguus'jmamn  isjn  Nborx'ao  Zswt'lhbyenb  Suvhnz  irn'zmhrff  zu'hq
+ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  a  d  U  q  Y  B  E  W  i  j
+ex(1):  ww'v  A'i  F'g  Uh  y'c  y'n  s  ol  sh  Vz  us'y  Vu  Z'k  I  s  E'w
+ex(2):  Zu  Go'lu  M'i  B'x  e'o  vk  ell'f  ef  au  z'k  if  Zkb  seg'ul  f  D
+ex(3):  ecnw  yyr  O  Hgd  lc  Oi  ba'wy  Yc'o  arg'x  psnz'yya  xiy  H  dz
+ex(5):  vze'bxasq  Muclpm  Egpbm'yn  vbfief'pghrp  a'gddgq  eqkyz'puc  Nqssn
+ex(8):  p  a  Fnsggx  Iruhmnxdx  V  Pijx  Zxoe'y  Ix'iewqac  Ranuou'basj
 
 # phrases
 
@@ -40,12 +40,12 @@ regexp: [a-zA-Z ]+
 tree:   [ A-Za-z]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  Z  q  k  o  e  G  k  n  m  K  o  H  S  N  p  r  e  J  m  J  U  i  w  A
-ex(1):  j  s  D  Y  f     N  x  I  N  Y  Y  U  F  b  l  L  L  F  J  l  h  M  T
-ex(2):  mk  l  X  u  l   xR  GJ  mu  Z  l  ky  TX  X  UL  ZT  M  C  Ez  Y  MF
-ex(3):  C  gjT  Dq  G  LLJ  GRs  X  EL  iil  G  V  qHO  VY  p  s  T  Qyd  cgI
-ex(5):  KkT  hfQ  eTa  OyCD  S  C  dFRxG  pa q  O  fwZvW  KIz  GEe  ku  mXxy
-ex(8):  wdSnHzJi  JsUo  fbPV Sb  ZJuJzxH  CLzM  DZaaGiL  So  YVti  KrIHZFD  mJ
+ex(0):  V  h  A  A     A  D     K  e  G  T  Y  A  p  S  a  a  p  D  l  X  j  A
+ex(1):  s  h  H     t  a  A     l  N  H  a  p  A  A     A  K  J  V  y  A  I  A
+ex(2):  AN   A  aH  A  mA  i  A  a  AH  Zt     A  A  I  kl     Av  w   A  AQ  T
+ex(3):  ZtG  sO   H A   AA  Ar  UZ  BGA    Z  JA  P  n  aa  AQA  AQ  QA  DZ  AA
+ex(5):  A  yK    H  lQAy  aDL   TF   yE   BR  V    pYo  N V  aY  AAqM   AJGa  l
+ex(8):  Aln   fOKfAtAh  AAnMAJqZ  LaD  z   pu   JAa AR   Srv     Ak RGsM  AZ 
 
 # identifiers
 
@@ -53,23 +53,23 @@ regexp: [a-zA-Z0-9]+
 tree:   [0-9A-Za-z]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  Z  H  X  L  W  4  8  G  3  E  T  l  i  E  k  Y  5  d  A  X  c  K  w  I
-ex(1):  u  U  h  b  U  I  E  O  2  s  F  0  n  7  E  i  d  P  d  a  H  Q  g  i
-ex(2):  zZ  g  lM  D  JK  Y  fD  4Y  A  N  XV  h  7  P  5H  kA  D  x  j8  K  V
-ex(3):  r  F7  L  U7  p5B  z9J  MK  b  5  U4  H  N  7k  O  x  m  xK  Y  gaL
-ex(5):  s1Y  gIfk  QL  a  Aql  e  x9s9j  vahl  SX2vQ  rsJR  aWI  cB  S  kb
-ex(8):  DL  DZCATqz  mKkm9  fd9BrKF  FbFwI  Dlx  rNYy  gKmO  GLed  0  6W
+ex(0):  H  W  L  O  q  Z  2  o  3  B  Z  a  c  A  I  u  q  B  Y  N  J  T  d  Z
+ex(1):  i  V  D  p  e  a  9  W  U  u  c  e  C  U  B  0  x  K  b  A  d  C  0  K
+ex(2):  N  xe  G  5Z  r9  t  Ro  u3  O  o  J  A  q  L  f  9  9Y  9  Oa  7  Q
+ex(3):  A  i  e  xZU  7  W  bZ9  r0  kFf  Fq  u  Ok  vU  0t  k  aY  Ao  wy  awd
+ex(5):  2af  wfdZ  vm  Ba8e  n  SaG  tZd  OBDQv  3BUD  avDOY  niXZ  IAlxf  oQoC
+ex(8):  pVLA  9  s  cDR45  t  g  N3YyEZe  y9RZaHr5  XSAEqX9  Xr  rd  qhY4  Y
 
 regexp: [a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+
 tree:   ([0-9A-Za-z]+(.[0-9A-Za-z]+)+)
 length: 3 to *
 -------------------- Examples --------------------
-ex(0):  Z.H  X.L  W.4  8.G  3.E  T.l  i.E  k.Y  5.d  A.X  c.K  w.I  G.u  U.h
-ex(1):  I.E  O.2  s.F  0.n  7.E  i.d  P.d  a.H  Q.g  i.q  1.e  A.u  E.J  X.f
-ex(2):  St.cX  fz.4c.4k  Tr.k  av.ok.fo  l.pd  Xt.4S.Wj  CR.W8.x  o.y  za.0
-ex(3):  O.pm  xK.O  cP9.H  FM.Tn.Ee  Bm.a.GNl  g.p  Ae4.0  1Iy.o  Z8.c.nm
-ex(5):  Tt5p.D2OlQ.g  C6.i.f5k.g.Usu.GKW87  kTh.lCCbc.lnj9  YMpKr.ov
-ex(8):  2NgXs.V.oGmDz.FB.KHz8kiF.NIvEuJf3  jk.hSwg.WxS.eWJ5g7.d4yq8ha.C2x.IV.2u
+ex(0):  H.L  O.Z  2.3  B.k  a.A  I.q  B.N  J.d  Z.i  V.p  e.b  9.U  u.e  C.B
+ex(1):  b.H  d.0  K.h  M.P  x.C  G.5  Z.r  9.t  p.o  a.Z  F.a  A.A  q.L  o.v
+ex(2):  l9.P.Q  39.3.e  x.Zc.bZ  9.k  f1.ud.v  U.Zk  a.No  wy.w.n  VZ.Zf.f
+ex(3):  5nA.FtZ.OBD.33  U.N.OYt.X  a9I.x.o  o.9V.pVL  a9.c.45  tig.Y
+ex(5):  A.9.r  rd.Y4.dL  u6Iz.bZ  ak.K98.yz5.AxAM.HALxO.b  Y.amxW
+ex(8):  Awsn.6ATcJd.aSfaTAk.JNF.goNa
 
 # ssn
 
@@ -77,12 +77,12 @@ regexp: [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]
 tree:   (((((((((([0-9][0-9])[0-9])-)[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])
 length: 11 to 11
 -------------------- Examples --------------------
-ex(0):  701-68-2781  009-44-3405  490-66-0181  705-19-8578  624-81-9157
-ex(1):  444-21-7305  147-68-5952  423-61-8436  326-76-9026  006-69-7213
-ex(2):  421-61-8631  199-96-0759  927-92-6067  018-55-9943  031-64-3117
-ex(3):  951-75-5500  931-43-3509  619-42-8054  087-59-5261  149-80-2988
-ex(5):  194-83-2668  518-74-5761  979-20-0096  848-16-5944  843-86-7134
-ex(8):  632-95-8767  181-76-4581  789-91-2191  976-88-0911  188-17-2011
+ex(0):  443-56-7888  798-61-0458  601-20-2785  483-09-7468  978-27-8429
+ex(1):  909-36-7839  433-82-2326  206-08-8900  119-10-9642  268-39-4037
+ex(2):  702-55-0497  917-34-1400  780-29-8464  103-68-2462  879-27-9814
+ex(3):  802-09-2865  241-53-8832  093-50-6827  079-08-0743  383-36-5363
+ex(5):  599-43-0053  631-98-8174  378-46-6059  260-69-0116  215-19-6738
+ex(8):  947-24-2284  593-72-9644  232-90-5107  336-74-8669  992-63-8792
 
 # telno
 
@@ -90,12 +90,12 @@ regexp: \([0-9][0-9][0-9]\)[2-9][0-9][0-9]-[0-9][0-9][0-9][0-9]
 tree:   ((((((((((((([0-9])[0-9])[0-9])))[2-9])[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])
 length: 13 to 13
 -------------------- Examples --------------------
-ex(0):  (701)634-0267  (219)580-1103  (350)314-5154  (033)213-9829
-ex(1):  (513)411-4106  (342)284-1230  (761)369-2562  (716)826-7690
-ex(2):  (418)932-5242  (569)238-7694  (538)876-6265  (625)793-2723
-ex(3):  (515)552-8754  (074)885-1242  (593)609-3143  (350)947-9201
-ex(5):  (237)562-0737  (294)252-0082  (098)500-8124  (232)454-4751
-ex(8):  (522)442-4814  (178)613-4185  (581)572-5367  (351)557-4280
+ex(0):  (436)277-8879  (261)445-6016  (012)654-3009  (746)978-2708
+ex(1):  (909)964-8394  (348)523-6206  (088)300-1991  (996)826-9399
+ex(2):  (970)655-0497  (170)871-0078  (329)646-1037  (852)628-9327
+ex(3):  (238)620-8286  (241)330-8320  (305)268-7079  (080)543-8393
+ex(5):  (746)390-3200  (363)898-8174  (780)656-5926  (069)611-2151
+ex(8):  (021)747-2482  (845)377-6964  (232)505-1073  (617)386-9992
 
 # www 
 
@@ -103,12 +103,12 @@ regexp: (http://|)(www\.)?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+(/[-_\.\?a-zA-Z0-9]*)*
 tree:   (((((((((((ht)t)p):)/)/)|())(((ww)w).)?)[0-9A-Za-z]+)(.[0-9A-Za-z]+)+)(/[.0-9?A-Z_a-z-]*)*)
 length: 3 to *
 -------------------- Examples --------------------
-ex(0):  http://L.p  http://A.1  t.X  x.L  http://P.8  http://Z.P  2.z
-ex(1):  m.R  http://a.4  www.l.W  www.q.R  http://www.H.D/c  http://F.T  4.N
-ex(2):  http://www.7.TI.S/  0L.XV/  http://www.px.9B.lR/p  kA.Qm/f/Gf  6f.u/
-ex(3):  nlq.7y//  qTz.A.Gx/TD7/U  www.19w.zGQ/p/9J/Yf  http://hZ.GV4//8/
-ex(5):  http://w.VP  www.4f1G9.ImK.104G7.DMuk.A.JZd/m/qttw/_/vI2nJ
-ex(8):  http://www.GWK6AaF1.qcNRI.zo.0t.sXpxKZk.q.Cp0YrESE.Oy94q.w65O
+ex(0):  http://o.B  k.K  http://N.T  http://e.b  http://U.0  http://K.h
+ex(1):  9.t/6  http://A.q  http://www.O.P  http://www.x.l/W  www.v.0  www.B.d/
+ex(2):  http://www.fZ.f  http://A.F//dQ  www.D.v.Y//d6  http://CA.rG.L/
+ex(3):  http://www.q.cXS///H  http://www.yu.9wb/b/03W
+ex(5):  http://AnaZ.Mgd.7/  www.as.wsnh7.AT.dk.OSf.T/6_
+ex(8):  http://a.Mek.OB6r9/9GhQK/C?48//hYTt1B5b/7_
 
 # email
 
@@ -116,9 +116,9 @@ regexp: [a-zA-Z][a-zA-Z0-9]*([-_.][a-zA-Z0-9]*)*@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,
 tree:   ((((([A-Za-z][0-9A-Za-z]*)([._-][0-9A-Za-z]*)*)@)([0-9A-Za-z]+.)+)[0-9A-Za-z]{2,})
 length: 6 to *
 -------------------- Examples --------------------
-ex(0):  Z@V.fg  r@t.ZB  K@Y.cj  n@M.Dm  m@k.U2  W@W.yj  D@G.RK  V@I.sf  Y@H.TW
-ex(1):  lh.@4.RZ  H@2.VP  ui@E.zZ  B.@R.a6  Az-@9.91  v5.Q@3.jT  mK-r@D.1T
-ex(2):  hZK@Z.1BO  jG__Tt@E4.F.Gd  NL@y.fa  o_5E@F.EX  YgE@m2.mo.0R
-ex(3):  QAT.@vJ.L.pm8.Gmu  O@xWW.Q.kw.QrTe  Te.-7@YJ4.EQ.kf
-ex(5):  Pk_v-QC_YKdYt.8c7GL@Y.Wb5.LfAJd4  DwWum.I5.h5@a.OO.Ar1fI.BHM.Fd.5sKTR
-ex(8):  tahGa-BN-_Fvs-VGs@xKG.4IzTB.Ft1gY7aY.9bmEDh.ukCXG.cBkTY.HY
+ex(0):  m@L.qZ  D@3.Za  o@b.uq  E@N.Td  w@U.VD  A@a.zW  D@c.CU  A@x.bA  U@0.aM
+ex(1):  P.@x.tp  Ya@O.oa  I@q.Lo  D@O.kY  mu@P.1Q  r9_i@e.xZ  h.b@9.r0
+ex(2):  aA.a_N@y.f.dn  hZ2_fd@vm.a.en  aaG_@BD.v3  dD_D_ni@9I.l.foQ  JA@G.L.ag
+ex(3):  BCe.RZa_cXS_@aHX.rd6.h4QY  Zyu6@wbZ.k4.K9  e_RZx_1@LxO.5XYl
+ex(5):  Z_a_n.6ATcJ__fa@kWK.F.go  LipJsv.QJe_kMyR3@FKuG.D.cfo.mYXtd3
+ex(8):  ewcME_ZOY.EakAe0ao@G.AW3S4FP.rAqm1l.hC6Kc.93o

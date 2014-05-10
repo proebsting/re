@@ -14,12 +14,12 @@ regexp: [{|\(]?[0-9a-fA-F]{8}[-]?([0-9a-fA-F]{4}[-]?){3}[0-9a-fA-F]{12}[\)|}]?
 tree:   ((((([({|]?[0-9A-Fa-f]{8})-?)([0-9A-Fa-f]{4}-?){3})[0-9A-Fa-f]{12})[)|}]?)
 length: 32 to 38
 -------------------- Examples --------------------
-ex(0):  5E5e915db170AFa9AaDB654D93E7eBbB  c9eb980CC7FFe0768Bdf4a95F2AAf31A
-ex(1):  F78739Ba-56Bc-1B8E3eAE-ca0EEF5fa6cF
-ex(2):  (9FcAa8F3-4C0edf6c-f65a-2eFD21C056CB
-ex(3):  8E7d61fC-6C5220e4-df9CfbC6bd102f4d|  e079D9b3695a-90eEEDDb9f643AE61cfE}
-ex(5):  3dA67D79fBF5-C6fba26576bDdd0BE9f3}  Ace7Cb99A0b2-Ecf7-7f52Ed16d2e6FeA3|
-ex(8):  {dE0FAbf2E26a-0a6A-e3Dd5BeAb5A57906
+ex(0):  AaAFa87aaaDFaFa9AaaFaaAAFF3adAa9  FafDFaFFcaCdFAFa9FAAAbaF59FfACa9
+ex(1):  F8Daa3aFFaDF1aFa-fFaa-aaD7e8Da0ada|
+ex(2):  FFFFdF28aa94aa4A-aFFaFF19F60A9aFa  aa9BF7FadBFa-a9eF-daFf-aeaFF974aFaa
+ex(3):  aFA2F8aa-aAa9-FFA4FfaF-9aA93aaEb9e3|
+ex(5):  3F8aaaFa4CCF-aFaF-8FFaFFFB5FFF0AFa|
+ex(8):  (03BFAaAf-7eFFFDF4-aaca-D2aaa4dEa7a7)
 
 # 580. passwords length 8-20 with at least one digit, cannot start with digit
 
@@ -32,12 +32,12 @@ regexp: [v,V,(\\/)](\W|)[i,I,1,l,L](\W|)[a,A,@,(\/\\)](\W|)[g,G](\W|)[r,R](\W|)[
 tree:   (((((((((([(),/V\v]([\x01-/:-@[-^`{-\u007f]|()))[,1ILil])([\x01-/:-@[-^`{-\u007f]|()))[(),/@A\a])([\x01-/:-@[-^`{-\u007f]|()))[,Gg])([\x01-/:-@[-^`{-\u007f]|()))[,Rr])([\x01-/:-@[-^`{-\u007f]|()))[(),/@A\a])
 length: 6 to 11
 -------------------- Examples --------------------
-ex(0):  VIAG(r#,  (~L/G?R )  ,1,),,-r.a  ( I/,g,$(  v,!@\\,r,  v'L/(>gr(
-ex(1):  \\~l/G,=(  )iA)gr|\\  (1)),.,(  ,i@@g]R\",  VI(/~G\"R,a  ViA?gr\\@
-ex(2):  );,)?g]r@  Vl/\\g'R /  v.I'@.g,/A  \\I)[g,,  V;l/~g(R(  \\@1?,(gr)
-ex(3):  ,iAgRA  v,( ,,@  (l/G,(  vL|),<,@  vL<a'gR~/  V,/%,R(  V$l'@G-,;(
-ex(5):  ($i+(g;r)  V1'\\]g\"R\\  ,@ia g,|\\  (,A\"gRA  v,,g,#)  )i;/,*R\\
-ex(8):  V?l\\%G,/  ),-a,!,(/  )},.\\,;r\\)  )\\l(a~gr{a  )l/<Gr,  vi,.G/rA
+ex(0):  v1;,`g:r=)  V[l/{G@,[/  V'I@A{gR~/  /i[/@g{r[@  v@i/gr,/  \\L`a@GR`@
+ex(1):  \\1[\\,r\\@  V/iA{gR{\\  v{L^\\G,\\  /%,>@:g,{\\  vIA`GR{\\  ,@,@a*GrA
+ex(2):  V@1/,r;\\  //i|/gr:\\  /i\\g;r\\  \\1/gR@@  V1@G,@/  vi@gr+A  /I]@GR;/
+ex(3):  /{i/\\:,\"R@  vL{\\@g`R@  ,L`A@G[R\\  V`L&A!G[R@  \\L@@G,{\\
+ex(5):  /L\"\\,r[a  /1#@/GR{@  \\1,,,A  /i/&,[R\\  V@i:@G{R@/  /L`\\@g,&@
+ex(8):  \\1^@gR:@  \\1@[,R\\  /1{\\\",{,\\  ,`L!(g+R\\  \\`i{A{,`R@/  v@L\\Gr@
 
 # 49. major credit cards (AmEx len 15, others len 16)
 
@@ -45,12 +45,12 @@ regexp: ((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}
 tree:   (((((((((4[0-9]{3})|((5[1-5])[0-9]{2})|(((60)1)1))-?)[0-9]{4})-?)[0-9]{4})-?)[0-9]{4})|((3[,47])[0-9]{13}))
 length: 15 to 19
 -------------------- Examples --------------------
-ex(0):  4241040468965038  3,1103350303042  4047067094805489  5388665668522716
-ex(1):  3,5840711691161  5525-690366979079  55108587-04217964
-ex(2):  5539-1838-4689-1938  5301-82522287-3522  4984175591359005
-ex(3):  6011-15010030-2073  372365011246651  6011-4832-31357470
-ex(5):  342381896769349  345554038032298  4870-1586-2793-4581  378048244201138
-ex(8):  42974279-7804-1076  371343441053126  3,3489522698814  554455183618-4925
+ex(0):  4656778887982610  4860162012785483  5574689780270842  376407784390913
+ex(1):  60119001-9109-4226  4994378873577697  45564979-0347-0078
+ex(2):  3,7998142091068  4380209886521853  4320-05068270-9080
+ex(3):  49903200-6318-3817  54045605-6006-0116  41196738-09510219
+ex(5):  6011-1905-07331747  4999663679211795  53761941-1287-4677
+ex(8):  42496073-35926256  346800994848273  43357214-14607342
 
 # 595. UK vehicle registration number from September 2001
 
@@ -58,9 +58,9 @@ regexp: ([A-HK-PRSVWY][A-HJ-PR-Y])\s?([0][2-9]|[1-9][0-9])\s?[A-HJ-PR-Z]{3}
 tree:   ((((([A-HK-PRSVWY][A-HJ-PR-Y])[\t-\r ]?)((0[2-9])|([1-9][0-9])))[\t-\r ]?)[A-HJ-PR-Z]{3})
 length: 7 to 9
 -------------------- Examples --------------------
-ex(0):  CD26YPJ  CO53VCC  NE06RYK  VB09NJX  CM74SUN  AU68WZX  DB09ZUD  SV16WXB
-ex(1):  EV92 OMD  HR28LLV  LA56ZVG  KC 25ZVP  GH04BFO  BJ 05HDL  YD03WJK
-ex(2):  OF63KWJ  KP 10MFS  KO 03AAA  AU 09DCU  DT 04 WMR  KO 02 EBR  AB27JWE
-ex(3):  WG16 EFA  NV38UNC  LU20 UZW  YP 49 LRA  NX 07 MNF  RE 05 HAR  BH 19MKM
-ex(5):  YK04BDB  PH 06YJS  PL66SEK  YF 89CBM  KW 02 MEX  YH02BFS  EO 07ZBW
-ex(8):  BW59 OKZ  VB 39 OML  NH 10 GXA  OE04WSP  NV02MTP  MH 07DNT  HK32 YOM
+ex(0):  YO25HZK  DS38EAN  AA06JNC  CU87EVW  DS07GZM  BD28UOH  AN05ENC  GE07MGP
+ex(1):  SO14SXK  NW06EEM  NE05 TSF  VY06 XLU  FD 09 XOX  BO 09 OAF  WE 08 AOP
+ex(2):  NH06AEG  MJ 59DSR  EB06 NWK  MR32KXA  HS 06 HDA  VG07TDJ  AN04 AXF
+ex(3):  KF 03 SBE  FF 07ZCZ  WH38RXU  PK 06PBM  PR 39EFF  WG21AMN  YJ72SKR
+ex(5):  RD80 LKZ  DS14 KSV  YJ07GTR  WL59 TPU  RV34 YXO  NR 09 ZFJ  KL08NUO
+ex(8):  FW 05 UUP  LS 02WLH  EX07 YGN  HU 43TSR  SC 05 WHZ  VS 75 LYX  EX 02RWO
