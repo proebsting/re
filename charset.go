@@ -10,6 +10,20 @@ import (
 	"strconv"
 )
 
+//  Predefined global character sets
+
+var SpaceSet *BitSet = CharSet("\t\n\v\f\r ")
+var DigitSet *BitSet = CharSet("0123456789")
+var UpperSet *BitSet = CharSet("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+var LowerSet *BitSet = CharSet("abcdefghijklmnopqrstuvwxyz")
+var LetterSet *BitSet = UpperSet.Or(LowerSet)
+var WordSet *BitSet = LetterSet.Or(DigitSet).Set('_')
+var PrintSet *BitSet = CharRange(' ', '~')
+var AllChars *BitSet = CharRange('\x01', '\x7F') // matched by "."
+var NonDigit *BitSet = DigitSet.CharCompl()
+var NonSpace *BitSet = SpaceSet.CharCompl()
+var NonWord *BitSet = WordSet.CharCompl()
+
 //  CharSet makes a BitSet from a string of member characters.
 func CharSet(s string) *BitSet {
 	cs := new(BitSet)
@@ -19,25 +33,22 @@ func CharSet(s string) *BitSet {
 	return cs
 }
 
+//  CharRange makes a BitSet from a range of characters.
+func CharRange(low int, high int) *BitSet {
+	cs := new(BitSet)
+	for ; low <= high; low++ {
+		cs.Set(low)
+	}
+	return cs
+}
+
 //  BitSet.CharCompl produces a new BitSet that is the complement of its inputs
 //  with respect to the universe of matchable characters \x01-\x7F.
 func (b1 *BitSet) CharCompl() *BitSet {
-	if allChars == nil {
-		allChars = new(BitSet)
-		for i := lowMatch; i <= highMatch; i++ {
-			allChars.Set(i)
-		}
-	}
 	b3 := new(BitSet)
-	b3.Bits.Xor(&b1.Bits, &allChars.Bits)
+	b3.Bits.Xor(&b1.Bits, &AllChars.Bits)
 	return b3
 }
-
-//  allChars is used and initialized by BitSet.CharCompl.
-//  We can't use init() because of nondeterministic call order.
-const lowMatch = 0x01  // smallest ch matched: SOH or ^A
-const highMatch = 0x7F // largest ch matched: DEL or RUBOUT
-var allChars *BitSet   // set of all chars
 
 //  BitSet.RandChar returns a single randomly chosen BitSet element.
 //  Printable characters are preferred to unprintables.

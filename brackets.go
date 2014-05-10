@@ -93,18 +93,6 @@ func bxparse(s string) (*BitSet, string) {
 	return nil, "unclosed '['"
 }
 
-var dset, sset, wset, dcompl, scompl, wcompl *BitSet
-
-func init() {
-	dset = CharSet("0123456789")
-	sset = CharSet("\t\n\v\f\r ")
-	wset = CharSet("0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
-	dcompl = dset.CharCompl()
-	scompl = sset.CharCompl()
-	wcompl = wset.CharCompl()
-
-}
-
 //  bescape interprets a backslash sequence in the context of a bracket
 //  expression from which the initial \ has already been consumed.
 //  In this context \b is a backspace.  bescape returns the computed
@@ -139,7 +127,7 @@ func bescape(s string) (*BitSet, string) {
 	case 'c':
 		return nil, "'\\cx' unimplemented"
 	case 'd':
-		return dset, s
+		return DigitSet, s
 	case 'e':
 		return (&BitSet{}).Set('\033'), s
 	case 'f':
@@ -151,7 +139,7 @@ func bescape(s string) (*BitSet, string) {
 	case 'r':
 		return (&BitSet{}).Set('\r'), s
 	case 's':
-		return sset, s
+		return SpaceSet, s
 	case 't':
 		return (&BitSet{}).Set('\t'), s
 	case 'u':
@@ -164,7 +152,7 @@ func bescape(s string) (*BitSet, string) {
 	case 'v':
 		return (&BitSet{}).Set('\v'), s
 	case 'w':
-		return wset, s
+		return WordSet, s
 	case 'x':
 		v := hexl(s, 2)
 		if v >= 0 {
@@ -173,13 +161,13 @@ func bescape(s string) (*BitSet, string) {
 			return nil, "malformed '\\xhh'"
 		}
 	case 'D':
-		return dcompl, s
+		return NonDigit, s
 	case 'P':
 		return nil, "'\\Px' unimplemented"
 	case 'S':
-		return scompl, s
+		return NonSpace, s
 	case 'W':
-		return wcompl, s
+		return NonWord, s
 
 	default:
 		if unicode.IsLetter(rune(c)) {
