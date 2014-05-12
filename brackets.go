@@ -8,8 +8,6 @@ import (
 	"unicode"
 )
 
-var _ = fmt.Printf //#%#% for debugging
-
 //  bxparse parses a string as a bracket expression, returning the
 //  computed set of characters and the remaining unprocessed part of s.
 //  It assumes the introductory '[' has already been stripped from s.

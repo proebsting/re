@@ -3,12 +3,6 @@
 //  Rx provides facilities for dealing with regular expressions.
 package rx
 
-import (
-	"fmt"
-)
-
-var _ = fmt.Printf //#%#%#% for debugging
-
 //  Match tests whether a string is matched by a regular expression.
 func Match(rexpr string, s string) (bool, error) {
 	dfa, err := Compile(rexpr)
@@ -33,7 +27,7 @@ func Compile(rexpr string) (*DFA, error) {
 }
 
 //  DFA.Accepts returns the set of regexps that accept a string, or nil.
-//  This function (#%#% only?) treats the input string as Unicode runes.
+//  This function treats the input string as Unicode runes.
 func (dfa *DFA) Accepts(s string) *BitSet {
 	state := dfa.Dstates[0]
 	for _, r := range s {

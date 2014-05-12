@@ -12,6 +12,8 @@
 	If -v is given, the output is written to a temporary file,
 	drawn as a SVG, file, and the default viewer is invoked.
 	For this to work, "dot" must be in the command path.
+	The temp file is left around afterward because we don't know
+	how to tell when it's safe to delete it.
 
 	If no expressions are given as command arguments, rxd reads
 	expressions from standard input, one per line, and combines them.
@@ -99,7 +101,7 @@ func display(dfa *rx.DFA, label string) {
 		err = exec.Command("xdg-open", svgname).Run()
 	}
 	rx.CkErr(err)
-	// #%#% DISABLED: os.Remove(svgname)
+	// DISABLED: os.Remove(svgname)
 	// We don't remove the temp file because we don't know when it's safe.
 	// It's especially problematic when multiple views are open at once.
 	// It would be nice to find a solution for this.

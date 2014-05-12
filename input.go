@@ -5,13 +5,10 @@ package rx
 import (
 	"bufio"
 	"flag"
-	"fmt"
 	"log"
 	"os"
 	"regexp"
 )
-
-var _ = fmt.Printf //#%#%#% for debugging
 
 //  Globals set as a side effect of loading input
 var InputRegExCount int // number of expressions successfully loaded

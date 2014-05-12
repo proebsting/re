@@ -196,8 +196,9 @@ func (dfa *DFA) ShowNFA(f io.Writer, label string) {
 func (dfa *DFA) ShowStates(f io.Writer, label string) {
 	ShowLabel(f, label)
 	for _, ds := range dfa.Dstates {
-		//#%#% print partition index
-		//#%#% fmt.Fprintf(f, "[%d] ", ds.PartNum)
+		if DBG_MIN { // print partition index if debugging
+			fmt.Fprintf(f, "[%d] ", ds.PartNum)
+		}
 
 		// print index with "accept" flag '#'
 		if ds.AccSet != nil {

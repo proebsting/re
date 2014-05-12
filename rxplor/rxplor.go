@@ -1,8 +1,8 @@
 /*
 	rxplor.go - regular expression explorer
 
-	#%#% A WORK IN PROGRESS -- NOT YET FULLY IMPLEMENTED
-	#%#% This is the experimental Swiss-army-knife approach
+	A WORK IN PROGRESS -- the Swiss-army-knife utility.
+	Not yet fully implemented, but still useful.
 
 	usage:  rxplor [options] [exprfile]
 

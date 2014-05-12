@@ -26,6 +26,9 @@ var exprstack []Node // stack of pushed expressions
 //  "(?" forms are errors.
 //
 //  All trees are "anchored".  An initial '^' and/or final '$' is ignored.
+//
+//  Wildcard character sets (for ".", "\w", "\D", "[%\d]", etc.)
+//  are limited to the ASCII character set [\x01-\x7F].
 func Parse(rexpr string) (Node, error) {
 
 	var curr Node         // current parse tree
@@ -115,9 +118,9 @@ func Parse(rexpr string) (Node, error) {
 			}
 			rside = MatchAny(cset)
 
-		case '.': //#%#%#% no chars above 0x7F; this is a bug
+		case '.':
 			// wild character
-			cset, _ = bxparse("\x01-\x7F]")
+			cset = AllChars
 			rside = MatchAny(cset)
 
 		case '\\':

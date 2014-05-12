@@ -1,9 +1,6 @@
 RX TO-DO LIST
 (For consideration: not all of these are clear wins.)
 
-Optimize the DFA minimization code -- slow8.rx
--- iterate over distinct input classes?
-
 WEB APP:
 Styling
 Explanatory prose
@@ -23,12 +20,9 @@ Add metadata to the JSON output of rxg
 In rxcluster, subdivide large clusters
 Show WHICH pattern accepts on DOT output
 Produce DOT for NFA, too
-Combine multiple utilities into one (Swiss army knife)?
 
 CLEANUP:
+Add more escaping to elminiate ambiguous outputs
 Add func for "canonizing" DFA (clearer output, easier testing)
-Similarly for other ambiguous outputs e.g. protecting strings
-Make everything Unicode safe?
-Address #%#% annotations in code
 Rework testing scheme to allow for command options
 Make gofmt an automatic pre-commit hook
