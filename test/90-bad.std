@@ -99,3 +99,18 @@ ERROR:  rx: malformed '{m,n}': in "a{x}z"
 
 regexp: a{xyzzy}z
 ERROR:  rx: malformed '{m,n}': in "a{xyzzy}z"
+
+regexp: a++
+ERROR:  rx: multiple adjacent duplication symbols: in "a++"
+
+regexp: b**
+ERROR:  rx: multiple adjacent duplication symbols: in "b**"
+
+regexp: c??
+ERROR:  rx: prefer-fewer '?' unimplemented: in "c??"
+
+regexp: d{2}{3}
+ERROR:  rx: multiple adjacent duplication symbols: in "d{2}{3}"
+
+regexp: e{5}?
+ERROR:  rx: prefer-fewer '?' unimplemented: in "e{5}?"

@@ -8,8 +8,6 @@ Resource limit? (state count? replication max?)
 
 REGEXPS:
 Review Unicode situation
-Revisit "invalid range" re weirdnesses like [\w-\.]
-Is a{0,3}{0,3} parsed correctly?
 Add POSIX classes?
 Add \b anchor? Embedded ^ and $?
 Add flags such as "case insensitive"??

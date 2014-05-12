@@ -769,27 +769,27 @@ ex(3):  www.yucu.edu/  www.nfz.gov  www.qaucl.net  www.xynf.co.uk
 ex(5):  www.zdxpuc.mil/o  www.kzvsbf.co.uk/N(qU  www.mndxy.gov
 ex(8):  www.nuu.mil  www.tnsdxb.mil  www.gewlhsqaw.co.uk/J;qj<
 
-regexp: www\.[a-z]{3,}+\.[a-z]{1,3}(/.*)?
-tree:   (((((((ww)w).)[a-z]{3,}).)[a-z]{1,3})(/[\x01-\u007f]*)?)
+regexp: www(\.[a-z]{3,})+\.[a-z]{1,3}(/.*)?
+tree:   ((((((ww)w)(.[a-z]{3,})+).)[a-z]{1,3})(/[\x01-\u007f]*)?)
 length: 9 to *
 -------------------- Examples --------------------
 ex(0):  www.hiz.k  www.eea.s  www.ign.k  www.evw.h  www.zmg.x  www.hkc.e
 ex(1):  www.ort.qs/  www.sxk.m  www.mab.wdl/t  www.mop.xu/  www.txo.qd
-ex(2):  www.uyol.g  www.okei.eb/Lt  www.sjaq.scw  www.qik.ak/i  www.rdx.w
-ex(3):  www.nzkdy.ac  www.zrcs.e/xS  www.edcbx.s/  www.wspbm.x/?jd
-ex(5):  www.skkyz.lp  www.snlpm.rkr/Y  www.svnsggx.gr/|  www.pugij.gt/6L
-ex(8):  www.pybasj.en/  www.uqwrpz.g  www.awvtuygnd.osa/.Nu7E-y  www.fwzw.pho/
+ex(2):  www.yjl.gkc.or  www.gzru.hks  www.wscn.k  www.xad.jc  www.axw.yect.j
+ex(3):  www.zrcs.e/xS  www.dtbx.s/  www.sgbm.x/?jd  www.pgrpo.mnbg.d
+ex(5):  www.nsgx.gtuhmnx.xypuz.ijgztyx.edyymzx.zi  www.anou.ylas.wet.bx/5|k0
+ex(8):  www.hza.bhonfc.yxbtakuk.rwdqs.oriiol.jiahk.uxo.hlrqs.st/Hx
 
-regexp: www\.[a-z]{2,}+\.[a-z]{1,3}(/.*)?
-tree:   (((((((ww)w).)[a-z]{2,}).)[a-z]{1,3})(/[\x01-\u007f]*)?)
+regexp: www(\.[a-z]{2,})+\.[a-z]{1,3}(/.*)?
+tree:   ((((((ww)w)(.[a-z]{2,})+).)[a-z]{1,3})(/[\x01-\u007f]*)?)
 length: 8 to *
 -------------------- Examples --------------------
 ex(0):  www.hi.z  www.le.a  www.pm.g  www.rw.e  www.oi.g  www.xh.u  www.ae.e
 ex(1):  www.rt.qs/  www.sx.f  www.em.b/B  www.su.s/V  www.qy.pto/h
-ex(2):  www.quy.oy  www.rok.e  www.uhn.d  www.wl.n  www.ik.ak/i  www.rax.w
-ex(3):  www.npkd.yc  www.urzc.b  www.fz.zt  www.qx.cp  www.bhx.yfb/
-ex(5):  www.sqky.dxu  www.smlpm.rkr/Y  www.slnsgg.or  www.dy.pg
-ex(8):  www.gnuoupyl.aw  www.sxb.u/^  www.klhsqawu.t  www.nhabet.q/
+ex(2):  www.zy.oy  www.rk.e  www.lnk.ss.j  www.ky.ri.ka/<R  www.rax.w
+ex(3):  www.iu.cz.z/  www.fz.zdt.basq.x/  www.bhx.yf.bie.fp
+ex(5):  www.nlpm.rkz.vbf.xksvl.sgx.gr/|  www.ugij.gty.odtyy.zff
+ex(8):  www.xmu.qwrpz.gk.ls  www.yn.pnshabet.qcltmsyv.fh.wp.honfc.ybt
 
 regexp: (https?://)?\w+(\.\w+)(/.*)?
 tree:   ((((((((((ht)t)p)s?):)/)/)?[0-9A-Z_a-z]+)(.[0-9A-Z_a-z]+))(/[\x01-\u007f]*)?)

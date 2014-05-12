@@ -229,13 +229,17 @@ func replicate(d Node, p string) (Node, string) {
 }
 
 //  replval constructs the return value for replicate and checks for
-//  an unimplemented "prefer fewer" postfix '?'.
+//  an illegal second replication operator or "prefer-fewer" '?'
 func replval(min int, max int, d Node, remdr string) (Node, string) {
-	if len(remdr) > 0 && remdr[0] == '?' {
-		return nil, "prefer-fewer '?' unimplemented"
-	} else {
-		return &ReplNode{min, max, d, nildata}, remdr
+	if len(remdr) > 0 {
+		switch remdr[0] {
+		case '?':
+			return nil, "prefer-fewer '?' unimplemented"
+		case '*', '+', '{':
+			return nil, "multiple adjacent duplication symbols"
+		}
 	}
+	return &ReplNode{min, max, d, nildata}, remdr
 }
 
 //  rescape handles a backslash encountered at the regexp level
