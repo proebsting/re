@@ -23,11 +23,11 @@ import (
 type Node interface {
 	Data() *NodeData            // return pointer to common data
 	Children() []Node           // return children for tree walking
-	MinLen() int                //  return min len matched (0 if nullable)
-	MaxLen() int                //  return max len matched (-1 for infinity)
-	Example([]byte, int) []byte //  append random synthesized example of max repl n to buf
-	SetNFL()                    //  set Nullable, FirstPos, LastPos
-	SetFollow([]*MatchNode)     //  set FollowPos
+	MinLen() int                // return min len matched (0 if nullable)
+	MaxLen() int                // return max len matched (-1 for infinity)
+	Example([]byte, int) []byte // append example of max repl n to buf
+	SetNFL()                    // set Nullable, FirstPos, LastPos
+	SetFollow([]*MatchNode)     // set FollowPos
 	String() string             // return string for printing
 }
 

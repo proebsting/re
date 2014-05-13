@@ -11,8 +11,10 @@ import (
 )
 
 //  Globals set as a side effect of loading input
-var InputRegExCount int // number of expressions successfully loaded
-var InputErrorCount int // number of unacceptable expressions rejected
+var (
+	InputRegExCount int // number of expressions successfully loaded
+	InputErrorCount int // number of unacceptable expressions rejected
+)
 
 //  A RegExParsed is a single parsed regular expression.
 //  If Tree is not nil then the expression was parsed as valid.

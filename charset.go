@@ -13,19 +13,21 @@ import (
 	"strconv"
 )
 
-//  Predefined global character sets
-
-var SpaceSet *BitSet = CharSet("\t\n\v\f\r ")
-var DigitSet *BitSet = CharSet("0123456789")
-var UpperSet *BitSet = CharSet("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-var LowerSet *BitSet = CharSet("abcdefghijklmnopqrstuvwxyz")
-var LetterSet *BitSet = UpperSet.Or(LowerSet)
-var WordSet *BitSet = LetterSet.Or(DigitSet).Set('_')
-var PrintSet *BitSet = CharRange(' ', '~')
-var AllChars *BitSet = CharRange('\x01', '\x7F') // matched by "."
-var NonDigit *BitSet = DigitSet.CharCompl()
-var NonSpace *BitSet = SpaceSet.CharCompl()
-var NonWord *BitSet = WordSet.CharCompl()
+//  Predefined global character sets.
+//  Once constructed, these should be treated as constant.
+var (
+	SpaceSet  *BitSet = CharSet("\t\n\v\f\r ")
+	DigitSet  *BitSet = CharSet("0123456789")
+	UpperSet  *BitSet = CharSet("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	LowerSet  *BitSet = CharSet("abcdefghijklmnopqrstuvwxyz")
+	LetterSet *BitSet = UpperSet.Or(LowerSet)
+	WordSet   *BitSet = LetterSet.Or(DigitSet).Set('_')
+	PrintSet  *BitSet = CharRange(' ', '~')
+	AllChars  *BitSet = CharRange('\x01', '\x7F') // matched by "."
+	NonDigit  *BitSet = DigitSet.CharCompl()
+	NonSpace  *BitSet = SpaceSet.CharCompl()
+	NonWord   *BitSet = WordSet.CharCompl()
+)
 
 //  CharSet makes a BitSet from a string of member characters.
 func CharSet(s string) *BitSet {
@@ -46,7 +48,7 @@ func CharRange(low int, high int) *BitSet {
 }
 
 //  BitSet.CharCompl produces a new BitSet that is the complement of its inputs
-//  with respect to the universe of matchable characters \x01-\x7F.
+//  with respect to the universe of matchable characters AllChars.
 func (b1 *BitSet) CharCompl() *BitSet {
 	b3 := new(BitSet)
 	b3.Bits.Xor(&b1.Bits, &AllChars.Bits)
