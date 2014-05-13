@@ -69,34 +69,34 @@ regexp: [ACDFGHJKLMOPQRSUVWXYZ]+
 tree:   [ACDFGHJ-MO-SU-Z]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  C  U  C  H  H  Z  K  A  K  A  F  A  O  O  C  P  M  J  O  K  Y  R  W  X
-ex(1):  W  S  H  O  H  G  Z  M  G  A  X  H  Y  U  O  H  K  C  A  D  D  C  U  F
-ex(2):  MG  HO  SQ  P  L  YF  UO  X  F  K  U  F  M  C  A  LU  RS  Y  M  P  XL
-ex(3):  C  HJS  X  Z  JOM  O  FLL  OF  D  AO  ZU  J  L  GK  CFO  R  KCJ  GZ  RU
-ex(5):  QSJJA  WS  C  WKKY  R  JKXA  DKJZC  URJR  AXAW  YD  S  OWYKR  LOXFO
-ex(8):  YYAZ  JUP  UZRZC  C  OVPGM  ZCZDUAA  QAXUCLP  G  SGPCH  YY  FVAJ
+ex(0):  C  U  Y  H  H  Z  K  A  K  M  H  A  V  O  C  P  M  S  O  K  Y  R  W  X
+ex(1):  W  S  H  O  X  G  Z  M  G  A  X  H  Y  U  O  H  K  C  A  D  P  C  U  X
+ex(2):  MG  HO  SQ  P  L  YF  UO  X  F  K  U  H  M  M  H  LK  RS  Y  M  P  XL
+ex(3):  Q  XJQ  X  Z  ROS  O  FLL  DF  D  AO  ZU  J  L  GK  CFO  R  KHH  GZ  RU
+ex(5):  QSJJA  WS  C  WKKY  R  RKXA  DKJZC  URPR  AXAW  YW  W  OWYKR  LMXFV
+ex(8):  YYAZ  FUP  UZRZC  H  OVPGS  ZCZHUYA  QAXUCLP  G  SGPMH  YY  FVGL
 
 regexp: [aeiuo]+
 tree:   [aeiou]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  o  i  o  a  o  e  o  o  i  u  e  u  o  e  e  i  e  o  u  u  a  a  e  u
-ex(1):  i  i  i  o  o  a  e  i  a  e  i  u  i  e  u  i  o  u  o  i  o  o  a  o
-ex(2):  u  e  e  o  oo  i  u  u  ii  a  i  au  iu  e  oo  ie  i  ou  ii  oe  e
-ex(3):  ioi  oi  o  ao  e  e  ee  ueo  oui  au  oa  ao  ao  iu  uia  ei  i  i
-ex(5):  auoi  iaeiu  oeoo  eoiu  ooao  ou  io  oeeoo  oeeua  ui  iouuo  ioeu
-ex(8):  uieaeuoe  uoea  iiou  uiioaooo  oueaaooo  iioeioou  ooiiuii  ou  o
+ex(0):  u  o  o  u  o  i  o  i  u  e  o  e  a  e  a  o  i  u  u  a  o  a  e  o
+ex(1):  u  o  i  a  u  a  a  i  a  i  e  u  a  a  u  a  i  u  i  i  o  i  a  o
+ex(2):  i  u  i  o  oo  e  u  a  oa  i  a  ou  ie  i  oo  oe  i  ao  uu  ua  e
+ex(3):  ioi  oa  o  ai  e  a  ae  uuo  ouu  au  ua  au  au  ua  uio  ee  u  o
+ex(5):  iaoa  uaiue  aaei  eooe  ouao  oa  eo  eiiio  uueoo  au  ioaao  ioau
+ex(8):  uuaeouoa  uuao  uoou  aiooauao  uuuaauoe  iiuiaoaa  iouuuoi  eo  i
 
 regexp: [aeiuo]+y?
 tree:   ([aeiou]+y?)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  o  i  o  a  o  e  o  o  i  u  e  u  o  e  e  i  e  o  u  u  a  a  e  u
-ex(1):  i  e  oy  a  i  ay  iy  ey  ey  e  o  oy  a  e  u  e  e  oy  o  i  u
-ex(2):  iey  ay  oiy  ey  oy  eiy  ouy  iy  e  iu  oi  oy  io  ay  e  ou  o  u
-ex(3):  oee  e  ooi  uia  ioy  oy  o  uoi  uey  iee  oy  e  iy  oo  u  uu  oaoy
-ex(5):  eey  eiuii  uuo  uoeuu  uuaai  eaey  aiy  oiy  ueoy  uiiy  oo  ouey
-ex(8):  eii  e  oouey  iiu  ioou  uooieeu  oooiy  ooioia  uoy  auuoy  uuueouiay
+ex(0):  u  o  o  u  o  i  o  i  u  e  o  e  a  e  a  o  i  u  u  a  o  a  e  o
+ex(1):  u  o  iy  a  i  ay  ey  uy  oy  u  i  ey  a  u  i  u  i  oy  o  e  u
+ex(2):  aay  ay  iiy  iy  oy  eiy  aoy  uy  a  oi  oi  oy  ii  ay  a  ou  o  u
+ex(3):  uee  i  uau  uio  eey  ay  e  aoa  oiy  iae  ey  e  oy  ou  u  ua  ueay
+ex(5):  uey  eiaua  aao  uoauu  aieai  aeoy  iiy  aay  ieoy  aioy  ua  uuuy
+ex(8):  eii  i  oaaiy  uuu  iuou  uaoooai  ioaiy  auuoie  iay  aoooy  iuieuaouy
 
 regexp: [a-z]+
 tree:   [a-z]+
@@ -124,23 +124,23 @@ regexp: [a-zA-Z]+
 tree:   [A-Za-z]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  a  d  U  q  Y  B  E  W  i  j
-ex(1):  w  B  K  d  C  a  Z  C  u  F  C  D  c  y  U  X  L  A  y  M  F  Q  u  y
-ex(2):  Zs  k  X  ms  Po  ZR  u  yT  YV  aS  J  T  A  a  Q  E  D  Z  br  mZ  a
-ex(3):  r  N  Y  ZcK  BxZ  f  Z  Wia  a  e  pfv  Oj  Z  aZU  z  x  Mi  ZSZ  mdI
-ex(5):  ZhJ  Hfz  DQai  TGEal  Tay  ZGO  OHUw  Ql  oqOd  Qba  M  yQ  vCn  huaua
-ex(8):  GfbZ  joCwx  qWw  sYdZIqVw  iBjwd  ovZUZw  vEAo  aglza  alNqL  Gq  vlJt
+ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
+ex(1):  w  B  K  d  C  Z  B  C  u  F  C  D  c  y  U  X  L  A  y  M  F  Q  u  y
+ex(2):  Xs  k  X  ms  Po  ZR  u  yT  YV  aS  J  T  A  r  Q  E  D  x  br  mE  c
+ex(3):  r  N  Y  YcK  BxM  f  Z  Wia  m  e  pfv  Oj  C  bZU  z  x  Mi  lSk  mdI
+ex(5):  zhJ  Hfz  DQai  TGEHl  Tby  XGO  OHUw  Ql  oqOd  Qbs  M  yQ  vCn  huZua
+ex(8):  GfbZ  joCwx  qWw  sYdaIqVw  iBjwd  ovjUOw  vEAo  KglzH  llNqL  Gq  vlJt
 
 regexp: [_a-zA-Z]+
 tree:   [A-Z_a-z]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  _  d  U  q  Y  B  E  W  i  j
-ex(1):  w  B  K  d  C  a  Z  C  u  F  C  D  c  y  U  X  L  A  y  M  F  Q  u  y
-ex(2):  _t  K  o  as  Po  ZR  u  yT  YV  aS  J  T  A  _  s  S  k  m_  Vb  lm
-ex(3):  EG  Kr  N  Y  ZcK  Bx_  f  Z  Wia  _  e  pfv  Oj  Z  _EZ  ez  x  Mi
-ex(5):  md  ssm  _JeH  zmDQa  Z  E  elQT  Gya_  GOcOH  wvQ  _  OdmQ  _lMWy
-ex(8):  hu_u  GrdS  pl  fbZ  joCwx  qWw  sYdZIqVw  iBjwd  ovZU_w  vEAo  _glz_
+ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
+ex(1):  w  B  K  d  C  _  B  C  u  F  C  D  c  y  U  X  L  A  y  M  F  Q  u  y
+ex(2):  _t  K  o  Qs  Po  ZR  u  yT  YV  aS  J  T  A  _  s  S  k  m_  Vb  lm
+ex(3):  EG  Kr  N  Y  YcK  BxM  f  Z  Wia  m  e  pfv  Oj  C  _EZ  ez  x  Mi
+ex(5):  md  ssm  MJeH  zmDQa  q  E  elQT  Gya_  GOcOH  wvQ  Q  OdmQ  slMWy
+ex(8):  huZu  GrdS  pl  fbZ  joCwx  qWw  sYd_IqVw  iBjwd  ovjUOw  vEAo  Kglz_
 
 regexp: [0-9]+
 tree:   [0-9]+
@@ -157,31 +157,31 @@ regexp: [_a-zA-Z0-9]+
 tree:   [0-9A-Z_a-z]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  H  W  L  O  q  Z  2  o  3  B  _  k  a  c  A  I  u  q  B  Y  N  J  T  d
-ex(1):  U  i  V  D  p  e  _  9  W  U  u  c  e  C  U  B  0  x  K  b  A  d  C  0
-ex(2):  h  N  xe  G  5Z  r9  t  Ro  u3  O  o  J  A  q  L  f  9  9Y  9  Oa  7  Q
-ex(3):  A  i  e  x_U  7  W  bZ9  r0  kFf  Fq  u  Ok  vU  0t  k  _Y  Ao  wy  _fw
-ex(5):  VZ2af  wfdZ  vm  B_8e  n  SaG  tZd  OBDQv  3BUD  avDOY  niX_  9IAlx
-ex(8):  9bVr  pVLA  9  s  cDR45  t  g  N3YyE_e  y9RZaHr5  XSAEqX9  Xr  rd  qhY4
+ex(0):  H  W  L  O  q  V  2  o  3  B  _  k  z  c  l  I  u  q  B  Y  N  J  T  d
+ex(1):  U  i  V  D  p  e  A  9  W  U  u  c  e  C  U  B  0  x  K  b  T  d  C  0
+ex(2):  h  N  xe  G  50  r6  t  Ro  u3  O  o  J  Y  q  L  f  O  yY  9  Oa  7  Q
+ex(3):  B  i  e  xPU  7  W  bZJ  r0  kFf  Fq  u  Ok  vU  0t  k  cY  zo  wy  _fw
+ex(5):  VZ2af  wfdG  vm  Bn8e  n  SaG  tNd  OBDQv  3BUD  2vDOY  niX_  9IZlx
+ex(8):  KbVr  pVLh  9  s  cDR45  t  g  N3YyEse  y0RnUHr5  XS3EqXl  Xr  rd  qhY4
 
 regexp: [_a-zA-Z][_a-zA-Z0-9]*
 tree:   ([A-Z_a-z][0-9A-Z_a-z]*)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  _  d  U  q  Y  B  E  W  i  j
-ex(1):  wU  d  a  a  F  D  y  XB  y  F  u  U0  t  K  ox  m  P5  V3  K  L  TR
-ex(2):  SOF  TJA  Uq_  k  m  Z9  l  Za  E1  K  H  X53  x  Kx_  h  f  ZbZ  a  _
-ex(3):  vq  jdO  _UA  zkA  iaA  Z  m_  s  mnR  J  Hf  mf  afc  GeB  l  T5n  aaG
-ex(5):  OdkO  QQv33B  m9N  lOY  QiX  n9  uNlxf  rQoC  l9VrG  oLA  q  wW  YR459i
-ex(8):  BYyE  oeBy9  w_aHr5cX  lPE  E9HXr  H  q  vY4QYd  lu6Iz  hwb  Aak4ZKK98
+ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
+ex(1):  wU  d  _  a  F  D  y  XB  y  F  u  U0  t  K  ox  m  P5  V3  K  L  TR
+ex(2):  SOF  TJJ  Uqw  k  m  Zy  l  Ea  E1  K  H  X53  x  KxP  h  f  ZbZ  a  m
+ex(3):  vq  jdO  vU9  zke  iaz  k  m_  s  mnR  J  Hf  mf  afc  GeB  l  T5n  aaG
+ex(5):  OdkO  QQv33B  mmN  lOY  QiX  n9  uNlxf  rQoC  lmVrG  oLh  q  wW  YR457i
+ex(8):  BYyE  oeBy0  w_UHr5cX  lPE  ElHXr  H  q  vY4QYd  lu6Iz  hwb  Aak4ZKK98
 
 regexp: [A-HO-Z][A-Z]*
 tree:   ([A-HO-Z][A-Z]*)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  C  U  B  Y  H  H  Z  O  H  O  E  A  O  O  C  P  O  G  O  O  R  W  X  E
-ex(1):  W  H  H  Z  G  XY  U  H  C  EE  O  E  PM  GH  OT  Z  US  H  FU  O  X  F
-ex(2):  OEM  A  O  BH  H  F  SY  SO  P  X  UTB  QIP  HO  X  ZIK  O  F  OFL  HW
-ex(3):  DAOQ  ZYJ  OYGK  OORR  OBE  OGZ  BULH  OS  QJJ  AWS  OWKK  YRQ  OXA  GK
-ex(5):  RIRDA  XWW  YJC  TJ  OYKRG  H  XN  SZPK  DYAZC  OPCUZ  RC  SEUOVP  GF
-ex(8):  ZD  TBXASQAX  UL  PGWSGPBMH  X  Y  FBFIEF  FTPGH  ROA  HBGDD  GSKQ
+ex(0):  C  U  B  Y  H  H  Z  H  O  O  E  A  E  O  C  P  T  G  O  H  R  W  X  E
+ex(1):  W  H  X  Z  G  XY  U  H  C  EE  O  E  PM  GH  OT  Z  US  W  FU  O  X  F
+ex(2):  OEM  A  O  BH  E  F  SY  SO  P  X  UTB  QIP  CO  X  ZIK  O  F  OFL  EW
+ex(3):  DAOQ  ZYJ  OYGK  OORR  OBE  HGZ  BULH  WS  QJJ  AWS  OWKK  YRQ  RXA  GK
+ex(5):  RIRDA  XWW  YJC  TJ  OYKRG  W  XN  SZPK  DYAZC  FPCUZ  RC  SEUOVP  GF
+ex(8):  ZD  TBXASQAX  UL  PGWSGPBMH  X  Y  FBFIEF  FTPGH  ROA  XBGDD  GSKQ

@@ -11,12 +11,12 @@ regexp: [a-z0-9_-]{3,16}
 tree:   [0-9_a-z-]{3,16}
 length: 3 to 16
 -------------------- Examples --------------------
-ex(0):  cu0  h9z  _98  _-n  _c_  53n  c79  9e_  9__  _39  4_o  __1  ___  9l_
-ex(1):  __8  _f6  uo9  7f_  iu5  ee1  m-_  9dh  8t9  rs_  smo  9xl  _9_  599
-ex(2):  5_9  _99  9wf  id_  __9  o8y  g_9  or_  7be  i_9  -u8  4__  _66  a_9
-ex(3):  k__  __7  xa9  9ao  ur_  9-_  __e  69d  6__  r3l  _x9  s9_  __a  _i_
-ex(5):  90b_o  _9u  -199  -_-_9  _ws9_  _y9  b_e9a  _h9  _n9g0  3_7  7_zd  9u9m
-ex(8):  8999  97_v8n  g9_t_  99_993  6_9  _ed  __999i__  4_n_u  yl09_u90
+ex(0):  cuw  hhz  988  h-n  0ca  53n  c7p  9eo  gye  g3x  47o  z91  c_x  2ls
+ex(1):  j18  5f6  uom  7f1  iu5  ee1  m-m  _dh  8tv  rso  smo  yxl  lsk  5_n
+ex(2):  5ls  le0  awf  ide  kqh  o8y  g_h  orc  7be  i_9  au8  4bl  _66  a8k
+ex(3):  k__  7-7  xa6  tyo  urd  _-w  9_e  64d  6hh  r3l  9xb  s9y  6_a  _ip
+ex(5):  q7bvo  zqu  t15_  -4-6_  bws77  ryc  b9eka  sh3  hnug0  347  7_zd  eu0m
+ex(8):  849_  m7bv8n  gdttk  i-6at3  6-8  eed  __lb_iz9  49nfu  yl_gfueq
 
 #
 
@@ -26,12 +26,12 @@ regexp: [a-z0-9_-]{6,18}$
 tree:   [0-9_a-z-]{6,18}
 length: 6 to 18
 -------------------- Examples --------------------
-ex(0):  cu0h9z  _98_-n  _c_53n  c799e_  9___39  4_o__1  ___9l_  999__8  _f6uo9
-ex(1):  ee1m-_  9dh8t9  rs_smo  9xl_9_  599o__  5_9_99  9wfid_  __9o8y  g_9or_
-ex(2):  -u84__  _66a_9  -wkk__  __7xa9  9aour_  9-___e  69d6__  r3l_x9  s9___a
-ex(3):  z90b_o  99fu_a  99__-_  9_3ws9  _9_99_  e9a9gh  9_9n9g  003_7_  _zd9_9
-ex(5):  9999f9  7_v8n_  9_t__9  9y993i  6_99_d  t__999  i__-_n  _u_l09  _u900x
-ex(8):  i_kw8h  __9_3nd_  9-__qa-  9_929a  942onf  _99-__  __996ii  _6599_
+ex(0):  cuwhhz  988h-n  0ca53n  c7p9eo  gyeg3x  47oz91  c_x2ls  dnqj18  5f6uom
+ex(1):  ee1m-m  _dh8tv  rsosmo  yxllsk  5_no9i  5lsle0  awfide  kqho8y  g_horc
+ex(2):  au84bl  _66a8k  lwkk__  7-7xa6  tyourd  _-w9_e  64d6hh  r3l9xb  s9y6_a
+ex(3):  zq7bvo  ccfu_a  5_94-6  _-3ws7  7e6cx9  ekaegh  3m9nug  00347g  _zdi50
+ex(5):  c49_fm  7bv8ny  dttksk  -yat3i  6-8srd  t__lb_  iz969n  fu8l_g  fueq0x
+ex(8):  i6kw8h  np9r3ndh  m-15qay  95u2lp  r42onf  iv3-d6  d4p26ii  k6594n
 
 #
 
@@ -41,12 +41,12 @@ regexp:  #?([a-f0-9]{6}|[a-f0-9]{3})
 tree:   (( #?)([0-9a-f]{6}|[0-9a-f]{3}))
 length: 4 to 8
 -------------------- Examples --------------------
-ex(0):   aa9a87   aaaa69   999aa9   a9a   daa99a   9a99ca   9a9   99aaab
-ex(1):   #da99aa   #89bd99   9aa99a   cf0   #aa3a99   aaa9a9   aa9   97e8aa
-ex(2):   aaa   a999a3   f99   #5aa   aaa   #aab   #9999d9   aa94aa   #9a99a9
-ex(3):   9a9aaa   #979   da9999   #74d   99a9a9   #74a   #a99   a9a   #2a0
-ex(5):   a99   #aaa   #ab9aaa   #98aaaa   adaa94   #a999aa   #aa9   aa9
-ex(8):   99aa99   #aaae09   a9a   99a   #aaa   #aa9e99   9a899a   #199   #90a
+ex(0):   0a2187   9cf66a   da1a23   19a   d3799b   369fcc   4b4   a89b9b
+ex(1):   #d466a2   #8abdb4   be9cb6   cf0   #933553   7a88d5   a65   67e8d9
+ex(2):   6ad   3a99c3   f7c   #529   43a   #4bb   #96f7d2   a7e436   #8bfab0
+ex(3):   58951d   #97b   d22803   #74d   995976   #749   #ea1   0e3   #2e0
+ex(5):   029   #69c   #2b99b6   #58ec4a   3d5a64   #a9b481   #99e   1ab
+ex(8):   5cbaa9   #c0ae08   eaa   99f   #928   #a2de67   e08c58   #11b   #909
 
 # 4. Matching a Slug
 
@@ -54,12 +54,12 @@ regexp: [a-z0-9-]+
 tree:   [0-9a-z-]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  c  u  0  h  9  z  a  9  8  a  -  n  a  c  a  5  3  n  c  7  9  9  e  a
-ex(1):  a  a  a  3  9  4  a  o  a  a  1  a  a  a  9  l  a  9  9  9  a  a  8  a
-ex(2):  uo  a  ai  5  e  m  a  -  8t  f  sa  m  9  la  aa  69  a  aa  ao  2  l9
-ex(3):  d  a9  9o  yga  ar  ab  ia9  a8  aa  96  a9  nwk  aaa  xa  d9a  u  a
-ex(5):  wa  9d6  a  r  lax9s  zaa  aaia  cuz  a9ao9  9u  -199a  a  u  8  aws9a
-ex(8):  29ae  a9gh9a  n9g003a  a9d9a  bma9999  8999f97a  8na9  9aa99  993i6
+ex(0):  c  u  w  h  h  z  9  8  8  h  -  n  0  c  a  5  3  n  c  7  p  9  e  o
+ex(1):  y  e  g  3  x  4  7  o  z  9  1  c  a  x  2  l  s  d  n  q  j  1  8  5
+ex(2):  uo  e  1i  5  e  m  m  e  8t  f  so  m  y  ll  qf  6n  9  fl  oo  2  la
+ex(3):  d  lo  ho  ygf  xr  eb  ia9  78  bl  b6  8k  nwk  s7-  xa  dty  u  d
+ex(5):  w1  4d6  q  r  l9xbs  zy6  axip  cuz  auvoc  qu  t15a9  9  u  8  bws77
+ex(8):  2x9e  tegh3m  nug0034  g9di5  bmpd91i  849afm7b  8nyd  8ksk-  at3i6
 
 # 5. Matching an Email
 
@@ -67,12 +67,12 @@ regexp: ([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})
 tree:   (((([.0-9_a-z-]+@)[.0-9a-z-]+).)[.a-z]{2,6})
 length: 6 to *
 -------------------- Examples --------------------
-ex(0):  c@..t.  z@-.la  _@a.bo  5@n.aa  x@a.a.  3@9.p.  _@a.k.  9@a..a  9@9.px
-ex(1):  9@f.aa  -@a...g  _@m...a  5@6.aab  o@a..f.gdw  _@a.aa  _@a.as.  u@4..az
-ex(2):  x@d..aaaa  _@9d.aeoa.  9@a.kh  cu@a9.a.u.  9@aa.aoi  9@9...aaa
-ex(3):  d9_@ma9...ad..  _v@a9a.lj..a  3i@g99..a.l  _@...a.aa  9@0x.axn.
-ex(5):  -_@qa.aa..va..  c_9@-aaa9.cge  _65@ha9a9.yaha.  q@3.a.ao.  _@f999a...a
-ex(8):  99@9lati..a.a  p@77aa.iaa.  mjm_999e@l.qeta..aia  i999_.@a9r.f...ua
+ex(0):  c@..tz  z@-.la  9@0.bo  5@n..q  x@o.ke  3@9.py  7@z.kz  p@x.hu  d@d.px
+ex(1):  m@f.xr  -@6.y.g  _@m.qi.  5@6.aab  o@o.nf.gdw  l@q.tq  x@c..sx  u@4.ecz
+ex(2):  x@d.gfxaj  _@4d.oeo.e  9@6.kh  cu@au.iaum  5@94.qoi  7@e.wozqo
+ex(3):  di5@mpd.ewxdan  bv@ydt.ljzkz  3i@g8s.szal  z@6.oy.mz  e@0x.dxnz
+ex(5):  -1@qaye5.ovziy  civ@-d.ku.cge  k65@hnodg.ydhfu  q@3.rbdoj  5@faco...dt
+ex(8):  ib@-ltti..nxt  p@77nf.iohc  mjmpgk6e@l.qet9..ail  i9fpw.@26r.fbnuuj
 
 # 6. Matching a URL
 
@@ -80,12 +80,12 @@ regexp: (https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?
 tree:   ((((((((((((ht)t)p)s?):)/)/)?[.0-9a-z-]+).)[.a-z]{2,6})[ .-9A-Z_a-z-]**)/?)
 length: 4 to *
 -------------------- Examples --------------------
-ex(0):  c.at  9.a.  8.s.  a.bo  5.aa  a..a  4...  a.p.  a.ba  -.y.  0..a  g...
-ex(1):  http://7.fa  a....a  http://a..a.aa  http://a..msb  a.a./  http://9.aa.
-ex(2):  http://3l.v..adA  cu.iaaa  https://a.a.o4/  29.r...a/  http://9..aa/
-ex(3):  9....tAxo 8  99.aaaa/  6au.gpda6rp_AP/  aa.ag.w/  https://99a...cob/
-ex(5):  aa.aaha.--  https://9s..u.far1a nm2a5jDL/  69g..ra.8
-ex(8):  https://qeta99..iav.HAoRA06X6tc_B6oV PZAwnR87/8-Mana/v
+ex(0):  c.yt  h.qt  8.sf  0.bo  5.u.  k.qe  4.e.  g.py  7.be  -.ye  h.ri  g..s
+ex(1):  http://7.fx  m.voc.  http://f.laszz  http://e.tmsb  x.yd/  http://b.rwq
+ex(2):  http://3l.veyrdG  cu.iozi  https://9.uyo4/  2x.rfrgb/  http://9.tqk/
+ex(3):  i.kabtKxoC8  bd.nzby/  6fu.gpdd6rpb8P/  ap.dg.w/  https://d.p.ebcob/
+ex(5):  qf..dhfuZf  https://ns.vuwfur1a nm2a5jDL/  6cg.araq8
+ex(8):  https://qet9is..ilv.H9oR906X6tc_B6oV-PZkwnR87/87Man /v
 
 # 7. Matching an IP Address
 

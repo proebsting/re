@@ -15,6 +15,14 @@ import (
 	"strconv"
 )
 
+//  GCD returns the greatest common denominator of two integers
+func GCD(a, b int) int {
+	for b != 0 {
+		a, b = b, a%b
+	}
+	return a
+}
+
 //  CkErr aborts with a fatal error if e is not nil.
 func CkErr(e error) { // abort if e is not nil
 	if e != nil {

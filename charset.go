@@ -57,7 +57,6 @@ func (b1 *BitSet) CharCompl() *BitSet {
 
 //  BitSet.RandChar returns a single randomly chosen BitSet element.
 //  Control characters are avoided unless nothing else is available.
-//  Selection is not unbiased if the BitSet is non-contiguous.
 func (b *BitSet) RandChar() rune {
 	low := b.LowBit()            // lowest eligible char
 	high := b.HighBit()          // highest eligible char
@@ -74,12 +73,15 @@ func (b *BitSet) RandChar() rune {
 	if b.Test(c) {
 		return rune(c)
 	}
-	//  otherwise, pick a direction and start walking
-	d := rand.Intn(2) // 0 or 1
-	d = 1 - 2*d       // 1 or -1
-	c = c + d         // first step
+	//  otherwise, pick a random stride and find one.
+	span := high - low + 1
+	stride := rand.Intn(span)
+	for GCD(stride, span) > 1 {
+		stride--
+	}
+	c = low + ((c - low + stride) % span)
 	for !b.Test(c) {
-		c = c + d
+		c = low + ((c - low + stride) % span)
 	}
 	return rune(c)
 }

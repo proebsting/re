@@ -384,12 +384,12 @@ tree:   ((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])
 augmnt: (((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])#)
 length: 3 to 5
 -------------------- Examples --------------------
-ex(0):  tit  fun  fot  fot  fid  foom  pood  pim  tood  tet  teem  cid  tom
-ex(1):  feen  food  freem  freem  cam  fum  fod  flan  tlit  poon  feem  preed
-ex(2):  feem  foot  feem  feet  peem  tram  fod  tloot  toon  teed  trood  plit
-ex(3):  pren  plin  floom  trud  food  freem  treen  foom  fleem  pleen  broon
-ex(5):  pood  pom  feed  tud  fim  fleet  teen  ceem  crood  creed  peed  peet
-ex(8):  preet  feen  poom  pem  tran  fun  proom  frid  feed  foom  feet  peed
+ex(0):  tot  bun  fon  cam  fod  toot  poon  pod  pood  fit  teem  fan  cam
+ex(1):  ceed  food  pleem  freen  com  ced  fod  clan  tlud  toot  feet  cleen
+ex(2):  peed  boot  ceet  feen  ceem  trad  cad  tloon  boot  ceem  cloot  blin
+ex(3):  trem  clit  troon  trad  foom  preem  cleet  pood  treem  breem  blood
+ex(5):  food  cet  feem  pan  fad  treet  been  ceen  cloot  creed  beed  beet
+ex(8):  preem  ceem  boom  fem  pran  fut  proon  crod  teem  poon  ceet  ceed
 ----------------- Annotated Tree -----------------
 {F, [bcfpt], #}   (((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])#)
    {F, [bcfpt], [dmnt]}   ((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])
@@ -443,12 +443,12 @@ tree:   ((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d
 augmnt: (((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))#)
 length: 7 to 10
 -------------------- Examples --------------------
-ex(0):  Whitaxford  Whitonman  Westoxgard  Wensesman  Westalgard  Watemby
-ex(1):  Watexgard  Whitasson  Westenhold  Wininby  Wensimhold  Wenseshold
-ex(2):  Westorby  Walirgard  Whitixdale  Westesgard  Waloxdale  Winasdale
-ex(3):  Whitendale  Winishold  Westilbot  Watonby  Whitirman  Winimford
-ex(5):  Winoxdale  Wensoxby  Winonby  Watirbot  Wensesson  Westonbot  Waloxford
-ex(8):  Whitanbot  Westaxford  Westasgard  Wenserdale  Whitesbot  Wensoxson
+ex(0):  Whitixford  Whitenman  Westolgard  Wensesman  Westalgard  Watemby
+ex(1):  Watalgard  Whitesson  Westanhold  Wininby  Wensimhold  Wensamhold
+ex(2):  Westirby  Walimgard  Whitisdale  Westasgard  Walomdale  Winamdale
+ex(3):  Whitondale  Winoshold  Westolbot  Watinby  Whitolman  Winimford
+ex(5):  Winoxdale  Wensixby  Winolby  Watirbot  Wensesson  Westasbot  Waloxford
+ex(8):  Whitembot  Westemford  Westesgard  Wensardale  Whitexbot  Wensosson
 ----------------- Annotated Tree -----------------
 {F, W, #}   (((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))#)
    {F, W, dyetnndd}   ((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))
@@ -650,12 +650,12 @@ tree:   (([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)
 augmnt: ((([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  H  W  L  O  q  Z  2  o  3  B  Z  a  c  A  I  u  q  B  Y  N  J  T  d  Z
-ex(1):  i,a  z,e   B  K  H, h  N   C   Z   x,o   3, J  A  a,9   Y,a  7  u ,3 
-ex(2):  nZ  rZ ,u k  U  Z a,7y   w, 2 , Z   e  8,a,l  O,3 , v  Y,a A,oo 
-ex(3):  9gN ,e 9  aH,Aq9 , 6 Y , u z   b9 Z ,y5 , MC  LO b , m ,c   aeV 
-ex(5):  m hV As ,l  J 9, AW,o o i  s Z ,Z,2 Fu A   f m,3Kk , H Z5 yw 
-ex(8):  z ER, aA0 ,bvA3 ,0A 1,C c9 ouV8 9, J xZZ p 7,K 2 89 V , U0 A eK x,F2 Za W
+ex(0):  H  W  L  O  q  V  2  o  3  B  O  z  c  l  I  u  q  B  Y  N  J  T  d  m
+ex(1):  i,A  z,e   B  K  H, h  N   C   0   x,o   3, J  Y  w,3   Y,a  7  u ,3 
+ex(2):  nZ  rL ,u k  U  Z c,7y   w, 2 , G   e  8,a,l  O,3 , v  Y,a Z,oo 
+ex(3):  7gN ,e 0  CH,3ql , 6 Y , u z   bl Z ,y5 , MC  LO b , m ,c   QeV 
+ex(5):  m hV Is ,l  J k, eW,o o i  s a ,L,2 Fu R   f m,3Kk , H c5 yw 
+ex(8):  z ER, GA0 ,bvJ3 ,0A 1,C cx ouV8 9, J xKj p 7,K 2 8Y V , U0 J eK x,F2 ni W
 ----------------- Annotated Tree -----------------
 {F, [0-9A-Za-z], #}   ((([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)#)
    {F, [0-9A-Za-z], [0-9A-Za-z][\t-\r ][0-9A-Za-z][\t-\r ]}   (([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)

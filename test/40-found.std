@@ -9,12 +9,12 @@ regexp: [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
 tree:   (((([%+.0-9A-Z_-]+@)[.0-9A-Z-]+).)[A-Z]{2,4})
 length: 6 to *
 -------------------- Examples --------------------
-ex(0):  V@B.HI  Y@1.KB  A@9.OC  +@K.CK  Z@Z.VW  +@E.GZ  _@W.HY  E@A.AE  Z@..UE
-ex(1):  S@R.ZQS  A@E.JU  J@0.KI  Y@A.BOD  E@J.FR  G@Y.PLL  +@U.IPTO  L@F.IKF
-ex(2):  DO@A.JOY  S@C..OKE  -@B4.LHKS  2@A7.LCW  5@OM.KX  %P@7.IID  O4@7.CTJ
-ex(3):  Z@A.AZ  9@Q.RZ  JAS@XHI.CZT  %T@C.UCP  .@46-.XYF  7JD@JO.PGRO
-ex(5):  91I6@AXA.SNP  %@Z.VSF  __C@AKZWK.RUMX  _1AAR@MJF.7.DT  Z_@7A5YE.GAU
-ex(8):  -K9%8@-.LH  T3Z@9BF9-LG.ET  -Z_G9.4@OCP2.FOF  WZZLSAAA@KO61TB.IOAI
+ex(0):  V@B.HI  Y@1.KB  K@N.OC  L@K.CK  Z@Z.VW  E@E.GZ  _@W.HY  E@G.AE  Z@..UE
+ex(1):  S@R.ZQS  A@E.JU  J@0.KI  Y@D.BOD  E@J.FR  G@Y.PLL  W@U.IPTO  L@F.IKF
+ex(2):  DO@R.JOY  S@C..OKE  -@B4.LHKS  2@C7.LCW  5@OM.KX  OP@7.IID  O4@7.CTJ
+ex(3):  Z@9.AZ  9@Q.RZ  JXS@XHI.CZT  -T@C.UCP  .@46-.XYF  7JD@JO.PGRO
+ex(5):  91I6@AXH.SNP  G@Z.VSF  ._C@LKZWK.RUMX  0197R@MJF.7.DT  2_@795YE.GAU
+ex(8):  +KXE8@-.LH  T3F@LBF4-LG.ET  -MXG1.4@OCP2.FOF  W.5LSFAG@KO61TB.IOAI
 #D: (final email example)
 #U: http://www.regular-expressions.info/email.html
 
@@ -22,12 +22,12 @@ regexp: [a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0
 tree:   (((([!#-'*+/-9=?^-~-]+(.[!#-'*+/-9=?^-~-]+)*)@)(([0-9a-z]([0-9a-z-]*[0-9a-z])?).)+)([A-Z]{2}|((co)m)|((or)g)|((ne)t)|((ed)u)|((go)v)|((mi)l)|((bi)z)|(((in)f)o)|(((mo)b)i)|(((na)m)e)|(((ae)r)o)|(((as)i)a)|(((jo)b)s)|(((((mu)s)e)u)m)))
 length: 6 to *
 -------------------- Examples --------------------
-ex(0):  ^@9.biz  w@k.asia  9@a.aero  ?@a.jobs  ^@e.biz  8@a.edu  s@9.info
-ex(1):  $.^@9.asia  s@f.com  *.+@a.mobi  _.i@9a7.mobi  z.q@k9q.mobi  _.e@9.mobi
-ex(2):  ?8@f.fa9.info  n.{.?@a.a.net  ^.*.+3@x.net  ?x.*y.^@aa9.g.net
-ex(3):  ??9@qae9y.mil  ^??.k.^^'@x.a.9.edu  !jz.hu@ana.e.org
-ex(5):  ^2.7g.^!^.^.y~@2a.qaaa9au.jaao.m.name
-ex(8):  p-@a1aba7a.mobi  3^?pp?m.8~.?^^}.j^^?3?9.?.j?#@7.0.798j.9lati-f.9.com
+ex(0):  k@9.biz  w@k.asia  9@k.aero  u@9.jobs  '@e.biz  8@k.edu  s@n.info
+ex(1):  $.`@9.asia  s@f.com  m.+@e.mobi  _.i@7y7.mobi  z.q@kaq.mobi  _.e@u.mobi
+ex(2):  r8@f.f8n.info  n.{.^@5.g.net  '.*.+3@x.net  4x./y.^@na7.g.net
+ex(3):  9?!@q9eky.mil  xb`.k.&t_@x.a.y.edu  !jz.hu@vn5.e.org
+ex(5):  62.7g.$9^.1.y~@24.qdap9ru.jm9o.m.name
+ex(8):  p-@v1eb07k.mobi  3c8pp4m.8~.!??}.jk$'3=c.{.j-#@7.0.7q8j.vlttixf.0.com
 #D: (telno "Yecchhh")
 #U: http://compilers.iecc.com/comparch/article/01-10-072
 

@@ -9,12 +9,12 @@ regexp: [A-Za-z0-9]+
 tree:   [0-9A-Za-z]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  H  W  L  O  q  Z  2  o  3  B  Z  a  c  A  I  u  q  B  Y  N  J  T  d  Z
-ex(1):  i  V  D  p  e  a  9  W  U  u  c  e  C  U  B  0  x  K  b  A  d  C  0  K
-ex(2):  N  xe  G  5Z  r9  t  Ro  u3  O  o  J  A  q  L  f  9  9Y  9  Oa  7  Q
-ex(3):  A  i  e  xZU  7  W  bZ9  r0  kFf  Fq  u  Ok  vU  0t  k  aY  Ao  wy  awd
-ex(5):  2af  wfdZ  vm  Ba8e  n  SaG  tZd  OBDQv  3BUD  avDOY  niXZ  IAlxf  oQoC
-ex(8):  pVLA  9  s  cDR45  t  g  N3YyEZe  y9RZaHr5  XSAEqX9  Xr  rd  qhY4  Y
+ex(0):  H  W  L  O  q  V  2  o  3  B  O  z  c  l  I  u  q  B  Y  N  J  T  d  m
+ex(1):  i  V  D  p  e  A  9  W  U  u  c  e  C  U  B  0  x  K  b  T  d  C  0  K
+ex(2):  N  xe  G  50  r6  t  Ro  u3  O  o  J  Y  q  L  f  O  yY  9  Oa  7  Q
+ex(3):  B  i  e  xPU  7  W  bZJ  r0  kFf  Fq  u  Ok  vU  0t  k  cY  zo  wy  Iwd
+ex(5):  2af  wfdG  vm  Bn8e  n  SaG  tNd  OBDQv  3BUD  2vDOY  niXE  IZlxf  oQoC
+ex(8):  pVLh  9  s  cDR45  t  g  N3YyEse  y0RnUHr5  XS3EqXl  Xr  rd  qhY4  Y
 
 # functions.php: fixamps
 
@@ -43,9 +43,9 @@ length: 1 to *
 ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
 ex(1):  2  1  7  5  8  -0  +7  6  9  +0  7  8  2  +7  6  0  +8  3  -9  +6  7  3
 ex(2):  2  +6  6  8  9  1  -10  +4  6  39  -3  +8  +70  +70  5  +4  +70  +14  7
-ex(3):  084  10  -52  287  -7  +14  9  -852  -220  -86  -85  -3  930  -68  0
-ex(5):  433  9367  -34  5644  465  -32005  -1898  +437  4  6  9  00  90116  51
-ex(8):  109516  1994772  22845  +26964423  9055  +336174  -999  63687
+ex(3):  084  10  +52  287  -7  +14  9  -852  -220  -86  +85  +3  930  -68  0
+ex(5):  433  9367  -34  5644  465  +32005  -1898  +437  4  6  9  00  90116  51
+ex(8):  109516  1994772  22845  +26964423  9055  +336174  +999  63687
 
 # nelson.php: else 'Date must be in YYYY-MM-DD form.'
 
@@ -81,9 +81,9 @@ regexp: (\/\/[ \t]*)?[Ww][Hh][Mm][ \t]*says[ \t]*:[ \tA-Za-z0-9`~!@\#$%^&\*\(\)\
 tree:   (((((((((((((//)[\t ]*)?[Ww])[Hh])[Mm])[\t ]*)s)a)y)s)[\t ]*):)[]\t -[^-~]+)
 length: 9 to *
 -------------------- Examples --------------------
-ex(0):  whmsays:c  whmsays:%  whmsays:-  whmsays:M  Whmsays:y  WHmsays:Z
-ex(1):  whmsays:$  WHm says:l  WHm says :u  // wHmsays :G  //Whm says :;
-ex(2):  //Whmsays  :^  Whm  says  :>+  whMsays:P_  // WHm  says :)j  WhMsays :S
-ex(3):  WHmsays :!I  WHM says:[<;  // wHM   says :)  //  whmsays:Qu
-ex(5):  WHMsays  :]/.  // WhM   says  :^.A{  whm    says     :<mg.N
-ex(8):  //whm  says:\"B!  //  whm    says     :C  wHM        says:B_t0
+ex(0):  WHmsays:c  wHmsays:%  whmsays:-  WHmsays:M  wHmsays:y  WHmsays:Z
+ex(1):  whMsays:$  whm says:l  whM says :u  // whMsays :G  //wHM says :;
+ex(2):  //WHmsays  :^  WhM  says  :>+  Whmsays:P_  // wHM  says :)j  WHMsays :S
+ex(3):  whmsays :!I  WHm says:[<;  // WHM   says :)  //  WHMsays:Qu
+ex(5):  wHmsays  :]/.  // wHm   says  :^.A{  Whm    says     :<mg.N
+ex(8):  //wHM  says:\"B!  //  WhM    says     :C  wHm        says:B_t0

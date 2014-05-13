@@ -9,12 +9,12 @@
 {"State":9,"RXset":[1,2],"Example":"+.8"},
 {"State":10,"RXset":[1,2],"Example":"+5."},
 {"State":13,"RXset":[2],"Example":".6L"},
-{"State":15,"RXset":[2],"Example":"3e6"},
+{"State":15,"RXset":[2],"Example":"3E6"},
 {"State":17,"RXset":[1],"Example":".6d4"},
-{"State":19,"RXset":[1,2],"Example":".6E6"},
+{"State":19,"RXset":[1,2],"Example":".6e6"},
 {"State":20,"RXset":[1],"Example":".6d47"},
-{"State":21,"RXset":[1,2],"Example":".6E60"},
+{"State":21,"RXset":[1,2],"Example":".6e60"},
 {"State":22,"RXset":[1],"Example":".6d472"},
-{"State":23,"RXset":[1,2],"Example":".6E607"},
-{"State":24,"RXset":[2],"Example":".6E6070"}
+{"State":23,"RXset":[1,2],"Example":".6e607"},
+{"State":24,"RXset":[2],"Example":".6e6070"}
 ]}

@@ -9,12 +9,12 @@ regexp: ([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0
 tree:   (((([.0-9A-Z_a-z-]+@)((((((([[0-9]{1,3}).)[0-9]{1,3}).)[0-9]{1,3}).)|([0-9A-Za-z-]+.)+))([A-Za-z]{2,4}|[0-9]{1,3}))]?)
 length: 5 to *
 -------------------- Examples --------------------
-ex(0):  c@y.JD  Q@[9.2.1.YB  9@[6.0.2.aZ  A@[4.8.7.MF  k@[9.7.6.Xa  g@9.6
-ex(1):  f@[0.8.01.19  _@[994.38.750.ZR  T@[471.041.08.20  5@o.62
+ex(0):  c@y.JD  Q@[9.2.1.YB  9@[6.0.2.ZB  Z@[4.8.7.MF  k@[9.7.6.XQ  g@L.6
+ex(1):  f@[0.8.01.19  o@[994.38.750.ZR  T@[471.041.08.20  5@o.62
 ex(2):  X@[62.83.82.00  e@[90.043.33.34  F@[04.90.2.61]  1J@[7.66.9.SlqH
-ex(3):  g00@[2.537.66.aZf]  9@D.MFN  DUM@S.Ja.Z.dhX  Adt@[719.0.64.qWUL
-ex(5):  kw8h@[83.23.024.vA  Z9A@Na-V.2onf.EDHH.Q.Y.GZ]  6i@[64.3.9.30
-ex(8):  1fB0G4VF@[40.3.441.75  69g@[40.775.817.16]
+ex(3):  g00@[2.537.66.gKf]  9@D.MFN  DUM@S.JY.t.dhX  rdt@[719.0.64.qWUL
+ex(5):  kw8h@[83.23.024.vA  Z95@NA-V.2onf.EDHH.Q.Y.GZ]  6i@[64.3.9.30
+ex(8):  1fB0G4VF@[40.3.441.75  6Eg@[40.775.817.16]
 
 # 356. "my all-time favourite e-mail validator"
 
@@ -22,12 +22,12 @@ regexp: (\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})
 tree:   (((((((([0-9A-Z_a-z][.0-9A-Z_a-z-]*)[0-9A-Z_a-z])@)[0-9A-Z_a-z])[.0-9A-Z_a-z-]*)[0-9A-Z_a-z]).)[0-9A-Z_a-z]{2,3})
 length: 8 to *
 -------------------- Examples --------------------
-ex(0):  HW@Oq.s2  o3@_k.Kc  AI@qB.NJ  Td@Ai.Dp  e_@zW.uc  eC@B0.Kb  Ad@0K.hM
-ex(1):  ZW9@tyo.u3  Oo@JA.q_  f9@99u.aP  1u@9A5.i3  G6l@ZW.bZ  90@kl1.qB
-ex(2):  _ILN@77b_.wd  nA2@fJf.Zc  m9.e@n_XG.tZ  kQD@v3.UDa  vCwt@ita.IA
-ex(3):  G_aA@9s.cD4  5t@gBAy._ey  9Z@q-Dc.SA  q9@XDEy6.hYQ  YLy@6z.hw
-ex(5):  ZuIb1@HARp.bXl  Zv9f97E@CnYgMDA.a_J  mJg@dZ3ic.Rmo  hed_@wDh.k6
-ex(8):  TaY6_N@oso._p  swXVaMekq@kA_Z_3G.As  cHeAY@tZ9.dk_  3_VbZ@5cREw._l
+ex(0):  HW@Oq.s2  o3@_k.Kc  lI@qB.NJ  Td@ei.Dp  eA@zW.uc  eC@B0.Kb  Td@0K.hM
+ex(1):  0W6@tyo.u3  Oo@JY.qw  fO@yvu.aP  1u@9A5.i3  G6l@dW.bZ  80@kl1.qB
+ex(2):  cILN@77b_.wd  n72@fJf.Gc  m.le@n_XG.tN  kQD@v3.UD2  vCwt@ita.IZ
+ex(3):  G_ah@9s.cD4  5t@gBzy.sey  0n@q-Dc.S3  ql@XDEy6.hYQ  YLy@6z.hw
+ex(5):  luIb1@HERp.bXl  ZvAfV7E@CnYgMDf.a_J  mJg@dt3ic.Rmo  hedg@wDh.k6
+ex(8):  TaY6FN@oso.Ip  swXVMMekq@knpUr3G.Rs  cHe5Y@tZ9.dkb  3ZVbc@5cREw.2l
 
 # 1012. "A short and sweet email address validator"
 
@@ -35,9 +35,9 @@ regexp: ([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}
 tree:   ((((([0-9A-Za-z]+[&+.;_amp-])*[0-9A-Za-z]+)@)([0-9A-Za-z-]+.)+)[A-Za-z]{2,6})
 length: 6 to *
 -------------------- Examples --------------------
-ex(0):  H@0.yJ  2@-.Dv  a@n.qY  q@5.ja  Z@x.aZ  b@V.Dc  c@Z.yM  K@I.Ut  0@0.oX
-ex(1):  O+9@8.YVaW  a;J@e.EkmVr  l.O@a.KrNYx  e@9.hueR  9@o.PpvOea  v@a.Sx
-ex(2):  RV;fZ_f@w.lQa  Fmdk@ao.dmaM  n_Z;N@l.x.lGbQo  a9;c@0b.o.jwBZ
-ex(3):  4QY;u6;hw_ak4@W.ucvj  9+A_p5;lZe@f9.sMnY  Vn_J@a9Z.6.CZUP
-ex(5):  KJNFo_NapJaZf@kw8h.aaZa.zlGicZ
-ex(8):  gkAe0ao9@a.-nRFa.52-EVsV.BLkha
+ex(0):  H@w.yJ  2@-.Dv  z@n.qY  q@5.jD  m@x.ZB  b@V.Dc  c@e.yM  K@I.Ut  0@B.oX
+ex(1):  O;6@8.YVaW  y-J@e.EkmVr  l;O@T.KrNYx  e@C.hueR  8@o.PpvOey  v@r.Sx
+ex(2):  RVpfW.f@w.lQb  F.dk@yo.dmsM  n_E.N@l.x.lGbQo  f9-c@Zb.o.jwBj
+ex(3):  4QY+u6;hw_ak4@W.ucvj  z;A.p5_lZe@fV.sMnY  Vn;J@YKt.6.CuUP
+ex(5):  KJNFo-NIpJ;af@kw8h.apUr.zlGicV
+ex(8):  gkAe0voy@b.-nRFd.52eEVsV.BLkhE

@@ -14,12 +14,12 @@ regexp: [{|\(]?[0-9a-fA-F]{8}[-]?([0-9a-fA-F]{4}[-]?){3}[0-9a-fA-F]{12}[\)|}]?
 tree:   ((((([({|]?[0-9A-Fa-f]{8})-?)([0-9A-Fa-f]{4}-?){3})[0-9A-Fa-f]{12})[)|}]?)
 length: 32 to 38
 -------------------- Examples --------------------
-ex(0):  AaAFa87aaaDFaFa9AaaFaaAAFF3adAa9  FafDFaFFcaCdFAFa9FAAAbaF59FfACa9
-ex(1):  F8Daa3aFFaDF1aFa-fFaa-aaD7e8Da0ada|
-ex(2):  FFFFdF28aa94aa4A-aFFaFF19F60A9aFa  aa9BF7FadBFa-a9eF-daFf-aeaFF974aFaa
-ex(3):  aFA2F8aa-aAa9-FFA4FfaF-9aA93aaEb9e3|
-ex(5):  3F8aaaFa4CCF-aFaF-8FFaFFFB5FFF0AFa|
-ex(8):  (03BFAaAf-7eFFFDF4-aaca-D2aaa4dEa7a7)
+ex(0):  10AB18779cD8aafFADf5eDA1FF3Cd379  AbfD36EfccCd4B42AF9B9bcd5ADfeC19
+ex(1):  28DA3355D9DF1DDd-fDa6-26D7e8De06da|
+ex(2):  96fCd228aCe40a41-bfabbD1Ca60A5D9E  da3B97BFdBB3-a0ea-dCaf-BeC6cd74EFa7
+ex(3):  FEb258ec-abA7-F0A41fa9-4F1f3aEEbee3)
+ex(5):  3a8E2DaF4CCd-af8e-8c589a1B5db90928}
+ex(8):  {03Ba3DDf-7e9FFD94-f0cD-D2a9B4dEa797}
 
 # 580. passwords length 8-20 with at least one digit, cannot start with digit
 
@@ -32,12 +32,12 @@ regexp: [v,V,(\\/)](\W|)[i,I,1,l,L](\W|)[a,A,@,(\/\\)](\W|)[g,G](\W|)[r,R](\W|)[
 tree:   (((((((((([(),/V\v]([\x01-/:-@[-^`{-\u007f]|()))[,1ILil])([\x01-/:-@[-^`{-\u007f]|()))[(),/@A\a])([\x01-/:-@[-^`{-\u007f]|()))[,Gg])([\x01-/:-@[-^`{-\u007f]|()))[,Rr])([\x01-/:-@[-^`{-\u007f]|()))[(),/@A\a])
 length: 6 to 11
 -------------------- Examples --------------------
-ex(0):  v1;,`g:r=)  V[l/{G@,[/  V'I@A{gR~/  /i[/@g{r[@  v@i/gr,/  \\L`a@GR`@
-ex(1):  \\1[\\,r\\@  V/iA{gR{\\  v{L^\\G,\\  /%,>@:g,{\\  vIA`GR{\\  ,@,@a*GrA
-ex(2):  V@1/,r;\\  //i|/gr:\\  /i\\g;r\\  \\1/gR@@  V1@G,@/  vi@gr+A  /I]@GR;/
-ex(3):  /{i/\\:,\"R@  vL{\\@g`R@  ,L`A@G[R\\  V`L&A!G[R@  \\L@@G,{\\
-ex(5):  /L\"\\,r[a  /1#@/GR{@  \\1,,,A  /i/&,[R\\  V@i:@G{R@/  /L`\\@g,&@
-ex(8):  \\1^@gR:@  \\1@[,R\\  /1{\\\",{,\\  ,`L!(g+R\\  \\`i{A{,`R@/  v@L\\Gr@
+ex(0):  (i;(\\g<r=)  V`la#G:r\"A  /'I>A{gR~,  V1%\\?G<,>@  v]i,,,,A  )L/,]gr|,
+ex(1):  ),&),,\\a  \\)lA!g,.(  \\}1^,gR@  ,%i>)%,,@\\  Vi(#GR\"(  ,),(@*,,(
+ex(2):  V|,)Gr;A  V;i|/,r!,  (,@G;R\\  V1,G,<)  Vi/Gr:/  /i(,,+/  \\,]/,r;,
+ex(3):  ){i}\\{,\",(  )L$/',{,A  )I|(*G-r(  V=1&\\!G.,A  ,L\\@g,>a  //l\\/G$,:)
+ex(5):  v,#).GR$/  VI,gr@  )L/&g>R\\  v`i#,g]R[/  VL=\\^GR&)  v.,/],,/a
+ex(8):  /I@\\,,/  \\,!A\"g\",A  )),!(G+r)  ,;I'A#,^,{(  v%I),R/  /1 ),RA
 
 # 49. major credit cards (AmEx len 15, others len 16)
 
@@ -50,7 +50,7 @@ ex(1):  60119001-9109-4226  4994378873577697  45564979-0347-0078
 ex(2):  3,7998142091068  4380209886521853  4320-05068270-9080
 ex(3):  49903200-6318-3817  54045605-6006-0116  41196738-09510219
 ex(5):  6011-1905-07331747  4999663679211795  53761941-1287-4677
-ex(8):  42496073-35926256  346800994848273  43357214-14607342
+ex(8):  42496073-35926256  3,6800994848273  43357214-14607342
 
 # 595. UK vehicle registration number from September 2001
 
@@ -58,9 +58,9 @@ regexp: ([A-HK-PRSVWY][A-HJ-PR-Y])\s?([0][2-9]|[1-9][0-9])\s?[A-HJ-PR-Z]{3}
 tree:   ((((([A-HK-PRSVWY][A-HJ-PR-Y])[\t-\r ]?)((0[2-9])|([1-9][0-9])))[\t-\r ]?)[A-HJ-PR-Z]{3})
 length: 7 to 9
 -------------------- Examples --------------------
-ex(0):  YO25HZK  DS38EAN  AA06JNC  CU87EVW  DS07GZM  BD28UOH  AN05ENC  GE07MGP
-ex(1):  SO14SXK  NW06EEM  NE05 TSF  VY06 XLU  FD 09 XOX  BO 09 OAF  WE 08 AOP
-ex(2):  NH06AEG  MJ 59DSR  EB06 NWK  MR32KXA  HS 06 HDA  VG07TDJ  AN04 AXF
-ex(3):  KF 03 SBE  FF 07ZCZ  WH38RXU  PK 06PBM  PR 39EFF  WG21AMN  YJ72SKR
-ex(5):  RD80 LKZ  DS14 KSV  YJ07GTR  WL59 TPU  RV34 YXO  NR 09 ZFJ  KL08NUO
-ex(8):  FW 05 UUP  LS 02WLH  EX07 YGN  HU 43TSR  SC 05 WHZ  VS 75 LYX  EX 02RWO
+ex(0):  YO25HZK  DS38EAN  AA06NNC  CU87EVW  DS07GZM  BD28UOH  AN05ENC  GE07MGP
+ex(1):  SO14SXK  NW06EEM  NE05 TSF  AY06 XLU  FD 09 XOX  BO 09 OAF  WE 08 AOP
+ex(2):  NH06AEG  MJ 59DSH  EB06 NWK  MR32KXA  PS 06 ZDA  OG07TDJ  AN04 AXF
+ex(3):  SF 03 SBE  FF 07ZCZ  GH38PXU  PK 06PBM  WS 39EFF  RG21AMN  YJ72SKZ
+ex(5):  RD80 LKZ  DS14 KSV  YJ07GTR  WL59 TPU  RV34 YXO  NR 09 ZFL  KL08NUO
+ex(8):  FW 05 UUR  LS 02WLH  EX07 YGN  WU 43TSP  SC 05 WHZ  SS 75 LYX  EX 02RWO

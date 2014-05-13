@@ -107,9 +107,9 @@ length: 1 to *
 ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
 ex(1):  2  1  7  5  8  -0  +7  6  9  +0  7  8  2  +7  6  0  +8  3  -9  +6  7  3
 ex(2):  2  +6  6  8  9  1  -10  +4  6  39  -3  +8  +70  +70  5  +4  +70  +14  7
-ex(3):  084  10  -52  287  -7  +14  9  -852  -220  -86  -85  -3  930  -68  0
-ex(5):  433  9367  -34  5644  465  -32005  -1898  +437  4  6  9  00  90116  51
-ex(8):  109516  1994772  22845  +26964423  9055  +336174  -999  63687
+ex(3):  084  10  +52  287  -7  +14  9  -852  -220  -86  +85  +3  930  -68  0
+ex(5):  433  9367  -34  5644  465  +32005  -1898  +437  4  6  9  00  90116  51
+ex(8):  109516  1994772  22845  +26964423  9055  +336174  +999  63687
 
 # canonical integer form (-i or i, no +, or 0)
 
@@ -146,11 +146,11 @@ tree:   (([+-]?((([0-9]+.)[0-9]*)|(.[0-9]+)))(((([DEde][+-]?)[0-9])[0-9]?)[0-9]?
 length: 2 to *
 -------------------- Examples --------------------
 ex(0):  4.  5.  .8  8.  .2  1.  4.  6.  .2  1.  .5  8.  0.  7.  8.  .0  7.  4.
-ex(1):  4.7  .0e+489  .4  .3  0.  8.  +.0e4  9.9  .8  .5E90  .6  .9d+74  .0E8
-ex(2):  .27d+21  8.38  9.8  -.30  .9E6  .99  7.E-73  -64.7  .04D03  +83.74d46
-ex(3):  90.6  -.86d+056  994.2  84.377  .42E-51  -.74d99  687.E-55  .1E+1
-ex(5):  66.27  011.92  .0e+4  -.86800d4  -433.72E1  342.79833  .3657  +.9026
-ex(8):  +296.64366  -36.4E+60  448.7  .511  +71.9138  033044.4913d+07
+ex(1):  4.7  .0e+489  .4  .3  0.  8.  +.0e4  9.9  .8  .5E90  .6  .9E+74  .0e8
+ex(2):  .27D+21  8.38  9.8  +.30  .9e6  .99  7.D-73  +64.7  .04D03  +83.74E46
+ex(3):  90.6  -.86d+056  994.2  84.377  .42d-51  -.74E99  687.d-55  .1D+1
+ex(5):  66.27  011.92  .0e+4  -.86800D4  -433.72e1  342.79833  .3657  +.9026
+ex(8):  +296.64366  +36.4d+60  448.7  .511  +71.9138  033044.4913D+07
 
 # C floating point constant
 
@@ -158,12 +158,12 @@ regexp: [+-]?(((\d+\.\d*|\.\d+)([eE][+-]?\d+)?)|(\d+[eE][+-]?\d+))[fFlL]?
 tree:   (([+-]?((((([0-9]+.)[0-9]*)|(.[0-9]+))(([Ee][+-]?)[0-9]+)?)|((([0-9]+[Ee])[+-]?)[0-9]+)))[FLfl]?)
 length: 2 to *
 -------------------- Examples --------------------
-ex(0):  3.  6E8  7.  6.  4.  0.  0.  .5  3.  .7  8.  8e7  4.  0e6  7.  3.  .3
-ex(1):  -3e1  -0.  .0E-0f  6.3e3L  3E7  -2.6  +7E7f  8E9  4.e5  8.3L  4e+0  .3
-ex(2):  -5e3  05e2L  +0.e+7L  -.4f  +20.E+83  -.0  +.6  01e51f  89e+0  +.4  93.
-ex(3):  926E792l  +75E1L  +879e71L  6.27  11e+073L  -256.986  484e-24L  1E46
-ex(5):  3365e+93F  18.84361e61464l  66E0  -036e0  9.65  +.41e-38  .3044L
-ex(8):  .15385177E+3F  06E2337228  .85648E89402178L  .249584E58582L
+ex(0):  3.  6E8  7.  6.  4.  0.  0.  .5  3.  .7  8.  8e7  4.  0E6  7.  3.  .3
+ex(1):  -3E1  -0.  .0e-0L  6.3e3L  3e7  -2.6  +7e7f  8E9  4.E5  8.3L  4e+0  .3
+ex(2):  +5e3  05e2F  +0.e-7f  +.4L  -20.E+83  -.0  +.6  01E51f  89e+0  +.4  93.
+ex(3):  926e792l  +75E1l  +879E71L  6.27  11e+073F  -256.986  484E-24F  1E46
+ex(5):  3365E+93F  18.84361e61464L  66e0  -036e0  9.65  -.41e-38  .3044L
+ex(8):  .15385177E+3F  06e2337228  .85648E89402178F  .249584e58582L
 
 
 
@@ -428,12 +428,12 @@ regexp: 3[47]\d{13}
 tree:   ((3[47])[0-9]{13})
 length: 15 to 15
 -------------------- Examples --------------------
-ex(0):  346567788879826  374586016201278  348300947468978  340842907464077
-ex(1):  372123262062088  370119910996422  349399403788873  377697022556049
-ex(2):  340846410376852  342879327998142  340688523802209  376524185308832
+ex(0):  376567788879826  374586016201278  348300947468978  370842907464077
+ex(1):  372123262062088  340119910996422  349399403788873  347697022556049
+ex(2):  340846410376852  342879327998142  340688523802209  346524185308832
 ex(3):  340074338393675  343488564407465  370432005363189  378174378046560
 ex(5):  371986738910951  342199477248228  379377269644232  370551073361747
-ex(8):  377952752760194  378128796467717  370666742760470  374926073503592
+ex(8):  377952752760194  378128796467717  340666742760470  344926073503592
 
 # Discover Card
 
@@ -550,12 +550,12 @@ regexp: [12][90]\d\d[01][0-9][012][0-9]
 tree:   ((((((([12][09])[0-9])[0-9])[01])[0-9])[012])[0-9])
 length: 8 to 8
 -------------------- Examples --------------------
-ex(0):  10650728  10980620  10860102  19781423  10941408  29021014  19070620
+ex(0):  10650728  19980620  10860102  19781423  10941408  29021014  19070620
 ex(1):  29781913  29210326  10620818  20011921  19960216  19391423  29871510
-ex(2):  10491917  19710017  10321014  10031615  19281922  29981410  29680523
-ex(3):  10241823  19320900  20660200  29900007  10831317  29340816  19740519
+ex(2):  10491917  19710017  10321014  19031615  10281922  29981410  20680523
+ex(3):  19241823  19320900  20660200  29900007  19831317  29340816  10740519
 ex(5):  29981827  10800626  10260029  20110205  20861319  20951622  29941704
-ex(8):  29960423  10051107  29170716  19990623  10921617  29750700  29411822
+ex(8):  20960423  10051107  29170716  19990623  19921617  29750700  29411822
 
 regexp: (19|20)\d\d(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])
 tree:   ((((((19)|(20))[0-9])[0-9])((0[1-9])|(1[012])))((0[1-9])|([12][0-9])|(3[01])))
@@ -607,12 +607,12 @@ regexp: [01][0-9][012][0-9][12][90]\d\d
 tree:   ((((((([01][0-9])[012])[0-9])[12])[09])[0-9])[0-9])
 length: 8 to 8
 -------------------- Examples --------------------
-ex(0):  04162078  08291910  04281016  00122048  10191968  17001984  09071907
-ex(1):  16271043  14022026  00221989  00112910  19141989  19041088  07052076
-ex(2):  09192934  11201903  09181910  17282962  07131098  14102968  05231022
-ex(3):  18231932  09002066  02002990  00071083  13172934  08161974  05191020
+ex(0):  04162078  08291010  04281016  00122048  10191068  17001084  09071907
+ex(1):  16271043  14022026  00221989  00112910  19141089  19041088  07052076
+ex(2):  09192034  11201903  09181910  17282062  07131098  14102068  05231022
+ex(3):  18231932  09002066  02002990  00071983  13172934  08161074  05191020
 ex(5):  18271080  06261026  00292011  02052086  13192095  16222994  17041984
-ex(8):  04231005  11072917  07161999  06231092  16172975  07002941  18221064
+ex(8):  04231005  11072917  07161999  06231992  16172975  07002941  18221064
 
 regexp: (0[1-9]|1[012])(0[1-9]|[12]\d|3[01])(19|20)\d\d
 tree:   ((((((0[1-9])|(1[012]))((0[1-9])|([12][0-9])|(3[01])))((19)|(20)))[0-9])[0-9])
@@ -690,45 +690,45 @@ regexp: \w+@\w+\.\w+
 tree:   (((([0-9A-Z_a-z]+@)[0-9A-Z_a-z]+).)[0-9A-Z_a-z]+)
 length: 5 to *
 -------------------- Examples --------------------
-ex(0):  H@L.q  Z@o.B  _@a.A  I@q.Y  N@T.Z  U@V.p  e@b.z  W@u.e  C@B.x  K@A.C
-ex(1):  P@e.G  C@Z.r  9@t.R  o@u._  O@o.J  A@A._  o@v.9  9@l.u  O@P.1  Q@3.u
-ex(2):  x@UZ.nb  9@0.Ff  Fq@d.v  U@t.A9  a@o.y  _f@8.VZ  af@fd.cv  e@A8.n
-ex(3):  kO@Qv3.U  9Nv@Yt.X  a9I@l.3  Q@A9.G  VL@99.Wc  R45@igN.Y  E_@y.RZa
-ex(5):  9@r.d6  h@QYdLy.Iz  h@Z.k4ZKK  8s7yz@ZxAM1.ALxOp  b@lZ.6mxW
-ex(8):  gddAsE@Am.h  V@Awsn.k6ATcJ  k9OSf_9A@KJNFog.N_  Jsv92@J.qZMyR32
+ex(0):  H@L.q  V@o.B  _@z.l  I@q.Y  N@T.m  U@V.p  e@b.z  W@u.e  C@B.x  K@T.C
+ex(1):  P@e.G  C@0.r  6@t.R  o@u._  O@o.J  J@A.w  o@v._  y@l.u  O@P.1  Q@3.u
+ex(2):  x@Ud.nb  J@0.Ff  Fq@d.v  U@t.e9  a@o.y  _f@8.VZ  af@fd.cv  e@A8.n
+ex(3):  kO@Qv3.U  mNv@Yt.X  a9I@l.3  Q@Mm.G  VL@99.Wc  R45@igN.Y  Es@y.RnU
+ex(5):  l@r.d6  h@QYdLy.Iz  h@Z.k4ZKK  8s7yz@lxLM1.ALxOp  b@lZ.6mxW
+ex(8):  gddFsE@7m.h  V@Iwsn.k6zTcJ  kkOSf_3e@KJNFog.NI  Jsvf2@J.qLMyR32
 
 regexp: \w+@\w+(\.\w+)+
 tree:   ((([0-9A-Z_a-z]+@)[0-9A-Z_a-z]+)(.[0-9A-Z_a-z]+)+)
 length: 5 to *
 -------------------- Examples --------------------
-ex(0):  H@L.q  Z@o.B  _@a.A  I@q.Y  N@T.Z  U@V.p  e@b.z  W@u.e  C@B.x  K@A.C
-ex(1):  P@e.G  C@Z.r  9@t.R  o@u._  O@o.J  A@A._  o@v.9  9@l.u  O@P.1  Q@3.u
-ex(2):  x@UZ.bZ  9@Z.Fq.d  kv@At._  a@o.5.w  8@VZ.Zf.f  vm@_.n.a  F@l.BD
-ex(3):  niX@9I.x.o  o@9b.pVL.99.Wc  R45@igN.yE_  By9@_a.cXS  PEq@aHX.d
-ex(5):  9k4@K98.z5RZ.91C.LxO  5bXYl@_mxW.cC._m9An.TJm  Mgd@7.c.m_h_V.Awsnh
-ex(8):  N_@s.2f.eDqZMyR.neFKuGj.sKcfoPm  YXt@9Kdks_3o.eZr5Z3
+ex(0):  H@L.q  V@o.B  _@z.l  I@q.Y  N@T.m  U@V.p  e@b.z  W@u.e  C@B.x  K@T.C
+ex(1):  P@e.G  C@0.r  6@t.R  o@u._  O@o.J  J@A.w  o@v._  y@l.u  O@P.1  Q@3.u
+ex(2):  x@Ud.bZ  8@L.Fq.d  kv@9t.c  a@o.5.w  8@VZ.Wf.f  vm@n.n.a  F@l.BD
+ex(3):  niX@9I.x.o  o@Kb.pVL.99.Wc  R45@igN.yEs  By0@_U.cXS  PEq@aHX.d
+ex(5):  lk4@K98.z5Rl.z1C.LxO  5bXYl@_mxW.cC._mpfn.TJm  Mgd@7.c.mOh_V.Iwsnh
+ex(8):  NI@s.2f.eDqLMyR.neFKuGj.sKcfoPm  YXt@9Kdksb3o.ecr5Z3
 
 regexp: [-.'\w]+@\w+(\.\w+)+
 tree:   (((['.0-9A-Z_a-z-]+@)[0-9A-Z_a-z]+)(.[0-9A-Z_a-z]+)+)
 length: 5 to *
 -------------------- Examples --------------------
-ex(0):  _@O.Z  t@3._  2@K.A  A@B.N  h@d.A  T@D.e  L@9.U  o@e.U  W@x.b  _@C.K
-ex(1):  A@G.5  '@r.x  y@p.o  r@3.O  O@_.A  w@q.L  E@v.9  8@Y.9  6@a.7  a@u.9
-ex(2):  A@_U.W  0W@r0.f1  .Z@v.0  -V@9.No  GI@f.n  AJ@Zf.cv  k@A8.A  v@t.k
-ex(3):  AYx@a9I.x.o  _@9V.VL  mW@sW.45  A-B@yE_.9R.aHr.X  bkA@aHX.d
-ex(5):  DpD@KK9.yz5.AxAM.HALxO.b  P@e_m.jEc.k_m9A._TJmd
-ex(8):  Z1_WtsB@k.NFo.oN_.s.ZfQ.D.kMyR32  hyuKVL@sKcfoPm.td39Kdk.33ouHteZ.Z3y3
+ex(0):  z@O.V  t@3._  2@K.l  2@B.N  h@d.e  T@D.e  L@9.U  o@e.U  W@x.b  q@C.K
+ex(1):  A@G.5  Q@r.x  y@p.o  r@3.O  O@_.J  w@q.L  E@v._  8@Y.9  6@a.7  a@u.9
+ex(2):  A@PU.W  XW@r0.f1  r4@v.0  -V@9.No  GI@f.n  mJ@Wf.cv  k@A8.A  v@t.k
+ex(3):  AYx@a9I.x.o  1@mV.VL  mW@sW.45  10B@yEs.0R.UHr.X  bk.@aHX.d
+ex(5):  DpD@KK9.yz5.AxLM.HALxO.b  P@e_m.jEc.k_mpf._TJmd
+ex(8):  P1_WtsB@k.NFo.oNI.s._fQ.D.kMyR32  hyuKVL@sKcfoPm.td39Kdk.33ouHtec.Z3y3
 
 regexp: \w[-.'\w]*@\w+(\.\w+)+
 tree:   (((([0-9A-Z_a-z]['.0-9A-Z_a-z-]*)@)[0-9A-Z_a-z]+)(.[0-9A-Z_a-z]+)+)
 length: 5 to *
 -------------------- Examples --------------------
-ex(0):  H@L.q  Z@o.B  _@a.A  I@q.Y  N@T.Z  U@V.p  e@b.z  W@u.e  C@B.x  K@A.C
-ex(1):  PA@G.5  Zi@x.t  p@a._  O@_.A  J@_.f  v@O.k  Y@u.a  P@Q.3  9k@3.3  e@_.Z
-ex(2):  r@Ff.B.Ok  vj@t._  Yj@7w.f  wM@VZ.Zf.f  cA@A8.A  SS@Z.BD  Q'@UD.v.Y
-ex(3):  o_.@b.pVL.99.Wc  DF@tig.Y  yQ@By9.aHr.X  SkA_@X.d  6b@QY.u6.9wb
-ex(5):  z9V-9I@ALxOp.Y  l'9T@jEc._m9An.TJm.gddAs.c.m_h_V  swA.9'@l.dk.OSf
-ex(8):  ZmUA'y@G.sKcfoPm.Xtd39  KzRno_3K@Zr5Z.wf_lx.w.8.k.OB6r9
+ex(0):  H@L.q  V@o.B  _@z.l  I@q.Y  N@T.m  U@V.p  e@b.z  W@u.e  C@B.x  K@T.C
+ex(1):  PA@G.5  0i@x.t  p@Y._  O@_.J  J@w.f  v@O.k  Y@u.a  P@Q.3  9k@3.3  e@P.d
+ex(2):  r@Ff.B.Ok  vj@t.c  Yj@7w.f  wM@VZ.Wf.f  co@A8.A  SS@N.BD  Q'@UD.v.Y
+ex(3):  o1.@b.pVL.99.Wc  DF@tig.Y  yQ@By0.UHr.X  Sk.h@X.d  6b@QY.u6.rwb
+ex(5):  zSVIfI@ALxOp.Y  lQjT@jEc._mpfn.TJm.gddFs.c.mOh_V  swT.1Q@l.dk.OSf
+ex(8):  LmUnmy@G.sKcfoPm.Xtd39  KzRnom3K@cr5Z.wf2lx.w.8.k.OB6r5
 
 # from RegExLib 356 & 1012
 
@@ -736,23 +736,23 @@ regexp: (\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})
 tree:   (((((((([0-9A-Z_a-z][.0-9A-Z_a-z-]*)[0-9A-Z_a-z])@)[0-9A-Z_a-z])[.0-9A-Z_a-z-]*)[0-9A-Z_a-z]).)[0-9A-Z_a-z]{2,3})
 length: 8 to *
 -------------------- Examples --------------------
-ex(0):  HW@Oq.s2  o3@_k.Kc  AI@qB.NJ  Td@Ai.Dp  e_@zW.uc  eC@B0.Kb  Ad@0K.hM
-ex(1):  ZW9@tyo.u3  Oo@JA.q_  f9@99u.aP  1u@9A5.i3  G6l@ZW.bZ  90@kl1.qB
-ex(2):  _ILN@77b_.wd  nA2@fJf.Zc  m9.e@n_XG.tZ  kQD@v3.UDa  vCwt@ita.IA
-ex(3):  G_aA@9s.cD4  5t@gBAy._ey  9Z@q-Dc.SA  q9@XDEy6.hYQ  YLy@6z.hw
-ex(5):  ZuIb1@HARp.bXl  Zv9f97E@CnYgMDA.a_J  mJg@dZ3ic.Rmo  hed_@wDh.k6
-ex(8):  TaY6_N@oso._p  swXVaMekq@kA_Z_3G.As  cHeAY@tZ9.dk_  3_VbZ@5cREw._l
+ex(0):  HW@Oq.s2  o3@_k.Kc  lI@qB.NJ  Td@ei.Dp  eA@zW.uc  eC@B0.Kb  Td@0K.hM
+ex(1):  0W6@tyo.u3  Oo@JY.qw  fO@yvu.aP  1u@9A5.i3  G6l@dW.bZ  80@kl1.qB
+ex(2):  cILN@77b_.wd  n72@fJf.Gc  m.le@n_XG.tN  kQD@v3.UD2  vCwt@ita.IZ
+ex(3):  G_ah@9s.cD4  5t@gBzy.sey  0n@q-Dc.S3  ql@XDEy6.hYQ  YLy@6z.hw
+ex(5):  luIb1@HERp.bXl  ZvAfV7E@CnYgMDf.a_J  mJg@dt3ic.Rmo  hedg@wDh.k6
+ex(8):  TaY6FN@oso.Ip  swXVMMekq@knpUr3G.Rs  cHe5Y@tZ9.dkb  3ZVbc@5cREw.2l
 
 regexp: ([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}
 tree:   ((((([0-9A-Za-z]+[&+.;_amp-])*[0-9A-Za-z]+)@)([0-9A-Za-z-]+.)+)[A-Za-z]{2,6})
 length: 6 to *
 -------------------- Examples --------------------
-ex(0):  H@0.yJ  2@-.Dv  a@n.qY  q@5.ja  Z@x.aZ  b@V.Dc  c@Z.yM  K@I.Ut  0@0.oX
-ex(1):  O+9@8.YVaW  a;J@e.EkmVr  l.O@a.KrNYx  e@9.hueR  9@o.PpvOea  v@a.Sx
-ex(2):  RV;fZ_f@w.lQa  Fmdk@ao.dmaM  n_Z;N@l.x.lGbQo  a9;c@0b.o.jwBZ
-ex(3):  4QY;u6;hw_ak4@W.ucvj  9+A_p5;lZe@f9.sMnY  Vn_J@a9Z.6.CZUP
-ex(5):  KJNFo_NapJaZf@kw8h.aaZa.zlGicZ
-ex(8):  gkAe0ao9@a.-nRFa.52-EVsV.BLkha
+ex(0):  H@w.yJ  2@-.Dv  z@n.qY  q@5.jD  m@x.ZB  b@V.Dc  c@e.yM  K@I.Ut  0@B.oX
+ex(1):  O;6@8.YVaW  y-J@e.EkmVr  l;O@T.KrNYx  e@C.hueR  8@o.PpvOey  v@r.Sx
+ex(2):  RVpfW.f@w.lQb  F.dk@yo.dmsM  n_E.N@l.x.lGbQo  f9-c@Zb.o.jwBj
+ex(3):  4QY+u6;hw_ak4@W.ucvj  z;A.p5_lZe@fV.sMnY  Vn;J@YKt.6.CuUP
+ex(5):  KJNFo-NIpJ;af@kw8h.apUr.zlGicV
+ex(8):  gkAe0voy@b.-nRFd.52eEVsV.BLkhE
 
 
 
@@ -795,9 +795,9 @@ regexp: (https?://)?\w+(\.\w+)(/.*)?
 tree:   ((((((((((ht)t)p)s?):)/)/)?[0-9A-Z_a-z]+)(.[0-9A-Z_a-z]+))(/[\x01-\u007f]*)?)
 length: 3 to *
 -------------------- Examples --------------------
-ex(0):  H.L  O.Z  2.3  B.k  a.A  I.q  B.N  J.d  Z.i  V.p  e.b  9.U  u.e  C.B
-ex(1):  A.C  https://C.Z/  https://O.o  A.A  L.f  9.k/t  a.7  u.9/
-ex(2):  vr.k/\"  ud.v  https://A.wy/  8.VZ/  fd.cv  _.5  a.t  https://UD.Nv
-ex(3):  x.o  https://LA9.sW  https://Y._  https://5.SA  9H.h  q.4QY/QI
-ex(5):  yz5.AxAM  ALxOp.X/s<N  http://_m9An.TJm/Y  http://_h.s_As/G  l.Jd
-ex(8):  FoggoN_.s/^  http://R32neFK.jAsK/  aYXtd3.dks/(`$
+ex(0):  H.L  O.V  2.3  B.k  z.l  I.q  B.N  J.d  m.i  V.p  e.b  9.U  u.e  C.B
+ex(1):  T.C  https://C.0/  https://O.o  J.A  L.f  _.k/t  a.7  u.9/
+ex(2):  vr.k/\"  ud.v  https://z.wy/  8.VZ/  fd.cv  n.5  a.t  https://UD.Nv
+ex(3):  x.o  https://Lh9.sW  https://Y.s  https://5.S3  lH.h  q.4QY/QI
+ex(5):  yz5.AxLM  ALxOp.X/s<N  http://_mpfn.TJm/Y  http://Oh.sg6s/G  l.Jd
+ex(8):  FoggoNI.s/^  http://R32neFK.jRsK/  aYXtd3.dks/(`$
