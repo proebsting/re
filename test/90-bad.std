@@ -56,49 +56,49 @@ regexp: [t-f]
 ERROR:  rx: invalid range: in "[t-f]"
 
 regexp: a{z
-ERROR:  rx: malformed '{m,n}': in "a{z"
+ERROR:  rx: malformed "{m,n}": in "a{z"
 
 regexp: a{1z
-ERROR:  rx: malformed '{m,n}': in "a{1z"
+ERROR:  rx: malformed "{m,n}": in "a{1z"
 
 regexp: a{1,z
-ERROR:  rx: malformed '{m,n}': in "a{1,z"
+ERROR:  rx: malformed "{m,n}": in "a{1,z"
 
 regexp: a{1,2z
-ERROR:  rx: malformed '{m,n}': in "a{1,2z"
+ERROR:  rx: malformed "{m,n}": in "a{1,2z"
 
 regexp: a{1,2bz
-ERROR:  rx: malformed '{m,n}': in "a{1,2bz"
+ERROR:  rx: malformed "{m,n}": in "a{1,2bz"
 
 regexp: a{}z
-ERROR:  rx: malformed '{m,n}': in "a{}z"
+ERROR:  rx: malformed "{m,n}": in "a{}z"
 
 regexp: a{,}z
-ERROR:  rx: malformed '{m,n}': in "a{,}z"
+ERROR:  rx: malformed "{m,n}": in "a{,}z"
 
 regexp: a{1,,2}z
-ERROR:  rx: malformed '{m,n}': in "a{1,,2}z"
+ERROR:  rx: malformed "{m,n}": in "a{1,,2}z"
 
 regexp: a{,2}z
-ERROR:  rx: malformed '{m,n}': in "a{,2}z"
+ERROR:  rx: malformed "{m,n}": in "a{,2}z"
 
 regexp: a{2,1}z
-ERROR:  rx: malformed '{m,n}': in "a{2,1}z"
+ERROR:  rx: malformed "{m,n}": in "a{2,1}z"
 
 regexp: a{p,3}z
-ERROR:  rx: malformed '{m,n}': in "a{p,3}z"
+ERROR:  rx: malformed "{m,n}": in "a{p,3}z"
 
 regexp: a{4,q}z
-ERROR:  rx: malformed '{m,n}': in "a{4,q}z"
+ERROR:  rx: malformed "{m,n}": in "a{4,q}z"
 
 regexp: a{x,y}z
-ERROR:  rx: malformed '{m,n}': in "a{x,y}z"
+ERROR:  rx: malformed "{m,n}": in "a{x,y}z"
 
 regexp: a{x}z
-ERROR:  rx: malformed '{m,n}': in "a{x}z"
+ERROR:  rx: malformed "{m,n}": in "a{x}z"
 
 regexp: a{xyzzy}z
-ERROR:  rx: malformed '{m,n}': in "a{xyzzy}z"
+ERROR:  rx: malformed "{m,n}": in "a{xyzzy}z"
 
 regexp: a++
 ERROR:  rx: multiple adjacent duplication symbols: in "a++"

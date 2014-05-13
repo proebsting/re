@@ -2,6 +2,10 @@
 
 package rx
 
+import (
+	"unicode/utf8"
+)
+
 //  MatchNode is a leaf node that matches exactly one char from a given set.
 //  It generalizes the textbook leaf node that matches a particular char.
 //  A special MatchNode with an empty set represents an acceptance marker.
@@ -58,12 +62,13 @@ func (d *MatchNode) SetFollow(pmap []*MatchNode) {
 }
 
 //  MatchNode.Example appends a single randomly chosen matching character.
+//  (Note that this may be multiple UTF-8 bytes.)
 func (d *MatchNode) Example(s []byte, n int) []byte {
 	if IsAccept(d) {
 		return s // don't alter if Accept node
 	} else {
 		// assumes cset is not empty
-		return append(s, d.Cset.RandChar())
+		return append(s, string(d.Cset.RandChar())...)
 	}
 }
 
@@ -73,8 +78,8 @@ func (d *MatchNode) String() string {
 		return "#" // special "accept" node
 	}
 	s := d.Cset.Bracketed()
-	if len(s) == 3 {
-		return s[1:2] // abbreviate set of one char
+	if utf8.RuneCountInString(s) == 3 {
+		return s[1 : len(s)-1] // abbreviate set of one char
 	} else {
 		return s
 	}

@@ -4016,15 +4016,15 @@ ERROR:  rx: prefer-fewer '?' unimplemented: in "<!--.*?-->"
 #U: http://regexlib.com/REDetails.aspx?regexp_id=384
 
 regexp: ^[a-zA-Z0-9ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïñòóôõöøùúûüýÿ\.\,\-\/\']+[a-zA-Z0-9ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝßàáâãäåæçèéêëìíîïñòóôõöøùúûüýÿ\.\,\-\/\' ]+$
-tree:   ([',-9A-Za-z\u0080-\u0096\u0098-\u009d\u009f-¯±-¶¸-½¿Ã]+[ ',-9A-Za-z\u0080-\u0096\u0098-\u009d\u009f-¯±-¶¸-½¿Ã]+)
+tree:   ([',-9A-Za-zÀ-ÖØ-Ýß-ïñ-öø-ýÿ]+[ ',-9A-Za-zÀ-ÖØ-Ýß-ïñ-öø-ýÿ]+)
 length: 2 to *
 -------------------- Examples --------------------
-ex(0):  a.  U'  g,  t,  K9  Ke  9T  Y'  bS  qM  hp  gl  .j  TX  as  LH  9t  RS
-ex(1):  Fa  cH  TD  ar  A   ,K  QV  H,  1I  .H  ,Z  N'  B   dR  6a  a,  A7  ch
-ex(2):  Ob  i0Z  urLA  ,I  rB   KA9  dc0m  /QT  Euf  ZX6s  RnH  jR  -Vt  ,Hr
-ex(3):  UM8AZ  7'fP  gaa  ,a505  UAGDZ  'c5  nHEAw  Yx9jH  WQZ  6D  .1F  9ySSA
-ex(5):  FM/A,V  Lap9eqM  RJaQcN  z,Mat/  7BhA6i  X3f'  a9nMknM'  xEuaD'd
-ex(8):  SDFPSrv  RL,k9RG  ahC9NN9G  DvgvaX3Zg9Ax  5Al,m7YZv  3A5jAna4AlA9
+ex(0):  3z  zZ  òÀ  g9  Kø  UA  RÝ  ,ü  Àa  aM  zÀ  oH  Âý  zÀ  zç  øè  ri  ÀÀ
+ex(1):  À,  3a  ''  ïÑ  qÀ  ÿâ  zz  âa  XË  zÀ  ÀT  ,D  k   BÒ  ïz  Àö  Àö  á'
+ex(2):  ÔöDÆ  zÍz  z.  zú  5ßQ  óÀAV  ýÂ  sÍä  oc  z   Àz  oz5z  Óz  aÀ  æëj
+ex(3):  zO9z  ÀÄzÀ  øÀUÂz  Olz  zY  À'zrØ  EÀz  Àiw,  v2ãk  7ÀqÀýÀ  tAòZÀ
+ex(5):  zÎK  çmH  òym'zó  Æ,õu  z7À-À9zÀne  Àzóóz  ÀA,/  znÛëÉ  B8zÖzxïÌzå
+ex(8):  Èzè90.  öÀrCLzIÀÀ  x,z zÀãÀpõ  Æ9åja3À  Ú9'çaÀ  zÑ.äïÀdrß3zzü  99ÀF ãØÂ
 
 
 #A: Michael Ash
@@ -4093,15 +4093,15 @@ The rule applies to double byte charactor input validation.
 #U: http://regexlib.com/REDetails.aspx?regexp_id=395
 
 regexp: ^[\u0081-\uFFFF]{1,}$
-tree:   [\u0081-ÿ]+
+tree:   [\u0081-\uffff]+
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  4 [FAIL]  \xfd  \x9a  \xa3  \xa0  \x81  > [FAIL]  \x12 [FAIL]  \x99
-ex(1):  \xec  ~ [FAIL]  ( [FAIL]  ! [FAIL]  \x16 [FAIL]  \xd7  \x19 [FAIL]
-ex(2):  e [FAIL]  \xbe\xdb  \xd6  l [FAIL]  \xb5  \x05 [FAIL]  ) [FAIL]  \xe1
-ex(3):  GBX [FAIL]  \xb4  B\x1b [FAIL]  \xed  \x15 [FAIL]  \x18y [FAIL]  Е
-ex(5):  \xba}5 [FAIL]  \xd8u\xc4M [FAIL]  \u007f\x1eL\x99 [FAIL]  V2G\xd4 [FAIL]
-ex(8):  x-\xfe [FAIL]  \x97\xcbk\xfd\x93 [FAIL]  \x90\xe7  Ik\xaf\xac\b\xcd [FAIL]
+ex(0):  ﳺ  ꥲ  龎  ᥪ  鏛  \ue900  䍏  童  桨  䬐  蓨  \uf0db  뿫  ᣜ  ⿸  ⓮  ﹿ  㚢  \uf5a2
+ex(1):  愋  ꐔ  誊  센  \ue781  ᩊ  鼠  \uf550  墯  佌  덍  ﻄ  뤁  䍼  퐖  뫑  ﱈ  ꉮ  ӝ  얒  �
+ex(2):  ⟪  ⌧�  媾  攮뎐  츰  㙤\ue9b9  濼  괦  ᥝ͚  ᆣ  ꅰ�  ㎯霶  \ua9e7  幥  �췏  㓞帆  ཫ  ẑ
+ex(3):  ぶ  뒨⡐㗤  횢굁  \u20f2䓕  䊥ⵝ  傶艗�  Ӻ\u08d6  콢ⓜ  \uf067  쎯  케�\ue053  苦  囗ᐩꅟ
+ex(5):  \uf16f�  쑎  墇ꐉ谚  \uea4e  콙ॿ\uf071ꉍ⠠  遆\ue70b뀿\ue598  衞  䦚屢\ufde9
+ex(8):  䌎ꢞ\u0e63�誩皩⦬  \uf849ꫜ諊羌�끶≙  ꐓ옜  \uf7e5층\ue660�  얄㩦\u1a1d鉫때㫖쩄  茗숄昿쏶㫦
 
 
 #A: Jason N. Gaylord
@@ -5380,15 +5380,15 @@ ERROR:  rx: '(?...' unimplemented: in "(?n:(^(?(?![^,]+?,)((?<first>[A-Z][a-z]*?
 #U: http://regexlib.com/REDetails.aspx?regexp_id=554
 
 regexp: (À|Á|Â|Ã|Ä|Å|à|á|â|ã|ä|å|a|A|@|@|α|À|Á|Â|Ã|Ä|Å|À|Á|Â|Ã|Ä|Å|à|á|â|ã|ä|å|à|á|â|ã|ä|å)
-tree:   (([Ã][\u0080])|([Ã][\u0081])|([Ã][\u0082])|([Ã][\u0083])|([Ã][\u0084])|([Ã][\u0085])|([Ã][\u00a0])|([Ã][¡])|([Ã][¢])|([Ã][£])|([Ã][¤])|([Ã][¥])|a|A|@|@|([Î][±])|([Ã][\u0080])|([Ã][\u0081])|([Ã][\u0082])|([Ã][\u0083])|([Ã][\u0084])|([Ã][\u0085])|([Ã][\u0080])|([Ã][\u0081])|([Ã][\u0082])|([Ã][\u0083])|([Ã][\u0084])|([Ã][\u0085])|([Ã][\u00a0])|([Ã][¡])|([Ã][¢])|([Ã][£])|([Ã][¤])|([Ã][¥])|([Ã][\u00a0])|([Ã][¡])|([Ã][¢])|([Ã][£])|([Ã][¤])|([Ã][¥]))
-length: 1 to 2
+tree:   (À|Á|Â|Ã|Ä|Å|à|á|â|ã|ä|å|a|A|@|@|α|À|Á|Â|Ã|Ä|Å|À|Á|Â|Ã|Ä|Å|à|á|â|ã|ä|å|à|á|â|ã|ä|å)
+length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  Á [FAIL]  Á [FAIL]  Å [FAIL]  α [FAIL]  Å [FAIL]  Ä [FAIL]  à [FAIL]
-ex(1):  Â [FAIL]  À [FAIL]  Â [FAIL]  à [FAIL]  à [FAIL]  Ä [FAIL]  Å [FAIL]
-ex(2):  À [FAIL]  Ä [FAIL]  ä [FAIL]  â [FAIL]  a  Ã [FAIL]  À [FAIL]  Â [FAIL]
-ex(3):  Ã [FAIL]  Å [FAIL]  å [FAIL]  ã [FAIL]  Å [FAIL]  Ã [FAIL]  Ã [FAIL]
-ex(5):  ã [FAIL]  Â [FAIL]  ã [FAIL]  @  Ã [FAIL]  â [FAIL]  å [FAIL]  À [FAIL]
-ex(8):  Ã [FAIL]  Â [FAIL]  å [FAIL]  ã [FAIL]  À [FAIL]  Á [FAIL]  ä [FAIL]
+ex(0):  Á  Ã  Á  Å  á  ä  Å  Ã  À  à  å  a  Â  Å  Ä  Â  Å  @  à  â  À  Å  å  ã
+ex(1):  ä  å  ä  Á  a  a  Ã  Ä  ã  Â  Ã  Ä  Á  Å  Å  @  ã  á  @  Ã  ã  Ä  à  Ã
+ex(2):  Â  Á  ã  @  Ã  α  Â  å  á  ä  Á  à  Â  Â  A  Á  ã  Ä  ã  Á  â  á  @  Á
+ex(3):  α  ã  å  à  Á  Â  A  À  À  Ã  Ã  Ä  å  Å  À  â  à  À  Ä  Å  à  á  Ã  ä
+ex(5):  α  à  Â  ä  à  à  Ã  å  Ã  Â  Ã  À  A  å  á  á  Á  a  À  å  Å  À  å  A
+ex(8):  Å  A  â  ä  Â  å  Â  @  á  Ã  á  á  Ä  Á  Å  á  â  Á  ä  Á  A  å  Ã  ã
 
 
 #A: Alanski Perryman
@@ -5396,15 +5396,15 @@ ex(8):  Ã [FAIL]  Â [FAIL]  å [FAIL]  ã [FAIL]  À [FAIL]  Á [FAIL]  ä [FA
 #U: http://regexlib.com/REDetails.aspx?regexp_id=555
 
 regexp: (È|É|Ê|Ë|è|é|ê|ë|E|e|È|É|Ê|Ë|È|É|Ê|Ë|è|é|ê|ë|è|é|ê|ë)
-tree:   (([Ã][\u0088])|([Ã][\u0089])|([Ã][\u008a])|([Ã][\u008b])|([Ã][¨])|([Ã][©])|([Ã][ª])|([Ã][«])|E|e|([Ã][\u0088])|([Ã][\u0089])|([Ã][\u008a])|([Ã][\u008b])|([Ã][\u0088])|([Ã][\u0089])|([Ã][\u008a])|([Ã][\u008b])|([Ã][¨])|([Ã][©])|([Ã][ª])|([Ã][«])|([Ã][¨])|([Ã][©])|([Ã][ª])|([Ã][«]))
-length: 1 to 2
+tree:   (È|É|Ê|Ë|è|é|ê|ë|E|e|È|É|Ê|Ë|È|É|Ê|Ë|è|é|ê|ë|è|é|ê|ë)
+length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  Ê [FAIL]  ê [FAIL]  ë [FAIL]  È [FAIL]  É [FAIL]  È [FAIL]  È [FAIL]
-ex(1):  Ë [FAIL]  ê [FAIL]  é [FAIL]  è [FAIL]  È [FAIL]  ê [FAIL]  ê [FAIL]
-ex(2):  È [FAIL]  Ê [FAIL]  ë [FAIL]  Ê [FAIL]  Ê [FAIL]  Ê [FAIL]  ë [FAIL]
-ex(3):  ê [FAIL]  É [FAIL]  é [FAIL]  È [FAIL]  È [FAIL]  È [FAIL]  E  è [FAIL]
-ex(5):  è [FAIL]  ë [FAIL]  è [FAIL]  è [FAIL]  è [FAIL]  É [FAIL]  É [FAIL]
-ex(8):  ê [FAIL]  e  é [FAIL]  Ê [FAIL]  E  È [FAIL]  È [FAIL]  é [FAIL]
+ex(0):  Ê  É  ë  ë  È  È  É  è  Ë  È  É  E  Ë  È  Ë  é  ë  è  È  É  ë  ê  é  ê
+ex(1):  È  È  ë  Ë  ê  Ê  É  ê  ë  Ë  ë  ê  è  Ë  é  ê  è  È  Ê  E  E  è  Ê  É
+ex(2):  Ë  É  è  Ë  ê  è  È  É  É  è  É  ê  É  é  È  Ê  Ë  È  Ë  È  È  É  é  è
+ex(3):  é  È  ë  ê  È  ê  È  Ê  È  Ë  È  è  È  ê  É  ê  ë  È  è  è  e  Ê  è  Ê
+ex(5):  È  ê  Ê  È  é  ê  È  ë  È  Ë  E  Ë  é  è  ê  e  é  e  è  È  ê  Ë  é  Ë
+ex(8):  É  Ë  ê  ë  E  ê  Ê  ë  ë  è  è  È  É  Ë  ê  Ê  è  é  É  È  Ê  é  Ê  É
 
 
 #A: Martin Matusiak
@@ -6150,15 +6150,15 @@ ex(8):  9600 0229      9600 0229      11560229  99999999  77241215  77720229
 #U: http://regexlib.com/REDetails.aspx?regexp_id=652
 
 regexp: \xA9
-tree:   [©]
+tree:   ©
 length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]
-ex(1):  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]
-ex(2):  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]
-ex(3):  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]
-ex(5):  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]
-ex(8):  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]  \xa9 [FAIL]
+ex(0):  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©
+ex(1):  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©
+ex(2):  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©
+ex(3):  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©
+ex(5):  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©
+ex(8):  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©  ©
 
 
 #A: Steve Wagner
@@ -6367,15 +6367,15 @@ ex(8):  (03BFAaAf-7eFFFDF4-aaca-D2aaa4dEa7a7)
 #U: http://regexlib.com/REDetails.aspx?regexp_id=673
 
 regexp: \u2122
-tree:   "
+tree:   ™
 length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]
-ex(1):  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]
-ex(2):  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]
-ex(3):  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]
-ex(5):  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]
-ex(8):  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]
+ex(0):  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™
+ex(1):  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™
+ex(2):  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™
+ex(3):  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™
+ex(5):  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™
+ex(8):  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™  ™
 
 
 #A: Roman Lukyanenko
@@ -6383,15 +6383,15 @@ ex(8):  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FAIL]  \" [FA
 #U: http://regexlib.com/REDetails.aspx?regexp_id=674
 
 regexp: \u00AE
-tree:   [®]
+tree:   ®
 length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]
-ex(1):  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]
-ex(2):  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]
-ex(3):  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]
-ex(5):  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]
-ex(8):  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]
+ex(0):  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®
+ex(1):  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®
+ex(2):  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®
+ex(3):  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®
+ex(5):  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®
+ex(8):  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®  ®
 
 
 #A: Roman Lukyanenko
@@ -6399,15 +6399,15 @@ ex(8):  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [FAIL]  \xae [F
 #U: http://regexlib.com/REDetails.aspx?regexp_id=675
 
 regexp: \u00A3
-tree:   [£]
+tree:   £
 length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]
-ex(1):  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]
-ex(2):  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]
-ex(3):  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]
-ex(5):  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]
-ex(8):  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]
+ex(0):  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £
+ex(1):  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £
+ex(2):  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £
+ex(3):  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £
+ex(5):  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £
+ex(8):  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £  £
 
 
 #A: Roman Lukyanenko
@@ -6415,15 +6415,15 @@ ex(8):  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [FAIL]  \xa3 [F
 #U: http://regexlib.com/REDetails.aspx?regexp_id=676
 
 regexp: \u20AC
-tree:   [¬]
+tree:   €
 length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]
-ex(1):  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]
-ex(2):  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]
-ex(3):  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]
-ex(5):  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]
-ex(8):  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]
+ex(0):  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €
+ex(1):  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €
+ex(2):  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €
+ex(3):  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €
+ex(5):  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €
+ex(8):  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €  €
 
 
 #A: Roman Lukyanenko
@@ -6431,15 +6431,15 @@ ex(8):  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [FAIL]  \xac [F
 #U: http://regexlib.com/REDetails.aspx?regexp_id=677
 
 regexp: \u00A5
-tree:   [¥]
+tree:   ¥
 length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]
-ex(1):  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]
-ex(2):  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]
-ex(3):  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]
-ex(5):  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]
-ex(8):  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]
+ex(0):  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥
+ex(1):  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥
+ex(2):  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥
+ex(3):  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥
+ex(5):  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥
+ex(8):  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥  ¥
 
 
 #A: Roman Lukyanenko
@@ -6447,15 +6447,15 @@ ex(8):  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [FAIL]  \xa5 [F
 #U: http://regexlib.com/REDetails.aspx?regexp_id=678
 
 regexp: \u221E
-tree:   [\x1e]
+tree:   ∞
 length: 1 to 1
 -------------------- Examples --------------------
-ex(0):  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]
-ex(1):  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]
-ex(2):  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]
-ex(3):  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]
-ex(5):  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]
-ex(8):  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]  \x1e [FAIL]
+ex(0):  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞
+ex(1):  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞
+ex(2):  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞
+ex(3):  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞
+ex(5):  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞
+ex(8):  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞  ∞
 
 
 #A: Michael Ash
@@ -7688,15 +7688,15 @@ ex(8):  2DrP09aU. Ak0, MF 47857  BBHd00 900s 800, vk 91382
 #U: http://regexlib.com/REDetails.aspx?regexp_id=989
 
 regexp: ^[\.\wæøå-]+@([a-zæøå0-9]+([\.-]{0,1}[a-zæøå0-9]+|[a-zæøå0-9]?))+\.[a-z]{2,6}$
-tree:   (((([.0-9A-Z_a-z¥¦¸Ã-]+@)([0-9a-z¥¦¸Ã]+(([.-]?[0-9a-z¥¦¸Ã]+)|[0-9a-z¥¦¸Ã]?))+).)[a-z]{2,6})
+tree:   (((([.0-9A-Z_a-zåæø-]+@)([0-9a-zåæø]+(([.-]?[0-9a-zåæø]+)|[0-9a-zåæø]?))+).)[a-z]{2,6})
 length: 6 to *
 -------------------- Examples --------------------
-ex(0):  c@a.zz  Q@9.ea  n@a.ig  n@da.ev  C@az.zm  3@90.hk  I@d.nc  A@9.gp
-ex(1):  s@p.u.sxm  u@ao.owdlsr  s@au.xlb  _@xa.qzif  Q@91.wff  9@0.ygo
-ex(2):  A9@e-e5.yyq  aM@a3-9.xa  It@a-o9a9.yyc  p@95-9.gnucet  .@a.lp
-ex(3):  9n9@ayz.dlpm  AA@b9lax99.sgor  NS9@dac.tyot  SFD@6aa-afa9a.tnsxm
-ex(5):  9@o9aat9dks.zwbf  f@wf9lwaa-araca-9a99e0a.ib
-ex(8):  TtFZl@cja09ae9977ya9aka.mjb
+ex(0):  3@å.zz  å@zå.so  3@aå.yr  1@æ.sh  5@za.ax  å@zå.ze  å@a.mg  Z@z.up
+ex(1):  z@aå.eeo  z@9.j.ysll  å@o9.txqd  W@9z.ltwif  C@å-å.kior  z@åø.ruhks
+ex(2):  å@åå.rida  å@wåz.z.snpy  å@dzå.eupf  å@åzz.clm  z@ozæåz.æ.oatgd
+ex(3):  Qz@åzåaeazaz.nxxp  iz@åå.2æzæå8.gauy  å@åa.xb  kz@eåø.awt
+ex(5):  æ@åææø9-åzåzåzy-åzaåuzazå.bdsev  ez@oczzååææ6.bzzz-z99åtz.atl
+ex(8):  z@æzøaæz9åålz999ååj9å5.yz.alpdu  øååXzf@ååzzzvaaåå.ueykp
 
 
 #A: Tim Macrina

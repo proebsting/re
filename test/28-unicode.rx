@@ -1,0 +1,15 @@
+# various applications of Unicode characters
+# latin1
+[\xA0-\xFF]+[À-ÿ]+[¡-¿]+[\u00C0-\u00FF]+
+# latin extended-A
+[\u0100-\u017F]+[Ā-ſ]+
+# one- and two-byte characters
+[Α-Ϋ]+[ -\u07FF]+[\xA0-߷]+
+# three-byte characters
+[\u0800-\uFFFF]+
+# all mixed up
+[å∫ç∂´ƒ©˙ˆ∆˚¬µ˜øπœ®ß†¨√∑≈¥Ω]+
+# a fanciful example from Wikipedia
+üñîçøðé@example\.com
+# Cat Stevens
+Ρούμπυ γλυκεία, έλα ξανά, έλα ξανά κοντά μου 

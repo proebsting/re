@@ -28,6 +28,7 @@ import (
 	"rx/rsys"
 	"strconv"
 	"time"
+	"unicode/utf8"
 )
 
 // command line options and values
@@ -149,11 +150,11 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 	s := fmt.Sprintf("ex(%d):", n)
 	nprinted := 0
 	fmt.Print(s)
-	ncolm := len(s)
+	ncolm := utf8.RuneCountInString(s)
 	for {
 		s := rx.Specimen(tree, n)
 		t := rx.Protect(s)
-		ncolm += 2 + len(t)
+		ncolm += 2 + utf8.RuneCountInString(t)
 		if nprinted > 0 && ncolm > linemax {
 			break
 		}

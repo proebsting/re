@@ -125,10 +125,10 @@ func TestBrackets(t *testing.T) {
 //  The input string should begin with the initial '[' to be ignored.
 func try(t *testing.T, input string, expected string) {
 	var output string
-	subj := input[1:]
+	subj := []rune(input[1:])
 	result, errmsg := bxparse(subj)
 	if result == nil {
-		output = errmsg
+		output = string(errmsg)
 	} else {
 		output = result.Bracketed()
 	}

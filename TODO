@@ -7,7 +7,7 @@ Explanatory prose
 Resource limit? (state count? replication max?)
 
 REGEXPS:
-Review Unicode situation
+Expand wildcards and classes to include Unicode
 Add POSIX classes?
 Add \b anchor? Embedded ^ and $?
 Add flags such as "case insensitive"??

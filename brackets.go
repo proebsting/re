@@ -15,7 +15,7 @@ import (
 //  If an error is found, bxparse returns (nil, errmsg).
 //
 //  bxparse implements:  [abc] [^abc] [a-c] [\x]
-func bxparse(s string) (*BitSet, string) {
+func bxparse(s []rune) (*BitSet, []rune) {
 
 	result := &BitSet{}
 	compl := false
@@ -34,8 +34,8 @@ func bxparse(s string) (*BitSet, string) {
 		case '[':
 			// ordinary, but diagnose [:class:]
 			if len(s) > 2 && s[0] == ':' &&
-				unicode.IsLetter(rune(s[1])) {
-				return nil, "[:class:] unimplemented"
+				unicode.IsLetter(s[1]) {
+				return nil, []rune("[:class:] unimplemented")
 			} else {
 				result.Set(ch)
 			}
@@ -53,7 +53,7 @@ func bxparse(s string) (*BitSet, string) {
 					ch = eset.LowBit()
 				}
 				if ch < cprev {
-					return nil, "invalid range"
+					return nil, []rune("invalid range")
 				}
 				for j := cprev; j <= ch; j++ {
 					result.Set(j)
@@ -88,7 +88,7 @@ func bxparse(s string) (*BitSet, string) {
 		}
 		cprev = ch
 	}
-	return nil, "unclosed '['"
+	return nil, []rune("unclosed '['")
 }
 
 //  bescape interprets a backslash sequence in the context of a bracket
@@ -100,9 +100,9 @@ func bxparse(s string) (*BitSet, string) {
 //  bescape implements:
 //	\a \b \e \f \n \r \t \v \046 \xF7 \u03A8
 //	\d \s \w \D \S \W
-func bescape(s string) (*BitSet, string) {
+func bescape(s []rune) (*BitSet, []rune) {
 	if len(s) == 0 {
-		return nil, "'\\' at end"
+		return nil, []rune("'\\' at end")
 	}
 	c := int(s[0])
 	s = s[1:]
@@ -123,7 +123,7 @@ func bescape(s string) (*BitSet, string) {
 	case 'b':
 		return (&BitSet{}).Set('\b'), s
 	case 'c':
-		return nil, "'\\cx' unimplemented"
+		return nil, []rune("'\\cx' unimplemented")
 	case 'd':
 		return DigitSet, s
 	case 'e':
@@ -133,7 +133,7 @@ func bescape(s string) (*BitSet, string) {
 	case 'n':
 		return (&BitSet{}).Set('\n'), s
 	case 'p':
-		return nil, "'\\px' unimplemented"
+		return nil, []rune("'\\px' unimplemented")
 	case 'r':
 		return (&BitSet{}).Set('\r'), s
 	case 's':
@@ -145,7 +145,7 @@ func bescape(s string) (*BitSet, string) {
 		if v >= 0 {
 			return (&BitSet{}).Set(v), s[4:]
 		} else {
-			return nil, "malformed '\\uhhhh'"
+			return nil, []rune("malformed '\\uhhhh'")
 		}
 	case 'v':
 		return (&BitSet{}).Set('\v'), s
@@ -156,12 +156,12 @@ func bescape(s string) (*BitSet, string) {
 		if v >= 0 {
 			return (&BitSet{}).Set(v), s[2:]
 		} else {
-			return nil, "malformed '\\xhh'"
+			return nil, []rune("malformed '\\xhh'")
 		}
 	case 'D':
 		return NonDigit, s
 	case 'P':
-		return nil, "'\\Px' unimplemented"
+		return nil, []rune("'\\Px' unimplemented")
 	case 'S':
 		return NonSpace, s
 	case 'W':
@@ -169,7 +169,7 @@ func bescape(s string) (*BitSet, string) {
 
 	default:
 		if unicode.IsLetter(rune(c)) {
-			return nil, fmt.Sprintf("'\\%c' unrecognized", c)
+			return nil, []rune(fmt.Sprintf("'\\%c' unrecognized", c))
 		} else {
 			return (&BitSet{}).Set(c), s
 		}
@@ -177,7 +177,7 @@ func bescape(s string) (*BitSet, string) {
 }
 
 //  octal returns the value of the first digit of s, or -1 if not octal digit.
-func octal(s string) int {
+func octal(s []rune) int {
 	if len(s) > 0 && s[0] >= '0' && s[0] <= '7' {
 		return int(s[0]) - '0'
 	} else {
@@ -186,11 +186,11 @@ func octal(s string) int {
 }
 
 //  hexl returns the value of the first n hex digits of s, or -1 if bad.
-func hexl(s string, n int) int {
+func hexl(s []rune, n int) int {
 	if len(s) < n {
 		return -1
 	}
-	v, err := strconv.ParseInt(s[0:n], 16, 64)
+	v, err := strconv.ParseInt(string(s[0:n]), 16, 64)
 	if err == nil {
 		return int(v)
 	} else {

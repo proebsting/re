@@ -22,7 +22,7 @@ var (
 	LowerSet  *BitSet = CharSet("abcdefghijklmnopqrstuvwxyz")
 	LetterSet *BitSet = UpperSet.Or(LowerSet)
 	WordSet   *BitSet = LetterSet.Or(DigitSet).Set('_')
-	PrintSet  *BitSet = CharRange(' ', '~')
+	CtrlSet   *BitSet = CharRange('\x00', '\x1F').Or(CharRange('\x7F', '\x9F'))
 	AllChars  *BitSet = CharRange('\x01', '\x7F') // matched by "."
 	NonDigit  *BitSet = DigitSet.CharCompl()
 	NonSpace  *BitSet = SpaceSet.CharCompl()
@@ -56,14 +56,14 @@ func (b1 *BitSet) CharCompl() *BitSet {
 }
 
 //  BitSet.RandChar returns a single randomly chosen BitSet element.
-//  A printable character is chosen if possible.
+//  Control characters are avoided unless nothing else is available.
 //  Selection is not unbiased if the BitSet is non-contiguous.
-func (b *BitSet) RandChar() byte {
+func (b *BitSet) RandChar() rune {
 	low := b.LowBit()            // lowest eligible char
 	high := b.HighBit()          // highest eligible char
-	if low < ' ' || high > '~' { // if range extends beyond printables
-		b2 := b.And(PrintSet) // check reduced range
-		if !b2.IsEmpty() {    // and use that if non-empty
+	if low < ' ' || high > '~' { // if range extends beyond ASCII printables
+		b2 := b.AndNot(CtrlSet) // remove the control characters
+		if !b2.IsEmpty() {      // and use that set if non-empty
 			low = b2.LowBit()
 			high = b2.HighBit()
 		}
@@ -72,7 +72,7 @@ func (b *BitSet) RandChar() byte {
 	//  if it's part of the set, we're done.
 	c := low + rand.Intn(high-low+1)
 	if b.Test(c) {
-		return byte(c)
+		return rune(c)
 	}
 	//  otherwise, pick a direction and start walking
 	d := rand.Intn(2) // 0 or 1
@@ -81,7 +81,7 @@ func (b *BitSet) RandChar() byte {
 	for !b.Test(c) {
 		c = c + d
 	}
-	return byte(c)
+	return rune(c)
 }
 
 //  BitSet.Bracketed() returns a bracket-expression form of a character set,
@@ -103,7 +103,7 @@ func (b *BitSet) Bracketed() string {
 				close = "-]" // defer '-' to end
 				continue
 			}
-			s = append(s, cprotect(rune(byte(i)))...) // show char
+			s = append(s, cprotect(rune(i))...) // show char
 			var j int
 			for j = i + 1; b.Test(j); j++ {
 				// count consecutive inclusions
@@ -115,7 +115,7 @@ func (b *BitSet) Bracketed() string {
 				}
 				i = j - 1
 				s = append(s, '-')
-				s = append(s, cprotect(rune(byte(i)))...)
+				s = append(s, cprotect(rune(i))...)
 			}
 		}
 	}

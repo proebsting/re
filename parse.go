@@ -9,7 +9,7 @@ import (
 )
 
 //  oprstack and exprstack are stacks that move in synchrony.
-var oprstack []byte  // operators associated with pushed expressions
+var oprstack []rune  // operators associated with pushed expressions
 var exprstack []Node // stack of pushed expressions
 
 //  Parse parses a regular expression and returns a tree of Nodes.
@@ -29,16 +29,18 @@ var exprstack []Node // stack of pushed expressions
 //
 //  Wildcard character sets (for ".", "\w", "\D", "[%\d]", etc.)
 //  are limited to the ASCII character set [\x01-\x7F].
-func Parse(rexpr string) (Node, error) {
+func Parse(orgstr string) (Node, error) {
 
 	var curr Node         // current parse tree
 	var lside, rside Node // left and right side subtrees
 	var cset *BitSet      // computed character set
 
 	curr = Epsilon()            // initialize empty parse tree
-	oprstack = make([]byte, 0)  // initialize empty operator stack
+	oprstack = make([]rune, 0)  // initialize empty operator stack
 	exprstack = make([]Node, 0) // initialize empty expression stack
-	orgstr := rexpr             // save original string
+
+	// convert UTF-8 string into slice of runes
+	rexpr := []rune(orgstr)
 
 	if len(rexpr) > 0 && rexpr[0] == '^' {
 		rexpr = rexpr[1:] // remove initial '^'
@@ -102,7 +104,7 @@ func Parse(rexpr string) (Node, error) {
 				oprstack = oprstack[0:j]   // pop opr
 				rside, rexpr = replicate(curr, rexpr)
 				if rside == nil {
-					return nil, &ParseError{orgstr, rexpr}
+					return nil, RuneError(orgstr, rexpr)
 				}
 				curr = Concatenate(lside, rside)
 				continue
@@ -114,7 +116,7 @@ func Parse(rexpr string) (Node, error) {
 			// bracket expression
 			cset, rexpr = bxparse(rexpr)
 			if cset == nil {
-				return nil, &ParseError{orgstr, rexpr}
+				return nil, RuneError(orgstr, rexpr)
 			}
 			rside = MatchAny(cset)
 
@@ -126,7 +128,7 @@ func Parse(rexpr string) (Node, error) {
 		case '\\':
 			rside, rexpr = rescape(rexpr)
 			if rside == nil {
-				return nil, &ParseError{orgstr, rexpr}
+				return nil, RuneError(orgstr, rexpr)
 			}
 		default:
 			// single literal character
@@ -136,7 +138,7 @@ func Parse(rexpr string) (Node, error) {
 		// common code for handling postfix replication
 		rside, rexpr = replicate(rside, rexpr)
 		if rside == nil {
-			return nil, &ParseError{orgstr, rexpr}
+			return nil, RuneError(orgstr, rexpr)
 		}
 		curr = Concatenate(curr, rside)
 	}
@@ -160,26 +162,25 @@ func popAlts(d Node) Node {
 	return d
 }
 
-//  Helper functions that consume additional regexp characters follow
-//  this convention:  They accept the current remaining portion of the
-//  regexp as a string parameter (possibly not the only parameter)
-//  and they return a tuple where the second part gives the updated
-//  string of remaining characters.  The first part of the tuple is
-//  the "primary" function return, for example a Node.
+//  Four helper functions consume regexp characters:
+//  	replicate(), rescape(), bxparse(), and bescape().
+//  These functions obey the following conventions.
 //
-//  If an error is detected, however, they signal this by returning
-//  nil as the primary return; and in this case the second return
-//  value is the error message.
+//  Each helper function accepts the current remaining portion of the regexp
+//  as a []rune parameter (possibly not the only parameter) and returns two
+//  values.  The first is the "primary" function return, for example a Node.
+//  The second is the updated slice of remaining characters.
 //
-//  This applies to:  replicate(), rescape(), bxparse(), and bescape().
+//  If an error is detected, the primary return is nil, and the second return
+//  is an error message as an array of runes.
 
 var replx = regexp.MustCompile("{(\\d*)(,?)(\\d*)}") // expr for {m,n}
 
 //  replicate wraps a replication node around a subtree if it is followed by
 //  posfix ?, *, +, or {m,n}.  It normally returns the resulting tree and
 //  remaining string (both unmodified in the absence of postfix replication).
-//  If there is an error in {m,n}, Replicate returns (nil, errmsg).
-func replicate(d Node, p string) (Node, string) {
+//  If there is an error in {m,n}, replicate returns (nil, errmsg).
+func replicate(d Node, p []rune) (Node, []rune) {
 	if len(p) == 0 {
 		return d, p
 	}
@@ -191,9 +192,9 @@ func replicate(d Node, p string) (Node, string) {
 	case '+':
 		return replval(1, -1, d, p[1:])
 	case '{':
-		result := replx.FindStringSubmatch(p)
+		result := replx.FindStringSubmatch(string(p))
 		if result == nil {
-			return nil, "malformed '{m,n}'"
+			return nil, []rune(`malformed "{m,n}"`)
 		}
 		p = p[len(result[0]):] // remove matched pattern
 		minrep, err1 := strconv.Atoi(result[1])
@@ -206,13 +207,13 @@ func replicate(d Node, p string) (Node, string) {
 			}
 		}
 		if err1 != nil || err3 != nil {
-			return nil, "malformed '{m,n}'"
+			return nil, []rune(`malformed "{m,n}"`)
 		}
 		if maxrep < 0 || maxrep > minrep { // {m,} or {m,n}
 			return replval(minrep, maxrep, d, p)
 		}
 		if maxrep < minrep {
-			return nil, "malformed '{m,n}'"
+			return nil, []rune(`malformed "{m,n}"`)
 		}
 		// now we have maxrep == minrep and valid
 		if maxrep == 0 {
@@ -230,13 +231,13 @@ func replicate(d Node, p string) (Node, string) {
 
 //  replval constructs the return value for replicate and checks for
 //  an illegal second replication operator or "prefer-fewer" '?'
-func replval(min int, max int, d Node, remdr string) (Node, string) {
+func replval(min int, max int, d Node, remdr []rune) (Node, []rune) {
 	if len(remdr) > 0 {
 		switch remdr[0] {
 		case '?':
-			return nil, "prefer-fewer '?' unimplemented"
+			return nil, []rune("prefer-fewer '?' unimplemented")
 		case '*', '+', '{':
-			return nil, "multiple adjacent duplication symbols"
+			return nil, []rune("multiple adjacent duplication symbols")
 		}
 	}
 	return &ReplNode{min, max, d, nildata}, remdr
@@ -247,16 +248,16 @@ func replval(min int, max int, d Node, remdr string) (Node, string) {
 //  has already consumed, and returns the resulting Node and the
 //  updated string after processing the escaped characters.
 //  In case of error it returns (nil, errmsg).
-func rescape(rexpr string) (Node, string) {
+func rescape(rexpr []rune) (Node, []rune) {
 	if len(rexpr) == 0 {
-		return nil, "'\\' at end"
+		return nil, []rune("'\\' at end")
 	}
 	ch := rexpr[0]
 	switch ch {
 	case 'b':
-		return nil, "\\b (boundary) unimplemented"
+		return nil, []rune("\\b (boundary) unimplemented")
 	case '1', '2', '3', '4', '5', '6', '7', '8', '9':
-		return nil, fmt.Sprintf("\\%c (backref) unimplemented", ch)
+		return nil, []rune(fmt.Sprintf("\\%c (backref) unimplemented", ch))
 	default:
 		// otherwise meaning is the same as in a bracket expression
 		cset, rexpr := bescape(rexpr)
@@ -276,4 +277,9 @@ type ParseError struct {
 //  ParseError.Error formats a parser error for printing.
 func (e ParseError) Error() string {
 	return fmt.Sprintf("rx: %s: in \"%s\"", e.Message, e.BadExpr)
+}
+
+//  RuneError constructs a ParseError from a string and a message in runes
+func RuneError(badexpr string, message []rune) *ParseError {
+	return &ParseError{badexpr, string(message)}
 }
