@@ -1,15 +1,15 @@
 /*
 	rxplor.go - regular expression explorer
 
-	A WORK IN PROGRESS -- the Swiss-army-knife utility.
-	Not yet fully implemented, but still useful.
+	The Swiss-army-knife utility for examining regular expressions.
 
 	usage:  rxplor [options] [exprfile]
 
 	Rxplor reads regular expressions from exprfile or from stdin
 	and processes them either individually or all merged together.
 
-	See func options for the command options.
+	See func options for the numerous command options.  With no
+	options, rxplor just lists the input expressions and any errors.
 
 	spring 2014 / gmt
 */
@@ -20,6 +20,7 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"io"
 	"log"
 	"math/rand"
 	"os"
@@ -64,7 +65,18 @@ func main() {
 	dfa := rx.MultiDFA(trees)
 	timestamp(fmt.Sprintf(
 		"make merged DFA of %d states", len(dfa.Dstates)))
-	showDFA(dfa, "Combined Tree", *opt['t'])
+	dfa = showDFA(dfa, "Combined Tree", *opt['t'])
+
+	// generate graphs if requested
+	label := exprs[0].Expr
+	if len(exprs) > 1 {
+		label = fmt.Sprintf("(%d expressions)", len(exprs))
+	}
+	if *val['D'] != "" {
+		rx.WriteGraph(*val['D'], func(w io.Writer) {
+			dfa.ToDot(w, label)
+		})
+	}
 }
 
 // load slurps up expressions, returning list and augmented parse tree list
@@ -169,7 +181,8 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 }
 
 // showDFA performs common actions for individual and merged DFAs
-func showDFA(dfa *rx.DFA, treelabel string, showtime bool) {
+// it returns the ultimate (original or minimized) dfa
+func showDFA(dfa *rx.DFA, treelabel string, showtime bool) *rx.DFA {
 	if *opt['p'] {
 		dfa.ShowTree(os.Stdout, dfa.Tree, treelabel)
 	}
@@ -195,6 +208,7 @@ func showDFA(dfa *rx.DFA, treelabel string, showtime bool) {
 	if *opt['h'] {
 		synthx(dfa)
 	}
+	return dfa
 }
 
 //  synthx generates and prints synthetic examples from a DFA.
@@ -272,8 +286,8 @@ func options() {
 
 	// file format for N and D depend on extension of filename supplied
 	// a filename of - generates a temporary SVG file and opens a viewer
-	// vo('N', "output file for NFA graph (.dot, .gif, .pdf, .svg, -)")
-	// vo('D', "output file for DFA graph (.dot, .gif, .pdf, .svg, -)")
+	// vo('N', "output file for NFA graph (*.dot/.gif/.pdf/.png/.svg/-)")
+	vo('D', "output file for DFA graph (*.dot/.gif/.pdf/.png/.svg/-)")
 
 	// vo('X', "output file for DFA-based examples (JSON)")
 

@@ -5,7 +5,6 @@ package rx
 import (
 	"fmt"
 	"io"
-	"strconv"
 )
 
 //  A DFA is a deterministic finite automaton for matching regular expressions.
@@ -220,26 +219,6 @@ func (dfa *DFA) ShowStates(f io.Writer, label string) {
 		}
 		fmt.Fprintln(f)
 	}
-}
-
-//  DFA.ToDot generates a Dot (GraphViz) representation of the DFA.
-func (dfa *DFA) ToDot(f io.Writer, label string) {
-	fmt.Fprintln(f, "//", label)
-	fmt.Fprintln(f, "digraph DFA {")
-	fmt.Fprintf(f, "label=%s\n", strconv.Quote(label))
-	fmt.Fprintln(f, "node [shape=circle, height=.3, margin=0, fontsize=10]")
-	fmt.Fprintln(f, "s0 [shape=triangle, regular=true]")
-	for _, src := range dfa.Dstates {
-		if src.AccSet != nil {
-			fmt.Fprintf(f, "s%d[shape=doublecircle]\n", src.Index)
-		}
-		slist, xmap := src.InvertMap()
-		for _, dst := range slist.Members() {
-			fmt.Fprintf(f, "s%d->s%d[label=\"%s\"]\n",
-				src.Index, dst, xmap[dst].Bracketed())
-		}
-	}
-	fmt.Fprintln(f, "}")
 }
 
 //  DFA.Witnesses returns a minimal set of characters sufficient to
