@@ -42,11 +42,23 @@ func (d *MatchNode) Children() []Node {
 
 var barren = make([]Node, 0, 0) // empty list of children
 
-//  MatchNode.MinLen always returns 1.
-func (d *MatchNode) MinLen() int { return 1 }
+//  MatchNode.MinLen always returns 1 (except 0 for an AcceptNode).
+func (d *MatchNode) MinLen() int {
+	if IsAccept(d) {
+		return 0
+	} else {
+		return 1
+	}
+}
 
-//  MatchNode.MaxLen always returns 1.
-func (d *MatchNode) MaxLen() int { return 1 }
+//  MatchNode.MaxLen always returns 1 (except 0 for an AcceptNode).
+func (d *MatchNode) MaxLen() int {
+	if IsAccept(d) {
+		return 0
+	} else {
+		return 1
+	}
+}
 
 //  MatchNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *MatchNode) SetNFL() {

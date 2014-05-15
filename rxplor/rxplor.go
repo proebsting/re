@@ -39,6 +39,7 @@ var val = make(map[rune]*string) // values of string options
 var listopt bool   // list input option
 var verbose bool   // global verbosity flag
 var errsilent bool // ignore errors silently
+var seedvalue int  // random seed value
 
 var input *bufio.Scanner // input file
 
@@ -60,6 +61,9 @@ func main() {
 		fmt.Println()
 		rx.ShowLabel(os.Stdout, "MERGING EXPRESSIONS")
 		fmt.Println()
+		if *opt['R'] {
+			rand.Seed(int64(seedvalue))
+		}
 	}
 
 	dfa := rx.MultiDFA(trees)
@@ -87,11 +91,12 @@ func load() ([]*rx.RegExParsed, []rx.Node) {
 	rx.LoadFromScanner(input, func(l *rx.RegExParsed) {
 		echo(l, len(exprs))
 		if l.Tree != nil { // if a real expression
+			image := fmt.Sprintf("%s", l.Tree)
 			augtree := rx.Augment(l.Tree, len(trees))
 			trees = append(trees, augtree)
 			exprs = append(exprs, l)
 			if *opt['i'] {
-				individual(l, len(exprs))
+				individual(l, len(exprs), image, augtree)
 			}
 		}
 	})
@@ -110,7 +115,9 @@ func echo(l *rx.RegExParsed, i int) {
 	}
 	if l.Err != nil { // if an error
 		if !errsilent { // print error unless -y
-			fmt.Printf("\nERROR:   %s\n    %s\n", l.Expr, l.Err)
+			fmt.Println()
+			echometa(l)
+			fmt.Printf("ERROR:   %s\n    %s\n", l.Expr, l.Err)
 			if *opt['x'] { // if immediate exit requested
 				log.Fatal(l.Err)
 			}
@@ -127,23 +134,37 @@ func echo(l *rx.RegExParsed, i int) {
 	// must be a real expression
 	if *opt['i'] || listopt {
 		fmt.Println()
-		if listopt { // if to echo metadata
-			// print accumulated metadata
-			for _, k := range rx.KeyList(l.Meta) {
-				fmt.Printf("         #%s: %v\n", k, l.Meta[k])
-			}
-		}
+		echometa(l)
 		fmt.Printf("expr %d: %s\n", i, l.Expr)
 	}
 }
 
-// individual handles separate processing of each input regex
-func individual(l *rx.RegExParsed, i int) {
-	babble("tree:   %v\n", l.Tree)
-	augt := rx.Augment(l.Tree, i)
-	babble("augmnt: %v\n", augt)
-	dfa := rx.BuildDFA(augt)
+// echometa prints metadata, if selected
+// #%#% embedded newlines produce ugly/confusing output
+func echometa(l *rx.RegExParsed) {
+	if listopt { // if to echo metadata
+		for _, k := range rx.KeyList(l.Meta) {
+			fmt.Printf("         #%s: %v\n", k, l.Meta[k])
+		}
+	}
+}
 
+// individual handles separate processing of each input regex
+func individual(l *rx.RegExParsed, i int, image string, augtree rx.Node) {
+	babble("tree:   %s\n", image)
+	babble("augmnt: %v\n", augtree)
+	x := augtree.MaxLen()
+	if x >= 0 {
+		babble("length: %d to %d\n", augtree.MinLen(), x)
+	} else {
+		babble("length: %d to *\n", augtree.MinLen())
+	}
+
+	dfa := rx.BuildDFA(augtree)
+
+	if *opt['R'] {
+		rand.Seed(int64(seedvalue))
+	}
 	if *opt['g'] {
 		rx.ShowLabel(os.Stdout, "Examples")
 		examples(dfa, l.Tree, 0) // gen and test w/ max repl of 0
@@ -258,10 +279,8 @@ func setup() {
 //  options defines the command line options to be accepted.
 func options() {
 
-	// $%$% TODO:
+	// #%#% TODO:
 	// commented-out options are not (yet?) implemented
-	// (remember to add them back to "imply" call when they're ready)
-	// add option to generate clusters? to time combinations?
 
 	vo('e', "single expression value (instead of reading input)")
 	fo('i', "treat input expressions individually")
@@ -282,6 +301,7 @@ func options() {
 	fo('z', "enable debug tracing")
 
 	vo('I', "initial seed for randomization")
+	fo('R', "reseed for every expression")
 	// vo('T', "input file of candidates accept/reject grid")
 
 	// file format for N and D depend on extension of filename supplied
@@ -312,9 +332,9 @@ func options() {
 	errsilent = *opt['y']
 	rx.DBG_MIN = *opt['z'] && *opt['d']
 
-	i, err := strconv.Atoi(*val['I'])
+	seedvalue, err := strconv.Atoi(*val['I'])
 	rx.CkErr(err)
-	rand.Seed(int64(i))
+	rand.Seed(int64(seedvalue))
 }
 
 //  showopts prints the options as set
