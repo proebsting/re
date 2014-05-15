@@ -169,7 +169,7 @@ func putform(w io.Writer, n int, target string, label string) {
 		label, target)
 	for i := 0; i < n; i++ {
 		fmt.Fprintf(w, `
-<div><input type="text" name="a%d" size=60 maxlength=1000></div>`, i)
+<div><input type="text" name="a%d" size=100 maxlength=1000></div>`, i)
 	}
 	fmt.Fprintln(w, `
 <div><input type="submit" value="Submit"></div>
