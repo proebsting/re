@@ -1,53 +1,56 @@
+Options: -R -g -i -l -v -I 0
 
-#  things that other accept but we don't
+         #  things that other accept but we don't
 
-regexp: abc[[:digit:]]efg
-ERROR:  rx: [:class:] unimplemented: in "abc[[:digit:]]efg"
+ERROR:   abc[[:digit:]]efg
+    rx: [:class:] unimplemented: in "abc[[:digit:]]efg"
 
-regexp: abc\cIdef
-ERROR:  rx: '\cx' unimplemented: in "abc\cIdef"
+ERROR:   abc\cIdef
+    rx: '\cx' unimplemented: in "abc\cIdef"
 
-regexp: [abc\cIdef]
-ERROR:  rx: '\cx' unimplemented: in "[abc\cIdef]"
+ERROR:   [abc\cIdef]
+    rx: '\cx' unimplemented: in "[abc\cIdef]"
 
-regexp: abc\pDdef
-ERROR:  rx: '\px' unimplemented: in "abc\pDdef"
+ERROR:   abc\pDdef
+    rx: '\px' unimplemented: in "abc\pDdef"
 
-regexp: [abc\pDdef]
-ERROR:  rx: '\px' unimplemented: in "[abc\pDdef]"
+ERROR:   [abc\pDdef]
+    rx: '\px' unimplemented: in "[abc\pDdef]"
 
-regexp: abc\PDdef
-ERROR:  rx: '\Px' unimplemented: in "abc\PDdef"
+ERROR:   abc\PDdef
+    rx: '\Px' unimplemented: in "abc\PDdef"
 
-regexp: [abc\PDdef]
-ERROR:  rx: '\Px' unimplemented: in "[abc\PDdef]"
+ERROR:   [abc\PDdef]
+    rx: '\Px' unimplemented: in "[abc\PDdef]"
 
-regexp: a??b
-ERROR:  rx: prefer-fewer '?' unimplemented: in "a??b"
+ERROR:   a??b
+    rx: prefer-fewer '?' unimplemented: in "a??b"
 
-regexp: a*?b
-ERROR:  rx: prefer-fewer '?' unimplemented: in "a*?b"
+ERROR:   a*?b
+    rx: prefer-fewer '?' unimplemented: in "a*?b"
 
-regexp: a+?b
-ERROR:  rx: prefer-fewer '?' unimplemented: in "a+?b"
+ERROR:   a+?b
+    rx: prefer-fewer '?' unimplemented: in "a+?b"
 
-regexp: (abc)*?
-ERROR:  rx: prefer-fewer '?' unimplemented: in "(abc)*?"
+ERROR:   (abc)*?
+    rx: prefer-fewer '?' unimplemented: in "(abc)*?"
 
-regexp: abc\b.*
-ERROR:  rx: \b (boundary) unimplemented: in "abc\b.*"
+ERROR:   abc\b.*
+    rx: \b (boundary) unimplemented: in "abc\b.*"
 
-regexp: (ab)cd\1
-ERROR:  rx: \1 (backref) unimplemented: in "(ab)cd\1"
+ERROR:   (ab)cd\1
+    rx: \1 (backref) unimplemented: in "(ab)cd\1"
 
-regexp: (ab)cd\5
-ERROR:  rx: \5 (backref) unimplemented: in "(ab)cd\5"
+ERROR:   (ab)cd\5
+    rx: \5 (backref) unimplemented: in "(ab)cd\5"
 
-regexp: (ab)cd\9
-ERROR:  rx: \9 (backref) unimplemented: in "(ab)cd\9"
+ERROR:   (ab)cd\9
+    rx: \9 (backref) unimplemented: in "(ab)cd\9"
 
-regexp: (^ab)|(^cd)
-ERROR:  rx: Embedded '^' unimplemented: in "(^ab)|(^cd)"
+ERROR:   (^ab)|(^cd)
+    rx: Embedded '^' unimplemented: in "(^ab)|(^cd)"
 
-regexp: (ef$)|(gh$)
-ERROR:  rx: Embedded '$' unimplemented: in "(ef$)|(gh$)"
+ERROR:   (ef$)|(gh$)
+    rx: Embedded '$' unimplemented: in "(ef$)|(gh$)"
+0 expression(s) loaded
+(17 expression(s) rejected)

@@ -1,12 +1,14 @@
+Options: -R -g -i -l -v -I 0
 
-# Samples from old www.cs.arizona.edu/scripts by gmt
+         # Samples from old www.cs.arizona.edu/scripts by gmt
 
-#
+         #
 
-# functions.php: getvalid
+         # functions.php: getvalid
 
-regexp: [A-Za-z0-9]+
+expr 0: [A-Za-z0-9]+
 tree:   [0-9A-Za-z]+
+augmnt: ([0-9A-Za-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  H  W  L  O  q  V  2  o  3  B  O  z  c  l  I  u  q  B  Y  N  J  T  d  m
@@ -16,15 +18,16 @@ ex(3):  B  i  e  xPU  7  W  bZJ  r0  kFf  Fq  u  Ok  vU  0t  k  cY  zo  wy  Iwd
 ex(5):  2af  wfdG  vm  Bn8e  n  SaG  tNd  OBDQv  3BUD  2vDOY  niXE  IZlxf  oQoC
 ex(8):  pVLh  9  s  cDR45  t  g  N3YyEse  y0RnUHr5  XS3EqXl  Xr  rd  qhY4  Y
 
-# functions.php: fixamps
+         # functions.php: fixamps
 
-regexp: \&([[:alnum:]]*([^;[:alnum:]]|
-ERROR:  rx: [:class:] unimplemented: in "\&([[:alnum:]]*([^;[:alnum:]]|"
+ERROR:   \&([[:alnum:]]*([^;[:alnum:]]|
+    rx: [:class:] unimplemented: in "\&([[:alnum:]]*([^;[:alnum:]]|"
 
-# functions.php: mailto
+         # functions.php: mailto
 
-regexp: ([^@]+)@(.*)\.arizona\.edu
+expr 1: ([^@]+)@(.*)\.arizona\.edu
 tree:   (((((((((((((([\x01-?A-\u007f]+@)[\x01-\u007f]*).)a)r)i)z)o)n)a).)e)d)u)
+augmnt: ((((((((((((((([\x01-?A-\u007f]+@)[\x01-\u007f]*).)a)r)i)z)o)n)a).)e)d)u)#)
 length: 14 to *
 -------------------- Examples --------------------
 ex(0):  ~@.arizona.edu  1@.arizona.edu  !@.arizona.edu  N@.arizona.edu
@@ -34,10 +37,11 @@ ex(3):  '~@iW.arizona.edu  {_G@f].arizona.edu  p@U?x.arizona.edu
 ex(5):  JS@?jdq;.arizona.edu  ~`ThY@Y1.arizona.edu  ;U^:o@C+k^s.arizona.edu
 ex(8):  \\@`D.arizona.edu  YG?R@5!woOT.arizona.edu  ;sCa-*B@5|k0.arizona.edu
 
-# nelson.php: else 'Not a valid integer.'
+         # nelson.php: else 'Not a valid integer.'
 
-regexp: [+-]?[0-9]+
+expr 2: [+-]?[0-9]+
 tree:   ([+-]?[0-9]+)
+augmnt: (([+-]?[0-9]+)#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
@@ -47,10 +51,11 @@ ex(3):  084  10  +52  287  -7  +14  9  -852  -220  -86  +85  +3  930  -68  0
 ex(5):  433  9367  -34  5644  465  +32005  -1898  +437  4  6  9  00  90116  51
 ex(8):  109516  1994772  22845  +26964423  9055  +336174  +999  63687
 
-# nelson.php: else 'Date must be in YYYY-MM-DD form.'
+         # nelson.php: else 'Date must be in YYYY-MM-DD form.'
 
-regexp: [12][0-9][0-9][0-9]-[01][0-9]-[0-3][0-9]
+expr 3: [12][0-9][0-9][0-9]-[01][0-9]-[0-3][0-9]
 tree:   ((((((((([12][0-9])[0-9])[0-9])-)[01])[0-9])-)[0-3])[0-9])
+augmnt: (((((((((([12][0-9])[0-9])[0-9])-)[01])[0-9])-)[0-3])[0-9])#)
 length: 10 to 10
 -------------------- Examples --------------------
 ex(0):  1436-07-08  1798-01-24  2860-02-32  2854-10-14  2468-18-27  1842-07-04
@@ -60,10 +65,11 @@ ex(3):  1185-08-12  1930-06-22  2079-08-27  1338-13-35  2634-05-04  1746-19-03
 ex(5):  1381-03-20  1656-19-00  1699-11-21  2119-07-29  2095-00-19  2477-08-28
 ex(8):  1423-19-15  2073-01-27  1669-12-23  1879-16-39  2275-16-19  1198-08-36
 
-# nelson.php: else 'Time must be in HH:MM:SS form.'
+         # nelson.php: else 'Time must be in HH:MM:SS form.'
 
-regexp: [012][0-9]:[0-5][0-9](:[0-5][0-9])?
+expr 4: [012][0-9]:[0-5][0-9](:[0-5][0-9])?
 tree:   ((((([012][0-9]):)[0-5])[0-9])((:[0-5])[0-9])?)
+augmnt: (((((([012][0-9]):)[0-5])[0-9])((:[0-5])[0-9])?)#)
 length: 5 to 8
 -------------------- Examples --------------------
 ex(0):  04:45  17:08  07:02  01:44  28:01  02:12  08:48  10:54  14:29  18:07
@@ -73,12 +79,13 @@ ex(3):  28:23  22:29  18:32  18:30  03:29:10  16:27  29:48  07:33  09:47:03
 ex(5):  00:06:10  23:40:23  08:23  27:17  24:56  29:00  29:41:41  21:18  13:31
 ex(8):  29:47:08  12:25:57  06:44  23:19  25:07:01  04:46  19:26  26:59
 
-#
+         #
 
-# From WHM grading script (Ruby):
+         # From WHM grading script (Ruby):
 
-regexp: (\/\/[ \t]*)?[Ww][Hh][Mm][ \t]*says[ \t]*:[ \tA-Za-z0-9`~!@\#$%^&\*\(\)\-_\+=\[\]{}\|\:\;'",.<>?\/]+
+expr 5: (\/\/[ \t]*)?[Ww][Hh][Mm][ \t]*says[ \t]*:[ \tA-Za-z0-9`~!@\#$%^&\*\(\)\-_\+=\[\]{}\|\:\;'",.<>?\/]+
 tree:   (((((((((((((//)[\t ]*)?[Ww])[Hh])[Mm])[\t ]*)s)a)y)s)[\t ]*):)[]\t -[^-~]+)
+augmnt: ((((((((((((((//)[\t ]*)?[Ww])[Hh])[Mm])[\t ]*)s)a)y)s)[\t ]*):)[]\t -[^-~]+)#)
 length: 9 to *
 -------------------- Examples --------------------
 ex(0):  WHmsays:c  wHmsays:%  whmsays:-  WHmsays:M  wHmsays:y  WHmsays:Z
@@ -87,3 +94,5 @@ ex(2):  //WHmsays  :^  WhM  says  :>+  Whmsays:P_  // wHM  says :)j  WHMsays :S
 ex(3):  whmsays :!I  WHm says:[<;  // WHM   says :)  //  WHMsays:Qu
 ex(5):  wHmsays  :]/.  // wHm   says  :^.A{  Whm    says     :<mg.N
 ex(8):  //wHM  says:\"B!  //  WhM    says     :C  wHm        says:B_t0
+6 expression(s) loaded
+(1 expression(s) rejected)

@@ -1,6 +1,8 @@
+Options: -R -g -i -l -v -I 0
 
-regexp: [a]+
+expr 0: [a]+
 tree:   a+
+augmnt: (a+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -10,8 +12,9 @@ ex(3):  aaa  a  aa  aa  a  a  aaa  aaa  a  a  a  aaa  a  a  aaa  aa  a  aa  aa
 ex(5):  aaa  aaaaa  aaa  aaa  aaaa  aaa  aa  a  aa  aaaa  aaaa  aaaaa  aaa  a
 ex(8):  aaaaa  aaaaaaa  aaa  aaa  aaaa  aa  aaa  aaaaa  aaa  aaaaaaaa  a
 
-regexp: [bc]+
+expr 1: [bc]+
 tree:   [bc]+
+augmnt: ([bc]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  b  b  c  b  c  b  c  c  b  b  b  c  c  b  b  b  c  b  b  b  c  b  b  b
@@ -21,8 +24,9 @@ ex(3):  cbc  b  bb  bc  c  b  ccb  bcc  c  c  c  bbb  c  b  ccc  cb  b  cb  bc
 ex(5):  cbb  bbcbc  bbc  bbb  cccb  ccb  bb  c  bb  bcbc  bbbb  bbbbc  bcb  c
 ex(8):  cbbcc  cbbbbbc  ccc  bbb  bccb  cc  ccc  cbbbc  bbb  bbcccbbc  b
 
-regexp: [def]+
+expr 2: [def]+
 tree:   [def]+
+augmnt: ([def]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  d  d  e  e  f  e  e  f  d  d  d  f  f  d  d  d  f  f  e  d  f  d  f  d
@@ -32,8 +36,9 @@ ex(3):  fdd  e  fe  dd  d  f  ddd  fdd  e  e  d  fdd  e  d  fed  ef  d  ef  ee
 ex(5):  fee  feedd  fef  dfe  fefd  ede  de  d  ee  ddff  ffff  fefed  fed  d
 ex(8):  deffd  efefffd  fed  edd  dddd  ee  dff  fefee  dde  ddfeefff  e
 
-regexp: [ghij]+
+expr 3: [ghij]+
 tree:   [g-j]+
+augmnt: ([g-j]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  i  i  h  i  j  g  j  h  g  g  g  j  j  g  g  i  j  i  i  i  j  g  i  g
@@ -43,8 +48,9 @@ ex(3):  hij  i  ig  gj  j  g  hjg  gjh  h  h  j  gig  h  i  hhj  hg  i  jg  ij
 ex(5):  jgg  iijgh  gih  igi  hhjg  hhg  ig  h  gi  gjgj  igii  gigih  ghi  h
 ex(8):  higjh  higiiih  jjj  ggi  ijji  hj  jhj  jigih  ggg  gijhjigj  g
 
-regexp: [lmnop]+
+expr 4: [lmnop]+
 tree:   [l-p]+
+augmnt: ([l-p]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  p  p  o  m  l  m  n  n  o  o  o  n  p  o  n  m  m  l  l  p  l  o  m  l
@@ -54,8 +60,9 @@ ex(3):  mlp  m  nn  op  p  p  ono  ono  n  n  p  lnn  l  l  pnp  nl  p  mp  ln
 ex(5):  plo  mpmlo  mol  pmn  npon  ppo  pn  p  lm  olno  lnnl  onoml  pmo  o
 ex(8):  onlpo  llmmonn  npp  oll  pooo  po  nlo  opool  ppl  pmlpplpo  l
 
-regexp: [tuvwxyz]+
+expr 5: [tuvwxyz]+
 tree:   [t-z]+
+augmnt: ([t-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  y  v  t  x  t  u  y  t  w  u  u  z  x  u  z  x  w  u  u  u  w  v  x  w
@@ -65,8 +72,9 @@ ex(3):  tuy  v  xx  zz  y  y  wzu  vtw  y  v  t  utz  v  u  ttv  xu  y  wu  vx
 ex(5):  ywt  vzxyy  xzz  zxx  wzvz  wtv  yx  z  uu  zttz  ttxt  vttxt  xzu  t
 ex(8):  wtvuy  zytwyux  uux  xzt  vyuv  vt  wwu  tyvyv  zuz  tzvwwwuv  x
 
-regexp: [ACDFGHJKLMOPQRSUVWXYZ]+
+expr 6: [ACDFGHJKLMOPQRSUVWXYZ]+
 tree:   [ACDFGHJ-MO-SU-Z]+
+augmnt: ([ACDFGHJ-MO-SU-Z]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  C  U  Y  H  H  Z  K  A  K  M  H  A  V  O  C  P  M  S  O  K  Y  R  W  X
@@ -76,8 +84,9 @@ ex(3):  Q  XJQ  X  Z  ROS  O  FLL  DF  D  AO  ZU  J  L  GK  CFO  R  KHH  GZ  RU
 ex(5):  QSJJA  WS  C  WKKY  R  RKXA  DKJZC  URPR  AXAW  YW  W  OWYKR  LMXFV
 ex(8):  YYAZ  FUP  UZRZC  H  OVPGS  ZCZHUYA  QAXUCLP  G  SGPMH  YY  FVGL
 
-regexp: [aeiuo]+
+expr 7: [aeiuo]+
 tree:   [aeiou]+
+augmnt: ([aeiou]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  u  o  o  u  o  i  o  i  u  e  o  e  a  e  a  o  i  u  u  a  o  a  e  o
@@ -87,8 +96,9 @@ ex(3):  ioi  oa  o  ai  e  a  ae  uuo  ouu  au  ua  au  au  ua  uio  ee  u  o
 ex(5):  iaoa  uaiue  aaei  eooe  ouao  oa  eo  eiiio  uueoo  au  ioaao  ioau
 ex(8):  uuaeouoa  uuao  uoou  aiooauao  uuuaauoe  iiuiaoaa  iouuuoi  eo  i
 
-regexp: [aeiuo]+y?
+expr 8: [aeiuo]+y?
 tree:   ([aeiou]+y?)
+augmnt: (([aeiou]+y?)#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  u  o  o  u  o  i  o  i  u  e  o  e  a  e  a  o  i  u  u  a  o  a  e  o
@@ -98,8 +108,9 @@ ex(3):  uee  i  uau  uio  eey  ay  e  aoa  oiy  iae  ey  e  oy  ou  u  ua  ueay
 ex(5):  uey  eiaua  aao  uoauu  aieai  aeoy  iiy  aay  ieoy  aioy  ua  uuuy
 ex(8):  eii  i  oaaiy  uuu  iuou  uaoooai  ioaiy  auuoie  iay  aoooy  iuieuaouy
 
-regexp: [a-z]+
+expr 9: [a-z]+
 tree:   [a-z]+
+augmnt: ([a-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  c  u  b  y  h  i  z  z  k  a  k  b  l  e  e  a  n  s  o  c  p  m  i  g
@@ -109,8 +120,9 @@ ex(3):  tsf  s  ys  op  x  u  tbq  ipj  x  x  z  iko  f  o  fll  nw  i  fa  qz
 ex(5):  lyg  icfor  okb  iae  zbru  hnk  sq  j  aq  slcn  kkyy  qikkx  gdk  z
 ex(8):  riird  xawwyej  tdj  wyk  glna  fn  nzp  dyyaz  iyu  cuzrzcsb  u
 
-regexp: [A-Z]+
+expr 10: [A-Z]+
 tree:   [A-Z]+
+augmnt: ([A-Z]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  C  U  B  Y  H  I  Z  Z  K  A  K  B  L  E  E  A  N  S  O  C  P  M  I  G
@@ -120,8 +132,9 @@ ex(3):  TSF  S  YS  OP  X  U  TBQ  IPJ  X  X  Z  IKO  F  O  FLL  NW  I  FA  QZ
 ex(5):  LYG  ICFOR  OKB  IAE  ZBRU  HNK  SQ  J  AQ  SLCN  KKYY  QIKKX  GDK  Z
 ex(8):  RIIRD  XAWWYEJ  TDJ  WYK  GLNA  FN  NZP  DYYAZ  IYU  CUZRZCSB  U
 
-regexp: [a-zA-Z]+
+expr 11: [a-zA-Z]+
 tree:   [A-Za-z]+
+augmnt: ([A-Za-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
@@ -131,8 +144,9 @@ ex(3):  r  N  Y  YcK  BxM  f  Z  Wia  m  e  pfv  Oj  C  bZU  z  x  Mi  lSk  mdI
 ex(5):  zhJ  Hfz  DQai  TGEHl  Tby  XGO  OHUw  Ql  oqOd  Qbs  M  yQ  vCn  huZua
 ex(8):  GfbZ  joCwx  qWw  sYdaIqVw  iBjwd  ovjUOw  vEAo  KglzH  llNqL  Gq  vlJt
 
-regexp: [_a-zA-Z]+
+expr 12: [_a-zA-Z]+
 tree:   [A-Z_a-z]+
+augmnt: ([A-Z_a-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
@@ -142,8 +156,9 @@ ex(3):  EG  Kr  N  Y  YcK  BxM  f  Z  Wia  m  e  pfv  Oj  C  _EZ  ez  x  Mi
 ex(5):  md  ssm  MJeH  zmDQa  q  E  elQT  Gya_  GOcOH  wvQ  Q  OdmQ  slMWy
 ex(8):  huZu  GrdS  pl  fbZ  joCwx  qWw  sYd_IqVw  iBjwd  ovjUOw  vEAo  Kglz_
 
-regexp: [0-9]+
+expr 13: [0-9]+
 tree:   [0-9]+
+augmnt: ([0-9]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
@@ -153,8 +168,9 @@ ex(3):  109  6  22  89  9  4  378  873  7  7  9  022  5  0  979  70  4  14  07
 ex(5):  908  64103  685  462  7932  998  42  9  06  8523  0220  82865  418  3
 ex(8):  32093  5066827  799  800  4338  93  753  34885  440  46599043  0
 
-regexp: [_a-zA-Z0-9]+
+expr 14: [_a-zA-Z0-9]+
 tree:   [0-9A-Z_a-z]+
+augmnt: ([0-9A-Z_a-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  H  W  L  O  q  V  2  o  3  B  _  k  z  c  l  I  u  q  B  Y  N  J  T  d
@@ -164,8 +180,9 @@ ex(3):  B  i  e  xPU  7  W  bZJ  r0  kFf  Fq  u  Ok  vU  0t  k  cY  zo  wy  _fw
 ex(5):  VZ2af  wfdG  vm  Bn8e  n  SaG  tNd  OBDQv  3BUD  2vDOY  niX_  9IZlx
 ex(8):  KbVr  pVLh  9  s  cDR45  t  g  N3YyEse  y0RnUHr5  XS3EqXl  Xr  rd  qhY4
 
-regexp: [_a-zA-Z][_a-zA-Z0-9]*
+expr 15: [_a-zA-Z][_a-zA-Z0-9]*
 tree:   ([A-Z_a-z][0-9A-Z_a-z]*)
+augmnt: (([A-Z_a-z][0-9A-Z_a-z]*)#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
@@ -175,8 +192,9 @@ ex(3):  vq  jdO  vU9  zke  iaz  k  m_  s  mnR  J  Hf  mf  afc  GeB  l  T5n  aaG
 ex(5):  OdkO  QQv33B  mmN  lOY  QiX  n9  uNlxf  rQoC  lmVrG  oLh  q  wW  YR457i
 ex(8):  BYyE  oeBy0  w_UHr5cX  lPE  ElHXr  H  q  vY4QYd  lu6Iz  hwb  Aak4ZKK98
 
-regexp: [A-HO-Z][A-Z]*
+expr 16: [A-HO-Z][A-Z]*
 tree:   ([A-HO-Z][A-Z]*)
+augmnt: (([A-HO-Z][A-Z]*)#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  C  U  B  Y  H  H  Z  H  O  O  E  A  E  O  C  P  T  G  O  H  R  W  X  E
@@ -185,3 +203,4 @@ ex(2):  OEM  A  O  BH  E  F  SY  SO  P  X  UTB  QIP  CO  X  ZIK  O  F  OFL  EW
 ex(3):  DAOQ  ZYJ  OYGK  OORR  OBE  HGZ  BULH  WS  QJJ  AWS  OWKK  YRQ  RXA  GK
 ex(5):  RIRDA  XWW  YJC  TJ  OYKRG  W  XN  SZPK  DYAZC  FPCUZ  RC  SEUOVP  GF
 ex(8):  ZD  TBXASQAX  UL  PGWSGPBMH  X  Y  FBFIEF  FTPGH  ROA  XBGDD  GSKQ
+17 expression(s) loaded

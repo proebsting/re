@@ -1,7 +1,8 @@
+Options: -R -d -g -h -i -l -n -p -v -I 0
 
-# replication in complex situations
+         # replication in complex situations
 
-regexp: (){3}
+expr 0: (){3}
 tree:   (){3}
 augmnt: #
 length: 0 to 0
@@ -19,12 +20,14 @@ Inputs: []
 Witnesses: []
 begin => { 0 }
 p0. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0# { p0 }
 ------------------ Minimized DFA -----------------
 s0# { p0 }
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: (){2,4}
+expr 1: (){2,4}
 tree:   (){2,4}
 augmnt: ((()?()?)#)
 length: 0 to 0
@@ -48,12 +51,14 @@ Inputs: []
 Witnesses: []
 begin => { 0 }
 p0. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0# { p0 }
 ------------------ Minimized DFA -----------------
 s0# { p0 }
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: (abc){3}
+expr 2: (abc){3}
 tree:   ((ab)c){3}
 augmnt: (((((ab)c)((ab)c))((ab)c))#)
 length: 9 to 9
@@ -98,7 +103,7 @@ p6. a => { 7 }
 p7. b => { 8 }
 p8. c => { 9 }
 p9. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 } [a]:s1
 s1. { p1 } [b]:s2
 s2. { p2 } [c]:s3
@@ -120,8 +125,10 @@ s6. { p4 } [b]:s5
 s7. { p3 } [a]:s6
 s8. { p2 } [c]:s7
 s9. { p1 } [b]:s8
+---------------- Examples from DFA ---------------
+s1:  abcabcabc
 
-regexp: (a|b){3}
+expr 3: (a|b){3}
 tree:   (a|b){3}
 augmnt: ((((a|b)(a|b))(a|b))#)
 length: 3 to 3
@@ -157,7 +164,7 @@ p3. b => { 4 5 }
 p4. a => { 6 }
 p5. b => { 6 }
 p6. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 p1 } [ab]:s1
 s1. { p2 p3 } [ab]:s2
 s2. { p4 p5 } [ab]:s3
@@ -167,8 +174,10 @@ s0. { p0 p1 } [ab]:s3
 s1# { p6 }
 s2. { p4 p5 } [ab]:s1
 s3. { p2 p3 } [ab]:s2
+---------------- Examples from DFA ---------------
+s1:  aaa
 
-regexp: (ab|cd){3}
+expr 4: (ab|cd){3}
 tree:   ((ab)|(cd)){3}
 augmnt: (((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))#)
 length: 6 to 6
@@ -222,7 +231,7 @@ p9. b => { 12 }
 p10. c => { 11 }
 p11. d => { 12 }
 p12. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 p2 } [a]:s1 [c]:s2
 s1. { p1 } [b]:s3
 s2. { p3 } [d]:s3
@@ -244,8 +253,10 @@ s6. { p1 } [b]:s5
 s7. { p3 } [d]:s5
 s8. { p7 } [d]:s3
 s9. { p11 } [d]:s1
+---------------- Examples from DFA ---------------
+s1:  ababab
 
-regexp: (a*){3}
+expr 5: (a*){3}
 tree:   a*{3}
 augmnt: (((a*a*)a*)#)
 length: 0 to *
@@ -275,12 +286,14 @@ p0. a => { 0 1 2 3 }
 p1. a => { 1 2 3 }
 p2. a => { 2 3 }
 p3. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0# { p0 p1 p2 p3 } [a]:s0
 ------------------ Minimized DFA -----------------
 s0# { p0 p1 p2 p3 } [a]:s0
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: (a{3})*
+expr 6: (a{3})*
 tree:   a{3}*
 augmnt: (((aa)a)*#)
 length: 0 to *
@@ -308,7 +321,7 @@ p0. a => { 1 }
 p1. a => { 2 }
 p2. a => { 0 3 }
 p3. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0# { p0 p3 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s0
@@ -316,8 +329,10 @@ s2. { p2 } [a]:s0
 s0# { p0 p3 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s0
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: (a{3})+
+expr 7: (a{3})+
 tree:   a{3}+
 augmnt: (((aa)a)+#)
 length: 3 to *
@@ -345,7 +360,7 @@ p0. a => { 1 }
 p1. a => { 2 }
 p2. a => { 0 3 }
 p3. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s3
@@ -355,8 +370,10 @@ s0. { p0 } [a]:s3
 s1# { p0 p3 } [a]:s3
 s2. { p2 } [a]:s1
 s3. { p1 } [a]:s2
+---------------- Examples from DFA ---------------
+s1:  aaa
 
-regexp: (a{3})?
+expr 8: (a{3})?
 tree:   a{3}?
 augmnt: (((aa)a)?#)
 length: 0 to 3
@@ -384,7 +401,7 @@ p0. a => { 1 }
 p1. a => { 2 }
 p2. a => { 3 }
 p3. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0# { p0 p3 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s3
@@ -394,8 +411,11 @@ s0# { p0 p3 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s3
 s3# { p3 }
+---------------- Examples from DFA ---------------
+s0:  
+s3:  aaa
 
-regexp: (a{3}){2}
+expr 9: (a{3}){2}
 tree:   a{3}{2}
 augmnt: ((((aa)a)((aa)a))#)
 length: 6 to 6
@@ -431,7 +451,7 @@ p3. a => { 4 }
 p4. a => { 5 }
 p5. a => { 6 }
 p6. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s3
@@ -447,8 +467,10 @@ s3. { p4 } [a]:s2
 s4. { p3 } [a]:s3
 s5. { p2 } [a]:s4
 s6. { p1 } [a]:s5
+---------------- Examples from DFA ---------------
+s1:  aaaaaa
 
-regexp: (a{3}){1,5}
+expr 10: (a{3}){1,5}
 tree:   a{3}{1,5}
 augmnt: (((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)#)
 length: 3 to 15
@@ -515,7 +537,7 @@ p12. a => { 13 }
 p13. a => { 14 }
 p14. a => { 15 }
 p15. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s3
@@ -549,8 +571,14 @@ s12. { p7 p10 p13 } [a]:s11
 s13# { p6 p9 p12 p15 } [a]:s12
 s14. { p5 p8 p11 p14 } [a]:s13
 s15. { p4 p7 p10 p13 } [a]:s14
+---------------- Examples from DFA ---------------
+s1:  aaa
+s13:  aaaaaa
+s10:  aaaaaaaaa
+s7:  aaaaaaaaaaaa
+s4:  aaaaaaaaaaaaaaa
 
-regexp: a{3}b{4}
+expr 11: a{3}b{4}
 tree:   (a{3}b{4})
 augmnt: ((((aa)a)(((bb)b)b))#)
 length: 7 to 7
@@ -589,7 +617,7 @@ p4. b => { 5 }
 p5. b => { 6 }
 p6. b => { 7 }
 p7. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 } [a]:s1
 s1. { p1 } [a]:s2
 s2. { p2 } [a]:s3
@@ -607,8 +635,10 @@ s4. { p4 } [b]:s3
 s5. { p3 } [b]:s4
 s6. { p2 } [a]:s5
 s7. { p1 } [a]:s6
+---------------- Examples from DFA ---------------
+s1:  aaabbbb
 
-regexp: a{3}|b{4}|c{5}
+expr 12: a{3}|b{4}|c{5}
 tree:   (a{3}|b{4}|c{5})
 augmnt: ((((aa)a)|(((bb)b)b)|((((cc)c)c)c))#)
 length: 3 to 5
@@ -661,7 +691,7 @@ p9. c => { 10 }
 p10. c => { 11 }
 p11. c => { 12 }
 p12. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 p3 p7 } [a]:s1 [b]:s2 [c]:s3
 s1. { p1 } [a]:s4
 s2. { p4 } [b]:s5
@@ -685,3 +715,6 @@ s7. { p8 } [c]:s10
 s8. { p11 } [c]:s1
 s9. { p10 } [c]:s8
 s10. { p9 } [c]:s9
+---------------- Examples from DFA ---------------
+s1:  aaa
+13 expression(s) loaded

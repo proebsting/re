@@ -1,8 +1,10 @@
+Options: -R -g -i -l -v -I 0
 
-# numeric replication {m,n}
+         # numeric replication {m,n}
 
-regexp: ab{0}c
+expr 0: ab{0}c
 tree:   (ac)
+augmnt: ((ac)#)
 length: 2 to 2
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
@@ -12,8 +14,9 @@ ex(3):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(5):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(8):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 
-regexp: ab{1}c
+expr 1: ab{1}c
 tree:   ((ab)c)
+augmnt: (((ab)c)#)
 length: 3 to 3
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -23,8 +26,9 @@ ex(3):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(5):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(8):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 
-regexp: ab{2}c
+expr 2: ab{2}c
 tree:   ((ab{2})c)
+augmnt: (((a(bb))c)#)
 length: 4 to 4
 -------------------- Examples --------------------
 ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
@@ -34,8 +38,9 @@ ex(3):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 ex(5):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 ex(8):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 
-regexp: ab{3}c
+expr 3: ab{3}c
 tree:   ((ab{3})c)
+augmnt: (((a((bb)b))c)#)
 length: 5 to 5
 -------------------- Examples --------------------
 ex(0):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
@@ -45,8 +50,9 @@ ex(3):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
 ex(5):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
 ex(8):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
 
-regexp: ab{4}c
+expr 4: ab{4}c
 tree:   ((ab{4})c)
+augmnt: (((a(((bb)b)b))c)#)
 length: 6 to 6
 -------------------- Examples --------------------
 ex(0):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
@@ -56,8 +62,9 @@ ex(3):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
 ex(5):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
 ex(8):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
 
-regexp: ab{0,0}c
+expr 5: ab{0,0}c
 tree:   (ac)
+augmnt: ((ac)#)
 length: 2 to 2
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
@@ -67,8 +74,9 @@ ex(3):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(5):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(8):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 
-regexp: ab{0,1}c
+expr 6: ab{0,1}c
 tree:   ((ab?)c)
+augmnt: (((ab?)c)#)
 length: 2 to 3
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
@@ -78,8 +86,9 @@ ex(3):  ac  abc  ac  ac  ac  ac  ac  abc  abc  ac  abc  ac  ac  ac  ac  ac  abc
 ex(5):  ac  abc  abc  ac  ac  abc  ac  abc  ac  abc  abc  ac  ac  ac  ac  abc
 ex(8):  abc  abc  abc  ac  ac  ac  ac  ac  ac  abc  ac  abc  ac  abc  ac  abc
 
-regexp: ab{1,1}c
+expr 7: ab{1,1}c
 tree:   ((ab)c)
+augmnt: (((ab)c)#)
 length: 3 to 3
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -89,8 +98,9 @@ ex(3):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(5):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(8):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 
-regexp: ab{0,2}c
+expr 8: ab{0,2}c
 tree:   ((ab{0,2})c)
+augmnt: (((a(b?b?))c)#)
 length: 2 to 4
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
@@ -100,8 +110,9 @@ ex(3):  ac  abbc  ac  ac  ac  abc  abc  abc  ac  abbc  abc  abc  abbc  ac  ac
 ex(5):  abc  ac  abc  abc  abc  ac  abc  ac  abbc  abbc  abc  abbc  ac  abbc
 ex(8):  abc  abc  ac  abc  abc  abbc  ac  abc  abc  abc  abc  abc  abbc  ac  ac
 
-regexp: ab{1,2}c
+expr 9: ab{1,2}c
 tree:   ((ab{1,2})c)
+augmnt: (((a(bb?))c)#)
 length: 3 to 4
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -111,8 +122,9 @@ ex(3):  abc  abbc  abbc  abc  abc  abbc  abc  abc  abbc  abbc  abbc  abc  abc
 ex(5):  abc  abbc  abbc  abbc  abc  abc  abc  abbc  abc  abc  abbc  abbc  abc
 ex(8):  abc  abc  abbc  abbc  abc  abbc  abbc  abbc  abc  abc  abbc  abc  abc
 
-regexp: ab{2,2}c
+expr 10: ab{2,2}c
 tree:   ((ab{2})c)
+augmnt: (((a(bb))c)#)
 length: 4 to 4
 -------------------- Examples --------------------
 ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
@@ -122,8 +134,9 @@ ex(3):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 ex(5):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 ex(8):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 
-regexp: ab{0,3}c
+expr 11: ab{0,3}c
 tree:   ((ab{0,3})c)
+augmnt: (((a((b?b?)b?))c)#)
 length: 2 to 5
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
@@ -133,8 +146,9 @@ ex(3):  ac  abbc  abbc  abbc  abc  ac  abbc  ac  abc  abbc  ac  abc  ac  abc
 ex(5):  abbc  abc  abbc  ac  abbc  ac  abc  abbbc  abc  abc  abc  abbc  abbc
 ex(8):  abc  abbbc  ac  abc  abc  ac  abbbc  abbc  ac  abc  abc  abbc  abbc
 
-regexp: ab{1,3}c
+expr 12: ab{1,3}c
 tree:   ((ab{1,3})c)
+augmnt: (((a((bb?)b?))c)#)
 length: 3 to 5
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -144,8 +158,9 @@ ex(3):  abbc  abbc  abbc  abbc  abc  abbc  abc  abbbc  abbc  abbc  abbc  abc
 ex(5):  abbc  abbbc  abbc  abc  abbc  abbc  abc  abbc  abc  abbbc  abc  abbbc
 ex(8):  abbc  abbbc  abbbc  abbc  abc  abbbc  abbc  abbc  abbc  abc  abbc  abc
 
-regexp: ab{2,3}c
+expr 13: ab{2,3}c
 tree:   ((ab{2,3})c)
+augmnt: (((a((bb)b?))c)#)
 length: 4 to 5
 -------------------- Examples --------------------
 ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
@@ -155,8 +170,9 @@ ex(3):  abbbc  abbbc  abbbc  abbc  abbc  abbbc  abbc  abbbc  abbc  abbbc  abbbc
 ex(5):  abbc  abbbc  abbc  abbc  abbc  abbbc  abbbc  abbc  abbc  abbc  abbc
 ex(8):  abbc  abbbc  abbc  abbc  abbc  abbbc  abbc  abbc  abbc  abbbc  abbc
 
-regexp: ab{3,3}c
+expr 14: ab{3,3}c
 tree:   ((ab{3})c)
+augmnt: (((a((bb)b))c)#)
 length: 5 to 5
 -------------------- Examples --------------------
 ex(0):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
@@ -166,8 +182,9 @@ ex(3):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
 ex(5):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
 ex(8):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
 
-regexp: ab{2,5}c
+expr 15: ab{2,5}c
 tree:   ((ab{2,5})c)
+augmnt: (((a((((bb)b?)b?)b?))c)#)
 length: 4 to 7
 -------------------- Examples --------------------
 ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
@@ -177,8 +194,9 @@ ex(3):  abbc  abbbbc  abbbc  abbbc  abbbc  abbbbc  abbbc  abbbc  abbbc  abbbbbc
 ex(5):  abbbbbc  abbc  abbbbc  abbbc  abbbbbc  abbbbc  abbbc  abbbbc  abbbbc
 ex(8):  abbbc  abbbbc  abbbc  abbbbbc  abbbbc  abbbc  abbbc  abbbbbc  abbc
 
-regexp: ab{0,}c
+expr 16: ab{0,}c
 tree:   ((ab*)c)
+augmnt: (((ab*)c)#)
 length: 2 to *
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
@@ -188,8 +206,9 @@ ex(3):  abbc  ac  abbc  ac  ac  abbc  ac  abc  ac  abbbc  ac  abbc  ac  abbc
 ex(5):  ac  abbc  abbc  abbbc  abbbbc  ac  abc  abbbbbc  ac  abc  abc  abbbbbc
 ex(8):  abbbbbbbbc  abc  abbbbbbc  ac  abbbbbc  abbbbc  abbbbbc  abbbbbbc  abc
 
-regexp: ab{1,}c
+expr 17: ab{1,}c
 tree:   ((ab+)c)
+augmnt: (((ab+)c)#)
 length: 3 to *
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -199,8 +218,9 @@ ex(3):  abbc  abbbc  abbbc  abbbc  abbc  abc  abbc  abc  abbbc  abbbc  abbc
 ex(5):  abbbbc  abc  abbc  abbbc  abc  abbbbc  abc  abbbbbc  abbbc  abc  abc
 ex(8):  abbbbbbbc  abbbc  abbbbbbbbc  abbbbbc  abbbbbc  abbbbbbbbc  abbbc  abc
 
-regexp: ab{2,}c
+expr 18: ab{2,}c
 tree:   ((ab{2,})c)
+augmnt: (((a(bb+))c)#)
 length: 4 to *
 -------------------- Examples --------------------
 ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
@@ -210,8 +230,9 @@ ex(3):  abbbbc  abbbc  abbbc  abbc  abbc  abbbbc  abbbc  abbbbc  abbbbc  abbbbc
 ex(5):  abbbbc  abbbbbc  abbbbbc  abbbbbbc  abbc  abbbbbc  abbbbc  abbbc
 ex(8):  abbbbbbc  abbbbbbbc  abbbbbbbbbc  abbbbc  abbbbbc  abbbbc  abbbbbbc
 
-regexp: ab{3,}c
+expr 19: ab{3,}c
 tree:   ((ab{3,})c)
+augmnt: (((a((bb)b+))c)#)
 length: 5 to *
 -------------------- Examples --------------------
 ex(0):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
@@ -221,8 +242,9 @@ ex(3):  abbbbc  abbbc  abbbc  abbbbbc  abbbbc  abbbc  abbbc  abbbbbc  abbbbc
 ex(5):  abbbc  abbbbbbc  abbbc  abbbbbc  abbbbbbc  abbbbbc  abbbc  abbbbc
 ex(8):  abbbbbbbbc  abbbbbbbbbc  abbbc  abbbbbbbbbbc  abbbbbbbbc  abbbbc
 
-regexp: ab{4,}c
+expr 20: ab{4,}c
 tree:   ((ab{4,})c)
+augmnt: (((a(((bb)b)b+))c)#)
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
@@ -231,3 +253,4 @@ ex(2):  abbbbbc  abbbbbc  abbbbc  abbbbbc  abbbbc  abbbbc  abbbbc  abbbbc
 ex(3):  abbbbbc  abbbbbbc  abbbbc  abbbbbc  abbbbc  abbbbc  abbbbc  abbbbc
 ex(5):  abbbbbbbbc  abbbbbbbc  abbbbbbbbc  abbbbbbbbc  abbbbbc  abbbbbc
 ex(8):  abbbbbbbbbbc  abbbbc  abbbbbbbbbbc  abbbbbc  abbbbbbbbbbc  abbbbbbbbc
+21 expression(s) loaded

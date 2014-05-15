@@ -1,8 +1,10 @@
+Options: -R -g -i -l -v -I 0
 
-# nested parentheses
+         # nested parentheses
 
-regexp: ((a))
+expr 0: ((a))
 tree:   a
+augmnt: (a#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -12,8 +14,9 @@ ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 
-regexp: (((a)))
+expr 1: (((a)))
 tree:   a
+augmnt: (a#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -23,8 +26,9 @@ ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 
-regexp: (((a*)))
+expr 2: (((a*)))
 tree:   a*
+augmnt: (a*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -34,8 +38,9 @@ ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
 ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
 ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
 
-regexp: (((a)*))
+expr 3: (((a)*))
 tree:   a*
+augmnt: (a*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -45,8 +50,9 @@ ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
 ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
 ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
 
-regexp: (((a))*)
+expr 4: (((a))*)
 tree:   a*
+augmnt: (a*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -56,8 +62,9 @@ ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
 ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
 ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
 
-regexp: (((a)))*
+expr 5: (((a)))*
 tree:   a*
+augmnt: (a*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -67,8 +74,9 @@ ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
 ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
 ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
 
-regexp: ((a*b)@(c*d)#)*
+expr 6: ((a*b)@(c*d)#)*
 tree:   ((((a*b)@)(c*d))#)*
+augmnt: (((((a*b)@)(c*d))#)*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -78,8 +86,9 @@ ex(3):    aab@cd#b@ccd#    ab@ccd#b@d#aaab@cccd#  b@cd#b@d#  ab@ccd#aaab@cccd#
 ex(5):      ab@cd#aaaaab@cccd#aaaaab@d#aaaab@ccd#
 ex(8):  aaaaaaaab@cccccd#aaaaaaaab@d#aaab@ccccccccd#aaaaaaaab@cccccd#b@ccccccccd#aaaaaaaab@ccccccccd#
 
-regexp: ((b|f)(a|e))*
+expr 7: ((b|f)(a|e))*
 tree:   ((b|f)(a|e))*
+augmnt: (((b|f)(a|e))*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -89,8 +98,9 @@ ex(3):      befa  ba  fefe  ba  bafeba  bafabe      be  fabe  fabefa  fe
 ex(5):    fafafafefe  fabebeba  fe    fefafebe  befe      bafe  bebabe
 ex(8):  bebafefabebefafa  fe  babafafebebe  be  babebabebafa  fefefe  beba  fe
 
-regexp: ((n|t)(o|e)+)*
+expr 8: ((n|t)(o|e)+)*
 tree:   ((n|t)(o|e)+)*
+augmnt: (((n|t)(o|e)+)*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -99,3 +109,4 @@ ex(2):    teene    nono  nee      no          nootoo  nene    toe  no    noteo
 ex(3):  no  toe  noeonooto  nonoee  nonotee  neonotooo  noneotoeo  noeoteeteoe
 ex(5):  teoneoeneeooneoeoetee  toeo  noeoteonootonoe  neeeonee  nenoeooe  toono
 ex(8):  noeoeeoeotoeeootoooooeteoeneeeee  netoooteeoeeeee
+9 expression(s) loaded

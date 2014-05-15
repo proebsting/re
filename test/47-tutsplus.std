@@ -1,14 +1,16 @@
+Options: -R -g -i -l -v -I 0
 
-# "8 Regular Expressions You Should Know" by Vasili    sampled 24-feb-2014
+         # "8 Regular Expressions You Should Know" by Vasili    sampled 24-feb-2014
 
-# code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
+         # code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
 
-#
+         #
 
-# 1. Matching a Username
+         # 1. Matching a Username
 
-regexp: [a-z0-9_-]{3,16}
+expr 0: [a-z0-9_-]{3,16}
 tree:   [0-9_a-z-]{3,16}
+augmnt: (((((((((((((((([0-9_a-z-][0-9_a-z-])[0-9_a-z-])[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)#)
 length: 3 to 16
 -------------------- Examples --------------------
 ex(0):  cuw  hhz  988  h-n  0ca  53n  c7p  9eo  gye  g3x  47o  z91  c_x  2ls
@@ -18,12 +20,13 @@ ex(3):  k__  7-7  xa6  tyo  urd  _-w  9_e  64d  6hh  r3l  9xb  s9y  6_a  _ip
 ex(5):  q7bvo  zqu  t15_  -4-6_  bws77  ryc  b9eka  sh3  hnug0  347  7_zd  eu0m
 ex(8):  849_  m7bv8n  gdttk  i-6at3  6-8  eed  __lb_iz9  49nfu  yl_gfueq
 
-#
+         #
 
-# 2. Matching a Password
+         # 2. Matching a Password
 
-regexp: [a-z0-9_-]{6,18}$
+expr 1: [a-z0-9_-]{6,18}$
 tree:   [0-9_a-z-]{6,18}
+augmnt: (((((((((((((((((([0-9_a-z-][0-9_a-z-])[0-9_a-z-])[0-9_a-z-])[0-9_a-z-])[0-9_a-z-])[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)#)
 length: 6 to 18
 -------------------- Examples --------------------
 ex(0):  cuwhhz  988h-n  0ca53n  c7p9eo  gyeg3x  47oz91  c_x2ls  dnqj18  5f6uom
@@ -33,12 +36,13 @@ ex(3):  zq7bvo  ccfu_a  5_94-6  _-3ws7  7e6cx9  ekaegh  3m9nug  00347g  _zdi50
 ex(5):  c49_fm  7bv8ny  dttksk  -yat3i  6-8srd  t__lb_  iz969n  fu8l_g  fueq0x
 ex(8):  i6kw8h  np9r3ndh  m-15qay  95u2lp  r42onf  iv3-d6  d4p26ii  k6594n
 
-#
+         #
 
-# 3. Matching a Hex Value  [a color spec, apparently?]
+         # 3. Matching a Hex Value  [a color spec, apparently?]
 
-regexp:  #?([a-f0-9]{6}|[a-f0-9]{3})
+expr 2:  #?([a-f0-9]{6}|[a-f0-9]{3})
 tree:   (( #?)([0-9a-f]{6}|[0-9a-f]{3}))
+augmnt: ((( #?)(((((([0-9a-f][0-9a-f])[0-9a-f])[0-9a-f])[0-9a-f])[0-9a-f])|(([0-9a-f][0-9a-f])[0-9a-f])))#)
 length: 4 to 8
 -------------------- Examples --------------------
 ex(0):   0a2187   9cf66a   da1a23   19a   d3799b   369fcc   4b4   a89b9b
@@ -48,10 +52,11 @@ ex(3):   58951d   #97b   d22803   #74d   995976   #749   #ea1   0e3   #2e0
 ex(5):   029   #69c   #2b99b6   #58ec4a   3d5a64   #a9b481   #99e   1ab
 ex(8):   5cbaa9   #c0ae08   eaa   99f   #928   #a2de67   e08c58   #11b   #909
 
-# 4. Matching a Slug
+         # 4. Matching a Slug
 
-regexp: [a-z0-9-]+
+expr 3: [a-z0-9-]+
 tree:   [0-9a-z-]+
+augmnt: ([0-9a-z-]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  c  u  w  h  h  z  9  8  8  h  -  n  0  c  a  5  3  n  c  7  p  9  e  o
@@ -61,10 +66,11 @@ ex(3):  d  lo  ho  ygf  xr  eb  ia9  78  bl  b6  8k  nwk  s7-  xa  dty  u  d
 ex(5):  w1  4d6  q  r  l9xbs  zy6  axip  cuz  auvoc  qu  t15a9  9  u  8  bws77
 ex(8):  2x9e  tegh3m  nug0034  g9di5  bmpd91i  849afm7b  8nyd  8ksk-  at3i6
 
-# 5. Matching an Email
+         # 5. Matching an Email
 
-regexp: ([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})
+expr 4: ([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})
 tree:   (((([.0-9_a-z-]+@)[.0-9a-z-]+).)[.a-z]{2,6})
+augmnt: ((((([.0-9_a-z-]+@)[.0-9a-z-]+).)((((([.a-z][.a-z])[.a-z]?)[.a-z]?)[.a-z]?)[.a-z]?))#)
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  c@..tz  z@-.la  9@0.bo  5@n..q  x@o.ke  3@9.py  7@z.kz  p@x.hu  d@d.px
@@ -74,10 +80,11 @@ ex(3):  di5@mpd.ewxdan  bv@ydt.ljzkz  3i@g8s.szal  z@6.oy.mz  e@0x.dxnz
 ex(5):  -1@qaye5.ovziy  civ@-d.ku.cge  k65@hnodg.ydhfu  q@3.rbdoj  5@faco...dt
 ex(8):  ib@-ltti..nxt  p@77nf.iohc  mjmpgk6e@l.qet9..ail  i9fpw.@26r.fbnuuj
 
-# 6. Matching a URL
+         # 6. Matching a URL
 
-regexp: (https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?
+expr 5: (https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?
 tree:   ((((((((((((ht)t)p)s?):)/)/)?[.0-9a-z-]+).)[.a-z]{2,6})[ .-9A-Z_a-z-]**)/?)
+augmnt: (((((((((((((ht)t)p)s?):)/)/)?[.0-9a-z-]+).)((((([.a-z][.a-z])[.a-z]?)[.a-z]?)[.a-z]?)[.a-z]?))[ .-9A-Z_a-z-]**)/?)#)
 length: 4 to *
 -------------------- Examples --------------------
 ex(0):  c.yt  h.qt  8.sf  0.bo  5.u.  k.qe  4.e.  g.py  7.be  -.ye  h.ri  g..s
@@ -87,10 +94,11 @@ ex(3):  i.kabtKxoC8  bd.nzby/  6fu.gpdd6rpb8P/  ap.dg.w/  https://d.p.ebcob/
 ex(5):  qf..dhfuZf  https://ns.vuwfur1a nm2a5jDL/  6cg.araq8
 ex(8):  https://qet9is..ilv.H9oR906X6tc_B6oV-PZkwnR87/87Man /v
 
-# 7. Matching an IP Address
+         # 7. Matching an IP Address
 
-regexp: (?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)
+expr 6: (?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)
 tree:   (((((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)).){3}(((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)))
+augmnt: ((((((((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)).)((((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)).))((((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)).))(((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)))#)
 length: 7 to 15
 -------------------- Examples --------------------
 ex(0):  254.228.250.254  252.6.253.4  3.247.251.252  229.252.7.240
@@ -100,7 +108,9 @@ ex(3):  230.254.6.101  255.063.255.0  147.254.137.214  250.205.251.247
 ex(5):  072.255.231.16  119.250.227.7  252.251.235.254  237.252.08.12
 ex(8):  229.250.167.219  250.254.46.250  214.06.219.252  50.08.250.226
 
-# 8. Matching an HTML Tag
+         # 8. Matching an HTML Tag
 
-regexp: <([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)
-ERROR:  rx: \1 (backref) unimplemented: in "<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)"
+ERROR:   <([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)
+    rx: \1 (backref) unimplemented: in "<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)"
+7 expression(s) loaded
+(1 expression(s) rejected)

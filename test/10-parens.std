@@ -1,8 +1,10 @@
+Options: -R -g -i -l -v -I 0
 
-# simple uses of parentheses
+         # simple uses of parentheses
 
-regexp: (a)
+expr 0: (a)
 tree:   a
+augmnt: (a#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -12,8 +14,9 @@ ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 
-regexp: ((a))
+expr 1: ((a))
 tree:   a
+augmnt: (a#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -23,8 +26,9 @@ ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 
-regexp: a(b)*
+expr 2: a(b)*
 tree:   (ab*)
+augmnt: ((ab*)#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -34,8 +38,9 @@ ex(3):  abbb  ab  ab  ab  abbb  abb  abbb  abb  ab  ab  a  abb  a  ab  ab  abb
 ex(5):  abb  abb  abb  abbb  abbbbb  abb  ab  abb  abbbb  a  abbb  abbb  abbbbb
 ex(8):  abbbbbb  abbbbbbbb  a  abbbb  abbbbbbb  ab  abbbbbbbb  a  a  abbbbb
 
-regexp: a((b))*
+expr 3: a((b))*
 tree:   (ab*)
+augmnt: ((ab*)#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -45,8 +50,9 @@ ex(3):  abbb  ab  ab  ab  abbb  abb  abbb  abb  ab  ab  a  abb  a  ab  ab  abb
 ex(5):  abb  abb  abb  abbb  abbbbb  abb  ab  abb  abbbb  a  abbb  abbb  abbbbb
 ex(8):  abbbbbb  abbbbbbbb  a  abbbb  abbbbbbb  ab  abbbbbbbb  a  a  abbbbb
 
-regexp: (ab)*
+expr 4: (ab)*
 tree:   (ab)*
+augmnt: ((ab)*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -56,8 +62,9 @@ ex(3):  ab  ababab  ababab  ababab  ab  abab    ababab  ababab  ababab  ab
 ex(5):  ababab  abab  ababababab  ababab  ababababab  ababab  abababab  ab
 ex(8):  abababababababab  abab  ababababab  abababab  ababab  abababababab  ab
 
-regexp: a(bb)?c
+expr 5: a(bb)?c
 tree:   ((a(bb)?)c)
+augmnt: (((a(bb)?)c)#)
 length: 2 to 4
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
@@ -67,8 +74,9 @@ ex(3):  ac  ac  ac  abbc  ac  ac  abbc  abbc  ac  ac  ac  abbc  ac  ac  abbc
 ex(5):  abbc  ac  ac  ac  abbc  ac  ac  ac  abbc  ac  ac  ac  ac  ac  abbc  ac
 ex(8):  abbc  abbc  ac  abbc  ac  ac  abbc  ac  abbc  abbc  ac  abbc  abbc  ac
 
-regexp: ((ab))*
+expr 6: ((ab))*
 tree:   (ab)*
+augmnt: ((ab)*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -78,8 +86,9 @@ ex(3):  ab  ababab  ababab  ababab  ab  abab    ababab  ababab  ababab  ab
 ex(5):  ababab  abab  ababababab  ababab  ababababab  ababab  abababab  ab
 ex(8):  abababababababab  abab  ababababab  abababab  ababab  abababababab  ab
 
-regexp: ((ab)*)
+expr 7: ((ab)*)
 tree:   (ab)*
+augmnt: ((ab)*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -89,8 +98,9 @@ ex(3):  ab  ababab  ababab  ababab  ab  abab    ababab  ababab  ababab  ab
 ex(5):  ababab  abab  ababababab  ababab  ababababab  ababab  abababab  ab
 ex(8):  abababababababab  abab  ababababab  abababab  ababab  abababababab  ab
 
-regexp: a(bc)*d
+expr 8: a(bc)*d
 tree:   ((a(bc)*)d)
+augmnt: (((a(bc)*)d)#)
 length: 2 to *
 -------------------- Examples --------------------
 ex(0):  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad
@@ -100,8 +110,9 @@ ex(3):  ad  abcbcd  abcbcd  abcd  abcd  ad  abcbcbcd  abcbcd  ad  abcbcd  ad
 ex(5):  abcbcbcbcd  ad  ad  ad  abcd  ad  abcbcd  abcd  abcd  abcbcbcbcd
 ex(8):  ad  abcbcd  ad  abcbcbcbcbcd  abcbcbcbcbcbcd  abcbcbcbcbcbcd  abcd  ad
 
-regexp: a(bcd)+e
+expr 9: a(bcd)+e
 tree:   ((a((bc)d)+)e)
+augmnt: (((a((bc)d)+)e)#)
 length: 5 to *
 -------------------- Examples --------------------
 ex(0):  abcde  abcde  abcde  abcde  abcde  abcde  abcde  abcde  abcde  abcde
@@ -111,8 +122,9 @@ ex(3):  abcdbcdbcde  abcde  abcde  abcdbcdbcde  abcdbcdbcde  abcdbcdbcde  abcde
 ex(5):  abcde  abcdbcdbcdbcde  abcdbcdbcde  abcdbcdbcdbcde  abcdbcdbcde
 ex(8):  abcdbcdbcdbcdbcdbcdbcde  abcdbcdbcdbcde  abcdbcdbcdbcdbcde
 
-regexp: (ab)*(cd)*(ef)*
+expr 10: (ab)*(cd)*(ef)*
 tree:   (((ab)*(cd)*)(ef)*)
+augmnt: ((((ab)*(cd)*)(ef)*)#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -122,8 +134,9 @@ ex(3):  abababcdcd  cdcdcdefef  ababcdcd  abcdcdcdefef  abababcdcdef
 ex(5):  abcdcdcdcdcdefef  ababcdcdcdcdefefefef  abababcdcdcdcdcdefefefef
 ex(8):  abababababefefefefef  abcdefef  abcdcdcdcdcdcdcdefef  ababcdcdcdcdcdcd
 
-regexp: (ab)+(cd)+(ef)+
+expr 11: (ab)+(cd)+(ef)+
 tree:   (((ab)+(cd)+)(ef)+)
+augmnt: ((((ab)+(cd)+)(ef)+)#)
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef
@@ -133,8 +146,9 @@ ex(3):  ababcdcdcdef  abababcdcdcdef  abcdef  ababcdefefef  ababcdcdefef
 ex(5):  ababcdcdcdcdcdefef  ababcdcdcdcdef  abababababcdcdcdcdcdefefefefef
 ex(8):  ababababcdcdcdcdcdcdcdcdef  ababababababababcdcdcdcdcdefefefefefef
 
-regexp: (ab)?(cd)?(ef)?
+expr 12: (ab)?(cd)?(ef)?
 tree:   (((ab)?(cd)?)(ef)?)
+augmnt: ((((ab)?(cd)?)(ef)?)#)
 length: 0 to 6
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -144,8 +158,9 @@ ex(3):  abef  cd  ef    ef  ef  abcd  abcdef    abcd  ef  abcdef  cd  ab  abcd
 ex(5):  abcdef  cdef    abcd    abcd  abcd  abcdef    abef      abcd  ab
 ex(8):  abef  abef    abcdef  abef  abcdef  abcd  cdef    ef  abef  abcd  abef
 
-regexp: (ab)+(cd)*(ef)?
+expr 13: (ab)+(cd)*(ef)?
 tree:   (((ab)+(cd)*)(ef)?)
+augmnt: ((((ab)+(cd)*)(ef)?)#)
 length: 2 to *
 -------------------- Examples --------------------
 ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
@@ -154,3 +169,4 @@ ex(2):  abef  ababef  abef  ab  abef  ababcd  abcdcd  ababcd  abcdcdef  abab
 ex(3):  ababab  abababcd  abef  ababcdcdef  abcdcdef  abef  ababef  ababab
 ex(5):  ababababef  ab  abcdcdcdef  abababababcdcdcdcdcd  ababababcdcdcd
 ex(8):  abababcdcdcdcdcdcdcdcd  abababcdcdcdcdcdcdcdcd  abababcdcdcdcdcdcdef
+14 expression(s) loaded

@@ -1,116 +1,119 @@
+Options: -R -g -i -l -v -I 0
 
-# irregular (i.e. illegal) expressions
+         # irregular (i.e. illegal) expressions
 
-regexp: )
-ERROR:  rx: unmatched ')': in ")"
+ERROR:   )
+    rx: unmatched ')': in ")"
 
-regexp: (
-ERROR:  rx: unclosed '(': in "("
+ERROR:   (
+    rx: unclosed '(': in "("
 
-regexp: abc)
-ERROR:  rx: unmatched ')': in "abc)"
+ERROR:   abc)
+    rx: unmatched ')': in "abc)"
 
-regexp: (def
-ERROR:  rx: unclosed '(': in "(def"
+ERROR:   (def
+    rx: unclosed '(': in "(def"
 
-regexp: g|h)
-ERROR:  rx: unmatched ')': in "g|h)"
+ERROR:   g|h)
+    rx: unmatched ')': in "g|h)"
 
-regexp: i|j|k)
-ERROR:  rx: unmatched ')': in "i|j|k)"
+ERROR:   i|j|k)
+    rx: unmatched ')': in "i|j|k)"
 
-regexp: (m|n
-ERROR:  rx: unclosed '(': in "(m|n"
+ERROR:   (m|n
+    rx: unclosed '(': in "(m|n"
 
-regexp: (o|p|q
-ERROR:  rx: unclosed '(': in "(o|p|q"
+ERROR:   (o|p|q
+    rx: unclosed '(': in "(o|p|q"
 
-regexp: \
-ERROR:  rx: '\' at end: in "\"
+ERROR:   \
+    rx: '\' at end: in "\"
 
-regexp: abc\
-ERROR:  rx: '\' at end: in "abc\"
+ERROR:   abc\
+    rx: '\' at end: in "abc\"
 
-regexp: [
-ERROR:  rx: unclosed '[': in "["
+ERROR:   [
+    rx: unclosed '[': in "["
 
-regexp: [^
-ERROR:  rx: unclosed '[': in "[^"
+ERROR:   [^
+    rx: unclosed '[': in "[^"
 
-regexp: []
-ERROR:  rx: unclosed '[': in "[]"
+ERROR:   []
+    rx: unclosed '[': in "[]"
 
-regexp: [^]
-ERROR:  rx: unclosed '[': in "[^]"
+ERROR:   [^]
+    rx: unclosed '[': in "[^]"
 
-regexp: [\]
-ERROR:  rx: unclosed '[': in "[\]"
+ERROR:   [\]
+    rx: unclosed '[': in "[\]"
 
-regexp: [abc
-ERROR:  rx: unclosed '[': in "[abc"
+ERROR:   [abc
+    rx: unclosed '[': in "[abc"
 
-regexp: [def\]
-ERROR:  rx: unclosed '[': in "[def\]"
+ERROR:   [def\]
+    rx: unclosed '[': in "[def\]"
 
-regexp: [t-f]
-ERROR:  rx: invalid range: in "[t-f]"
+ERROR:   [t-f]
+    rx: invalid range: in "[t-f]"
 
-regexp: a{z
-ERROR:  rx: malformed "{m,n}": in "a{z"
+ERROR:   a{z
+    rx: malformed "{m,n}": in "a{z"
 
-regexp: a{1z
-ERROR:  rx: malformed "{m,n}": in "a{1z"
+ERROR:   a{1z
+    rx: malformed "{m,n}": in "a{1z"
 
-regexp: a{1,z
-ERROR:  rx: malformed "{m,n}": in "a{1,z"
+ERROR:   a{1,z
+    rx: malformed "{m,n}": in "a{1,z"
 
-regexp: a{1,2z
-ERROR:  rx: malformed "{m,n}": in "a{1,2z"
+ERROR:   a{1,2z
+    rx: malformed "{m,n}": in "a{1,2z"
 
-regexp: a{1,2bz
-ERROR:  rx: malformed "{m,n}": in "a{1,2bz"
+ERROR:   a{1,2bz
+    rx: malformed "{m,n}": in "a{1,2bz"
 
-regexp: a{}z
-ERROR:  rx: malformed "{m,n}": in "a{}z"
+ERROR:   a{}z
+    rx: malformed "{m,n}": in "a{}z"
 
-regexp: a{,}z
-ERROR:  rx: malformed "{m,n}": in "a{,}z"
+ERROR:   a{,}z
+    rx: malformed "{m,n}": in "a{,}z"
 
-regexp: a{1,,2}z
-ERROR:  rx: malformed "{m,n}": in "a{1,,2}z"
+ERROR:   a{1,,2}z
+    rx: malformed "{m,n}": in "a{1,,2}z"
 
-regexp: a{,2}z
-ERROR:  rx: malformed "{m,n}": in "a{,2}z"
+ERROR:   a{,2}z
+    rx: malformed "{m,n}": in "a{,2}z"
 
-regexp: a{2,1}z
-ERROR:  rx: malformed "{m,n}": in "a{2,1}z"
+ERROR:   a{2,1}z
+    rx: malformed "{m,n}": in "a{2,1}z"
 
-regexp: a{p,3}z
-ERROR:  rx: malformed "{m,n}": in "a{p,3}z"
+ERROR:   a{p,3}z
+    rx: malformed "{m,n}": in "a{p,3}z"
 
-regexp: a{4,q}z
-ERROR:  rx: malformed "{m,n}": in "a{4,q}z"
+ERROR:   a{4,q}z
+    rx: malformed "{m,n}": in "a{4,q}z"
 
-regexp: a{x,y}z
-ERROR:  rx: malformed "{m,n}": in "a{x,y}z"
+ERROR:   a{x,y}z
+    rx: malformed "{m,n}": in "a{x,y}z"
 
-regexp: a{x}z
-ERROR:  rx: malformed "{m,n}": in "a{x}z"
+ERROR:   a{x}z
+    rx: malformed "{m,n}": in "a{x}z"
 
-regexp: a{xyzzy}z
-ERROR:  rx: malformed "{m,n}": in "a{xyzzy}z"
+ERROR:   a{xyzzy}z
+    rx: malformed "{m,n}": in "a{xyzzy}z"
 
-regexp: a++
-ERROR:  rx: multiple adjacent duplication symbols: in "a++"
+ERROR:   a++
+    rx: multiple adjacent duplication symbols: in "a++"
 
-regexp: b**
-ERROR:  rx: multiple adjacent duplication symbols: in "b**"
+ERROR:   b**
+    rx: multiple adjacent duplication symbols: in "b**"
 
-regexp: c??
-ERROR:  rx: prefer-fewer '?' unimplemented: in "c??"
+ERROR:   c??
+    rx: prefer-fewer '?' unimplemented: in "c??"
 
-regexp: d{2}{3}
-ERROR:  rx: multiple adjacent duplication symbols: in "d{2}{3}"
+ERROR:   d{2}{3}
+    rx: multiple adjacent duplication symbols: in "d{2}{3}"
 
-regexp: e{5}?
-ERROR:  rx: prefer-fewer '?' unimplemented: in "e{5}?"
+ERROR:   e{5}?
+    rx: prefer-fewer '?' unimplemented: in "e{5}?"
+0 expression(s) loaded
+(38 expression(s) rejected)

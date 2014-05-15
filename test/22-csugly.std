@@ -1,8 +1,10 @@
+Options: -R -g -i -l -v -I 0
 
-# ugly but legal cset (bracket expression) forms
+         # ugly but legal cset (bracket expression) forms
 
-regexp: [-]
+expr 0: [-]
 tree:   -
+augmnt: (-#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
@@ -12,8 +14,9 @@ ex(3):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(5):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(8):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
-regexp: [-x]
+expr 1: [-x]
 tree:   [x-]
+augmnt: ([x-]#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  x  -  x  -  -  -  x  -  x  x  x  x  x  -  -  x  -  -  -  -  x  -  x  x
@@ -23,8 +26,9 @@ ex(3):  x  x  -  x  -  -  -  x  -  -  -  -  -  -  x  -  x  -  -  -  -  -  -  -
 ex(5):  x  -  x  x  -  x  x  -  x  -  x  -  -  x  -  x  -  x  x  -  -  -  -  -
 ex(8):  -  x  x  -  x  x  x  x  x  -  -  -  x  -  -  x  x  x  -  x  -  x  x  -
 
-regexp: [x-]
+expr 2: [x-]
 tree:   [x-]
+augmnt: ([x-]#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  x  -  x  -  -  -  x  -  x  x  x  x  x  -  -  x  -  -  -  -  x  -  x  x
@@ -34,8 +38,9 @@ ex(3):  x  x  -  x  -  -  -  x  -  -  -  -  -  -  x  -  x  -  -  -  -  -  -  -
 ex(5):  x  -  x  x  -  x  x  -  x  -  x  -  -  x  -  x  -  x  x  -  -  -  -  -
 ex(8):  -  x  x  -  x  x  x  x  x  -  -  -  x  -  -  x  x  x  -  x  -  x  x  -
 
-regexp: [[x]
+expr 3: [[x]
 tree:   [[x]
+augmnt: ([[x]#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  [  x  x  [  [  [  x  x  x  [  x  x  [  x  [  [  [  x  [  [  x  x  x  x
@@ -45,8 +50,9 @@ ex(3):  [  x  x  x  x  x  x  [  [  x  x  [  [  x  [  x  [  x  [  x  [  x  [  x
 ex(5):  [  [  x  x  x  [  x  x  x  x  x  x  [  x  [  x  [  x  [  [  x  x  [  [
 ex(8):  [  [  x  x  x  x  x  [  x  [  [  x  x  [  x  x  x  x  [  x  x  x  x  [
 
-regexp: [[x-]
+expr 4: [[x-]
 tree:   [[x-]
+augmnt: ([[x-]#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  x  -  x  -  [  [  [  -  x  x  x  x  x  [  -  x  [  [  -  -  x  -  x  x
@@ -56,8 +62,9 @@ ex(3):  x  x  -  [  -  -  -  x  [  -  [  [  x  x  -  [  x  -  -  -  [  x  -  x
 ex(5):  [  x  [  -  [  x  [  -  [  [  x  -  -  x  [  x  -  [  -  -  -  -  [  x
 ex(8):  -  x  -  [  x  [  x  x  [  -  -  x  [  -  [  -  x  -  x  -  x  x  x  x
 
-regexp: []x]
+expr 5: []x]
 tree:   []x]
+augmnt: ([]x]#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  x  x  x  x  ]  ]  ]  x  x  x  ]  x  x  x  ]  ]  ]  ]  x  ]  x  ]  x  ]
@@ -67,8 +74,9 @@ ex(3):  x  x  x  ]  x  x  x  ]  x  ]  x  x  ]  ]  x  x  ]  x  x  x  ]  ]  ]  x
 ex(5):  ]  x  ]  ]  x  x  ]  ]  ]  x  x  ]  x  ]  x  ]  ]  x  x  ]  ]  ]  x  x
 ex(8):  x  ]  ]  x  ]  ]  ]  x  x  ]  x  ]  x  x  ]  x  ]  x  ]  ]  x  x  x  x
 
-regexp: []x-]
+expr 6: []x-]
 tree:   []x-]
+augmnt: ([]x-]#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  ]  -  x  -  ]  -  x  -  x  x  x  x  x  -  -  x  ]  ]  -  ]  x  ]  x  x
@@ -78,8 +86,9 @@ ex(3):  ]  x  ]  -  ]  -  -  -  x  ]  ]  -  -  -  ]  ]  -  x  -  -  -  ]  ]  -
 ex(5):  ]  x  -  ]  x  -  ]  x  -  ]  ]  x  -  -  x  -  x  -  x  x  -  ]  -  -
 ex(8):  -  -  ]  x  -  ]  x  x  ]  x  -  -  -  ]  -  -  x  ]  x  ]  x  -  x  x
 
-regexp: []x[-]
+expr 7: []x[-]
 tree:   [][x-]
+augmnt: ([][x-]#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  ]  -  x  -  ]  [  [  -  x  x  x  x  x  [  -  x  [  ]  -  ]  x  ]  x  x
@@ -89,8 +98,9 @@ ex(3):  ]  x  ]  -  [  -  -  -  x  ]  ]  [  [  x  x  -  [  ]  -  -  -  [  ]  -
 ex(5):  ]  ]  ]  ]  -  ]  ]  [  -  [  ]  x  -  -  x  [  x  -  [  -  -  ]  -  [
 ex(8):  x  -  x  -  [  ]  [  ]  ]  [  ]  ]  ]  [  -  ]  -  x  ]  ]  -  x  ]  ]
 
-regexp: [][]
+expr 8: [][]
 tree:   [][]
+augmnt: ([][]#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  [  [  ]  ]  ]  ]  [  [  [  ]  ]  [  [  [  ]  ]  [  ]  [  ]  [  ]  [  [
@@ -99,3 +109,4 @@ ex(2):  [  ]  [  [  ]  [  [  ]  [  [  ]  [  [  [  [  ]  ]  [  ]  ]  [  [  ]  ]
 ex(3):  ]  [  [  [  ]  ]  ]  ]  [  [  [  ]  ]  ]  [  [  [  [  [  ]  ]  [  [  [
 ex(5):  ]  [  [  [  [  [  [  ]  ]  [  [  [  [  [  ]  ]  [  ]  ]  [  [  ]  ]  ]
 ex(8):  [  ]  [  ]  ]  [  ]  ]  [  [  [  [  ]  [  ]  [  ]  [  [  ]  [  [  [  [
+9 expression(s) loaded

@@ -25,6 +25,7 @@ rxq:	.FORCE;  go install ${PKG}/rxq && cd test && runtest.sh *.rxq
 rxr:	.FORCE;  go install ${PKG}/rxr && cd test && runtest.sh *.rx
 rxv:	.FORCE;  go install ${PKG}/rxr && cd test && runtest.sh *.rxv
 rxx:	.FORCE;  go install ${PKG}/rxx && cd test && runtest.sh *.rxx
+rxplor:	.FORCE;  go install ${PKG}/rxplor && cd test && runtest.sh *.rx *.rx[vd]
 questions:	.FORCE;  go install ${PKG}/questions
 
 #  "make test" runs unit tests and the shell-based tests

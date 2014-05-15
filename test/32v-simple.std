@@ -1,7 +1,8 @@
+Options: -R -d -g -h -i -l -n -p -v -I 0
 
-# source not recorded
+         # source not recorded
 
-regexp: C(AC|B)D
+expr 0: C(AC|B)D
 tree:   ((C((AC)|B))D)
 augmnt: (((C((AC)|B))D)#)
 length: 3 to 4
@@ -34,7 +35,7 @@ p2. C => { 4 }
 p3. B => { 4 }
 p4. D => { 5 }
 p5. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 } [C]:s1
 s1. { p1 p3 } [A]:s2 [B]:s3
 s2. { p2 } [C]:s3
@@ -46,10 +47,12 @@ s1# { p5 }
 s2. { p4 } [D]:s1
 s3. { p2 } [C]:s2
 s4. { p1 p3 } [B]:s2 [A]:s3
+---------------- Examples from DFA ---------------
+s1:  CBD
 
-# Dragon2: automata example
+         # Dragon2: automata example
 
-regexp: (a|b)*abb
+expr 1: (a|b)*abb
 tree:   ((((a|b)*a)b)b)
 augmnt: (((((a|b)*a)b)b)#)
 length: 3 to *
@@ -83,7 +86,7 @@ p2. a => { 3 }
 p3. b => { 4 }
 p4. b => { 5 }
 p5. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 p1 p2 } [b]:s0 [a]:s1
 s1. { p0 p1 p2 p3 } [a]:s1 [b]:s2
 s2. { p0 p1 p2 p4 } [a]:s1 [b]:s3
@@ -93,10 +96,12 @@ s0. { p0 p1 p2 } [b]:s0 [a]:s3
 s1# { p0 p1 p2 p5 } [b]:s0 [a]:s3
 s2. { p0 p1 p2 p4 } [b]:s1 [a]:s3
 s3. { p0 p1 p2 p3 } [b]:s2 [a]:s3
+---------------- Examples from DFA ---------------
+s1:  abb
 
-# Sedgewick: genome marker
+         # Sedgewick: genome marker
 
-regexp: gcg(cgg|agg)*ctg
+expr 2: gcg(cgg|agg)*ctg
 tree:   ((((((gc)g)(((cg)g)|((ag)g))*)c)t)g)
 augmnt: (((((((gc)g)(((cg)g)|((ag)g))*)c)t)g)#)
 length: 6 to *
@@ -151,7 +156,7 @@ p9. c => { 10 }
 p10. t => { 11 }
 p11. g => { 12 }
 p12. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 } [g]:s1
 s1. { p1 } [c]:s2
 s2. { p2 } [g]:s3
@@ -171,10 +176,12 @@ s4. { p3 p6 p9 } [c]:s3 [a]:s6
 s5. { p2 p5 p8 } [g]:s4
 s6. { p7 } [g]:s5
 s7. { p1 } [c]:s5
+---------------- Examples from DFA ---------------
+s1:  gcgctg
 
-# Sedgewick: multiples of 3, in binary
+         # Sedgewick: multiples of 3, in binary
 
-regexp: (0|1(01*0)*1)*
+expr 3: (0|1(01*0)*1)*
 tree:   (0|((1((01*)0)*)1))*
 augmnt: ((0|((1((01*)0)*)1))*#)
 length: 0 to *
@@ -213,7 +220,7 @@ p3. 1 => { 3 4 }
 p4. 0 => { 2 5 }
 p5. 1 => { 0 1 6 }
 p6. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0# { p0 p1 p6 } [0]:s0 [1]:s1
 s1. { p2 p5 } [1]:s0 [0]:s2
 s2. { p3 p4 } [0]:s1 [1]:s2
@@ -221,10 +228,12 @@ s2. { p3 p4 } [0]:s1 [1]:s2
 s0# { p0 p1 p6 } [0]:s0 [1]:s1
 s1. { p2 p5 } [1]:s0 [0]:s2
 s2. { p3 p4 } [0]:s1 [1]:s2
+---------------- Examples from DFA ---------------
+s0:  
 
-# A simple expr that had problems minimizing
+         # A simple expr that had problems minimizing
 
-regexp: (10)*|ac|dc
+expr 4: (10)*|ac|dc
 tree:   ((10)*|(ac)|(dc))
 augmnt: (((10)*|(ac)|(dc))#)
 length: 0 to *
@@ -260,7 +269,7 @@ p3. c => { 6 }
 p4. d => { 5 }
 p5. c => { 6 }
 p6. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0# { p0 p2 p4 p6 } [1]:s1 [a]:s2 [d]:s3
 s1. { p1 } [0]:s4
 s2. { p3 } [c]:s5
@@ -273,10 +282,14 @@ s1. { p1 } [0]:s3
 s2. { p3 p5 } [c]:s4
 s3# { p0 p6 } [1]:s1
 s4# { p6 }
+---------------- Examples from DFA ---------------
+s0:  
+s3:  10
+s4:  ac
 
-# Strings without repeating chars (alphabet size 2)
+         # Strings without repeating chars (alphabet size 2)
 
-regexp: a?(ba)*b?
+expr 5: a?(ba)*b?
 tree:   ((a?(ba)*)b?)
 augmnt: (((a?(ba)*)b?)#)
 length: 0 to *
@@ -309,7 +322,7 @@ p1. b => { 2 }
 p2. a => { 1 3 4 }
 p3. b => { 4 }
 p4. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0# { p0 p1 p3 p4 } [a]:s1 [b]:s2
 s1# { p1 p3 p4 } [b]:s2
 s2# { p2 p4 } [a]:s1
@@ -317,10 +330,14 @@ s2# { p2 p4 } [a]:s1
 s0# { p0 p1 p3 p4 } [a]:s1 [b]:s2
 s1# { p1 p3 p4 } [b]:s2
 s2# { p2 p4 } [a]:s1
+---------------- Examples from DFA ---------------
+s0:  
+s1:  a
+s2:  b
 
-# This expr uncovered TWO minimization bugs
+         # This expr uncovered TWO minimization bugs
 
-regexp: a(ba)*b?|b(ab)*a?
+expr 6: a(ba)*b?|b(ab)*a?
 tree:   (((a(ba)*)b?)|((b(ab)*)a?))
 augmnt: ((((a(ba)*)b?)|((b(ab)*)a?))#)
 length: 1 to *
@@ -366,7 +383,7 @@ p5. a => { 6 }
 p6. b => { 5 7 8 }
 p7. a => { 8 }
 p8. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 p4 } [a]:s1 [b]:s2
 s1# { p1 p3 p8 } [b]:s3
 s2# { p5 p7 p8 } [a]:s4
@@ -376,10 +393,13 @@ s4# { p6 p8 } [b]:s2
 s0. { p0 p4 } [a]:s1 [b]:s2
 s1# { p1 p3 p6 p8 } [b]:s2
 s2# { p2 p5 p7 p8 } [a]:s1
+---------------- Examples from DFA ---------------
+s1:  a
+s2:  b
 
-# Experiments with word construction
+         # Experiments with word construction
 
-regexp: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
+expr 7: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
 tree:   ((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])
 augmnt: (((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])#)
 length: 3 to 5
@@ -421,7 +441,7 @@ p5. e => { 6 }
 p6. e => { 7 }
 p7. [dmnt] => { 8 }
 p8. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 } [bcfpt]:s1
 s1. { p1 p2 p3 p5 } [aiu]:s2 [e]:s3 [lr]:s4 [o]:s5
 s2. { p7 } [dmnt]:s6
@@ -437,8 +457,10 @@ s3. { p1 p2 p3 p5 } [aiu]:s2 [e]:s4 [o]:s5 [lr]:s6
 s4. { p6 p7 } [dmnt]:s1 [e]:s2
 s5. { p4 p7 } [dmnt]:s1 [o]:s2
 s6. { p2 p3 p5 } [aiu]:s2 [e]:s4 [o]:s5
+---------------- Examples from DFA ---------------
+s1:  fum
 
-regexp: W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
+expr 8: W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
 tree:   ((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))
 augmnt: (((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))#)
 length: 7 to 10
@@ -581,7 +603,7 @@ p42. o => { 43 }
 p43. l => { 44 }
 p44. d => { 45 }
 p45. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 } [W]:s1
 s1. { p1 p4 p7 p9 p11 p14 } [a]:s2 [e]:s3 [h]:s4 [i]:s5
 s2. { p8 p15 } [lt]:s6
@@ -640,12 +662,14 @@ s22. { p20 p39 } [r]:s21
 s23. { p38 } [a]:s22
 s24. { p42 } [o]:s25
 s25. { p43 } [l]:s21
+---------------- Examples from DFA ---------------
+s1:  Walesby
 
-# an example that showed the move-while-distinguishing minimization bug
+         # an example that showed the move-while-distinguishing minimization bug
 
-# originally from http://regexlib.com/REDetails.aspx?regexp_id=654
+         # originally from http://regexlib.com/REDetails.aspx?regexp_id=654
 
-regexp: ^([A-Za-z0-9]\s?)+([,]\s?([A-Za-z0-9]\s?)+)*$
+expr 9: ^([A-Za-z0-9]\s?)+([,]\s?([A-Za-z0-9]\s?)+)*$
 tree:   (([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)
 augmnt: ((([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)#)
 length: 1 to *
@@ -687,7 +711,7 @@ p3. [\t-\r ] => { 4 }
 p4. [0-9A-Za-z] => { 2 4 5 6 }
 p5. [\t-\r ] => { 2 4 6 }
 p6. # => { }
-------------------- Initial DFA ------------------
+----------------- Unoptimized DFA ----------------
 s0. { p0 } [0-9A-Za-z]:s1
 s1# { p0 p1 p2 p6 } [0-9A-Za-z]:s1 [\t-\r ]:s2 [,]:s3
 s2# { p0 p2 p6 } [0-9A-Za-z]:s1 [,]:s3
@@ -700,3 +724,7 @@ s0. { p0 p4 } [0-9A-Za-z]:s1
 s1# { p0 p1 p2 p4 p5 p6 } [0-9A-Za-z]:s1 [,]:s2 [\t-\r ]:s3
 s2. { p3 p4 } [\t-\r ]:s0 [0-9A-Za-z]:s1
 s3# { p0 p2 p4 p6 } [0-9A-Za-z]:s1 [,]:s2
+---------------- Examples from DFA ---------------
+s1:  o
+s3:  o 
+10 expression(s) loaded

@@ -1,8 +1,10 @@
+Options: -R -g -i -l -v -I 0
 
-# words
+         # words
 
-regexp: [a-zA-Z][a-z]+
+expr 0: [a-zA-Z][a-z]+
 tree:   ([A-Za-z][a-z]+)
+augmnt: (([A-Za-z][a-z]+)#)
 length: 2 to *
 -------------------- Examples --------------------
 ex(0):  mu  Py  bi  Jz  Ga  Kb  ve  Nn  Uo  Yp  Ei  in  Dy  Bw  de  Zs  ai  Fg
@@ -12,8 +14,9 @@ ex(3):  Plt  rfid  yqz  Uj  Sygk  ifo  kkbe  segz  hulh  zds  aj  Tqw  ec  Tkky
 ex(5):  Hgdk  lcour  mr  sa  Wye  vt  Nowykr  Gnaxf  lnz  Zdy  Czciy  wcuz  as
 ex(8):  jnfu  vzedtcbx  Eqaxuclp  Hsgpbm  Lyy  Vbfieffat  rhrpoa  Atb
 
-regexp: [a-zA-Z][a-z]*
+expr 1: [a-zA-Z][a-z]*
 tree:   ([A-Za-z][a-z]*)
+augmnt: (([A-Za-z][a-z]*)#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
@@ -23,8 +26,9 @@ ex(3):  el  fn  Oi  C  buyj  Sygk  ifo  k  me  s  mzb  J  Hn  ms  ajj  Gws  l
 ex(5):  arq  Okx  Udk  lcou  dirda  lww  Qjc  nj  uykrg  raxf  lnzpk  jyazc  q
 ex(8):  Yrz  Ibe  yvpgnfu  vzedtcbxa  Aaxuclp  Hsgpbmhxy  q  vbfief  ltpgh  hoa
 
-regexp: [a-zA-Z][a-z]*('[a-z]+)?
+expr 2: [a-zA-Z][a-z]*('[a-z]+)?
 tree:   (([A-Za-z][a-z]*)('[a-z]+)?)
+augmnt: ((([A-Za-z][a-z]*)('[a-z]+)?)#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
@@ -34,10 +38,11 @@ ex(3):  ecnw  yyr  O  Hgd  lc  Oi  ba'wy  Yc'o  Zrg'x  psnz'yya  xiy  H  dz
 ex(5):  vze'bxasq  Muclpm  Egpbm'yn  vbfief'pghrp  z'gddgq  eqkyz'puc  Nqssn
 ex(8):  p  W  Fnsggx  Iruhmnxdx  V  Pijx  uxoe'y  Ix'iewqac  Ranuou'basj
 
-# phrases
+         # phrases
 
-regexp: [a-zA-Z ]+
+expr 3: [a-zA-Z ]+
 tree:   [ A-Za-z]+
+augmnt: ([ A-Za-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  V  h  D  G  x  v  D  F  K  e  G  T  Y  N  p  S  Z  a  p  D  l  X  j  a
@@ -47,10 +52,11 @@ ex(3):  NtG  sO   HIY  z    Zr  Uy  BGQ  YrZ  Jv  P  n  Uz  YQi  DQ  QZ  DN  aE
 ex(5):  E  yK  vvH  lQxy  aDL   TF  SyEm  BR  V  gWpYo  NFV  aY  shqM  QsJGa  l
 ex(8):  Oln   fOKf tOh  qFnMGJqZ  L D  z  vpuJ  JkakbRn  Srv  B  NkSRGsM  CZo
 
-# identifiers
+         # identifiers
 
-regexp: [a-zA-Z0-9]+
+expr 4: [a-zA-Z0-9]+
 tree:   [0-9A-Za-z]+
+augmnt: ([0-9A-Za-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  H  W  L  O  q  V  2  o  3  B  O  z  c  l  I  u  q  B  Y  N  J  T  d  m
@@ -60,8 +66,9 @@ ex(3):  B  i  e  xPU  7  W  bZJ  r0  kFf  Fq  u  Ok  vU  0t  k  cY  zo  wy  Iwd
 ex(5):  2af  wfdG  vm  Bn8e  n  SaG  tNd  OBDQv  3BUD  2vDOY  niXE  IZlxf  oQoC
 ex(8):  pVLh  9  s  cDR45  t  g  N3YyEse  y0RnUHr5  XS3EqXl  Xr  rd  qhY4  Y
 
-regexp: [a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+
+expr 5: [a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+
 tree:   ([0-9A-Za-z]+(.[0-9A-Za-z]+)+)
+augmnt: (([0-9A-Za-z]+(.[0-9A-Za-z]+)+)#)
 length: 3 to *
 -------------------- Examples --------------------
 ex(0):  H.L  O.V  2.3  B.k  z.l  I.q  B.N  J.d  m.i  V.p  e.b  9.U  u.e  C.B
@@ -71,10 +78,11 @@ ex(3):  5nA.FtN.OBD.33  U.N.OYt.X  a9I.x.o  o.mV.pVL  f9.c.45  tig.Y
 ex(5):  3.l.r  rd.Y4.dL  u6Iz.bZ  ak.K98.yz5.AxLM.HALxO.b  Y.cmxW
 ex(8):  Iwsn.6zTcJd.3SfgTek.JNF.goNI
 
-# ssn
+         # ssn
 
-regexp: [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]
+expr 6: [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]
 tree:   (((((((((([0-9][0-9])[0-9])-)[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])
+augmnt: ((((((((((([0-9][0-9])[0-9])-)[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])#)
 length: 11 to 11
 -------------------- Examples --------------------
 ex(0):  443-56-7888  798-61-0458  601-20-2785  483-09-7468  978-27-8429
@@ -84,10 +92,11 @@ ex(3):  802-09-2865  241-53-8832  093-50-6827  079-08-0743  383-36-5363
 ex(5):  599-43-0053  631-98-8174  378-46-6059  260-69-0116  215-19-6738
 ex(8):  947-24-2284  593-72-9644  232-90-5107  336-74-8669  992-63-8792
 
-# telno
+         # telno
 
-regexp: \([0-9][0-9][0-9]\)[2-9][0-9][0-9]-[0-9][0-9][0-9][0-9]
+expr 7: \([0-9][0-9][0-9]\)[2-9][0-9][0-9]-[0-9][0-9][0-9][0-9]
 tree:   ((((((((((((([0-9])[0-9])[0-9])))[2-9])[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])
+augmnt: (((((((((((((([0-9])[0-9])[0-9])))[2-9])[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])#)
 length: 13 to 13
 -------------------- Examples --------------------
 ex(0):  (436)277-8879  (261)445-6016  (012)654-3009  (746)978-2708
@@ -97,10 +106,11 @@ ex(3):  (238)620-8286  (241)330-8320  (305)268-7079  (080)543-8393
 ex(5):  (746)390-3200  (363)898-8174  (780)656-5926  (069)611-2151
 ex(8):  (021)747-2482  (845)377-6964  (232)505-1073  (617)386-9992
 
-# www 
+         # www 
 
-regexp: (http://|)(www\.)?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+(/[-_\.\?a-zA-Z0-9]*)*
+expr 8: (http://|)(www\.)?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+(/[-_\.\?a-zA-Z0-9]*)*
 tree:   (((((((((((ht)t)p):)/)/)|())(((ww)w).)?)[0-9A-Za-z]+)(.[0-9A-Za-z]+)+)(/[.0-9?A-Z_a-z-]*)*)
+augmnt: ((((((((((((ht)t)p):)/)/)|())(((ww)w).)?)[0-9A-Za-z]+)(.[0-9A-Za-z]+)+)(/[.0-9?A-Z_a-z-]*)*)#)
 length: 3 to *
 -------------------- Examples --------------------
 ex(0):  http://o.B  k.K  http://N.T  http://e.b  http://U.0  http://K.h
@@ -110,10 +120,11 @@ ex(3):  http://www.q.cXS///H  http://www.yu.rwb/b/03W
 ex(5):  http://fna6.Mgd.7/  www.as.wsnh7.zT.dk.OSf.T/6F
 ex(8):  http://Y.Mek.OB6r5/9GhQK/Cf48//hYTt1B5b/7b
 
-# email
+         # email
 
-regexp: [a-zA-Z][a-zA-Z0-9]*([-_.][a-zA-Z0-9]*)*@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,}
+expr 9: [a-zA-Z][a-zA-Z0-9]*([-_.][a-zA-Z0-9]*)*@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,}
 tree:   ((((([A-Za-z][0-9A-Za-z]*)([._-][0-9A-Za-z]*)*)@)([0-9A-Za-z]+.)+)[0-9A-Za-z]{2,})
+augmnt: (((((([A-Za-z][0-9A-Za-z]*)([._-][0-9A-Za-z]*)*)@)([0-9A-Za-z]+.)+)([0-9A-Za-z][0-9A-Za-z]+))#)
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  m@L.qV  D@3.Oz  o@b.uq  E@N.Td  w@U.VD  A@A.zW  D@c.CU  A@x.bT  U@0.IM
@@ -122,3 +133,4 @@ ex(2):  b9_c.N@y.f.dn  hZ2_fd@vm.n.en  aaG.@BD.v3  dD.D-ni@9I.l.foQ  JM@G.L.fg
 ex(3):  BCe_RnU_cXS_@aHX.rd6.h4QY  Zyu6@wbZ.k4.K9  e.Rlx-1@LxO.5XYl
 ex(5):  u_g_n_6zTcJ__fg@kWK.F.go  LipJsv.QJe.kMyR3@FKuG.D.cfo.mYXtd3
 ex(8):  ewcME.5OY-EGkAe0vo@G.JW3S4FP.rAqm1l.hC6Kc.x3o
+10 expression(s) loaded

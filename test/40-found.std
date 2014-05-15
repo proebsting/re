@@ -1,12 +1,14 @@
+Options: -R -g -i -l -v -I 0
 
-# Miscellaneous samples from the web
+         # Miscellaneous samples from the web
 
-#
-#D: (main page) "any email address"
-#U: http://www.regular-expressions.info/
+         #
 
-regexp: [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
+         #D: (main page) "any email address"
+         #U: http://www.regular-expressions.info/
+expr 0: [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
 tree:   (((([%+.0-9A-Z_-]+@)[.0-9A-Z-]+).)[A-Z]{2,4})
+augmnt: ((((([%+.0-9A-Z_-]+@)[.0-9A-Z-]+).)((([A-Z][A-Z])[A-Z]?)[A-Z]?))#)
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  V@B.HI  Y@1.KB  K@N.OC  L@K.CK  Z@Z.VW  E@E.GZ  _@W.HY  E@G.AE  Z@..UE
@@ -15,11 +17,12 @@ ex(2):  DO@R.JOY  S@C..OKE  -@B4.LHKS  2@C7.LCW  5@OM.KX  OP@7.IID  O4@7.CTJ
 ex(3):  Z@9.AZ  9@Q.RZ  JXS@XHI.CZT  -T@C.UCP  .@46-.XYF  7JD@JO.PGRO
 ex(5):  91I6@AXH.SNP  G@Z.VSF  ._C@LKZWK.RUMX  0197R@MJF.7.DT  2_@795YE.GAU
 ex(8):  +KXE8@-.LH  T3F@LBF4-LG.ET  -MXG1.4@OCP2.FOF  W.5LSFAG@KO61TB.IOAI
-#D: (final email example)
-#U: http://www.regular-expressions.info/email.html
 
-regexp: [a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
+         #D: (final email example)
+         #U: http://www.regular-expressions.info/email.html
+expr 1: [a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
 tree:   (((([!#-'*+/-9=?^-~-]+(.[!#-'*+/-9=?^-~-]+)*)@)(([0-9a-z]([0-9a-z-]*[0-9a-z])?).)+)([A-Z]{2}|((co)m)|((or)g)|((ne)t)|((ed)u)|((go)v)|((mi)l)|((bi)z)|(((in)f)o)|(((mo)b)i)|(((na)m)e)|(((ae)r)o)|(((as)i)a)|(((jo)b)s)|(((((mu)s)e)u)m)))
+augmnt: ((((([!#-'*+/-9=?^-~-]+(.[!#-'*+/-9=?^-~-]+)*)@)(([0-9a-z]([0-9a-z-]*[0-9a-z])?).)+)(([A-Z][A-Z])|((co)m)|((or)g)|((ne)t)|((ed)u)|((go)v)|((mi)l)|((bi)z)|(((in)f)o)|(((mo)b)i)|(((na)m)e)|(((ae)r)o)|(((as)i)a)|(((jo)b)s)|(((((mu)s)e)u)m)))#)
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  k@9.biz  w@k.asia  9@k.aero  u@9.jobs  '@e.biz  8@k.edu  s@n.info
@@ -28,11 +31,12 @@ ex(2):  r8@f.f8n.info  n.{.^@5.g.net  '.*.+3@x.net  4x./y.^@na7.g.net
 ex(3):  9?!@q9eky.mil  xb`.k.&t_@x.a.y.edu  !jz.hu@vn5.e.org
 ex(5):  62.7g.$9^.1.y~@24.qdap9ru.jm9o.m.name
 ex(8):  p-@v1eb07k.mobi  3c8pp4m.8~.!??}.jk$'3=c.{.j-#@7.0.7q8j.vlttixf.0.com
-#D: (telno "Yecchhh")
-#U: http://compilers.iecc.com/comparch/article/01-10-072
 
-regexp: (\([0-9]{3}\)[ ]{1}){0,1}[0-9]{3}\-[0-9]{4}
+         #D: (telno "Yecchhh")
+         #U: http://compilers.iecc.com/comparch/article/01-10-072
+expr 2: (\([0-9]{3}\)[ ]{1}){0,1}[0-9]{3}\-[0-9]{4}
 tree:   ((((((([0-9]{3}))) )?[0-9]{3})-)[0-9]{4})
+augmnt: (((((((((([0-9][0-9])[0-9])))) )?(([0-9][0-9])[0-9]))-)((([0-9][0-9])[0-9])[0-9]))#)
 length: 8 to 14
 -------------------- Examples --------------------
 ex(0):  443-5677  888-9826  100-5860  162-1278  548-0094  746-9780  270-4290
@@ -41,11 +45,12 @@ ex(2):  497-1703  714-0780  (908) 410-7685  462-7932  (981) 091-6885  380-2098
 ex(3):  (883) 930-0668  707-9080  743-8393  753-3488  (440) 659-0432  053-3189
 ex(5):  465-0592  006-9011  215-1986  (891) 516-2199  772-8228  593-7269
 ex(8):  (107) 617-7866  (926) 687-2161  (527) 760-9419  128-9646
-#D: (a reformulation)
-#U: http://compilers.iecc.com/comparch/article/01-10-081
 
-regexp: (\(\d\d\d\) )?\d\d\d-\d\d\d\d
+         #D: (a reformulation)
+         #U: http://compilers.iecc.com/comparch/article/01-10-081
+expr 3: (\(\d\d\d\) )?\d\d\d-\d\d\d\d
 tree:   (((((((((((((([0-9])[0-9])[0-9]))) )?[0-9])[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])
+augmnt: ((((((((((((((([0-9])[0-9])[0-9]))) )?[0-9])[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])#)
 length: 8 to 14
 -------------------- Examples --------------------
 ex(0):  443-5677  888-9826  100-5860  162-1278  548-0094  746-9780  270-4290
@@ -54,3 +59,4 @@ ex(2):  497-1703  714-0780  (908) 410-7685  462-7932  (981) 091-6885  380-2098
 ex(3):  (883) 930-0668  707-9080  743-8393  753-3488  (440) 659-0432  053-3189
 ex(5):  465-0592  006-9011  215-1986  (891) 516-2199  772-8228  593-7269
 ex(8):  (107) 617-7866  (926) 687-2161  (527) 760-9419  128-9646
+4 expression(s) loaded

@@ -1,12 +1,14 @@
+Options: -R -g -i -l -v -I 0
 
-# RegExLib.com -- browse -- Email
+         # RegExLib.com -- browse -- Email
 
-#
+         #
 
-# 26. "Email validator that adheres directly to the specification"
+         # 26. "Email validator that adheres directly to the specification"
 
-regexp: ([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)
+expr 0: ([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)
 tree:   (((([.0-9A-Z_a-z-]+@)((((((([[0-9]{1,3}).)[0-9]{1,3}).)[0-9]{1,3}).)|([0-9A-Za-z-]+.)+))([A-Za-z]{2,4}|[0-9]{1,3}))]?)
+augmnt: ((((([.0-9A-Z_a-z-]+@)((((((([(([0-9][0-9]?)[0-9]?)).)(([0-9][0-9]?)[0-9]?)).)(([0-9][0-9]?)[0-9]?)).)|([0-9A-Za-z-]+.)+))(((([A-Za-z][A-Za-z])[A-Za-z]?)[A-Za-z]?)|(([0-9][0-9]?)[0-9]?)))]?)#)
 length: 5 to *
 -------------------- Examples --------------------
 ex(0):  c@y.JD  Q@[9.2.1.YB  9@[6.0.2.ZB  Z@[4.8.7.MF  k@[9.7.6.XQ  g@L.6
@@ -16,10 +18,11 @@ ex(3):  g00@[2.537.66.gKf]  9@D.MFN  DUM@S.JY.t.dhX  rdt@[719.0.64.qWUL
 ex(5):  kw8h@[83.23.024.vA  Z95@NA-V.2onf.EDHH.Q.Y.GZ]  6i@[64.3.9.30
 ex(8):  1fB0G4VF@[40.3.441.75  6Eg@[40.775.817.16]
 
-# 356. "my all-time favourite e-mail validator"
+         # 356. "my all-time favourite e-mail validator"
 
-regexp: (\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})
+expr 1: (\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})
 tree:   (((((((([0-9A-Z_a-z][.0-9A-Z_a-z-]*)[0-9A-Z_a-z])@)[0-9A-Z_a-z])[.0-9A-Z_a-z-]*)[0-9A-Z_a-z]).)[0-9A-Z_a-z]{2,3})
+augmnt: ((((((((([0-9A-Z_a-z][.0-9A-Z_a-z-]*)[0-9A-Z_a-z])@)[0-9A-Z_a-z])[.0-9A-Z_a-z-]*)[0-9A-Z_a-z]).)(([0-9A-Z_a-z][0-9A-Z_a-z])[0-9A-Z_a-z]?))#)
 length: 8 to *
 -------------------- Examples --------------------
 ex(0):  HW@Oq.s2  o3@_k.Kc  lI@qB.NJ  Td@ei.Dp  eA@zW.uc  eC@B0.Kb  Td@0K.hM
@@ -29,10 +32,11 @@ ex(3):  G_ah@9s.cD4  5t@gBzy.sey  0n@q-Dc.S3  ql@XDEy6.hYQ  YLy@6z.hw
 ex(5):  luIb1@HERp.bXl  ZvAfV7E@CnYgMDf.a_J  mJg@dt3ic.Rmo  hedg@wDh.k6
 ex(8):  TaY6FN@oso.Ip  swXVMMekq@knpUr3G.Rs  cHe5Y@tZ9.dkb  3ZVbc@5cREw.2l
 
-# 1012. "A short and sweet email address validator"
+         # 1012. "A short and sweet email address validator"
 
-regexp: ([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}
+expr 2: ([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}
 tree:   ((((([0-9A-Za-z]+[&+.;_amp-])*[0-9A-Za-z]+)@)([0-9A-Za-z-]+.)+)[A-Za-z]{2,6})
+augmnt: (((((([0-9A-Za-z]+[&+.;_amp-])*[0-9A-Za-z]+)@)([0-9A-Za-z-]+.)+)((((([A-Za-z][A-Za-z])[A-Za-z]?)[A-Za-z]?)[A-Za-z]?)[A-Za-z]?))#)
 length: 6 to *
 -------------------- Examples --------------------
 ex(0):  H@w.yJ  2@-.Dv  z@n.qY  q@5.jD  m@x.ZB  b@V.Dc  c@e.yM  K@I.Ut  0@B.oX
@@ -41,3 +45,4 @@ ex(2):  RVpfW.f@w.lQb  F.dk@yo.dmsM  n_E.N@l.x.lGbQo  f9-c@Zb.o.jwBj
 ex(3):  4QY+u6;hw_ak4@W.ucvj  z;A.p5_lZe@fV.sMnY  Vn;J@YKt.6.CuUP
 ex(5):  KJNFo-NIpJ;af@kw8h.apUr.zlGicV
 ex(8):  gkAe0voy@b.-nRFd.52eEVsV.BLkhE
+3 expression(s) loaded

@@ -1,17 +1,19 @@
+Options: -R -g -i -l -v -I 0
 
-# RegExLib.com -- browse -- Strings
+         # RegExLib.com -- browse -- Strings
 
-#
+         #
 
-# 535. Social Security numbers within allocated ranges
+         # 535. Social Security numbers within allocated ranges
 
-regexp: (?!000)([0-6]\d{2}|7([0-6]\d|7[012]))([ -]?)(?!00)\d\d\3(?!0000)\d{4}
-ERROR:  rx: '(?...' unimplemented: in "(?!000)([0-6]\d{2}|7([0-6]\d|7[012]))([ -]?)(?!00)\d\d\3(?!0000)\d{4}"
+ERROR:   (?!000)([0-6]\d{2}|7([0-6]\d|7[012]))([ -]?)(?!00)\d\d\3(?!0000)\d{4}
+    rx: '(?...' unimplemented: in "(?!000)([0-6]\d{2}|7([0-6]\d|7[012]))([ -]?)(?!00)\d\d\3(?!0000)\d{4}"
 
-# 672. GUID values
+         # 672. GUID values
 
-regexp: [{|\(]?[0-9a-fA-F]{8}[-]?([0-9a-fA-F]{4}[-]?){3}[0-9a-fA-F]{12}[\)|}]?
+expr 0: [{|\(]?[0-9a-fA-F]{8}[-]?([0-9a-fA-F]{4}[-]?){3}[0-9a-fA-F]{12}[\)|}]?
 tree:   ((((([({|]?[0-9A-Fa-f]{8})-?)([0-9A-Fa-f]{4}-?){3})[0-9A-Fa-f]{12})[)|}]?)
+augmnt: (((((([({|]?((((((([0-9A-Fa-f][0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f]))-?)(((((([0-9A-Fa-f][0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])-?)(((([0-9A-Fa-f][0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])-?))(((([0-9A-Fa-f][0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])-?)))((((((((((([0-9A-Fa-f][0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f])[0-9A-Fa-f]))[)|}]?)#)
 length: 32 to 38
 -------------------- Examples --------------------
 ex(0):  10AB18779cD8aafFADf5eDA1FF3Cd379  AbfD36EfccCd4B42AF9B9bcd5ADfeC19
@@ -21,15 +23,16 @@ ex(3):  FEb258ec-abA7-F0A41fa9-4F1f3aEEbee3)
 ex(5):  3a8E2DaF4CCd-af8e-8c589a1B5db90928}
 ex(8):  {03Ba3DDf-7e9FFD94-f0cD-D2a9B4dEa797}
 
-# 580. passwords length 8-20 with at least one digit, cannot start with digit
+         # 580. passwords length 8-20 with at least one digit, cannot start with digit
 
-regexp: (?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}
-ERROR:  rx: '(?...' unimplemented: in "(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}"
+ERROR:   (?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}
+    rx: '(?...' unimplemented: in "(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}"
 
-# 656. spam trap for pseudo-spellings of "Viagra"
+         # 656. spam trap for pseudo-spellings of "Viagra"
 
-regexp: [v,V,(\\/)](\W|)[i,I,1,l,L](\W|)[a,A,@,(\/\\)](\W|)[g,G](\W|)[r,R](\W|)[a,A,@,(\/\\))]
+expr 1: [v,V,(\\/)](\W|)[i,I,1,l,L](\W|)[a,A,@,(\/\\)](\W|)[g,G](\W|)[r,R](\W|)[a,A,@,(\/\\))]
 tree:   (((((((((([(),/V\v]([\x01-/:-@[-^`{-\u007f]|()))[,1ILil])([\x01-/:-@[-^`{-\u007f]|()))[(),/@A\a])([\x01-/:-@[-^`{-\u007f]|()))[,Gg])([\x01-/:-@[-^`{-\u007f]|()))[,Rr])([\x01-/:-@[-^`{-\u007f]|()))[(),/@A\a])
+augmnt: ((((((((((([(),/V\v]([\x01-/:-@[-^`{-\u007f]|()))[,1ILil])([\x01-/:-@[-^`{-\u007f]|()))[(),/@A\a])([\x01-/:-@[-^`{-\u007f]|()))[,Gg])([\x01-/:-@[-^`{-\u007f]|()))[,Rr])([\x01-/:-@[-^`{-\u007f]|()))[(),/@A\a])#)
 length: 6 to 11
 -------------------- Examples --------------------
 ex(0):  (i;(\\g<r=)  V`la#G:r\"A  /'I>A{gR~,  V1%\\?G<,>@  v]i,,,,A  )L/,]gr|,
@@ -39,10 +42,11 @@ ex(3):  ){i}\\{,\",(  )L$/',{,A  )I|(*G-r(  V=1&\\!G.,A  ,L\\@g,>a  //l\\/G$,:)
 ex(5):  v,#).GR$/  VI,gr@  )L/&g>R\\  v`i#,g]R[/  VL=\\^GR&)  v.,/],,/a
 ex(8):  /I@\\,,/  \\,!A\"g\",A  )),!(G+r)  ,;I'A#,^,{(  v%I),R/  /1 ),RA
 
-# 49. major credit cards (AmEx len 15, others len 16)
+         # 49. major credit cards (AmEx len 15, others len 16)
 
-regexp: ((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}
+expr 2: ((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}
 tree:   (((((((((4[0-9]{3})|((5[1-5])[0-9]{2})|(((60)1)1))-?)[0-9]{4})-?)[0-9]{4})-?)[0-9]{4})|((3[,47])[0-9]{13}))
+augmnt: ((((((((((4(([0-9][0-9])[0-9]))|((5[1-5])([0-9][0-9]))|(((60)1)1))-?)((([0-9][0-9])[0-9])[0-9]))-?)((([0-9][0-9])[0-9])[0-9]))-?)((([0-9][0-9])[0-9])[0-9]))|((3[,47])(((((((((((([0-9][0-9])[0-9])[0-9])[0-9])[0-9])[0-9])[0-9])[0-9])[0-9])[0-9])[0-9])[0-9])))#)
 length: 15 to 19
 -------------------- Examples --------------------
 ex(0):  4656778887982610  4860162012785483  5574689780270842  376407784390913
@@ -52,10 +56,11 @@ ex(3):  49903200-6318-3817  54045605-6006-0116  41196738-09510219
 ex(5):  6011-1905-07331747  4999663679211795  53761941-1287-4677
 ex(8):  42496073-35926256  3,6800994848273  43357214-14607342
 
-# 595. UK vehicle registration number from September 2001
+         # 595. UK vehicle registration number from September 2001
 
-regexp: ([A-HK-PRSVWY][A-HJ-PR-Y])\s?([0][2-9]|[1-9][0-9])\s?[A-HJ-PR-Z]{3}
+expr 3: ([A-HK-PRSVWY][A-HJ-PR-Y])\s?([0][2-9]|[1-9][0-9])\s?[A-HJ-PR-Z]{3}
 tree:   ((((([A-HK-PRSVWY][A-HJ-PR-Y])[\t-\r ]?)((0[2-9])|([1-9][0-9])))[\t-\r ]?)[A-HJ-PR-Z]{3})
+augmnt: (((((([A-HK-PRSVWY][A-HJ-PR-Y])[\t-\r ]?)((0[2-9])|([1-9][0-9])))[\t-\r ]?)(([A-HJ-PR-Z][A-HJ-PR-Z])[A-HJ-PR-Z]))#)
 length: 7 to 9
 -------------------- Examples --------------------
 ex(0):  YO25HZK  DS38EAN  AA06NNC  CU87EVW  DS07GZM  BD28UOH  AN05ENC  GE07MGP
@@ -64,3 +69,5 @@ ex(2):  NH06AEG  MJ 59DSH  EB06 NWK  MR32KXA  PS 06 ZDA  OG07TDJ  AN04 AXF
 ex(3):  SF 03 SBE  FF 07ZCZ  GH38PXU  PK 06PBM  WS 39EFF  RG21AMN  YJ72SKZ
 ex(5):  RD80 LKZ  DS14 KSV  YJ07GTR  WL59 TPU  RV34 YXO  NR 09 ZFL  KL08NUO
 ex(8):  FW 05 UUR  LS 02WLH  EX07 YGN  WU 43TSP  SC 05 WHZ  SS 75 LYX  EX 02RWO
+4 expression(s) loaded
+(2 expression(s) rejected)
