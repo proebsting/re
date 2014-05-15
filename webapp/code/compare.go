@@ -65,7 +65,8 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Compare Expressions")
 	fmt.Fprintf(w, "<P>%d expressions:\n", n)
 	for i, s := range elist {
-		fmt.Fprintf(w, "<P><B>e%d:</B> &nbsp; %s\n", i, hx(s))
+		fmt.Fprintf(w, "<P class=c%d><B>e%d:</B> &nbsp; %s\n",
+			i, i, hx(s))
 		tree, err := rx.Parse(s)
 		if !showerror(w, err) {
 			tlist = append(tlist, rx.Augment(tree, i))
@@ -98,22 +99,35 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, xlist []string) {
 	fmt.Fprintf(w, "<H2>Results</H2>\n")
 	fmt.Fprintf(w, "<TABLE>\n<TR>")
 	for i := 0; i < nexpr; i++ {
-		fmt.Fprintf(w, "<TH>e%d</TH>", i)
+		fmt.Fprintf(w, "<TH class=c%d>e%d</TH>", i, i)
 	}
-	fmt.Fprintf(w, "<TH>example</TH></TR>\n")
+	fmt.Fprintf(w, "<TH class=leftw>example</TH></TR>\n")
 	for _, s := range xlist {
 		if !seen[s] {
 			seen[s] = true
 			fmt.Fprintf(w, "<TR>")
 			aset := dfa.Accepts(s)
+			n := 0
+			e := -1
 			for i := 0; i < nexpr; i++ {
 				if aset.Test(i) {
-					fmt.Fprintf(w, "<TD>\u2713</TD>") // ck
+					n++
+					e = i
+					fmt.Fprintf(w,
+						"<TD class=c%d>\u2713</TD>",
+						i) // highlighted checkmark
 				} else {
 					fmt.Fprintf(w, "<TD>\u2013</TD>") // -
 				}
 			}
-			fmt.Fprintf(w, "<TD>%s</TD></TR>\n", hx(s))
+			if n == 1 {
+				fmt.Fprintf(w,
+					"<TD class=\"c%d leftw\">%s</TD></TR>\n",
+					e, hx(s))
+			} else {
+				fmt.Fprintf(w,
+					"<TD class=leftw>%s</TD></TR>\n", hx(s))
+			}
 		}
 	}
 	fmt.Fprintf(w, "</TABLE>\n")

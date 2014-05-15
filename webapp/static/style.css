@@ -20,10 +20,23 @@ UL, OL		{ margin-top: 0.4em; margin-bottom: 0.4em; }
 LI		{ margin-top: 0.2em; }
 
 TH, TD		{ padding-left: 0.4em; padding-right: 0.4em; }
-TH, TD		{ vertical-align: top; text-align: left; }
+TH, TD		{ vertical-align: top; text-align: center; }
+.leftw		{ text-align: left; border-left: 3px solid white; }
 
 A:link		{ background: white; color: #070; }
 A:visited	{ background: white; color: #040; }
 
 BUTTON.link	{ background: none; border: none; padding: 0; 
 		  font-size: 100%; color: #070; text-decoration: underline; }
+
+/* highlighting colors */
+.c0		{ background-color: #DEF; } /* indigo */
+.c1		{ background-color: #FEC; } /* peach */
+.c2		{ background-color: #DFC; } /* green */
+.c3		{ background-color: #FFE4FF; } /* magenta */
+.c4		{ background-color: #FFFF90; } /* yellow*/
+.c5		{ background-color: #AFF; } /* turquoise */
+.c6		{ background-color: #FBB; } /* red */
+.c7		{ background-color: #DBF; } /* violet */
+.c8		{ background-color: #8DF; } /* blue */
+.c9		{ background-color: #DDD; } /* gray */
