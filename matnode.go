@@ -2,10 +2,6 @@
 
 package rx
 
-import (
-	"unicode/utf8"
-)
-
 //  MatchNode is a leaf node that matches exactly one char from a given set.
 //  It generalizes the textbook leaf node that matches a particular char.
 //  A special MatchNode with an empty set represents an acceptance marker.
@@ -84,15 +80,11 @@ func (d *MatchNode) Example(s []byte, n int) []byte {
 	}
 }
 
-//  MatchNode.string returns a singleton character or a bracketed expression.
+//  MatchNode.String returns a singleton character or a bracketed expression.
 func (d *MatchNode) String() string {
 	if d.Cset.IsEmpty() {
 		return "#" // special "accept" node
-	}
-	s := d.Cset.Bracketed()
-	if utf8.RuneCountInString(s) == 3 {
-		return s[1 : len(s)-1] // abbreviate set of one char
 	} else {
-		return s
+		return d.Cset.Unbracketed()
 	}
 }

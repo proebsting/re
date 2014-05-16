@@ -74,7 +74,7 @@ func main() {
 	// generate graphs if requested
 	label := exprs[0].Expr
 	if len(exprs) > 1 {
-		label = fmt.Sprintf("(%d expressions)", len(exprs))
+		label = fmt.Sprintf("%d expressions", len(exprs))
 	}
 	if *val['N'] != "" {
 		rx.WriteGraph(*val['N'], func(w io.Writer) {
@@ -83,7 +83,7 @@ func main() {
 	}
 	if *val['D'] != "" {
 		rx.WriteGraph(*val['D'], func(w io.Writer) {
-			dfa.ToDot(w, label)
+			dfa.ToDot(w, "DFA: "+label)
 		})
 	}
 }

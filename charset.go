@@ -11,6 +11,7 @@ package rx
 import (
 	"math/rand"
 	"strconv"
+	"unicode/utf8"
 )
 
 //  Predefined global character sets.
@@ -84,6 +85,16 @@ func (b *BitSet) RandChar() rune {
 		c = low + ((c - low + stride) % span)
 	}
 	return rune(c)
+}
+
+//  BitSet.Unbracketed() returns a single character or else a bracketed form.
+func (b *BitSet) Unbracketed() string {
+	s := b.Bracketed()
+	if utf8.RuneCountInString(s) == 3 {
+		return s[1 : len(s)-1] // return one char without brackets
+	} else {
+		return s // return multiple characters with brackets
+	}
 }
 
 //  BitSet.Bracketed() returns a bracket-expression form of a character set,

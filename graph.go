@@ -55,12 +55,12 @@ func (dfa *DFA) ToDot(f io.Writer, label string) {
 	fmt.Fprintln(f, "s0 [shape=triangle, regular=true]")
 	for _, src := range dfa.Dstates {
 		if src.AccSet != nil {
-			fmt.Fprintf(f, "s%d[shape=doublecircle]\n", src.Index)
+			fmt.Fprintf(f, "s%d [shape=doublecircle]\n", src.Index)
 		}
 		slist, xmap := src.InvertMap()
 		for _, dst := range slist.Members() {
-			fmt.Fprintf(f, "s%d->s%d[label=\"%s\"]\n",
-				src.Index, dst, xmap[dst].Bracketed())
+			fmt.Fprintf(f, "s%d->s%d[label=\" %s\"]\n",
+				src.Index, dst, xmap[dst].Unbracketed())
 		}
 	}
 	fmt.Fprintln(f, "}")
