@@ -124,6 +124,10 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, xlist []string) {
 				fmt.Fprintf(w,
 					"<TD class=\"c%d leftw\">%s</TD></TR>\n",
 					e, hx(s))
+			} else if n < nexpr {
+				fmt.Fprintf(w,
+					"<TD class=\"cg leftw\">%s</TD></TR>\n",
+					hx(s))
 			} else {
 				fmt.Fprintf(w,
 					"<TD class=leftw>%s</TD></TR>\n", hx(s))

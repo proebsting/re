@@ -110,6 +110,7 @@ func info(w http.ResponseWriter, r *http.Request) {
 	for i := 0; i < 10; i++ {
 		fmt.Fprintf(w, "<span class=c%d>= c%d =</span>&nbsp;\n", i, i)
 	}
+	fmt.Fprintf(w, "<span class=cg>= cg =</span>&nbsp;\n") // .cg
 	fmt.Fprintln(w)
 	tInfo.Execute(w, data)
 	putfooter(w, r)
