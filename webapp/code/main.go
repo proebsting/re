@@ -142,8 +142,10 @@ var tHeader = template.Must(template.New("header").Parse(
 <html><head>
 <title>{{.Prefix}}: {{.Title}}</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="/static/style.css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
 <link rel="icon" type="image/png" href="/static/{{.Favicon}}">
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<script src="/static/scripts.js" type="text/javascript" defer></script>
 </head><body>
 <h1>{{.Prefix}}: {{.Title}}</h1>
 `))
@@ -171,18 +173,25 @@ RX {{.}}
 
 //  putform outputs a form for submitting n expressions
 func putform(w io.Writer, n int, target string, label string, values []string) {
-	fmt.Fprintf(w, "<P>%s\n<form action=\"%s\" method=\"post\">\n",
-		label, target)
+	fmt.Fprintf(w, "<form action=\"%s\" method=\"post\">\n", target)
+	fmt.Fprintf(w, "<div><div style=\"float:left;\">%s &nbsp;</div>\n",
+		label)
+	fmt.Fprint(w, `<div style="font-size: 67%;">
+<button type=button class=link onclick="clearForm(this.form);">
+(clear form)</button></div></div>
+<div style="clear: both;"></div>
+`)
 	for i := 0; i < n; i++ {
-		fmt.Fprintf(w, "<div><input type=\"text\" name=\"a%d\"", i)
+		fmt.Fprintf(w,
+			"<div><input tabindex=%d type=\"text\" name=\"a%d\"",
+			i+1, i)
 		fmt.Fprintf(w, " size=100 maxlength=1000")
 		if values != nil && i < len(values) && values[i] != "" {
 			fmt.Fprintf(w, " value=\"%s\"", hx(values[i]))
 		}
 		fmt.Fprintf(w, "></div>\n")
 	}
-	fmt.Fprintln(w, `<div><input type="submit" value="Submit"></div>
-</form>`)
+	fmt.Fprintln(w, `<div><input tabindex=99 type="submit" value="Submit"></div></form>`)
 }
 
 //  hx escapes an arbitrary stringable value for output as HTML
