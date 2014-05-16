@@ -76,6 +76,11 @@ func main() {
 	if len(exprs) > 1 {
 		label = fmt.Sprintf("(%d expressions)", len(exprs))
 	}
+	if *val['N'] != "" {
+		rx.WriteGraph(*val['N'], func(w io.Writer) {
+			dfa.GraphNFA(w, "NFA: "+label)
+		})
+	}
 	if *val['D'] != "" {
 		rx.WriteGraph(*val['D'], func(w io.Writer) {
 			dfa.ToDot(w, label)
@@ -306,7 +311,7 @@ func options() {
 
 	// file format for N and D depend on extension of filename supplied
 	// a filename of - generates a temporary SVG file and opens a viewer
-	// vo('N', "output file for NFA graph (*.dot/.gif/.pdf/.png/.svg/-)")
+	vo('N', "output file for NFA graph (*.dot/.gif/.pdf/.png/.svg/-)")
 	vo('D', "output file for DFA graph (*.dot/.gif/.pdf/.png/.svg/-)")
 
 	// vo('X', "output file for DFA-based examples (JSON)")

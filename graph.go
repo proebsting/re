@@ -13,6 +13,39 @@ import (
 	"strings"
 )
 
+//  DFA.GraphNFA generates a Dot (GraphViz) representation of the NFA.
+func (dfa *DFA) GraphNFA(f io.Writer, label string) {
+	fmt.Fprintln(f, "//", label)
+	fmt.Fprintln(f, "digraph NFA {")
+	fmt.Fprintf(f, "label=%s\n", strconv.Quote(label))
+	fmt.Fprintln(f, "node [shape=circle, height=.3, margin=0, fontsize=10]")
+	startshape := "triangle"
+	for _, p := range dfa.Tree.Data().FirstPos.Members() {
+		if IsAccept(dfa.Leaves[p]) {
+			startshape = "doublecircle"
+		} else {
+			fmt.Fprintf(f, "i->p%d[label=\" %s\"]\n",
+				p, dfa.Leaves[p])
+		}
+	}
+	fmt.Fprintf(f, "i [shape=%s, regular=true, label=\"\"]\n", startshape)
+	for i, l := range dfa.Leaves {
+		if IsAccept(l) {
+			continue
+		}
+		fmt.Fprintf(f, "p%d [label=\"p%d\"]\n", i, i)
+		for _, p := range l.FollowPos.Members() {
+			if IsAccept(dfa.Leaves[p]) {
+				fmt.Fprintf(f, "p%d [shape=doublecircle]\n", i)
+			} else {
+				fmt.Fprintf(f, "p%d->p%d[label=\" %s\"]\n",
+					i, p, dfa.Leaves[p])
+			}
+		}
+	}
+	fmt.Fprintln(f, "}")
+}
+
 //  DFA.ToDot generates a Dot (GraphViz) representation of the DFA.
 func (dfa *DFA) ToDot(f io.Writer, label string) {
 	fmt.Fprintln(f, "//", label)
