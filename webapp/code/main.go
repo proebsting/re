@@ -170,15 +170,18 @@ RX {{.}}
 `))
 
 //  putform outputs a form for submitting n expressions
-func putform(w io.Writer, n int, target string, label string) {
-	fmt.Fprintf(w, "<P>%s\n<form action=\"%s\" method=\"post\">",
+func putform(w io.Writer, n int, target string, label string, values []string) {
+	fmt.Fprintf(w, "<P>%s\n<form action=\"%s\" method=\"post\">\n",
 		label, target)
 	for i := 0; i < n; i++ {
-		fmt.Fprintf(w, `
-<div><input type="text" name="a%d" size=100 maxlength=1000></div>`, i)
+		fmt.Fprintf(w, "<div><input type=\"text\" name=\"a%d\"", i)
+		fmt.Fprintf(w, " size=100 maxlength=1000")
+		if values != nil && i < len(values) && values[i] != "" {
+			fmt.Fprintf(w, " value=\"%s\"", hx(values[i]))
+		}
+		fmt.Fprintf(w, "></div>\n")
 	}
-	fmt.Fprintln(w, `
-<div><input type="submit" value="Submit"></div>
+	fmt.Fprintln(w, `<div><input type="submit" value="Submit"></div>
 </form>`)
 }
 

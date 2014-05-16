@@ -12,7 +12,7 @@ import (
 //  compare presents a page asking for multiple expressions
 func compare(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Comparison Query")
-	putform(w, 5, "/combos", "Enter regular expressions:")
+	putform(w, 5, "/combos", "Enter regular expressions:", nil)
 	tMultiEx.Execute(w, multixamples)
 	putfooter(w, r)
 }
@@ -89,7 +89,7 @@ func combos(w http.ResponseWriter, r *http.Request) {
 		showgrid(w, dfa, n, xlist) // show examples
 	}
 	fmt.Fprint(w, "<h2>Try again?</h2>")
-	putform(w, 5, "/combos", "Enter regular expressions:")
+	putform(w, 5, "/combos", "Enter regular expressions:", elist)
 	putfooter(w, r)
 }
 
