@@ -1,3 +1,4 @@
+#! rxg -R
 # various integer forms
 \d+
 \d*[1-9]

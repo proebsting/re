@@ -1,4 +1,5 @@
 regexp: ab+c
+REJECT: #! rxq 'ab+c' -
 REJECT: ac
 accept: abc
 accept: abbc

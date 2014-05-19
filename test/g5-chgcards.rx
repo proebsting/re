@@ -1,3 +1,4 @@
+#! rxg -R
 # valid credit card numbers
 3[47]\d{13}
 4\d{12}(\d\d\d)?

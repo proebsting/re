@@ -1,3 +1,4 @@
+#! rxx x9-questions.rx x9-questions.rcx
 # things to try to distinguish via "20 questions"
 # some of these are deliberately incomplete, imprecise, or even incorrect
 

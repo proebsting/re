@@ -1,5 +1,7 @@
 Options: -R -T -d -g -h -i -l -n -p -v -I 0
 
+         #! rxplor -T -p -n -d
+
          # numeric replication {m,n}
 
 expr 0: ab{0}c

@@ -1,0 +1,306 @@
+
+expr 0: (%s)(#|?)(%s*%s%s*)
+
+ERROR:   \A(?:[#?]|:\/\/)
+    rx: '\A' unrecognized: in "\A(?:[#?]|:\/\/)"
+
+expr 1: ^[\d]+$
+
+expr 2: ^(.*[^a-z0-9\n])?cp +.+ system/app/.*
+
+expr 3: ^(.*[^a-z0-9\n])?(chown|chmod) +.*
+
+ERROR:   (^.*[^a-z0-9\n])?setprop +.*
+    rx: Embedded '^' unimplemented: in "(^.*[^a-z0-9\n])?setprop +.*"
+
+expr 4: ^(.*[^a-z0-9\n])?pm +install[^a-z0-9\n].*
+
+expr 5: ^(.*[^a-z0-9\n])?mount +.* *remount+.*
+
+expr 6: ^.*system/bin/.*
+
+expr 7: ^(.*[^a-z0-9\n])?am +start[^a-z0-9\n].*
+
+expr 8: ^(.*[^a-z0-9\n])?(sudo|su +-c|system/bin/su) +.*
+
+expr 9: ^(.*[^a-z0-9\n])?insmod .*
+
+expr 10: ^(#!/.*)
+
+expr 11: \s*Name\s+(\S+)\s*
+
+expr 12: ^(\s*)Preamble
+
+expr 13: ^(\s*)EndLangPreamble
+
+expr 14: ^(\s*)(LabelType)(\s+)(\S+)
+
+expr 15: ^\s*UseModule\s+(.*)
+
+expr 16: ^(\s*)EndPreamble
+
+expr 17: ^(\s*)LangPreamble
+
+expr 18: ^(\s*)(MaxCounter)(\s+)(\S+)
+
+expr 19: ^(\s*)#
+
+expr 20: ^(\s*)$
+
+expr 21: ^(\s*)EndBabelPreamble
+
+expr 22: \s*Counter\s*
+
+expr 23: ^(\s*)(Format)(\s+)(\S+)
+
+expr 24: ^(\s*)BabelPreamble
+
+expr 25: ^[^#]*Submenu\s+"([^"]*)"
+
+expr 26: ^[^#]*LabelString\S*\s+(.*)\s*$
+
+expr 27: ^[^#]*Toolbar\s+"[^"]+"\s+"([^"]*)"
+
+expr 28: [^#]*Item\s+"([^"]*)"
+
+expr 29: ^[^#]*IconPalette\s+"[^"]+"\s+"([^"]*)"
+
+expr 30: [^#]*TableInsert\s+"([^"]*)"
+
+expr 31: ^\s*Style\s+(.*)\s*$
+
+expr 32: ^[^#]*PopupMenu\s+"[^"]+"\s+"([^"]*)"
+
+expr 33: e00_\d\d\d_\d\d\d\.lin|script_pak_e00.pak
+
+expr 34: e04_\d\d\d_\d\d\d\.lin|script_pak_e04.pak
+
+expr 35: e08_0(0[1-9]|1[0-9])_\d\d\d\.lin
+
+expr 36: e03_\d\d\d_\d\d\d\.lin|script_pak_e03.pak
+
+expr 37: e07_\d\d\d_\d\d\d\.lin|script_pak_e07.pak
+
+expr 38: .*
+
+expr 39: e02_\d\d\d_\d\d\d\.lin|script_pak_e02.pak
+
+expr 40: e06_\d\d\d_\d\d\d\.lin|script_pak_e06.pak
+
+expr 41: e01_\d\d\d_\d\d\d\.lin|script_pak_e01.pak
+
+expr 42: e05_\d\d\d_\d\d\d\.lin|script_pak_e05.pak
+
+expr 43: e08_000_\d\d\d\.lin
+
+expr 44: (.*)\s+\(%s\)( ?.*)
+
+expr 45: (.*)\s+\(%s,\s*%s\)( ?.*)
+
+expr 46: (.*)\s+\((\d{1,2}-\d{1,2})\)( ?.*)
+
+expr 47: (.*)\s+\(%s,\s*(\d{1,2}-\d{1,2})\)( ?.*)
+
+expr 48: (.* ?)%s\s+(.+)
+
+expr 49: (.*)\s+\(%s\)( ?.*)
+
+expr 50: page-break-(?:after|before)\s*:\s*(\w+)
+
+ERROR:   <\s*a\s+[^<>]*href\s*=[^<>]*>(.*?)<\s*/\s*a\s*>
+    rx: prefer-fewer '?' unimplemented: in "<\s*a\s+[^<>]*href\s*=[^<>]*>(.*?)<\s*/\s*a\s*>"
+
+expr 51: <a(\s[^>]*)?/>
+
+expr 52: ([A-Za-z0-9\-\_\:\.]+[A-Za-z0-9\-\_\:\.\s\,]*)\s*\{([^\}]*)\}
+
+ERROR:   <\s*style.*?>(.*?)<\/\s*style\s*>
+    rx: prefer-fewer '?' unimplemented: in "<\s*style.*?>(.*?)<\/\s*style\s*>"
+
+expr 53: ^r(\d+)-agent(\d+)-kind
+
+expr 54: ^agent(\d+)-desc
+
+expr 55: ^agent(\d+)-type
+
+expr 56: ^agent(\d+)-health$
+
+expr 57: ^r(\d+)-agent(\d+)-type
+
+expr 58: ^r(\d+)-agent(\d+)-sku
+
+expr 59: ^agent(\d+)-kind
+
+expr 60: ^agent(\d+)-health-desc
+
+expr 61: ^agent(\d+)-dvc
+
+expr 62: ^agent(\d+)-hp-ink
+
+expr 63: ^agent(\d+)-known
+
+expr 64: ^agent(\d+)-virgin
+
+expr 65: ^agent(\d+)-id
+
+expr 66: ^r(\d+)-agent(\d+)-kind
+
+expr 67: ^agent(\d+)-desc
+
+expr 68: ^agent(\d+)-type
+
+expr 69: ^agent(\d+)-health$
+
+expr 70: ^r(\d+)-agent(\d+)-type
+
+expr 71: ^agent(\d+)-kind
+
+expr 72: ^agent(\d+)-health-desc
+
+expr 73: ^r(\d+)-agent(\d+)-sku
+
+expr 74: ^agent(\d+)-dvc
+
+expr 75: ^agent(\d+)-hp-ink
+
+expr 76: ^agent(\d+)-virgin
+
+expr 77: ^agent(\d+)-id
+
+expr 78: ^agent(\d+)-known
+
+expr 79: \s*LABEL->SSID\s+RES\s+.*
+
+expr 80: .*security_label_template.xml
+
+expr 81: .*\.map
+
+expr 82: \s*LABEL->SSID\s+.*
+
+expr 83: \s*title\s+XEN
+
+expr 84: \s*SECONDARY\s+.*
+
+expr 85: \s*POLICYREFERENCENAME\s+.*
+
+expr 86: \s*access_control\s*=
+
+expr 87: \s*title\s
+
+expr 88: \s*PRIMARY\s+.*
+
+expr 89: \s*LABEL->SSID\s.+[VM|ANY]\s+.*
+
+ERROR:   \s*(?P<openline><p[^>]*>)\s*(?P<closeline></p>)
+    rx: '(?...' unimplemented: in "\s*(?P<openline><p[^>]*>)\s*(?P<closeline></p>)"
+
+ERROR:   (\s*<p[^>]*>\s*</p>(\s*<div[^>]*>\s*</div>\s*)*){2,}(?!\s*<h\d)
+    rx: '(?...' unimplemented: in "(\s*<p[^>]*>\s*</p>(\s*<div[^>]*>\s*</div>\s*)*){2,}(?!\s*<h\d)"
+
+expr 90: (\s*<(p|div)[^>]*>\s*</(p|div)>)
+
+ERROR:   \s*(?P<openline><p(?!\sclass=\"(softbreak|whitespace)\")[^>]*>)\s*(?P<closeline></p>)
+    rx: '(?...' unimplemented: in "\s*(?P<openline><p(?!\sclass=\"(softbreak|whitespace)\")[^>]*>)\s*(?P<closeline></p>)"
+
+expr 91: (\s*<p[^>]*>\s*</p>(\s*<div[^>]*>\s*</div>\s*)*){2,}
+
+ERROR:   (?<=<p).*?(?=</p>)
+    rx: '(?...' unimplemented: in "(?<=<p).*?(?=</p>)"
+
+expr 92: <h[1-3][^>]*>
+
+expr 93: ^\s*TYPE\s+([A-Z0-9_]+)
+
+expr 94: ^\s*END\s*SUBROUTINE
+
+expr 95: ^\s*END\s*INTERFACE
+
+expr 96: ^\s*END\s*SUBROUTINE
+
+expr 97: ^\s*TYPE\s+([A-Z0-9_]+)
+
+expr 98: ^\s*END\s*INTERFACE
+
+expr 99: ''\said\s*=['"][^'"]*['"]''
+
+ERROR:   br'''['"]kindle:pos:fid:([0-9|A-V]+):off:([0-9|A-V]+).*?["']''')
+    rx: prefer-fewer '?' unimplemented: in "br'''['"]kindle:pos:fid:([0-9|A-V]+):off:([0-9|A-V]+).*?["']''')"
+
+expr 100: ''(<[^>]*\said\s*=[^>]*>)''
+
+ERROR:   ''(<a.*?href=.*?>)''
+    rx: prefer-fewer '?' unimplemented: in "''(<a.*?href=.*?>)''"
+
+expr 101: .* MasterSwitch plus.*
+
+expr 102: .*Outlet Control/Configuration.*
+
+expr 103: .* MasterSwitch plus 2
+
+expr 104: .*Outlet Management.*
+
+ERROR:   <span.*?</span>
+    rx: prefer-fewer '?' unimplemented: in "<span.*?</span>"
+
+expr 105: ^%s
+
+expr 106: %s$
+
+expr 107: %s
+
+expr 108: %s
+
+expr 109: ^%patch(\d*)
+
+expr 110: ^(Copyright|Serial)\s*:\s*(\S+)
+
+expr 111: ^Packager\s*:\s*(\S+)
+
+expr 112: ^Patch(\d*)\s*:\s*(\S+)
+
+ERROR:   ^[^#]*(\$RPM_SOURCE_DIR|%{?_sourcedir}?)
+    rx: malformed "{m,n}": in "^[^#]*(\$RPM_SOURCE_DIR|%{?_sourcedir}?)"
+
+ERROR:   ^BuildArch(itectures)?\s*:\s*(.+?)\s*$
+    rx: prefer-fewer '?' unimplemented: in "^BuildArch(itectures)?\s*:\s*(.+?)\s*$"
+
+expr 113: ^Prefix\s*:\s*(\S+)
+
+ERROR:   (^|\s|%{?__)make}?\s+(check|test)
+    rx: Embedded '^' unimplemented: in "(^|\s|%{?__)make}?\s+(check|test)"
+
+expr 114: \s-P\s+(\d+)\\b
+
+expr 115: ^BuildRoot\s*:\s*(\S+)
+
+ERROR:   (^|\s)((.*/)?rm|%{?__rm}?) 
+    rx: Embedded '^' unimplemented: in "(^|\s)((.*/)?rm|%{?__rm}?) "
+
+ERROR:   <a.*?>(.*?)</a>
+    rx: prefer-fewer '?' unimplemented: in "<a.*?>(.*?)</a>"
+
+ERROR:   <div class="block">(.*?)</div>
+    rx: prefer-fewer '?' unimplemented: in "<div class="block">(.*?)</div>"
+
+ERROR:   ^<td class="colOne"><code><strong><a href="[^>]*#([^>]*?)">
+    rx: prefer-fewer '?' unimplemented: in "^<td class="colOne"><code><strong><a href="[^>]*#([^>]*?)">"
+
+ERROR:   <caption><span>(.*?)</span>
+    rx: prefer-fewer '?' unimplemented: in "<caption><span>(.*?)</span>"
+
+ERROR:   ^<td class="colLast"><code><strong><a href="[^>]*\.([^>]*?)\.html" title="class in[^>]*">
+    rx: prefer-fewer '?' unimplemented: in "^<td class="colLast"><code><strong><a href="[^>]*\.([^>]*?)\.html" title="class in[^>]*">"
+
+expr 116: ^<dt><strong>(Specified by:|Overrides:)</strong></dt>$
+
+ERROR:   <.*?>
+    rx: prefer-fewer '?' unimplemented: in "<.*?>"
+
+ERROR:   ^<td class="colLast"><code><strong><a href="[^>]*#([^>]*?)">
+    rx: prefer-fewer '?' unimplemented: in "^<td class="colLast"><code><strong><a href="[^>]*#([^>]*?)">"
+
+expr 117: ^<h3>Method Detail</h3>$
+
+ERROR:   ^(?:</a>)?<a name="([^>]*?)">$
+    rx: prefer-fewer '?' unimplemented: in "^(?:</a>)?<a name="([^>]*?)">$"
+(23 expression(s) rejected)

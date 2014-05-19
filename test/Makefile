@@ -1,4 +1,4 @@
-#  Makefile for rxr tests
+#  Makefile for rx tests
 
 default:  test
 

@@ -1,63 +1,64 @@
 #!/bin/sh
 #
-#  runtest [basename[.std]]... - run tests and compare results
+#  runtest [file.rx...] - run tests and validate outputs
 #
-#  The utility tested is determined by the input extension found.
-#	.rx or .rxr -- run "rxr -Q -R"
-#	.rxc -- run "rxcluster -i 1 basename.rxc"
-#	.rxd -- run "rxd `<basename.rxd`"
-#	.rxg -- run "rxg -R basename.rxg"
-#	.rxq -- run "rxq pattern", using first line as the query pattern
-#	.rxx -- run "rxx basename.rxx basename.rcx"
-#	.rxv -- run "rxr -R"
+#  For each .rx file, this script runs rxplor (or another program) and
+#  compares the output with the corresponding .std file.
+#
+#  The command "rxplor -T" is run by default.  If the .rx file begins 
+#  with a #! line, the command from that line is run instead.
+#  If the file begins with multiple #! lines, the subsequent commands
+#  are executed and their outputs compared against .std2, .std3, etc.
 
-BIN=$GOPATH/bin
+
+# function definition
+runtest() {	 # runtest basename n command -- run one test and check output
+    B=$1
+    N=$2
+    C=$3
+    I=$B.rx
+    O=$B.out${N%1}
+    S=$B.std${N%1}
+
+    printf "%-16s %s\n" "$B.$N:" "$C"
+    eval "$C" <$I >$O
+    if [ $? -eq 0 ] && cmp $S $O; then
+    	rm $O
+    else
+	diff -u $S $O | sed 18q
+	echo ------------------------------------------------------------------
+	FAILED="$FAILED $B.$N"
+    fi
+}
+
 
 # if no test files are specified, run them all
 if [ $# = 0 ]; then
-    set - *.std
+    set - `ls *.rx`
 fi
 
 # loop through the chosen tests
+PATH=$GOPATH/bin:$PATH
 echo ""
 FAILED=
 for F in $*; do
-    F=${F%.std}
-    F=${F%.rx*}
-    I="`echo $F.rx*`"
-    EXTN="${I#*.}"
-    echo "Testing $F.$EXTN"
-    case ".$EXTN" in 
-	.*.*)
-	    echo 1>&2 "multiple input files: $I"
-	    FAILED="$FAILED $I"
-	    continue;;
-	.rx|.rxr)
-	    $BIN/rxplor -T $I >$F.out;;
-	.rxc)
-	    $BIN/rxcluster -i 1 $I >$F.out;;
-	.rxd)
-	    $BIN/rxplor -D $F.out $I;;
-	.rxg)
-	    $BIN/rxg -R $I >$F.out;;
-	.rxq)
-	    REXPR=`sed 1q $I`
-	    cat $I | sed 1d | rxq "$REXPR" - >$F.out;;
-	.rxx)
-	    $BIN/rxx $I ${I%.rxx}.rcx >$F.out;;
-	.rxv)
-	    $BIN/rxplor -T -p -n -d $I >$F.out;;
-	.*)
-	    echo 1>&2 "unrecognized extension: $I"
-	    FAILED="$FAILED $I"
-	    continue;;
-    esac
-    if [ $? -eq 0 ] && cmp $F.std $F.out; then
-    	rm $F.out
-    else
-	diff -u $F.std $F.out | sed 18q
-	echo ------------------------------------------------------------------
-        FAILED="$FAILED $F"
+    B=${F%.*}
+    I=$B.rx
+    N=0
+    exec <$I
+    while read LINE; do
+    	case "$LINE" in
+	    "#!"*)
+		N=$(($N+1))
+		CMD=${LINE#??}
+		runtest $B $N "$CMD"
+		;;
+	    ""|*)
+		break;;
+	esac
+    done
+    if [ $N = 0 ]; then
+	runtest $B 1 " rxplor -T"
     fi
 done
 

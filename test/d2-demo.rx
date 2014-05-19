@@ -1,0 +1,3 @@
+#! rxplor -D /dev/stdout
+(a|b)*abb
+b(ab)*a

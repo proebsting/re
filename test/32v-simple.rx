@@ -1,3 +1,4 @@
+#! rxplor -T -p -n -d
 # source not recorded
 C(AC|B)D
 # Dragon2: automata example

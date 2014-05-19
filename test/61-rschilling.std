@@ -1,0 +1,275 @@
+
+expr 0: ^\s*@Test
+
+expr 1: enabled\s*=\s*false
+
+expr 2: \s*@Test.*groups\s*=\s*("unstable|Array\("unstable"\))|@Category\(UnstableTest\.class\).*
+
+expr 3: .*Test.(java|scala)
+
+expr 4: .* (FATAL|ERROR|WARN|INFO|DEBUG|TRACE)
+
+expr 5: ([a-zA-Z0-9/]*Command.java)
+
+expr 6: COMMAND_ID\s*=\s*([0-9]+)\s*;
+
+expr 7: .*Received new cluster view.*\|([0-9]+). \[(.*)\].*
+
+expr 8: .*Received new cluster view.*\|%s. \[(.*)\].*
+
+ERROR:   (\w+)::\1(\s*)\((.*)\)(\s*):(\s*)Expression\(EXPRESSION_CONSTRUCTOR_PARAMETER_VALUES\)
+    rx: \1 (backref) unimplemented: in "(\w+)::\1(\s*)\((.*)\)(\s*):(\s*)Expression\(EXPRESSION_CONSTRUCTOR_PARAMETER_VALUES\)"
+
+ERROR:   <a.*?>(.*?)</a>
+    rx: prefer-fewer '?' unimplemented: in "<a.*?>(.*?)</a>"
+
+ERROR:   <.*?>
+    rx: prefer-fewer '?' unimplemented: in "<.*?>"
+
+ERROR:   <div class="block">(.*?)</div>
+    rx: prefer-fewer '?' unimplemented: in "<div class="block">(.*?)</div>"
+
+ERROR:   <caption><span>(.*?)</span>
+    rx: prefer-fewer '?' unimplemented: in "<caption><span>(.*?)</span>"
+
+ERROR:   ^<td class="colLast"><code><strong><a href="[^>]*\.([^>]*?)\.html" title="class in[^>]*">
+    rx: prefer-fewer '?' unimplemented: in "^<td class="colLast"><code><strong><a href="[^>]*\.([^>]*?)\.html" title="class in[^>]*">"
+
+ERROR:   ^<td class="colLast"><code><strong><a href="[^>]*#([^>]*?)">
+    rx: prefer-fewer '?' unimplemented: in "^<td class="colLast"><code><strong><a href="[^>]*#([^>]*?)">"
+
+ERROR:   ^<td class="colOne"><code><strong><a href="[^>]*#([^>]*?)">
+    rx: prefer-fewer '?' unimplemented: in "^<td class="colOne"><code><strong><a href="[^>]*#([^>]*?)">"
+
+expr 9: ^<h3>Method Detail</h3>$
+
+ERROR:   ^(?:</a>)?<a name="([^>]*?)">$
+    rx: prefer-fewer '?' unimplemented: in "^(?:</a>)?<a name="([^>]*?)">$"
+
+ERROR:   <a(\s+.*?)>
+    rx: prefer-fewer '?' unimplemented: in "<a(\s+.*?)>"
+
+expr 10: ""(?:\s+([a-z]+)\s*=\s*("[^"]*"|'[^']?'|[^'"\s]+))+""
+
+expr 11: ^[^\u0000-\u0008\u000B-\u000C\u000E-\u001F\uFFFE\uFFFF]*$
+
+ERROR:   cursor(?=(%d|\$i))],
+    rx: '(?...' unimplemented: in "cursor(?=(%d|\$i))],"
+
+ERROR:   test(?!_format)],
+    rx: '(?...' unimplemented: in "test(?!_format)],"
+
+expr 12: \{RECT_(?:CONFIG|LOCAL), "([^"]+)
+
+expr 13: (?:CONFIG|LOCAL) (\S+)\s+(\S+)\s+(\S+)
+
+expr 14: ts:cv:: CONFIG (\S+)\s+(\S+)\s+(\S+)
+
+expr 15: ^[ \t]+$
+
+ERROR:   ^(\t|[ ]{1,%d}
+    rx: malformed "{m,n}": in "^(\t|[ ]{1,%d}"
+
+expr 16: [ ,]+
+
+ERROR:   -\*-\s*([^\r\n]*?)\s*-\*-
+    rx: prefer-fewer '?' unimplemented: in "-\*-\s*([^\r\n]*?)\s*-\*-"
+
+ERROR:   (.*?)\t
+    rx: prefer-fewer '?' unimplemented: in "(.*?)\t"
+
+expr 17: \-([0-9]+)
+
+ERROR:   \[(.*?)\]\s\-\s(.*)$
+    rx: prefer-fewer '?' unimplemented: in "\[(.*?)\]\s\-\s(.*)$"
+
+ERROR:   \<th\scolspan="2">(.*?)</th>
+    rx: prefer-fewer '?' unimplemented: in "\<th\scolspan="2">(.*?)</th>"
+
+ERROR:   href=\"(.*?
+    rx: prefer-fewer '?' unimplemented: in "href=\"(.*?"
+
+ERROR:   \<td.*?\>(.*?)\<
+    rx: prefer-fewer '?' unimplemented: in "\<td.*?\>(.*?)\<"
+
+ERROR:   \<td\>(.*?)(\s(.*?))?\<
+    rx: prefer-fewer '?' unimplemented: in "\<td\>(.*?)(\s(.*?))?\<"
+
+ERROR:   \<a\shref=\"(.*?)"\>(.*?)\<
+    rx: prefer-fewer '?' unimplemented: in "\<a\shref=\"(.*?)"\>(.*?)\<"
+
+expr 18: ^.*/?bin/.*.py
+
+expr 19: ^([2-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+
+expr 20: ([0-9])\.([0-9])\.([0-9]).*
+
+ERROR:   (?P<name>[^=]+)="(?P<value>[^"]*)" *
+    rx: '(?...' unimplemented: in "(?P<name>[^=]+)="(?P<value>[^"]*)" *"
+
+ERROR:   (?P<name>[^:]+):(?P<value>[^,]*),?
+    rx: '(?...' unimplemented: in "(?P<name>[^:]+):(?P<value>[^,]*),?"
+
+ERROR:   (?P<name>[^=]+)="(?P<value>[^"]*)" *
+    rx: '(?...' unimplemented: in "(?P<name>[^=]+)="(?P<value>[^"]*)" *"
+
+ERROR:   (?P<name>[^:]+):(?P<value>[^,]*),?
+    rx: '(?...' unimplemented: in "(?P<name>[^:]+):(?P<value>[^,]*),?"
+
+ERROR:   ^<CHAPTER ID=.*?>$
+    rx: prefer-fewer '?' unimplemented: in "^<CHAPTER ID=.*?>$"
+
+ERROR:   ^<.*?>$
+    rx: prefer-fewer '?' unimplemented: in "^<.*?>$"
+
+expr 21: ^\d+\.?$
+
+expr 22: [^A-Z0-9]
+
+expr 23: cygwin|mingw
+
+expr 24: darwin|aix
+
+expr 25: .*capacity.*operations.*bandwidth
+
+expr 26: .*pool.*alloc.*free.*read.*write.*read.*write
+
+expr 27: .*-----.*-----.*-----
+
+ERROR:   <([^>]*?)>
+    rx: prefer-fewer '?' unimplemented: in "<([^>]*?)>"
+
+expr 28: [\s\u0000-\u001F@,:<>\u007F]
+
+expr 29: ^------------------.* testing 
+
+ERROR:   (^==== |^------------------.* testing )
+    rx: Embedded '^' unimplemented: in "(^==== |^------------------.* testing )"
+
+expr 30: ^\s*T_VIRTUAL_CALL: (\d+) calls on (.*):$
+
+expr 31: ^\s*#(\d+)\s*(.*) \[(0x[0-9A-Za-z]+)\]$
+
+expr 32: [\x00-\x31\x7f-\xa0]
+
+expr 33: [\x00-\x31\x7f-\xff]
+
+expr 34: \\([^uUx]|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{2}|U[0-9a-fA-F]{8})
+
+expr 35: "((?:[^"\\]|\\.)*)"
+
+expr 36: '((?:[^'\\]|\\.)*)'
+
+expr 37: \\(.)
+
+expr 38: [,()]+
+
+ERROR:   (^.*)_[0-9]+$
+    rx: Embedded '^' unimplemented: in "(^.*)_[0-9]+$"
+
+expr 39: ^db\d+$
+
+expr 40: ^\s*#\s*tcollector.(\w+)\s*=\s*(.+)$
+
+expr 41: [\s\w]+:[\s\w]+$
+
+expr 42: ^TEST-.*\.xml$
+
+expr 43: ^([^-]+-[^-]+)-(.*)\.fail$
+
+expr 44: [\x00-\x1f\\"\b\f\n\r\t]
+
+expr 45: ([\\"]|[^\ -~])
+
+expr 46: [\x80-\xff]
+
+ERROR:   (.*?)(["\\\x00-\x1f])
+    rx: prefer-fewer '?' unimplemented: in "(.*?)(["\\\x00-\x1f])"
+
+expr 47: [ \t\n\r]*
+
+expr 48: [\x00-\x1f\\"\b\f\n\r\t]
+
+expr 49: ([\\"]|[^\ -~])
+
+expr 50: [\x80-\xff]
+
+ERROR:   <a href="(.*?)">(.*?)</a>
+    rx: prefer-fewer '?' unimplemented: in "<a href="(.*?)">(.*?)</a>"
+
+ERROR:   <a id="(.*?)".*?>(.*?)</a>
+    rx: prefer-fewer '?' unimplemented: in "<a id="(.*?)".*?>(.*?)</a>"
+
+ERROR:   \b[a-zA-Z_]+=(?:"(?:\\"|[^"])*"' + '|(?:\\\\.|[^"\'\\s])*' + r"|'(?:\\'|[^'])*
+    rx: \b (boundary) unimplemented: in "\b[a-zA-Z_]+=(?:"(?:\\"|[^"])*"' + '|(?:\\\\.|[^"\'\\s])*' + r"|'(?:\\'|[^'])*"
+
+expr 51: (\d+) total matching documents
+
+expr 52: %s\.[wj]ar$
+
+expr 53: \.(?:[wj]ar|pom)$
+
+expr 54: \.(?:pom|[jw]ar)$
+
+expr 55: %s\.[jw]ar$
+
+expr 56: ^pom.xml.template$
+
+expr 57: ^.*/?bin/.*.py
+
+expr 58: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+
+expr 59: ([0-9])\.([0-9])\.([0-9]).*
+
+expr 60: [\.\-].split(version)
+
+expr 61: \s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
+
+expr 62: ^.*/?bin/.*.py
+
+expr 63: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+
+expr 64: ([0-9])\.([0-9])\.([0-9]).*
+
+expr 65: [\.\-].split(version)
+
+expr 66: \s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
+
+expr 67: ^.*/?bin/.*.py
+
+expr 68: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+
+expr 69: ([0-9])\.([0-9])\.([0-9]).*
+
+expr 70: ^.*/?bin/.*.py
+
+expr 71: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+
+expr 72: ([0-9])\.([0-9])\.([0-9]).*
+
+expr 73: [\.\-].split(version)
+
+expr 74: \s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
+
+ERROR:   (?P<params>[\x20-\x3f]*)(?P<final>[\x40-\x7e])
+    rx: '(?...' unimplemented: in "(?P<params>[\x20-\x3f]*)(?P<final>[\x40-\x7e])"
+
+expr 75: \s+
+
+expr 76: ^\s+lib([^=-]+)(?:-[\.0-9]+)?\.so\.[0-9]+ =>
+
+ERROR:   (.*?)(["\\\x00-\x1f])
+    rx: prefer-fewer '?' unimplemented: in "(.*?)(["\\\x00-\x1f])"
+
+expr 77: [ \t\n\r]*
+
+expr 78: ^ ?[\?ID] *[1-9 ]*[a-zA-Z]* +(.*)
+
+expr 79: [\.\-].split(version)
+
+expr 80: [A-Za-z_][A-Za-z0-9_]*
+
+expr 81: sockets: used \d+\n
+
+expr 82: \s*<!ENTITY\s+(\S+)\s+"&(?:#38;)?#(\d+);
+(36 expression(s) rejected)

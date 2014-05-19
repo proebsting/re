@@ -1,0 +1,2 @@
+#! rxplor -D /dev/stdout
+(a|b)*abb

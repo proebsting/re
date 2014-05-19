@@ -1,4 +1,5 @@
 
+    #! rxx x1-simple.rx x1-simple.rcx
 1:  [a-zA-Z]+
 2:  [\w]+
 3:  [a-zA-Z ]+
@@ -13,17 +14,17 @@
 A:  [a-zA-Z][-_\.a-zA-Z0-9]*@[a-zA-Z0-9]*(\.[a-zA-Z0-9]*)?
 B:  [a-zA-Z][-_\.a-zA-Z0-9]*@[a-zA-Z0-9]*(\.[a-zA-Z0-9]*)+
 
-1234- -- ----  Guadalajara
---3-- -- ----  Stephen Jay Gould
----45 -- 8---  Homer.J.Simpson
----4- 6- ----  525-00-1234
------ -- ----  (404)123-4567
------ -7 ----  (404)323-4567
----45 -- 8---  arizona.edu
----45 -- 8---  www.cs.arizona.edu
------ -- 8---  www.cs.arizona.edu/icon
------ -- 8---  www.cs.arizona.edu/icon/
------ -- 8---  http://www.cs.arizona.edu/icon
------ -- -9A-  gmt@arizona
------ -- -9AB  gmt@arizona.edu
------ -- -9-B  gmt@cs.arizona.edu
+ 1234- -- ----  Guadalajara
+ --3-- -- ----  Stephen Jay Gould
+ ---45 -- 8---  Homer.J.Simpson
+ ---4- 6- ----  525-00-1234
+ ----- -- ----  (404)123-4567
+ ----- -7 ----  (404)323-4567
+ ---45 -- 8---  arizona.edu
+ ---45 -- 8---  www.cs.arizona.edu
+ ----- -- 8---  www.cs.arizona.edu/icon
+ ----- -- 8---  www.cs.arizona.edu/icon/
+ ----- -- 8---  http://www.cs.arizona.edu/icon
+ ----- -- -9A-  gmt@arizona
+ ----- -- -9AB  gmt@arizona.edu
+ ----- -- -9-B  gmt@cs.arizona.edu

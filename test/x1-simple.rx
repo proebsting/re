@@ -1,3 +1,4 @@
+#! rxx x1-simple.rx x1-simple.rcx
 [a-zA-Z]+
 [\w]+
 [a-zA-Z ]+

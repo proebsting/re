@@ -1,5 +1,9 @@
 Options: -R -T -g -h -i -l -v -I 0
 
+         #! rxplor -T
+
+         #! rxplor -T -p -n -d
+
 expr 0: a
 tree:   a
 augmnt: (a#)
