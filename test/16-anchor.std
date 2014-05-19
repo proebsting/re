@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
 expr 0: ^
 tree:   ()
@@ -11,6 +11,8 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 1: $
 tree:   ()
@@ -23,6 +25,8 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 2: ^$
 tree:   ()
@@ -35,6 +39,8 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 3: ^a
 tree:   a
@@ -47,6 +53,8 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 4: b$
 tree:   b
@@ -59,6 +67,8 @@ ex(2):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
 ex(3):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
 ex(5):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
 ex(8):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
+---------------- Examples from DFA ---------------
+s1:  b
 
 expr 5: ^c$
 tree:   c
@@ -71,6 +81,8 @@ ex(2):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
 ex(3):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
 ex(5):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
 ex(8):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
+---------------- Examples from DFA ---------------
+s1:  c
 
 expr 6: ^def$
 tree:   ((de)f)
@@ -83,6 +95,8 @@ ex(2):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(3):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(5):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(8):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
+---------------- Examples from DFA ---------------
+s1:  def
 
 expr 7: ^x+y*z+$
 tree:   ((x+y*)z+)
@@ -95,6 +109,8 @@ ex(2):  xyzz  xxzz  xyzz  xxzz  xzz  xxyyz  xxyyzz  xzz  xyz  xyz  xzz  xyyz
 ex(3):  xxz  xyyz  xxxyyzzz  xzz  xz  xxyzz  xxxyyz  xxyyyz  xxyyyzzz  xxzz
 ex(5):  xyyyzz  xxxxyyyyzzzzz  xxxxxyz  xxyyyzzzzz  xxxxxyyzz  xxxxxyyyyzzzzz
 ex(8):  xxxxxxyyyyyyzzz  xxxyzzzzzzzz  xxxxxzz  xxxxxxxxyyzzzzzzzz
+---------------- Examples from DFA ---------------
+s1:  xz
 
 expr 8: q\$
 tree:   (q$)
@@ -107,4 +123,6 @@ ex(2):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
 ex(3):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
 ex(5):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
 ex(8):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
+---------------- Examples from DFA ---------------
+s1:  q$
 9 expression(s) loaded

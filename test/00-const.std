@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # constant regexps including the empty one
 
@@ -13,6 +13,8 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 1: a
 tree:   a
@@ -25,6 +27,8 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 2: bc
 tree:   (bc)
@@ -37,6 +41,8 @@ ex(2):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 ex(3):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 ex(5):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 ex(8):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
+---------------- Examples from DFA ---------------
+s1:  bc
 
 expr 3: def
 tree:   ((de)f)
@@ -49,6 +55,8 @@ ex(2):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(3):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(5):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(8):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
+---------------- Examples from DFA ---------------
+s1:  def
 
 expr 4: 417-00-9423
 tree:   ((((((((((41)7)-)0)0)-)9)4)2)3)
@@ -61,6 +69,8 @@ ex(2):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 ex(3):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 ex(5):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 ex(8):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
+---------------- Examples from DFA ---------------
+s1:  417-00-9423
 
 expr 5: 515-032-6910
 tree:   (((((((((((51)5)-)0)3)2)-)6)9)1)0)
@@ -73,6 +83,8 @@ ex(2):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 ex(3):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 ex(5):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 ex(8):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
+---------------- Examples from DFA ---------------
+s1:  515-032-6910
 
 expr 6: bite the wax tadpole
 tree:   (((((((((((((((((((bi)t)e) )t)h)e) )w)a)x) )t)a)d)p)o)l)e)
@@ -85,6 +97,8 @@ ex(2):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(3):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(5):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(8):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
+---------------- Examples from DFA ---------------
+s1:  bite the wax tadpole
 
 expr 7: __\a__\e__\f__\n__\r__\t__\v__
 tree:   ((((((((((((((((((((((__)[\a])_)_)[\x1b])_)_)[\f])_)_)[\n])_)_)[\r])_)_)[\t])_)_)[\v])_)_)
@@ -97,4 +111,6 @@ ex(2):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
 ex(3):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
 ex(5):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
 ex(8):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
+---------------- Examples from DFA ---------------
+s1:  __\a__\x1b__\f__\n__\r__\t__\v__
 8 expression(s) loaded

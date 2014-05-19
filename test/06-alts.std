@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # basic alternation
 
@@ -13,6 +13,8 @@ ex(2):  b  b  a  b  a  a  a  b  b  a  b  a  b  b  a  a  b  a  b  a  a  b  b  a
 ex(3):  b  a  b  a  a  a  a  a  a  b  a  a  a  a  b  a  b  a  a  a  b  a  a  a
 ex(5):  a  a  a  a  b  a  a  b  a  b  a  b  b  a  a  b  b  b  a  a  a  b  b  b
 ex(8):  b  b  a  b  a  a  a  b  b  a  a  a  b  b  a  a  a  b  b  a  a  b  a  b
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 1: ab|c
 tree:   ((ab)|c)
@@ -25,6 +27,8 @@ ex(2):  ab  c  c  ab  c  ab  c  c  c  c  ab  c  ab  c  c  c  c  c  ab  c  ab  c
 ex(3):  ab  c  ab  ab  ab  c  ab  c  c  ab  c  ab  c  c  ab  ab  ab  c  ab  c
 ex(5):  c  ab  ab  ab  ab  c  c  ab  c  c  ab  c  c  c  c  ab  ab  ab  ab  c
 ex(8):  ab  c  c  ab  c  c  ab  ab  ab  ab  ab  ab  c  c  ab  c  c  ab  c  c
+---------------- Examples from DFA ---------------
+s1:  c
 
 expr 2: a|bc
 tree:   (a|(bc))
@@ -37,6 +41,8 @@ ex(2):  bc  a  a  a  bc  a  bc  a  bc  bc  a  bc  a  bc  a  bc  bc  a  bc  a  a
 ex(3):  a  a  a  a  bc  bc  a  a  bc  bc  a  a  a  bc  a  bc  a  a  a  a  a  bc
 ex(5):  bc  a  a  bc  bc  a  a  a  bc  a  a  a  bc  bc  bc  a  a  a  a  a  bc
 ex(8):  a  bc  a  bc  bc  a  a  bc  bc  a  bc  bc  a  a  bc  bc  a  bc  bc  bc
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 3: ab|cd
 tree:   ((ab)|(cd))
@@ -49,6 +55,8 @@ ex(2):  cd  ab  cd  ab  cd  cd  cd  ab  ab  cd  cd  cd  cd  ab  ab  cd  ab  cd
 ex(3):  cd  ab  cd  ab  cd  ab  cd  ab  cd  ab  ab  ab  ab  ab  cd  ab  ab  cd
 ex(5):  ab  ab  cd  ab  ab  ab  cd  cd  cd  ab  ab  cd  cd  ab  ab  cd  cd  cd
 ex(8):  ab  ab  ab  ab  ab  ab  cd  cd  cd  cd  ab  ab  ab  cd  ab  cd  cd  ab
+---------------- Examples from DFA ---------------
+s1:  ab
 
 expr 4: a|b|c
 tree:   (a|b|c)
@@ -61,6 +69,8 @@ ex(2):  b  c  a  a  b  b  a  a  a  c  a  c  a  a  a  a  c  a  a  a  c  b  b  c
 ex(3):  b  b  b  a  a  b  a  b  a  b  b  c  c  c  b  a  b  b  a  a  a  b  a  c
 ex(5):  c  c  c  c  a  c  a  a  a  a  c  a  b  b  c  a  c  a  b  a  a  a  a  b
 ex(8):  c  c  c  b  a  b  a  c  b  c  a  a  a  b  a  c  b  c  b  a  a  c  b  c
+---------------- Examples from DFA ---------------
+s1:  b
 
 expr 5: a|b|c|d
 tree:   (a|b|c|d)
@@ -73,6 +83,8 @@ ex(2):  d  b  c  d  c  a  a  d  d  a  d  c  d  d  a  c  d  c  d  c  c  b  b  a
 ex(3):  d  c  d  c  c  a  c  c  a  b  c  a  a  c  b  a  b  a  c  c  d  c  a  a
 ex(5):  a  c  a  a  b  a  c  b  a  b  a  b  b  a  c  b  d  d  a  c  c  d  b  d
 ex(8):  d  d  a  b  a  a  a  d  d  a  a  c  d  b  c  c  a  d  d  c  c  d  a  d
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 6: ab|cd|ef
 tree:   ((ab)|(cd)|(ef))
@@ -85,6 +97,8 @@ ex(2):  ab  ef  ab  ef  ab  cd  ef  ab  ab  ef  cd  ab  cd  cd  ab  ef  ab  cd
 ex(3):  ef  ef  ef  ab  ab  ab  ab  cd  ab  ef  ef  ef  cd  ef  ef  ab  cd  ab
 ex(5):  ef  cd  ab  ab  ab  ab  cd  ef  ef  cd  ab  cd  ef  ef  ab  ab  cd  cd
 ex(8):  cd  ab  ab  cd  ef  cd  ab  ef  ab  ef  ef  cd  cd  ef  ab  ef  ab  ef
+---------------- Examples from DFA ---------------
+s1:  ab
 
 expr 7: ab|cd|ef|gh
 tree:   ((ab)|(cd)|(ef)|(gh))
@@ -97,6 +111,8 @@ ex(2):  gh  ab  gh  ab  gh  cd  gh  ab  ef  cd  cd  cd  gh  ef  ef  gh  ef  gh
 ex(3):  cd  ab  cd  ab  cd  ef  cd  ef  gh  ef  ef  ab  ef  ab  cd  ab  ef  cd
 ex(5):  ef  ef  gh  ab  ef  ef  gh  cd  gh  ef  ab  gh  gh  ef  ab  gh  cd  gh
 ex(8):  ab  ef  ab  ab  ab  ab  cd  cd  gh  gh  ab  ef  ab  gh  ef  cd  cd  ab
+---------------- Examples from DFA ---------------
+s1:  ab
 
 expr 8: abc|def
 tree:   (((ab)c)|((de)f))
@@ -109,6 +125,8 @@ ex(2):  def  def  abc  def  def  abc  def  abc  abc  abc  abc  abc  def  abc
 ex(3):  abc  abc  abc  abc  abc  abc  abc  def  abc  abc  abc  def  abc  def
 ex(5):  abc  def  def  def  def  abc  def  abc  abc  def  abc  def  abc  def
 ex(8):  abc  abc  abc  def  def  def  def  def  def  abc  abc  def  def  abc
+---------------- Examples from DFA ---------------
+s1:  abc
 
 expr 9: abc|def|ghi
 tree:   (((ab)c)|((de)f)|((gh)i))
@@ -121,6 +139,8 @@ ex(2):  abc  abc  abc  ghi  abc  ghi  def  abc  def  abc  def  def  def  ghi
 ex(3):  abc  def  abc  def  ghi  ghi  ghi  abc  abc  abc  ghi  def  ghi  ghi
 ex(5):  abc  abc  abc  ghi  def  def  ghi  ghi  abc  def  ghi  ghi  abc  ghi
 ex(8):  def  def  def  ghi  def  abc  ghi  ghi  abc  ghi  ghi  ghi  ghi  ghi
+---------------- Examples from DFA ---------------
+s1:  abc
 
 expr 10: a|bc|def|ghij
 tree:   (a|(bc)|((de)f)|(((gh)i)j))
@@ -133,6 +153,8 @@ ex(2):  ghij  bc  def  ghij  ghij  ghij  bc  bc  bc  ghij  def  ghij  def  bc
 ex(3):  a  def  a  bc  bc  def  def  a  def  def  a  bc  bc  bc  a  def  def
 ex(5):  def  def  ghij  bc  def  a  def  def  ghij  ghij  a  ghij  def  a  ghij
 ex(8):  def  a  a  def  ghij  bc  bc  bc  bc  ghij  def  def  def  a  ghij  a
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 11: pqrs|tuv|wx|yz
 tree:   ((((pq)r)s)|((tu)v)|(wx)|(yz))
@@ -145,6 +167,8 @@ ex(2):  wx  tuv  tuv  pqrs  wx  tuv  tuv  yz  wx  wx  wx  pqrs  pqrs  tuv  wx
 ex(3):  tuv  wx  tuv  pqrs  wx  wx  pqrs  wx  wx  wx  tuv  tuv  pqrs  wx  yz
 ex(5):  yz  tuv  tuv  wx  tuv  pqrs  tuv  yz  wx  wx  wx  yz  yz  yz  wx  wx
 ex(8):  pqrs  pqrs  yz  yz  pqrs  tuv  yz  wx  tuv  wx  pqrs  yz  yz  tuv  wx
+---------------- Examples from DFA ---------------
+s1:  wx
 
 expr 12: abc|d|efgh|ij|kmlno|pqr|s|tuv|wxy|z
 tree:   (((ab)c)|d|(((ef)g)h)|(ij)|((((km)l)n)o)|((pq)r)|s|((tu)v)|((wx)y)|z)
@@ -157,4 +181,6 @@ ex(2):  wxy  tuv  z  abc  pqr  z  z  tuv  tuv  abc  ij  abc  kmlno  wxy  s  wxy
 ex(3):  d  efgh  s  wxy  wxy  abc  wxy  kmlno  wxy  abc  pqr  wxy  tuv  wxy
 ex(5):  ij  pqr  kmlno  kmlno  z  abc  abc  s  d  z  ij  tuv  wxy  pqr  z  s
 ex(8):  abc  efgh  z  s  ij  d  z  d  abc  z  tuv  wxy  kmlno  efgh  kmlno  abc
+---------------- Examples from DFA ---------------
+s1:  s
 13 expression(s) loaded

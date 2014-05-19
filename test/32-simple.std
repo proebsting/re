@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # source not recorded
 
@@ -13,6 +13,8 @@ ex(2):  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CACD  CACD  CBD  CACD  CACD
 ex(3):  CBD  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CBD
 ex(5):  CACD  CACD  CACD  CACD  CBD  CBD  CBD  CACD  CACD  CBD  CACD  CACD  CBD
 ex(8):  CBD  CACD  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CBD  CBD  CBD  CACD
+---------------- Examples from DFA ---------------
+s1:  CBD
 
          #A: Aho and Ullman
          #T: Dragon2: automata example
@@ -27,6 +29,8 @@ ex(2):  aabb  ababb  abb  aabb  abb  abb  abb  abb  ababb  aaabb  abb  aaabb
 ex(3):  abb  abb  aaaabb  ababb  babb  ababb  ababb  aaabb  bbabb  abb  baabb
 ex(5):  abbaabb  bbaababb  aaabb  bababb  baabb  babb  babb  abb  abbaabb  abb
 ex(8):  bbbaaaabb  aabb  aabb  bbaababb  bababb  bbaaaabaabb  abababb  abb
+---------------- Examples from DFA ---------------
+s1:  abb
 
          #A: Sedgewick
          #T: Genome Marker
@@ -41,6 +45,8 @@ ex(2):  gcgctg  gcgaggctg  gcgaggctg  gcgaggctg  gcgcggctg  gcgctg
 ex(3):  gcgcggctg  gcgcggaggctg  gcgcggaggcggctg  gcgcggcggctg  gcgctg
 ex(5):  gcgctg  gcgcggaggctg  gcgaggaggcggcggaggctg  gcgcggaggaggcggctg
 ex(8):  gcgaggcggaggcggaggctg  gcgcggaggcggcggcggcggaggcggctg
+---------------- Examples from DFA ---------------
+s1:  gcgctg
 
          #A: Sedgewick
          #T: multiples of 3, in binary
@@ -55,6 +61,8 @@ ex(2):  101011010001    110    00      0  1000101            01000101    00  0
 ex(3):  10111000101001    00  101000011101    000    011  1000010  00  0  1100
 ex(5):  1110111110011101101111100111110011100111010  0  0100011111010  10111010
 ex(8):  01011111111001111100111111110000111001111111101101111110110111111110000001111110001010100111111110011100111100111111110110001111111100110010011111101
+---------------- Examples from DFA ---------------
+s0:  
 
          # A simple expr that had problems minimizing
 
@@ -69,6 +77,10 @@ ex(2):      1010  dc    ac    dc    ac  dc  10    ac  ac  ac  1010  ac  10  dc
 ex(3):  dc  101010  10  ac    dc  dc  ac  dc  ac  10    1010  ac  dc  1010  ac
 ex(5):  ac  1010101010  ac  1010101010  dc  10  ac  ac  1010  ac  dc  ac
 ex(8):  ac  ac  101010  1010101010101010  101010101010  ac  1010101010101010
+---------------- Examples from DFA ---------------
+s0:  
+s3:  10
+s4:  ac
 
          #A: gmt
          #T: Experiments with word construction
@@ -83,6 +95,8 @@ ex(2):  peed  boot  ceet  feen  ceem  trad  cad  tloon  boot  ceem  cloot  blin
 ex(3):  trem  clit  troon  trad  foom  preem  cleet  pood  treem  breem  blood
 ex(5):  food  cet  feem  pan  fad  treet  been  ceen  cloot  creed  beed  beet
 ex(8):  preem  ceem  boom  fem  pran  fut  proon  crod  teem  poon  ceet  ceed
+---------------- Examples from DFA ---------------
+s1:  fum
 
 expr 6: W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
 tree:   ((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))
@@ -95,4 +109,6 @@ ex(2):  Westirby  Walimgard  Whitisdale  Westasgard  Walomdale  Winamdale
 ex(3):  Whitondale  Winoshold  Westolbot  Watinby  Whitolman  Winimford
 ex(5):  Winoxdale  Wensixby  Winolby  Watirbot  Wensesson  Westasbot  Waloxford
 ex(8):  Whitembot  Westemford  Westesgard  Wensardale  Whitexbot  Wensosson
+---------------- Examples from DFA ---------------
+s1:  Walesby
 7 expression(s) loaded

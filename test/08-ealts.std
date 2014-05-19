@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # alternation with empty alternatives
 
@@ -13,6 +13,9 @@ ex(2):  a    a            a    a  a  a          a      a  a        a  a    a  a
 ex(3):  a  a          a  a    a  a  a    a  a  a  a  a    a    a  a  a      a  
 ex(5):  a  a  a    a  a    a  a  a  a  a  a    a    a    a  a  a      a  a  a
 ex(8):  a      a  a    a    a      a      a  a  a  a  a    a        a    a  a  
+---------------- Examples from DFA ---------------
+s0:  
+s1:  a
 
 expr 1: |a
 tree:   (()|a)
@@ -25,6 +28,9 @@ ex(2):                  a    a  a  a  a              a  a      a        a  a
 ex(3):  a        a        a  a  a  a  a        a    a  a          a  a      a  
 ex(5):      a  a  a  a  a      a          a  a          a        a    a  a    
 ex(8):  a    a    a          a  a  a        a  a    a  a  a  a  a      a      
+---------------- Examples from DFA ---------------
+s0:  
+s1:  a
 
 expr 2: a|b|
 tree:   (a|b|())
@@ -37,6 +43,9 @@ ex(2):  a  b  b        a  a  b  b  a  a  a    a  a    a  a  a  a      a  a  a
 ex(3):  b  b    a  b    b  b  a  a  b  a  b  a  b  b    a  b    b  a  b  b  a
 ex(5):  a  b  a                b  b  b  b  b    a  a  a      a  b  b      a  
 ex(8):  b  a  a  a  a  b  b      a  b  b  b  a  b  a  b        a  a  a  b  a  
+---------------- Examples from DFA ---------------
+s0:  
+s1:  b
 
 expr 3: a||b
 tree:   (a|()|b)
@@ -49,6 +58,9 @@ ex(2):  a    a    b  b  a      b    a  a  a  b  a  b  a  a  a  a  b  a  a  a  b
 ex(3):  a    b  a    b        a  a      a      a    b  b  a    b    b  b  a  b
 ex(5):  a  a    b  a  b  b  b    b  b  a  b  a  a  a  a  b  a    b  b  b    b
 ex(8):    a  a  a  a        a  b  b  b      a      a  b    b  b    a  a    a  
+---------------- Examples from DFA ---------------
+s0:  
+s1:  a
 
 expr 4: a|b|c|
 tree:   (a|b|c|())
@@ -61,6 +73,9 @@ ex(2):  b  c    b  b      c  c  c          a  b  a  a  b  b  b      a  a  b  c
 ex(3):    b  a  c    a  c  c  b    a  c  c  a  b  c  a  a  c  b  a  b  a  c  c
 ex(5):  a  a    a  c  a  c  a  a  b  a  c  b  a  b  a  b  b  a  c  b        c
 ex(8):    c    c  b  c  b  a  c  c  c  a    a    b  c    a  c    c  b    c  a  
+---------------- Examples from DFA ---------------
+s0:  
+s1:  c
 
 expr 5: |a|b|c|d
 tree:   (()|a|b|c|d)
@@ -73,6 +88,9 @@ ex(2):      a  d  a  d  a  b  a  d  d  d  c  c  c  c  b  b  d    b      a  d  b
 ex(3):    c  b  d    b    c  d  c  a  a  c  a    b  a  c  d  b  d  c  d    d  
 ex(5):  c  b  c  b    d  b  a  b  a    c  c  c    d        a  c  b  b  d  c  
 ex(8):  c  c  d  a    c  c  c    a  d  b  a  d    d  b      c  c  c  c  c  b  c
+---------------- Examples from DFA ---------------
+s0:  
+s1:  c
 
 expr 6: a||c||e
 tree:   (a|()|c|()|e)
@@ -85,6 +103,9 @@ ex(2):    c        e  a    e    a  e  e  c    e  e  e    c      c  a  a    e  a
 ex(3):  a  a  e  e  c    e    e  a    a  c  a  e  e  a  c    a  e  c  c    c  e
 ex(5):    e  a    a      a      a  c  e  c    a  e    a  a      c  e  a  a    
 ex(8):  a  e  a  a  c          e    c        e    a  e  a  e  a  e  e  c  a    
+---------------- Examples from DFA ---------------
+s0:  
+s1:  e
 
 expr 7: ab|c||def|g
 tree:   ((ab)|c|()|((de)f)|g)
@@ -97,4 +118,7 @@ ex(2):  c      c  g  g  g  def  def    ab  g  ab  ab  ab    g    ab    c  ab
 ex(3):  g  def  c  def  ab  c  def      g  def  ab  ab  def  def  ab    def  g
 ex(5):  def  ab  ab  c  def    g  ab  ab  def  g  c  ab  def  ab  g    g  ab
 ex(8):    ab  def  def  def  def  g  ab  ab  c  ab  g  c  c  c  c  g  c  def
+---------------- Examples from DFA ---------------
+s0:  
+s2:  c
 8 expression(s) loaded

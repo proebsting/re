@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # ugly but legal cset (bracket expression) forms
 
@@ -13,6 +13,8 @@ ex(2):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(3):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(5):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(8):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+---------------- Examples from DFA ---------------
+s1:  -
 
 expr 1: [-x]
 tree:   [x-]
@@ -25,6 +27,8 @@ ex(2):  -  -  -  -  x  -  -  -  x  x  -  -  x  x  -  x  x  x  -  -  -  x  -  -
 ex(3):  x  x  -  x  -  -  -  x  -  -  -  -  -  -  x  -  x  -  -  -  -  -  -  -
 ex(5):  x  -  x  x  -  x  x  -  x  -  x  -  -  x  -  x  -  x  x  -  -  -  -  -
 ex(8):  -  x  x  -  x  x  x  x  x  -  -  -  x  -  -  x  x  x  -  x  -  x  x  -
+---------------- Examples from DFA ---------------
+s1:  -
 
 expr 2: [x-]
 tree:   [x-]
@@ -37,6 +41,8 @@ ex(2):  -  -  -  -  x  -  -  -  x  x  -  -  x  x  -  x  x  x  -  -  -  x  -  -
 ex(3):  x  x  -  x  -  -  -  x  -  -  -  -  -  -  x  -  x  -  -  -  -  -  -  -
 ex(5):  x  -  x  x  -  x  x  -  x  -  x  -  -  x  -  x  -  x  x  -  -  -  -  -
 ex(8):  -  x  x  -  x  x  x  x  x  -  -  -  x  -  -  x  x  x  -  x  -  x  x  -
+---------------- Examples from DFA ---------------
+s1:  -
 
 expr 3: [[x]
 tree:   [[x]
@@ -49,6 +55,8 @@ ex(2):  [  [  [  x  x  x  [  [  x  x  [  x  [  [  [  [  [  x  [  x  [  x  [  x
 ex(3):  [  x  x  x  x  x  x  [  [  x  x  [  [  x  [  x  [  x  [  x  [  x  [  x
 ex(5):  [  [  x  x  x  [  x  x  x  x  x  x  [  x  [  x  [  x  [  [  x  x  [  [
 ex(8):  [  [  x  x  x  x  x  [  x  [  [  x  x  [  x  x  x  x  [  x  x  x  x  [
+---------------- Examples from DFA ---------------
+s1:  [
 
 expr 4: [[x-]
 tree:   [[x-]
@@ -61,6 +69,8 @@ ex(2):  [  [  -  -  x  -  -  [  x  [  -  -  [  x  [  [  [  x  [  [  -  x  -  -
 ex(3):  x  x  -  [  -  -  -  x  [  -  [  [  x  x  -  [  x  -  -  -  [  x  -  x
 ex(5):  [  x  [  -  [  x  [  -  [  [  x  -  -  x  [  x  -  [  -  -  -  -  [  x
 ex(8):  -  x  -  [  x  [  x  x  [  -  -  x  [  -  [  -  x  -  x  -  x  x  x  x
+---------------- Examples from DFA ---------------
+s1:  x
 
 expr 5: []x]
 tree:   []x]
@@ -73,6 +83,8 @@ ex(2):  ]  x  x  x  x  x  x  x  x  x  ]  ]  x  ]  x  ]  x  ]  ]  ]  x  ]  x  x
 ex(3):  x  x  x  ]  x  x  x  ]  x  ]  x  x  ]  ]  x  x  ]  x  x  x  ]  ]  ]  x
 ex(5):  ]  x  ]  ]  x  x  ]  ]  ]  x  x  ]  x  ]  x  ]  ]  x  x  ]  ]  ]  x  x
 ex(8):  x  ]  ]  x  ]  ]  ]  x  x  ]  x  ]  x  x  ]  x  ]  x  ]  ]  x  x  x  x
+---------------- Examples from DFA ---------------
+s1:  x
 
 expr 6: []x-]
 tree:   []x-]
@@ -85,6 +97,8 @@ ex(2):  x  -  -  x  ]  -  -  ]  ]  x  ]  -  -  ]  x  -  ]  ]  x  -  ]  -  ]  -
 ex(3):  ]  x  ]  -  ]  -  -  -  x  ]  ]  -  -  -  ]  ]  -  x  -  -  -  ]  ]  -
 ex(5):  ]  x  -  ]  x  -  ]  x  -  ]  ]  x  -  -  x  -  x  -  x  x  -  ]  -  -
 ex(8):  -  -  ]  x  -  ]  x  x  ]  x  -  -  -  ]  -  -  x  ]  x  ]  x  -  x  x
+---------------- Examples from DFA ---------------
+s1:  x
 
 expr 7: []x[-]
 tree:   [][x-]
@@ -97,6 +111,8 @@ ex(2):  x  -  [  x  ]  -  -  ]  [  x  [  -  -  [  x  [  [  [  x  [  ]  -  ]  -
 ex(3):  ]  x  ]  -  [  -  -  -  x  ]  ]  [  [  x  x  -  [  ]  -  -  -  [  ]  -
 ex(5):  ]  ]  ]  ]  -  ]  ]  [  -  [  ]  x  -  -  x  [  x  -  [  -  -  ]  -  [
 ex(8):  x  -  x  -  [  ]  [  ]  ]  [  ]  ]  ]  [  -  ]  -  x  ]  ]  -  x  ]  ]
+---------------- Examples from DFA ---------------
+s1:  -
 
 expr 8: [][]
 tree:   [][]
@@ -109,4 +125,6 @@ ex(2):  [  ]  [  [  ]  [  [  ]  [  [  ]  [  [  [  [  ]  ]  [  ]  ]  [  [  ]  ]
 ex(3):  ]  [  [  [  ]  ]  ]  ]  [  [  [  ]  ]  ]  [  [  [  [  [  ]  ]  [  [  [
 ex(5):  ]  [  [  [  [  [  [  ]  ]  [  [  [  [  [  ]  ]  [  ]  ]  [  [  ]  ]  ]
 ex(8):  [  ]  [  ]  ]  [  ]  ]  [  [  [  [  ]  [  ]  [  ]  [  [  ]  [  [  [  [
+---------------- Examples from DFA ---------------
+s1:  [
 9 expression(s) loaded

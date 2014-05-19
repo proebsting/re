@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # replication in complex situations
 
@@ -13,6 +13,8 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 1: (){2,4}
 tree:   (){2,4}
@@ -25,6 +27,8 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 2: (abc){3}
 tree:   ((ab)c){3}
@@ -37,6 +41,8 @@ ex(2):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(3):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(5):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(8):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
+---------------- Examples from DFA ---------------
+s1:  abcabcabc
 
 expr 3: (a|b){3}
 tree:   (a|b){3}
@@ -49,6 +55,8 @@ ex(2):  aba  aab  aaa  aaa  aab  aab  aba  bba  abb  baa  abb  bbb  bab  aaa
 ex(3):  aab  baa  abb  aab  aba  aba  bab  bab  abb  bab  bba  aaa  bba  baa
 ex(5):  bbb  baa  aba  aab  aab  bba  aba  bba  bab  bba  aaa  bab  bab  abb
 ex(8):  aab  aaa  baa  baa  baa  aaa  aba  aba  bab  bba  abb  aab  aab  baa
+---------------- Examples from DFA ---------------
+s1:  aaa
 
 expr 4: (ab|cd){3}
 tree:   ((ab)|(cd)){3}
@@ -61,6 +69,8 @@ ex(2):  abcdab  cdabcd  ababab  ababcd  ababcd  ababab  cdabab  abcdcd  cdabab
 ex(3):  abcdcd  cdabab  ababab  ababcd  cdcdcd  ababab  cdabcd  cdabab  cdcdcd
 ex(5):  cdcdcd  cdabcd  ababab  cdcdcd  abcdcd  abcdab  cdabab  cdcdab  cdabab
 ex(8):  abcdab  abcdab  cdabcd  cdabcd  abcdab  cdcdcd  cdcdab  cdabab  ababcd
+---------------- Examples from DFA ---------------
+s1:  ababab
 
 expr 5: (a*){3}
 tree:   a*{3}
@@ -73,6 +83,8 @@ ex(2):  aaa  a  aa    aa  aa  aa  aa  aaa  aaa  aaaa  aaa  aa  aa  aaaaa  aaa
 ex(3):  aaaaaa  aaaaaa  aa  aaaa  aaaaa  aaaaaaa  aaaaaa  aaaaa  aa  aaaa  aa
 ex(5):  aaaaaaa  aaaaa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaaaaaaaaa  aaaaaaa
 ex(8):  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaa
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 6: (a{3})*
 tree:   a{3}*
@@ -85,6 +97,8 @@ ex(2):  aaa  aaaaaa  aaaaaa  aaaaaa        aaaaaa    aaaaaa  aaa  aaaaaa  aaa
 ex(3):  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaa  aaa  aaaaaaaaa  aaaaaaaaa    aaaaaa
 ex(5):  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaa  aaaaaaaaaaaa
 ex(8):  aaaaaaaaaaaa  aaaaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaaaaaaa
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 7: (a{3})+
 tree:   a{3}+
@@ -97,6 +111,8 @@ ex(2):  aaa  aaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaa  aaa  aaa  aaaaaa
 ex(3):  aaa  aaaaaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaaaaaaaa  aaa  aaa
 ex(5):  aaa  aaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaa  aaa  aaaaaa
 ex(8):  aaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaa
+---------------- Examples from DFA ---------------
+s1:  aaa
 
 expr 8: (a{3})?
 tree:   a{3}?
@@ -109,6 +125,9 @@ ex(2):  aaa        aaa  aaa  aaa  aaa    aaa    aaa                    aaa  aaa
 ex(3):  aaa          aaa      aaa    aaa    aaa        aaa    aaa  aaa  aaa  
 ex(5):    aaa      aaa      aaa      aaa  aaa  aaa  aaa      aaa          aaa  
 ex(8):    aaa    aaa  aaa          aaa  aaa    aaa    aaa  aaa  aaa  aaa    aaa
+---------------- Examples from DFA ---------------
+s0:  
+s3:  aaa
 
 expr 9: (a{3}){2}
 tree:   a{3}{2}
@@ -121,6 +140,8 @@ ex(2):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(3):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(5):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(8):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
+---------------- Examples from DFA ---------------
+s1:  aaaaaa
 
 expr 10: (a{3}){1,5}
 tree:   a{3}{1,5}
@@ -133,6 +154,12 @@ ex(2):  aaa  aaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaa  aaa  aaa  aaaaaa
 ex(3):  aaa  aaaaaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaaaaaaaa  aaa  aaa
 ex(5):  aaa  aaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaa  aaa  aaaaaa
 ex(8):  aaa  aaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa
+---------------- Examples from DFA ---------------
+s1:  aaa
+s13:  aaaaaa
+s10:  aaaaaaaaa
+s7:  aaaaaaaaaaaa
+s4:  aaaaaaaaaaaaaaa
 
 expr 11: a{3}b{4}
 tree:   (a{3}b{4})
@@ -145,6 +172,8 @@ ex(2):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(3):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(5):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(8):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
+---------------- Examples from DFA ---------------
+s1:  aaabbbb
 
 expr 12: a{3}|b{4}|c{5}
 tree:   (a{3}|b{4}|c{5})
@@ -157,4 +186,6 @@ ex(2):  bbbb  aaa  aaa  bbbb  aaa  ccccc  ccccc  ccccc  ccccc  bbbb  aaa  bbbb
 ex(3):  ccccc  ccccc  bbbb  ccccc  aaa  ccccc  bbbb  bbbb  bbbb  aaa  bbbb
 ex(5):  bbbb  bbbb  bbbb  bbbb  bbbb  aaa  bbbb  aaa  bbbb  ccccc  aaa  aaa
 ex(8):  bbbb  bbbb  ccccc  aaa  bbbb  bbbb  ccccc  aaa  ccccc  bbbb  ccccc
+---------------- Examples from DFA ---------------
+s1:  aaa
 13 expression(s) loaded

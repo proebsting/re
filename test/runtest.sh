@@ -33,7 +33,7 @@ for F in $*; do
 	    FAILED="$FAILED $I"
 	    continue;;
 	.rx|.rxr)
-	    $BIN/rxplor -I 0 -R -l -g -v $I >$F.out;;
+	    $BIN/rxplor -T $I >$F.out;;
 	.rxc)
 	    $BIN/rxcluster -i 1 $I >$F.out;;
 	.rxd)
@@ -46,7 +46,7 @@ for F in $*; do
 	.rxx)
 	    $BIN/rxx $I ${I%.rxx}.rcx >$F.out;;
 	.rxv)
-	    $BIN/rxplor -I 0 -R -l -p -n -d -g -h -v $I >$F.out;;
+	    $BIN/rxplor -T -p -n -d $I >$F.out;;
 	.*)
 	    echo 1>&2 "unrecognized extension: $I"
 	    FAILED="$FAILED $I"

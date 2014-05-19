@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # complemented character sets
 
@@ -13,6 +13,8 @@ ex(2):  h          }y  t      {o    |i  x  u  bd    |}  te          bw    {m
 ex(3):      jk  bb  ~  a  jqe  wq    djj      |    i|  p  a  g  rum    zga  ~h
 ex(5):  yhb  kk  }    m~k}y  eb    h{}  cy{wi  txmrt  }ly  ajvk  ispc  iuccu  i
 ex(8):  bs  dkssdwu~  azu  {  c|  rtjk}aa  yddsdt  q|fxgxe  }zqyy  hygf  tuox
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 1: [^ -@]*
 tree:   [\x01-\x1fA-\u007f]*
@@ -25,6 +27,8 @@ ex(2):  f          qG  T      o}    |W  \\  o  ~l    ~o  |S          Zu    M{
 ex(3):      l{  Pd  t  A  nuW  Ac    Nlj      N    {J  x  [  o  BuO    jOS  nx
 ex(5):  Ob|  QE  W    OLGey  }L    ZoC  W]kMW  djIVB  kTi  mr\\C  y}BM  eKAAU
 ex(8):  e{Xi  bc  zki_bQyD  }nW  s  Sv  |HligOE  cDde^v  AD|LcTA  Y~sqW  DG}x
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 2: [^ -/]*
 tree:   [\x01-\x1f0-\u007f]*
@@ -37,6 +41,8 @@ ex(2):  b          {{  :      1c    RH  e  Z  S@    ^M  V[          =s    ^I
 ex(3):      7W  Mr  W  s  em@  _a    F61      c    @N  C  w  ;  _\\a    X:`  CU
 ex(5):  laF  rE  a    CY_we  @k    A;X  e7>C;  Aw=g4  ~;C  2Sh_  ?vd:  {8Kz]  4
 ex(8):  9X  ?2}V\\g_q  |k]  D  Kp  _;cRF]]  @~`sD{  NxCQNCT  7:{HE  0rMP  2@T{
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 3: [^ -/:-@[-`{-~]*
 tree:   [\x01-\x1f0-9A-Za-z\u007f]*
@@ -49,6 +55,8 @@ ex(2):          Td  0    hM    xe  G  5  O3    xL  pR          OF    JJ  Aq  L
 ex(3):  v  3y  l  uOa  71    39u      i    Gx  l  d  Wn    Jv  0L  f  F    u
 ex(5):  U9tZ  e9Yaz  7wy  Iwd8n  V    afWfd    cvm  Bn  e5nAS  G  tNdk  B
 ex(8):  DmNvDOY  ni  E9IZlxf    QoCMmV  GpVLh9  gsWcDR  5  ti  NN3Y  EseBy0R
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 4: [^0-9]*
 tree:   [\x01-/:-\u007f]*
@@ -61,6 +69,8 @@ ex(2):          iV  L      {y    m}  r  [I      TP  Bh        gT    XO    &P  U
 ex(3):    D{  B  M  tlV  ml    }~V      ;    A'  >  u  q  h^w  a{   o|  N\"\\
 ex(5):  B  /;P/  @GuK=  .{    ;](  @`+hU  =Zm]t  qoOk  lWD  _H  (i  h'  td
 ex(8):  A  <Ri-#c%$  z>>  b  mY  '~e\\iW/  tPP_xB  ]wkZ{_G  w]B$R  .DC)j\\B
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 5: [^A-Za-z0-9]*
 tree:   [\x01-/:-@[-`{-\u007f]*
@@ -73,6 +83,8 @@ ex(2):  `  {,  _~  [~  /  %&  ?      <*  >}  @]  {  ;  ._  ,  =          /;
 ex(3):  '  |^    ] ~  |  \\\\(  ^]  /;  /:  /=$  \\%]  \\@  +>  =  ~+\\  ::  
 ex(5):  !}>>^  '+  +  <-#  %$=>  +_  :'  |  \";{/  (]#  {_@]]      @.))  \\  {~
 ex(8):  (..[  \"/~-}`/  %|>_>*??  :;(|  %;!  @#~`=  .!\"![<  ;^  $&;;  ^:]<+)%
+---------------- Examples from DFA ---------------
+s0:  
 
          # these last two should be identical (under -Z)
 
@@ -87,6 +99,8 @@ ex(2):  `  {,  ]~  [~  /  %&  ?      <*  >}  @]  {  ;  .   ,  =          /;
 ex(3):  '  |^    ] ~  |  \\\\(  ^]  /;  /:  /=$  \\%]  \\@  +>  =  ~+\\  ::  
 ex(5):  !}>>^  '+  +  <-#  %$=>  +.  :'  |  \";{/  (]#  {'+\"^  @.))  \\  {~
 ex(8):  (..[  \"/~-}`/  %|>[>*??  :;(|  %;!  @#~`=  .!\"![<  ;^  $&;;  ^:]<+)%
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 7: [^\w]*
 tree:   [\x01-/:-@[-^`{-\u007f]*
@@ -99,4 +113,6 @@ ex(2):  `  {,  ]~  [~  /  %&  ?      <*  >}  @]  {  ;  .   ,  =          /;
 ex(3):  '  |^    ] ~  |  \\\\(  ^]  /;  /:  /=$  \\%]  \\@  +>  =  ~+\\  ::  
 ex(5):  !}>>^  '+  +  <-#  %$=>  +.  :'  |  \";{/  (]#  {'+\"^  @.))  \\  {~
 ex(8):  (..[  \"/~-}`/  %|>[>*??  :;(|  %;!  @#~`=  .!\"![<  ;^  $&;;  ^:]<+)%
+---------------- Examples from DFA ---------------
+s0:  
 8 expression(s) loaded

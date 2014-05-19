@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # nested parentheses
 
@@ -13,6 +13,8 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 1: (((a)))
 tree:   a
@@ -25,6 +27,8 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 2: (((a*)))
 tree:   a*
@@ -37,6 +41,8 @@ ex(2):  a          aa  a      aa    aa  a  a  aa    aa  aa          aa    aa
 ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
 ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
 ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 3: (((a)*))
 tree:   a*
@@ -49,6 +55,8 @@ ex(2):  a          aa  a      aa    aa  a  a  aa    aa  aa          aa    aa
 ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
 ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
 ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 4: (((a))*)
 tree:   a*
@@ -61,6 +69,8 @@ ex(2):  a          aa  a      aa    aa  a  a  aa    aa  aa          aa    aa
 ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
 ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
 ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 5: (((a)))*
 tree:   a*
@@ -73,6 +83,8 @@ ex(2):  a          aa  a      aa    aa  a  a  aa    aa  aa          aa    aa
 ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
 ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
 ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 6: ((a*b)@(c*d)#)*
 tree:   ((((a*b)@)(c*d))#)*
@@ -85,6 +97,8 @@ ex(2):  b@d#  b@d#  aab@cd#aab@d#  ab@d#aab@ccd#  b@d#        b@ccd#
 ex(3):    aab@cd#b@ccd#    ab@ccd#b@d#aaab@cccd#  b@cd#b@d#  ab@ccd#aaab@cccd#
 ex(5):      ab@cd#aaaaab@cccd#aaaaab@d#aaaab@ccd#
 ex(8):  aaaaaaaab@cccccd#aaaaaaaab@d#aaab@ccccccccd#aaaaaaaab@cccccd#b@ccccccccd#aaaaaaaab@ccccccccd#
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 7: ((b|f)(a|e))*
 tree:   ((b|f)(a|e))*
@@ -97,6 +111,8 @@ ex(2):    febe    feba  bafa  fe      ba            bebe    ba  bafa  feba  ba
 ex(3):      befa  ba  fefe  ba  bafeba  bafabe      be  fabe  fabefa  fe
 ex(5):    fafafafefe  fabebeba  fe    fefafebe  befe      bafe  bebabe
 ex(8):  bebafefabebefafa  fe  babafafebebe  be  babebabebafa  fefefe  beba  fe
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 8: ((n|t)(o|e)+)*
 tree:   ((n|t)(o|e)+)*
@@ -109,4 +125,7 @@ ex(2):    teene    nono  nee      no          nootoo  nene    toe  no    noteo
 ex(3):  no  toe  noeonooto  nonoee  nonotee  neonotooo  noneotoeo  noeoteeteoe
 ex(5):  teoneoeneeooneoeoetee  toeo  noeoteonootonoe  neeeonee  nenoeooe  toono
 ex(8):  noeoeeoeotoeeootoooooeteoeneeeee  netoooteeoeeeee
+---------------- Examples from DFA ---------------
+s0:  
+s2:  to
 9 expression(s) loaded

@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # "In search of the perfect URL validation regex"
 
@@ -21,6 +21,25 @@ ex(2):  ftp://http://k._.sj  http://https://4d.gg?0  ftp://ftp://cu.kn
 ex(3):  https://https://g.by  ftp://https://http://1.c49.cg:6/_AP
 ex(5):  https://http://http://http://https://dhm9.5qa.e5u.19r4.nf.bg:02606
 ex(8):  ftp://ftp://1-a-if.cd:3
+---------------- Examples from DFA ---------------
+s1:  ftp://q.al
+s30:  ftp://q.ae
+s31:  ftp://q.ar
+s32:  ftp://q.as
+s36:  ftp://q.jo
+s33:  ftp://q.bi
+s39:  ftp://q.tr
+s37:  ftp://q.mu
+s61:  ftp://q.mo
+s34:  ftp://q.ca
+s35:  ftp://q.co
+s59:  ftp://q.na
+s60:  ftp://q.no
+s38:  ftp://q.pr
+s58:  ftp://q.in
+s72:  ftp://q.al:1
+s57:  ftp://q.al/8
+s77:  ftp://q.al?w
 
          # @krijnhoetmer (115 chars)
 
@@ -45,6 +64,9 @@ ex(2):  www3.Mv((q))  l-x:h(y(#))*\u007f  vo.pgf/((~-)`)(EZ)  www51.tqm
 ex(3):  lS8:x((e?Y)(w1\\)TOF)((J]))wf  edt.ymxz/Q(tY2g(gr))
 ex(5):  hHe5qa:zfd6|y7j(F%T`*(Msw)\"3Od~M)KNgKI()9  8urhh.nti/-()
 ex(8):  pq7t:1E?IB4M()*L5;0Z&6#;.1_]&4?Zc((1m:)(0=Ot3~FZ)WY;r(`s}4)(%C)^j2tx)(B)(T49qB!91)@
+---------------- Examples from DFA ---------------
+s1:  ww:2bm
+s9:  ww:2b”
 
          # @cowboy (1241 chars)
 
@@ -69,6 +91,13 @@ ex(2):  w9x://8:%beZ@[4:a44:b]:83  dup://%36@[efb:81]:0  nb://g|%b4;
 ex(3):  eabl://':%932r:f;@[4:d3:9:b]:0?  b1i://z:$%a9%48:%3a@6up/TN
 ex(5):  k://[e1:198]:38  kkq5x://[ad4:c8]:53  nvo9o9://[b]:284
 ex(8):  m://%a2%b5:2  u://%ccy$%cfk%4d:%9e%cb%8b4%31%d3@%ab%83jf%03/b4v%91E%df
+---------------- Examples from DFA ---------------
+s1:  s://9
+s9:  s://9/
+s10:  s://[]
+s15:  s://9:8
+s11:  s://9@.
+s22:  s://[]:6
 
          # @stephenhay (38 chars)
 
@@ -83,6 +112,8 @@ ex(2):  ftp://tP  ftp://w{  ftp://3hJZ  ftp://'O  ftp://E(i1  http://U]
 ex(3):  ftp://-'\\+3  https://EwL  https://t.*x  ftp://ZUJ\\  https://- o`
 ex(5):  ftp://fj  https://CC  ftp://=7aIM(  ftp://8`Lc  ftp://js=
 ex(8):  http://iT  https://^wT@  https://\\5&s[te]Y2  https://8CT:LwE3y
+---------------- Examples from DFA ---------------
+s1:  ftp://di
 
          # @scottgonzales (1347 chars)
 
@@ -97,6 +128,9 @@ ex(2):  x6-:@¢#  x-:/?:~  z.:  o::_/@/#?  gg.:??#  e-:/:9//  k-:?
 ex(3):  h:?#  z:/?#?x  f.://254.253.192.7:35/  b-.://a@%58:2/.
 ex(5):  j:~_-%00:/:-./n+/5@%99/+./.4s!%d1?/:=?#?  f+-.+://137.142.188.38:458/#
 ex(8):  uw-.u+:)..%50¥/$//-~-,ÿk./(%22@/&,.c@:Ö/(:,/:-'-/%30.$@zj5  m-70-3:/?@
+---------------- Examples from DFA ---------------
+s1:  k:
+s5:  k:#
 
          # @rodneyrehm (109 chars)
 
@@ -116,6 +150,10 @@ ex(2):  https://p.  http://Ch  ftp://-.mhM  ftp://Sz./E  ftp://St  ftp://^K.
 ex(3):  ftp://-.QE>./  https://&.*wEaI/X  ftp://z.ZD!./huP  https://TOFVR.J].
 ex(5):  https://7g.c\".  ftp://-.eI3Av.y=K8.kdJ./e(9  ftp://fd6|y7j.mRF5./B{?
 ex(8):  ftp://uMs%n:>  ftp://-.8~TLZe}./KYMl3Th
+---------------- Examples from DFA ---------------
+s1:  ftp://*
+s9:  ftp://*.
+s10:  ftp://*/
 
          # @diegoperini (502 chars)
 

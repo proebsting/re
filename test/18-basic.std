@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
 expr 0: a
 tree:   a
@@ -11,6 +11,8 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 1: ab
 tree:   (ab)
@@ -23,6 +25,8 @@ ex(2):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(3):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(5):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(8):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+---------------- Examples from DFA ---------------
+s1:  ab
 
 expr 2: abc
 tree:   ((ab)c)
@@ -35,6 +39,8 @@ ex(2):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(3):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(5):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(8):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
+---------------- Examples from DFA ---------------
+s1:  abc
 
 expr 3: ab*c
 tree:   ((ab*)c)
@@ -47,6 +53,8 @@ ex(2):  ac  abc  abbc  abc  ac  ac  abbc  abbc  ac  ac  ac  abc  abbc  abbc
 ex(3):  abbc  ac  abbc  ac  ac  abbc  ac  abc  ac  abbbc  ac  abbc  ac  abbc
 ex(5):  ac  abbc  abbc  abbbc  abbbbc  ac  abc  abbbbbc  ac  abc  abc  abbbbbc
 ex(8):  abbbbbbbbc  abc  abbbbbbc  ac  abbbbbc  abbbbc  abbbbbc  abbbbbbc  abc
+---------------- Examples from DFA ---------------
+s1:  ac
 
 expr 4: a|b
 tree:   (a|b)
@@ -59,6 +67,8 @@ ex(2):  b  b  a  b  a  a  a  b  b  a  b  a  b  b  a  a  b  a  b  a  a  b  b  a
 ex(3):  b  a  b  a  a  a  a  a  a  b  a  a  a  a  b  a  b  a  a  a  b  a  a  a
 ex(5):  a  a  a  a  b  a  a  b  a  b  a  b  b  a  a  b  b  b  a  a  a  b  b  b
 ex(8):  b  b  a  b  a  a  a  b  b  a  a  a  b  b  a  a  a  b  b  a  a  b  a  b
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 5: a|b|c|d
 tree:   (a|b|c|d)
@@ -71,6 +81,8 @@ ex(2):  d  b  c  d  c  a  a  d  d  a  d  c  d  d  a  c  d  c  d  c  c  b  b  a
 ex(3):  d  c  d  c  c  a  c  c  a  b  c  a  a  c  b  a  b  a  c  c  d  c  a  a
 ex(5):  a  c  a  a  b  a  c  b  a  b  a  b  b  a  c  b  d  d  a  c  c  d  b  d
 ex(8):  d  d  a  b  a  a  a  d  d  a  a  c  d  b  c  c  a  d  d  c  c  d  a  d
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 6: ab|cd
 tree:   ((ab)|(cd))
@@ -83,6 +95,8 @@ ex(2):  cd  ab  cd  ab  cd  cd  cd  ab  ab  cd  cd  cd  cd  ab  ab  cd  ab  cd
 ex(3):  cd  ab  cd  ab  cd  ab  cd  ab  cd  ab  ab  ab  ab  ab  cd  ab  ab  cd
 ex(5):  ab  ab  cd  ab  ab  ab  cd  cd  cd  ab  ab  cd  cd  ab  ab  cd  cd  cd
 ex(8):  ab  ab  ab  ab  ab  ab  cd  cd  cd  cd  ab  ab  ab  cd  ab  cd  cd  ab
+---------------- Examples from DFA ---------------
+s1:  ab
 
 expr 7: abc|de
 tree:   (((ab)c)|(de))
@@ -95,6 +109,8 @@ ex(2):  de  abc  de  de  de  abc  abc  de  abc  de  abc  de  abc  abc  de  de
 ex(3):  de  de  abc  abc  abc  abc  abc  abc  de  de  de  abc  de  de  abc  abc
 ex(5):  de  de  de  de  abc  abc  abc  abc  abc  abc  abc  de  abc  de  abc
 ex(8):  abc  abc  de  abc  de  abc  de  de  abc  de  de  abc  abc  de  abc  abc
+---------------- Examples from DFA ---------------
+s1:  de
 
 expr 8: |a|bc|def
 tree:   (()|a|(bc)|((de)f))
@@ -107,6 +123,9 @@ ex(2):  bc    def      a    bc  a  a  a  def    def  bc  def  a  def  bc  bc
 ex(3):  bc    a    bc  bc  bc  def  a  a    bc    bc  def  bc  bc  bc  a    a
 ex(5):  bc  a    def  bc  bc  bc  def  bc  def  a  bc  def    bc        def  a
 ex(8):      bc  bc  bc  def    def  bc  bc  def    bc    def  def  a    a  bc  
+---------------- Examples from DFA ---------------
+s0:  
+s2:  a
 
 expr 9: ()
 tree:   ()
@@ -119,6 +138,8 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 10: (a)
 tree:   a
@@ -131,6 +152,8 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 11: (ab)
 tree:   (ab)
@@ -143,6 +166,8 @@ ex(2):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(3):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(5):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(8):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
+---------------- Examples from DFA ---------------
+s1:  ab
 
 expr 12: (ab*)
 tree:   (ab*)
@@ -155,6 +180,8 @@ ex(2):  a  a  ab  abb  abb  ab  ab  ab  abb  ab  ab  a  a  abb  a  abb  ab  a
 ex(3):  abbb  ab  ab  ab  abbb  abb  abbb  abb  ab  ab  a  abb  a  ab  ab  abb
 ex(5):  abb  abb  abb  abbb  abbbbb  abb  ab  abb  abbbb  a  abbb  abbb  abbbbb
 ex(8):  abbbbbb  abbbbbbbb  a  abbbb  abbbbbbb  ab  abbbbbbbb  a  a  abbbbb
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 13: (ab)*
 tree:   (ab)*
@@ -167,6 +194,8 @@ ex(2):      abab      abab    abab  abab    ab  ab      abab  abab  abab  ab
 ex(3):  ab  ababab  ababab  ababab  ab  abab    ababab  ababab  ababab  ab    
 ex(5):  ababab  abab  ababababab  ababab  ababababab  ababab  abababab  ab
 ex(8):  abababababababab  abab  ababababab  abababab  ababab  abababababab  ab
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 14: (a|b)
 tree:   (a|b)
@@ -179,6 +208,8 @@ ex(2):  b  b  a  b  a  a  a  b  b  a  b  a  b  b  a  a  b  a  b  a  a  b  b  a
 ex(3):  b  a  b  a  a  a  a  a  a  b  a  a  a  a  b  a  b  a  a  a  b  a  a  a
 ex(5):  a  a  a  a  b  a  a  b  a  b  a  b  b  a  a  b  b  b  a  a  a  b  b  b
 ex(8):  b  b  a  b  a  a  a  b  b  a  a  a  b  b  a  a  a  b  b  a  a  b  a  b
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 15: (a|b)*
 tree:   (a|b)*
@@ -191,6 +222,8 @@ ex(2):  aa    ab  ba    b  b      bb  aa  aa  a  b  ab  a  a        ab  ab  a
 ex(3):  aab  ab  b  a  aaa  a      ab  b  ba  ab    baa  ba      aaa  ba  ba
 ex(5):    aba  aa  aba      abb  a  bbaba  baba  aabba  bb  baab  baaa  aba
 ex(8):  bbabbba  aa  bbaba  bb  bbbbb    aabaa  a  a  bb  b  babbaab  ab  ba
+---------------- Examples from DFA ---------------
+s0:  
 
 expr 16: AB(|)
 tree:   ((AB)(()|()))
@@ -203,6 +236,8 @@ ex(2):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
 ex(3):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
 ex(5):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
 ex(8):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
+---------------- Examples from DFA ---------------
+s1:  AB
 
 expr 17: C(|)
 tree:   (C(()|()))
@@ -215,6 +250,8 @@ ex(2):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
 ex(3):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
 ex(5):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
 ex(8):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
+---------------- Examples from DFA ---------------
+s1:  C
 
 expr 18: C(A|B)
 tree:   (C(A|B))
@@ -227,6 +264,8 @@ ex(2):  CB  CA  CA  CB  CB  CA  CA  CB  CA  CB  CB  CA  CA  CB  CB  CA  CA  CA
 ex(3):  CA  CA  CB  CB  CA  CA  CB  CA  CA  CA  CA  CA  CB  CB  CB  CA  CA  CA
 ex(5):  CA  CB  CA  CA  CB  CB  CA  CB  CA  CB  CA  CA  CB  CA  CA  CB  CB  CA
 ex(8):  CB  CA  CB  CB  CA  CA  CA  CA  CB  CB  CB  CB  CB  CA  CB  CA  CA  CA
+---------------- Examples from DFA ---------------
+s1:  CB
 
 expr 19: C(AC|B)D
 tree:   ((C((AC)|B))D)
@@ -239,4 +278,6 @@ ex(2):  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CACD  CACD  CBD  CACD  CACD
 ex(3):  CBD  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CACD  CACD  CACD  CBD  CBD
 ex(5):  CACD  CACD  CACD  CACD  CBD  CBD  CBD  CACD  CACD  CBD  CACD  CACD  CBD
 ex(8):  CBD  CACD  CACD  CACD  CACD  CBD  CBD  CACD  CACD  CBD  CBD  CBD  CACD
+---------------- Examples from DFA ---------------
+s1:  CBD
 20 expression(s) loaded

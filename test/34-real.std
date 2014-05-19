@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # words
 
@@ -13,6 +13,8 @@ ex(2):  Sx  Wmk  Ii  se  Eb  mb  Vlt  mrs  cm  Klx  Xs  Yy  gjt  hx  edi  in
 ex(3):  Plt  rfid  yqz  Uj  Sygk  ifo  kkbe  segz  hulh  zds  aj  Tqw  ec  Tkky
 ex(5):  Hgdk  lcour  mr  sa  Wye  vt  Nowykr  Gnaxf  lnz  Zdy  Czciy  wcuz  as
 ex(8):  jnfu  vzedtcbx  Eqaxuclp  Hsgpbm  Lyy  Vbfieffat  rhrpoa  Atb
+---------------- Examples from DFA ---------------
+s1:  Td
 
 expr 1: [a-zA-Z][a-z]*
 tree:   ([A-Za-z][a-z]*)
@@ -25,6 +27,8 @@ ex(2):  Sxk  Tki  ree  E  Dw  Zh  rsf  du  Em  K  H  Xst  x  Kpj  M  f  Zik  a
 ex(3):  el  fn  Oi  C  buyj  Sygk  ifo  k  me  s  mzb  J  Hn  ms  ajj  Gws  l
 ex(5):  arq  Okx  Udk  lcou  dirda  lww  Qjc  nj  uykrg  raxf  lnzpk  jyazc  q
 ex(8):  Yrz  Ibe  yvpgnfu  vzedtcbxa  Aaxuclp  Hsgpbmhxy  q  vbfief  ltpgh  hoa
+---------------- Examples from DFA ---------------
+s1:  u
 
 expr 2: [a-zA-Z][a-z]*('[a-z]+)?
 tree:   (([A-Za-z][a-z]*)('[a-z]+)?)
@@ -37,6 +41,9 @@ ex(2):  Eu  Go'lu  M'i  B'x  e'o  vk  ell'f  ef  bu  z'k  if  kkb  seg'ul  f  D
 ex(3):  ecnw  yyr  O  Hgd  lc  Oi  ba'wy  Yc'o  Zrg'x  psnz'yya  xiy  H  dz
 ex(5):  vze'bxasq  Muclpm  Egpbm'yn  vbfief'pghrp  z'gddgq  eqkyz'puc  Nqssn
 ex(8):  p  W  Fnsggx  Iruhmnxdx  V  Pijx  uxoe'y  Ix'iewqac  Ranuou'basj
+---------------- Examples from DFA ---------------
+s1:  u
+s3:  u'q
 
          # phrases
 
@@ -51,6 +58,8 @@ ex(2):  BN  zl  qH  u  ms  i  W  a  zH  Bt  P  A  e  I  kl  R  zv  wn  G  CQ  T
 ex(3):  NtG  sO   HIY  z    Zr  Uy  BGQ  YrZ  Jv  P  n  Uz  YQi  DQ  QZ  DN  aE
 ex(5):  E  yK  vvH  lQxy  aDL   TF  SyEm  BR  V  gWpYo  NFV  aY  shqM  QsJGa  l
 ex(8):  Oln   fOKf tOh  qFnMGJqZ  L D  z  vpuJ  JkakbRn  Srv  B  NkSRGsM  CZo
+---------------- Examples from DFA ---------------
+s1:  P
 
          # identifiers
 
@@ -65,6 +74,8 @@ ex(2):  N  xe  G  50  r6  t  Ro  u3  O  o  J  Y  q  L  f  O  yY  9  Oa  7  Q
 ex(3):  B  i  e  xPU  7  W  bZJ  r0  kFf  Fq  u  Ok  vU  0t  k  cY  zo  wy  Iwd
 ex(5):  2af  wfdG  vm  Bn8e  n  SaG  tNd  OBDQv  3BUD  2vDOY  niXE  IZlxf  oQoC
 ex(8):  pVLh  9  s  cDR45  t  g  N3YyEse  y0RnUHr5  XS3EqXl  Xr  rd  qhY4  Y
+---------------- Examples from DFA ---------------
+s1:  r
 
 expr 5: [a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+
 tree:   ([0-9A-Za-z]+(.[0-9A-Za-z]+)+)
@@ -77,6 +88,8 @@ ex(2):  l9.P.Q  39.3.e  x.dc.bZ  8.k  f1.ud.v  U.Zk  c.No  wy.w.n  VZ.Wf.f
 ex(3):  5nA.FtN.OBD.33  U.N.OYt.X  a9I.x.o  o.mV.pVL  f9.c.45  tig.Y
 ex(5):  3.l.r  rd.Y4.dL  u6Iz.bZ  ak.K98.yz5.AxLM.HALxO.b  Y.cmxW
 ex(8):  Iwsn.6zTcJd.3SfgTek.JNF.goNI
+---------------- Examples from DFA ---------------
+s1:  g.x
 
          # ssn
 
@@ -91,6 +104,8 @@ ex(2):  702-55-0497  917-34-1400  780-29-8464  103-68-2462  879-27-9814
 ex(3):  802-09-2865  241-53-8832  093-50-6827  079-08-0743  383-36-5363
 ex(5):  599-43-0053  631-98-8174  378-46-6059  260-69-0116  215-19-6738
 ex(8):  947-24-2284  593-72-9644  232-90-5107  336-74-8669  992-63-8792
+---------------- Examples from DFA ---------------
+s1:  601-41-8128
 
          # telno
 
@@ -105,6 +120,8 @@ ex(2):  (970)655-0497  (170)871-0078  (329)646-1037  (852)628-9327
 ex(3):  (238)620-8286  (241)330-8320  (305)268-7079  (080)543-8393
 ex(5):  (746)390-3200  (363)898-8174  (780)656-5926  (069)611-2151
 ex(8):  (021)747-2482  (845)377-6964  (232)505-1073  (617)386-9992
+---------------- Examples from DFA ---------------
+s1:  (275)760-9419
 
          # www 
 
@@ -119,6 +136,9 @@ ex(2):  http://www.fW.f  http://A.F//dQ  www.D.v.Y//d6  http://CM.rG.L/
 ex(3):  http://www.q.cXS///H  http://www.yu.rwb/b/03W
 ex(5):  http://fna6.Mgd.7/  www.as.wsnh7.zT.dk.OSf.T/6F
 ex(8):  http://Y.Mek.OB6r5/9GhQK/Cf48//hYTt1B5b/7b
+---------------- Examples from DFA ---------------
+s1:  8.7
+s5:  8.7/
 
          # email
 
@@ -133,4 +153,6 @@ ex(2):  b9_c.N@y.f.dn  hZ2_fd@vm.n.en  aaG.@BD.v3  dD.D-ni@9I.l.foQ  JM@G.L.fg
 ex(3):  BCe_RnU_cXS_@aHX.rd6.h4QY  Zyu6@wbZ.k4.K9  e.Rlx-1@LxO.5XYl
 ex(5):  u_g_n_6zTcJ__fg@kWK.F.go  LipJsv.QJe.kMyR3@FKuG.D.cfo.mYXtd3
 ex(8):  ewcME.5OY-EGkAe0vo@G.JW3S4FP.rAqm1l.hC6Kc.x3o
+---------------- Examples from DFA ---------------
+s1:  F@R.U2
 10 expression(s) loaded

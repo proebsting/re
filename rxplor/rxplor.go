@@ -307,7 +307,7 @@ func options() {
 
 	vo('I', "initial seed for randomization")
 	fo('R', "reseed for every expression")
-	// vo('T', "input file of candidates accept/reject grid")
+	fo('T', "set standard test options")
 
 	// file format for N and D depend on extension of filename supplied
 	// a filename of - generates a temporary SVG file and opens a viewer
@@ -320,8 +320,11 @@ func options() {
 
 	flag.Parse() // parse command args to set values
 
-	imply("a", "lpndghtv") // -a implies several others
-	imply("NDXT", "m")     // any of {-N -D -X -T} implies -m
+	imply("a", "lpndghtv")   // -a implies several others
+	imply("NDX", "m")        // any of {-N -D -X} implies -m
+	if imply("T", "lghvR") { // -T implies several plus -I 0
+		*val['I'] = "0"
+	}
 
 	if !*opt['m'] {
 		*opt['i'] = true // if not -m, then must have -i
@@ -369,7 +372,7 @@ func vo(ch rune, label string) {
 }
 
 //  imply(a,b) selects every option in b if any in a was specified
-func imply(ifseen string, implies string) {
+func imply(ifseen string, implies string) bool {
 	seen := false
 	for _, ch := range ifseen {
 		pb := opt[ch]
@@ -382,6 +385,7 @@ func imply(ifseen string, implies string) {
 			*opt[ch] = true
 		}
 	}
+	return seen
 }
 
 // babble prints its args via Printf only if the global "verbose" is set

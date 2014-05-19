@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # "8 Regular Expressions You Should Know" by Vasili    sampled 24-feb-2014
 
@@ -19,6 +19,21 @@ ex(2):  5ls  le0  awf  ide  kqh  o8y  g_h  orc  7be  i_9  au8  4bl  _66  a8k
 ex(3):  k__  7-7  xa6  tyo  urd  _-w  9_e  64d  6hh  r3l  9xb  s9y  6_a  _ip
 ex(5):  q7bvo  zqu  t15_  -4-6_  bws77  ryc  b9eka  sh3  hnug0  347  7_zd  eu0m
 ex(8):  849_  m7bv8n  gdttk  i-6at3  6-8  eed  __lb_iz9  49nfu  yl_gfueq
+---------------- Examples from DFA ---------------
+s1:  3u6
+s16:  3u6k
+s15:  3u6kw
+s14:  3u6kw8
+s13:  3u6kw8h
+s12:  3u6kw8hd
+s11:  3u6kw8hda
+s10:  3u6kw8hdap
+s9:  3u6kw8hdap9
+s8:  3u6kw8hdap9r
+s7:  3u6kw8hdap9r3
+s6:  3u6kw8hdap9r3n
+s5:  3u6kw8hdap9r3nd
+s4:  3u6kw8hdap9r3ndh
 
          #
 
@@ -35,6 +50,20 @@ ex(2):  au84bl  _66a8k  lwkk__  7-7xa6  tyourd  _-w9_e  64d6hh  r3l9xb  s9y6_a
 ex(3):  zq7bvo  ccfu_a  5_94-6  _-3ws7  7e6cx9  ekaegh  3m9nug  00347g  _zdi50
 ex(5):  c49_fm  7bv8ny  dttksk  -yat3i  6-8srd  t__lb_  iz969n  fu8l_g  fueq0x
 ex(8):  i6kw8h  np9r3ndh  m-15qay  95u2lp  r42onf  iv3-d6  d4p26ii  k6594n
+---------------- Examples from DFA ---------------
+s1:  h0t1eb
+s18:  h0t1eb0
+s17:  h0t1eb07
+s16:  h0t1eb07b
+s15:  h0t1eb07bp
+s14:  h0t1eb07bp-
+s13:  h0t1eb07bp-n
+s12:  h0t1eb07bp-nk
+s11:  h0t1eb07bp-nk_
+s10:  h0t1eb07bp-nk_3
+s9:  h0t1eb07bp-nk_3r
+s8:  h0t1eb07bp-nk_3rd
+s7:  h0t1eb07bp-nk_3rd2
 
          #
 
@@ -51,6 +80,9 @@ ex(2):   6ad   3a99c3   f7c   #529   43a   #4bb   #96f7d2   a7e436   #8bfab0
 ex(3):   58951d   #97b   d22803   #74d   995976   #749   #ea1   0e3   #2e0
 ex(5):   029   #69c   #2b99b6   #58ec4a   3d5a64   #a9b481   #99e   1ab
 ex(8):   5cbaa9   #c0ae08   eaa   99f   #928   #a2de67   e08c58   #11b   #909
+---------------- Examples from DFA ---------------
+s1:   aa5
+s5:   aa538a
 
          # 4. Matching a Slug
 
@@ -65,6 +97,8 @@ ex(2):  uo  e  1i  5  e  m  m  e  8t  f  so  m  y  ll  qf  6n  9  fl  oo  2  la
 ex(3):  d  lo  ho  ygf  xr  eb  ia9  78  bl  b6  8k  nwk  s7-  xa  dty  u  d
 ex(5):  w1  4d6  q  r  l9xbs  zy6  axip  cuz  auvoc  qu  t15a9  9  u  8  bws77
 ex(8):  2x9e  tegh3m  nug0034  g9di5  bmpd91i  849afm7b  8nyd  8ksk-  at3i6
+---------------- Examples from DFA ---------------
+s1:  d
 
          # 5. Matching an Email
 
@@ -79,6 +113,15 @@ ex(2):  x@d.gfxaj  _@4d.oeo.e  9@6.kh  cu@au.iaum  5@94.qoi  7@e.wozqo
 ex(3):  di5@mpd.ewxdan  bv@ydt.ljzkz  3i@g8s.szal  z@6.oy.mz  e@0x.dxnz
 ex(5):  -1@qaye5.ovziy  civ@-d.ku.cge  k65@hnodg.ydhfu  q@3.rbdoj  5@faco...dt
 ex(8):  ib@-ltti..nxt  p@77nf.iohc  mjmpgk6e@l.qet9..ail  i9fpw.@26r.fbnuuj
+---------------- Examples from DFA ---------------
+s1:  7@s...
+s12:  7@s..p
+s11:  7@s.du
+s10:  7@s.duw
+s9:  7@s.duwm
+s8:  7@s.duwmn
+s7:  7@s.duwmn.
+s14:  7@s.duwmnp
 
          # 6. Matching a URL
 
@@ -93,6 +136,8 @@ ex(2):  http://3l.veyrdG  cu.iozi  https://9.uyo4/  2x.rfrgb/  http://9.tqk/
 ex(3):  i.kabtKxoC8  bd.nzby/  6fu.gpdd6rpb8P/  ap.dg.w/  https://d.p.ebcob/
 ex(5):  qf..dhfuZf  https://ns.vuwfur1a nm2a5jDL/  6cg.araq8
 ex(8):  https://qet9is..ilv.H9oR906X6tc_B6oV-PZkwnR87/87Man /v
+---------------- Examples from DFA ---------------
+s1:  l.dj
 
          # 7. Matching an IP Address
 
@@ -107,6 +152,12 @@ ex(2):  254.5.2.228  224.254.252.252  232.249.207.253  217.3.214.246
 ex(3):  230.254.6.101  255.063.255.0  147.254.137.214  250.205.251.247
 ex(5):  072.255.231.16  119.250.227.7  252.251.235.254  237.252.08.12
 ex(8):  229.250.167.219  250.254.46.250  214.06.219.252  50.08.250.226
+---------------- Examples from DFA ---------------
+s1:  0.0.0.0
+s9:  0.0.0.2
+s17:  0.0.0.9
+s8:  0.0.0.25
+s16:  0.0.0.29
 
          # 8. Matching an HTML Tag
 

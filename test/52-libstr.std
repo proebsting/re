@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # RegExLib.com -- browse -- Strings
 
@@ -22,6 +22,9 @@ ex(2):  96fCd228aCe40a41-bfabbD1Ca60A5D9E  da3B97BFdBB3-a0ea-dCaf-BeC6cd74EFa7
 ex(3):  FEb258ec-abA7-F0A41fa9-4F1f3aEEbee3)
 ex(5):  3a8E2DaF4CCd-af8e-8c589a1B5db90928}
 ex(8):  {03Ba3DDf-7e9FFD94-f0cD-D2a9B4dEa797}
+---------------- Examples from DFA ---------------
+s1:  F3FfBa4dbb9e6bdEFB2B3C9aCDC20aCb
+s34:  F3FfBa4dbb9e6bdEFB2B3C9aCDC20aCb)
 
          # 580. passwords length 8-20 with at least one digit, cannot start with digit
 
@@ -41,6 +44,15 @@ ex(2):  V|,)Gr;A  V;i|/,r!,  (,@G;R\\  V1,G,<)  Vi/Gr:/  /i(,,+/  \\,]/,r;,
 ex(3):  ){i}\\{,\",(  )L$/',{,A  )I|(*G-r(  V=1&\\!G.,A  ,L\\@g,>a  //l\\/G$,:)
 ex(5):  v,#).GR$/  VI,gr@  )L/&g>R\\  v`i#,g]R[/  VL=\\^GR&)  v.,/],,/a
 ex(8):  /I@\\,,/  \\,!A\"g\",A  )),!(G+r)  ,;I'A#,^,{(  v%I),R/  /1 ),RA
+---------------- Examples from DFA ---------------
+s1:  /,(,,/
+s7:  /,(,,a
+s8:  /,(,,,
+s9:  /,(,R/
+s20:  /,(G,,
+s10:  /,,,,\\
+s21:  /,,,,,
+s26:  /,A,,,
 
          # 49. major credit cards (AmEx len 15, others len 16)
 
@@ -55,6 +67,8 @@ ex(2):  3,7998142091068  4380209886521853  4320-05068270-9080
 ex(3):  49903200-6318-3817  54045605-6006-0116  41196738-09510219
 ex(5):  6011-1905-07331747  4999663679211795  53761941-1287-4677
 ex(8):  42496073-35926256  3,6800994848273  43357214-14607342
+---------------- Examples from DFA ---------------
+s1:  349332644696936
 
          # 595. UK vehicle registration number from September 2001
 
@@ -69,5 +83,7 @@ ex(2):  NH06AEG  MJ 59DSH  EB06 NWK  MR32KXA  PS 06 ZDA  OG07TDJ  AN04 AXF
 ex(3):  SF 03 SBE  FF 07ZCZ  GH38PXU  PK 06PBM  WS 39EFF  RG21AMN  YJ72SKZ
 ex(5):  RD80 LKZ  DS14 KSV  YJ07GTR  WL59 TPU  RV34 YXO  NR 09 ZFL  KL08NUO
 ex(8):  FW 05 UUR  LS 02WLH  EX07 YGN  WU 43TSP  SC 05 WHZ  SS 75 LYX  EX 02RWO
+---------------- Examples from DFA ---------------
+s1:  BE06UWO
 4 expression(s) loaded
 (2 expression(s) rejected)

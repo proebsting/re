@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # Miscellaneous samples from the web
 
@@ -17,6 +17,10 @@ ex(2):  DO@R.JOY  S@C..OKE  -@B4.LHKS  2@C7.LCW  5@OM.KX  OP@7.IID  O4@7.CTJ
 ex(3):  Z@9.AZ  9@Q.RZ  JXS@XHI.CZT  -T@C.UCP  .@46-.XYF  7JD@JO.PGRO
 ex(5):  91I6@AXH.SNP  G@Z.VSF  ._C@LKZWK.RUMX  0197R@MJF.7.DT  2_@795YE.GAU
 ex(8):  +KXE8@-.LH  T3F@LBF4-LG.ET  -MXG1.4@OCP2.FOF  W.5LSFAG@KO61TB.IOAI
+---------------- Examples from DFA ---------------
+s1:  -@R.EV
+s8:  -@R.EVI
+s7:  -@R.EVIB
 
          #D: (final email example)
          #U: http://www.regular-expressions.info/email.html
@@ -31,6 +35,9 @@ ex(2):  r8@f.f8n.info  n.{.^@5.g.net  '.*.+3@x.net  4x./y.^@na7.g.net
 ex(3):  9?!@q9eky.mil  xb`.k.&t_@x.a.y.edu  !jz.hu@vn5.e.org
 ex(5):  62.7g.$9^.1.y~@24.qdap9ru.jm9o.m.name
 ex(8):  p-@v1eb07k.mobi  3c8pp4m.8~.!??}.jk$'3=c.{.j-#@7.0.7q8j.vlttixf.0.com
+---------------- Examples from DFA ---------------
+s1:  =@9.SM
+s31:  =@9.biz
 
          #D: (telno "Yecchhh")
          #U: http://compilers.iecc.com/comparch/article/01-10-072
@@ -45,6 +52,8 @@ ex(2):  497-1703  714-0780  (908) 410-7685  462-7932  (981) 091-6885  380-2098
 ex(3):  (883) 930-0668  707-9080  743-8393  753-3488  (440) 659-0432  053-3189
 ex(5):  465-0592  006-9011  215-1986  (891) 516-2199  772-8228  593-7269
 ex(8):  (107) 617-7866  (926) 687-2161  (527) 760-9419  128-9646
+---------------- Examples from DFA ---------------
+s1:  640-4207
 
          #D: (a reformulation)
          #U: http://compilers.iecc.com/comparch/article/01-10-081
@@ -59,4 +68,6 @@ ex(2):  497-1703  714-0780  (908) 410-7685  462-7932  (981) 091-6885  380-2098
 ex(3):  (883) 930-0668  707-9080  743-8393  753-3488  (440) 659-0432  053-3189
 ex(5):  465-0592  006-9011  215-1986  (891) 516-2199  772-8228  593-7269
 ex(8):  (107) 617-7866  (926) 687-2161  (527) 760-9419  128-9646
+---------------- Examples from DFA ---------------
+s1:  640-4207
 4 expression(s) loaded

@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # parentheses with alternation
 
@@ -13,6 +13,8 @@ ex(2):  ab  c  c  ab  c  ab  c  c  c  c  ab  c  ab  c  c  c  c  c  ab  c  ab  c
 ex(3):  ab  c  ab  ab  ab  c  ab  c  c  ab  c  ab  c  c  ab  ab  ab  c  ab  c
 ex(5):  c  ab  ab  ab  ab  c  c  ab  c  c  ab  c  c  c  c  ab  ab  ab  ab  c
 ex(8):  ab  c  c  ab  c  c  ab  ab  ab  ab  ab  ab  c  c  ab  c  c  ab  c  c
+---------------- Examples from DFA ---------------
+s1:  c
 
 expr 1: a(b|c)d
 tree:   ((a(b|c))d)
@@ -25,6 +27,8 @@ ex(2):  abd  acd  acd  abd  acd  acd  acd  acd  abd  acd  abd  acd  abd  abd
 ex(3):  acd  acd  acd  abd  acd  abd  abd  abd  acd  abd  acd  abd  abd  acd
 ex(5):  acd  acd  acd  abd  abd  acd  acd  acd  acd  acd  acd  abd  abd  abd
 ex(8):  abd  acd  acd  acd  acd  abd  abd  acd  acd  abd  acd  acd  abd  acd
+---------------- Examples from DFA ---------------
+s1:  abd
 
 expr 2: (ab)|c|(de)
 tree:   ((ab)|c|(de))
@@ -37,6 +41,8 @@ ex(2):  de  ab  ab  de  ab  ab  c  c  ab  ab  c  ab  c  c  de  c  de  c  ab  de
 ex(3):  c  ab  c  de  c  de  ab  ab  ab  ab  c  ab  de  de  c  c  c  c  c  de
 ex(5):  c  de  c  c  de  c  c  c  ab  ab  ab  c  ab  ab  de  c  ab  ab  c  de
 ex(8):  ab  c  ab  ab  de  de  ab  ab  de  de  c  c  de  ab  de  de  c  ab  c
+---------------- Examples from DFA ---------------
+s1:  c
 
 expr 3: a|(bc|de|fg)|h
 tree:   (a|((bc)|(de)|(fg))|h)
@@ -49,6 +55,8 @@ ex(2):  h  a  h  a  a  a  a  h  a  a  a  h  bc  h  a  fg  de  a  de  de  fg  h
 ex(3):  h  fg  bc  a  a  a  fg  h  h  h  h  h  h  a  h  a  a  a  a  h  a  fg  h
 ex(5):  h  a  bc  a  a  a  de  h  h  h  de  de  h  fg  a  a  a  bc  h  fg  fg
 ex(8):  h  fg  a  fg  bc  bc  h  a  de  a  h  h  h  h  h  a  a  h  de  de  a  h
+---------------- Examples from DFA ---------------
+s1:  a
 
 expr 4: a(b|c)(d|e)(f|g)h
 tree:   ((((a(b|c))(d|e))(f|g))h)
@@ -61,6 +69,8 @@ ex(2):  acegh  acdgh  abegh  abefh  abegh  abdgh  abdfh  acdfh  acdgh  acdfh
 ex(3):  acdgh  acdgh  acefh  abdfh  abdfh  acdgh  acdgh  abefh  acdgh  abdgh
 ex(5):  acefh  abefh  acdgh  abefh  acegh  acefh  acdfh  abdgh  abdfh  abdfh
 ex(8):  acdgh  abegh  abdgh  abdgh  acegh  acefh  acdgh  acdgh  abegh  acdfh
+---------------- Examples from DFA ---------------
+s1:  acdfh
 
 expr 5: (ab|cd)(ef|gh)
 tree:   (((ab)|(cd))((ef)|(gh)))
@@ -73,6 +83,8 @@ ex(2):  abgh  abgh  cdgh  abgh  abgh  abgh  abgh  abef  abef  abgh  abef  cdef
 ex(3):  cdef  abef  cdgh  cdef  abgh  cdef  abgh  cdgh  abef  abef  abef  abgh
 ex(5):  cdef  abef  cdef  cdgh  abef  cdgh  cdef  abef  cdgh  cdgh  abgh  abef
 ex(8):  cdgh  abgh  cdef  cdef  cdef  abgh  cdef  cdef  abgh  cdef  abgh  abef
+---------------- Examples from DFA ---------------
+s1:  abef
 
 expr 6: (ab|cd)|(ef|gh)
 tree:   (((ab)|(cd))|((ef)|(gh)))
@@ -85,6 +97,8 @@ ex(2):  ab  cd  ab  cd  ef  ab  cd  cd  cd  cd  ab  cd  ab  ab  ef  cd  ab  cd
 ex(3):  ab  gh  ab  cd  gh  gh  ef  ef  cd  gh  cd  cd  gh  cd  ef  ab  ef  ef
 ex(5):  cd  cd  gh  gh  ef  ef  gh  gh  ab  cd  gh  ef  cd  ef  ef  ef  cd  cd
 ex(8):  ab  cd  gh  gh  ab  cd  ef  ef  gh  ef  ab  ab  ab  gh  ef  gh  gh  ab
+---------------- Examples from DFA ---------------
+s1:  ab
 
 expr 7: (ab|cd|ef)(gh|ij|kp)
 tree:   (((ab)|(cd)|(ef))((gh)|(ij)|(kp)))
@@ -97,6 +111,8 @@ ex(2):  abkp  abij  cdkp  efkp  abgh  abgh  cdgh  efkp  efij  efkp  abij  abkp
 ex(3):  abgh  abgh  cdkp  efij  abij  efkp  abgh  cdij  cdij  abgh  cdkp  cdgh
 ex(5):  efkp  cdij  efgh  efgh  efij  cdgh  efgh  abkp  efkp  cdkp  abkp  efkp
 ex(8):  cdgh  abkp  efkp  efkp  efgh  abij  efgh  abkp  efgh  abgh  cdij  abkp
+---------------- Examples from DFA ---------------
+s1:  abgh
 
 expr 8: x(ab|cd|ef)y(gh|ij|kp)z
 tree:   ((((x((ab)|(cd)|(ef)))y)((gh)|(ij)|(kp)))z)
@@ -109,6 +125,8 @@ ex(2):  xefyghz  xefykpz  xefykpz  xabyghz  xefyijz  xabyghz  xabykpz  xcdyghz
 ex(3):  xabyghz  xcdyijz  xabyijz  xcdykpz  xefykpz  xefyghz  xabyijz  xabykpz
 ex(5):  xefyijz  xabyijz  xcdyijz  xefyijz  xabyghz  xcdykpz  xefyijz  xcdyijz
 ex(8):  xefykpz  xcdyghz  xefykpz  xcdyghz  xcdykpz  xcdyghz  xefyijz  xefykpz
+---------------- Examples from DFA ---------------
+s1:  xabyghz
 
 expr 9: (a|bc)d(e|fg)|(w|x)(y|z)
 tree:   ((((a|(bc))d)(e|(fg)))|((w|x)(y|z)))
@@ -121,4 +139,6 @@ ex(2):  xz  ade  adfg  ade  ade  bcde  ade  ade  bcde  bcde  xz  wy  bcde  adfg
 ex(3):  wz  wy  wz  ade  xy  ade  wz  xy  xz  bcde  xy  wy  adfg  wz  ade  wz
 ex(5):  wy  xy  wz  bcdfg  xz  bcdfg  ade  bcdfg  adfg  wy  bcdfg  bcdfg  adfg
 ex(8):  ade  adfg  bcdfg  bcde  bcde  xz  adfg  xz  xz  adfg  wz  xy  wy  bcdfg
+---------------- Examples from DFA ---------------
+s1:  xz
 10 expression(s) loaded

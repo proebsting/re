@@ -1,4 +1,4 @@
-Options: -R -g -i -l -v -I 0
+Options: -R -T -g -h -i -l -v -I 0
 
          # RegExLib.com -- browse -- Email
 
@@ -17,6 +17,18 @@ ex(2):  X@[62.83.82.00  e@[90.043.33.34  F@[04.90.2.61]  1J@[7.66.9.SlqH
 ex(3):  g00@[2.537.66.gKf]  9@D.MFN  DUM@S.JY.t.dhX  rdt@[719.0.64.qWUL
 ex(5):  kw8h@[83.23.024.vA  Z95@NA-V.2onf.EDHH.Q.Y.GZ]  6i@[64.3.9.30
 ex(8):  1fB0G4VF@[40.3.441.75  6Eg@[40.775.817.16]
+---------------- Examples from DFA ---------------
+s1:  E@q.8
+s12:  E@q.8]
+s14:  E@q.84
+s13:  E@q.yY
+s24:  E@q.845
+s25:  E@q.yYe
+s21:  E@[5.5.2.8
+s22:  E@[5.5.2.PB
+s27:  E@[5.5.2.88
+s28:  E@[5.5.2.PBp
+s23:  E@[5.5.2.882
 
          # 356. "my all-time favourite e-mail validator"
 
@@ -31,6 +43,9 @@ ex(2):  cILN@77b_.wd  n72@fJf.Gc  m.le@n_XG.tN  kQD@v3.UD2  vCwt@ita.IZ
 ex(3):  G_ah@9s.cD4  5t@gBzy.sey  0n@q-Dc.S3  ql@XDEy6.hYQ  YLy@6z.hw
 ex(5):  luIb1@HERp.bXl  ZvAfV7E@CnYgMDf.a_J  mJg@dt3ic.Rmo  hedg@wDh.k6
 ex(8):  TaY6FN@oso.Ip  swXVMMekq@knpUr3G.Rs  cHe5Y@tZ9.dkb  3ZVbc@5cREw.2l
+---------------- Examples from DFA ---------------
+s1:  V6@5O.YR
+s9:  V6@5O.YRV
 
          # 1012. "A short and sweet email address validator"
 
@@ -45,4 +60,10 @@ ex(2):  RVpfW.f@w.lQb  F.dk@yo.dmsM  n_E.N@l.x.lGbQo  f9-c@Zb.o.jwBj
 ex(3):  4QY+u6;hw_ak4@W.ucvj  z;A.p5_lZe@fV.sMnY  Vn;J@YKt.6.CuUP
 ex(5):  KJNFo-NIpJ;af@kw8h.apUr.zlGicV
 ex(8):  gkAe0voy@b.-nRFd.52eEVsV.BLkhE
+---------------- Examples from DFA ---------------
+s1:  P@T.pr
+s10:  P@T.prq
+s9:  P@T.prqP
+s8:  P@T.prqPI
+s7:  P@T.prqPID
 3 expression(s) loaded
