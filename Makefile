@@ -6,8 +6,7 @@ PG2 = $(PKG)/rxcluster $(PKG)/rxcombos $(PKG)/rxpick $(PKG)/questions
 PROGS = $(PG1) $(PG2)
 GOBIN = $$GOPATH/bin
 
-DEMO='(a|b)*abb' 'b(ab)*a'
-#DEMO='\d+' '\d*[1-9]' '[1-9]\d*'
+DEMO='-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d{1,3})?'
 
 
 #  The default is to rebuild, run all tests, run expt if present.
@@ -16,17 +15,6 @@ default: build test expt
 #  "make build" compiles all programs (and the library).
 build:  .FORCE
 	go install $(PROGS)
-
-#  These targets accomplish a partial build and test (imperfect but useful).
-rxc:	.FORCE;  go install ${PKG}/rxcluster && cd test && runtest.sh *.rxc
-rxd:	.FORCE;  go install ${PKG}/rxd && cd test && runtest.sh *.rxd
-rxg:	.FORCE;  go install ${PKG}/rxg && cd test && runtest.sh *.rxg
-rxq:	.FORCE;  go install ${PKG}/rxq && cd test && runtest.sh *.rxq
-rxr:	.FORCE;  go install ${PKG}/rxr && cd test && runtest.sh *.rx
-rxv:	.FORCE;  go install ${PKG}/rxr && cd test && runtest.sh *.rxv
-rxx:	.FORCE;  go install ${PKG}/rxx && cd test && runtest.sh *.rxx
-rxplor:	.FORCE;  go install ${PKG}/rxplor && cd test && runtest.sh *.rx *.rx[vd]
-questions:	.FORCE;  go install ${PKG}/questions
 
 #  "make test" runs unit tests and the shell-based tests
 test:	.FORCE
@@ -63,7 +51,7 @@ fmt:
 
 #  "make demo" displays a graph of the DFA of the exprs defined above.
 demo:	
-	rxd -v $(DEMO)
+	rxplor -D - -e $(DEMO)
 
 #  "make clean" removes the products of building and testing.
 clean:
