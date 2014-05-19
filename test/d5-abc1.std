@@ -1,0 +1,63 @@
+
+         #! rxplor -m -l -n -d
+
+         #! rxplor -N /dev/stdout
+
+         #! rxplor -D /dev/stdout
+
+         
+
+         #  one or more characters from an alphabet of three with no doubled letters
+
+expr 0: a(ba)*b?|b(ab)*a?|a?(ba)*b?c((a(ba)*b?|b(ab)*a?)c)*(a(ba)*b?|b(ab)*a?)?
+----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
+begin => { 0 4 8 9 11 12 }
+p0. a => { 1 3 30 }
+p1. b => { 2 }
+p2. a => { 1 3 30 }
+p3. b => { 30 }
+p4. b => { 5 7 30 }
+p5. a => { 6 }
+p6. b => { 5 7 30 }
+p7. a => { 30 }
+p8. a => { 9 11 12 }
+p9. b => { 10 }
+p10. a => { 9 11 12 }
+p11. b => { 12 }
+p12. c => { 13 17 22 26 30 }
+p13. a => { 14 16 21 }
+p14. b => { 15 }
+p15. a => { 14 16 21 }
+p16. b => { 21 }
+p17. b => { 18 20 21 }
+p18. a => { 19 }
+p19. b => { 18 20 21 }
+p20. a => { 21 }
+p21. c => { 13 17 22 26 30 }
+p22. a => { 23 25 30 }
+p23. b => { 24 }
+p24. a => { 23 25 30 }
+p25. b => { 30 }
+p26. b => { 27 29 30 }
+p27. a => { 28 }
+p28. b => { 27 29 30 }
+p29. a => { 30 }
+p30. # => { }
+----------------- Unoptimized DFA ----------------
+s0. { p0 p4 p8 p9 p11 p12 } [a]:s1 [b]:s2 [c]:s3
+s1# { p1 p3 p9 p11 p12 p30 } [c]:s3 [b]:s4
+s2# { p5 p7 p10 p12 p30 } [c]:s3 [a]:s5
+s3# { p13 p17 p22 p26 p30 } [a]:s6 [b]:s7
+s4# { p2 p10 p12 p30 } [a]:s1 [c]:s3
+s5# { p6 p9 p11 p12 p30 } [b]:s2 [c]:s3
+s6# { p14 p16 p21 p23 p25 p30 } [c]:s3 [b]:s8
+s7# { p18 p20 p21 p27 p29 p30 } [c]:s3 [a]:s9
+s8# { p15 p21 p24 p30 } [c]:s3 [a]:s6
+s9# { p19 p21 p28 p30 } [c]:s3 [b]:s7
+------------------ Minimized DFA -----------------
+s0. { p0 p4 p8 p9 p11 p12 } [a]:s1 [b]:s2 [c]:s3
+s1# { p1 p3 p6 p9 p11 p12 p14 p16 p19 p21 p23 p25 p28 p30 } [b]:s2 [c]:s3
+s2# { p2 p5 p7 p10 p12 p15 p18 p20 p21 p24 p27 p29 p30 } [a]:s1 [c]:s3
+s3# { p13 p17 p22 p26 p30 } [a]:s1 [b]:s2

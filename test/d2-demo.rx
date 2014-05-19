@@ -1,3 +1,5 @@
+#! rxplor -m -l -n -d
+#! rxplor -N /dev/stdout
 #! rxplor -D /dev/stdout
 (a|b)*abb
 b(ab)*a
