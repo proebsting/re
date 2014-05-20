@@ -1,6 +1,7 @@
 # Files for Git to ignore
 PROFILE
 expt.rx
+/timings
 /workshop
 tmp.*
 *~
