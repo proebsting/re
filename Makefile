@@ -53,6 +53,16 @@ fmt:
 demo:	
 	rxplor -D - -e $(DEMO)
 
+#  "make serve" builds and runs the web app on localhost:8080.
+#  The server runs until killed.
+serve:
+	goapp serve webapp
+
+#  "make deploy" uploads the web app to appspot.com.
+deploy:
+	goapp deploy webapp
+
+
 #  "make clean" removes the products of building and testing.
 clean:
 	go clean -i $(PKG) $(PROGS)
