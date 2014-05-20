@@ -14,5 +14,10 @@ which will produce executable binaries in $GOPATH/bin.
 
 The default Makefile target is oriented towards development.
 It runs the above build followed by a series of automated tests.
-Finally it runs the "rxr" program on a local file "expt.rx"
+Finally it runs the "rxplor" program on a local file "expt.rx"
 if this file exists.
+
+The web application (in the webapp directory) is built separately
+by "make serve" (to run locally) or "make deploy" (to upload).
+Either of these additionally requires the Google App Engine in the
+search path.

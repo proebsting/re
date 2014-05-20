@@ -17,10 +17,7 @@ UTILITIES:
 Add metadata to the JSON output of rxg
 In rxcluster, subdivide large clusters
 Show WHICH pattern accepts on DOT output
-Produce DOT for NFA, too
 
 CLEANUP:
-Add more escaping to elminiate ambiguous outputs
 Add func for "canonizing" DFA (clearer output, easier testing)
-Rework testing scheme to allow for command options
 Make gofmt an automatic pre-commit hook

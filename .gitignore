@@ -1,9 +1,7 @@
 # Files for Git to ignore
-/.hg
-/dotx
-/timings
-/workshop
 PROFILE
+expt.rx
+/workshop
 tmp.*
 *~
 *.out

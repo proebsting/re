@@ -21,10 +21,10 @@ test:	.FORCE
 	go test
 	cd test; $(MAKE)
 
-#  "make expt" runs "rxr expt.rx" if expt.rx exists.
+#  "make expt" runs "rxplor -a expt.rx" if expt.rx exists.
 #  This allows adding a quick temporary test to the build process.
 expt:
-	test -f expt.rx && $(GOBIN)/rxr expt.rx || :
+	test -f expt.rx && $(GOBIN)/rxplor -a expt.rx || :
 
 #  "make bundle" combines all sources into a single file on standard output.
 #  This requires the Kernighan and Pike "bundle" utility in the path.
