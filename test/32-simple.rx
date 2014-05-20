@@ -1,3 +1,4 @@
+#! rxplor -T -p -n -d
 # source not recorded
 C(AC|B)D
 #A: Aho and Ullman
@@ -12,6 +13,14 @@ gcg(cgg|agg)*ctg
 # A simple expr that had problems minimizing
 (10)*|ac|dc
 #A: gmt
+#T: Strings without repeating chars (alphabet size 2)
+a?(ba)*b?
+# This expr uncovered TWO minimization bugs
+a(ba)*b?|b(ab)*a?
+#A: gmt
 #T: Experiments with word construction
 [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
 W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold)
+# an example that showed the move-while-distinguishing minimization bug
+# originally from http://regexlib.com/REDetails.aspx?regexp_id=654
+^([A-Za-z0-9]\s?)+([,]\s?([A-Za-z0-9]\s?)+)*$
