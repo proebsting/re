@@ -13,6 +13,9 @@ import (
 	"strings"
 )
 
+const FNAME_STDOUT = "-" // write to stdout if used as filename
+const FNAME_VIEW = "@"   // display in viewer if used as filename
+
 //  DFA.GraphNFA generates a Dot (GraphViz) representation of the NFA.
 func (dfa *DFA) GraphNFA(f io.Writer, label string) {
 	fmt.Fprintln(f, "//", label)
@@ -77,9 +80,11 @@ func (dfa *DFA) ToDot(f io.Writer, label string) {
 //  If another format is wanted, output is written to a temporary file and
 //  then "dot" is run from the path to convert it.
 //
-//  If the filename is "-", another temporary file is written in SVG format
+//  If the filename is "@", another temporary file is written in SVG format
 //  and a viewer is opened.  This temporary file is never deleted because we
 //  don't know when it's safe to remove it.
+//
+//  If the filename is "-", standard output is written in Dot format.
 func WriteGraph(filename string, genfunc func(io.Writer)) {
 	var err error
 	var otype string     // output conversion type
@@ -87,7 +92,7 @@ func WriteGraph(filename string, genfunc func(io.Writer)) {
 
 	// check what type of output is wanted
 	switch {
-	case filename == "-":
+	case filename == FNAME_VIEW: // view interactively
 		otype = "-Tsvg"
 	case strings.HasSuffix(filename, ".gif"):
 		otype = "-Tgif"
@@ -97,7 +102,9 @@ func WriteGraph(filename string, genfunc func(io.Writer)) {
 		otype = "-Tpng"
 	case strings.HasSuffix(filename, ".svg"):
 		otype = "-Tsvg"
-	default: // must want .dot format as ultimate output
+	case filename == FNAME_STDOUT: // Dot on stdout
+		dotfile = os.Stdout
+	default: // write .dot directly w/o temp file
 		dotfile, err = os.Create(filename)
 		CkErr(err)
 	}
@@ -116,12 +123,12 @@ func WriteGraph(filename string, genfunc func(io.Writer)) {
 	// convert from Dot format to desired output format
 	dotname := dotfile.Name()
 	outname := filename
-	if outname == "-" {
+	if outname == FNAME_VIEW {
 		outname = dotname + ".svg"
 	}
 	CkErr(exec.Command("dot", otype, dotname, "-o", outname).Run())
 	os.Remove(dotname)
-	if filename != "-" {
+	if filename != FNAME_VIEW {
 		return // no viewer wanted
 	}
 

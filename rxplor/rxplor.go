@@ -310,9 +310,9 @@ func options() {
 	fo('T', "set standard test options")
 
 	// file format for N and D depend on extension of filename supplied
-	// a filename of - generates a temporary SVG file and opens a viewer
-	vo('N', "output file for NFA graph (*.dot/.gif/.pdf/.png/.svg/-)")
-	vo('D', "output file for DFA graph (*.dot/.gif/.pdf/.png/.svg/-)")
+	// a filename of "@" generates a temporary SVG file and opens a viewer
+	vo('N', "output file for NFA graph (*.dot/.gif/.pdf/.png/.svg/@)")
+	vo('D', "output file for DFA graph (*.dot/.gif/.pdf/.png/.svg/@)")
 
 	// vo('X', "output file for DFA-based examples (JSON)")
 

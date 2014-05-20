@@ -1,4 +1,4 @@
 #! rxplor -m -l -n -d
-#! rxplor -N /dev/stdout
-#! rxplor -D /dev/stdout
+#! rxplor -N -
+#! rxplor -D -
 [+-]?(((\d+\.\d*|\.\d+)([eE][+-]?\d+)?)|(\d+[eE][+-]?\d+))[fFlL]?
