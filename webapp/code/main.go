@@ -180,7 +180,7 @@ func putform(w io.Writer, n int, target string, label string, values []string) {
 	fmt.Fprint(w, `<div style="font-size: 67%;">
 <button type=button class=link onclick="clearForm(this.form);">
 (clear form)</button></div></div>
-<div style="clear: both;"></div>
+<div class=reset></div>
 `)
 	for i := 0; i < n; i++ {
 		fmt.Fprintf(w,

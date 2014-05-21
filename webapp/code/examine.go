@@ -61,15 +61,19 @@ func details(w http.ResponseWriter, r *http.Request) {
 		genexamples(w, tree, 5)
 		genexamples(w, tree, 8)
 
+		fmt.Fprintln(w, `<div><div class=lfloat>`)
 		nfaBuffer := &bytes.Buffer{}
 		dfa.ShowNFA(nfaBuffer, "")
 		fmt.Fprintf(w, "<h2>NFA</h2><PRE>\n%s</PRE>\n",
 			hx(string(nfaBuffer.Bytes())))
 
+		fmt.Fprintln(w, `</div><div class=lstripe>`)
 		dfaBuffer := &bytes.Buffer{}
 		dmin.ShowStates(dfaBuffer, "")
-		fmt.Fprintf(w, "<h2>DFA</h2><PRE>\n%s</PRE>\n",
+		fmt.Fprintf(w, "<h2 class=noadvance>DFA</h2><PRE>\n%s</PRE>\n",
 			hx(string(dfaBuffer.Bytes())))
+
+		fmt.Fprintln(w, `</div></div><div class=reset></div>`)
 	} else {
 		showerror(w, err)
 	}
