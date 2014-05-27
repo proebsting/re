@@ -74,18 +74,20 @@ func info(w http.ResponseWriter, r *http.Request) {
 
 	// must do all reading before any writing
 	var data struct {
-		Req    *http.Request
-		Body   []byte
-		BE     error
-		Dctr   string
-		GoArch string
-		GoOs   string
-		GoVer  string
-		VID    string
-		Vtime  string
+		Req     *http.Request
+		Body    []byte
+		BE      error
+		Cookies []*http.Cookie
+		Dctr    string
+		GoArch  string
+		GoOs    string
+		GoVer   string
+		VID     string
+		Vtime   string
 	}
 	data.Req = r
 	data.Body, data.BE = ioutil.ReadAll(r.Body)
+	data.Cookies = r.Cookies()
 	data.Dctr = appengine.Datacenter()
 	data.GoArch = runtime.GOARCH
 	data.GoOs = runtime.GOOS
@@ -123,13 +125,18 @@ var tInfo = template.Must(template.New("info").Parse(
 <BR>App Version ID: {{.VID}} ({{.Vtime}})
 <H2>Request Header</H2>
 <P>{{range $k, $v := .Req.Header}}{{$k}} : {{$v}}<BR>{{end}}
+<H2>Cookies </H2><P>
+{{range .Cookies}}{{.Name}} = {{.Value}}<BR>
+{{else}}[none]{{end}}
 <H2>Request Body</H2>
 {{printf "%s" .Body}}
 {{if .BE}}<P><B>BODY ERROR:</B> {{.BE}}{{end}}
 `))
 
 //  putheader outputs our standard HTML page header
-func putheader(w io.Writer, r *http.Request, title string) {
+//  and also initializes cookies
+func putheader(w http.ResponseWriter, r *http.Request, title string) {
+	initSession(w, r)
 	data := struct{ Prefix, Title, Favicon string }{
 		"RX", title, "icon.png"}
 	if r.Host == "localhost:8080" {
