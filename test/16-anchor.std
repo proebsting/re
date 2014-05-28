@@ -1,6 +1,8 @@
+Options: -R -T -g -h -i -l -v -I 0
 
-regexp: ^
+expr 0: ^
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -9,9 +11,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: $
+expr 1: $
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -20,9 +25,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ^$
+expr 2: ^$
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -31,9 +39,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ^a
+expr 3: ^a
 tree:   a
+augmnt: (a#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -42,9 +53,12 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+---------------- Examples from DFA ---------------
+s1:  a
 
-regexp: b$
+expr 4: b$
 tree:   b
+augmnt: (b#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
@@ -53,9 +67,12 @@ ex(2):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
 ex(3):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
 ex(5):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
 ex(8):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
+---------------- Examples from DFA ---------------
+s1:  b
 
-regexp: ^c$
+expr 5: ^c$
 tree:   c
+augmnt: (c#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
@@ -64,9 +81,12 @@ ex(2):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
 ex(3):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
 ex(5):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
 ex(8):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
+---------------- Examples from DFA ---------------
+s1:  c
 
-regexp: ^def$
+expr 6: ^def$
 tree:   ((de)f)
+augmnt: (((de)f)#)
 length: 3 to 3
 -------------------- Examples --------------------
 ex(0):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
@@ -75,20 +95,26 @@ ex(2):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(3):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(5):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(8):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
+---------------- Examples from DFA ---------------
+s1:  def
 
-regexp: ^x+y*z+$
+expr 7: ^x+y*z+$
 tree:   ((x+y*)z+)
+augmnt: (((x+y*)z+)#)
 length: 2 to *
 -------------------- Examples --------------------
 ex(0):  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz
-ex(1):  xz  xz  xyz  xz  xyz  xz  xyz  xyz  xz  xz  xz  xyz  xyz  xz  xz  xz
-ex(2):  xyz  xxz  xyyz  xzz  xz  xxyz  xxyyz  xxzz  xz  xxyz  xzz  xyz  xyz
-ex(3):  xxxyyzzz  xyyzz  xxxyyyzzz  xxxyz  xz  xxyzz  xxyyyz  xyyzzz  xxz
-ex(5):  xyyzzz  xyyyyzzzz  xxxxyyyz  xyzz  xxxxxyyyyyzz  xyyyzzzzz  xxyyyyzzz
-ex(8):  xxxxxxxxyyyzzzz  xxxxxxxxyyyyyz  xxzzzzz  xxxxxxxyyyyyyyyzzzzzzzz
+ex(1):  xz  xz  xyz  xyz  xz  xyz  xz  xz  xyz  xyz  xz  xz  xz  xyz  xz  xz
+ex(2):  xyzz  xxzz  xyzz  xxzz  xzz  xxyyz  xxyyzz  xzz  xyz  xyz  xzz  xyyz
+ex(3):  xxz  xyyz  xxxyyzzz  xzz  xz  xxyzz  xxxyyz  xxyyyz  xxyyyzzz  xxzz
+ex(5):  xyyyzz  xxxxyyyyzzzzz  xxxxxyz  xxyyyzzzzz  xxxxxyyzz  xxxxxyyyyzzzzz
+ex(8):  xxxxxxyyyyyyzzz  xxxyzzzzzzzz  xxxxxzz  xxxxxxxxyyzzzzzzzz
+---------------- Examples from DFA ---------------
+s1:  xz
 
-regexp: q\$
+expr 8: q\$
 tree:   (q$)
+augmnt: ((q$)#)
 length: 2 to 2
 -------------------- Examples --------------------
 ex(0):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
@@ -97,3 +123,6 @@ ex(2):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
 ex(3):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
 ex(5):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
 ex(8):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
+---------------- Examples from DFA ---------------
+s1:  q$
+9 expression(s) loaded

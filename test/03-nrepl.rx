@@ -1,3 +1,4 @@
+#! rxplor -T -p -n -d
 # numeric replication {m,n}
 ab{0}c
 ab{1}c

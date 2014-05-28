@@ -36,6 +36,7 @@ import (
 	"os"
 	"rx"
 	"time"
+	"unicode/utf8"
 )
 
 func main() {
@@ -96,10 +97,10 @@ func main() {
 			// dump positions and follow sets
 			dfa.ShowNFA(os.Stdout, "NFA")
 			// dump DFA
-			dfa.DumpStates(os.Stdout, "Initial DFA")
+			dfa.ShowStates(os.Stdout, "Initial DFA")
 			// generate minimal DFA and dump that
 			dfa = dfa.Minimize()
-			dfa.DumpStates(os.Stdout, "Minimized DFA")
+			dfa.ShowStates(os.Stdout, "Minimized DFA")
 		}
 	})
 }
@@ -111,11 +112,11 @@ func examples(dfa *rx.DFA, tree rx.Node, n int) {
 	s := fmt.Sprintf("ex(%d):", n)
 	nprinted := 0
 	fmt.Print(s)
-	ncolm := len(s)
+	ncolm := utf8.RuneCountInString(s)
 	for {
-		s := string(tree.Example(make([]byte, 0), n))
+		s := rx.Specimen(tree, n)
 		t := rx.Protect(s)
-		ncolm += 2 + len(t)
+		ncolm += 2 + utf8.RuneCountInString(t)
 		if nprinted > 0 && ncolm > linemax {
 			break
 		}

@@ -5,9 +5,9 @@
 {"Index":3,"Rexpr":"\\d{16}"}
 ],
 "Examples":[
-{"State":51,"RXset":[1],"Example":"4384416744866"},
-{"State":58,"RXset":[0],"Example":"346265709569862"},
-{"State":61,"RXset":[3],"Example":"7464104260918551"},
-{"State":62,"RXset":[1,3],"Example":"4384416744866624"},
-{"State":63,"RXset":[2,3],"Example":"5447383366586879"}
+{"State":51,"RXset":[1],"Example":"4820627896809"},
+{"State":58,"RXset":[0],"Example":"348086240477247"},
+{"State":61,"RXset":[3],"Example":"7691511507924704"},
+{"State":62,"RXset":[1,3],"Example":"4820627896809679"},
+{"State":63,"RXset":[2,3],"Example":"5364008348080480"}
 ]}

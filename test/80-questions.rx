@@ -1,5 +1,17 @@
+#! rxplor -T
+#! rxcluster -i 1
+
 # things to try to distinguish via "20 questions"
 # some of these are deliberately incomplete, imprecise, or even incorrect
+
+# binary number
+[01]+
+# canonical binary number
+0|1[01]*
+# binary number divisible by 3 (Sedgewick)
+(0|1(01*0)*1)*
+# binary number with no doubled digits
+1?(01)*0?
 
 # unsigned integer
 \d+
@@ -18,6 +30,8 @@
 [+-]?(\d+\.\d*|\.\d+)([dDeE][+-]?\d\d?\d?)?
 # C floating point constant
 [+-]?(((\d+\.\d*|\.\d+)([eE][+-]?\d+)?)|(\d+[eE][+-]?\d+))[fFlL]?
+# JSON number
+-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d{1,3})?
 
 # US Zip Code
 \d{5}
@@ -95,6 +109,6 @@
 
 # web (simplified)
 www\.[a-z]{3,}\.(com|edu|net|gov|mil|co\.uk)(/.*)?
-www\.[a-z]{3,}+\.[a-z]{1,3}(/.*)?
-www\.[a-z]{2,}+\.[a-z]{1,3}(/.*)?
+www(\.[a-z]{3,})+\.[a-z]{1,3}(/.*)?
+www(\.[a-z]{2,})+\.[a-z]{1,3}(/.*)?
 (https?://)?\w+(\.\w+)(/.*)?

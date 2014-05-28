@@ -1,8 +1,10 @@
+Options: -R -T -g -h -i -l -v -I 0
 
-# replication of null strings
+         # replication of null strings
 
-regexp: ?
+expr 0: ?
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -11,9 +13,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: *
+expr 1: *
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -22,9 +27,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: +
+expr 2: +
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -33,9 +41,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ??
+expr 3: ??
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -44,9 +55,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: **
+expr 4: **
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -55,9 +69,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ++
+expr 5: ++
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -66,9 +83,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ???
+expr 6: ???
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -77,9 +97,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ***
+expr 7: ***
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -88,9 +111,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: +++
+expr 8: +++
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -99,9 +125,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ?*+
+expr 9: ?*+
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -110,9 +139,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: *+?
+expr 10: *+?
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -121,9 +153,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ?+*
+expr 11: ?+*
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -132,9 +167,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: +?*?
+expr 12: +?*?
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -143,9 +181,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ?*?+?
+expr 13: ?*?+?
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -154,9 +195,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ?+?*+?*+?*+?*+*???*?*+?+*?+?
+expr 14: ?+?*+?*+?*+?*+*???*?*+?+*?+?
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -165,3 +209,6 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
+15 expression(s) loaded

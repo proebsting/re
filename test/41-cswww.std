@@ -1,89 +1,111 @@
+Options: -R -T -g -h -i -l -v -I 0
 
-# Samples from old www.cs.arizona.edu/scripts by gmt
+         # Samples from old www.cs.arizona.edu/scripts by gmt
 
-#
+         #
 
-# functions.php: getvalid
+         # functions.php: getvalid
 
-regexp: [A-Za-z0-9]+
+expr 0: [A-Za-z0-9]+
 tree:   [0-9A-Za-z]+
+augmnt: ([0-9A-Za-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  Z  H  X  L  W  4  8  G  3  E  T  l  i  E  k  Y  5  d  A  X  c  K  w  I
-ex(1):  u  U  h  b  U  I  E  O  2  s  F  0  n  7  E  i  d  P  d  a  H  Q  g  i
-ex(2):  zZ  g  lM  D  JK  Y  fD  4Y  A  N  XV  h  7  P  5H  kA  D  x  j8  K  V
-ex(3):  r  F7  L  U7  p5B  z9J  MK  b  5  U4  H  N  7k  O  x  m  xK  Y  gaL
-ex(5):  s1Y  gIfk  QL  a  Aql  e  x9s9j  vahl  SX2vQ  rsJR  aWI  cB  S  kb
-ex(8):  DL  DZCATqz  mKkm9  fd9BrKF  FbFwI  Dlx  rNYy  gKmO  GLed  0  6W
+ex(0):  H  W  L  O  q  V  2  o  3  B  O  z  c  l  I  u  q  B  Y  N  J  T  d  m
+ex(1):  i  V  D  p  e  A  9  W  U  u  c  e  C  U  B  0  x  K  b  T  d  C  0  K
+ex(2):  N  xe  G  50  r6  t  Ro  u3  O  o  J  Y  q  L  f  O  yY  9  Oa  7  Q
+ex(3):  B  i  e  xPU  7  W  bZJ  r0  kFf  Fq  u  Ok  vU  0t  k  cY  zo  wy  Iwd
+ex(5):  2af  wfdG  vm  Bn8e  n  SaG  tNd  OBDQv  3BUD  2vDOY  niXE  IZlxf  oQoC
+ex(8):  pVLh  9  s  cDR45  t  g  N3YyEse  y0RnUHr5  XS3EqXl  Xr  rd  qhY4  Y
+---------------- Examples from DFA ---------------
+s1:  r
 
-# functions.php: fixamps
+         # functions.php: fixamps
 
-regexp: \&([[:alnum:]]*([^;[:alnum:]]|
-ERROR:  rx: [:class:] unimplemented: in "\&([[:alnum:]]*([^;[:alnum:]]|"
+ERROR:   \&([[:alnum:]]*([^;[:alnum:]]|
+    rx: [:class:] unimplemented: in "\&([[:alnum:]]*([^;[:alnum:]]|"
 
-# functions.php: mailto
+         # functions.php: mailto
 
-regexp: ([^@]+)@(.*)\.arizona\.edu
+expr 1: ([^@]+)@(.*)\.arizona\.edu
 tree:   (((((((((((((([\x01-?A-\u007f]+@)[\x01-\u007f]*).)a)r)i)z)o)n)a).)e)d)u)
+augmnt: ((((((((((((((([\x01-?A-\u007f]+@)[\x01-\u007f]*).)a)r)i)z)o)n)a).)e)d)u)#)
 length: 14 to *
 -------------------- Examples --------------------
-ex(0):  V@.arizona.edu  9@.arizona.edu  +@.arizona.edu  T@.arizona.edu
-ex(1):  i@.arizona.edu  *@d.arizona.edu  /@.arizona.edu  t@.arizona.edu
-ex(2):  ;@sw.arizona.edu  I!@X.arizona.edu  fE@.arizona.edu  U@.arizona.edu
-ex(3):  V7@K.arizona.edu  {fr@qiV.arizona.edu  C@Sw.arizona.edu
-ex(5):  4d@cP.arizona.edu  V@0f.arizona.edu  &@p}1no.arizona.edu
-ex(8):  *!%t@!;8s.arizona.edu  s4z#~^E@mx/yE+U.arizona.edu  [ZL@.arizona.edu
+ex(0):  ~@.arizona.edu  1@.arizona.edu  !@.arizona.edu  N@.arizona.edu
+ex(1):  Z@.arizona.edu  s@.arizona.edu  {@q.arizona.edu  V@.arizona.edu
+ex(2):  (@0.arizona.edu  .@.arizona.edu  m1@.arizona.edu  (@h'.arizona.edu
+ex(3):  '~@iW.arizona.edu  {_G@f].arizona.edu  p@U?x.arizona.edu
+ex(5):  JS@?jdq;.arizona.edu  ~`ThY@Y1.arizona.edu  ;U^:o@C+k^s.arizona.edu
+ex(8):  \\@`D.arizona.edu  YG?R@5!woOT.arizona.edu  ;sCa-*B@5|k0.arizona.edu
+---------------- Examples from DFA ---------------
+s1:  7@.arizona.edu
 
-# nelson.php: else 'Not a valid integer.'
+         # nelson.php: else 'Not a valid integer.'
 
-regexp: [+-]?[0-9]+
+expr 2: [+-]?[0-9]+
 tree:   ([+-]?[0-9]+)
+augmnt: (([+-]?[0-9]+)#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
-ex(1):  8  1  -3  +4  4  +9  4  8  9  6  -4  8  4  -1  7  8  +4  -2  -2  +1  0
-ex(2):  +3  90  73  +06  -7  1  0  4  87  1  28  60  +26  4  +11  6  +36  -9
-ex(3):  +6  +87  -4  +00  8  436  0  0  94  9  25  35  -3  +40  1  -186  303
-ex(5):  +8406  -79844  94183  7601  +9430  -60  34086  8  630  36685  04  -5
-ex(8):  -979  0  505434  -3177  4194  +522322  69653254  -97619576  +94  -4
+ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
+ex(1):  2  1  7  5  8  -0  +7  6  9  +0  7  8  2  +7  6  0  +8  3  -9  +6  7  3
+ex(2):  2  +6  6  8  9  1  -10  +4  6  39  -3  +8  +70  +70  5  +4  +70  +14  7
+ex(3):  084  10  +52  287  -7  +14  9  -852  -220  -86  +85  +3  930  -68  0
+ex(5):  433  9367  -34  5644  465  +32005  -1898  +437  4  6  9  00  90116  51
+ex(8):  109516  1994772  22845  +26964423  9055  +336174  +999  63687
+---------------- Examples from DFA ---------------
+s1:  2
 
-# nelson.php: else 'Date must be in YYYY-MM-DD form.'
+         # nelson.php: else 'Date must be in YYYY-MM-DD form.'
 
-regexp: [12][0-9][0-9][0-9]-[01][0-9]-[0-3][0-9]
+expr 3: [12][0-9][0-9][0-9]-[01][0-9]-[0-3][0-9]
 tree:   ((((((((([12][0-9])[0-9])[0-9])-)[01])[0-9])-)[0-3])[0-9])
+augmnt: (((((((((([12][0-9])[0-9])[0-9])-)[01])[0-9])-)[0-3])[0-9])#)
 length: 10 to 10
 -------------------- Examples --------------------
-ex(0):  1100-10-12  1387-17-04  2503-03-11  2884-17-10  1314-00-13  2865-09-20
-ex(1):  1819-06-38  1307-02-12  1029-07-18  1106-17-08  2144-17-24  2739-07-30
-ex(2):  2847-13-31  1743-09-16  2600-09-04  2441-05-08  1451-03-02  1893-02-24
-ex(3):  2312-00-32  2119-09-08  1894-16-29  2183-08-30  2599-17-36  1582-01-13
-ex(5):  1735-12-34  1512-01-00  2582-17-20  2987-08-15  1326-11-39  2857-15-34
-ex(8):  2023-11-14  2024-15-31  2365-00-22  2691-10-25  1841-00-26  1935-16-31
+ex(0):  1436-07-08  1798-01-24  2860-02-32  2854-10-14  2468-18-27  1842-07-04
+ex(1):  2647-19-33  1821-12-00  1208-09-21  2991-19-22  1689-19-03  2888-15-07
+ex(2):  1979-10-27  2400-00-29  1846-10-16  1524-08-13  1799-14-29  2068-12-20
+ex(3):  1185-08-12  1930-06-22  2079-08-27  1338-13-35  2634-05-04  1746-19-03
+ex(5):  1381-03-20  1656-19-00  1699-11-21  2119-07-29  2095-00-19  2477-08-28
+ex(8):  1423-19-15  2073-01-27  1669-12-23  1879-16-39  2275-16-19  1198-08-36
+---------------- Examples from DFA ---------------
+s1:  1667-07-04
 
-# nelson.php: else 'Time must be in HH:MM:SS form.'
+         # nelson.php: else 'Time must be in HH:MM:SS form.'
 
-regexp: [012][0-9]:[0-5][0-9](:[0-5][0-9])?
+expr 4: [012][0-9]:[0-5][0-9](:[0-5][0-9])?
 tree:   ((((([012][0-9]):)[0-5])[0-9])((:[0-5])[0-9])?)
+augmnt: (((((([012][0-9]):)[0-5])[0-9])((:[0-5])[0-9])?)#)
 length: 5 to 8
 -------------------- Examples --------------------
-ex(0):  02:09  16:42  10:31  23:14  29:36  01:11  20:31  19:40  16:31  10:03
-ex(1):  17:00  14:29  19:19  05:09  28:17:40  04:50:22  16:29  14:01  02:24
-ex(2):  06:17  24:27:46  09:11:57  22:07:57  03:22:14  17:06:41  16:59:06
-ex(3):  07:21  27:50  27:32:55  19:40  20:03  08:43:52  01:33:06  06:30:51
-ex(5):  09:12  03:21  03:32  26:35  09:27:09  23:02  06:32  18:15:36  24:06
-ex(8):  28:50:24  19:15  24:17  20:52:21  19:47  11:16:39  04:50:38  06:20
+ex(0):  04:45  17:08  07:02  01:44  28:01  02:12  08:48  10:54  14:29  18:07
+ex(1):  07:24  27:43:51  06:38:43  04:21  02:00  20:48:01  19:50:44  22:09:34
+ex(2):  03:10:37  22:35  04:19:23  07:20  18:52:44  24:03:45  24:48:52  29:41
+ex(3):  28:23  22:29  18:32  18:30  03:29:10  16:27  29:48  07:33  09:47:03
+ex(5):  00:06:10  23:40:23  08:23  27:17  24:56  29:00  29:41:41  21:18  13:31
+ex(8):  29:47:08  12:25:57  06:44  23:19  25:07:01  04:46  19:26  26:59
+---------------- Examples from DFA ---------------
+s1:  17:01
+s6:  17:01:41
 
-#
+         #
 
-# From WHM grading script (Ruby):
+         # From WHM grading script (Ruby):
 
-regexp: (\/\/[ \t]*)?[Ww][Hh][Mm][ \t]*says[ \t]*:[ \tA-Za-z0-9`~!@\#$%^&\*\(\)\-_\+=\[\]{}\|\:\;'",.<>?\/]+
-tree:   (((((((((((((//)[\t ]*)?[Ww])[Hh])[Mm])[\t ]*)s)a)y)s)[\t ]*):)[\t -[]-~]+)
+expr 5: (\/\/[ \t]*)?[Ww][Hh][Mm][ \t]*says[ \t]*:[ \tA-Za-z0-9`~!@\#$%^&\*\(\)\-_\+=\[\]{}\|\:\;'",.<>?\/]+
+tree:   (((((((((((((//)[\t ]*)?[Ww])[Hh])[Mm])[\t ]*)s)a)y)s)[\t ]*):)[]\t -[^-~]+)
+augmnt: ((((((((((((((//)[\t ]*)?[Ww])[Hh])[Mm])[\t ]*)s)a)y)s)[\t ]*):)[]\t -[^-~]+)#)
 length: 9 to *
 -------------------- Examples --------------------
-ex(0):  WHmsays:(  wHMsays:G  WHMsays:R  WHMsays:Y  WhMsays:P  WhMsays:v
-ex(1):  //WHmsays\t:Z  wHmsays:L  //Whm\tsays:_  //WHmsays:u  WHmsays:4
-ex(2):  //wHMsays:$  //\t wHm \tsays :5=  whMsays\t:q  //\twhMsays\t\t:T6
-ex(3):  //\tWhm\tsays\t :w)  // Whm\t\t\tsays  :#  WHM\t \tsays\t\t :tW
-ex(5):  //\t\twhm  \t \tsays\t  :@]1|D  wHm\t\tsays\t\t  :a
-ex(8):  whM\tsays\t   \t :1  // \t\t\t\t\t WHm \t  \t \tsays   \t   :|C'zb*Y.
+ex(0):  WHmsays:c  wHmsays:%  whmsays:-  WHmsays:M  wHmsays:y  WHmsays:Z
+ex(1):  whMsays:$  whm says:l  whM says :u  // whMsays :G  //wHM says :;
+ex(2):  //WHmsays  :^  WhM  says  :>+  Whmsays:P_  // wHM  says :)j  WHMsays :S
+ex(3):  whmsays :!I  WHm says:[<;  // WHM   says :)  //  WHMsays:Qu
+ex(5):  wHmsays  :]/.  // wHm   says  :^.A{  Whm    says     :<mg.N
+ex(8):  //wHM  says:\"B!  //  WhM    says     :C  wHm        says:B_t0
+---------------- Examples from DFA ---------------
+s1:  wHMsays:;
+6 expression(s) loaded
+(1 expression(s) rejected)

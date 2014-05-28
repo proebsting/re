@@ -1,24 +1,43 @@
-// (2 expressions)
-digraph DFA {
-label="(2 expressions)"
-node [shape=circle, height=.3, margin=0, fontsize=10]
-s0 [shape=triangle, regular=true]
-s0->s3[label="[b]"]
-s0->s4[label="[a]"]
-s1[shape=doublecircle]
-s1->s4[label="[a]"]
-s1->s5[label="[b]"]
-s2[shape=doublecircle]
-s2->s4[label="[a]"]
-s2->s7[label="[b]"]
-s3->s1[label="[a]"]
-s3->s7[label="[b]"]
-s4->s4[label="[a]"]
-s4->s6[label="[b]"]
-s5->s1[label="[a]"]
-s5->s2[label="[b]"]
-s6->s2[label="[b]"]
-s6->s4[label="[a]"]
-s7->s4[label="[a]"]
-s7->s7[label="[b]"]
-}
+
+         #! rxplor -m -l -n -d
+
+         #! rxplor -N -
+
+         #! rxplor -D -
+
+expr 0: (a|b)*abb
+
+expr 1: b(ab)*a
+----------------------- NFA ----------------------
+Inputs: [ab]
+Witnesses: [ab]
+begin => { 0 1 2 6 }
+p0. a => { 0 1 2 }
+p1. b => { 0 1 2 }
+p2. a => { 3 }
+p3. b => { 4 }
+p4. b => { 5 }
+p5. # => { }
+p6. b => { 7 9 }
+p7. a => { 8 }
+p8. b => { 7 9 }
+p9. a => { 10 }
+p10. # => { }
+----------------- Unoptimized DFA ----------------
+s0. { p0 p1 p2 p6 } [a]:s1 [b]:s2
+s1. { p0 p1 p2 p3 } [a]:s1 [b]:s3
+s2. { p0 p1 p2 p7 p9 } [a]:s4 [b]:s5
+s3. { p0 p1 p2 p4 } [a]:s1 [b]:s6
+s4# { p0 p1 p2 p3 p8 p10 } [a]:s1 [b]:s7
+s5. { p0 p1 p2 } [a]:s1 [b]:s5
+s6# { p0 p1 p2 p5 } [a]:s1 [b]:s5
+s7. { p0 p1 p2 p4 p7 p9 } [a]:s4 [b]:s6
+------------------ Minimized DFA -----------------
+s0. { p0 p1 p2 p6 } [b]:s3 [a]:s4
+s1# { p0 p1 p2 p3 p8 p10 } [a]:s4 [b]:s5
+s2# { p0 p1 p2 p5 } [a]:s4 [b]:s7
+s3. { p0 p1 p2 p7 p9 } [a]:s1 [b]:s7
+s4. { p0 p1 p2 p3 } [a]:s4 [b]:s6
+s5. { p0 p1 p2 p4 p7 p9 } [a]:s1 [b]:s2
+s6. { p0 p1 p2 p4 } [b]:s2 [a]:s4
+s7. { p0 p1 p2 } [a]:s4 [b]:s7

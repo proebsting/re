@@ -1,0 +1,24 @@
+// DFA: 2 expressions
+digraph DFA {
+label="DFA: 2 expressions"
+node [shape=circle, height=.3, margin=0, fontsize=10]
+s0 [shape=triangle, regular=true]
+s0->s3[label=" b"]
+s0->s4[label=" a"]
+s1 [shape=doublecircle]
+s1->s4[label=" a"]
+s1->s5[label=" b"]
+s2 [shape=doublecircle]
+s2->s4[label=" a"]
+s2->s7[label=" b"]
+s3->s1[label=" a"]
+s3->s7[label=" b"]
+s4->s4[label=" a"]
+s4->s6[label=" b"]
+s5->s1[label=" a"]
+s5->s2[label=" b"]
+s6->s2[label=" b"]
+s6->s4[label=" a"]
+s7->s4[label=" a"]
+s7->s7[label=" b"]
+}

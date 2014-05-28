@@ -3,12 +3,6 @@
 //  Rx provides facilities for dealing with regular expressions.
 package rx
 
-import (
-	"fmt"
-)
-
-var _ = fmt.Printf //#%#%#% for debugging
-
 //  Match tests whether a string is matched by a regular expression.
 func Match(rexpr string, s string) (bool, error) {
 	dfa, err := Compile(rexpr)
@@ -33,11 +27,11 @@ func Compile(rexpr string) (*DFA, error) {
 }
 
 //  DFA.Accepts returns the set of regexps that accept a string, or nil.
-//  This function (#%#% only?) treats the input string as Unicode runes.
+//  This function treats the input string as Unicode runes.
 func (dfa *DFA) Accepts(s string) *BitSet {
 	state := dfa.Dstates[0]
 	for _, r := range s {
-		state = state.Dnext[uint(r)]
+		state = state.Dnext[int(r)]
 		if state == nil {
 			return nil // unmatched char
 		}
@@ -50,7 +44,7 @@ func (dfa *DFA) Accepts(s string) *BitSet {
 //  This new root concatenates an Accept node to the input tree.
 //  Additionally, any fixed {m,n} replications with m>1 or n>1 are replaced
 //  by concatenations of duplicated subtrees.
-func Augment(tree Node, rxindex uint) Node {
+func Augment(tree Node, rxindex int) Node {
 	Walk(tree, nil, func(d Node) {
 		switch d.(type) {
 		case *ConcatNode:

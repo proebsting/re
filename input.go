@@ -5,13 +5,16 @@ package rx
 import (
 	"bufio"
 	"flag"
-	"fmt"
 	"log"
 	"os"
 	"regexp"
 )
 
-var _ = fmt.Printf //#%#%#% for debugging
+//  Globals set as a side effect of loading input
+var (
+	InputRegExCount int // number of expressions successfully loaded
+	InputErrorCount int // number of unacceptable expressions rejected
+)
 
 //  A RegExParsed is a single parsed regular expression.
 //  If Tree is not nil then the expression was parsed as valid.
@@ -33,6 +36,12 @@ func (rxp *RegExParsed) IsExpr() bool {
 
 //  LoadExpressions reads a file and parses the expressions found.
 //  A filename of "" or "-" reads from standard input.  Any file error is fatal.
+//  See LoadFromScanner for details.
+func LoadExpressions(fname string, f func(*RegExParsed)) []*RegExParsed {
+	return LoadFromScanner(MkScanner(fname), f)
+}
+
+//  LoadFromScanner reads and parses expressions from a bufio.Scanner.
 //
 //  Empty lines and lines beginning with '#' are treated as comments.
 //  If non-nil, the function f is called for each line read.
@@ -40,11 +49,14 @@ func (rxp *RegExParsed) IsExpr() bool {
 //
 //  Metadata from comments matching the pattern "^#\w+:" is accumulated and
 //  returned with the next non-comment line (whether or not it parses).
-func LoadExpressions(fname string, f func(*RegExParsed)) []*RegExParsed {
+//
+//  The globals InputRegExCount and InputExprErrors are set by this function.
+func LoadFromScanner(efile *bufio.Scanner, f func(*RegExParsed)) []*RegExParsed {
 	mpat := regexp.MustCompile(`^#(\w+): *(.*)`)
-	efile := MkScanner(fname)
 	elist := make([]*RegExParsed, 0)
 	meta := make(map[string]string)
+	InputRegExCount = 0
+	InputErrorCount = 0
 	for efile.Scan() {
 		line := efile.Text()
 		e := &RegExParsed{Expr: line}
@@ -56,9 +68,12 @@ func LoadExpressions(fname string, f func(*RegExParsed)) []*RegExParsed {
 				addMeta(meta, r[1], r[2]) // also accumulate
 			}
 		} else {
-			e.Tree, e.Err = Parse(line)
-			if e.Tree != nil {
-				elist = append(elist, e)
+			e.Tree, e.Err = Parse(line) // parse input
+			if e.Tree != nil {          // if okay
+				elist = append(elist, e) // save parse tree
+				InputRegExCount++        // count success
+			} else {
+				InputErrorCount++ // else count error
 			}
 			e.Meta = meta                  // accumulated metadata
 			meta = make(map[string]string) // reset meta collection

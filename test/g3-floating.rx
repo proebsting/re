@@ -1,0 +1,5 @@
+#! rxg -R
+# floating point number forms
+\d*\.\d+|\d+\.\d*
+[+-]?(\d+\.\d*|\.\d+)([dDeE][+-]?\d\d?\d?)?
+[+-]?(((\d+\.\d*|\.\d+)([eE][+-]?\d+)?)|(\d+[eE][+-]?\d+))[fFlL]?

@@ -1,7 +1,11 @@
 # Files for Git to ignore
-.hg
-.nfs*
-*.out
+PROFILE
+expt.rx
+/timings
+/workshop
 tmp.*
-dotx
 *~
+*.out
+*.tmp
+.nfs*
+.DS_Store

@@ -7,8 +7,8 @@ package rx
 //  A special MatchNode with an empty set represents an acceptance marker.
 type MatchNode struct {
 	Cset    *BitSet // the characters that will match
-	Posn    uint    // integer "position" designator of leaf
-	RxIndex uint    // which RE does this Accept node belong to?
+	Posn    int     // integer "position" designator of leaf
+	RxIndex int     // which RE does this Accept node belong to?
 	NodeData
 }
 
@@ -18,7 +18,7 @@ func MatchAny(cs *BitSet) Node {
 }
 
 //  Accept returns a special MatchNode with an empty cset.
-func Accept(rxindex uint) Node {
+func Accept(rxindex int) Node {
 	return &MatchNode{&BitSet{}, 0, rxindex, nildata}
 }
 
@@ -38,11 +38,23 @@ func (d *MatchNode) Children() []Node {
 
 var barren = make([]Node, 0, 0) // empty list of children
 
-//  MatchNode.MinLen always returns 1.
-func (d *MatchNode) MinLen() int { return 1 }
+//  MatchNode.MinLen always returns 1 (except 0 for an AcceptNode).
+func (d *MatchNode) MinLen() int {
+	if IsAccept(d) {
+		return 0
+	} else {
+		return 1
+	}
+}
 
-//  MatchNode.MaxLen always returns 1.
-func (d *MatchNode) MaxLen() int { return 1 }
+//  MatchNode.MaxLen always returns 1 (except 0 for an AcceptNode).
+func (d *MatchNode) MaxLen() int {
+	if IsAccept(d) {
+		return 0
+	} else {
+		return 1
+	}
+}
 
 //  MatchNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *MatchNode) SetNFL() {
@@ -58,24 +70,21 @@ func (d *MatchNode) SetFollow(pmap []*MatchNode) {
 }
 
 //  MatchNode.Example appends a single randomly chosen matching character.
+//  (Note that this may be multiple UTF-8 bytes.)
 func (d *MatchNode) Example(s []byte, n int) []byte {
 	if IsAccept(d) {
 		return s // don't alter if Accept node
 	} else {
 		// assumes cset is not empty
-		return append(s, d.Cset.RandChar())
+		return append(s, string(d.Cset.RandChar())...)
 	}
 }
 
-//  MatchNode.string returns a singleton character or a bracketed expression.
+//  MatchNode.String returns a singleton character or a bracketed expression.
 func (d *MatchNode) String() string {
 	if d.Cset.IsEmpty() {
 		return "#" // special "accept" node
-	}
-	s := d.Cset.Bracketed()
-	if len(s) == 3 {
-		return s[1:2] // abbreviate set of one char
 	} else {
-		return s
+		return d.Cset.Unbracketed()
 	}
 }

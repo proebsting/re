@@ -1,8 +1,10 @@
+Options: -R -T -g -h -i -l -v -I 0
 
-# nested parentheses
+         # nested parentheses
 
-regexp: ((a))
+expr 0: ((a))
 tree:   a
+augmnt: (a#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -11,9 +13,12 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+---------------- Examples from DFA ---------------
+s1:  a
 
-regexp: (((a)))
+expr 1: (((a)))
 tree:   a
+augmnt: (a#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -22,80 +27,105 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+---------------- Examples from DFA ---------------
+s1:  a
 
-regexp: (((a*)))
+expr 2: (((a*)))
 tree:   a*
+augmnt: (a*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      a    a    a  a        a  a        a        a        a        a    a
-ex(2):  aa  a  aa  a  aa  a  aa    a      aa  a  a          aa  a    a  a    
-ex(3):      aa  aaa  a  aa  aa  aaa  aaa    a  a  aaa  aa    aaa  aa  a  a  
-ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
-ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
+ex(1):      a  a  a        a        a      a      a      a  a  a    a    a  a  
+ex(2):  a          aa  a      aa    aa  a  a  aa    aa  aa          aa    aa  
+ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
+ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
+ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: (((a)*))
+expr 3: (((a)*))
 tree:   a*
+augmnt: (a*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      a    a    a  a        a  a        a        a        a        a    a
-ex(2):  aa  a  aa  a  aa  a  aa    a      aa  a  a          aa  a    a  a    
-ex(3):      aa  aaa  a  aa  aa  aaa  aaa    a  a  aaa  aa    aaa  aa  a  a  
-ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
-ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
+ex(1):      a  a  a        a        a      a      a      a  a  a    a    a  a  
+ex(2):  a          aa  a      aa    aa  a  a  aa    aa  aa          aa    aa  
+ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
+ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
+ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: (((a))*)
+expr 4: (((a))*)
 tree:   a*
+augmnt: (a*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      a    a    a  a        a  a        a        a        a        a    a
-ex(2):  aa  a  aa  a  aa  a  aa    a      aa  a  a          aa  a    a  a    
-ex(3):      aa  aaa  a  aa  aa  aaa  aaa    a  a  aaa  aa    aaa  aa  a  a  
-ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
-ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
+ex(1):      a  a  a        a        a      a      a      a  a  a    a    a  a  
+ex(2):  a          aa  a      aa    aa  a  a  aa    aa  aa          aa    aa  
+ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
+ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
+ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: (((a)))*
+expr 5: (((a)))*
 tree:   a*
+augmnt: (a*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      a    a    a  a        a  a        a        a        a        a    a
-ex(2):  aa  a  aa  a  aa  a  aa    a      aa  a  a          aa  a    a  a    
-ex(3):      aa  aaa  a  aa  aa  aaa  aaa    a  a  aaa  aa    aaa  aa  a  a  
-ex(5):  aaa      aa  a  aaaa  aaa  aa  aa      aa  aa  aa  aaaa  aaaa    aaa
-ex(8):  aaa  a  a  aaaaaaaa  aaaaa  aaaaa    aaaaaa  aaa  a  aaaaaaa  aaaaa
+ex(1):      a  a  a        a        a      a      a      a  a  a    a    a  a  
+ex(2):  a          aa  a      aa    aa  a  a  aa    aa  aa          aa    aa  
+ex(3):      aa  aa  a  a  aaa  aa    aaa      a    aa  a  a  a  aaa    aaa  aa
+ex(5):  aaa  aa  a    aaaaa  aa    aaa  aaaaa  aaaaa  aaa  aaaa  aaaa  aaaaa  a
+ex(8):  aa  aaaaaaaa  aaa  a  aa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaa  aaaa
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ((a*b)@(c*d)#)*
+expr 6: ((a*b)@(c*d)#)*
 tree:   ((((a*b)@)(c*d))#)*
+augmnt: (((((a*b)@)(c*d))#)*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      b@cd#    ab@d#      ab@d#      b@d#    b@d#    b@d#    b@cd#  
-ex(2):  aab@cd#  b@cd#b@d#  ab@cd#b@d#      ab@d#ab@cd#      aab@ccd#b@ccd#  
-ex(3):  ab@cccd#  b@cccd#aab@cd#  b@cccd#  aab@ccd#b@cccd#b@cd#  aab@d#aab@d#  
-ex(5):  aaaab@d#aaab@ccccd#b@cd#ab@cccccd#
-ex(8):  aaab@cccd#aaab@cccccd#aab@d#    
+ex(1):      b@cd#    ab@cd#  b@cd#  b@cd#      b@d#  b@cd#    b@d#  ab@cd#
+ex(2):  b@d#  b@d#  aab@cd#aab@d#  ab@d#aab@ccd#  b@d#        b@ccd#
+ex(3):    aab@cd#b@ccd#    ab@ccd#b@d#aaab@cccd#  b@cd#b@d#  ab@ccd#aaab@cccd#
+ex(5):      ab@cd#aaaaab@cccd#aaaaab@d#aaaab@ccd#
+ex(8):  aaaaaaaab@cccccd#aaaaaaaab@d#aaab@ccccccccd#aaaaaaaab@cccccd#b@ccccccccd#aaaaaaaab@ccccccccd#
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ((b|f)(a|e))*
+expr 7: ((b|f)(a|e))*
 tree:   ((b|f)(a|e))*
+augmnt: (((b|f)(a|e))*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      be    fa      fa      ba    ba    ba    be    ba  ba  be        fa
-ex(2):      babe      babe    befa  feba    fe  fe      fafa  baba  babe  be
-ex(3):  be  bababa  fefabe  babefe  be  feba    fabafe  febebe  babeba  be    
-ex(5):  fabeba  bafe  befebebabe  babafa  bababebaba  bafafe  bafabefa  ba
-ex(8):  febabafafebefebe  fafa  bebabafabe  fabebabe  befafa  befafebabafa  fe
+ex(1):      ba  ba  ba        ba        ba      be  ba  ba          ba      fa
+ex(2):    febe    feba  bafa  fe      ba            bebe    ba  bafa  feba  ba
+ex(3):      befa  ba  fefe  ba  bafeba  bafabe      be  fabe  fabefa  fe
+ex(5):    fafafafefe  fabebeba  fe    fefafebe  befe      bafe  bebabe
+ex(8):  bebafefabebefafa  fe  babafafebebe  be  babebabebafa  fefefe  beba  fe
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: ((n|t)(o|e)+)*
+expr 8: ((n|t)(o|e)+)*
 tree:   ((n|t)(o|e)+)*
+augmnt: (((n|t)(o|e)+)*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      ne    to      to      no    no    no    ne    no  no  ne        to
-ex(2):      note  notoo  tetoo    toe        teno    none  nee  teto  notee
-ex(3):  toe  toootoo  teeteoe  noenenooo  noetoeo  noetoee  nooo  too  
-ex(5):  teeoonooee    noo  tetooooe    teeeotenoooe  noeooetooeooneneoeo
-ex(8):  toooooeeo    neeeeeootoeeoteoooeeeotooooooneeee
+ex(1):      no  no  no        no        no      ne  no  no          no      to
+ex(2):    teene    nono  nee      no          nootoo  nene    toe  no    noteo
+ex(3):  no  toe  noeonooto  nonoee  nonotee  neonotooo  noneotoeo  noeoteeteoe
+ex(5):  teoneoeneeooneoeoetee  toeo  noeoteonootonoe  neeeonee  nenoeooe  toono
+ex(8):  noeoeeoeotoeeootoooooeteoeneeeee  netoooteeoeeeee
+---------------- Examples from DFA ---------------
+s0:  
+s2:  to
+9 expression(s) loaded

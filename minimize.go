@@ -6,21 +6,21 @@ import (
 	"fmt"
 )
 
-var _ = fmt.Printf //#%#% for debugging
-
 var deadstate *DFAstate // "dead state" used during minimization
+
+var DBG_MIN = false // enable/disable minimization debugging output
 
 //  A Partition is a subset of the states of a DFA.
 type Partition struct {
 	Automata *DFA      // the containing DFA
-	Index    uint      // index (label) of this partition
+	Index    int       // index (label) of this partition
 	StateSet *BitSet   // members of this partition
 	NewState *DFAstate // destination state in minimized DFA
 }
 
 //  DFA.newPartition creates a new partition and adds it to a DFA.
 func (dfa *DFA) newPartition() *Partition {
-	p := &Partition{dfa, uint(len(dfa.PartList)), &BitSet{}, nil}
+	p := &Partition{dfa, len(dfa.PartList), &BitSet{}, nil}
 	dfa.PartList = append(dfa.PartList, p)
 	return p
 }
@@ -29,6 +29,11 @@ func (dfa *DFA) newPartition() *Partition {
 //  The original DFA remains valid although some of its data structures have
 //  been disturbed in the process.
 func (dfa *DFA) Minimize() *DFA {
+	// preprocess states to create minimal "input lists"
+	wset := dfa.Witnesses()
+	for _, ds := range dfa.Dstates {
+		ds.setinputs(wset)
+	}
 
 	// add and remember a "dead state" with no exits
 	deadstate = dfa.newState(&BitSet{})
@@ -57,7 +62,9 @@ func (dfa *DFA) Minimize() *DFA {
 	// repeatedly subdivide partitions until can do so no more
 	nchanged := 1
 	for nchanged != 0 {
-		// fmt.Println("[partitioning:]") //#%#%#% TEMP // once per pass
+		if DBG_MIN {
+			fmt.Println("[partitioning:]") // once per pass
+		}
 		nchanged = 0
 		// loop manually (vs "range" expr) to catch new partns as added
 		for i := 0; i < len(dfa.PartList); i++ {
@@ -75,8 +82,11 @@ func (dfa *DFA) Minimize() *DFA {
 
 	// make a new DFA with one state for each partition,
 	// but exclude the partition containing the dead state
-	// fmt.Println("[merging:]") //#%#%#% TEMP
+	if DBG_MIN {
+		fmt.Println("[merging:]")
+	}
 	minim := newDFA(dfa.Tree)
+	minim.Leaves = dfa.Leaves
 	for _, p = range dfa.PartList {
 		if p.Index != deadstate.PartNum {
 			p.NewState = minim.newState(&BitSet{})
@@ -93,8 +103,23 @@ func (dfa *DFA) Minimize() *DFA {
 	// remove the dead state we added temporarily to the old DFA
 	dfa.Dstates = dfa.Dstates[:len(dfa.Dstates)-1]
 
+	// reclaim partition list and input-list memory
+	dfa.PartList = nil
+	for _, ds := range dfa.Dstates {
+		ds.InpList = nil
+	}
+
 	// return the new minimized DFA
 	return minim
+}
+
+//  DFAstate.setinputs computes representative inputs for each state
+func (ds *DFAstate) setinputs(witnesses *BitSet) {
+	cset := CharSet("")
+	for x := range ds.Dnext {
+		cset.Set(x)
+	}
+	ds.InpList = (cset.AndWith(witnesses)).Members()
 }
 
 //  Partition.insert moves a state into a partition.
@@ -105,40 +130,26 @@ func (p *Partition) insert(ds *DFAstate) {
 	dfa.PartList[old].StateSet.Clear(i)
 	p.StateSet.Set(i)
 	ds.PartNum = p.Index
-	// fmt.Printf("move s%d : ptn %d to %d\n", i, old, p.Index) //#%#% TEMP
+	if DBG_MIN {
+		fmt.Printf("move s%d : ptn %d to %d\n", i, old, p.Index)
+	}
 }
 
 //  Partition.distinguish returns an input for partitioning, or -1 for none.
 //  The return value is any input that maps states into two or more groups.
 func (p *Partition) distinguish() int {
-	mlist := p.StateSet.Members()
-	for i := range mlist {
-		for j := i + 1; j < len(mlist); j++ {
-			s1 := p.Automata.Dstates[mlist[i]]
-			s2 := p.Automata.Dstates[mlist[j]]
-			// check every input of s1 against s2 and vice versa;
-			// this makes duplicate checks, but is simpler and
-			// possibly cheaper than avoiding the duplication
-			x := s1.distinguish(s2)
-			if x >= 0 {
-				return x
+	psnums := p.StateSet.Members() // index numbers of states in partition
+	for _, pn1 := range psnums {
+		s1 := p.Automata.Dstates[pn1]
+		for _, pn2 := range psnums {
+			s2 := p.Automata.Dstates[pn2]
+			// check representative inputs of s1 against s2
+			// (and vice versa when they switch roles)
+			for _, x := range s1.InpList {
+				if s1.partOn(x) != s2.partOn(x) {
+					return x
+				}
 			}
-			x = s2.distinguish(s1)
-			if x >= 0 {
-				return x
-			}
-		}
-	}
-	return -1
-}
-
-//  DFAstate.distinguish checks every recognized input against another state,
-//  returning an input that leads to a different partition or -1 if there is
-//  none.
-func (s1 *DFAstate) distinguish(s2 *DFAstate) int {
-	for x := range s1.Dnext {
-		if s1.partOn(int(x)) != s2.partOn(int(x)) {
-			return int(x)
 		}
 	}
 	return -1
@@ -146,24 +157,31 @@ func (s1 *DFAstate) distinguish(s2 *DFAstate) int {
 
 //  Partition.divide repartitions this partition based on input x.
 func (p *Partition) divideBy(x int) {
-	// fmt.Printf("[partition %d by %#v]\n", p.Index, string(x)) //#%#% TEMP
+	if DBG_MIN {
+		fmt.Printf("[partition %d by %#v]\n", p.Index, string(x))
+	}
 	// get a list of partition members
-	// all distinguishable from the first by x go into a new partition
-	dfa := p.Automata              // DFA being partitioned
-	mlist := p.StateSet.Members()  // list of partition members
-	d0 := dfa.Dstates[mlist[0]]    // first member
-	q := p.Automata.newPartition() // new partition for all who differ
+	// and note all that are distinguishable from the first by input x
+	dfa := p.Automata             // DFA being partitioned
+	mlist := p.StateSet.Members() // list of partition members
+	tomove := &BitSet{}           // set of those to move
+	d0 := dfa.Dstates[mlist[0]]   // first member
 	for i := 1; i < len(mlist); i++ {
 		ds := dfa.Dstates[mlist[i]] // candidate state
 		if ds.partOn(x) != d0.partOn(x) {
-			q.insert(ds)
+			tomove.Set(ds.Index)
 		}
+	}
+	// now (all at once) move the distinguished states to a new partition
+	q := p.Automata.newPartition() // new partition for all who differ
+	for _, i := range tomove.Members() {
+		q.insert(dfa.Dstates[i])
 	}
 }
 
 //  DFAstate.partOn returns the index of the partition reached by input x.
-func (ds *DFAstate) partOn(x int) uint {
-	dd := ds.Dnext[uint(x)]
+func (ds *DFAstate) partOn(x int) int {
+	dd := ds.Dnext[x]
 	if dd == nil {
 		dd = deadstate
 	}
@@ -183,9 +201,9 @@ func (ds *DFAstate) mergeFrom(p *Partition) {
 			ds.AccSet.OrWith(os.AccSet) // merge acceptors
 		}
 		for x := range os.Dnext { // for each input
-			odest := os.Dnext[uint(x)] // get old dest state
+			odest := os.Dnext[x] // get old dest state
 			ndest := dfa.PartList[odest.PartNum].NewState
-			ds.Dnext[uint(x)] = ndest // set new destination
+			ds.Dnext[x] = ndest // set new destination
 		}
 	}
 }

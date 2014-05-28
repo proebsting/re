@@ -34,19 +34,24 @@ func TestBrackets(t *testing.T) {
 	try(t, `[A-HO-Z]`, `[A-HO-Z]`)
 	// ugly but legal cset (bracket expression) forms
 	try(t, `[-]`, `[-]`)
-	try(t, `[-x]`, `[-x]`)
-	try(t, `[x-]`, `[-x]`)
+	try(t, `[-x]`, `[x-]`)
+	try(t, `[x-]`, `[x-]`)
 	try(t, `[[x]`, `[[x]`)
-	try(t, `[[x-]`, `[-[x]`)
+	try(t, `[[x-]`, `[[x-]`)
 	try(t, `[]x]`, `[]x]`)
-	try(t, `[]x-]`, `[-]x]`)
-	try(t, `[]x[-]`, `[-[]x]`)
-	try(t, `[][]`, `[[]]`)
+	try(t, `[]x-]`, `[]x-]`)
+	try(t, `[]x[-]`, `[][x-]`)
+	try(t, `[][]`, `[][]`)
+	// ] and - at end of range
+	try(t, `[$-\-]`, `[$-,-]`)
+	try(t, `[]\\[ZYX]`, `[]X-\]`)
+	try(t, `[]$-\-\\[ZYX]`, `[]$-,X-\-]`)
+	try(t, `[-.-\]]]`, `[].-\-]`)
 	// character set escapes
 	// n.b. in POSIX, \ in [] is not special, but we follow Perl here
 	try(t, `[\-]`, `[-]`)
 	try(t, `[\]]`, `[]]`)
-	try(t, `[ab\[cd\-gh\]ij]`, `[-[]a-dg-j]`)
+	try(t, `[ab\[cd\-gh\]ij]`, `[][a-dg-j-]`)
 	try(t, `[*&=!+]`, `[!&*+=]`)
 	try(t, `[\*\&\=\!\+]`, `[!&*+=]`)
 	// perl inventions
@@ -120,10 +125,10 @@ func TestBrackets(t *testing.T) {
 //  The input string should begin with the initial '[' to be ignored.
 func try(t *testing.T, input string, expected string) {
 	var output string
-	subj := input[1:]
+	subj := []rune(input[1:])
 	result, errmsg := bxparse(subj)
 	if result == nil {
-		output = errmsg
+		output = string(errmsg)
 	} else {
 		output = result.Bracketed()
 	}

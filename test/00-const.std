@@ -1,8 +1,10 @@
+Options: -R -T -g -h -i -l -v -I 0
 
-# constant regexps including the empty one
+         # constant regexps including the empty one
 
-regexp: ()
+expr 0: ()
 tree:   ()
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -11,9 +13,12 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: a
+expr 1: a
 tree:   a
+augmnt: (a#)
 length: 1 to 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -22,9 +27,12 @@ ex(2):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(3):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(5):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(8):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
+---------------- Examples from DFA ---------------
+s1:  a
 
-regexp: bc
+expr 2: bc
 tree:   (bc)
+augmnt: ((bc)#)
 length: 2 to 2
 -------------------- Examples --------------------
 ex(0):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
@@ -33,9 +41,12 @@ ex(2):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 ex(3):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 ex(5):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 ex(8):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
+---------------- Examples from DFA ---------------
+s1:  bc
 
-regexp: def
+expr 3: def
 tree:   ((de)f)
+augmnt: (((de)f)#)
 length: 3 to 3
 -------------------- Examples --------------------
 ex(0):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
@@ -44,9 +55,12 @@ ex(2):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(3):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(5):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(8):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
+---------------- Examples from DFA ---------------
+s1:  def
 
-regexp: 417-00-9423
+expr 4: 417-00-9423
 tree:   ((((((((((41)7)-)0)0)-)9)4)2)3)
+augmnt: (((((((((((41)7)-)0)0)-)9)4)2)3)#)
 length: 11 to 11
 -------------------- Examples --------------------
 ex(0):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
@@ -55,9 +69,12 @@ ex(2):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 ex(3):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 ex(5):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 ex(8):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
+---------------- Examples from DFA ---------------
+s1:  417-00-9423
 
-regexp: 515-032-6910
+expr 5: 515-032-6910
 tree:   (((((((((((51)5)-)0)3)2)-)6)9)1)0)
+augmnt: ((((((((((((51)5)-)0)3)2)-)6)9)1)0)#)
 length: 12 to 12
 -------------------- Examples --------------------
 ex(0):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
@@ -66,9 +83,12 @@ ex(2):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 ex(3):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 ex(5):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 ex(8):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
+---------------- Examples from DFA ---------------
+s1:  515-032-6910
 
-regexp: bite the wax tadpole
+expr 6: bite the wax tadpole
 tree:   (((((((((((((((((((bi)t)e) )t)h)e) )w)a)x) )t)a)d)p)o)l)e)
+augmnt: ((((((((((((((((((((bi)t)e) )t)h)e) )w)a)x) )t)a)d)p)o)l)e)#)
 length: 20 to 20
 -------------------- Examples --------------------
 ex(0):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
@@ -77,9 +97,12 @@ ex(2):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(3):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(5):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(8):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
+---------------- Examples from DFA ---------------
+s1:  bite the wax tadpole
 
-regexp: __\a__\e__\f__\n__\r__\t__\v__
+expr 7: __\a__\e__\f__\n__\r__\t__\v__
 tree:   ((((((((((((((((((((((__)[\a])_)_)[\x1b])_)_)[\f])_)_)[\n])_)_)[\r])_)_)[\t])_)_)[\v])_)_)
+augmnt: (((((((((((((((((((((((__)[\a])_)_)[\x1b])_)_)[\f])_)_)[\n])_)_)[\r])_)_)[\t])_)_)[\v])_)_)#)
 length: 23 to 23
 -------------------- Examples --------------------
 ex(0):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
@@ -88,3 +111,6 @@ ex(2):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
 ex(3):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
 ex(5):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
 ex(8):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
+---------------- Examples from DFA ---------------
+s1:  __\a__\x1b__\f__\n__\r__\t__\v__
+8 expression(s) loaded

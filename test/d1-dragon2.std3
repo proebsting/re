@@ -1,0 +1,15 @@
+// DFA: (a|b)*abb
+digraph DFA {
+label="DFA: (a|b)*abb"
+node [shape=circle, height=.3, margin=0, fontsize=10]
+s0 [shape=triangle, regular=true]
+s0->s0[label=" b"]
+s0->s3[label=" a"]
+s1 [shape=doublecircle]
+s1->s0[label=" b"]
+s1->s3[label=" a"]
+s2->s1[label=" b"]
+s2->s3[label=" a"]
+s3->s2[label=" b"]
+s3->s3[label=" a"]
+}

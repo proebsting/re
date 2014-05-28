@@ -1,3 +1,5 @@
+#! rxplor -T
+#! rxplor -T -p -n -d
 a
 ab
 abc

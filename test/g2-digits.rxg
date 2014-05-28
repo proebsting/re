@@ -1,4 +1,0 @@
-# various integer forms
-\d+
-\d*[1-9]
-[1-9]\d*

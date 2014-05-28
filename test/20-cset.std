@@ -1,17 +1,22 @@
+Options: -R -T -g -h -i -l -v -I 0
 
-regexp: [a]+
+expr 0: [a]+
 tree:   a+
+augmnt: (a+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
-ex(2):  a  a  aa  a  aa  a  aa  aa  a  a  a  aa  aa  a  a  a  aa  a  a  a  aa
-ex(3):  aaa  a  aaa  a  aa  a  aa  aa  a  aaa  aaa  aa  aaa  aa  aaa  aa  aaa
-ex(5):  aaa  aaaaa  aa  aaaa  aaaaa  aaa  aaaa  a  aaa  aaa  a  aaaa  aaaaa
-ex(8):  aaaa  aaaaa  aa  aaaaaaa  aaaaa  a  aaaaaaa  aaaa  aaaaaa  aaa  aaaaaaa
+ex(2):  a  a  aa  a  a  aa  a  aa  aa  a  a  aa  aa  a  a  a  a  a  a  a  aa
+ex(3):  aaa  a  aa  aa  a  a  aaa  aaa  a  a  a  aaa  a  a  aaa  aa  a  aa  aa
+ex(5):  aaa  aaaaa  aaa  aaa  aaaa  aaa  aa  a  aa  aaaa  aaaa  aaaaa  aaa  a
+ex(8):  aaaaa  aaaaaaa  aaa  aaa  aaaa  aa  aaa  aaaaa  aaa  aaaaaaaa  a
+---------------- Examples from DFA ---------------
+s1:  a
 
-regexp: [bc]+
+expr 1: [bc]+
 tree:   [bc]+
+augmnt: ([bc]+#)
 length: 1 to *
 -------------------- Examples --------------------
 ex(0):  b  b  c  b  c  b  c  c  b  b  b  c  c  b  b  b  c  b  b  b  c  b  b  b
@@ -20,168 +25,217 @@ ex(2):  b  b  bc  b  b  cb  c  bc  cb  c  c  bc  bb  c  c  b  b  b  b  b  bb
 ex(3):  cbc  b  bb  bc  c  b  ccb  bcc  c  c  c  bbb  c  b  ccc  cb  b  cb  bc
 ex(5):  cbb  bbcbc  bbc  bbb  cccb  ccb  bb  c  bb  bcbc  bbbb  bbbbc  bcb  c
 ex(8):  cbbcc  cbbbbbc  ccc  bbb  bccb  cc  ccc  cbbbc  bbb  bbcccbbc  b
+---------------- Examples from DFA ---------------
+s1:  b
 
-regexp: [def]+
+expr 2: [def]+
 tree:   [def]+
+augmnt: ([def]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  d  f  f  f  d  e  d  d  f  d  d  d  d  d  f  f  f  e  e  d  d  e  f  d
-ex(1):  e  e  d  f  e  e  f  e  f  f  d  d  e  f  d  d  e  d  e  d  e  e  d  f
-ex(2):  fd  fe  d  df  d  e  dd  df  d  de  ff  ef  e  e  f  e  d  fe  e  e  df
-ex(3):  d  ed  fee  ee  e  ef  d  ed  ee  fff  dd  d  f  fd  eed  e  e  fe  d
-ex(5):  dfff  fedde  deeff  df  de  dfff  e  fddee  ffdee  eeffd  fed  def  efe
-ex(8):  ddffe  e  eeff  dde  eeedfde  dfddeee  deefedef  ededdee  edefddd
+ex(0):  d  d  e  e  f  e  e  f  d  d  d  f  f  d  d  d  f  f  e  d  f  d  f  d
+ex(1):  d  e  d  e  e  d  f  f  e  f  e  f  e  f  d  e  d  d  f  e  e  d  d  d
+ex(2):  e  e  dd  f  d  df  f  ff  dd  d  f  ed  dd  e  d  f  d  f  e  d  ed
+ex(3):  fdd  e  fe  dd  d  f  ddd  fdd  e  e  d  fdd  e  d  fed  ef  d  ef  ee
+ex(5):  fee  feedd  fef  dfe  fefd  ede  de  d  ee  ddff  ffff  fefed  fed  d
+ex(8):  deffd  efefffd  fed  edd  dddd  ee  dff  fefee  dde  ddfeefff  e
+---------------- Examples from DFA ---------------
+s1:  f
 
-regexp: [ghij]+
+expr 3: [ghij]+
 tree:   [g-j]+
+augmnt: ([g-j]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  h  g  g  h  g  i  h  g  g  g  j  i  i  g  i  g  h  g  h  g  i  i  j  h
-ex(1):  g  h  i  h  h  g  i  j  j  j  h  g  h  h  i  h  h  g  h  j  h  h  j  g
-ex(2):  ij  gh  h  ig  i  ij  h  gg  gi  i  ii  h  i  g  i  j  h  hh  hh  i  g
-ex(3):  ghi  j  gj  hig  ijh  j  ij  i  ijh  g  ij  i  hh  ih  hhh  ji  ig  ji
-ex(5):  hi  ijjgi  ihhii  jhg  jgi  g  hjhh  gji  higg  jhhij  gjg  ihjg  hgih
-ex(8):  jhigj  hih  iihijgg  jgj  hjgjjji  i  igjii  gg  jijhi  ij  gigjiii
+ex(0):  i  i  h  i  j  g  j  h  g  g  g  j  j  g  g  i  j  i  i  i  j  g  i  g
+ex(1):  i  g  g  j  g  h  g  h  g  i  h  g  i  h  i  j  g  g  i  j  j  g  g  i
+ex(2):  g  g  gh  g  i  hi  j  gh  ji  j  h  gj  ii  j  h  i  i  g  g  i  gi
+ex(3):  hij  i  ig  gj  j  g  hjg  gjh  h  h  j  gig  h  i  hhj  hg  i  jg  ij
+ex(5):  jgg  iijgh  gih  igi  hhjg  hhg  ig  h  gi  gjgj  igii  gigih  ghi  h
+ex(8):  higjh  higiiih  jjj  ggi  ijji  hj  jhj  jigih  ggg  gijhjigj  g
+---------------- Examples from DFA ---------------
+s1:  i
 
-regexp: [lmnop]+
+expr 4: [lmnop]+
 tree:   [l-p]+
+augmnt: ([l-p]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  n  p  m  m  p  l  l  p  p  o  m  l  n  l  m  o  l  p  n  p  m  n  m  m
-ex(1):  p  n  m  n  m  n  n  o  p  l  o  m  o  o  o  o  m  l  m  o  o  o  l  l
-ex(2):  o  o  n  n  l  o  ol  np  ml  m  o  l  n  oo  nl  lo  m  po  m  mp  nm
-ex(3):  ol  nn  p  pm  plo  no  oop  m  pmn  lln  op  opo  np  n  mn  mmp  nnl
-ex(5):  poo  om  pmnn  nom  npmpn  omnpo  n  ppl  olo  ooo  nmon  lop  o  on
-ex(8):  ppn  lmop  nmo  mopplmmo  noonm  npmmnln  nnmm  l  pm  lonnoon  pnmo
+ex(0):  p  p  o  m  l  m  n  n  o  o  o  n  p  o  n  m  m  l  l  p  l  o  m  l
+ex(1):  m  n  l  m  n  n  o  l  p  o  o  l  l  p  p  n  p  m  o  p  n  o  l  n
+ex(2):  o  n  ln  m  l  no  o  lp  om  n  o  po  po  m  o  m  l  n  o  o  ll
+ex(3):  mlp  m  nn  op  p  p  ono  ono  n  n  p  lnn  l  l  pnp  nl  p  mp  ln
+ex(5):  plo  mpmlo  mol  pmn  npon  ppo  pn  p  lm  olno  lnnl  onoml  pmo  o
+ex(8):  onlpo  llmmonn  npp  oll  pooo  po  nlo  opool  ppl  pmlpplpo  l
+---------------- Examples from DFA ---------------
+s1:  o
 
-regexp: [tuvwxyz]+
+expr 5: [tuvwxyz]+
 tree:   [t-z]+
+augmnt: ([t-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  x  u  w  x  v  z  y  u  u  x  y  z  x  x  u  w  z  z  u  x  x  t  z  x
-ex(1):  t  t  u  v  y  t  y  v  w  w  v  x  v  v  u  x  v  t  u  v  t  x  t  y
-ex(2):  v  t  y  z  zw  uz  v  z  z  yw  wx  xw  uu  v  u  vv  xw  u  zz  x  uu
-ex(3):  yu  xt  tzw  v  xxx  xt  xuz  uv  z  uw  xwv  zz  z  z  xw  xwz  vtw  w
-ex(5):  zy  vuy  xu  y  wxwxt  xvvvz  wu  uzxux  v  w  wvy  y  u  v  zzyt  yytw
-ex(8):  wwxvwyv  yvzyztw  txtxwz  uwwt  ytx  z  xwvwzxwt  v  wzvxuyyx  wwt  uvt
+ex(0):  y  v  t  x  t  u  y  t  w  u  u  z  x  u  z  x  w  u  u  u  w  v  x  w
+ex(1):  w  u  z  t  x  w  t  x  y  z  v  y  u  x  t  u  v  x  w  w  w  z  x  y
+ex(2):  w  y  wt  u  t  yy  z  yy  xw  z  y  uu  zy  w  t  v  v  x  u  v  zw
+ex(3):  tuy  v  xx  zz  y  y  wzu  vtw  y  v  t  utz  v  u  ttv  xu  y  wu  vx
+ex(5):  ywt  vzxyy  xzz  zxx  wzvz  wtv  yx  z  uu  zttz  ttxt  vttxt  xzu  t
+ex(8):  wtvuy  zytwyux  uux  xzt  vyuv  vt  wwu  tyvyv  zuz  tzvwwwuv  x
+---------------- Examples from DFA ---------------
+s1:  w
 
-regexp: [ACDFGHJKLMOPQRSUVWXYZ]+
+expr 6: [ACDFGHJKLMOPQRSUVWXYZ]+
 tree:   [ACDFGHJ-MO-SU-Z]+
+augmnt: ([ACDFGHJ-MO-SU-Z]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  G  A  W  Y  S  C  P  F  K  L  F  R  X  J  L  A  D  Y  Q  J  C  H  F  G
-ex(1):  C  M  K  O  Q  S  W  D  H  Q  X  W  J  U  Q  Z  W  P  U  U  A  Y  X  C
-ex(2):  YA  W  QH  U  LH  L  A  S  Y  R  QW  J  OF  H  S  RA  H  JP  GG  AG  S
-ex(3):  JAV  HXA  C  YM  JX  DYM  OY  P  GY  DAA  SFC  YC  OKP  GHO  AP  YGM
-ex(5):  RW  FL  XAPX  HDKM  FVHY  VJXZJ  P  CO  HZOD  CKOQW  QAO  FGD  QAQC
-ex(8):  HZMFA  UZG  SU  YFSWXZ  RAL  QYODOCR  KXFYJX  O  X  HJJFKHUG  KRL  OC
+ex(0):  C  U  Y  H  H  Z  K  A  K  M  H  A  V  O  C  P  M  S  O  K  Y  R  W  X
+ex(1):  W  S  H  O  X  G  Z  M  G  A  X  H  Y  U  O  H  K  C  A  D  P  C  U  X
+ex(2):  MG  HO  SQ  P  L  YF  UO  X  F  K  U  H  M  M  H  LK  RS  Y  M  P  XL
+ex(3):  Q  XJQ  X  Z  ROS  O  FLL  DF  D  AO  ZU  J  L  GK  CFO  R  KHH  GZ  RU
+ex(5):  QSJJA  WS  C  WKKY  R  RKXA  DKJZC  URPR  AXAW  YW  W  OWYKR  LMXFV
+ex(8):  YYAZ  FUP  UZRZC  H  OVPGS  ZCZHUYA  QAXUCLP  G  SGPMH  YY  FVGL
+---------------- Examples from DFA ---------------
+s1:  P
 
-regexp: [aeiuo]+
+expr 7: [aeiuo]+
 tree:   [aeiou]+
+augmnt: ([aeiou]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  i  u  e  e  u  a  a  u  u  o  e  a  i  a  e  o  a  u  i  u  e  i  e  e
-ex(1):  u  i  e  i  e  i  i  o  u  a  o  e  o  o  o  o  e  a  e  o  o  o  a  a
-ex(2):  o  o  i  i  a  o  oa  iu  ea  e  o  a  i  oo  ia  ao  e  uo  e  eu  ie
-ex(3):  oa  ii  u  ue  uao  io  oou  e  uei  aai  ou  ouo  iu  i  ei  eeu  iia
-ex(5):  uoo  oe  ueii  ioe  iueui  oeiuo  i  uua  oao  ooo  ieoi  aou  o  oi
-ex(8):  uui  aeou  ieo  eouuaeeo  iooie  iueeiai  iiee  a  ue  aoiiooi  uieo
+ex(0):  u  o  o  u  o  i  o  i  u  e  o  e  a  e  a  o  i  u  u  a  o  a  e  o
+ex(1):  u  o  i  a  u  a  a  i  a  i  e  u  a  a  u  a  i  u  i  i  o  i  a  o
+ex(2):  i  u  i  o  oo  e  u  a  oa  i  a  ou  ie  i  oo  oe  i  ao  uu  ua  e
+ex(3):  ioi  oa  o  ai  e  a  ae  uuo  ouu  au  ua  au  au  ua  uio  ee  u  o
+ex(5):  iaoa  uaiue  aaei  eooe  ouao  oa  eo  eiiio  uueoo  au  ioaao  ioau
+ex(8):  uuaeouoa  uuao  uoou  aiooauao  uuuaauoe  iiuiaoaa  iouuuoi  eo  i
+---------------- Examples from DFA ---------------
+s1:  i
 
-regexp: [aeiuo]+y?
+expr 8: [aeiuo]+y?
 tree:   ([aeiou]+y?)
+augmnt: (([aeiou]+y?)#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  i  u  e  e  u  a  a  u  u  o  e  a  i  a  e  o  a  u  i  u  e  i  e  e
-ex(1):  u  i  ey  ay  iy  ay  a  i  oy  uy  ay  iy  o  i  e  oy  o  ay  u  u  o
-ex(2):  i  ay  oo  iiy  ii  aay  o  ay  ouy  oa  e  ay  au  uo  o  iey  uo  i
-ex(3):  uy  eeuy  eu  u  oou  iy  aee  aiey  uae  o  ay  iy  eiy  iiy  oiu  ey
-ex(5):  ieaou  aeu  oy  uy  uiay  iiiey  uaiy  auy  eiy  o  ueo  e  oiiauy  oy
-ex(8):  euea  eiuoaie  oaieiay  iea  ouiueei  aiieaiy  ieuaoiy  euuy  ieaiou
+ex(0):  u  o  o  u  o  i  o  i  u  e  o  e  a  e  a  o  i  u  u  a  o  a  e  o
+ex(1):  u  o  iy  a  i  ay  ey  uy  oy  u  i  ey  a  u  i  u  i  oy  o  e  u
+ex(2):  aay  ay  iiy  iy  oy  eiy  aoy  uy  a  oi  oi  oy  ii  ay  a  ou  o  u
+ex(3):  uee  i  uau  uio  eey  ay  e  aoa  oiy  iae  ey  e  oy  ou  u  ua  ueay
+ex(5):  uey  eiaua  aao  uoauu  aieai  aeoy  iiy  aay  ieoy  aioy  ua  uuuy
+ex(8):  eii  i  oaaiy  uuu  iuou  uaoooai  ioaiy  auuoie  iay  aoooy  iuieuaouy
+---------------- Examples from DFA ---------------
+s1:  a
+s2:  ay
 
-regexp: [a-z]+
+expr 9: [a-z]+
 tree:   [a-z]+
+augmnt: ([a-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  j  c  y  j  g  n  a  l  i  l  m  i  f  y  h  t  g  c  c  m  g  h  w  e
-ex(1):  a  w  w  x  a  n  y  z  k  n  m  f  l  f  g  d  r  x  t  b  n  y  b  b
-ex(2):  vp  fs  i  dg  ps  wj  nl  lj  j  v  z  rg  aj  px  r  s  jw  jg  pr  o
-ex(3):  uyb  wsa  s  siz  cc  jr  tnq  wdk  igw  v  vul  rpp  hsp  iw  c  j  my
-ex(5):  h  o  cm  s  vtfir  zkxec  et  wcnwt  hhd  ykve  vewef  r  txzf  omk  t
-ex(8):  bb  jmbhct  j  wnjl  akzrkww  upwizhvo  xodpo  jnghzcn  tnlv  vph  abom
+ex(0):  c  u  b  y  h  i  z  z  k  a  k  b  l  e  e  a  n  s  o  c  p  m  i  g
+ex(1):  c  k  y  r  w  x  e  v  w  s  h  o  i  p  g  z  m  g  a  x  h  y  u  o
+ex(2):  c  e  en  u  q  lm  p  or  zq  p  l  yf  uo  x  f  k  u  e  e  a  ow
+ex(3):  tsf  s  ys  op  x  u  tbq  ipj  x  x  z  iko  f  o  fll  nw  i  fa  qz
+ex(5):  lyg  icfor  okb  iae  zbru  hnk  sq  j  aq  slcn  kkyy  qikkx  gdk  z
+ex(8):  riird  xawwyej  tdj  wyk  glna  fn  nzp  dyyaz  iyu  cuzrzcsb  u
+---------------- Examples from DFA ---------------
+s1:  c
 
-regexp: [A-Z]+
+expr 10: [A-Z]+
 tree:   [A-Z]+
+augmnt: ([A-Z]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  J  C  Y  J  G  N  A  L  I  L  M  I  F  Y  H  T  G  C  C  M  G  H  W  E
-ex(1):  A  W  W  X  A  N  Y  Z  K  N  M  F  L  F  G  D  R  X  T  B  N  Y  B  B
-ex(2):  VP  FS  I  DG  PS  WJ  NL  LJ  J  V  Z  RG  AJ  PX  R  S  JW  JG  PR  O
-ex(3):  UYB  WSA  S  SIZ  CC  JR  TNQ  WDK  IGW  V  VUL  RPP  HSP  IW  C  J  MY
-ex(5):  H  O  CM  S  VTFIR  ZKXEC  ET  WCNWT  HHD  YKVE  VEWEF  R  TXZF  OMK  T
-ex(8):  BB  JMBHCT  J  WNJL  AKZRKWW  UPWIZHVO  XODPO  JNGHZCN  TNLV  VPH  ABOM
+ex(0):  C  U  B  Y  H  I  Z  Z  K  A  K  B  L  E  E  A  N  S  O  C  P  M  I  G
+ex(1):  C  K  Y  R  W  X  E  V  W  S  H  O  I  P  G  Z  M  G  A  X  H  Y  U  O
+ex(2):  C  E  EN  U  Q  LM  P  OR  ZQ  P  L  YF  UO  X  F  K  U  E  E  A  OW
+ex(3):  TSF  S  YS  OP  X  U  TBQ  IPJ  X  X  Z  IKO  F  O  FLL  NW  I  FA  QZ
+ex(5):  LYG  ICFOR  OKB  IAE  ZBRU  HNK  SQ  J  AQ  SLCN  KKYY  QIKKX  GDK  Z
+ex(8):  RIIRD  XAWWYEJ  TDJ  WYK  GLNA  FN  NZP  DYYAZ  IYU  CUZRZCSB  U
+---------------- Examples from DFA ---------------
+s1:  C
 
-regexp: [a-zA-Z]+
+expr 11: [a-zA-Z]+
 tree:   [A-Za-z]+
+augmnt: ([A-Za-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  Z  V  o  l  j  I  L  u  o  r  a  l  E  X  y  w  r  x  c  Y  a  z  z  a
-ex(1):  g  F  t  s  K  l  m  d  C  b  J  V  i  D  P  v  z  P  r  D  y  z  s  e
-ex(2):  Dx  L  l  ST  qw  bD  Wx  dW  Ps  B  e  uh  yX  Yd  x  SC  Qd  l  h  kn
-ex(3):  XD  Cel  iX  tds  oO  mW  Fv  gDP  pp  P  e  Yly  thf  I  Qn  Cb  bBj
-ex(5):  M  lV  vrU  SK  GZh  NqU  BAXXe  C  mEX  kDNuU  aB  yvcz  qZM  yed
-ex(8):  a  u  gskCH  kdYN  r  sgxn  UkKksZ  ckGmdX  Whx  NlMhJxQk  t  IfD  vuVE
+ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
+ex(1):  w  B  K  d  C  Z  B  C  u  F  C  D  c  y  U  X  L  A  y  M  F  Q  u  y
+ex(2):  Xs  k  X  ms  Po  ZR  u  yT  YV  aS  J  T  A  r  Q  E  D  x  br  mE  c
+ex(3):  r  N  Y  YcK  BxM  f  Z  Wia  m  e  pfv  Oj  C  bZU  z  x  Mi  lSk  mdI
+ex(5):  zhJ  Hfz  DQai  TGEHl  Tby  XGO  OHUw  Ql  oqOd  Qbs  M  yQ  vCn  huZua
+ex(8):  GfbZ  joCwx  qWw  sYdaIqVw  iBjwd  ovjUOw  vEAo  KglzH  llNqL  Gq  vlJt
+---------------- Examples from DFA ---------------
+s1:  l
 
-regexp: [_a-zA-Z]+
+expr 12: [_a-zA-Z]+
 tree:   [A-Z_a-z]+
+augmnt: ([A-Z_a-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  _  q  k  o  e  H  k  n  m  L  o  I  T  O  p  r  e  K  m  K  V  i  w  B
-ex(1):  j  s  E  Z  f  A  O  x  J  O  Z  Z  V  G  b  l  M  M  G  K  l  h  N  U
-ex(2):  mk  l  Y  u  lA  xS  HK  mu  _  l  ky  UY  Y  VM  _U  N  D  Fz  Z  NG
-ex(3):  D  gjU  Eq  H  MMK  HSs  Y  FM  iil  H  W  qIP  WZ  p  s  U  Ryd  cgJ
-ex(5):  LkU  hfR  eUa  PyDE  T  D  dGSxH  paAq  P  fw_vX  LJz  HFe  ku  mYxy
-ex(8):  wdTnIzKi  KsVo  fbQWATb  _KuKzxI  DMzN  E_aaHiM  To  ZWti  LrJI_GE  mK
+ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
+ex(1):  w  B  K  d  C  _  B  C  u  F  C  D  c  y  U  X  L  A  y  M  F  Q  u  y
+ex(2):  _t  K  o  Qs  Po  ZR  u  yT  YV  aS  J  T  A  _  s  S  k  m_  Vb  lm
+ex(3):  EG  Kr  N  Y  YcK  BxM  f  Z  Wia  m  e  pfv  Oj  C  _EZ  ez  x  Mi
+ex(5):  md  ssm  MJeH  zmDQa  q  E  elQT  Gya_  GOcOH  wvQ  Q  OdmQ  slMWy
+ex(8):  huZu  GrdS  pl  fbZ  joCwx  qWw  sYd_IqVw  iBjwd  ovjUOw  vEAo  Kglz_
+---------------- Examples from DFA ---------------
+s1:  L
 
-regexp: [0-9]+
+expr 13: [0-9]+
 tree:   [0-9]+
+augmnt: ([0-9]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  7  0  1  6  8  2  7  8  1  0  0  9  4  4  3  4  0  5  4  9  0  6  6  0
-ex(1):  8  1  7  0  5  1  9  8  5  7  8  6  2  4  8  1  9  1  5  7  8  2  0  6
-ex(2):  0  6  1  2  8  1  2  87  30  68  19  9  0  9  7  95  61  6  7  27  89
-ex(3):  71  610  88  3  669  3  05  0  7  832  0  35  70  2  479  94  9  1  76
-ex(5):  29  6  9279  09  04  802  42  89  193  97  3  43  4  068  67222  85
-ex(8):  60  582495  1639932  6194  7109  72144  9634846  44  531730  0112466
+ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
+ex(1):  6  2  0  1  2  7  8  5  4  8  3  0  0  9  4  7  4  6  8  9  7  8  0  2
+ex(2):  8  2  07  6  0  78  3  09  36  7  3  43  48  1  3  6  0  2  8  8  00
+ex(3):  109  6  22  89  9  4  378  873  7  7  9  022  5  0  979  70  4  14  07
+ex(5):  908  64103  685  462  7932  998  42  9  06  8523  0220  82865  418  3
+ex(8):  32093  5066827  799  800  4338  93  753  34885  440  46599043  0
+---------------- Examples from DFA ---------------
+s1:  8
 
-regexp: [_a-zA-Z0-9]+
+expr 14: [_a-zA-Z0-9]+
 tree:   [0-9A-Z_a-z]+
+augmnt: ([0-9A-Z_a-z]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  _  p  B  O  c  V  4  H  c  c  w  j  s  M  9  D  d  4  Q  D  L  f  A  C
-ex(1):  G  O  E  c  E  D  S  U  q  A  X  U  m  h  F  V  4  1  8  W  n  b  8  _
-ex(2):  _  I  d  a  L  Yo  C  eo  5Y  ty  O  00  h  J  X  b  d  D  RF  g  W  n
-ex(3):  oUd  xu  5  Z  13V  h  hs  E  Pa  vZG  T  sU  cs  K  3mY  h  D  g  k2f
-ex(5):  TGk  mvdRq  yQNK  cn6HO  JRg90  ncUig  dJ1  WSx  eSHN6  e3NxD  y2jmo
-ex(8):  5  un  TD  Ff  P0urzQfq  sLO99  pOK  uhwxgDmm  Ide  Pvb  9cfohRz
+ex(0):  H  W  L  O  q  V  2  o  3  B  _  k  z  c  l  I  u  q  B  Y  N  J  T  d
+ex(1):  U  i  V  D  p  e  A  9  W  U  u  c  e  C  U  B  0  x  K  b  T  d  C  0
+ex(2):  h  N  xe  G  50  r6  t  Ro  u3  O  o  J  Y  q  L  f  O  yY  9  Oa  7  Q
+ex(3):  B  i  e  xPU  7  W  bZJ  r0  kFf  Fq  u  Ok  vU  0t  k  cY  zo  wy  _fw
+ex(5):  VZ2af  wfdG  vm  Bn8e  n  SaG  tNd  OBDQv  3BUD  2vDOY  niX_  9IZlx
+ex(8):  KbVr  pVLh  9  s  cDR45  t  g  N3YyEse  y0RnUHr5  XS3EqXl  Xr  rd  qhY4
+---------------- Examples from DFA ---------------
+s1:  d
 
-regexp: [_a-zA-Z][_a-zA-Z0-9]*
+expr 15: [_a-zA-Z][_a-zA-Z0-9]*
 tree:   ([A-Z_a-z][0-9A-Z_a-z]*)
+augmnt: (([A-Z_a-z][0-9A-Z_a-z]*)#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  _  q  k  o  e  H  k  n  m  L  o  I  T  O  p  r  e  K  m  K  V  i  w  B
-ex(1):  j  Z  Ha  q  NI  J  O  XY  i  vy  nT  re  Xt  e  sS  F  a  n  Xl  l6
-ex(2):  jU  i  P  Uf  _  We1  TBs  _nz  I  Km9  hO  NHC  QgV  hh  IN  GA  s  A
-ex(3):  O0Sx  E6mw  e  iQ  k4X  uJe  LefA  E9wI  e9Jk  HID  X6_  j  m  XYej
-ex(5):  P12F  TpIAOt  z8vZ  kDHFj  n5z  zb  T  U0  G  Ml0Pq  I  ab  h  NK  _8v
-ex(8):  k0ULle  Zhray1G4n  p  x8wF1  vL  JXzh_g  gJ5NZcbC  mT_7x4w6L  jZebV
+ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
+ex(1):  wU  d  _  a  F  D  y  XB  y  F  u  U0  t  K  ox  m  P5  V3  K  L  TR
+ex(2):  SOF  TJJ  Uqw  k  m  Zy  l  Ea  E1  K  H  X53  x  KxP  h  f  ZbZ  a  m
+ex(3):  vq  jdO  vU9  zke  iaz  k  m_  s  mnR  J  Hf  mf  afc  GeB  l  T5n  aaG
+ex(5):  OdkO  QQv33B  mmN  lOY  QiX  n9  uNlxf  rQoC  lmVrG  oLh  q  wW  YR457i
+ex(8):  BYyE  oeBy0  w_UHr5cX  lPE  ElHXr  H  q  vY4QYd  lu6Iz  hwb  Aak4ZKK98
+---------------- Examples from DFA ---------------
+s1:  N
 
-regexp: [A-HO-Z][A-Z]*
+expr 16: [A-HO-Z][A-Z]*
 tree:   ([A-HO-Z][A-Z]*)
+augmnt: (([A-HO-Z][A-Z]*)#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  D  G  U  D  F  V  R  V  Q  Z  G  R  P  T  G  T  O  D  H  R  F  P  W  O
-ex(1):  GN  OM  W  O  O  DN  XN  UV  UR  Z  EO  O  TE  H  W  A  DT  UH  AG  X
-ex(2):  PKO  H  Z  F  DI  OK  P  T  PT  XNG  B  WZ  S  C  FH  UP  ZBK  F  TXB
-ex(3):  QTL  VLJ  T  EGDV  BSL  YWL  XY  D  H  CB  AA  QQF  Z  EKJ  YAR  DNV
-ex(5):  R  FV  RK  CQRS  UGAY  CDR  C  RZTW  UGI  G  UT  UVJOTY  EFLMV  YDHJOQ
-ex(8):  HEAF  TMPQDGO  TVGMBLP  FNY  UDFAB  YD  DOC  OGTSOYTQ  WTBBRAGS
+ex(0):  C  U  B  Y  H  H  Z  H  O  O  E  A  E  O  C  P  T  G  O  H  R  W  X  E
+ex(1):  W  H  X  Z  G  XY  U  H  C  EE  O  E  PM  GH  OT  Z  US  W  FU  O  X  F
+ex(2):  OEM  A  O  BH  E  F  SY  SO  P  X  UTB  QIP  CO  X  ZIK  O  F  OFL  EW
+ex(3):  DAOQ  ZYJ  OYGK  OORR  OBE  HGZ  BULH  WS  QJJ  AWS  OWKK  YRQ  RXA  GK
+ex(5):  RIRDA  XWW  YJC  TJ  OYKRG  W  XN  SZPK  DYAZC  FPCUZ  RC  SEUOVP  GF
+ex(8):  ZD  TBXASQAX  UL  PGWSGPBMH  X  Y  FBFIEF  FTPGH  ROA  XBGDD  GSKQ
+---------------- Examples from DFA ---------------
+s1:  C
+17 expression(s) loaded

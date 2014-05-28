@@ -1,0 +1,4 @@
+#! rxplor -m -l -n -d
+#! rxplor -N -
+#! rxplor -D -
+[+-]?(((\d+\.\d*|\.\d+)([eE][+-]?\d+)?)|(\d+[eE][+-]?\d+))[fFlL]?

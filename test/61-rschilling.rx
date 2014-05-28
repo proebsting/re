@@ -1,0 +1,243 @@
+#! rxplor
+
+#  From a codesearch.ruethschilling.info search for re.compile 15-apr-2014.
+#  (This turns out to be a fairly boring collection. There are some duplicates.)
+
+#U: /github/infinispan/infinispan/bin/
+#F: find_disabled_tests.py
+^\s*@Test
+enabled\s*=\s*false
+#F: find_unstable_tests.py
+\s*@Test.*groups\s*=\s*("unstable|Array\("unstable"\))|@Category\(UnstableTest\.class\).*
+.*Test.(java|scala)
+#F: greplog.py
+.* (FATAL|ERROR|WARN|INFO|DEBUG|TRACE)
+#F: list_command_ids.py
+([a-zA-Z0-9/]*Command.java)
+COMMAND_ID\s*=\s*([0-9]+)\s*;
+#F: clean_logs.py
+.*Received new cluster view.*\|([0-9]+). \[(.*)\].*
+.*Received new cluster view.*\|%s. \[(.*)\].*
+
+#U: /facebook/hhvm/hphp/compiler/expression/
+#F: fix.py
+(\w+)::\1(\s*)\((.*)\)(\s*):(\s*)Expression\(EXPRESSION_CONSTRUCTOR_PARAMETER_VALUES\)
+
+#U: /apache-foundation/lucene-solr/dev-tools/scripts/
+#F: checkJavaDocs.py
+<a.*?>(.*?)</a>
+<.*?>
+<div class="block">(.*?)</div>
+<caption><span>(.*?)</span>
+^<td class="colLast"><code><strong><a href="[^>]*\.([^>]*?)\.html" title="class in[^>]*">
+^<td class="colLast"><code><strong><a href="[^>]*#([^>]*?)">
+^<td class="colOne"><code><strong><a href="[^>]*#([^>]*?)">
+^<h3>Method Detail</h3>$
+^(?:</a>)?<a name="([^>]*?)">$
+#F: checkJavadocLinks.py
+<a(\s+.*?)>
+""(?:\s+([a-z]+)\s*=\s*("[^"]*"|'[^']?'|[^'"\s]+))+""
+^[^\u0000-\u0008\u000B-\u000C\u000E-\u001F\uFFFE\uFFFF]*$
+
+#U: /facebook/hhvm/hphp/tools/
+#F: import_zend_test.py
+cursor(?=(%d|\$i))],
+test(?!_format)],
+
+#U: /http-server/apache-traffic-server/trafficserver/contrib/python/
+#F: compare_RecordsConfigcc.py
+\{RECT_(?:CONFIG|LOCAL), "([^"]+)
+(?:CONFIG|LOCAL) (\S+)\s+(\S+)\s+(\S+)
+ts:cv:: CONFIG (\S+)\s+(\S+)\s+(\S+)
+
+#U: /github/ModeShape/modeshape/bin/
+#F: markdown2.py
+^[ \t]+$
+^(\t|[ ]{1,%d}
+[ ,]+
+-\*-\s*([^\r\n]*?)\s*-\*-
+(.*?)\t
+#F: jira.py
+\-([0-9]+)
+\[(.*?)\]\s\-\s(.*)$
+\<th\scolspan="2">(.*?)</th>
+href=\"(.*?
+\<td.*?\>(.*?)\<
+\<td\>(.*?)(\s(.*?))?\<
+\<a\shref=\"(.*?)"\>(.*?)\<
+#F: utils.py
+^.*/?bin/.*.py
+^([2-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+([0-9])\.([0-9])\.([0-9]).*
+
+#U: /apache-foundation/hadoop/hadoop-common/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/terasort/
+#F: job_history_summary.py
+(?P<name>[^=]+)="(?P<value>[^"]*)" *
+(?P<name>[^:]+):(?P<value>[^,]*),?
+
+#U: /apache-foundation/hadoop/hadoop-mapreduce/src/examples/org/apache/hadoop/examples/terasort/
+#F: job_history_summary.py
+(?P<name>[^=]+)="(?P<value>[^"]*)" *
+(?P<name>[^:]+):(?P<value>[^,]*),?
+
+#U: /apache-foundation/lucene-solr/lucene/core/src/test/org/apache/lucene/util/
+#F: makeEuroparlLineFile.py
+^<CHAPTER ID=.*?>$
+^<.*?>$
+^\d+\.?$
+
+#U: /http-server/lighttpd/lighttpd-1.x/
+#F: SConstruct
+[^A-Z0-9]
+cygwin|mingw
+darwin|aix
+
+#U: /github/OpenTSDB/tcollector/collectors/0/
+#F: zfsiostats.py
+.*capacity.*operations.*bandwidth
+.*pool.*alloc.*free.*read.*write.*read.*write
+.*-----.*-----.*-----
+
+#U: /apache-foundation/wave/src/python/api/
+#F: util.py
+<([^>]*?)>
+[\s\u0000-\u001F@,:<>\u007F]
+
+#U: /edu/berkley-eecs/ptII/util/testsuite/
+#F: GenerateConciseLog.py
+^------------------.* testing 
+(^==== |^------------------.* testing )
+
+#U: /apache-foundation/thrift/contrib/
+#F: parse_profiling.py
+^\s*T_VIRTUAL_CALL: (\d+) calls on (.*):$
+^\s*#(\d+)\s*(.*) \[(0x[0-9A-Za-z]+)\]$
+
+#U: /apache-foundation/cassandra/pylib/cqlshlib/
+#F: formatting.py
+[\x00-\x31\x7f-\xa0]
+[\x00-\x31\x7f-\xff]
+\\([^uUx]|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{2}|U[0-9a-fA-F]{8})
+
+#U: /apache-foundation/storm/incubator-storm/bin/
+#F: storm
+"((?:[^"\\]|\\.)*)"
+'((?:[^'\\]|\\.)*)'
+\\(.)
+
+#U: /github/OpenTSDB/tcollector/collectors/0/
+#F: varnishstat.py
+[,()]+
+#F: zfskernstats.py
+(^.*)_[0-9]+$
+#F: redis-stats.py
+^db\d+$
+^\s*#\s*tcollector.(\w+)\s*=\s*(.+)$
+#F: couchbase.py
+[\s\w]+:[\s\w]+$
+
+#U: /apache-foundation/hive/testutils/ptest/
+#F: Report.py
+^TEST-.*\.xml$
+^([^-]+-[^-]+)-(.*)\.fail$
+
+#U: /apache-foundation/avro/lang/py/lib/simplejson/
+#F: encoder.py
+[\x00-\x1f\\"\b\f\n\r\t]
+([\\"]|[^\ -~])
+[\x80-\xff]
+#F: decoder.py
+(.*?)(["\\\x00-\x1f])
+[ \t\n\r]*
+
+#U: /apache-foundation/wave/src/python/api/simplejson/
+#F: encoder.py
+[\x00-\x1f\\"\b\f\n\r\t]
+([\\"]|[^\ -~])
+[\x80-\xff]
+
+#U: /apache-foundation/lucene-solr/dev-tools/scripts/
+#F: smokeTestRelease.py
+<a href="(.*?)">(.*?)</a>
+<a id="(.*?)".*?>(.*?)</a>
+\b[a-zA-Z_]+=(?:"(?:\\"|[^"])*"' + '|(?:\\\\.|[^"\'\\s])*' + r"|'(?:\\'|[^'])*
+(\d+) total matching documents
+%s\.[wj]ar$
+\.(?:[wj]ar|pom)$
+\.(?:pom|[jw]ar)$
+%s\.[jw]ar$
+^pom.xml.template$
+
+#U: /github/infinispan/infinispan/bin/
+#F: utils.py
+^.*/?bin/.*.py
+^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+([0-9])\.([0-9])\.([0-9]).*
+#F: release.py
+[\.\-].split(version)
+\s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
+
+#U: /github/infinispan/infinispan/server/integration/bin/
+#F: utils.py
+^.*/?bin/.*.py
+^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+([0-9])\.([0-9])\.([0-9]).*
+#F: release.py
+[\.\-].split(version)
+\s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
+
+#U: /github/infinispan/infinispan-cachestore-rest/bin/
+#F: utils.py
+^.*/?bin/.*.py
+^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+([0-9])\.([0-9])\.([0-9]).*
+
+#U: /github/infinispan/infinispan-server/bin/
+#F: utils.py
+^.*/?bin/.*.py
+^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+([0-9])\.([0-9])\.([0-9]).*
+#F: release.py
+[\.\-].split(version)
+\s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
+
+#U: /apache-foundation/cassandra/pylib/cqlshlib/test/
+#F: ansi_colors.py
+(?P<params>[\x20-\x3f]*)(?P<final>[\x40-\x7e])
+#F: test_cqlsh_completion.py
+\s+
+
+#U: /http-server/lighttpd/lighttpd-1.x/src/
+#F: SConscript
+^\s+lib([^=-]+)(?:-[\.0-9]+)?\.so\.[0-9]+ =>
+
+#U: /apache-foundation/wave/src/python/api/simplejson/
+#F: decoder.py
+(.*?)(["\\\x00-\x1f])
+[ \t\n\r]*
+
+#U: /apache-foundation/lucene-solr/dev-tools/scripts/
+#F: buildAndPushRelease.py
+^ ?[\?ID] *[1-9 ]*[a-zA-Z]* +(.*)
+
+#U: /github/infinispan/infinispan-cachestore-rest/bin/
+#F: release.py
+[\.\-].split(version)
+
+#U: /apache-foundation/avro/lang/py3/avro/
+#F: schema.py
+[A-Za-z_][A-Za-z0-9_]*
+
+#U: /facebook/buck/src/com/facebook/buck/parser/
+#F: buck.py
+
+#U: /github/OpenTSDB/tcollector/collectors/0/
+#F: netstat.py
+sockets: used \d+\n
+
+#U: /apache-foundation/cassandra/pylib/cqlshlib/
+#F: cql3handling.py
+
+#U: /apache-foundation/lucene-solr/lucene/analysis/common/src/java/org/apache/lucene/analysis/charfilter/
+#F: htmlentity.py
+\s*<!ENTITY\s+(\S+)\s+"&(?:#38;)?#(\d+);

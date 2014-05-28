@@ -1,8 +1,12 @@
+Options: -R -T -d -g -h -i -l -n -p -v -I 0
 
-# replication in complex situations
+         #! rxplor -T -p -n -d
 
-regexp: (){3}
+         # replication in complex situations
+
+expr 0: (){3}
 tree:   (){3}
+augmnt: #
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -11,9 +15,23 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+----------------- Annotated Tree -----------------
+{F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: []
+Witnesses: []
+begin => { 0 }
+p0. # => { }
+----------------- Unoptimized DFA ----------------
+s0# { p0 }
+------------------ Minimized DFA -----------------
+s0# { p0 }
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: (){2,4}
+expr 1: (){2,4}
 tree:   (){2,4}
+augmnt: ((()?()?)#)
 length: 0 to 0
 -------------------- Examples --------------------
 ex(0):                                                                        
@@ -22,9 +40,29 @@ ex(2):
 ex(3):                                                                        
 ex(5):                                                                        
 ex(8):                                                                        
+----------------- Annotated Tree -----------------
+{F, #, #}   ((()?()?)#)
+   {T, , }   (()?()?)
+      {T, , }   ()?
+         {T, , }   ()
+      {T, , }   ()?
+         {T, , }   ()
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: []
+Witnesses: []
+begin => { 0 }
+p0. # => { }
+----------------- Unoptimized DFA ----------------
+s0# { p0 }
+------------------ Minimized DFA -----------------
+s0# { p0 }
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: (abc){3}
+expr 2: (abc){3}
 tree:   ((ab)c){3}
+augmnt: (((((ab)c)((ab)c))((ab)c))#)
 length: 9 to 9
 -------------------- Examples --------------------
 ex(0):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
@@ -33,75 +71,355 @@ ex(2):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(3):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(5):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(8):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
+----------------- Annotated Tree -----------------
+{F, a, #}   (((((ab)c)((ab)c))((ab)c))#)
+   {F, a, c}   ((((ab)c)((ab)c))((ab)c))
+      {F, a, c}   (((ab)c)((ab)c))
+         {F, a, c}   ((ab)c)
+            {F, a, b}   (ab)
+               {F, a, a}   a
+               {F, b, b}   b
+            {F, c, c}   c
+         {F, a, c}   ((ab)c)
+            {F, a, b}   (ab)
+               {F, a, a}   a
+               {F, b, b}   b
+            {F, c, c}   c
+      {F, a, c}   ((ab)c)
+         {F, a, b}   (ab)
+            {F, a, a}   a
+            {F, b, b}   b
+         {F, c, c}   c
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
+begin => { 0 }
+p0. a => { 1 }
+p1. b => { 2 }
+p2. c => { 3 }
+p3. a => { 4 }
+p4. b => { 5 }
+p5. c => { 6 }
+p6. a => { 7 }
+p7. b => { 8 }
+p8. c => { 9 }
+p9. # => { }
+----------------- Unoptimized DFA ----------------
+s0. { p0 } [a]:s1
+s1. { p1 } [b]:s2
+s2. { p2 } [c]:s3
+s3. { p3 } [a]:s4
+s4. { p4 } [b]:s5
+s5. { p5 } [c]:s6
+s6. { p6 } [a]:s7
+s7. { p7 } [b]:s8
+s8. { p8 } [c]:s9
+s9# { p9 }
+------------------ Minimized DFA -----------------
+s0. { p0 } [a]:s9
+s1# { p9 }
+s2. { p8 } [c]:s1
+s3. { p7 } [b]:s2
+s4. { p6 } [a]:s3
+s5. { p5 } [c]:s4
+s6. { p4 } [b]:s5
+s7. { p3 } [a]:s6
+s8. { p2 } [c]:s7
+s9. { p1 } [b]:s8
+---------------- Examples from DFA ---------------
+s1:  abcabcabc
 
-regexp: (a|b){3}
+expr 3: (a|b){3}
 tree:   (a|b){3}
+augmnt: ((((a|b)(a|b))(a|b))#)
 length: 3 to 3
 -------------------- Examples --------------------
-ex(0):  aab  aba  bba  aab  baa  aba  aab  aaa  baa  aba  bab  aab  aab  aba
-ex(1):  baa  aba  aaa  bab  aaa  abb  aab  bab  bba  aba  bba  bba  aab  aba
-ex(2):  aaa  aaa  baa  bbb  bba  bba  aaa  aab  bbb  aab  baa  abb  bba  bab
-ex(3):  abb  aaa  bbb  bba  bab  baa  aba  aba  baa  aaa  bab  baa  baa  aaa
-ex(5):  abb  bab  aaa  bba  aaa  bab  aaa  aab  aaa  aba  aba  bba  aab  aab
-ex(8):  aaa  aab  abb  baa  aab  abb  abb  bab  bba  baa  aba  aaa  baa  bbb
+ex(0):  abb  baa  bab  aba  bab  bba  abb  aba  aaa  bba  aba  bbb  aab  baa
+ex(1):  aaa  bab  bab  aaa  bba  bab  baa  bab  aab  baa  bab  aaa  aaa  baa
+ex(2):  aba  aab  aaa  aaa  aab  aab  aba  bba  abb  baa  abb  bbb  bab  aaa
+ex(3):  aab  baa  abb  aab  aba  aba  bab  bab  abb  bab  bba  aaa  bba  baa
+ex(5):  bbb  baa  aba  aab  aab  bba  aba  bba  bab  bba  aaa  bab  bab  abb
+ex(8):  aab  aaa  baa  baa  baa  aaa  aba  aba  bab  bba  abb  aab  aab  baa
+----------------- Annotated Tree -----------------
+{F, ab, #}   ((((a|b)(a|b))(a|b))#)
+   {F, ab, ab}   (((a|b)(a|b))(a|b))
+      {F, ab, ab}   ((a|b)(a|b))
+         {F, ab, ab}   (a|b)
+            {F, a, a}   a
+            {F, b, b}   b
+         {F, ab, ab}   (a|b)
+            {F, a, a}   a
+            {F, b, b}   b
+      {F, ab, ab}   (a|b)
+         {F, a, a}   a
+         {F, b, b}   b
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: [ab]
+Witnesses: [ab]
+begin => { 0 1 }
+p0. a => { 2 3 }
+p1. b => { 2 3 }
+p2. a => { 4 5 }
+p3. b => { 4 5 }
+p4. a => { 6 }
+p5. b => { 6 }
+p6. # => { }
+----------------- Unoptimized DFA ----------------
+s0. { p0 p1 } [ab]:s1
+s1. { p2 p3 } [ab]:s2
+s2. { p4 p5 } [ab]:s3
+s3# { p6 }
+------------------ Minimized DFA -----------------
+s0. { p0 p1 } [ab]:s3
+s1# { p6 }
+s2. { p4 p5 } [ab]:s1
+s3. { p2 p3 } [ab]:s2
+---------------- Examples from DFA ---------------
+s1:  aaa
 
-regexp: (ab|cd){3}
+expr 4: (ab|cd){3}
 tree:   ((ab)|(cd)){3}
+augmnt: (((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))#)
 length: 6 to 6
 -------------------- Examples --------------------
-ex(0):  ababcd  abcdab  cdcdab  ababcd  cdabab  abcdab  ababcd  ababab  cdabab
-ex(1):  cdabcd  ababcd  ababcd  abcdab  ababcd  cdabab  abcdab  ababab  cdabcd
-ex(2):  abcdcd  ababcd  cdabcd  cdcdab  abcdab  cdcdab  cdcdab  ababcd  abcdab
-ex(3):  ababab  ababab  cdabab  cdcdcd  cdcdab  cdcdab  ababab  ababcd  cdcdcd
-ex(5):  cdabab  abcdcd  cdcdab  cdabcd  cdabab  abcdcd  ababab  cdcdcd  cdcdab
-ex(8):  cdabab  abcdab  abcdab  cdabab  ababab  cdabcd  cdabab  cdabab  ababab
+ex(0):  ababcd  abcdab  ababcd  abcdab  ababab  cdabab  cdabab  abcdcd  abcdcd
+ex(1):  ababcd  cdcdcd  ababcd  abcdab  cdcdcd  ababcd  cdcdcd  ababcd  abcdcd
+ex(2):  abcdab  cdabcd  ababab  ababcd  ababcd  ababab  cdabab  abcdcd  cdabab
+ex(3):  abcdcd  cdabab  ababab  ababcd  cdcdcd  ababab  cdabcd  cdabab  cdcdcd
+ex(5):  cdcdcd  cdabcd  ababab  cdcdcd  abcdcd  abcdab  cdabab  cdcdab  cdabab
+ex(8):  abcdab  abcdab  cdabcd  cdabcd  abcdab  cdcdcd  cdcdab  cdabab  ababcd
+----------------- Annotated Tree -----------------
+{F, ac, #}   (((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))#)
+   {F, ac, bd}   ((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))
+      {F, ac, bd}   (((ab)|(cd))((ab)|(cd)))
+         {F, ac, bd}   ((ab)|(cd))
+            {F, a, b}   (ab)
+               {F, a, a}   a
+               {F, b, b}   b
+            {F, c, d}   (cd)
+               {F, c, c}   c
+               {F, d, d}   d
+         {F, ac, bd}   ((ab)|(cd))
+            {F, a, b}   (ab)
+               {F, a, a}   a
+               {F, b, b}   b
+            {F, c, d}   (cd)
+               {F, c, c}   c
+               {F, d, d}   d
+      {F, ac, bd}   ((ab)|(cd))
+         {F, a, b}   (ab)
+            {F, a, a}   a
+            {F, b, b}   b
+         {F, c, d}   (cd)
+            {F, c, c}   c
+            {F, d, d}   d
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: [a-d]
+Witnesses: [a-d]
+begin => { 0 2 }
+p0. a => { 1 }
+p1. b => { 4 6 }
+p2. c => { 3 }
+p3. d => { 4 6 }
+p4. a => { 5 }
+p5. b => { 8 10 }
+p6. c => { 7 }
+p7. d => { 8 10 }
+p8. a => { 9 }
+p9. b => { 12 }
+p10. c => { 11 }
+p11. d => { 12 }
+p12. # => { }
+----------------- Unoptimized DFA ----------------
+s0. { p0 p2 } [a]:s1 [c]:s2
+s1. { p1 } [b]:s3
+s2. { p3 } [d]:s3
+s3. { p4 p6 } [a]:s4 [c]:s5
+s4. { p5 } [b]:s6
+s5. { p7 } [d]:s6
+s6. { p8 p10 } [a]:s7 [c]:s8
+s7. { p9 } [b]:s9
+s8. { p11 } [d]:s9
+s9# { p12 }
+------------------ Minimized DFA -----------------
+s0. { p0 p2 } [a]:s6 [c]:s7
+s1# { p12 }
+s2. { p9 } [b]:s1
+s3. { p8 p10 } [a]:s2 [c]:s9
+s4. { p5 } [b]:s3
+s5. { p4 p6 } [a]:s4 [c]:s8
+s6. { p1 } [b]:s5
+s7. { p3 } [d]:s5
+s8. { p7 } [d]:s3
+s9. { p11 } [d]:s1
+---------------- Examples from DFA ---------------
+s1:  ababab
 
-regexp: (a*){3}
+expr 5: (a*){3}
 tree:   a*{3}
+augmnt: (((a*a*)a*)#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):  a  a  aa  a  a  a  a    a  a  aa  a  a  a  a  a  a    aa    aa  a  aa
-ex(2):  aaa  aaaa    aaa  aaa  aa  aaaaaa  aa  a  aaaa  aaaa  a  aaaa  a  
-ex(3):  aaaaa  aaaa  aaaa  aaaaaa  aaaaa  aaaa  aaaaaa  aaaaa  aa  aaaaaa
-ex(5):  aaaaaaaaa  aaaaa  aaaaaaaaaaaaa  aaaaaa  aaaa  aaaaaaa  aaaaaaa
-ex(8):  aaaaa  aaaaaaaaaaaa  aaaaaaaaa  aaaaaaaaaa  a  aaaaaaaaaaaa
+ex(1):  a  aa  a    a  a  a  aaa  a  aa  a  a    aa  a  a  aa  aa  a  a  a    
+ex(2):  aaa  a  aa    aa  aa  aa  aa  aaa  aaa  aaaa  aaa  aa  aa  aaaaa  aaa
+ex(3):  aaaaaa  aaaaaa  aa  aaaa  aaaaa  aaaaaaa  aaaaaa  aaaaa  aa  aaaa  aa
+ex(5):  aaaaaaa  aaaaa  aaaaaaa  aaaaaa  aaaaaaa  aaaaa  aaaaaaaaaaa  aaaaaaa
+ex(8):  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaa
+----------------- Annotated Tree -----------------
+{F, aaa#, #}   (((a*a*)a*)#)
+   {T, aaa, aaa}   ((a*a*)a*)
+      {T, aa, aa}   (a*a*)
+         {T, a, a}   a*
+            {F, a, a}   a
+         {T, a, a}   a*
+            {F, a, a}   a
+      {T, a, a}   a*
+         {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: [a]
+Witnesses: [a]
+begin => { 0 1 2 3 }
+p0. a => { 0 1 2 3 }
+p1. a => { 1 2 3 }
+p2. a => { 2 3 }
+p3. # => { }
+----------------- Unoptimized DFA ----------------
+s0# { p0 p1 p2 p3 } [a]:s0
+------------------ Minimized DFA -----------------
+s0# { p0 p1 p2 p3 } [a]:s0
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: (a{3})*
+expr 6: (a{3})*
 tree:   a{3}*
+augmnt: (((aa)a)*#)
 length: 0 to *
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      aaa    aaa    aaa  aaa        aaa  aaa        aaa        aaa      
-ex(2):    aaa    aaa  aaa    aaaaaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaa
-ex(3):  aaaaaa  aaaaaaaaa      aaaaaa  aaaaaaaaa  aaaaaaaaa      aaaaaa  aaa
-ex(5):  aaaaaaaaaaaa    aaaaaaaaaaaa  aaa    aaaaaaaaa  aaaaaa  aaaaaa  aaaaaa
-ex(8):  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaa
+ex(1):      aaa  aaa    aaa    aaa  aaa  aaa  aaa  aaa      aaa      aaa    aaa
+ex(2):  aaa  aaaaaa  aaaaaa  aaaaaa        aaaaaa    aaaaaa  aaa  aaaaaa  aaa  
+ex(3):  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaa  aaa  aaaaaaaaa  aaaaaaaaa    aaaaaa
+ex(5):  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaa  aaaaaaaaaaaa
+ex(8):  aaaaaaaaaaaa  aaaaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaaaaaaa
+----------------- Annotated Tree -----------------
+{F, a#, #}   (((aa)a)*#)
+   {T, a, a}   ((aa)a)*
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: [a]
+Witnesses: [a]
+begin => { 0 3 }
+p0. a => { 1 }
+p1. a => { 2 }
+p2. a => { 0 3 }
+p3. # => { }
+----------------- Unoptimized DFA ----------------
+s0# { p0 p3 } [a]:s1
+s1. { p1 } [a]:s2
+s2. { p2 } [a]:s0
+------------------ Minimized DFA -----------------
+s0# { p0 p3 } [a]:s1
+s1. { p1 } [a]:s2
+s2. { p2 } [a]:s0
+---------------- Examples from DFA ---------------
+s0:  
 
-regexp: (a{3})+
+expr 7: (a{3})+
 tree:   a{3}+
+augmnt: (((aa)a)+#)
 length: 3 to *
 -------------------- Examples --------------------
 ex(0):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
 ex(1):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
-ex(2):  aaa  aaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaa  aaa  aaa
-ex(3):  aaaaaaaaa  aaa  aaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaa  aaaaaaaaa
-ex(5):  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaaaaa  aaa  aaaaaa  aaaaaaaaa
-ex(8):  aaaaaaaaaaaaaaa  aaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaaaa  aaaaaa
+ex(2):  aaa  aaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaa  aaa  aaa  aaaaaa
+ex(3):  aaa  aaaaaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaaaaaaaa  aaa  aaa
+ex(5):  aaa  aaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaa  aaa  aaaaaa
+ex(8):  aaaaaaaaaaaa  aaaaaaaaaaaaaaaaaaaaa  aaaaaaaaaaaaaaaaaa
+----------------- Annotated Tree -----------------
+{F, a, #}   (((aa)a)+#)
+   {F, a, a}   ((aa)a)+
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: [a]
+Witnesses: [a]
+begin => { 0 }
+p0. a => { 1 }
+p1. a => { 2 }
+p2. a => { 0 3 }
+p3. # => { }
+----------------- Unoptimized DFA ----------------
+s0. { p0 } [a]:s1
+s1. { p1 } [a]:s2
+s2. { p2 } [a]:s3
+s3# { p0 p3 } [a]:s1
+------------------ Minimized DFA -----------------
+s0. { p0 } [a]:s3
+s1# { p0 p3 } [a]:s3
+s2. { p2 } [a]:s1
+s3. { p1 } [a]:s2
+---------------- Examples from DFA ---------------
+s1:  aaa
 
-regexp: (a{3})?
+expr 8: (a{3})?
 tree:   a{3}?
+augmnt: (((aa)a)?#)
 length: 0 to 3
 -------------------- Examples --------------------
 ex(0):                                                                        
-ex(1):      aaa    aaa    aaa  aaa        aaa  aaa        aaa        aaa      
-ex(2):        aaa    aaa    aaa      aaa      aaa    aaa        aaa  aaa      
-ex(3):          aaa    aaa          aaa  aaa      aaa  aaa    aaa  aaa  aaa    
-ex(5):    aaa  aaa    aaa  aaa        aaa    aaa                      aaa    
-ex(8):  aaa  aaa  aaa  aaa    aaa  aaa              aaa  aaa  aaa  aaa      aaa
+ex(1):      aaa  aaa    aaa    aaa  aaa  aaa  aaa  aaa      aaa      aaa    aaa
+ex(2):  aaa        aaa  aaa  aaa  aaa    aaa    aaa                    aaa  aaa
+ex(3):  aaa          aaa      aaa    aaa    aaa        aaa    aaa  aaa  aaa  
+ex(5):    aaa      aaa      aaa      aaa  aaa  aaa  aaa      aaa          aaa  
+ex(8):    aaa    aaa  aaa          aaa  aaa    aaa    aaa  aaa  aaa  aaa    aaa
+----------------- Annotated Tree -----------------
+{F, a#, #}   (((aa)a)?#)
+   {T, a, a}   ((aa)a)?
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: [a]
+Witnesses: [a]
+begin => { 0 3 }
+p0. a => { 1 }
+p1. a => { 2 }
+p2. a => { 3 }
+p3. # => { }
+----------------- Unoptimized DFA ----------------
+s0# { p0 p3 } [a]:s1
+s1. { p1 } [a]:s2
+s2. { p2 } [a]:s3
+s3# { p3 }
+------------------ Minimized DFA -----------------
+s0# { p0 p3 } [a]:s1
+s1. { p1 } [a]:s2
+s2. { p2 } [a]:s3
+s3# { p3 }
+---------------- Examples from DFA ---------------
+s0:  
+s3:  aaa
 
-regexp: (a{3}){2}
+expr 9: (a{3}){2}
 tree:   a{3}{2}
+augmnt: ((((aa)a)((aa)a))#)
 length: 6 to 6
 -------------------- Examples --------------------
 ex(0):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
@@ -110,20 +428,161 @@ ex(2):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(3):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(5):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(8):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
+----------------- Annotated Tree -----------------
+{F, a, #}   ((((aa)a)((aa)a))#)
+   {F, a, a}   (((aa)a)((aa)a))
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: [a]
+Witnesses: [a]
+begin => { 0 }
+p0. a => { 1 }
+p1. a => { 2 }
+p2. a => { 3 }
+p3. a => { 4 }
+p4. a => { 5 }
+p5. a => { 6 }
+p6. # => { }
+----------------- Unoptimized DFA ----------------
+s0. { p0 } [a]:s1
+s1. { p1 } [a]:s2
+s2. { p2 } [a]:s3
+s3. { p3 } [a]:s4
+s4. { p4 } [a]:s5
+s5. { p5 } [a]:s6
+s6# { p6 }
+------------------ Minimized DFA -----------------
+s0. { p0 } [a]:s6
+s1# { p6 }
+s2. { p5 } [a]:s1
+s3. { p4 } [a]:s2
+s4. { p3 } [a]:s3
+s5. { p2 } [a]:s4
+s6. { p1 } [a]:s5
+---------------- Examples from DFA ---------------
+s1:  aaaaaa
 
-regexp: (a{3}){1,5}
+expr 10: (a{3}){1,5}
 tree:   a{3}{1,5}
+augmnt: (((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)#)
 length: 3 to 15
 -------------------- Examples --------------------
 ex(0):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
 ex(1):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
-ex(2):  aaa  aaa  aaaaaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaa  aaa  aaa
-ex(3):  aaaaaaaaa  aaa  aaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaa  aaaaaaaaa
-ex(5):  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaaaaa  aaa  aaaaaa  aaaaaaaaa
-ex(8):  aaaaaaaaaaaa  aaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaa
+ex(2):  aaa  aaa  aaa  aaaaaa  aaa  aaaaaa  aaaaaa  aaaaaa  aaa  aaa  aaaaaa
+ex(3):  aaa  aaaaaa  aaa  aaaaaaaaa  aaaaaaaaa  aaaaaa  aaaaaaaaa  aaa  aaa
+ex(5):  aaa  aaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaaaaaaaaaaa  aaa  aaa  aaaaaa
+ex(8):  aaa  aaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa  aaaaaaaaaaaaaaa
+----------------- Annotated Tree -----------------
+{F, a, #}   (((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)#)
+   {F, a, aaaaa}   ((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)
+      {F, a, aaaa}   (((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)
+         {F, a, aaa}   ((((aa)a)((aa)a)?)((aa)a)?)
+            {F, a, aa}   (((aa)a)((aa)a)?)
+               {F, a, a}   ((aa)a)
+                  {F, a, a}   (aa)
+                     {F, a, a}   a
+                     {F, a, a}   a
+                  {F, a, a}   a
+               {T, a, a}   ((aa)a)?
+                  {F, a, a}   ((aa)a)
+                     {F, a, a}   (aa)
+                        {F, a, a}   a
+                        {F, a, a}   a
+                     {F, a, a}   a
+            {T, a, a}   ((aa)a)?
+               {F, a, a}   ((aa)a)
+                  {F, a, a}   (aa)
+                     {F, a, a}   a
+                     {F, a, a}   a
+                  {F, a, a}   a
+         {T, a, a}   ((aa)a)?
+            {F, a, a}   ((aa)a)
+               {F, a, a}   (aa)
+                  {F, a, a}   a
+                  {F, a, a}   a
+               {F, a, a}   a
+      {T, a, a}   ((aa)a)?
+         {F, a, a}   ((aa)a)
+            {F, a, a}   (aa)
+               {F, a, a}   a
+               {F, a, a}   a
+            {F, a, a}   a
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: [a]
+Witnesses: [a]
+begin => { 0 }
+p0. a => { 1 }
+p1. a => { 2 }
+p2. a => { 3 6 9 12 15 }
+p3. a => { 4 }
+p4. a => { 5 }
+p5. a => { 6 9 12 15 }
+p6. a => { 7 }
+p7. a => { 8 }
+p8. a => { 9 12 15 }
+p9. a => { 10 }
+p10. a => { 11 }
+p11. a => { 12 15 }
+p12. a => { 13 }
+p13. a => { 14 }
+p14. a => { 15 }
+p15. # => { }
+----------------- Unoptimized DFA ----------------
+s0. { p0 } [a]:s1
+s1. { p1 } [a]:s2
+s2. { p2 } [a]:s3
+s3# { p3 p6 p9 p12 p15 } [a]:s4
+s4. { p4 p7 p10 p13 } [a]:s5
+s5. { p5 p8 p11 p14 } [a]:s6
+s6# { p6 p9 p12 p15 } [a]:s7
+s7. { p7 p10 p13 } [a]:s8
+s8. { p8 p11 p14 } [a]:s9
+s9# { p9 p12 p15 } [a]:s10
+s10. { p10 p13 } [a]:s11
+s11. { p11 p14 } [a]:s12
+s12# { p12 p15 } [a]:s13
+s13. { p13 } [a]:s14
+s14. { p14 } [a]:s15
+s15# { p15 }
+------------------ Minimized DFA -----------------
+s0. { p0 } [a]:s3
+s1# { p3 p6 p9 p12 p15 } [a]:s15
+s2. { p2 } [a]:s1
+s3. { p1 } [a]:s2
+s4# { p15 }
+s5. { p14 } [a]:s4
+s6. { p13 } [a]:s5
+s7# { p12 p15 } [a]:s6
+s8. { p11 p14 } [a]:s7
+s9. { p10 p13 } [a]:s8
+s10# { p9 p12 p15 } [a]:s9
+s11. { p8 p11 p14 } [a]:s10
+s12. { p7 p10 p13 } [a]:s11
+s13# { p6 p9 p12 p15 } [a]:s12
+s14. { p5 p8 p11 p14 } [a]:s13
+s15. { p4 p7 p10 p13 } [a]:s14
+---------------- Examples from DFA ---------------
+s1:  aaa
+s13:  aaaaaa
+s10:  aaaaaaaaa
+s7:  aaaaaaaaaaaa
+s4:  aaaaaaaaaaaaaaa
 
-regexp: a{3}b{4}
+expr 11: a{3}b{4}
 tree:   (a{3}b{4})
+augmnt: ((((aa)a)(((bb)b)b))#)
 length: 7 to 7
 -------------------- Examples --------------------
 ex(0):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
@@ -132,14 +591,132 @@ ex(2):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(3):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(5):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(8):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
+----------------- Annotated Tree -----------------
+{F, a, #}   ((((aa)a)(((bb)b)b))#)
+   {F, a, b}   (((aa)a)(((bb)b)b))
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+      {F, b, b}   (((bb)b)b)
+         {F, b, b}   ((bb)b)
+            {F, b, b}   (bb)
+               {F, b, b}   b
+               {F, b, b}   b
+            {F, b, b}   b
+         {F, b, b}   b
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: [ab]
+Witnesses: [ab]
+begin => { 0 }
+p0. a => { 1 }
+p1. a => { 2 }
+p2. a => { 3 }
+p3. b => { 4 }
+p4. b => { 5 }
+p5. b => { 6 }
+p6. b => { 7 }
+p7. # => { }
+----------------- Unoptimized DFA ----------------
+s0. { p0 } [a]:s1
+s1. { p1 } [a]:s2
+s2. { p2 } [a]:s3
+s3. { p3 } [b]:s4
+s4. { p4 } [b]:s5
+s5. { p5 } [b]:s6
+s6. { p6 } [b]:s7
+s7# { p7 }
+------------------ Minimized DFA -----------------
+s0. { p0 } [a]:s7
+s1# { p7 }
+s2. { p6 } [b]:s1
+s3. { p5 } [b]:s2
+s4. { p4 } [b]:s3
+s5. { p3 } [b]:s4
+s6. { p2 } [a]:s5
+s7. { p1 } [a]:s6
+---------------- Examples from DFA ---------------
+s1:  aaabbbb
 
-regexp: a{3}|b{4}|c{5}
+expr 12: a{3}|b{4}|c{5}
 tree:   (a{3}|b{4}|c{5})
+augmnt: ((((aa)a)|(((bb)b)b)|((((cc)c)c)c))#)
 length: 3 to 5
 -------------------- Examples --------------------
-ex(0):  aaa  aaa  bbbb  bbbb  ccccc  bbbb  bbbb  ccccc  aaa  aaa  aaa  ccccc
-ex(1):  aaa  aaa  aaa  ccccc  ccccc  bbbb  aaa  ccccc  aaa  ccccc  aaa  ccccc
-ex(2):  bbbb  aaa  bbbb  bbbb  aaa  ccccc  ccccc  bbbb  ccccc  bbbb  ccccc
-ex(3):  ccccc  aaa  bbbb  aaa  aaa  ccccc  bbbb  bbbb  aaa  aaa  aaa  aaa
-ex(5):  bbbb  aaa  bbbb  bbbb  aaa  aaa  ccccc  ccccc  ccccc  aaa  ccccc  aaa
-ex(8):  bbbb  ccccc  bbbb  ccccc  ccccc  bbbb  aaa  aaa  ccccc  aaa  bbbb
+ex(0):  aaa  ccccc  aaa  aaa  bbbb  aaa  aaa  ccccc  bbbb  aaa  aaa  ccccc  aaa
+ex(1):  bbbb  bbbb  bbbb  aaa  bbbb  aaa  ccccc  aaa  ccccc  bbbb  aaa  ccccc
+ex(2):  bbbb  aaa  aaa  bbbb  aaa  ccccc  ccccc  ccccc  ccccc  bbbb  aaa  bbbb
+ex(3):  ccccc  ccccc  bbbb  ccccc  aaa  ccccc  bbbb  bbbb  bbbb  aaa  bbbb
+ex(5):  bbbb  bbbb  bbbb  bbbb  bbbb  aaa  bbbb  aaa  bbbb  ccccc  aaa  aaa
+ex(8):  bbbb  bbbb  ccccc  aaa  bbbb  bbbb  ccccc  aaa  ccccc  bbbb  ccccc
+----------------- Annotated Tree -----------------
+{F, abc, #}   ((((aa)a)|(((bb)b)b)|((((cc)c)c)c))#)
+   {F, abc, abc}   (((aa)a)|(((bb)b)b)|((((cc)c)c)c))
+      {F, a, a}   ((aa)a)
+         {F, a, a}   (aa)
+            {F, a, a}   a
+            {F, a, a}   a
+         {F, a, a}   a
+      {F, b, b}   (((bb)b)b)
+         {F, b, b}   ((bb)b)
+            {F, b, b}   (bb)
+               {F, b, b}   b
+               {F, b, b}   b
+            {F, b, b}   b
+         {F, b, b}   b
+      {F, c, c}   ((((cc)c)c)c)
+         {F, c, c}   (((cc)c)c)
+            {F, c, c}   ((cc)c)
+               {F, c, c}   (cc)
+                  {F, c, c}   c
+                  {F, c, c}   c
+               {F, c, c}   c
+            {F, c, c}   c
+         {F, c, c}   c
+   {F, #, #}   #
+----------------------- NFA ----------------------
+Inputs: [abc]
+Witnesses: [abc]
+begin => { 0 3 7 }
+p0. a => { 1 }
+p1. a => { 2 }
+p2. a => { 12 }
+p3. b => { 4 }
+p4. b => { 5 }
+p5. b => { 6 }
+p6. b => { 12 }
+p7. c => { 8 }
+p8. c => { 9 }
+p9. c => { 10 }
+p10. c => { 11 }
+p11. c => { 12 }
+p12. # => { }
+----------------- Unoptimized DFA ----------------
+s0. { p0 p3 p7 } [a]:s1 [b]:s2 [c]:s3
+s1. { p1 } [a]:s4
+s2. { p4 } [b]:s5
+s3. { p8 } [c]:s6
+s4. { p2 } [a]:s7
+s5. { p5 } [b]:s8
+s6. { p9 } [c]:s9
+s7# { p12 }
+s8. { p6 } [b]:s7
+s9. { p10 } [c]:s10
+s10. { p11 } [c]:s7
+------------------ Minimized DFA -----------------
+s0. { p0 p3 p7 } [a]:s3 [b]:s4 [c]:s7
+s1# { p12 }
+s2. { p2 } [a]:s1
+s3. { p1 } [a]:s2
+s4. { p4 } [b]:s6
+s5. { p6 } [b]:s1
+s6. { p5 } [b]:s5
+s7. { p8 } [c]:s10
+s8. { p11 } [c]:s1
+s9. { p10 } [c]:s8
+s10. { p9 } [c]:s9
+---------------- Examples from DFA ---------------
+s1:  aaa
+13 expression(s) loaded

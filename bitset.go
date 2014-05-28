@@ -13,27 +13,27 @@ import (
 	"math/big"
 )
 
-//  A BitSet is a simple bit-mapped representation of a set of small uints.
+//  A BitSet is a simple bit-mapped representation of a set of small ints.
 //  No explicit constructor is needed; use new(BitSet) or &BitSet{}.
 type BitSet struct {
 	Bits big.Int
 }
 
 //  BitSet.Set sets one bit in a BitSet.
-func (b *BitSet) Set(bit uint) *BitSet {
-	b.Bits.SetBit(&b.Bits, int(bit), 1)
+func (b *BitSet) Set(bit int) *BitSet {
+	b.Bits.SetBit(&b.Bits, bit, 1)
 	return b
 }
 
 //  BitSet.Clear clears one bit in a BitSet.
-func (b *BitSet) Clear(bit uint) *BitSet {
-	b.Bits.SetBit(&b.Bits, int(bit), 0)
+func (b *BitSet) Clear(bit int) *BitSet {
+	b.Bits.SetBit(&b.Bits, bit, 0)
 	return b
 }
 
 //  BitSet.Test returns true if the specified BitSet bit is set.
-func (b *BitSet) Test(bit uint) bool {
-	return b.Bits.Bit(int(bit)) == 1
+func (b *BitSet) Test(bit int) bool {
+	return b.Bits.Bit(bit) == 1
 }
 
 //  BitSet.IsEmpty returns true if no bits are set in the BitSet.
@@ -44,19 +44,19 @@ func (b *BitSet) IsEmpty() bool {
 //  BitSet.Count returns the number of bits that are set.
 func (b *BitSet) Count() int {
 	n := 0
-	l := b.Lowbit()
-	h := b.Bits.BitLen()
+	l := b.LowBit()
+	h := b.HighBit()
 	for i := l; i <= h; i++ { // for all values up to highest
-		if b.Test(uint(i)) { // if this value is included
+		if b.Test(i) { // if this value is included
 			n++ // count it
 		}
 	}
 	return n
 }
 
-//  BitSet.Lowbit returns the number of the smallest bit set.
+//  BitSet.LowBit returns the number of the smallest bit set.
 //  It returns 0 if the BitSet is empty.
-func (b *BitSet) Lowbit() int {
+func (b *BitSet) LowBit() int {
 	// inspired by thoughts of HAKMEM...
 	bigTemp.Sub(&b.Bits, bigOne)
 	bigTemp.Xor(&b.Bits, bigTemp)
@@ -69,8 +69,14 @@ func (b *BitSet) Lowbit() int {
 	}
 }
 
-var bigOne = big.NewInt(1)  // static constant used in Lowbit()
-var bigTemp = big.NewInt(0) // static temporary used in Lowbit()
+//  BitSet.HighBit returns the number of the highest bit set.
+//  It returns -1 if the BitSet is empty.
+func (b *BitSet) HighBit() int {
+	return b.Bits.BitLen() - 1
+}
+
+var bigOne = big.NewInt(1)  // static constant used in LowBit()
+var bigTemp = big.NewInt(0) // static temporary used in LowBit()
 
 //  BitSet.Equals returns true if the argument set is identical to this one.
 func (b1 *BitSet) Equals(b2 *BitSet) bool {
@@ -103,6 +109,13 @@ func (b1 *BitSet) AndWith(b2 *BitSet) *BitSet {
 	return b1
 }
 
+//  BitSet.AndNot produces a new BitSet that clears the bits of b2 from b1.
+func (b1 *BitSet) AndNot(b2 *BitSet) *BitSet {
+	b3 := new(BitSet)
+	b3.Bits.AndNot(&b1.Bits, &b2.Bits)
+	return b3
+}
+
 //  BitSet.Key returns an unprintable string usable as a map key.
 //  (Neither a BitSet nor the underlying big.Int is a legal key type.)
 func (b *BitSet) Key() string {
@@ -116,13 +129,13 @@ func (b *BitSet) Key() string {
 //  BitSet.Members returns a slice containing the values found in the set.
 //  This is the easiest way to iterate through the members of a bit set:
 //	for _, i := range bset.Members() { ... }
-func (b *BitSet) Members() []uint {
-	m := make([]uint, 0, 0) // initial capacity 0 is faster than h-l+1
-	l := b.Lowbit()
-	h := b.Bits.BitLen()
+func (b *BitSet) Members() []int {
+	m := make([]int, 0, 0) // initial capacity 0 is faster than h-l+1
+	l := b.LowBit()
+	h := b.HighBit()
 	for i := l; i <= h; i++ { // for all values up to highest
-		if b.Test(uint(i)) { // if this value is included
-			m = append(m, uint(i))
+		if b.Test(i) { // if this value is included
+			m = append(m, i)
 		}
 	}
 	return m

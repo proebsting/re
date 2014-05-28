@@ -1,106 +1,167 @@
+Options: -R -T -g -h -i -l -v -I 0
 
-# "8 Regular Expressions You Should Know" by Vasili    sampled 24-feb-2014
+         # "8 Regular Expressions You Should Know" by Vasili    sampled 24-feb-2014
 
-# code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
+         # code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
 
-#
+         #
 
-# 1. Matching a Username
+         # 1. Matching a Username
 
-regexp: [a-z0-9_-]{3,16}
-tree:   [-0-9_a-z]{3,16}
+expr 0: [a-z0-9_-]{3,16}
+tree:   [0-9_a-z-]{3,16}
+augmnt: (((((((((((((((([0-9_a-z-][0-9_a-z-])[0-9_a-z-])[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)#)
 length: 3 to 16
 -------------------- Examples --------------------
-ex(0):  _eg  66a  vfq  7x6  14f  nbf  trl  bkp  3lk  3-e  rg0  7c7  1m-  3ps
-ex(1):  y04  nf-  i5h  bqf  mlt  bnm  _8r  cvp  22j  bj0  juk  -dw  6tk  tq_
-ex(2):  _-e  1or  e0y  dmd  v43  qt7  jc-  5c6  5au  _3i  38f  ton  yqs  urw
-ex(3):  608  h-0  alq  j3d  _7n  py-  qoh  t42  kob  imi  34e  vbn  ab_  ut_
-ex(5):  _khr  z5ku  spzln  2av  p1i  mr8yd  8cyv  xpkz  szy  ml7  zdoyp  8xr8
-ex(8):  w89  lssxd9  x1w-7a  i6cq8-b  v0t1bye  b3ek8t  xbyegk  x41c2sbu  kin
+ex(0):  cuw  hhz  988  h-n  0ca  53n  c7p  9eo  gye  g3x  47o  z91  c_x  2ls
+ex(1):  j18  5f6  uom  7f1  iu5  ee1  m-m  _dh  8tv  rso  smo  yxl  lsk  5_n
+ex(2):  5ls  le0  awf  ide  kqh  o8y  g_h  orc  7be  i_9  au8  4bl  _66  a8k
+ex(3):  k__  7-7  xa6  tyo  urd  _-w  9_e  64d  6hh  r3l  9xb  s9y  6_a  _ip
+ex(5):  q7bvo  zqu  t15_  -4-6_  bws77  ryc  b9eka  sh3  hnug0  347  7_zd  eu0m
+ex(8):  849_  m7bv8n  gdttk  i-6at3  6-8  eed  __lb_iz9  49nfu  yl_gfueq
+---------------- Examples from DFA ---------------
+s1:  3u6
+s16:  3u6k
+s15:  3u6kw
+s14:  3u6kw8
+s13:  3u6kw8h
+s12:  3u6kw8hd
+s11:  3u6kw8hda
+s10:  3u6kw8hdap
+s9:  3u6kw8hdap9
+s8:  3u6kw8hdap9r
+s7:  3u6kw8hdap9r3
+s6:  3u6kw8hdap9r3n
+s5:  3u6kw8hdap9r3nd
+s4:  3u6kw8hdap9r3ndh
 
-#
+         #
 
-# 2. Matching a Password
+         # 2. Matching a Password
 
-regexp: [a-z0-9_-]{6,18}$
-tree:   [-0-9_a-z]{6,18}
+expr 1: [a-z0-9_-]{6,18}$
+tree:   [0-9_a-z-]{6,18}
+augmnt: (((((((((((((((((([0-9_a-z-][0-9_a-z-])[0-9_a-z-])[0-9_a-z-])[0-9_a-z-])[0-9_a-z-])[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)[0-9_a-z-]?)#)
 length: 6 to 18
 -------------------- Examples --------------------
-ex(0):  _eg66a  vfq7x6  14fnbf  trlbkp  3lk3-e  rg07c7  1m-3ps  93uy04  nf-i5h
-ex(1):  bnm_8r  cvp22j  bj0juk  -dw6tk  tq_jys  _-e1or  e0ydmd  v43qt7  jc-5c6
-ex(2):  38fton  yqsurw  qzd608  h-0alq  j3d_7n  py-qoh  t42kob  imi34e  vbnab_
-ex(3):  eiar-s  pa97jj  ixj8ji  kja7lo  1v9sjq  pdrkx-  tj9rx3  5h-r_a  i8gze7
-ex(5):  7hs_dw  v865qy  xj9md1  s9b0x8  rq4m7h  3bncha  am3za4  ye9of0  _1gt7e
-ex(8):  0zwsqh  tbeyliua  l3n-udfe  -ovh1m  hmgsmq  fmb9a6  jug4o3  naq0ri
+ex(0):  cuwhhz  988h-n  0ca53n  c7p9eo  gyeg3x  47oz91  c_x2ls  dnqj18  5f6uom
+ex(1):  ee1m-m  _dh8tv  rsosmo  yxllsk  5_no9i  5lsle0  awfide  kqho8y  g_horc
+ex(2):  au84bl  _66a8k  lwkk__  7-7xa6  tyourd  _-w9_e  64d6hh  r3l9xb  s9y6_a
+ex(3):  zq7bvo  ccfu_a  5_94-6  _-3ws7  7e6cx9  ekaegh  3m9nug  00347g  _zdi50
+ex(5):  c49_fm  7bv8ny  dttksk  -yat3i  6-8srd  t__lb_  iz969n  fu8l_g  fueq0x
+ex(8):  i6kw8h  np9r3ndh  m-15qay  95u2lp  r42onf  iv3-d6  d4p26ii  k6594n
+---------------- Examples from DFA ---------------
+s1:  h0t1eb
+s18:  h0t1eb0
+s17:  h0t1eb07
+s16:  h0t1eb07b
+s15:  h0t1eb07bp
+s14:  h0t1eb07bp-
+s13:  h0t1eb07bp-n
+s12:  h0t1eb07bp-nk
+s11:  h0t1eb07bp-nk_
+s10:  h0t1eb07bp-nk_3
+s9:  h0t1eb07bp-nk_3r
+s8:  h0t1eb07bp-nk_3rd
+s7:  h0t1eb07bp-nk_3rd2
 
-#
+         #
 
-# 3. Matching a Hex Value  [a color spec, apparently?]
+         # 3. Matching a Hex Value  [a color spec, apparently?]
 
-regexp:  #?([a-f0-9]{6}|[a-f0-9]{3})
+expr 2:  #?([a-f0-9]{6}|[a-f0-9]{3})
 tree:   (( #?)([0-9a-f]{6}|[0-9a-f]{3}))
+augmnt: ((( #?)(((((([0-9a-f][0-9a-f])[0-9a-f])[0-9a-f])[0-9a-f])[0-9a-f])|(([0-9a-f][0-9a-f])[0-9a-f])))#)
 length: 4 to 8
 -------------------- Examples --------------------
-ex(0):   7f4d51   ce2969   535   601a24   8ca   ded618   bba1c8   b97   c5a17b
-ex(1):   284   a80   #7ba64c   #699   #e7a   f87e8d   #3bca17   6e7   #ffb598
-ex(2):   389830   #ae2937   #81f   #1d6   #83b013   #3f6   3d0ae8   #0fe   141
-ex(3):   #d4d   #454a6d   #1d8eee   423e7b   #b3e   #250   d32   876   f03
-ex(5):   #e7f777   7dbdbe   #895b65   13cb9d   #185e7b   aab77f   #8cd
-ex(8):   #a47d31   f47   6f3679   a3f04f   #08afd0   #d6d   b37   be0   #c589fa
+ex(0):   0a2187   9cf66a   da1a23   19a   d3799b   369fcc   4b4   a89b9b
+ex(1):   #d466a2   #8abdb4   be9cb6   cf0   #933553   7a88d5   a65   67e8d9
+ex(2):   6ad   3a99c3   f7c   #529   43a   #4bb   #96f7d2   a7e436   #8bfab0
+ex(3):   58951d   #97b   d22803   #74d   995976   #749   #ea1   0e3   #2e0
+ex(5):   029   #69c   #2b99b6   #58ec4a   3d5a64   #a9b481   #99e   1ab
+ex(8):   5cbaa9   #c0ae08   eaa   99f   #928   #a2de67   e08c58   #11b   #909
+---------------- Examples from DFA ---------------
+s1:   aa5
+s5:   aa538a
 
-# 4. Matching a Slug
+         # 4. Matching a Slug
 
-regexp: [a-z0-9-]+
-tree:   [-0-9a-z]+
+expr 3: [a-z0-9-]+
+tree:   [0-9a-z-]+
+augmnt: ([0-9a-z-]+#)
 length: 1 to *
 -------------------- Examples --------------------
-ex(0):  9  -  i  p  e  8  9  9  j  w  9  x  0  o  3  m  f  v  o  r  w  2  4  7
-ex(1):  f  m  3  m  8  2  -  x  j  r  z  9  0  3  9  d  5  f  3  d  w  s  4  j
-ex(2):  q4  -  7n  3  1i  ok  xz  v  u  7  y  dx  1k  yv  46  gh  9q  -  7  y7
-ex(3):  wa  0ei  s34  62k  nro  z  gf0  sdh  i7  og2  a  8tl  66  jm  m  vh  92
-ex(5):  6c  fkmg  sf3  sb0l  e  nh265  ixbzd  8e1  cqybe  ha-3  1jp  kve  h5
-ex(8):  b  f3pmcgrp  -2df3r-  dcg  -z8lc  q9is1  o  bdm  rzrcjn8y  oj  d5ku74ge
+ex(0):  c  u  w  h  h  z  9  8  8  h  -  n  0  c  a  5  3  n  c  7  p  9  e  o
+ex(1):  y  e  g  3  x  4  7  o  z  9  1  c  a  x  2  l  s  d  n  q  j  1  8  5
+ex(2):  uo  e  1i  5  e  m  m  e  8t  f  so  m  y  ll  qf  6n  9  fl  oo  2  la
+ex(3):  d  lo  ho  ygf  xr  eb  ia9  78  bl  b6  8k  nwk  s7-  xa  dty  u  d
+ex(5):  w1  4d6  q  r  l9xbs  zy6  axip  cuz  auvoc  qu  t15a9  9  u  8  bws77
+ex(8):  2x9e  tegh3m  nug0034  g9di5  bmpd91i  849afm7b  8nyd  8ksk-  at3i6
+---------------- Examples from DFA ---------------
+s1:  d
 
-# 5. Matching an Email
+         # 5. Matching an Email
 
-regexp: ([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})
-tree:   (((([-.0-9_a-z]+@)[-.0-9a-z]+).)[.a-z]{2,6})
+expr 4: ([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})
+tree:   (((([.0-9_a-z-]+@)[.0-9a-z-]+).)[.a-z]{2,6})
+augmnt: ((((([.0-9_a-z-]+@)[.0-9a-z-]+).)((((([.a-z][.a-z])[.a-z]?)[.a-z]?)[.a-z]?)[.a-z]?))#)
 length: 6 to *
 -------------------- Examples --------------------
-ex(0):  _@u.jj  a@x.gp  -@c.ci  c@9.ap  .@s.mp  3@w.bk  e@z.ad  r@d.tf  i@e.ss
-ex(1):  n@l.onaai  e@s.ajth  0@z.gag  .@2.bsjq  t@v.bptdl  l@w.nhbv  k@0.wgyx
-ex(2):  k@u1.eyip  7v@rl.aaqo  f@h5.wgisz  68@t.xmaw  y8@7.ptrjv  k@8.htiru
-ex(3):  l@wh.qbvnld  -@9lp.axzqx  gr@5.dtoe  4ta@vcl.qnw  .w7@h8..ebpwf
-ex(5):  eg1ej@1iipo.urhkcj  5ddox@7v92.adks  dsa5@c3uhj.pbp  i@rst.nyfe
-ex(8):  1whd@uxu.hckt  h0jc.@6.najgd  kcljqu@e52c.dijte  6uju3xb@twa0vand.xhb
+ex(0):  c@..tz  z@-.la  9@0.bo  5@n..q  x@o.ke  3@9.py  7@z.kz  p@x.hu  d@d.px
+ex(1):  m@f.xr  -@6.y.g  _@m.qi.  5@6.aab  o@o.nf.gdw  l@q.tq  x@c..sx  u@4.ecz
+ex(2):  x@d.gfxaj  _@4d.oeo.e  9@6.kh  cu@au.iaum  5@94.qoi  7@e.wozqo
+ex(3):  di5@mpd.ewxdan  bv@ydt.ljzkz  3i@g8s.szal  z@6.oy.mz  e@0x.dxnz
+ex(5):  -1@qaye5.ovziy  civ@-d.ku.cge  k65@hnodg.ydhfu  q@3.rbdoj  5@faco...dt
+ex(8):  ib@-ltti..nxt  p@77nf.iohc  mjmpgk6e@l.qet9..ail  i9fpw.@26r.fbnuuj
+---------------- Examples from DFA ---------------
+s1:  7@s...
+s12:  7@s..p
+s11:  7@s.du
+s10:  7@s.duw
+s9:  7@s.duwm
+s8:  7@s.duwmn
+s7:  7@s.duwmn.
+s14:  7@s.duwmnp
 
-# 6. Matching a URL
+         # 6. Matching a URL
 
-regexp: (https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?
-tree:   ((((((((((((ht)t)p)s?):)/)/)?[-.0-9a-z]+).)[.a-z]{2,6})[ --9A-Z_a-z]**)/?)
+expr 5: (https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?
+tree:   ((((((((((((ht)t)p)s?):)/)/)?[.0-9a-z-]+).)[.a-z]{2,6})[ .-9A-Z_a-z-]**)/?)
+augmnt: (((((((((((((ht)t)p)s?):)/)/)?[.0-9a-z-]+).)((((([.a-z][.a-z])[.a-z]?)[.a-z]?)[.a-z]?)[.a-z]?))[ .-9A-Z_a-z-]**)/?)#)
 length: 4 to *
 -------------------- Examples --------------------
-ex(0):  9.ey  q.je  i.qo  a.ou  i...  w.pc  0.ug  7.kp  w.gy  i.dg  t.dg  c.i.
-ex(1):  s.ntqgf/  http://f.nubi/  http://p.gavcpqY/  s.vfk  s.ihi/  f.tmtuc/
-ex(2):  https://g.ccdm/  z.xswhKz/  http://tr.xhive  q.kr/  http://bz.mk.1
-ex(3):  m5e.qdorm9aRn  https://pm.oreyU3  g.bcdr  t.o.sdj/  0tx.zzx/  yw.lzqJ/
-ex(5):  http://bl.usd_MqL6olCVCF_  https://e.dhkcjy  t.fknqdN9/
-ex(8):  http://m.aaalmfb4.nR bEocl6rgOPI7tR/
+ex(0):  c.yt  h.qt  8.sf  0.bo  5.u.  k.qe  4.e.  g.py  7.be  -.ye  h.ri  g..s
+ex(1):  http://7.fx  m.voc.  http://f.laszz  http://e.tmsb  x.yd/  http://b.rwq
+ex(2):  http://3l.veyrdG  cu.iozi  https://9.uyo4/  2x.rfrgb/  http://9.tqk/
+ex(3):  i.kabtKxoC8  bd.nzby/  6fu.gpdd6rpb8P/  ap.dg.w/  https://d.p.ebcob/
+ex(5):  qf..dhfuZf  https://ns.vuwfur1a nm2a5jDL/  6cg.araq8
+ex(8):  https://qet9is..ilv.H9oR906X6tc_B6oV-PZkwnR87/87Man /v
+---------------- Examples from DFA ---------------
+s1:  l.dj
 
-# 7. Matching an IP Address
+         # 7. Matching an IP Address
 
-regexp: (?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)
+expr 6: (?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)
 tree:   (((((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)).){3}(((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)))
+augmnt: ((((((((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)).)((((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)).))((((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)).))(((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9])[0-9]?)))#)
 length: 7 to 15
 -------------------- Examples --------------------
-ex(0):  251.214.2.252  4.251.252.0  7.253.240.255  253.225.251.250
-ex(1):  238.241.051.250  230.250.255.02  227.207.53.254  9.239.051.08
-ex(2):  01.239.61.237  252.221.67.081  80.30.254.14  250.254.249.202
-ex(3):  250.246.218.0  217.213.211.255  252.2.203.9  253.255.213.210
-ex(5):  251.255.252.219  13.2.248.254  253.254.254.254  66.251.5.12
-ex(8):  68.02.62.030  254.244.228.4  214.241.239.15  063.21.233.252
+ex(0):  254.228.250.254  252.6.253.4  3.247.251.252  229.252.7.240
+ex(1):  250.0.250.241  254.6.252.252  150.252.250.197  074.230.254.1
+ex(2):  254.5.2.228  224.254.252.252  232.249.207.253  217.3.214.246
+ex(3):  230.254.6.101  255.063.255.0  147.254.137.214  250.205.251.247
+ex(5):  072.255.231.16  119.250.227.7  252.251.235.254  237.252.08.12
+ex(8):  229.250.167.219  250.254.46.250  214.06.219.252  50.08.250.226
+---------------- Examples from DFA ---------------
+s1:  0.0.0.0
+s9:  0.0.0.2
+s17:  0.0.0.9
+s8:  0.0.0.25
+s16:  0.0.0.29
 
-# 8. Matching an HTML Tag
+         # 8. Matching an HTML Tag
 
-regexp: <([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)
-ERROR:  rx: \1 (backref) unimplemented: in "<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)"
+ERROR:   <([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)
+    rx: \1 (backref) unimplemented: in "<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)"
+7 expression(s) loaded
+(1 expression(s) rejected)

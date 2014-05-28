@@ -59,7 +59,7 @@ func main() {
 			}
 			label := string(labels[i : i+1])
 			fmt.Printf("%s:  %s\n", label, spec)
-			atree := rx.Augment(ptree, uint(len(tlist)))
+			atree := rx.Augment(ptree, len(tlist))
 			tlist = append(tlist, atree)
 			elist = append(elist, tester{label, spec, ptree, i})
 		}
@@ -83,7 +83,7 @@ func main() {
 			if e.tree == nil {
 				fmt.Print(" ")
 			} else {
-				if results.Test(uint(e.index)) {
+				if results.Test(e.index) {
 					fmt.Print(e.label)
 				} else {
 					fmt.Print("-")

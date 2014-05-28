@@ -1,112 +1,144 @@
+Options: -R -T -g -h -i -l -v -I 0
 
-# parentheses with alternation
+         # parentheses with alternation
 
-regexp: (ab)|c
+expr 0: (ab)|c
 tree:   ((ab)|c)
+augmnt: (((ab)|c)#)
 length: 1 to 2
 -------------------- Examples --------------------
-ex(0):  ab  ab  c  ab  c  ab  c  c  ab  ab  ab  c  c  ab  ab  ab  c  ab  ab  ab
-ex(1):  ab  ab  ab  c  ab  ab  ab  c  ab  c  ab  c  ab  ab  c  ab  ab  c  ab  c
-ex(2):  ab  ab  c  c  ab  ab  ab  c  ab  ab  ab  ab  c  ab  c  ab  ab  ab  ab
-ex(3):  c  ab  ab  c  c  ab  c  c  c  ab  ab  c  ab  c  c  ab  c  c  ab  ab  ab
-ex(5):  ab  c  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  c  ab  ab  c  c  c  c  c
-ex(8):  c  c  ab  ab  ab  ab  ab  ab  c  c  c  c  ab  ab  c  c  ab  ab  ab  c
+ex(0):  ab  ab  c  ab  c  ab  c  ab  ab  c  ab  ab  c  ab  ab  c  ab  c  ab  ab
+ex(1):  c  ab  c  ab  c  c  c  ab  c  ab  ab  c  c  ab  ab  ab  c  ab  c  c  c
+ex(2):  ab  c  c  ab  c  ab  c  c  c  c  ab  c  ab  c  c  c  c  c  ab  c  ab  c
+ex(3):  ab  c  ab  ab  ab  c  ab  c  c  ab  c  ab  c  c  ab  ab  ab  c  ab  c
+ex(5):  c  ab  ab  ab  ab  c  c  ab  c  c  ab  c  c  c  c  ab  ab  ab  ab  c
+ex(8):  ab  c  c  ab  c  c  ab  ab  ab  ab  ab  ab  c  c  ab  c  c  ab  c  c
+---------------- Examples from DFA ---------------
+s1:  c
 
-regexp: a(b|c)d
+expr 1: a(b|c)d
 tree:   ((a(b|c))d)
+augmnt: (((a(b|c))d)#)
 length: 3 to 3
 -------------------- Examples --------------------
-ex(0):  abd  abd  acd  abd  acd  abd  acd  acd  abd  abd  abd  acd  acd  abd
-ex(1):  abd  acd  abd  abd  abd  acd  abd  abd  abd  acd  abd  abd  abd  acd
-ex(2):  acd  abd  acd  abd  abd  acd  abd  abd  acd  abd  acd  abd  abd  abd
-ex(3):  acd  abd  abd  abd  acd  abd  abd  abd  abd  acd  abd  acd  abd  abd
-ex(5):  abd  acd  acd  abd  abd  acd  acd  abd  acd  acd  acd  abd  abd  acd
-ex(8):  acd  acd  abd  acd  acd  abd  abd  abd  acd  abd  acd  abd  abd  abd
+ex(0):  abd  abd  abd  abd  abd  abd  abd  abd  abd  abd  abd  acd  acd  abd
+ex(1):  acd  acd  acd  acd  abd  abd  acd  abd  abd  abd  acd  acd  abd  acd
+ex(2):  abd  acd  acd  abd  acd  acd  acd  acd  abd  acd  abd  acd  abd  abd
+ex(3):  acd  acd  acd  abd  acd  abd  abd  abd  acd  abd  acd  abd  abd  acd
+ex(5):  acd  acd  acd  abd  abd  acd  acd  acd  acd  acd  acd  abd  abd  abd
+ex(8):  abd  acd  acd  acd  acd  abd  abd  acd  acd  abd  acd  acd  abd  acd
+---------------- Examples from DFA ---------------
+s1:  abd
 
-regexp: (ab)|c|(de)
+expr 2: (ab)|c|(de)
 tree:   ((ab)|c|(de))
+augmnt: (((ab)|c|(de))#)
 length: 1 to 2
 -------------------- Examples --------------------
-ex(0):  ab  ab  c  c  de  c  c  de  ab  ab  ab  de  de  ab  ab  ab  de  de  c
-ex(1):  de  ab  de  ab  de  ab  c  ab  c  c  ab  de  de  c  de  c  de  c  de
-ex(2):  c  ab  ab  de  c  c  ab  ab  ab  ab  de  c  ab  c  c  ab  ab  de  de
-ex(3):  ab  de  ab  de  c  de  c  de  de  c  ab  ab  de  ab  c  de  c  c  ab
-ex(5):  ab  ab  de  c  c  ab  de  de  ab  ab  de  de  de  c  c  ab  ab  c  ab
-ex(8):  c  de  de  de  ab  ab  ab  c  c  de  c  c  ab  ab  ab  ab  ab  de  de
+ex(0):  ab  c  c  de  ab  ab  de  ab  de  ab  c  ab  c  c  c  ab  ab  c  ab  de
+ex(1):  ab  de  de  c  c  de  ab  c  c  ab  ab  c  de  ab  de  ab  ab  de  ab
+ex(2):  de  ab  ab  de  ab  ab  c  c  ab  ab  c  ab  c  c  de  c  de  c  ab  de
+ex(3):  c  ab  c  de  c  de  ab  ab  ab  ab  c  ab  de  de  c  c  c  c  c  de
+ex(5):  c  de  c  c  de  c  c  c  ab  ab  ab  c  ab  ab  de  c  ab  ab  c  de
+ex(8):  ab  c  ab  ab  de  de  ab  ab  de  de  c  c  de  ab  de  de  c  ab  c
+---------------- Examples from DFA ---------------
+s1:  c
 
-regexp: a|(bc|de|fg)|h
+expr 3: a|(bc|de|fg)|h
 tree:   (a|((bc)|(de)|(fg))|h)
+augmnt: ((a|((bc)|(de)|(fg))|h)#)
 length: 1 to 2
 -------------------- Examples --------------------
-ex(0):  a  a  de  h  de  h  a  a  a  h  h  a  a  a  h  h  bc  h  a  h  a  h  a
-ex(1):  de  a  h  h  fg  fg  fg  a  bc  a  h  de  a  a  a  a  h  bc  de  a  a
-ex(2):  h  h  a  h  a  h  fg  fg  h  bc  a  h  a  fg  de  a  a  a  a  h  de  a
-ex(3):  h  a  a  h  h  h  de  a  a  bc  de  h  h  h  a  a  a  de  h  de  a  a
-ex(5):  a  a  h  h  a  a  a  h  h  a  a  a  bc  bc  a  h  h  a  a  a  bc  a  h
-ex(8):  bc  de  h  a  a  de  h  de  de  a  h  a  h  de  a  h  de  a  a  fg  fg
+ex(0):  a  de  fg  a  h  a  h  bc  h  h  bc  a  h  h  h  h  bc  de  a  h  a  bc
+ex(1):  a  a  fg  h  a  h  fg  a  a  h  bc  a  h  h  bc  a  fg  a  a  fg  a  a
+ex(2):  h  a  h  a  a  a  a  h  a  a  a  h  bc  h  a  fg  de  a  de  de  fg  h
+ex(3):  h  fg  bc  a  a  a  fg  h  h  h  h  h  h  a  h  a  a  a  a  h  a  fg  h
+ex(5):  h  a  bc  a  a  a  de  h  h  h  de  de  h  fg  a  a  a  bc  h  fg  fg
+ex(8):  h  fg  a  fg  bc  bc  h  a  de  a  h  h  h  h  h  a  a  h  de  de  a  h
+---------------- Examples from DFA ---------------
+s1:  a
 
-regexp: a(b|c)(d|e)(f|g)h
+expr 4: a(b|c)(d|e)(f|g)h
 tree:   ((((a(b|c))(d|e))(f|g))h)
+augmnt: (((((a(b|c))(d|e))(f|g))h)#)
 length: 5 to 5
 -------------------- Examples --------------------
-ex(0):  abdgh  abefh  acefh  abdgh  acdfh  abefh  abdgh  abdfh  acdfh  abefh
-ex(1):  abdgh  abdgh  abefh  abdgh  acdfh  abefh  abdfh  acdgh  abdfh  abegh
-ex(2):  acdgh  acefh  abefh  acefh  acefh  abdgh  abefh  abdfh  abdfh  abdfh
-ex(3):  acegh  acefh  acefh  abdfh  abdgh  acegh  abdgh  acdfh  abegh  acefh
-ex(5):  acdfh  abegh  abdfh  acegh  acefh  acdgh  acdfh  abefh  abefh  acdfh
-ex(8):  acdgh  acdfh  acdfh  abdfh  acegh  abegh  acdgh  abdfh  acefh  abdfh
+ex(0):  abdfh  abefh  abdfh  abdfh  abefh  abdgh  acdfh  abdgh  acdgh  acefh
+ex(1):  abdfh  abegh  acdfh  acefh  abdgh  acefh  acdgh  acegh  abdgh  abdgh
+ex(2):  acegh  acdgh  abegh  abefh  abegh  abdgh  abdfh  acdfh  acdgh  acdfh
+ex(3):  acdgh  acdgh  acefh  abdfh  abdfh  acdgh  acdgh  abefh  acdgh  abdgh
+ex(5):  acefh  abefh  acdgh  abefh  acegh  acefh  acdfh  abdgh  abdfh  abdfh
+ex(8):  acdgh  abegh  abdgh  abdgh  acegh  acefh  acdgh  acdgh  abegh  acdfh
+---------------- Examples from DFA ---------------
+s1:  acdfh
 
-regexp: (ab|cd)(ef|gh)
+expr 5: (ab|cd)(ef|gh)
 tree:   (((ab)|(cd))((ef)|(gh)))
+augmnt: ((((ab)|(cd))((ef)|(gh)))#)
 length: 4 to 4
 -------------------- Examples --------------------
-ex(0):  abef  cdef  cdef  cdgh  abef  abgh  cdef  abef  cdef  abef  cdef  abef
-ex(1):  abef  cdef  cdef  cdef  abgh  abef  cdef  cdef  abef  cdgh  abef  abgh
-ex(2):  abef  cdef  cdef  abef  abgh  cdef  abgh  cdef  cdgh  cdef  abgh  abgh
-ex(3):  cdgh  abef  abgh  abgh  abef  abef  abef  abef  abef  cdef  abgh  cdgh
-ex(5):  abgh  cdef  abef  abef  abgh  cdgh  cdef  abgh  cdef  abef  cdgh  cdgh
-ex(8):  abgh  cdef  abef  cdgh  abef  abgh  cdgh  cdgh  abgh  abgh  cdef  abef
+ex(0):  abef  cdef  cdef  abef  cdef  cdef  abef  abgh  abef  cdef  abef  cdgh
+ex(1):  cdef  abef  abef  cdgh  cdgh  abef  cdef  cdef  cdgh  cdef  abgh  cdgh
+ex(2):  abgh  abgh  cdgh  abgh  abgh  abgh  abgh  abef  abef  abgh  abef  cdef
+ex(3):  cdef  abef  cdgh  cdef  abgh  cdef  abgh  cdgh  abef  abef  abef  abgh
+ex(5):  cdef  abef  cdef  cdgh  abef  cdgh  cdef  abef  cdgh  cdgh  abgh  abef
+ex(8):  cdgh  abgh  cdef  cdef  cdef  abgh  cdef  cdef  abgh  cdef  abgh  abef
+---------------- Examples from DFA ---------------
+s1:  abef
 
-regexp: (ab|cd)|(ef|gh)
+expr 6: (ab|cd)|(ef|gh)
 tree:   (((ab)|(cd))|((ef)|(gh)))
+augmnt: ((((ab)|(cd))|((ef)|(gh)))#)
 length: 2 to 2
 -------------------- Examples --------------------
-ex(0):  ab  ef  ef  gh  ab  cd  ef  ab  ef  ab  ef  ab  ef  ab  ef  ef  ef  cd
-ex(1):  ef  ef  ab  gh  ab  cd  ab  ab  ef  ef  ab  cd  ef  cd  ef  gh  ef  cd
-ex(2):  ef  gh  ab  cd  cd  ab  ab  ab  ab  ab  ef  cd  gh  gh  cd  ef  ab  ab
-ex(3):  gh  ef  cd  ef  ab  gh  gh  cd  cd  ef  ab  gh  ab  cd  gh  gh  cd  cd
-ex(5):  ab  ef  cd  cd  ab  ab  cd  cd  ef  cd  ab  ab  cd  gh  cd  gh  cd  ab
-ex(8):  ef  ab  cd  cd  ab  ab  cd  ab  ab  ef  cd  cd  ef  ab  ef  cd  ef  ef
+ex(0):  ab  ef  ab  ef  ef  ef  ef  ef  ef  ab  ef  gh  cd  ab  ef  cd  cd  gh
+ex(1):  ef  ab  cd  ab  ab  ef  gh  cd  ab  cd  ef  ef  gh  cd  ef  gh  cd  gh
+ex(2):  ab  cd  ab  cd  ef  ab  cd  cd  cd  cd  ab  cd  ab  ab  ef  cd  ab  cd
+ex(3):  ab  gh  ab  cd  gh  gh  ef  ef  cd  gh  cd  cd  gh  cd  ef  ab  ef  ef
+ex(5):  cd  cd  gh  gh  ef  ef  gh  gh  ab  cd  gh  ef  cd  ef  ef  ef  cd  cd
+ex(8):  ab  cd  gh  gh  ab  cd  ef  ef  gh  ef  ab  ab  ab  gh  ef  gh  gh  ab
+---------------- Examples from DFA ---------------
+s1:  ab
 
-regexp: (ab|cd|ef)(gh|ij|kp)
+expr 7: (ab|cd|ef)(gh|ij|kp)
 tree:   (((ab)|(cd)|(ef))((gh)|(ij)|(kp)))
+augmnt: ((((ab)|(cd)|(ef))((gh)|(ij)|(kp)))#)
 length: 4 to 4
 -------------------- Examples --------------------
-ex(0):  abgh  cdij  efij  cdkp  abgh  abkp  efgh  abgh  efkp  cdgh  efgh  efgh
-ex(1):  cdgh  cdij  abkp  efij  efij  efij  efgh  cdgh  abkp  cdij  abgh  abgh
-ex(2):  abij  cdgh  abkp  efkp  abkp  abkp  cdkp  cdkp  efij  abgh  efgh  cdkp
-ex(3):  abgh  abgh  efij  cdgh  efkp  abgh  efkp  efij  cdgh  abij  abij  cdkp
-ex(5):  abgh  abij  cdkp  cdij  abgh  abgh  abkp  efgh  abgh  efkp  abgh  abij
-ex(8):  abgh  efkp  abgh  abij  abgh  efkp  cdgh  cdij  efgh  abij  cdkp  cdij
+ex(0):  abij  cdgh  efgh  cdgh  efgh  abij  efgh  abij  abij  cdkp  abkp  cdij
+ex(1):  abgh  cdkp  efij  abij  efgh  cdij  abkp  abkp  abij  efgh  abkp  cdgh
+ex(2):  abkp  abij  cdkp  efkp  abgh  abgh  cdgh  efkp  efij  efkp  abij  abkp
+ex(3):  abgh  abgh  cdkp  efij  abij  efkp  abgh  cdij  cdij  abgh  cdkp  cdgh
+ex(5):  efkp  cdij  efgh  efgh  efij  cdgh  efgh  abkp  efkp  cdkp  abkp  efkp
+ex(8):  cdgh  abkp  efkp  efkp  efgh  abij  efgh  abkp  efgh  abgh  cdij  abkp
+---------------- Examples from DFA ---------------
+s1:  abgh
 
-regexp: x(ab|cd|ef)y(gh|ij|kp)z
+expr 8: x(ab|cd|ef)y(gh|ij|kp)z
 tree:   ((((x((ab)|(cd)|(ef)))y)((gh)|(ij)|(kp)))z)
+augmnt: (((((x((ab)|(cd)|(ef)))y)((gh)|(ij)|(kp)))z)#)
 length: 7 to 7
 -------------------- Examples --------------------
-ex(0):  xabyghz  xcdyijz  xefyijz  xcdykpz  xabyghz  xabykpz  xefyghz  xabyghz
-ex(1):  xcdyghz  xefyghz  xefyghz  xefyghz  xcdyghz  xcdyijz  xabykpz  xefyijz
-ex(2):  xefyijz  xefyghz  xcdyghz  xabykpz  xcdyijz  xabyghz  xabyghz  xefyijz
-ex(3):  xcdyghz  xabykpz  xefykpz  xabykpz  xabykpz  xcdykpz  xcdykpz  xefyijz
-ex(5):  xefyghz  xcdykpz  xcdyijz  xabyghz  xabyghz  xefyijz  xcdyghz  xefykpz
-ex(8):  xefykpz  xefyijz  xcdyghz  xabyijz  xabyijz  xcdykpz  xefykpz  xabyghz
+ex(0):  xabyijz  xabyghz  xabyghz  xcdykpz  xcdyghz  xabykpz  xabykpz  xcdykpz
+ex(1):  xefykpz  xefyghz  xcdyghz  xefyghz  xefykpz  xcdyghz  xabykpz  xcdyijz
+ex(2):  xefyghz  xefykpz  xefykpz  xabyghz  xefyijz  xabyghz  xabykpz  xcdyghz
+ex(3):  xabyghz  xcdyijz  xabyijz  xcdykpz  xefykpz  xefyghz  xabyijz  xabykpz
+ex(5):  xefyijz  xabyijz  xcdyijz  xefyijz  xabyghz  xcdykpz  xefyijz  xcdyijz
+ex(8):  xefykpz  xcdyghz  xefykpz  xcdyghz  xcdykpz  xcdyghz  xefyijz  xefykpz
+---------------- Examples from DFA ---------------
+s1:  xabyghz
 
-regexp: (a|bc)d(e|fg)|(w|x)(y|z)
+expr 9: (a|bc)d(e|fg)|(w|x)(y|z)
 tree:   ((((a|(bc))d)(e|(fg)))|((w|x)(y|z)))
+augmnt: (((((a|(bc))d)(e|(fg)))|((w|x)(y|z)))#)
 length: 2 to 5
 -------------------- Examples --------------------
-ex(0):  adfg  bcde  xy  adfg  wy  bcde  adfg  ade  wy  bcde  wz  adfg  adfg
-ex(1):  adfg  wy  bcde  ade  wz  ade  bcdfg  adfg  wz  xy  bcde  xy  xy  adfg
-ex(2):  ade  ade  ade  wy  xz  xy  xy  ade  adfg  xz  adfg  wy  bcdfg  xy  wz
-ex(3):  bcdfg  ade  xz  xy  wz  wy  bcde  bcde  wy  ade  wz  wy  wy  ade  xz
-ex(5):  wz  ade  xy  ade  wz  ade  adfg  ade  bcde  bcde  xy  adfg  adfg  wz
-ex(8):  adfg  bcdfg  wy  adfg  bcdfg  bcdfg  wz  xy  wy  bcde  ade  wy  xz
+ex(0):  adfg  wy  wy  ade  bcdfg  bcde  wy  bcde  adfg  adfg  bcdfg  bcde  wy
+ex(1):  ade  adfg  bcde  adfg  bcde  xy  bcde  wy  xz  wz  ade  bcde  wz  bcde
+ex(2):  xz  ade  adfg  ade  ade  bcde  ade  ade  bcde  bcde  xz  wy  bcde  adfg
+ex(3):  wz  wy  wz  ade  xy  ade  wz  xy  xz  bcde  xy  wy  adfg  wz  ade  wz
+ex(5):  wy  xy  wz  bcdfg  xz  bcdfg  ade  bcdfg  adfg  wy  bcdfg  bcdfg  adfg
+ex(8):  ade  adfg  bcdfg  bcde  bcde  xz  adfg  xz  xz  adfg  wz  xy  wy  bcdfg
+---------------- Examples from DFA ---------------
+s1:  xz
+10 expression(s) loaded

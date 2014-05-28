@@ -16,6 +16,7 @@ abc\
 [\]
 [abc
 [def\]
+[t-f]
 a{z
 a{1z
 a{1,z
@@ -31,3 +32,8 @@ a{4,q}z
 a{x,y}z
 a{x}z
 a{xyzzy}z
+a++
+b**
+c??
+d{2}{3}
+e{5}?

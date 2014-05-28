@@ -1,4 +1,5 @@
 
+    #! rxx x3-repl.rx x3-repl.rcx
 1:  ac
 2:  ab?c
 3:  ab+c
@@ -26,13 +27,13 @@ O:  ab{3,}c
 P:  ab{4,}c
 Q:  ab{1,3}b{1,3}c
 
---------------------------  a
-12-45----AB-D--G----L-----  ac
--234-6----BCDE-GH---LM----  abc
---34--7-----DEFGHI-KLMN--Q  abbc
---34---8-------GHIJKLMNO-Q  abbbc
---34----9----------KLMNOPQ  abbbbc
---34---------------KLMNOPQ  abbbbbc
---34----------------LMNOPQ  abbbbbbc
---34----------------LMNOP-  abbbbbbbc
---34----------------LMNOP-  abbbbbbbbc
+ --------------------------  a
+ 12-45----AB-D--G----L-----  ac
+ -234-6----BCDE-GH---LM----  abc
+ --34--7-----DEFGHI-KLMN--Q  abbc
+ --34---8-------GHIJKLMNO-Q  abbbc
+ --34----9----------KLMNOPQ  abbbbc
+ --34---------------KLMNOPQ  abbbbbc
+ --34----------------LMNOPQ  abbbbbbc
+ --34----------------LMNOP-  abbbbbbbc
+ --34----------------LMNOP-  abbbbbbbbc

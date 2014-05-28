@@ -1,0 +1,3 @@
+#! rxg -R
+(a|b)*abb
+b(ab)*a

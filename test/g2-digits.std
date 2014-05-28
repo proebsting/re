@@ -5,7 +5,7 @@
 ],
 "Examples":[
 {"State":1,"RXset":[0],"Example":"0"},
-{"State":2,"RXset":[0,1,2],"Example":"7"},
-{"State":3,"RXset":[0,1],"Example":"02"},
-{"State":4,"RXset":[0,2],"Example":"70"}
+{"State":2,"RXset":[0,1,2],"Example":"1"},
+{"State":3,"RXset":[0,1],"Example":"05"},
+{"State":4,"RXset":[0,2],"Example":"10"}
 ]}

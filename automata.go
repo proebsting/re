@@ -5,7 +5,6 @@ package rx
 import (
 	"fmt"
 	"io"
-	"strconv"
 )
 
 //  A DFA is a deterministic finite automaton for matching regular expressions.
@@ -25,18 +24,19 @@ func newDFA(tree Node) *DFA {
 //  DFAstate is one state in a DFA.
 //  The Dnext table maps input symbols to successor states.
 type DFAstate struct {
-	Index   uint               // index (label) of this state
-	Marked  bool               // true when "marked" during traversal
-	Posns   *BitSet            // set of positions in the state
-	AccSet  *BitSet            // set of regexps that accept here, or nil
-	Dnext   map[uint]*DFAstate // transition map
-	PartNum uint               // partition number during minimization
+	Index   int               // index (label) of this state
+	Marked  bool              // true when "marked" during traversal
+	Posns   *BitSet           // set of positions in the state
+	AccSet  *BitSet           // set of regexps that accept here, or nil
+	Dnext   map[int]*DFAstate // transition map
+	PartNum int               // partition number during minimization
+	InpList []int             // input list used during minimization
 }
 
 //  DFA.newState makes a new DFAstate and adds it to a DFA.
 func (dfa *DFA) newState(posns *BitSet) *DFAstate {
-	ds := &DFAstate{uint(len(dfa.Dstates)), false, posns, nil,
-		make(map[uint]*DFAstate, 0), 0}
+	ds := &DFAstate{len(dfa.Dstates), false, posns, nil,
+		make(map[int]*DFAstate, 0), 0, nil}
 	dfa.Dstates = append(dfa.Dstates, ds)
 	return ds
 }
@@ -64,7 +64,7 @@ func MultiDFA(tlist []Node) *DFA {
 	dfa := newDFA(tree)
 
 	// prepare nodes for followpos computation
-	n := uint(0)
+	n := 0
 	Walk(tree, nil, func(d Node) {
 		if leaf, ok := d.(*MatchNode); ok {
 			// it's a leaf, so number it and remember it
@@ -137,7 +137,7 @@ func (dfa *DFA) lookup(m map[string]*DFAstate, u *BitSet) *DFAstate {
 
 //  validHere returns the union of the csets of all members of plist.
 //  (This gives us fewer potential input symbols a over which to iterate.)
-func (dfa *DFA) validHere(plist []uint) []uint {
+func (dfa *DFA) validHere(plist []int) []int {
 	pmap := dfa.Leaves
 	cs := &BitSet{}
 	for _, p := range plist {
@@ -147,7 +147,7 @@ func (dfa *DFA) validHere(plist []uint) []uint {
 }
 
 //  followSet returns those positions in followpos(p) where p matches a
-func (dfa *DFA) followSet(plist []uint, a uint) *BitSet {
+func (dfa *DFA) followSet(plist []int, a int) *BitSet {
 	fset := &BitSet{}
 	for _, p := range plist {
 		leaf := dfa.Leaves[p]
@@ -160,9 +160,9 @@ func (dfa *DFA) followSet(plist []uint, a uint) *BitSet {
 
 //  DFAstate.InvertMap lists dest states and maps to transition sets.
 //  The list duplicates the map indexes but is more easily traversed in order.
-func (ds *DFAstate) InvertMap() (*BitSet, map[uint]*BitSet) {
+func (ds *DFAstate) InvertMap() (*BitSet, map[int]*BitSet) {
 	slist := &BitSet{}
-	xmap := make(map[uint]*BitSet)
+	xmap := make(map[int]*BitSet)
 	for c, ds := range ds.Dnext {
 		j := ds.Index
 		v := xmap[j]
@@ -178,19 +178,26 @@ func (ds *DFAstate) InvertMap() (*BitSet, map[uint]*BitSet) {
 
 //  DFA.ShowNFA prints the positions and followsets, with optional label.
 func (dfa *DFA) ShowNFA(f io.Writer, label string) {
+	cset := CharSet("")
+	for _, m := range dfa.Leaves {
+		cset.OrWith(m.Cset)
+	}
 	ShowLabel(f, label)
+	fmt.Fprintf(f, "Inputs: %s\n", cset.Bracketed())
+	fmt.Fprintf(f, "Witnesses: %s\n", dfa.Witnesses().Bracketed())
 	fmt.Fprintf(f, "begin => %s\n", dfa.Tree.Data().FirstPos)
 	for _, m := range dfa.Leaves {
 		fmt.Fprintf(f, "p%d. %s => %s\n", m.Posn, m, m.FollowPos)
 	}
 }
 
-//  DFA.DumpStates prints a readable list of states, with optional label.
-func (dfa *DFA) DumpStates(f io.Writer, label string) {
+//  DFA.ShowStates prints a readable list of states, with optional label.
+func (dfa *DFA) ShowStates(f io.Writer, label string) {
 	ShowLabel(f, label)
 	for _, ds := range dfa.Dstates {
-		//#%#% print partition index
-		//#%#% fmt.Fprintf(f, "[%d] ", ds.PartNum)
+		if DBG_MIN { // print partition index if debugging
+			fmt.Fprintf(f, "[%d] ", ds.PartNum)
+		}
 
 		// print index with "accept" flag '#'
 		if ds.AccSet != nil {
@@ -214,22 +221,47 @@ func (dfa *DFA) DumpStates(f io.Writer, label string) {
 	}
 }
 
-//  DFA.ToDot generates a Dot (GraphViz) representation of the DFA.
-func (dfa *DFA) ToDot(f io.Writer, label string) {
-	fmt.Fprintln(f, "//", label)
-	fmt.Fprintln(f, "digraph DFA {")
-	fmt.Fprintf(f, "label=%s\n", strconv.Quote(label))
-	fmt.Fprintln(f, "node [shape=circle, height=.3, margin=0, fontsize=10]")
-	fmt.Fprintln(f, "s0 [shape=triangle, regular=true]")
-	for _, src := range dfa.Dstates {
-		if src.AccSet != nil {
-			fmt.Fprintf(f, "s%d[shape=doublecircle]\n", src.Index)
+//  DFA.Witnesses returns a minimal set of characters sufficient to
+//  distinguish all paths through the DFA.
+func (dfa *DFA) Witnesses() *BitSet {
+	needlist := make([]*BitSet, 0) // known needed classes
+	// invariant: needlist holds disjoint non-empty charsets
+	for _, d := range dfa.Leaves {
+		cs := d.Cset // chars accepted at this leaf
+		for {
+			j := overlapper(needlist, cs)
+			if j < 0 { // if no overlap found
+				break
+			}
+			intersection := cs.And(needlist[j]) // bits of interest
+			cs = cs.AndNot(intersection)        // bits deferred
+			if !needlist[j].Equals(intersection) {
+				needlist = append(needlist, intersection)
+				needlist[j] = needlist[j].AndNot(intersection)
+			}
 		}
-		slist, xmap := src.InvertMap()
-		for _, dst := range slist.Members() {
-			fmt.Fprintf(f, "s%d->s%d[label=\"%s\"]\n",
-				src.Index, dst, xmap[uint(dst)].Bracketed())
+		if !cs.IsEmpty() {
+			needlist = append(needlist, cs)
 		}
 	}
-	fmt.Fprintln(f, "}")
+	// now needlist covers all characters accepted by the DFA;
+	// choose one char from each entry to serve as a witness
+	result := &BitSet{}
+	for _, cs := range needlist {
+		result.Set(cs.LowBit())
+	}
+	return result
+}
+
+//  overlapper returns the index of a set that overlaps the new chars
+//  if there is no such index it returns -1
+func overlapper(setlist []*BitSet, newchars *BitSet) int {
+	if !newchars.IsEmpty() {
+		for i := range setlist {
+			if !setlist[i].And(newchars).IsEmpty() {
+				return i
+			}
+		}
+	}
+	return -1
 }

@@ -1,0 +1,23 @@
+// NFA: (a|b)*abb
+digraph NFA {
+label="NFA: (a|b)*abb"
+node [shape=circle, height=.3, margin=0, fontsize=10]
+i->p0[label=" a"]
+i->p1[label=" b"]
+i->p2[label=" a"]
+i [shape=triangle, regular=true, label=""]
+p0 [label="p0"]
+p0->p0[label=" a"]
+p0->p1[label=" b"]
+p0->p2[label=" a"]
+p1 [label="p1"]
+p1->p0[label=" a"]
+p1->p1[label=" b"]
+p1->p2[label=" a"]
+p2 [label="p2"]
+p2->p3[label=" b"]
+p3 [label="p3"]
+p3->p4[label=" b"]
+p4 [label="p4"]
+p4 [shape=doublecircle]
+}

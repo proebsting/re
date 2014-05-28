@@ -14,8 +14,8 @@ type RegEx struct {
 }
 
 type DFAexample struct {
-	State   uint
-	RXSet   []uint
+	State   int
+	RXSet   []int
 	Example string
 }
 
@@ -36,7 +36,7 @@ func question(u []*rx.BitSet, h []*DFAexample, e []*RegEx, alive *rx.BitSet, tra
 
 	if track == 1 {
 		if alive.Count() == 1 {
-			fmt.Println("The reg ex you are looking for is: ", e[alive.Lowbit()].Rexpr)
+			fmt.Println("The reg ex you are looking for is: ", e[alive.LowBit()].Rexpr)
 			return t, k
 		}
 	}
@@ -56,7 +56,7 @@ func question(u []*rx.BitSet, h []*DFAexample, e []*RegEx, alive *rx.BitSet, tra
 
 		if input1 == "Yes" || input1 == "y" || input1 == "Y" || input1 == "yes" {
 			track++
-			fmt.Println("The reg ex you are looking for is: ", e[alive.Lowbit()].Rexpr)
+			fmt.Println("The reg ex you are looking for is: ", e[alive.LowBit()].Rexpr)
 			return t, k
 		} else if input1 == "No" || input1 == "N" || input1 == "n" || input1 == "no" {
 			fmt.Println("No reg ex in our library matches your query.")
@@ -107,7 +107,7 @@ begin:
 		track++
 		if nextQn.Count() == 1 {
 			t = append(t, nextQn)
-			fmt.Println("The reg ex you are looking for is: ", e[nextQn.Lowbit()].Rexpr)
+			fmt.Println("The reg ex you are looking for is: ", e[nextQn.LowBit()].Rexpr)
 			k = append(k, h[examInt])
 			return t, k
 		}
@@ -132,10 +132,10 @@ begin:
 
 		bs := new(rx.BitSet)
 		for i := 0; i < cap(e); i++ {
-			if nextQn.Test(uint(i)) {
+			if nextQn.Test(i) {
 
 			} else {
-				bs.Set(uint(i))
+				bs.Set(i)
 			}
 		}
 		alive = bs.And(alive)
@@ -215,7 +215,7 @@ func main() {
 	for it := 0; it < len(testExp.Examples); it++ {
 		elem := new(rx.BitSet)
 		for nt := 0; nt < len(testExp.Examples[it].RXSet); nt++ {
-			elem.Set(uint(testExp.Examples[it].RXSet[nt]))
+			elem.Set(testExp.Examples[it].RXSet[nt])
 		}
 		start = append(start, elem)
 	}
@@ -228,7 +228,7 @@ func main() {
 	//Make a bit set for regular expressions that are still alive, initially set to all 1's
 	alive := new(rx.BitSet)
 	for it := 0; it < len(testExp.Expressions); it++ {
-		alive.Set(uint(it))
+		alive.Set(it)
 	}
 	// fmt.Println(alive.String());
 

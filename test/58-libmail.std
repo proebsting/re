@@ -1,43 +1,69 @@
+Options: -R -T -g -h -i -l -v -I 0
 
-# RegExLib.com -- browse -- Email
+         # RegExLib.com -- browse -- Email
 
-#
+         #
 
-# 26. "Email validator that adheres directly to the specification"
+         # 26. "Email validator that adheres directly to the specification"
 
-regexp: ([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)
-tree:   (((([-.0-9A-Z_a-z]+@)((((((([[0-9]{1,3}).)[0-9]{1,3}).)[0-9]{1,3}).)|([-0-9A-Za-z]+.)+))([A-Za-z]{2,4}|[0-9]{1,3}))]?)
+expr 0: ([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)
+tree:   (((([.0-9A-Z_a-z-]+@)((((((([[0-9]{1,3}).)[0-9]{1,3}).)[0-9]{1,3}).)|([0-9A-Za-z-]+.)+))([A-Za-z]{2,4}|[0-9]{1,3}))]?)
+augmnt: ((((([.0-9A-Z_a-z-]+@)((((((([(([0-9][0-9]?)[0-9]?)).)(([0-9][0-9]?)[0-9]?)).)(([0-9][0-9]?)[0-9]?)).)|([0-9A-Za-z-]+.)+))(((([A-Za-z][A-Za-z])[A-Za-z]?)[A-Za-z]?)|(([0-9][0-9]?)[0-9]?)))]?)#)
 length: 5 to *
 -------------------- Examples --------------------
-ex(0):  _@[6.8.9.je  J@[6.5.8.8  o@[9.7.8.1  p@[6.5.3.iZ  3@[9.2.5.7  D@h.4
-ex(1):  e@i.AgB]  Z@[28.71.168.wdKZ]  q@[075.00.834.Og]  D@[92.15.1.48
-ex(2):  aV@Ax.vq.drJ  W@e.r8.TDYS  f@UT.C.574  A@t6.aM.XD]  l@[58.01.57.TO]
-ex(3):  G@DM.j.58]  zq@[41.49.33.LgSy  kHq@fVa.R.89]  sW@kh.I.LQH
-ex(5):  43a@[2.0.6.6  uE2@3Urz.dv  4e@[39.61.976.CvNn  _GK@u.IK8.577]
-ex(8):  o@r.ZX.E8CYOp.8q01pWQ.zFhDufI.-XY6lI2.ZE5s.A56c.64]
+ex(0):  c@y.JD  Q@[9.2.1.YB  9@[6.0.2.ZB  Z@[4.8.7.MF  k@[9.7.6.XQ  g@L.6
+ex(1):  f@[0.8.01.19  o@[994.38.750.ZR  T@[471.041.08.20  5@o.62
+ex(2):  X@[62.83.82.00  e@[90.043.33.34  F@[04.90.2.61]  1J@[7.66.9.SlqH
+ex(3):  g00@[2.537.66.gKf]  9@D.MFN  DUM@S.JY.t.dhX  rdt@[719.0.64.qWUL
+ex(5):  kw8h@[83.23.024.vA  Z95@NA-V.2onf.EDHH.Q.Y.GZ]  6i@[64.3.9.30
+ex(8):  1fB0G4VF@[40.3.441.75  6Eg@[40.775.817.16]
+---------------- Examples from DFA ---------------
+s1:  E@q.8
+s12:  E@q.8]
+s14:  E@q.84
+s13:  E@q.yY
+s24:  E@q.845
+s25:  E@q.yYe
+s21:  E@[5.5.2.8
+s22:  E@[5.5.2.PB
+s27:  E@[5.5.2.88
+s28:  E@[5.5.2.PBp
+s23:  E@[5.5.2.882
 
-# 356. "my all-time favourite e-mail validator"
+         # 356. "my all-time favourite e-mail validator"
 
-regexp: (\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})
-tree:   (((((((([0-9A-Z_a-z][-.0-9A-Z_a-z]*)[0-9A-Z_a-z])@)[0-9A-Z_a-z])[-.0-9A-Z_a-z]*)[0-9A-Z_a-z]).)[0-9A-Z_a-z]{2,3})
+expr 1: (\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})
+tree:   (((((((([0-9A-Z_a-z][.0-9A-Z_a-z-]*)[0-9A-Z_a-z])@)[0-9A-Z_a-z])[.0-9A-Z_a-z-]*)[0-9A-Z_a-z]).)[0-9A-Z_a-z]{2,3})
+augmnt: ((((((((([0-9A-Z_a-z][.0-9A-Z_a-z-]*)[0-9A-Z_a-z])@)[0-9A-Z_a-z])[.0-9A-Z_a-z-]*)[0-9A-Z_a-z]).)(([0-9A-Z_a-z][0-9A-Z_a-z])[0-9A-Z_a-z]?))#)
 length: 8 to *
 -------------------- Examples --------------------
-ex(0):  _p@BO.cV  4H@cc.wj  sM@9D.d4  QD@Lf.AC  vG@OE.cE  DS@Uq.AX  Um@hF.V4
-ex(1):  _SO@ns.a6  go@uYE.5Yt  yO@j0G.Ju  HbD@DFZ.Ws  Ez@ZU.dbu  oQ@yS.P5
-ex(2):  GT@NU.56  4Z5@LXjp.mf  IY@qUJ.NDF  tM@Xu.Ce  yQ@2yuU.sW  cj@uc1F.0Ex
-ex(3):  AY@Lx.Vv  TCn@2upuz.X0w  jG2@IVZT.F_  VCnd@pZC9u.UD  YcMu@WyUMI.de
-ex(5):  mKdcjJ@mBH6.rt0  cPp@o8.QI  908@jVpw.hPG  c4hc@R-WGj2.5d
-ex(8):  Y3UZKG3@qZ.XS  GtFj@RAs0a.lDc  47@3Wzx8M.Rd  Gz7I@numV.eP
+ex(0):  HW@Oq.s2  o3@_k.Kc  lI@qB.NJ  Td@ei.Dp  eA@zW.uc  eC@B0.Kb  Td@0K.hM
+ex(1):  0W6@tyo.u3  Oo@JY.qw  fO@yvu.aP  1u@9A5.i3  G6l@dW.bZ  80@kl1.qB
+ex(2):  cILN@77b_.wd  n72@fJf.Gc  m.le@n_XG.tN  kQD@v3.UD2  vCwt@ita.IZ
+ex(3):  G_ah@9s.cD4  5t@gBzy.sey  0n@q-Dc.S3  ql@XDEy6.hYQ  YLy@6z.hw
+ex(5):  luIb1@HERp.bXl  ZvAfV7E@CnYgMDf.a_J  mJg@dt3ic.Rmo  hedg@wDh.k6
+ex(8):  TaY6FN@oso.Ip  swXVMMekq@knpUr3G.Rs  cHe5Y@tZ9.dkb  3ZVbc@5cREw.2l
+---------------- Examples from DFA ---------------
+s1:  V6@5O.YR
+s9:  V6@5O.YRV
 
-# 1012. "A short and sweet email address validator"
+         # 1012. "A short and sweet email address validator"
 
-regexp: ([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}
-tree:   ((((([0-9A-Za-z]+[&+-.;_amp])*[0-9A-Za-z]+)@)([-0-9A-Za-z]+.)+)[A-Za-z]{2,6})
+expr 2: ([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}
+tree:   ((((([0-9A-Za-z]+[&+.;_amp-])*[0-9A-Za-z]+)@)([0-9A-Za-z-]+.)+)[A-Za-z]{2,6})
+augmnt: (((((([0-9A-Za-z]+[&+.;_amp-])*[0-9A-Za-z]+)@)([0-9A-Za-z-]+.)+)((((([A-Za-z][A-Za-z])[A-Za-z]?)[A-Za-z]?)[A-Za-z]?)[A-Za-z]?))#)
 length: 6 to *
 -------------------- Examples --------------------
-ex(0):  Z@H.iY  l@B.lp  A@h.cS  w@k.eU  J@b.Wy  B@I.qQ  i@F.lF  J@O.xK  D@g.HL
-ex(1):  m@U.TPXRt  U+b@e.JpU  K.9@7.Odh  U@X.HxOg  o_1@C.jjpqt  2_A@y.ZWGyp
-ex(2):  a@DU.LQ  sN+m@U.wWRXK  r@e.xUBg  h.6@8l.I.hSlx  VX-E+l@y.Xp.IPVC
-ex(3):  0x&0aVq-yzy@XBm.QLRQ  MF-Ngmh@V.qp.DG.lgY  o@7j8.ZXb  yu@jm.oxy
-ex(5):  G@f.EA.SsO.L.gs867.BD  DSH;ky@N4t0P.m.IBK.HXjnn.8rgJH.yE
-ex(8):  Oo.ucwRAJ_QzRDy@9ZQtaWMh.U.odk.Z9GvX.dl.g.1d.igeh
+ex(0):  H@w.yJ  2@-.Dv  z@n.qY  q@5.jD  m@x.ZB  b@V.Dc  c@e.yM  K@I.Ut  0@B.oX
+ex(1):  O;6@8.YVaW  y-J@e.EkmVr  l;O@T.KrNYx  e@C.hueR  8@o.PpvOey  v@r.Sx
+ex(2):  RVpfW.f@w.lQb  F.dk@yo.dmsM  n_E.N@l.x.lGbQo  f9-c@Zb.o.jwBj
+ex(3):  4QY+u6;hw_ak4@W.ucvj  z;A.p5_lZe@fV.sMnY  Vn;J@YKt.6.CuUP
+ex(5):  KJNFo-NIpJ;af@kw8h.apUr.zlGicV
+ex(8):  gkAe0voy@b.-nRFd.52eEVsV.BLkhE
+---------------- Examples from DFA ---------------
+s1:  P@T.pr
+s10:  P@T.prq
+s9:  P@T.prqP
+s8:  P@T.prqPI
+s7:  P@T.prqPID
+3 expression(s) loaded

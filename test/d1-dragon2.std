@@ -1,15 +1,28 @@
-// (a|b)*abb
-digraph DFA {
-label="(a|b)*abb"
-node [shape=circle, height=.3, margin=0, fontsize=10]
-s0 [shape=triangle, regular=true]
-s0->s0[label="[b]"]
-s0->s3[label="[a]"]
-s1[shape=doublecircle]
-s1->s0[label="[b]"]
-s1->s3[label="[a]"]
-s2->s1[label="[b]"]
-s2->s3[label="[a]"]
-s3->s2[label="[b]"]
-s3->s3[label="[a]"]
-}
+
+         #! rxplor -m -l -n -d
+
+         #! rxplor -N -
+
+         #! rxplor -D -
+
+expr 0: (a|b)*abb
+----------------------- NFA ----------------------
+Inputs: [ab]
+Witnesses: [ab]
+begin => { 0 1 2 }
+p0. a => { 0 1 2 }
+p1. b => { 0 1 2 }
+p2. a => { 3 }
+p3. b => { 4 }
+p4. b => { 5 }
+p5. # => { }
+----------------- Unoptimized DFA ----------------
+s0. { p0 p1 p2 } [b]:s0 [a]:s1
+s1. { p0 p1 p2 p3 } [a]:s1 [b]:s2
+s2. { p0 p1 p2 p4 } [a]:s1 [b]:s3
+s3# { p0 p1 p2 p5 } [b]:s0 [a]:s1
+------------------ Minimized DFA -----------------
+s0. { p0 p1 p2 } [b]:s0 [a]:s3
+s1# { p0 p1 p2 p5 } [b]:s0 [a]:s3
+s2. { p0 p1 p2 p4 } [b]:s1 [a]:s3
+s3. { p0 p1 p2 p3 } [b]:s2 [a]:s3

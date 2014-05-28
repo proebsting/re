@@ -1,20 +1,23 @@
 RX TO-DO LIST
 (For consideration: not all of these are clear wins.)
 
-PRIORITIES:
-Add metadata to the JSON output of rxg
+WEB APP:
+Styling
+Explanatory prose
+Resource limit? (state count? replication max?)
 
 REGEXPS:
+Expand wildcards and classes to include Unicode
 Add POSIX classes?
 Add \b anchor? Embedded ^ and $?
 Add flags such as "case insensitive"??
 Other Perl stuff?
 
 UTILITIES:
+Add metadata to the JSON output of rxg
+In rxcluster, subdivide large clusters
 Show WHICH pattern accepts on DOT output
-Produce DOT for NFA, too
-Combine multiple utilities into one (Swiss army knife)?
 
 CLEANUP:
-Address #%#% annotations in code
+Add func for "canonizing" DFA (clearer output, easier testing)
 Make gofmt an automatic pre-commit hook
