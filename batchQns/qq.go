@@ -75,7 +75,7 @@ func main() {
   	  for line != string('\n') {
 		line = line[:len(line)-1]
 		qns = append(qns, line)
-	  	answers.Set(uint(a));
+	  	answers.Set(a);
 	 	a++;
 	     /* _,err = r.ReadByte()
 	      if err != nil {
@@ -559,7 +559,7 @@ func load(filename string) ([]*rx.RegExParsed, []rx.Node) {
 
 	rx.LoadExpressions(filename, func(l *rx.RegExParsed) {
 		if l.Tree != nil { // if a real expression
-			augtree := rx.Augment(l.Tree, uint(len(trees)))
+			augtree := rx.Augment(l.Tree, len(trees))
 			trees = append(trees, augtree)
 			exprs = append(exprs, l)
 		} else if l.Err != nil { // if erroneous
@@ -588,7 +588,7 @@ func askQuestions(u []*rx.BitSet, h []rx.DFAexample, e []*RegEx, alive *rx.BitSe
 		if alive.Count() == 1 {
 			//fmt.Println("The reg ex you are looking for is: ", findExpr(alive,e))
 			if( findQn(alive,h) != ""){				
-				answers.Set(uint(iter));
+				answers.Set(iter);
 				qns = append(qns, findQn(alive,h))
 			}
 			fmt.Println("answers after iter = ", iter, " ", answers.String())
@@ -620,7 +620,7 @@ func askQuestions(u []*rx.BitSet, h []rx.DFAexample, e []*RegEx, alive *rx.BitSe
 
 		if input1 == "Yes" || input1 == "y" || input1 == "Y" || input1 == "yes" {
 			track++
-			answers.Set(uint(iter));
+			answers.Set(iter);
 			//fmt.Println("1The reg ex you are looking for is: ", findExpr(alive,e))
 			//qns = append(qns, findQn(alive,h))
 			fmt.Println("answers after iter = ", iter, " ", answers.String())
@@ -708,12 +708,12 @@ begin:
 			t = append(t, nextQn)
 			//fmt.Println("2The reg ex you are looking for is: ", findExpr(nextQn,e))
 			k = append(k, h[examInt])
-			answers.Set(uint(iter));
+			answers.Set(iter);
 			//qns = append(qns, findQn(alive,h))
 			fmt.Println("answers after iter = ", iter, " ", answers.String())
 			return t, k, answers, qns
 		}
-		answers.Set(uint(iter));
+		answers.Set(iter);
 		alive = alive.And(nextQn)
 		for i := 0; i < len(u); i++ {
 			if ( !((nextQn.And(u[i])).IsEmpty()) && !(nextQn.Equals(u[i])) ) {
@@ -735,8 +735,8 @@ begin:
 
 		bs := new(rx.BitSet)
 		for i := 0; i < len(e); i++ {
-			if ( !(nextQn.Test(uint(e[i].Index))) ){
-				bs.Set(uint(e[i].Index))
+			if ( !(nextQn.Test(e[i].Index)) ){
+				bs.Set(e[i].Index)
 			}// else {
 				//bs.Set(uint(i))
 			//}
@@ -770,14 +770,14 @@ func findExpr(nextQn *rx.BitSet, e []*RegEx) (string) {
 	b:= new(rx.BitSet)
 	for i:=0;i<len(e); i++{
 		
-		b.Set(uint(e[i].Index));
+		b.Set(e[i].Index);
 		//fmt.Println(b.String())
 		//fmt.Println(nextQn.String())
 		if(b.Equals(nextQn)){
 			//fmt.Println(e[i].Rexpr)
 			return e[i].Rexpr;
 		}
-		b.Clear(uint(e[i].Index));
+		b.Clear(e[i].Index);
 	}
 	return ""
 }
@@ -820,7 +820,7 @@ func refine(answers *rx.BitSet, qns []string, cand []*rx.DFA, expns []*rx.RegExP
 		for j:=0; j<len(qns); j++{
 			//fmt.Println("qns = ", qns[j])		
 			if( cand[i].Accepts(qns[j]) != nil ) {
-				test.Set(uint(j))		
+				test.Set(j)		
 			}
 		}
 		//fmt.Println("test = ", test.String())
@@ -917,7 +917,7 @@ func askBulk(  answers *rx.BitSet, qns []string, perm []int,  cand []*rx.DFA, ex
 
 		 alive := new(rx.BitSet)
   		 for i:=0; i<len(expressions); i++ { 
-    			 alive.Set(uint(expressions[i].Index));
+    			 alive.Set(expressions[i].Index);
   		 }
 
 		//fmt.Println("alive = ", alive.String());
@@ -1009,7 +1009,7 @@ func askBulk(  answers *rx.BitSet, qns []string, perm []int,  cand []*rx.DFA, ex
   		 }
 
 		if input == "Yes" || input == "y" || input == "Y" || input == "yes" {
-			answers.Set(uint(i))
+			answers.Set(i)
 
 		} else if input == "No" || input == "N" || input == "n" || input == "no" {
 
@@ -1103,7 +1103,7 @@ func askBulk2(  answers *rx.BitSet, qns []string, perm []int,  cand []*rx.DFA, e
 
 		 alive := new(rx.BitSet)
   		 for i:=0; i<len(expressions); i++ { 
-    			 alive.Set(uint(expressions[i].Index));
+    			 alive.Set(expressions[i].Index);
   		 }
 
 		//fmt.Println("alive = ", alive.Count());
@@ -1123,7 +1123,7 @@ func askBulk2(  answers *rx.BitSet, qns []string, perm []int,  cand []*rx.DFA, e
 		    for i:=0;i<len(cand); i++{
 			if( cand[i].Accepts(h[j].Example) != nil ){
 				total++
-				over.Set(uint(i))
+				over.Set(i)
 			}
 		    }
 		   if(math.Abs(float64(total)-half) < float64(diff)){
@@ -1232,7 +1232,7 @@ func askBulk2(  answers *rx.BitSet, qns []string, perm []int,  cand []*rx.DFA, e
 
 		if input == "Yes" || input == "y" || input == "Y" || input == "yes" {
 
-			answers.Set(uint(i))
+			answers.Set(i)
 
 		} else if input == "No" || input == "N" || input == "n" || input == "no" {
 
