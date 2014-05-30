@@ -4,9 +4,9 @@ RX TO-DO LIST
 WEB APP:
 Styling
 Explanatory prose
-Resource limit? (state count? replication max?)
 
 REGEXPS:
+Add settable complexity limit
 Expand wildcards and classes to include Unicode
 Add POSIX classes?
 Add \b anchor? Embedded ^ and $?
@@ -14,6 +14,8 @@ Add flags such as "case insensitive"??
 Other Perl stuff?
 
 UTILITIES:
+Make rxpick handle newlines in metadata better
+Handle newlines in exprs somehow?  
 Add metadata to the JSON output of rxg
 In rxcluster, subdivide large clusters
 Show WHICH pattern accepts on DOT output
