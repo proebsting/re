@@ -8,6 +8,7 @@ expr 0: [\-]+
 tree:   -+
 augmnt: (-+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(1):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
@@ -22,6 +23,7 @@ expr 1: [\]]*
 tree:   ]*
 augmnt: (]*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      ]  ]  ]        ]        ]      ]      ]      ]  ]  ]    ]    ]  ]  
@@ -36,6 +38,7 @@ expr 2: [ab\[cd\-gh\]ij]+
 tree:   [][a-dg-j-]+
 augmnt: ([][a-dg-j-]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  -  i  g  j  c  c  [  b  j  [  [  [  ]  g  ]  a  -  h  j  -  c  i  -  d
 ex(1):  a  j  ]  ]  -  j  a  [  i  g  i  d  [  [  -  [  -  [  d  h  i  -  ]  g
@@ -52,6 +55,7 @@ expr 3: \d+
 tree:   [0-9]+
 augmnt: ([0-9]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
 ex(1):  6  2  0  1  2  7  8  5  4  8  3  0  0  9  4  7  4  6  8  9  7  8  0  2
@@ -66,6 +70,7 @@ expr 4: [\d]+
 tree:   [0-9]+
 augmnt: ([0-9]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
 ex(1):  6  2  0  1  2  7  8  5  4  8  3  0  0  9  4  7  4  6  8  9  7  8  0  2
@@ -80,6 +85,7 @@ expr 5: [\d0IZESB]+
 tree:   [0-9BEISZ]+
 augmnt: ([0-9BEISZ]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  8  S  6  9  2  7  1  4  I  7  1  B  5  2  I  8  E  I  4  S  E  3  S  1
 ex(1):  7  E  7  3  2  3  1  1  1  5  B  B  0  Z  I  5  1  0  4  9  1  8  4  2
@@ -94,6 +100,7 @@ expr 6: 0x([\dABCDEF][\dABCDEF])+
 tree:   ((0x)([0-9A-F][0-9A-F])+)
 augmnt: (((0x)([0-9A-F][0-9A-F])+)#)
 length: 4 to *
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  0xE0  0xA4  0x76  0x44  0xC0  0xEA  0x8F  0xF4  0x19  0x0D  0x2A  0x48
 ex(1):  0x19  0xC6  0x45  0x9B  0x14  0xB9  0x38  0x6A  0xF7  0x69  0x7E  0x7A
@@ -108,6 +115,7 @@ expr 7: \w+
 tree:   [0-9A-Z_a-z]+
 augmnt: ([0-9A-Z_a-z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  H  W  L  O  q  V  2  o  3  B  _  k  z  c  l  I  u  q  B  Y  N  J  T  d
 ex(1):  U  i  V  D  p  e  A  9  W  U  u  c  e  C  U  B  0  x  K  b  T  d  C  0
@@ -122,6 +130,7 @@ expr 8: [\w]+
 tree:   [0-9A-Z_a-z]+
 augmnt: ([0-9A-Z_a-z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  H  W  L  O  q  V  2  o  3  B  _  k  z  c  l  I  u  q  B  Y  N  J  T  d
 ex(1):  U  i  V  D  p  e  A  9  W  U  u  c  e  C  U  B  0  x  K  b  T  d  C  0
@@ -136,6 +145,7 @@ expr 9: \w+-\w+
 tree:   (([0-9A-Z_a-z]+-)[0-9A-Z_a-z]+)
 augmnt: ((([0-9A-Z_a-z]+-)[0-9A-Z_a-z]+)#)
 length: 3 to *
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  H-L  O-V  2-3  B-k  z-l  I-q  B-N  J-d  m-i  V-p  e-b  9-U  u-e  C-B
 ex(1):  b-H  d-0  K-h  M-P  x-C  G-5  0-r  6-t  p-o  Y-_  O-o  _-J  J-q  w-f
@@ -150,6 +160,7 @@ expr 10: <\s>
 tree:   ((<[\t-\r ])>)
 augmnt: (((<[\t-\r ])>)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >
 ex(1):  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >  < >
@@ -166,6 +177,7 @@ expr 11: <[\a]>
 tree:   ((<[\a])>)
 augmnt: (((<[\a])>)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
 ex(1):  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>  <\a>
@@ -180,6 +192,7 @@ expr 12: <[\b]>
 tree:   ((<[\b])>)
 augmnt: (((<[\b])>)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
 ex(1):  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>  <\b>
@@ -194,6 +207,7 @@ expr 13: <[\e]>
 tree:   ((<[\x1b])>)
 augmnt: (((<[\x1b])>)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
 ex(1):  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>  <\x1b>
@@ -208,6 +222,7 @@ expr 14: <[\f]>
 tree:   ((<[\f])>)
 augmnt: (((<[\f])>)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
 ex(1):  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>  <\f>
@@ -222,6 +237,7 @@ expr 15: <[\n]>
 tree:   ((<[\n])>)
 augmnt: (((<[\n])>)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
 ex(1):  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>  <\n>
@@ -236,6 +252,7 @@ expr 16: <[\r]>
 tree:   ((<[\r])>)
 augmnt: (((<[\r])>)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
 ex(1):  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>  <\r>
@@ -250,6 +267,7 @@ expr 17: <[\t]>
 tree:   ((<[\t])>)
 augmnt: (((<[\t])>)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
 ex(1):  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>  <\t>
@@ -264,6 +282,7 @@ expr 18: <[\v]>
 tree:   ((<[\v])>)
 augmnt: (((<[\v])>)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>
 ex(1):  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>  <\v>
@@ -280,6 +299,7 @@ expr 19: [a-w]
 tree:   [a-w]
 augmnt: ([a-w]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  l  h  v  a  h  i  l  b  e  m  p  h  g  h  p  q  r  q  l  p  e  t  a  h
 ex(1):  v  r  u  d  i  w  u  p  w  e  n  l  b  j  f  e  a  u  t  u  c  r  q  e
@@ -294,6 +314,7 @@ expr 20: [\142-x]
 tree:   [b-x]
 augmnt: ([b-x]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  m  i  w  b  i  j  m  c  f  n  q  i  h  i  q  r  s  r  m  q  f  u  b  i
 ex(1):  w  s  v  e  j  x  v  q  x  f  o  m  c  k  g  f  b  v  u  v  d  s  r  f
@@ -308,6 +329,7 @@ expr 21: [c-\x79]
 tree:   [c-y]
 augmnt: ([c-y]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  n  j  x  c  j  k  n  d  g  o  r  j  i  j  r  s  t  s  n  r  g  v  c  j
 ex(1):  x  t  w  f  k  y  w  r  y  g  p  n  d  l  h  g  c  w  v  w  e  t  s  g
@@ -322,6 +344,7 @@ expr 22: [\x64-\u007A]
 tree:   [d-z]
 augmnt: ([d-z]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  o  k  y  d  k  l  o  e  h  p  s  k  j  k  s  t  u  t  o  s  h  w  d  k
 ex(1):  y  u  x  g  l  z  x  s  z  h  q  o  e  m  i  h  d  x  w  x  f  u  t  h
@@ -338,6 +361,7 @@ expr 23: [\D]+
 tree:   [\x01-/:-\u007f]+
 augmnt: ([\x01-/:-\u007f]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  ~  $  (  I  l  ;  w  #  F  x  c  [  s  <  X  [  =  R  V  %  D  I  J  z
 ex(1):  T  m  d  f  .  i  -  M  W  `  )  ]  N  i  )  r  c  O  '  u  i  V  E  L
@@ -352,6 +376,7 @@ expr 24: [\W]+
 tree:   [\x01-/:-@[-^`{-\u007f]+
 augmnt: ([\x01-/:-@[-^`{-\u007f]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  ~  $  (  {  *  }  ?  ?  %  +  |  #  )  \\  `  >  !  }  [  .  $  $  `  )
 ex(1):  \"  )  *  |  '  |  {  ]  :  {  ,  ?  }  ~  *  ~  $  :  [  %  &  :  &  (
@@ -366,6 +391,7 @@ expr 25: [\S]+
 tree:   [\x01-\b\x0e-\x1f!-\u007f]+
 augmnt: ([\x01-\b\x0e-\x1f!-\u007f]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  M  1  8  #  R  c  r  ~  -  g  w  p  R  )  Y  7  4  }  e  9  T  e  =  %
 ex(1):  c  e  C  \"  C  :  e  j  #  [  n  #  O  $  #  B  e  W  w  V  l  g  w  ;
@@ -382,6 +408,7 @@ expr 26: [\d]+
 tree:   [0-9]+
 augmnt: ([0-9]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
 ex(1):  6  2  0  1  2  7  8  5  4  8  3  0  0  9  4  7  4  6  8  9  7  8  0  2
@@ -396,6 +423,7 @@ expr 27: [^\D]+
 tree:   [0-9]+
 augmnt: ([0-9]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
 ex(1):  6  2  0  1  2  7  8  5  4  8  3  0  0  9  4  7  4  6  8  9  7  8  0  2
@@ -410,6 +438,7 @@ expr 28: [\w]+
 tree:   [0-9A-Z_a-z]+
 augmnt: ([0-9A-Z_a-z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  H  W  L  O  q  V  2  o  3  B  _  k  z  c  l  I  u  q  B  Y  N  J  T  d
 ex(1):  U  i  V  D  p  e  A  9  W  U  u  c  e  C  U  B  0  x  K  b  T  d  C  0
@@ -424,6 +453,7 @@ expr 29: [^\W]+
 tree:   [0-9A-Z_a-z]+
 augmnt: ([0-9A-Z_a-z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  H  W  L  O  q  V  2  o  3  B  _  k  z  c  l  I  u  q  B  Y  N  J  T  d
 ex(1):  U  i  V  D  p  e  A  9  W  U  u  c  e  C  U  B  0  x  K  b  T  d  C  0
@@ -438,6 +468,7 @@ expr 30: [\s]+
 tree:   [\t-\r ]+
 augmnt: ([\t-\r ]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -452,6 +483,7 @@ expr 31: [^\S]+
 tree:   [\t-\r ]+
 augmnt: ([\t-\r ]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        

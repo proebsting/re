@@ -8,6 +8,7 @@ expr 0: ab{0}c
 tree:   (ac)
 augmnt: ((ac)#)
 length: 2 to 2
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(1):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
@@ -43,6 +44,7 @@ expr 1: ab{1}c
 tree:   ((ab)c)
 augmnt: (((ab)c)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(1):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -83,6 +85,7 @@ expr 2: ab{2}c
 tree:   ((ab{2})c)
 augmnt: (((a(bb))c)#)
 length: 4 to 4
+cplxty: 6
 -------------------- Examples --------------------
 ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 ex(1):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
@@ -128,6 +131,7 @@ expr 3: ab{3}c
 tree:   ((ab{3})c)
 augmnt: (((a((bb)b))c)#)
 length: 5 to 5
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
 ex(1):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
@@ -178,6 +182,7 @@ expr 4: ab{4}c
 tree:   ((ab{4})c)
 augmnt: (((a(((bb)b)b))c)#)
 length: 6 to 6
+cplxty: 8
 -------------------- Examples --------------------
 ex(0):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
 ex(1):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
@@ -233,6 +238,7 @@ expr 5: ab{0,0}c
 tree:   (ac)
 augmnt: ((ac)#)
 length: 2 to 2
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(1):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
@@ -268,6 +274,7 @@ expr 6: ab{0,1}c
 tree:   ((ab?)c)
 augmnt: (((ab?)c)#)
 length: 2 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(1):  ac  ac  abc  abc  ac  abc  ac  ac  abc  abc  ac  ac  ac  abc  ac  ac
@@ -309,6 +316,7 @@ expr 7: ab{1,1}c
 tree:   ((ab)c)
 augmnt: (((ab)c)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(1):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -349,6 +357,7 @@ expr 8: ab{0,2}c
 tree:   ((ab{0,2})c)
 augmnt: (((a(b?b?))c)#)
 length: 2 to 4
+cplxty: 6
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(1):  abc  abc  abc  abbc  abc  abc  abc  abc  ac  abc  ac  ac  ac  abbc  ac
@@ -396,6 +405,7 @@ expr 9: ab{1,2}c
 tree:   ((ab{1,2})c)
 augmnt: (((a(bb?))c)#)
 length: 3 to 4
+cplxty: 6
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(1):  abc  abc  abc  abc  abc  abc  abc  abbc  abc  abc  abc  abc  abbc  abbc
@@ -442,6 +452,7 @@ expr 10: ab{2,2}c
 tree:   ((ab{2})c)
 augmnt: (((a(bb))c)#)
 length: 4 to 4
+cplxty: 6
 -------------------- Examples --------------------
 ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 ex(1):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
@@ -487,6 +498,7 @@ expr 11: ab{0,3}c
 tree:   ((ab{0,3})c)
 augmnt: (((a((b?b?)b?))c)#)
 length: 2 to 5
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(1):  abc  abc  ac  abc  abbc  abc  abbc  abbc  ac  abc  abbc  ac  abbc  abc
@@ -540,6 +552,7 @@ expr 12: ab{1,3}c
 tree:   ((ab{1,3})c)
 augmnt: (((a((bb?)b?))c)#)
 length: 3 to 5
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(1):  abc  abc  abc  abbc  abbbc  abbc  abc  abc  abc  abbc  abbc  abc  abbbc
@@ -592,6 +605,7 @@ expr 13: ab{2,3}c
 tree:   ((ab{2,3})c)
 augmnt: (((a((bb)b?))c)#)
 length: 4 to 5
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 ex(1):  abbc  abbc  abbbc  abbc  abbbc  abbc  abbc  abbc  abbc  abbbc  abbc
@@ -643,6 +657,7 @@ expr 14: ab{3,3}c
 tree:   ((ab{3})c)
 augmnt: (((a((bb)b))c)#)
 length: 5 to 5
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
 ex(1):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
@@ -693,6 +708,7 @@ expr 15: ab{2,5}c
 tree:   ((ab{2,5})c)
 augmnt: (((a((((bb)b?)b?)b?))c)#)
 length: 4 to 7
+cplxty: 9
 -------------------- Examples --------------------
 ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 ex(1):  abbbc  abbbc  abbbc  abbbc  abbc  abbbc  abbbbc  abbbc  abbbc  abbbbbc
@@ -756,6 +772,7 @@ expr 16: ab{0,}c
 tree:   ((ab*)c)
 augmnt: (((ab*)c)#)
 length: 2 to *
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(1):  ac  ac  abc  abc  ac  abc  ac  ac  abc  abc  ac  ac  ac  abc  ac  ac
@@ -795,6 +812,7 @@ expr 17: ab{1,}c
 tree:   ((ab+)c)
 augmnt: (((ab+)c)#)
 length: 3 to *
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(1):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -836,6 +854,7 @@ expr 18: ab{2,}c
 tree:   ((ab{2,})c)
 augmnt: (((a(bb+))c)#)
 length: 4 to *
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
 ex(1):  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc  abbc
@@ -882,6 +901,7 @@ expr 19: ab{3,}c
 tree:   ((ab{3,})c)
 augmnt: (((a((bb)b+))c)#)
 length: 5 to *
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
 ex(1):  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc  abbbc
@@ -933,6 +953,7 @@ expr 20: ab{4,}c
 tree:   ((ab{4,})c)
 augmnt: (((a(((bb)b)b+))c)#)
 length: 6 to *
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc
 ex(1):  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc  abbbbc

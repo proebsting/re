@@ -8,6 +8,7 @@ expr 0: a
 tree:   a
 augmnt: (a#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -38,6 +39,7 @@ expr 1: ab
 tree:   (ab)
 augmnt: ((ab)#)
 length: 2 to 2
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(1):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
@@ -73,6 +75,7 @@ expr 2: abc
 tree:   ((ab)c)
 augmnt: (((ab)c)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(1):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -113,6 +116,7 @@ expr 3: ab*c
 tree:   ((ab*)c)
 augmnt: (((ab*)c)#)
 length: 2 to *
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(1):  ac  ac  abc  abc  ac  abc  ac  ac  abc  abc  ac  ac  ac  abc  ac  ac
@@ -152,6 +156,7 @@ expr 4: a|b
 tree:   (a|b)
 augmnt: ((a|b)#)
 length: 1 to 1
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  a  b  b  b  a  a  b  a  b  a  b  a  b  a  b  b  b  a  a  b  b  a  b  a
 ex(1):  a  a  b  b  a  a  b  a  b  b  b  a  a  b  b  a  a  a  a  a  a  a  a  b
@@ -185,6 +190,7 @@ expr 5: a|b|c|d
 tree:   (a|b|c|d)
 augmnt: ((a|b|c|d)#)
 length: 1 to 1
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  c  b  d  d  a  a  d  a  d  c  d  c  b  a  d  b  b  c  a  b  d  a  d  a
 ex(1):  c  c  d  b  a  c  b  c  d  b  d  a  c  b  d  c  a  a  c  a  a  a  a  b
@@ -222,6 +228,7 @@ expr 6: ab|cd
 tree:   ((ab)|(cd))
 augmnt: (((ab)|(cd))#)
 length: 2 to 2
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  ab  ab  cd  ab  cd  ab  ab  ab  cd  ab  cd  ab  ab  ab  ab  cd  ab  ab
 ex(1):  ab  ab  ab  cd  cd  ab  cd  cd  ab  ab  ab  ab  ab  cd  cd  cd  cd  ab
@@ -265,6 +272,7 @@ expr 7: abc|de
 tree:   (((ab)c)|(de))
 augmnt: ((((ab)c)|(de))#)
 length: 2 to 3
+cplxty: 9
 -------------------- Examples --------------------
 ex(0):  abc  de  de  abc  abc  abc  abc  abc  de  abc  abc  abc  de  abc  abc
 ex(1):  abc  abc  abc  abc  de  de  abc  de  abc  abc  de  de  de  de  abc  abc
@@ -313,6 +321,7 @@ expr 8: |a|bc|def
 tree:   (()|a|(bc)|((de)f))
 augmnt: ((()|a|(bc)|((de)f))#)
 length: 0 to 3
+cplxty: 11
 -------------------- Examples --------------------
 ex(0):  bc  bc  def    def  bc  bc    bc  bc  def  a  bc  bc  def  def  bc  
 ex(1):    a      bc  bc  def  def  bc    def    def  bc            bc  bc  a  a
@@ -365,6 +374,7 @@ expr 9: ()
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -390,6 +400,7 @@ expr 10: (a)
 tree:   a
 augmnt: (a#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -420,6 +431,7 @@ expr 11: (ab)
 tree:   (ab)
 augmnt: ((ab)#)
 length: 2 to 2
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(1):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
@@ -455,6 +467,7 @@ expr 12: (ab*)
 tree:   (ab*)
 augmnt: ((ab*)#)
 length: 1 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  ab  a  a  ab  ab  a  a  ab  a  a  a  ab  a  a  ab  a  ab  ab  a  a
@@ -489,6 +502,7 @@ expr 13: (ab)*
 tree:   (ab)*
 augmnt: ((ab)*#)
 length: 0 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      ab    ab      ab      ab    ab    ab    ab    ab  ab  ab        ab
@@ -523,6 +537,7 @@ expr 14: (a|b)
 tree:   (a|b)
 augmnt: ((a|b)#)
 length: 1 to 1
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  a  b  b  b  a  a  b  a  b  a  b  a  b  a  b  b  b  a  a  b  b  a  b  a
 ex(1):  a  a  b  b  a  a  b  a  b  b  b  a  a  b  b  a  a  a  a  a  a  a  a  b
@@ -556,6 +571,7 @@ expr 15: (a|b)*
 tree:   (a|b)*
 augmnt: ((a|b)*#)
 length: 0 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      a    b      b      a    a    a    a    a  a  a        b      a    
@@ -588,6 +604,7 @@ expr 16: AB(|)
 tree:   ((AB)(()|()))
 augmnt: (((AB)(()|()))#)
 length: 2 to 2
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
 ex(1):  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB  AB
@@ -627,6 +644,7 @@ expr 17: C(|)
 tree:   (C(()|()))
 augmnt: ((C(()|()))#)
 length: 1 to 1
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
 ex(1):  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C  C
@@ -661,6 +679,7 @@ expr 18: C(A|B)
 tree:   (C(A|B))
 augmnt: ((C(A|B))#)
 length: 2 to 2
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  CA  CB  CB  CA  CA  CB  CA  CA  CA  CB  CA  CA  CA  CB  CA  CA  CB  CA
 ex(1):  CA  CB  CA  CA  CB  CB  CB  CB  CA  CB  CA  CA  CA  CA  CB  CB  CB  CA
@@ -699,6 +718,7 @@ expr 19: C(AC|B)D
 tree:   ((C((AC)|B))D)
 augmnt: (((C((AC)|B))D)#)
 length: 3 to 4
+cplxty: 9
 -------------------- Examples --------------------
 ex(0):  CACD  CBD  CACD  CACD  CBD  CBD  CBD  CBD  CACD  CACD  CACD  CACD  CBD
 ex(1):  CBD  CBD  CBD  CACD  CACD  CACD  CACD  CACD  CBD  CBD  CACD  CBD  CBD

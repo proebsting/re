@@ -6,6 +6,7 @@ expr 0: ((a))
 tree:   a
 augmnt: (a#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -20,6 +21,7 @@ expr 1: (((a)))
 tree:   a
 augmnt: (a#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -34,6 +36,7 @@ expr 2: (((a*)))
 tree:   a*
 augmnt: (a*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      a  a  a        a        a      a      a      a  a  a    a    a  a  
@@ -48,6 +51,7 @@ expr 3: (((a)*))
 tree:   a*
 augmnt: (a*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      a  a  a        a        a      a      a      a  a  a    a    a  a  
@@ -62,6 +66,7 @@ expr 4: (((a))*)
 tree:   a*
 augmnt: (a*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      a  a  a        a        a      a      a      a  a  a    a    a  a  
@@ -76,6 +81,7 @@ expr 5: (((a)))*
 tree:   a*
 augmnt: (a*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      a  a  a        a        a      a      a      a  a  a    a    a  a  
@@ -90,6 +96,7 @@ expr 6: ((a*b)@(c*d)#)*
 tree:   ((((a*b)@)(c*d))#)*
 augmnt: (((((a*b)@)(c*d))#)*#)
 length: 0 to *
+cplxty: 11
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      b@cd#    ab@cd#  b@cd#  b@cd#      b@d#  b@cd#    b@d#  ab@cd#
@@ -104,6 +111,7 @@ expr 7: ((b|f)(a|e))*
 tree:   ((b|f)(a|e))*
 augmnt: (((b|f)(a|e))*#)
 length: 0 to *
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      ba  ba  ba        ba        ba      be  ba  ba          ba      fa
@@ -118,6 +126,7 @@ expr 8: ((n|t)(o|e)+)*
 tree:   ((n|t)(o|e)+)*
 augmnt: (((n|t)(o|e)+)*#)
 length: 0 to *
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      no  no  no        no        no      ne  no  no          no      to

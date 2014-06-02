@@ -6,6 +6,7 @@ expr 0: a?
 tree:   a?
 augmnt: (a?#)
 length: 0 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      a  a  a        a        a      a      a      a  a  a    a    a  a  
@@ -21,6 +22,7 @@ expr 1: a+
 tree:   a+
 augmnt: (a+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -35,6 +37,7 @@ expr 2: a*
 tree:   a*
 augmnt: (a*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      a  a  a        a        a      a      a      a  a  a    a    a  a  
@@ -49,6 +52,7 @@ expr 3: a?b
 tree:   (a?b)
 augmnt: ((a?b)#)
 length: 1 to 2
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
 ex(1):  b  b  b  b  b  ab  ab  b  b  ab  b  b  b  ab  b  b  ab  b  ab  ab  b  b
@@ -63,6 +67,7 @@ expr 4: a+b
 tree:   (a+b)
 augmnt: ((a+b)#)
 length: 2 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(1):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
@@ -77,6 +82,7 @@ expr 5: a*b
 tree:   (a*b)
 augmnt: ((a*b)#)
 length: 1 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
 ex(1):  b  b  b  b  b  ab  ab  b  b  ab  b  b  b  ab  b  b  ab  b  ab  ab  b  b
@@ -91,6 +97,7 @@ expr 6: ab?
 tree:   (ab?)
 augmnt: ((ab?)#)
 length: 1 to 2
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  ab  a  a  ab  ab  a  a  ab  a  a  a  ab  a  a  ab  a  ab  ab  a  a
@@ -106,6 +113,7 @@ expr 7: ab+
 tree:   (ab+)
 augmnt: ((ab+)#)
 length: 2 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(1):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
@@ -120,6 +128,7 @@ expr 8: ab*
 tree:   (ab*)
 augmnt: ((ab*)#)
 length: 1 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  ab  a  a  ab  ab  a  a  ab  a  a  a  ab  a  a  ab  a  ab  ab  a  a
@@ -134,6 +143,7 @@ expr 9: a?b?
 tree:   (a?b?)
 augmnt: ((a?b?)#)
 length: 0 to 2
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):    ab  a    a    a  b    a  b  ab  b  b  a  b    b    b  a    a  b  b  a
@@ -150,6 +160,7 @@ expr 10: a+b+
 tree:   (a+b+)
 augmnt: ((a+b+)#)
 length: 2 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(1):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
@@ -164,6 +175,7 @@ expr 11: a*b*
 tree:   (a*b*)
 augmnt: ((a*b*)#)
 length: 0 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):    ab  a    a    a  b    a  b  ab  b  b  a  b    b    b  a    a  b  b  a
@@ -179,6 +191,7 @@ expr 12: a?b?c?
 tree:   ((a?b?)c?)
 augmnt: (((a?b?)c?)#)
 length: 0 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):  c  ab  c    a  a  a  abc  b  ab  b  c    ab  c  c  bc  bc  b  c  a    
@@ -196,6 +209,7 @@ expr 13: a*b*c*
 tree:   ((a*b*)c*)
 augmnt: (((a*b*)c*)#)
 length: 0 to *
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):  c  ab  c    a  a  a  abc  b  ab  b  c    ab  c  c  bc  bc  b  c  a    
@@ -212,6 +226,7 @@ expr 14: a+b+c+
 tree:   ((a+b+)c+)
 augmnt: (((a+b+)c+)#)
 length: 3 to *
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
 ex(1):  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc  abc
@@ -226,6 +241,7 @@ expr 15: wh?o+p!
 tree:   ((((wh?)o+)p)!)
 augmnt: (((((wh?)o+)p)!)#)
 length: 4 to *
+cplxty: 9
 -------------------- Examples --------------------
 ex(0):  wop!  wop!  wop!  wop!  wop!  wop!  wop!  wop!  wop!  wop!  wop!  wop!
 ex(1):  wop!  wop!  wop!  whop!  wop!  whop!  whop!  wop!  whop!  whop!  wop!

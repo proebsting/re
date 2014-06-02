@@ -8,6 +8,7 @@ expr 0: (){3}
 tree:   (){3}
 augmnt: #
 length: 0 to 0
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -33,6 +34,7 @@ expr 1: (){2,4}
 tree:   (){2,4}
 augmnt: ((()?()?)#)
 length: 0 to 0
+cplxty: 4
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -64,6 +66,7 @@ expr 2: (abc){3}
 tree:   ((ab)c){3}
 augmnt: (((((ab)c)((ab)c))((ab)c))#)
 length: 9 to 9
+cplxty: 15
 -------------------- Examples --------------------
 ex(0):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
 ex(1):  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc  abcabcabc
@@ -134,6 +137,7 @@ expr 3: (a|b){3}
 tree:   (a|b){3}
 augmnt: ((((a|b)(a|b))(a|b))#)
 length: 3 to 3
+cplxty: 9
 -------------------- Examples --------------------
 ex(0):  abb  baa  bab  aba  bab  bba  abb  aba  aaa  bba  aba  bbb  aab  baa
 ex(1):  aaa  bab  bab  aaa  bba  bab  baa  bab  aab  baa  bab  aaa  aaa  baa
@@ -183,6 +187,7 @@ expr 4: (ab|cd){3}
 tree:   ((ab)|(cd)){3}
 augmnt: (((((ab)|(cd))((ab)|(cd)))((ab)|(cd)))#)
 length: 6 to 6
+cplxty: 21
 -------------------- Examples --------------------
 ex(0):  ababcd  abcdab  ababcd  abcdab  ababab  cdabab  cdabab  abcdcd  abcdcd
 ex(1):  ababcd  cdcdcd  ababcd  abcdab  cdcdcd  ababcd  cdcdcd  ababcd  abcdcd
@@ -262,6 +267,7 @@ expr 5: (a*){3}
 tree:   a*{3}
 augmnt: (((a*a*)a*)#)
 length: 0 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):  a  aa  a    a  a  a  aaa  a  aa  a  a    aa  a  a  aa  aa  a  a  a    
@@ -299,6 +305,7 @@ expr 6: (a{3})*
 tree:   a{3}*
 augmnt: (((aa)a)*#)
 length: 0 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      aaa  aaa    aaa    aaa  aaa  aaa  aaa  aaa      aaa      aaa    aaa
@@ -338,6 +345,7 @@ expr 7: (a{3})+
 tree:   a{3}+
 augmnt: (((aa)a)+#)
 length: 3 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
 ex(1):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
@@ -379,6 +387,7 @@ expr 8: (a{3})?
 tree:   a{3}?
 augmnt: (((aa)a)?#)
 length: 0 to 3
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      aaa  aaa    aaa    aaa  aaa  aaa  aaa  aaa      aaa      aaa    aaa
@@ -421,6 +430,7 @@ expr 9: (a{3}){2}
 tree:   a{3}{2}
 augmnt: ((((aa)a)((aa)a))#)
 length: 6 to 6
+cplxty: 6
 -------------------- Examples --------------------
 ex(0):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
 ex(1):  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa  aaaaaa
@@ -476,6 +486,7 @@ expr 10: (a{3}){1,5}
 tree:   a{3}{1,5}
 augmnt: (((((((aa)a)((aa)a)?)((aa)a)?)((aa)a)?)((aa)a)?)#)
 length: 3 to 15
+cplxty: 15
 -------------------- Examples --------------------
 ex(0):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
 ex(1):  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa  aaa
@@ -584,6 +595,7 @@ expr 11: a{3}b{4}
 tree:   (a{3}b{4})
 augmnt: ((((aa)a)(((bb)b)b))#)
 length: 7 to 7
+cplxty: 8
 -------------------- Examples --------------------
 ex(0):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
 ex(1):  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb  aaabbbb
@@ -644,6 +656,7 @@ expr 12: a{3}|b{4}|c{5}
 tree:   (a{3}|b{4}|c{5})
 augmnt: ((((aa)a)|(((bb)b)b)|((((cc)c)c)c))#)
 length: 3 to 5
+cplxty: 13
 -------------------- Examples --------------------
 ex(0):  aaa  ccccc  aaa  aaa  bbbb  aaa  aaa  ccccc  bbbb  aaa  aaa  ccccc  aaa
 ex(1):  bbbb  bbbb  bbbb  aaa  bbbb  aaa  ccccc  aaa  ccccc  bbbb  aaa  ccccc

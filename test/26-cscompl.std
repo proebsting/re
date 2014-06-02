@@ -6,6 +6,7 @@ expr 0: [^ -`]*
 tree:   [\x01-\x1fa-\u007f]*
 augmnt: ([\x01-\x1fa-\u007f]*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      q  q  r        ~        u      s      g      w  i  e    u    y  y  
@@ -20,6 +21,7 @@ expr 1: [^ -@]*
 tree:   [\x01-\x1fA-\u007f]*
 augmnt: ([\x01-\x1fA-\u007f]*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      _  [  R        n        O      C      Y      [  M  K    g    W  M  
@@ -34,6 +36,7 @@ expr 2: [^ -/]*
 tree:   [\x01-\x1f0-\u007f]*
 augmnt: ([\x01-\x1f0-\u007f]*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      x  D  w        3        S      N      n      e  J  U    8    `  Q  
@@ -48,6 +51,7 @@ expr 3: [^ -/:-@[-`{-~]*
 tree:   [\x01-\x1f0-9A-Za-z\u007f]*
 augmnt: ([\x01-\x1f0-9A-Za-z\u007f]*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      O  V  o      k        b      B      T      U  V  p    b    W  u    
@@ -62,6 +66,7 @@ expr 4: [^0-9]*
 tree:   [\x01-/:-\u007f]*
 augmnt: ([\x01-/:-\u007f]*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      I  S  w        [        [    V    I      T  d  .    M    )  G    
@@ -76,6 +81,7 @@ expr 5: [^A-Za-z0-9]*
 tree:   [\x01-/:-@[-`{-\u007f]*
 augmnt: ([\x01-/:-@[-`{-\u007f]*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      {    }      [        [    ?    >    }    .    $  )  >    *      _  
@@ -92,6 +98,7 @@ expr 6: [^A-Za-z0-9_]*
 tree:   [\x01-/:-@[-^`{-\u007f]*
 augmnt: ([\x01-/:-@[-^`{-\u007f]*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      {    }      [        [    ?    >    }    .    $  )  >    *      |  
@@ -106,6 +113,7 @@ expr 7: [^\w]*
 tree:   [\x01-/:-@[-^`{-\u007f]*
 augmnt: ([\x01-/:-@[-^`{-\u007f]*#)
 length: 0 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      {    }      [        [    ?    >    }    .    $  )  >    *      |  

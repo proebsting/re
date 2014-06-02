@@ -6,6 +6,7 @@ expr 0: a|b
 tree:   (a|b)
 augmnt: ((a|b)#)
 length: 1 to 1
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  a  b  b  b  a  a  b  a  b  a  b  a  b  a  b  b  b  a  a  b  b  a  b  a
 ex(1):  a  a  b  b  a  a  b  a  b  b  b  a  a  b  b  a  a  a  a  a  a  a  a  b
@@ -20,6 +21,7 @@ expr 1: ab|c
 tree:   ((ab)|c)
 augmnt: (((ab)|c)#)
 length: 1 to 2
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  ab  ab  c  ab  c  ab  c  ab  ab  c  ab  ab  c  ab  ab  c  ab  c  ab  ab
 ex(1):  c  ab  c  ab  c  c  c  ab  c  ab  ab  c  c  ab  ab  ab  c  ab  c  c  c
@@ -34,6 +36,7 @@ expr 2: a|bc
 tree:   (a|(bc))
 augmnt: ((a|(bc))#)
 length: 1 to 2
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  a  bc  a  bc  a  bc  a  a  a  a  a  a  a  a  a  a  bc  bc  a  a  bc  a
 ex(1):  a  bc  a  a  bc  a  bc  bc  a  a  bc  bc  a  a  a  a  a  a  a  bc  bc
@@ -48,6 +51,7 @@ expr 3: ab|cd
 tree:   ((ab)|(cd))
 augmnt: (((ab)|(cd))#)
 length: 2 to 2
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  ab  ab  cd  ab  cd  ab  ab  ab  cd  ab  cd  ab  ab  ab  ab  cd  ab  ab
 ex(1):  ab  ab  ab  cd  cd  ab  cd  cd  ab  ab  ab  ab  ab  cd  cd  cd  cd  ab
@@ -62,6 +66,7 @@ expr 4: a|b|c
 tree:   (a|b|c)
 augmnt: ((a|b|c)#)
 length: 1 to 1
+cplxty: 4
 -------------------- Examples --------------------
 ex(0):  a  b  c  b  a  a  c  a  c  b  c  c  c  b  b  a  c  c  c  c  b  a  b  a
 ex(1):  c  a  b  a  c  a  a  b  b  c  a  c  b  b  a  a  c  b  c  a  c  c  b  a
@@ -76,6 +81,7 @@ expr 5: a|b|c|d
 tree:   (a|b|c|d)
 augmnt: ((a|b|c|d)#)
 length: 1 to 1
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  c  b  d  d  a  a  d  a  d  c  d  c  b  a  d  b  b  c  a  b  d  a  d  a
 ex(1):  c  c  d  b  a  c  b  c  d  b  d  a  c  b  d  c  a  a  c  a  a  a  a  b
@@ -90,6 +96,7 @@ expr 6: ab|cd|ef
 tree:   ((ab)|(cd)|(ef))
 augmnt: (((ab)|(cd)|(ef))#)
 length: 2 to 2
+cplxty: 10
 -------------------- Examples --------------------
 ex(0):  ab  cd  cd  ab  ef  ab  cd  ab  ef  ab  ab  cd  ef  ab  ab  cd  ab  cd
 ex(1):  ef  ab  ef  cd  cd  ef  ef  ab  ab  cd  ef  ef  cd  ab  cd  ef  ab  cd
@@ -104,6 +111,7 @@ expr 7: ab|cd|ef|gh
 tree:   ((ab)|(cd)|(ef)|(gh))
 augmnt: (((ab)|(cd)|(ef)|(gh))#)
 length: 2 to 2
+cplxty: 13
 -------------------- Examples --------------------
 ex(0):  ef  ef  gh  ab  gh  ef  ef  ab  cd  ab  cd  ab  ab  ef  ab  gh  ef  ab
 ex(1):  ef  ef  ef  gh  cd  ab  cd  gh  ef  ab  ef  ab  ab  cd  cd  cd  gh  ef
@@ -118,6 +126,7 @@ expr 8: abc|def
 tree:   (((ab)c)|((de)f))
 augmnt: ((((ab)c)|((de)f))#)
 length: 3 to 3
+cplxty: 11
 -------------------- Examples --------------------
 ex(0):  abc  def  abc  def  def  def  def  def  def  abc  def  def  abc  abc
 ex(1):  abc  abc  def  abc  def  abc  abc  abc  abc  def  def  abc  abc  abc
@@ -132,6 +141,7 @@ expr 9: abc|def|ghi
 tree:   (((ab)c)|((de)f)|((gh)i))
 augmnt: ((((ab)c)|((de)f)|((gh)i))#)
 length: 3 to 3
+cplxty: 16
 -------------------- Examples --------------------
 ex(0):  abc  ghi  abc  ghi  ghi  ghi  ghi  def  ghi  ghi  def  def  abc  abc
 ex(1):  abc  def  ghi  ghi  def  abc  def  abc  ghi  abc  def  abc  def  abc
@@ -146,6 +156,7 @@ expr 10: a|bc|def|ghij
 tree:   (a|(bc)|((de)f)|(((gh)i)j))
 augmnt: ((a|(bc)|((de)f)|(((gh)i)j))#)
 length: 1 to 4
+cplxty: 17
 -------------------- Examples --------------------
 ex(0):  def  ghij  a  ghij  ghij  a  a  def  a  a  a  bc  bc  a  def  a  bc
 ex(1):  bc  a  ghij  ghij  def  bc  ghij  ghij  a  a  a  a  bc  bc  bc  ghij  a
@@ -160,6 +171,7 @@ expr 11: pqrs|tuv|wx|yz
 tree:   ((((pq)r)s)|((tu)v)|(wx)|(yz))
 augmnt: (((((pq)r)s)|((tu)v)|(wx)|(yz))#)
 length: 2 to 4
+cplxty: 19
 -------------------- Examples --------------------
 ex(0):  wx  wx  yz  pqrs  pqrs  wx  wx  wx  yz  pqrs  pqrs  pqrs  pqrs  pqrs
 ex(1):  wx  wx  yz  tuv  yz  tuv  wx  yz  wx  wx  pqrs  pqrs  tuv  yz  wx  pqrs
@@ -174,6 +186,7 @@ expr 12: abc|d|efgh|ij|kmlno|pqr|s|tuv|wxy|z
 tree:   (((ab)c)|d|(((ef)g)h)|(ij)|((((km)l)n)o)|((pq)r)|s|((tu)v)|((wx)y)|z)
 augmnt: ((((ab)c)|d|(((ef)g)h)|(ij)|((((km)l)n)o)|((pq)r)|s|((tu)v)|((wx)y)|z)#)
 length: 1 to 5
+cplxty: 43
 -------------------- Examples --------------------
 ex(0):  kmlno  tuv  wxy  efgh  kmlno  s  abc  wxy  ij  z  tuv  z  wxy  abc  z
 ex(1):  abc  kmlno  ij  tuv  kmlno  d  ij  efgh  wxy  abc  z  d  z  s  efgh  ij

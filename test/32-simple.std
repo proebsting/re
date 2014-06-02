@@ -8,6 +8,7 @@ expr 0: C(AC|B)D
 tree:   ((C((AC)|B))D)
 augmnt: (((C((AC)|B))D)#)
 length: 3 to 4
+cplxty: 9
 -------------------- Examples --------------------
 ex(0):  CACD  CBD  CACD  CACD  CBD  CBD  CBD  CBD  CACD  CACD  CACD  CACD  CBD
 ex(1):  CBD  CBD  CBD  CACD  CACD  CACD  CACD  CACD  CBD  CBD  CACD  CBD  CBD
@@ -58,6 +59,7 @@ expr 1: (a|b)*abb
 tree:   ((((a|b)*a)b)b)
 augmnt: (((((a|b)*a)b)b)#)
 length: 3 to *
+cplxty: 9
 -------------------- Examples --------------------
 ex(0):  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb  abb
 ex(1):  aabb  abb  abb  abb  abb  abb  abb  babb  abb  aabb  abb  abb  babb
@@ -107,6 +109,7 @@ expr 2: gcg(cgg|agg)*ctg
 tree:   ((((((gc)g)(((cg)g)|((ag)g))*)c)t)g)
 augmnt: (((((((gc)g)(((cg)g)|((ag)g))*)c)t)g)#)
 length: 6 to *
+cplxty: 23
 -------------------- Examples --------------------
 ex(0):  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg  gcgctg
 ex(1):  gcgctg  gcgcggctg  gcgctg  gcgctg  gcgctg  gcgaggctg  gcgaggctg
@@ -187,6 +190,7 @@ expr 3: (0|1(01*0)*1)*
 tree:   (0|((1((01*)0)*)1))*
 augmnt: ((0|((1((01*)0)*)1))*#)
 length: 0 to *
+cplxty: 11
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      0    11  11  0    0    0    0    0  0  0        11  0      0      
@@ -239,6 +243,7 @@ expr 4: (10)*|ac|dc
 tree:   ((10)*|(ac)|(dc))
 augmnt: (((10)*|(ac)|(dc))#)
 length: 0 to *
+cplxty: 10
 -------------------- Examples --------------------
 ex(0):      ac  ac        dc      dc    dc    dc    ac  dc  dc  ac  ac  dc    
 ex(1):    ac  ac  dc  10  ac  dc    dc  dc  10  dc    dc  dc  ac    10  dc  10
@@ -295,6 +300,7 @@ expr 5: a?(ba)*b?
 tree:   ((a?(ba)*)b?)
 augmnt: (((a?(ba)*)b?)#)
 length: 0 to *
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):  b  aba  ba  ba  a  a  aba  bab  a  a  ba  ba    a  ab  ab  ab    aba  
@@ -343,6 +349,7 @@ expr 6: a(ba)*b?|b(ab)*a?
 tree:   (((a(ba)*)b?)|((b(ab)*)a?))
 augmnt: ((((a(ba)*)b?)|((b(ab)*)a?))#)
 length: 1 to *
+cplxty: 15
 -------------------- Examples --------------------
 ex(0):  a  b  b  b  a  a  b  a  b  a  b  a  b  a  b  b  b  a  a  b  b  a  b  a
 ex(1):  a  bab  abab  aba  baba  ab  b  a  ab  abab  b  a  bab  b  aba  bab
@@ -405,6 +412,7 @@ expr 7: [bcfpt][lr]?([aeiou]|oo|ee)[dmnt]
 tree:   ((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])
 augmnt: (((([bcfpt][lr]?)([aeiou]|(oo)|(ee)))[dmnt])#)
 length: 3 to 5
+cplxty: 14
 -------------------- Examples --------------------
 ex(0):  tot  bun  fon  cam  fod  toot  poon  pod  pood  fit  teem  fan  cam
 ex(1):  ceed  food  pleem  freen  com  ced  fod  clan  tlud  toot  feet  cleen
@@ -466,6 +474,7 @@ expr 8: W(hit|ens|at|in|est|al)[eioa][lmnrxs](ford|by|dale|bot|man|son|gard|hold
 tree:   ((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))
 augmnt: (((((W(((hi)t)|((en)s)|(at)|(in)|((es)t)|(al)))[aeio])[lmnrsx])((((fo)r)d)|(by)|(((da)l)e)|((bo)t)|((ma)n)|((so)n)|(((ga)r)d)|(((ho)l)d)))#)
 length: 7 to 10
+cplxty: 79
 -------------------- Examples --------------------
 ex(0):  Whitixford  Whitenman  Westolgard  Wensesman  Westalgard  Watemby
 ex(1):  Watalgard  Whitesson  Westanhold  Wininby  Wensimhold  Wensamhold
@@ -675,6 +684,7 @@ expr 9: ^([A-Za-z0-9]\s?)+([,]\s?([A-Za-z0-9]\s?)+)*$
 tree:   (([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)
 augmnt: ((([0-9A-Za-z][\t-\r ]?)+((,[\t-\r ]?)([0-9A-Za-z][\t-\r ]?)+)*)#)
 length: 1 to *
+cplxty: 11
 -------------------- Examples --------------------
 ex(0):  H  W  L  O  q  V  2  o  3  B  O  z  c  l  I  u  q  B  Y  N  J  T  d  m
 ex(1):  i,A  z,e   B  K  H, h  N   C   0   x,o   3, J  Y  w,3   Y,a  7  u ,3 

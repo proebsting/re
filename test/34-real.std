@@ -6,6 +6,7 @@ expr 0: [a-zA-Z][a-z]+
 tree:   ([A-Za-z][a-z]+)
 augmnt: (([A-Za-z][a-z]+)#)
 length: 2 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  mu  Py  bi  Jz  Ga  Kb  ve  Nn  Uo  Yp  Ei  in  Dy  Bw  de  Zs  ai  Fg
 ex(1):  ya  Xh  Au  Mh  Qc  ye  te  tc  Ke  op  Qg  Ph  or  Zz  Ku  Ls  Tn  Yf
@@ -20,6 +21,7 @@ expr 1: [a-zA-Z][a-z]*
 tree:   ([A-Za-z][a-z]*)
 augmnt: (([A-Za-z][a-z]*)#)
 length: 1 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
 ex(1):  ww  d  Z  a  F  D  y  Xy  y  F  u  Ue  t  K  ol  m  Po  Vz  K  L  Ty
@@ -34,6 +36,7 @@ expr 2: [a-zA-Z][a-z]*('[a-z]+)?
 tree:   (([A-Za-z][a-z]*)('[a-z]+)?)
 augmnt: ((([A-Za-z][a-z]*)('[a-z]+)?)#)
 length: 1 to *
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
 ex(1):  ww'v  A'i  F'g  Uh  y'c  y'n  s  ol  sh  Vz  us'y  Vu  f'k  I  s  E'w
@@ -51,6 +54,7 @@ expr 3: [a-zA-Z ]+
 tree:   [ A-Za-z]+
 augmnt: ([ A-Za-z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  V  h  D  G  x  v  D  F  K  e  G  T  Y  N  p  S  Z  a  p  D  l  X  j  a
 ex(1):  s  h  H  k  t  k  s  e  l  N  H  H  p  z  N     w  K  J  V  y  Y  I  O
@@ -67,6 +71,7 @@ expr 4: [a-zA-Z0-9]+
 tree:   [0-9A-Za-z]+
 augmnt: ([0-9A-Za-z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  H  W  L  O  q  V  2  o  3  B  O  z  c  l  I  u  q  B  Y  N  J  T  d  m
 ex(1):  i  V  D  p  e  A  9  W  U  u  c  e  C  U  B  0  x  K  b  T  d  C  0  K
@@ -81,6 +86,7 @@ expr 5: [a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+
 tree:   ([0-9A-Za-z]+(.[0-9A-Za-z]+)+)
 augmnt: (([0-9A-Za-z]+(.[0-9A-Za-z]+)+)#)
 length: 3 to *
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  H.L  O.V  2.3  B.k  z.l  I.q  B.N  J.d  m.i  V.p  e.b  9.U  u.e  C.B
 ex(1):  b.H  d.0  K.h  M.P  x.C  G.5  0.r  6.t  p.o  Y.3  F.y  J.A  q.L  o.v
@@ -97,6 +103,7 @@ expr 6: [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]
 tree:   (((((((((([0-9][0-9])[0-9])-)[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])
 augmnt: ((((((((((([0-9][0-9])[0-9])-)[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])#)
 length: 11 to 11
+cplxty: 21
 -------------------- Examples --------------------
 ex(0):  443-56-7888  798-61-0458  601-20-2785  483-09-7468  978-27-8429
 ex(1):  909-36-7839  433-82-2326  206-08-8900  119-10-9642  268-39-4037
@@ -113,6 +120,7 @@ expr 7: \([0-9][0-9][0-9]\)[2-9][0-9][0-9]-[0-9][0-9][0-9][0-9]
 tree:   ((((((((((((([0-9])[0-9])[0-9])))[2-9])[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])
 augmnt: (((((((((((((([0-9])[0-9])[0-9])))[2-9])[0-9])[0-9])-)[0-9])[0-9])[0-9])[0-9])#)
 length: 13 to 13
+cplxty: 25
 -------------------- Examples --------------------
 ex(0):  (436)277-8879  (261)445-6016  (012)654-3009  (746)978-2708
 ex(1):  (909)964-8394  (348)523-6206  (088)300-1991  (996)826-9399
@@ -129,6 +137,7 @@ expr 8: (http://|)(www\.)?[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+(/[-_\.\?a-zA-Z0-9]*)*
 tree:   (((((((((((ht)t)p):)/)/)|())(((ww)w).)?)[0-9A-Za-z]+)(.[0-9A-Za-z]+)+)(/[.0-9?A-Z_a-z-]*)*)
 augmnt: ((((((((((((ht)t)p):)/)/)|())(((ww)w).)?)[0-9A-Za-z]+)(.[0-9A-Za-z]+)+)(/[.0-9?A-Z_a-z-]*)*)#)
 length: 3 to *
+cplxty: 33
 -------------------- Examples --------------------
 ex(0):  http://o.B  k.K  http://N.T  http://e.b  http://U.0  http://K.h
 ex(1):  6.t/6  http://Y.q  http://www.O.P  http://www.x.l/W  www.v.0  www.B.d/
@@ -146,6 +155,7 @@ expr 9: [a-zA-Z][a-zA-Z0-9]*([-_.][a-zA-Z0-9]*)*@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,
 tree:   ((((([A-Za-z][0-9A-Za-z]*)([._-][0-9A-Za-z]*)*)@)([0-9A-Za-z]+.)+)[0-9A-Za-z]{2,})
 augmnt: (((((([A-Za-z][0-9A-Za-z]*)([._-][0-9A-Za-z]*)*)@)([0-9A-Za-z]+.)+)([0-9A-Za-z][0-9A-Za-z]+))#)
 length: 6 to *
+cplxty: 15
 -------------------- Examples --------------------
 ex(0):  m@L.qV  D@3.Oz  o@b.uq  E@N.Td  w@U.VD  A@A.zW  D@c.CU  A@x.bT  U@0.IM
 ex(1):  P-@x.tp  YY@O.oy  I@q.Lo  D@O.kY  mu@P.1Q  r9.i@e.xP  h_b@J.r0

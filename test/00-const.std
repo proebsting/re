@@ -6,6 +6,7 @@ expr 0: ()
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -20,6 +21,7 @@ expr 1: a
 tree:   a
 augmnt: (a#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -34,6 +36,7 @@ expr 2: bc
 tree:   (bc)
 augmnt: ((bc)#)
 length: 2 to 2
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
 ex(1):  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc  bc
@@ -48,6 +51,7 @@ expr 3: def
 tree:   ((de)f)
 augmnt: (((de)f)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(1):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
@@ -62,6 +66,7 @@ expr 4: 417-00-9423
 tree:   ((((((((((41)7)-)0)0)-)9)4)2)3)
 augmnt: (((((((((((41)7)-)0)0)-)9)4)2)3)#)
 length: 11 to 11
+cplxty: 21
 -------------------- Examples --------------------
 ex(0):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
 ex(1):  417-00-9423  417-00-9423  417-00-9423  417-00-9423  417-00-9423
@@ -76,6 +81,7 @@ expr 5: 515-032-6910
 tree:   (((((((((((51)5)-)0)3)2)-)6)9)1)0)
 augmnt: ((((((((((((51)5)-)0)3)2)-)6)9)1)0)#)
 length: 12 to 12
+cplxty: 23
 -------------------- Examples --------------------
 ex(0):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
 ex(1):  515-032-6910  515-032-6910  515-032-6910  515-032-6910  515-032-6910
@@ -90,6 +96,7 @@ expr 6: bite the wax tadpole
 tree:   (((((((((((((((((((bi)t)e) )t)h)e) )w)a)x) )t)a)d)p)o)l)e)
 augmnt: ((((((((((((((((((((bi)t)e) )t)h)e) )w)a)x) )t)a)d)p)o)l)e)#)
 length: 20 to 20
+cplxty: 39
 -------------------- Examples --------------------
 ex(0):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
 ex(1):  bite the wax tadpole  bite the wax tadpole  bite the wax tadpole
@@ -104,6 +111,7 @@ expr 7: __\a__\e__\f__\n__\r__\t__\v__
 tree:   ((((((((((((((((((((((__)[\a])_)_)[\x1b])_)_)[\f])_)_)[\n])_)_)[\r])_)_)[\t])_)_)[\v])_)_)
 augmnt: (((((((((((((((((((((((__)[\a])_)_)[\x1b])_)_)[\f])_)_)[\n])_)_)[\r])_)_)[\t])_)_)[\v])_)_)#)
 length: 23 to 23
+cplxty: 45
 -------------------- Examples --------------------
 ex(0):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__
 ex(1):  __\a__\x1b__\f__\n__\r__\t__\v__  __\a__\x1b__\f__\n__\r__\t__\v__

@@ -6,6 +6,7 @@ expr 0: (a)
 tree:   a
 augmnt: (a#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -20,6 +21,7 @@ expr 1: ((a))
 tree:   a
 augmnt: (a#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -34,6 +36,7 @@ expr 2: a(b)*
 tree:   (ab*)
 augmnt: ((ab*)#)
 length: 1 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  ab  a  a  ab  ab  a  a  ab  a  a  a  ab  a  a  ab  a  ab  ab  a  a
@@ -48,6 +51,7 @@ expr 3: a((b))*
 tree:   (ab*)
 augmnt: ((ab*)#)
 length: 1 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  ab  a  a  ab  ab  a  a  ab  a  a  a  ab  a  a  ab  a  ab  ab  a  a
@@ -62,6 +66,7 @@ expr 4: (ab)*
 tree:   (ab)*
 augmnt: ((ab)*#)
 length: 0 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      ab    ab      ab      ab    ab    ab    ab    ab  ab  ab        ab
@@ -76,6 +81,7 @@ expr 5: a(bb)?c
 tree:   ((a(bb)?)c)
 augmnt: (((a(bb)?)c)#)
 length: 2 to 4
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac  ac
 ex(1):  ac  ac  abbc  ac  ac  abbc  abbc  abbc  ac  ac  ac  ac  abbc  ac  ac
@@ -90,6 +96,7 @@ expr 6: ((ab))*
 tree:   (ab)*
 augmnt: ((ab)*#)
 length: 0 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      ab    ab      ab      ab    ab    ab    ab    ab  ab  ab        ab
@@ -104,6 +111,7 @@ expr 7: ((ab)*)
 tree:   (ab)*
 augmnt: ((ab)*#)
 length: 0 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):      ab    ab      ab      ab    ab    ab    ab    ab  ab  ab        ab
@@ -118,6 +126,7 @@ expr 8: a(bc)*d
 tree:   ((a(bc)*)d)
 augmnt: (((a(bc)*)d)#)
 length: 2 to *
+cplxty: 7
 -------------------- Examples --------------------
 ex(0):  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad  ad
 ex(1):  ad  ad  abcd  ad  ad  abcd  abcd  abcd  ad  ad  ad  ad  abcd  ad  ad
@@ -132,6 +141,7 @@ expr 9: a(bcd)+e
 tree:   ((a((bc)d)+)e)
 augmnt: (((a((bc)d)+)e)#)
 length: 5 to *
+cplxty: 9
 -------------------- Examples --------------------
 ex(0):  abcde  abcde  abcde  abcde  abcde  abcde  abcde  abcde  abcde  abcde
 ex(1):  abcde  abcde  abcde  abcde  abcde  abcde  abcde  abcde  abcde  abcde
@@ -146,6 +156,7 @@ expr 10: (ab)*(cd)*(ef)*
 tree:   (((ab)*(cd)*)(ef)*)
 augmnt: ((((ab)*(cd)*)(ef)*)#)
 length: 0 to *
+cplxty: 11
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):  ef  cd  cd  cd  abef  cd  abcdef    ab  ab  ab  ef  cdef  ef  abcd  ab
@@ -162,6 +173,7 @@ expr 11: (ab)+(cd)+(ef)+
 tree:   (((ab)+(cd)+)(ef)+)
 augmnt: ((((ab)+(cd)+)(ef)+)#)
 length: 6 to *
+cplxty: 11
 -------------------- Examples --------------------
 ex(0):  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef
 ex(1):  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef  abcdef
@@ -176,6 +188,7 @@ expr 12: (ab)?(cd)?(ef)?
 tree:   (((ab)?(cd)?)(ef)?)
 augmnt: ((((ab)?(cd)?)(ef)?)#)
 length: 0 to 6
+cplxty: 11
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):  ef  cd  cd  cd  abef  cd  abcdef    ab  ab  ab  ef  cdef  ef  abcd  ab
@@ -193,6 +206,7 @@ expr 13: (ab)+(cd)*(ef)?
 tree:   (((ab)+(cd)*)(ef)?)
 augmnt: ((((ab)+(cd)*)(ef)?)#)
 length: 2 to *
+cplxty: 11
 -------------------- Examples --------------------
 ex(0):  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab  ab
 ex(1):  abcd  ab  ab  abcd  abef  abcdef  abef  ab  abef  ab  ab  abef  abef

@@ -4,6 +4,7 @@ expr 0: ^
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -18,6 +19,7 @@ expr 1: $
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -32,6 +34,7 @@ expr 2: ^$
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -46,6 +49,7 @@ expr 3: ^a
 tree:   a
 augmnt: (a#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -60,6 +64,7 @@ expr 4: b$
 tree:   b
 augmnt: (b#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
 ex(1):  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b  b
@@ -74,6 +79,7 @@ expr 5: ^c$
 tree:   c
 augmnt: (c#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
 ex(1):  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c  c
@@ -88,6 +94,7 @@ expr 6: ^def$
 tree:   ((de)f)
 augmnt: (((de)f)#)
 length: 3 to 3
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
 ex(1):  def  def  def  def  def  def  def  def  def  def  def  def  def  def
@@ -102,6 +109,7 @@ expr 7: ^x+y*z+$
 tree:   ((x+y*)z+)
 augmnt: (((x+y*)z+)#)
 length: 2 to *
+cplxty: 5
 -------------------- Examples --------------------
 ex(0):  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz  xz
 ex(1):  xz  xz  xyz  xyz  xz  xyz  xz  xz  xyz  xyz  xz  xz  xz  xyz  xz  xz
@@ -116,6 +124,7 @@ expr 8: q\$
 tree:   (q$)
 augmnt: ((q$)#)
 length: 2 to 2
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$
 ex(1):  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$  q$

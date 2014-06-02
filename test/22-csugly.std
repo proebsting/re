@@ -6,6 +6,7 @@ expr 0: [-]
 tree:   -
 augmnt: (-#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 ex(1):  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
@@ -20,6 +21,7 @@ expr 1: [-x]
 tree:   [x-]
 augmnt: ([x-]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  x  -  x  -  -  -  x  -  x  x  x  x  x  -  -  x  -  -  -  -  x  -  x  x
 ex(1):  -  -  -  x  x  -  x  x  -  x  x  x  -  x  -  x  -  x  x  x  x  x  -  x
@@ -34,6 +36,7 @@ expr 2: [x-]
 tree:   [x-]
 augmnt: ([x-]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  x  -  x  -  -  -  x  -  x  x  x  x  x  -  -  x  -  -  -  -  x  -  x  x
 ex(1):  -  -  -  x  x  -  x  x  -  x  x  x  -  x  -  x  -  x  x  x  x  x  -  x
@@ -48,6 +51,7 @@ expr 3: [[x]
 tree:   [[x]
 augmnt: ([[x]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  [  x  x  [  [  [  x  x  x  [  x  x  [  x  [  [  [  x  [  [  x  x  x  x
 ex(1):  [  [  x  x  [  x  x  [  [  x  [  [  x  x  x  [  x  [  x  [  x  x  [  x
@@ -62,6 +66,7 @@ expr 4: [[x-]
 tree:   [[x-]
 augmnt: ([[x-]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  x  -  x  -  [  [  [  -  x  x  x  x  x  [  -  x  [  [  -  -  x  -  x  x
 ex(1):  -  [  -  [  x  -  x  x  [  [  x  x  -  x  [  x  -  [  [  x  [  x  -  x
@@ -76,6 +81,7 @@ expr 5: []x]
 tree:   []x]
 augmnt: ([]x]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  x  x  x  x  ]  ]  ]  x  x  x  ]  x  x  x  ]  ]  ]  ]  x  ]  x  ]  x  ]
 ex(1):  ]  ]  x  x  ]  x  x  ]  ]  ]  ]  ]  ]  x  x  ]  ]  ]  ]  ]  ]  x  ]  x
@@ -90,6 +96,7 @@ expr 6: []x-]
 tree:   []x-]
 augmnt: ([]x-]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  ]  -  x  -  ]  -  x  -  x  x  x  x  x  -  -  x  ]  ]  -  ]  x  ]  x  x
 ex(1):  -  -  -  ]  ]  -  x  x  ]  ]  x  x  -  x  -  x  -  ]  ]  ]  ]  x  ]  x
@@ -104,6 +111,7 @@ expr 7: []x[-]
 tree:   [][x-]
 augmnt: ([][x-]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  ]  -  x  -  ]  [  [  -  x  x  x  x  x  [  -  x  [  ]  -  ]  x  ]  x  x
 ex(1):  -  [  -  [  ]  -  x  x  ]  ]  x  x  -  x  [  x  -  [  ]  ]  [  x  ]  x
@@ -118,6 +126,7 @@ expr 8: [][]
 tree:   [][]
 augmnt: ([][]#)
 length: 1 to 1
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  [  [  ]  ]  ]  ]  [  [  [  ]  ]  [  [  [  ]  ]  [  ]  [  ]  [  ]  [  [
 ex(1):  [  ]  ]  [  [  [  [  [  [  ]  ]  [  [  [  [  ]  [  ]  [  [  ]  ]  ]  [

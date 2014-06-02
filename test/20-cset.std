@@ -4,6 +4,7 @@ expr 0: [a]+
 tree:   a+
 augmnt: (a+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
 ex(1):  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a  a
@@ -18,6 +19,7 @@ expr 1: [bc]+
 tree:   [bc]+
 augmnt: ([bc]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  b  b  c  b  c  b  c  c  b  b  b  c  c  b  b  b  c  b  b  b  c  b  b  b
 ex(1):  b  b  b  c  b  c  b  c  b  b  c  b  b  c  b  c  b  b  b  c  c  b  b  b
@@ -32,6 +34,7 @@ expr 2: [def]+
 tree:   [def]+
 augmnt: ([def]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  d  d  e  e  f  e  e  f  d  d  d  f  f  d  d  d  f  f  e  d  f  d  f  d
 ex(1):  d  e  d  e  e  d  f  f  e  f  e  f  e  f  d  e  d  d  f  e  e  d  d  d
@@ -46,6 +49,7 @@ expr 3: [ghij]+
 tree:   [g-j]+
 augmnt: ([g-j]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  i  i  h  i  j  g  j  h  g  g  g  j  j  g  g  i  j  i  i  i  j  g  i  g
 ex(1):  i  g  g  j  g  h  g  h  g  i  h  g  i  h  i  j  g  g  i  j  j  g  g  i
@@ -60,6 +64,7 @@ expr 4: [lmnop]+
 tree:   [l-p]+
 augmnt: ([l-p]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  p  p  o  m  l  m  n  n  o  o  o  n  p  o  n  m  m  l  l  p  l  o  m  l
 ex(1):  m  n  l  m  n  n  o  l  p  o  o  l  l  p  p  n  p  m  o  p  n  o  l  n
@@ -74,6 +79,7 @@ expr 5: [tuvwxyz]+
 tree:   [t-z]+
 augmnt: ([t-z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  y  v  t  x  t  u  y  t  w  u  u  z  x  u  z  x  w  u  u  u  w  v  x  w
 ex(1):  w  u  z  t  x  w  t  x  y  z  v  y  u  x  t  u  v  x  w  w  w  z  x  y
@@ -88,6 +94,7 @@ expr 6: [ACDFGHJKLMOPQRSUVWXYZ]+
 tree:   [ACDFGHJ-MO-SU-Z]+
 augmnt: ([ACDFGHJ-MO-SU-Z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  C  U  Y  H  H  Z  K  A  K  M  H  A  V  O  C  P  M  S  O  K  Y  R  W  X
 ex(1):  W  S  H  O  X  G  Z  M  G  A  X  H  Y  U  O  H  K  C  A  D  P  C  U  X
@@ -102,6 +109,7 @@ expr 7: [aeiuo]+
 tree:   [aeiou]+
 augmnt: ([aeiou]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  u  o  o  u  o  i  o  i  u  e  o  e  a  e  a  o  i  u  u  a  o  a  e  o
 ex(1):  u  o  i  a  u  a  a  i  a  i  e  u  a  a  u  a  i  u  i  i  o  i  a  o
@@ -116,6 +124,7 @@ expr 8: [aeiuo]+y?
 tree:   ([aeiou]+y?)
 augmnt: (([aeiou]+y?)#)
 length: 1 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  u  o  o  u  o  i  o  i  u  e  o  e  a  e  a  o  i  u  u  a  o  a  e  o
 ex(1):  u  o  iy  a  i  ay  ey  uy  oy  u  i  ey  a  u  i  u  i  oy  o  e  u
@@ -131,6 +140,7 @@ expr 9: [a-z]+
 tree:   [a-z]+
 augmnt: ([a-z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  c  u  b  y  h  i  z  z  k  a  k  b  l  e  e  a  n  s  o  c  p  m  i  g
 ex(1):  c  k  y  r  w  x  e  v  w  s  h  o  i  p  g  z  m  g  a  x  h  y  u  o
@@ -145,6 +155,7 @@ expr 10: [A-Z]+
 tree:   [A-Z]+
 augmnt: ([A-Z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  C  U  B  Y  H  I  Z  Z  K  A  K  B  L  E  E  A  N  S  O  C  P  M  I  G
 ex(1):  C  K  Y  R  W  X  E  V  W  S  H  O  I  P  G  Z  M  G  A  X  H  Y  U  O
@@ -159,6 +170,7 @@ expr 11: [a-zA-Z]+
 tree:   [A-Za-z]+
 augmnt: ([A-Za-z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
 ex(1):  w  B  K  d  C  Z  B  C  u  F  C  D  c  y  U  X  L  A  y  M  F  Q  u  y
@@ -173,6 +185,7 @@ expr 12: [_a-zA-Z]+
 tree:   [A-Z_a-z]+
 augmnt: ([A-Z_a-z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
 ex(1):  w  B  K  d  C  _  B  C  u  F  C  D  c  y  U  X  L  A  y  M  F  Q  u  y
@@ -187,6 +200,7 @@ expr 13: [0-9]+
 tree:   [0-9]+
 augmnt: ([0-9]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  4  4  3  6  5  6  7  7  8  8  8  7  9  8  2  6  1  0  0  4  5  8  6  0
 ex(1):  6  2  0  1  2  7  8  5  4  8  3  0  0  9  4  7  4  6  8  9  7  8  0  2
@@ -201,6 +215,7 @@ expr 14: [_a-zA-Z0-9]+
 tree:   [0-9A-Z_a-z]+
 augmnt: ([0-9A-Z_a-z]+#)
 length: 1 to *
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):  H  W  L  O  q  V  2  o  3  B  _  k  z  c  l  I  u  q  B  Y  N  J  T  d
 ex(1):  U  i  V  D  p  e  A  9  W  U  u  c  e  C  U  B  0  x  K  b  T  d  C  0
@@ -215,6 +230,7 @@ expr 15: [_a-zA-Z][_a-zA-Z0-9]*
 tree:   ([A-Z_a-z][0-9A-Z_a-z]*)
 augmnt: (([A-Z_a-z][0-9A-Z_a-z]*)#)
 length: 1 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  m  W  P  K  b  y  J  D  G  S  K  D  v  U  N  d  U  q  Y  B  E  W  i  j
 ex(1):  wU  d  _  a  F  D  y  XB  y  F  u  U0  t  K  ox  m  P5  V3  K  L  TR
@@ -229,6 +245,7 @@ expr 16: [A-HO-Z][A-Z]*
 tree:   ([A-HO-Z][A-Z]*)
 augmnt: (([A-HO-Z][A-Z]*)#)
 length: 1 to *
+cplxty: 3
 -------------------- Examples --------------------
 ex(0):  C  U  B  Y  H  H  Z  H  O  O  E  A  E  O  C  P  T  G  O  H  R  W  X  E
 ex(1):  W  H  X  Z  G  XY  U  H  C  EE  O  E  PM  GH  OT  Z  US  W  FU  O  X  F

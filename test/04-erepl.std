@@ -6,6 +6,7 @@ expr 0: ?
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -20,6 +21,7 @@ expr 1: *
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -34,6 +36,7 @@ expr 2: +
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -48,6 +51,7 @@ expr 3: ??
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -62,6 +66,7 @@ expr 4: **
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -76,6 +81,7 @@ expr 5: ++
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -90,6 +96,7 @@ expr 6: ???
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -104,6 +111,7 @@ expr 7: ***
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -118,6 +126,7 @@ expr 8: +++
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -132,6 +141,7 @@ expr 9: ?*+
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -146,6 +156,7 @@ expr 10: *+?
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -160,6 +171,7 @@ expr 11: ?+*
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -174,6 +186,7 @@ expr 12: +?*?
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -188,6 +201,7 @@ expr 13: ?*?+?
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
@@ -202,6 +216,7 @@ expr 14: ?+?*+?*+?*+?*+*???*?*+?+*?+?
 tree:   ()
 augmnt: #
 length: 0 to 0
+cplxty: 1
 -------------------- Examples --------------------
 ex(0):                                                                        
 ex(1):                                                                        
