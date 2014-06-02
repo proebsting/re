@@ -97,11 +97,12 @@ func load() ([]*rx.RegExParsed, []rx.Node) {
 		echo(l, len(exprs))
 		if l.Tree != nil { // if a real expression
 			image := fmt.Sprintf("%s", l.Tree)
+			cx := rx.ComplexityScore(l.Tree)
 			augtree := rx.Augment(l.Tree, len(trees))
 			trees = append(trees, augtree)
 			exprs = append(exprs, l)
 			if *opt['i'] {
-				individual(l, len(exprs), image, augtree)
+				individual(l, cx, len(exprs), image, augtree)
 			}
 		}
 	})
@@ -155,17 +156,18 @@ func echometa(l *rx.RegExParsed) {
 }
 
 // individual handles separate processing of each input regex
-func individual(l *rx.RegExParsed, i int, image string, augtree rx.Node) {
+func individual(l *rx.RegExParsed, cx int, i int, image string, augt rx.Node) {
 	babble("tree:   %s\n", image)
-	babble("augmnt: %v\n", augtree)
-	x := augtree.MaxLen()
+	babble("augmnt: %v\n", augt)
+	x := augt.MaxLen()
 	if x >= 0 {
-		babble("length: %d to %d\n", augtree.MinLen(), x)
+		babble("length: %d to %d\n", augt.MinLen(), x)
 	} else {
-		babble("length: %d to *\n", augtree.MinLen())
+		babble("length: %d to *\n", augt.MinLen())
 	}
+	babble("cplxty: %d\n", cx)
 
-	dfa := rx.BuildDFA(augtree)
+	dfa := rx.BuildDFA(augt)
 
 	if *opt['R'] {
 		rand.Seed(int64(seedvalue))
@@ -284,9 +286,6 @@ func setup() {
 //  options defines the command line options to be accepted.
 func options() {
 
-	// #%#% TODO:
-	// commented-out options are not (yet?) implemented
-
 	vo('e', "single expression value (instead of reading input)")
 	fo('i', "treat input expressions individually")
 	fo('m', "merge all input expressions into one large DFA")
@@ -314,8 +313,7 @@ func options() {
 	vo('N', "output file for NFA graph (*.dot/.gif/.pdf/.png/.svg/@)")
 	vo('D', "output file for DFA graph (*.dot/.gif/.pdf/.png/.svg/@)")
 
-	// vo('X', "output file for DFA-based examples (JSON)")
-
+	vo('C', "complexity limit")
 	vo('P', "output file for profiling data (binary)")
 
 	flag.Parse() // parse command args to set values
@@ -334,12 +332,20 @@ func options() {
 		val['I'] = &s
 	}
 
-	// set globals based on options
+	// set global flag values based on options
 	listopt = *opt['l']
 	verbose = *opt['v']
 	errsilent = *opt['y']
 	rx.DBG_MIN = *opt['z'] && *opt['d']
 
+	// set complexity limit
+	if *val['C'] != "" { // if complexity option set
+		maxc, err := strconv.Atoi(*val['C'])
+		rx.CkErr(err)
+		rx.MaxComplexity = maxc
+	}
+
+	// initialize random number generator
 	seedvalue, err := strconv.Atoi(*val['I'])
 	rx.CkErr(err)
 	rand.Seed(int64(seedvalue))

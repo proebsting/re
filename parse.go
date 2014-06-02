@@ -8,6 +8,12 @@ import (
 	"strconv"
 )
 
+// MaxComplexity is a crude limit to the size of a parse tree.
+// An expression exceeding this value is rejected with an error.
+// Note that changing MaxComplexity can alter the numbering of expressions,
+// and that few utilities have options for changing the default.
+var MaxComplexity = 500 // usually sufficient, and usually feasible to process
+
 //  oprstack and exprstack are stacks that move in synchrony.
 var oprstack []rune  // operators associated with pushed expressions
 var exprstack []Node // stack of pushed expressions
@@ -147,6 +153,14 @@ func Parse(orgstr string) (Node, error) {
 	if len(oprstack) > 0 {
 		return nil, &ParseError{orgstr, "unclosed '('"}
 	}
+
+	cxscore := ComplexityScore(curr)
+	if cxscore > MaxComplexity {
+		return nil, &ParseError{orgstr, fmt.Sprintf(
+			"complexity %d exceeds limit of %d",
+			cxscore, MaxComplexity)}
+	}
+
 	// success!
 	return curr, nil // return parse tree
 }
@@ -282,4 +296,21 @@ func (e ParseError) Error() string {
 //  RuneError constructs a ParseError from a string and a message in runes
 func RuneError(badexpr string, message []rune) *ParseError {
 	return &ParseError{badexpr, string(message)}
+}
+
+//  ComplexityScore roughly estimates the number of states needed
+//  factoring in nested replication counts
+func ComplexityScore(tree Node) int {
+	n := 1
+	if d, ok := tree.(*ReplNode); ok {
+		n = ComplexityScore(d.Child)
+		if d.Max > 1 {
+			n *= d.Max
+		}
+	} else {
+		for _, c := range tree.Children() {
+			n += ComplexityScore(c)
+		}
+	}
+	return n
 }

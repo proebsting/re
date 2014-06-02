@@ -28,6 +28,7 @@ func init() {
 	http.HandleFunc("/about", about)
 	http.HandleFunc("/info", info)
 	rand.Seed(int64(time.Now().Nanosecond()))
+	rx.MaxComplexity = 100 // set a relatively small limit for now
 }
 
 //  syntax generates a page outlining the accepted syntax

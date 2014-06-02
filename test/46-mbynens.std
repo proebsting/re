@@ -10,36 +10,8 @@ Options: -R -T -g -h -i -l -v -I 0
 
          # Spoon Library (979 chars)
 
-expr 0: (((http|ftp|https):\/{2})+(([0-9a-z_-]+\.)+(aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cu|cv|cx|cy|cz|cz|de|dj|dk|dm|do|dz|ec|ee|eg|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mk|ml|mn|mn|mo|mp|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|nom|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ra|rs|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw|arpa)(:[0-9]+)?((\/([~0-9a-zA-Z\#\+\%@\.\/_-]+))?(\?[0-9a-zA-Z\+\%@\/&\[\];=_-]+)?)?))
-tree:   (((((((ht)t)p)|((ft)p)|((((ht)t)p)s)):)/{2})+(((([0-9_a-z-]+.)+((((ae)r)o)|(((as)i)a)|((bi)z)|((ca)t)|((co)m)|(((co)o)p)|((ed)u)|((go)v)|(((in)f)o)|((in)t)|(((jo)b)s)|((mi)l)|(((mo)b)i)|(((((mu)s)e)u)m)|(((na)m)e)|((ne)t)|((or)g)|((pr)o)|((te)l)|(((((tr)a)v)e)l)|(ac)|(ad)|(ae)|(af)|(ag)|(ai)|(al)|(am)|(an)|(ao)|(aq)|(ar)|(as)|(at)|(au)|(aw)|(ax)|(az)|(ba)|(bb)|(bd)|(be)|(bf)|(bg)|(bh)|(bi)|(bj)|(bm)|(bn)|(bo)|(br)|(bs)|(bt)|(bv)|(bw)|(by)|(bz)|(ca)|(cc)|(cd)|(cf)|(cg)|(ch)|(ci)|(ck)|(cl)|(cm)|(cn)|(co)|(cr)|(cu)|(cv)|(cx)|(cy)|(cz)|(cz)|(de)|(dj)|(dk)|(dm)|(do)|(dz)|(ec)|(ee)|(eg)|(er)|(es)|(et)|(eu)|(fi)|(fj)|(fk)|(fm)|(fo)|(fr)|(ga)|(gb)|(gd)|(ge)|(gf)|(gg)|(gh)|(gi)|(gl)|(gm)|(gn)|(gp)|(gq)|(gr)|(gs)|(gt)|(gu)|(gw)|(gy)|(hk)|(hm)|(hn)|(hr)|(ht)|(hu)|(id)|(ie)|(il)|(im)|(in)|(io)|(iq)|(ir)|(is)|(it)|(je)|(jm)|(jo)|(jp)|(ke)|(kg)|(kh)|(ki)|(km)|(kn)|(kp)|(kr)|(kw)|(ky)|(kz)|(la)|(lb)|(lc)|(li)|(lk)|(lr)|(ls)|(lt)|(lu)|(lv)|(ly)|(ma)|(mc)|(md)|(me)|(mg)|(mh)|(mk)|(ml)|(mn)|(mn)|(mo)|(mp)|(mr)|(ms)|(mt)|(mu)|(mv)|(mw)|(mx)|(my)|(mz)|(na)|(nc)|(ne)|(nf)|(ng)|(ni)|(nl)|(no)|(np)|(nr)|(nu)|(nz)|((no)m)|(pa)|(pe)|(pf)|(pg)|(ph)|(pk)|(pl)|(pm)|(pn)|(pr)|(ps)|(pt)|(pw)|(py)|(qa)|(re)|(ra)|(rs)|(ru)|(rw)|(sa)|(sb)|(sc)|(sd)|(se)|(sg)|(sh)|(si)|(sj)|(sj)|(sk)|(sl)|(sm)|(sn)|(so)|(sr)|(st)|(su)|(sv)|(sy)|(sz)|(tc)|(td)|(tf)|(tg)|(th)|(tj)|(tk)|(tl)|(tm)|(tn)|(to)|(tp)|(tr)|(tt)|(tv)|(tw)|(tz)|(ua)|(ug)|(uk)|(us)|(uy)|(uz)|(va)|(vc)|(ve)|(vg)|(vi)|(vn)|(vu)|(wf)|(ws)|(ye)|(yt)|(yu)|(za)|(zm)|(zw)|(((ar)p)a)))(:[0-9]+)?)((/[#%+.-9@-Z_a-z~-]+)?(?[]%&+/-9;=@-[_a-z-]+)?)?))
-augmnt: ((((((((ht)t)p)|((ft)p)|((((ht)t)p)s)):)(//))+(((([0-9_a-z-]+.)+((((ae)r)o)|(((as)i)a)|((bi)z)|((ca)t)|((co)m)|(((co)o)p)|((ed)u)|((go)v)|(((in)f)o)|((in)t)|(((jo)b)s)|((mi)l)|(((mo)b)i)|(((((mu)s)e)u)m)|(((na)m)e)|((ne)t)|((or)g)|((pr)o)|((te)l)|(((((tr)a)v)e)l)|(ac)|(ad)|(ae)|(af)|(ag)|(ai)|(al)|(am)|(an)|(ao)|(aq)|(ar)|(as)|(at)|(au)|(aw)|(ax)|(az)|(ba)|(bb)|(bd)|(be)|(bf)|(bg)|(bh)|(bi)|(bj)|(bm)|(bn)|(bo)|(br)|(bs)|(bt)|(bv)|(bw)|(by)|(bz)|(ca)|(cc)|(cd)|(cf)|(cg)|(ch)|(ci)|(ck)|(cl)|(cm)|(cn)|(co)|(cr)|(cu)|(cv)|(cx)|(cy)|(cz)|(cz)|(de)|(dj)|(dk)|(dm)|(do)|(dz)|(ec)|(ee)|(eg)|(er)|(es)|(et)|(eu)|(fi)|(fj)|(fk)|(fm)|(fo)|(fr)|(ga)|(gb)|(gd)|(ge)|(gf)|(gg)|(gh)|(gi)|(gl)|(gm)|(gn)|(gp)|(gq)|(gr)|(gs)|(gt)|(gu)|(gw)|(gy)|(hk)|(hm)|(hn)|(hr)|(ht)|(hu)|(id)|(ie)|(il)|(im)|(in)|(io)|(iq)|(ir)|(is)|(it)|(je)|(jm)|(jo)|(jp)|(ke)|(kg)|(kh)|(ki)|(km)|(kn)|(kp)|(kr)|(kw)|(ky)|(kz)|(la)|(lb)|(lc)|(li)|(lk)|(lr)|(ls)|(lt)|(lu)|(lv)|(ly)|(ma)|(mc)|(md)|(me)|(mg)|(mh)|(mk)|(ml)|(mn)|(mn)|(mo)|(mp)|(mr)|(ms)|(mt)|(mu)|(mv)|(mw)|(mx)|(my)|(mz)|(na)|(nc)|(ne)|(nf)|(ng)|(ni)|(nl)|(no)|(np)|(nr)|(nu)|(nz)|((no)m)|(pa)|(pe)|(pf)|(pg)|(ph)|(pk)|(pl)|(pm)|(pn)|(pr)|(ps)|(pt)|(pw)|(py)|(qa)|(re)|(ra)|(rs)|(ru)|(rw)|(sa)|(sb)|(sc)|(sd)|(se)|(sg)|(sh)|(si)|(sj)|(sj)|(sk)|(sl)|(sm)|(sn)|(so)|(sr)|(st)|(su)|(sv)|(sy)|(sz)|(tc)|(td)|(tf)|(tg)|(th)|(tj)|(tk)|(tl)|(tm)|(tn)|(to)|(tp)|(tr)|(tt)|(tv)|(tw)|(tz)|(ua)|(ug)|(uk)|(us)|(uy)|(uz)|(va)|(vc)|(ve)|(vg)|(vi)|(vn)|(vu)|(wf)|(ws)|(ye)|(yt)|(yu)|(za)|(zm)|(zw)|(((ar)p)a)))(:[0-9]+)?)((/[#%+.-9@-Z_a-z~-]+)?(?[]%&+/-9;=@-[_a-z-]+)?)?))#)
-length: 10 to *
--------------------- Examples --------------------
-ex(0):  http://9.su  http://5.mil  ftp://4.je  ftp://u.na  http://2.md
-ex(1):  http://k.tn  ftp://h.be:4  ftp://l.am/@  ftp://s.fj:1?l  ftp://k.uk
-ex(2):  ftp://http://k._.sj  http://https://4d.gg?0  ftp://ftp://cu.kn
-ex(3):  https://https://g.by  ftp://https://http://1.c49.cg:6/_AP
-ex(5):  https://http://http://http://https://dhm9.5qa.e5u.19r4.nf.bg:02606
-ex(8):  ftp://ftp://1-a-if.cd:3
----------------- Examples from DFA ---------------
-s1:  ftp://q.al
-s30:  ftp://q.ae
-s31:  ftp://q.ar
-s32:  ftp://q.as
-s36:  ftp://q.jo
-s33:  ftp://q.bi
-s39:  ftp://q.tr
-s37:  ftp://q.mu
-s61:  ftp://q.mo
-s34:  ftp://q.ca
-s35:  ftp://q.co
-s59:  ftp://q.na
-s60:  ftp://q.no
-s38:  ftp://q.pr
-s58:  ftp://q.in
-s72:  ftp://q.al:1
-s57:  ftp://q.al/8
-s77:  ftp://q.al?w
+ERROR:   (((http|ftp|https):\/{2})+(([0-9a-z_-]+\.)+(aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cu|cv|cx|cy|cz|cz|de|dj|dk|dm|do|dz|ec|ee|eg|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mk|ml|mn|mn|mo|mp|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|nom|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ra|rs|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw|arpa)(:[0-9]+)?((\/([~0-9a-zA-Z\#\+\%@\.\/_-]+))?(\?[0-9a-zA-Z\+\%@\/&\[\];=_-]+)?)?))
+    rx: complexity 927 exceeds limit of 500: in "(((http|ftp|https):\/{2})+(([0-9a-z_-]+\.)+(aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cu|cv|cx|cy|cz|cz|de|dj|dk|dm|do|dz|ec|ee|eg|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mk|ml|mn|mn|mo|mp|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|nom|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ra|rs|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw|arpa)(:[0-9]+)?((\/([~0-9a-zA-Z\#\+\%@\.\/_-]+))?(\?[0-9a-zA-Z\+\%@\/&\[\];=_-]+)?)?))"
 
          # @krijnhoetmer (115 chars)
 
@@ -53,7 +25,7 @@ ERROR:   (([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))
 
          # @gruber v2 (218 chars)
 
-expr 1: ((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))
+expr 0: ((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))
 tree:   (((((([a-z][0-9A-Z_a-z-]+):)(/{1,3}|[%0-9a-z]))|((((ww)w)[0-9]{0,3}).)|((([.0-9a-z-]+.)[a-z]{2,4})/))([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+|(((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+|((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+))))*))))+)((((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+|((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+))))*)))|[\x01-\b\x0e-\x1f#-&*+/-9=@-Z\^_a-z|~\u007f«»‘’“”-]))
 augmnt: ((((((([a-z][0-9A-Z_a-z-]+):)(((//?)/?)|[%0-9a-z]))|((((ww)w)(([0-9]?[0-9]?)[0-9]?)).)|((([.0-9a-z-]+.)((([a-z][a-z])[a-z]?)[a-z]?))/))([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+|(((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+|((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+))))*))))+)((((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+|((([\x01-\b\x0e-\x1f!-'*-;=?-\u007f]+))))*)))|[\x01-\b\x0e-\x1f#-&*+/-9=@-Z\^_a-z|~\u007f«»‘’“”-]))#)
 length: 6 to *
@@ -80,7 +52,7 @@ ERROR:   ((ftp|https?)://[-\w]+(\.\w[-\w]*)+|(?:[a-z0-9](?:[-a-z0-9]*[a-z0-9])?\
 
          # @mattfarina (287 chars)
 
-expr 2: ([a-z][a-z0-9\*\-\.]*):\/\/(?:(?:(?:[\w\.\-\+!$&'\(\)*\+,;=]|%[0-9a-f]{2})+:)*(?:[\w\.\-\+%!$&'\(\)*\+,;=]|%[0-9a-f]{2})+@)?(?:(?:[a-z0-9\-\.]|%[0-9a-f]{2})+|(?:\[(?:[0-9a-f]{0,4}:)*(?:[0-9a-f]{0,4})\]))(?::[0-9]+)?(?:[\/|\?](?:[\w#!:\.\?\+=&@!$'~*,;\/\(\)\[\]\-]|%[0-9a-f]{2})*)?
+expr 1: ([a-z][a-z0-9\*\-\.]*):\/\/(?:(?:(?:[\w\.\-\+!$&'\(\)*\+,;=]|%[0-9a-f]{2})+:)*(?:[\w\.\-\+%!$&'\(\)*\+,;=]|%[0-9a-f]{2})+@)?(?:(?:[a-z0-9\-\.]|%[0-9a-f]{2})+|(?:\[(?:[0-9a-f]{0,4}:)*(?:[0-9a-f]{0,4})\]))(?::[0-9]+)?(?:[\/|\?](?:[\w#!:\.\?\+=&@!$'~*,;\/\(\)\[\]\-]|%[0-9a-f]{2})*)?
 tree:   (((((((([a-z][*.0-9a-z-]*):)/)/)(((([!$&-.0-9;=A-Z_a-z]|(%[0-9a-f]{2}))+:)*([!$-.0-9;=A-Z_a-z]|(%[0-9a-f]{2}))+)@)?)(([.0-9a-z-]|(%[0-9a-f]{2}))+|((([([0-9a-f]{0,4}:)*)[0-9a-f]{0,4})])))(:[0-9]+)?)([/?|]([]!#$&-;=?-[_a-z~]|(%[0-9a-f]{2}))*)?)
 augmnt: ((((((((([a-z][*.0-9a-z-]*):)/)/)(((([!$&-.0-9;=A-Z_a-z]|(%([0-9a-f][0-9a-f])))+:)*([!$-.0-9;=A-Z_a-z]|(%([0-9a-f][0-9a-f])))+)@)?)(([.0-9a-z-]|(%([0-9a-f][0-9a-f])))+|((([(((([0-9a-f]?[0-9a-f]?)[0-9a-f]?)[0-9a-f]?):)*)((([0-9a-f]?[0-9a-f]?)[0-9a-f]?)[0-9a-f]?))])))(:[0-9]+)?)([/?|]([]!#$&-;=?-[_a-z~]|(%([0-9a-f][0-9a-f])))*)?)#)
 length: 5 to *
@@ -101,7 +73,7 @@ s22:  s://[]:6
 
          # @stephenhay (38 chars)
 
-expr 3: (https?|ftp)://[^\s/$.?#].[^\s]*
+expr 2: (https?|ftp)://[^\s/$.?#].[^\s]*
 tree:   (((((((((((ht)t)p)s?)|((ft)p)):)/)/)[\x01-\b\x0e-\x1f!"%-,0->@-\u007f-])[\x01-\u007f])[\x01-\b\x0e-\x1f!-\u007f]*)
 augmnt: ((((((((((((ht)t)p)s?)|((ft)p)):)/)/)[\x01-\b\x0e-\x1f!"%-,0->@-\u007f-])[\x01-\u007f])[\x01-\b\x0e-\x1f!-\u007f]*)#)
 length: 8 to *
@@ -117,7 +89,7 @@ s1:  ftp://di
 
          # @scottgonzales (1347 chars)
 
-expr 4: ([a-z]([a-z]|\d|\+|-|\.)*):(\/\/(((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?((\[(|(v[\da-f]{1,}\.(([a-z]|\d|-|\.|_|~)|[!\$&'\(\)\*\+,;=]|:)+))\])|((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=])*)(:\d*)?)(\/(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*|(\/((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)|((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)|((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)){0})(\?((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\xE000-\xF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?
+expr 3: ([a-z]([a-z]|\d|\+|-|\.)*):(\/\/(((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?((\[(|(v[\da-f]{1,}\.(([a-z]|\d|-|\.|_|~)|[!\$&'\(\)\*\+,;=]|:)+))\])|((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=])*)(:\d*)?)(\/(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*|(\/((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)|((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)|((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)){0})(\?((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\xE000-\xF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\x00A0-\xD7FF\xF900-\xFDCF\xFDF0-\xFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?
 tree:   ((((([a-z]([a-z]|[0-9]|+|-|.)*):)((((//)((((([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%[0-9a-f]{2})|[!$&-,;=]|:))*@)?((([(()|(((v[0-9a-f]+).)(([a-z]|[0-9]|-|.|_|~)|([!$&-,;=]|:))+)))])|((((((([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5])).)([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5]))).)([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5]))).)([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5])))|(([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%[0-9a-f]{2})|[!$&-,;=]))*))(:[0-9]*)?))(/(([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))*)*)|(/((([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))+(/(([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))*)*)?)|((([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))+(/(([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))*)*)|()))(?((([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))|([0-ø]|/|?))*)?)(#((([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%[0-9a-f]{2})|[!$&-,;=]|:|@))|(/|?))*)?)
 augmnt: (((((([a-z]([a-z]|[0-9]|+|-|.)*):)((((//)((((([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%([0-9a-f][0-9a-f]))|[!$&-,;=]|:))*@)?((([(()|(((v[0-9a-f]+).)(([a-z]|[0-9]|-|.|_|~)|([!$&-,;=]|:))+)))])|((((((([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5])).)([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5]))).)([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5]))).)([0-9]|([1-9][0-9])|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5])))|(([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%([0-9a-f][0-9a-f]))|[!$&-,;=]))*))(:[0-9]*)?))(/(([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%([0-9a-f][0-9a-f]))|[!$&-,;=]|:|@))*)*)|(/((([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%([0-9a-f][0-9a-f]))|[!$&-,;=]|:|@))+(/(([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%([0-9a-f][0-9a-f]))|[!$&-,;=]|:|@))*)*)?)|((([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%([0-9a-f][0-9a-f]))|[!$&-,;=]|:|@))+(/(([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%([0-9a-f][0-9a-f]))|[!$&-,;=]|:|@))*)*)|()))(?((([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%([0-9a-f][0-9a-f]))|[!$&-,;=]|:|@))|([0-ø]|/|?))*)?)(#((([a-z]|[0-9]|-|.|_|~|[\x000-ÿ])|((%([0-9a-f][0-9a-f]))|[!$&-,;=]|:|@))|(/|?))*)?)#)
 length: 2 to *
@@ -139,7 +111,7 @@ ERROR:   ((https?://|ftp://|www\.|[^\s:=]+@www\.).*?[a-z_\/0-9\-\#=&])(?=(\.|,|;
 
          # @imme_emosol (54 chars)
 
-expr 5: (https?|ftp)://(-\.)?([^\s/?\.#-]+\.?)+(/[^\s]*)?
+expr 4: (https?|ftp)://(-\.)?([^\s/?\.#-]+\.?)+(/[^\s]*)?
 tree:   (((((((((((ht)t)p)s?)|((ft)p)):)/)/)(-.)?)([\x01-\b\x0e-\x1f!"$-,0->@-\u007f]+.?)+)(/[\x01-\b\x0e-\x1f!-\u007f]*)?)
 augmnt: ((((((((((((ht)t)p)s?)|((ft)p)):)/)/)(-.)?)([\x01-\b\x0e-\x1f!"$-,0->@-\u007f]+.?)+)(/[\x01-\b\x0e-\x1f!-\u007f]*)?)#)
 length: 7 to *
@@ -159,5 +131,5 @@ s10:  ftp://*/
 
 ERROR:   (?:(?:https?|ftp)://)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}-\x{ffff}]{2,})))(?::\d{2,5})?(?:/[^\s]*)?
     rx: '(?...' unimplemented: in "(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}-\x{ffff}]{2,})))(?::\d{2,5})?(?:/[^\s]*)?"
-6 expression(s) loaded
-(6 expression(s) rejected)
+5 expression(s) loaded
+(7 expression(s) rejected)

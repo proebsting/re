@@ -883,11 +883,10 @@ Last.*?(\d+.?\d*)
 #D: This pattern returns the font section from an RTF document. The first parenthetical subexpression captures the font number, the second returns the actual font enumeration. Lame-o, but fun! :-)
 (\{\\f\d*)\\([^;]+;)
 
-#%#% COMMENTED OUT: THIS ONE IS TOO BIG TO RUN
 #U: http://regexlib.com/REDetails.aspx?regexp_id=220
 #A: Lewis Moten
 #D: Searches for tags and there atributes according to the HTML 2.0 specification to limit length of tags to 72 characters, and length of attribute values to 1024 characters.
-# </?([a-zA-Z][-A-Za-z\d\.]{0,71})(\s+(\S+)(\s*=\s*([-\w\.]{1,1024}|"[^"]{0,1024}"|'[^']{0,1024}'))?)*\s*>
+</?([a-zA-Z][-A-Za-z\d\.]{0,71})(\s+(\S+)(\s*=\s*([-\w\.]{1,1024}|"[^"]{0,1024}"|'[^']{0,1024}'))?)*\s*>
 
 #U: http://regexlib.com/REDetails.aspx?regexp_id=222
 #A: Henric Rosvall

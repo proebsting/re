@@ -11,6 +11,7 @@
 	    Number of states in the minimized DFA
 	    Time in seconds to produce the combined DFA
 	    Time in seconds to minimize the DFA
+	    If n == 1, the computed "complexity score"
 	    Ordinals of the expressions combined in this DFA
 
 	spring 2014 / gmt
@@ -44,8 +45,10 @@ func main() {
 			nexprs, nways))
 	}
 
-	// make augmented parse trees
+	// record individual complexity scores and make augmented parse trees
+	cx := make([]int, nexprs)
 	for i, t := range exprs {
+		cx[i] = rx.ComplexityScore(t.Tree)
 		t.Tree = rx.Augment(t.Tree, i)
 	}
 
@@ -66,8 +69,12 @@ func main() {
 		t1 := rsys.Interval().Seconds() // measure time
 		dfa2 := dfa1.Minimize()         // minimize DFA
 		t2 := rsys.Interval().Seconds() // measure time
-		fmt.Printf("%6d %6d %8.3f %8.3f   {",
+		fmt.Printf("%6d %6d %8.3f %8.3f",
 			len(dfa1.Dstates), len(dfa2.Dstates), t1, t2)
+		if nways == 1 {
+			fmt.Printf(" %6d", cx[xlist[0]])
+		}
+		fmt.Print("   {")
 		for _, x := range xlist {
 			fmt.Printf(" %d", x)
 		}

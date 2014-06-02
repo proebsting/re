@@ -7,6 +7,7 @@
 	-n nnn	set number of examples generated for each regexp
 	-r nnn	set maximum replication factor for example generation
 	-i nnn	initialize random seed for reproducible results
+	-c nnn	set complexity limit for individual expressions
 	-g	print grids showing how examples matched up
 	-s	print singleton clusters for completeness
 	-v	enable verbose commentary
@@ -101,6 +102,7 @@ func cmdline() string {
 	n := flag.Int("n", 10, "number of examples per regex")
 	r := flag.Int("r", 5, "maximum replication in examples")
 	i := flag.Int("i", 0, "random seed")
+	c := flag.Int("c", rx.MaxComplexity, "expression complexity limit")
 	g := flag.Bool("g", false, "show grids with clusters")
 	s := flag.Bool("s", false, "show singletons too")
 	v := flag.Bool("v", false, "verbose commentary")
@@ -128,6 +130,7 @@ func cmdline() string {
 		fmt.Printf("rxcluster -t %d -n %d -r %d -i %d => d=%d\n",
 			*t, *n, *r, *i, maxdist)
 	}
+	rx.MaxComplexity = *c
 
 	args := flag.Args()
 	if len(args) > 1 {
