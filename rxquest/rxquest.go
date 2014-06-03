@@ -278,9 +278,7 @@ func main() {
 		fmt.Printf("\nMain: The reg ex you are looking for is: rx { %d } %s\n\nMETA DATA: \n", ind[0], exprs[0].Expr)
 
 		// print accumulated metadata
-		for _, k := range rx.KeyList(exprs[0].Meta) {
-			fmt.Printf("#%s: %v\n", k, exprs[0].Meta[k])
-		}
+		exprs[0].ShowMeta(os.Stdout, "")
 		fmt.Printf("\n")
 	}
 

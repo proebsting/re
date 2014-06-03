@@ -42,9 +42,7 @@ func main() {
 			fmt.Printf("# OUT OF RANGE\n")
 			continue
 		}
-		for _, k := range rx.KeyList(exprs[i].Meta) {
-			fmt.Printf("#%s: %s\n", k, exprs[i].Meta[k])
-		}
+		exprs[i].ShowMeta(os.Stdout, "")
 		fmt.Println(exprs[i].Expr)
 	}
 }

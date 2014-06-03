@@ -5,9 +5,12 @@ package rx
 import (
 	"bufio"
 	"flag"
+	"fmt"
+	"io"
 	"log"
 	"os"
 	"regexp"
+	"strings"
 )
 
 //  Globals set as a side effect of loading input
@@ -32,6 +35,17 @@ type RegExParsed struct {
 //  not a comment, whether or not it is valid.
 func (rxp *RegExParsed) IsExpr() bool {
 	return rxp.Tree != nil || rxp.Err != nil
+}
+
+//  RegExParsed.ShowMeta prints the expression's metadata intelligently.
+func (rxp *RegExParsed) ShowMeta(f io.Writer, indent string) {
+	if rxp.Meta != nil {
+		for _, k := range KeyList(rxp.Meta) {
+			for _, s := range strings.Split(rxp.Meta[k], "\n") {
+				fmt.Fprintf(f, "%s#%s: %s\n", indent, k, s)
+			}
+		}
+	}
 }
 
 //  LoadExpressions reads a file and parses the expressions found.

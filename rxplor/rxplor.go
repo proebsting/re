@@ -122,7 +122,9 @@ func echo(l *rx.RegExParsed, i int) {
 	if l.Err != nil { // if an error
 		if !errsilent { // print error unless -y
 			fmt.Println()
-			echometa(l)
+			if listopt {
+				l.ShowMeta(os.Stdout, "         ")
+			}
 			fmt.Printf("ERROR:   %s\n    %s\n", l.Expr, l.Err)
 			if *opt['x'] { // if immediate exit requested
 				log.Fatal(l.Err)
@@ -140,18 +142,10 @@ func echo(l *rx.RegExParsed, i int) {
 	// must be a real expression
 	if *opt['i'] || listopt {
 		fmt.Println()
-		echometa(l)
-		fmt.Printf("expr %d: %s\n", i, l.Expr)
-	}
-}
-
-// echometa prints metadata, if selected
-// #%#% embedded newlines produce ugly/confusing output
-func echometa(l *rx.RegExParsed) {
-	if listopt { // if to echo metadata
-		for _, k := range rx.KeyList(l.Meta) {
-			fmt.Printf("         #%s: %v\n", k, l.Meta[k])
+		if listopt {
+			l.ShowMeta(os.Stdout, "         ")
 		}
+		fmt.Printf("expr %d: %s\n", i, l.Expr)
 	}
 }
 

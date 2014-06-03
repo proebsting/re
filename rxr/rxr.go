@@ -1,6 +1,8 @@
 /*
 	rxr.go -- regular expression reader
 
+	#%#% This program has been superseded by rxplor.
+
 	usage:  rxr [-Q] [-R] [exprfile]
 
 		-Q	disable printing of automata details
@@ -54,9 +56,7 @@ func main() {
 			return
 		}
 		// print accumulated metadata
-		for _, k := range rx.KeyList(in.Meta) {
-			fmt.Printf("#%s: %v\n", k, in.Meta[k])
-		}
+		in.ShowMeta(os.Stdout, "")
 		// print regexp
 		fmt.Printf("\nregexp: %s\n", spec)
 		if in.Err != nil {

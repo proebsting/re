@@ -315,7 +315,7 @@ s1:  512-926-7350
 
          #A: G. Andrew Duthie
          #D: Domain names:
-This regular expression tests the validity of a domain or hostname. It will match any valid domain name that does not contain characters which are invalid in URLs, and which ends in .com, .org, .net, .mil, or .edu. You can add additional valid TLDs by appending the | (pipe) character and the desired TLD to the list in the parens.
+         #D: This regular expression tests the validity of a domain or hostname. It will match any valid domain name that does not contain characters which are invalid in URLs, and which ends in .com, .org, .net, .mil, or .edu. You can add additional valid TLDs by appending the | (pipe) character and the desired TLD to the list in the parens.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=25
 expr 13: ^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$
 tree:   (([.0-9A-Za-z-]+.)(((co)m)|((or)g)|((ne)t)|((mi)l)|((ed)u)|((CO)M)|((OR)G)|((NE)T)|((MI)L)|((ED)U)))
@@ -459,7 +459,7 @@ s26:  1.0.0.26
 
          #A: Steven Smith
          #D: This expression uses a BackReference to find occurrences of the same word twice in a row (separated by a space).
-Matches things like 'mandate dated', which may not be desirable.  See Sean Carley's update for a better expression for true repeated word matching.
+         #D: Matches things like 'mandate dated', which may not be desirable.  See Sean Carley's update for a better expression for true repeated word matching.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=33
 ERROR:   (\w+)\s+\1
     rx: \1 (backref) unimplemented: in "(\w+)\s+\1"
@@ -468,7 +468,7 @@ ERROR:   (\w+)\s+\1
 
          #A: Samuel Mota
          #D: Match diferent styles for brazilian Phone number code.
-Only DDD (12), complete DDD (012), complete DDD + Telephony Company (0xx12) plus 3 or 4 digits (city code) plus 4 digits (phone number).
+         #D: Only DDD (12), complete DDD (012), complete DDD + Telephony Company (0xx12) plus 3 or 4 digits (city code) plus 4 digits (phone number).
          #U: http://regexlib.com/REDetails.aspx?regexp_id=34
 expr 19: \(([0-9]{2}|0{1}((x|[0-9]){2}[0-9]{2}))\)\s*[0-9]{3,4}[- ]*[0-9]{4}
 tree:   (((((((([0-9]{2}|(0((x|[0-9]){2}[0-9]{2}))))))[\t-\r ]*)[0-9]{3,4})[ -]*)[0-9]{4})
@@ -539,13 +539,13 @@ s1:  ftp://~
 
          #A: Dave Sparks
          #D: Matches UK postcodes according to the following rules
-1. LN NLL     eg N1 1AA
-2. LLN NLL    eg SW4 0QL
-3. LNN NLL    eg M23 4PJ
-4. LLNN NLL  eg WS14 0JT
-5. LLNL NLL   eg SW1N 4TB
-6. LNL NLL     eg W1C 8LQ
-Thanks to Simon Bell for informing me of LNL NLL rule for postcodes which I had omitted in an earlier version.
+         #D: 1. LN NLL     eg N1 1AA
+         #D: 2. LLN NLL    eg SW4 0QL
+         #D: 3. LNN NLL    eg M23 4PJ
+         #D: 4. LLNN NLL  eg WS14 0JT
+         #D: 5. LLNL NLL   eg SW1N 4TB
+         #D: 6. LNL NLL     eg W1C 8LQ
+         #D: Thanks to Simon Bell for informing me of LNL NLL rule for postcodes which I had omitted in an earlier version.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=38
 expr 22: ^[a-zA-Z]{1,2}[0-9][0-9A-Za-z]{0,1} {0,1}[0-9][A-Za-z]{2}$
 tree:   ((((([A-Za-z]{1,2}[0-9])[0-9A-Za-z]?) ?)[0-9])[A-Za-z]{2})
@@ -637,8 +637,8 @@ s6:  NUL
 
          #A: Michael Scovetta
          #D: This re was used for a security routine. The format is:
-[user=name1,name2,...,nameN;][group=group1,group2,...,groupN;][level=number;]
-Each component is optional, but they must appear the in order listed if applicable.
+         #D: [user=name1,name2,...,nameN;][group=group1,group2,...,groupN;][level=number;]
+         #D: Each component is optional, but they must appear the in order listed if applicable.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=44
 expr 26: ^(user=([a-z0-9]+,)*(([a-z0-9]+){1});)?(group=([a-z0-9]+,)*(([a-z0-9]+){1});)?(level=[0-9]+;)?$
 tree:   (((((((((us)e)r)=)([0-9a-z]+,)*)[0-9a-z]+);)?((((((((gr)o)u)p)=)([0-9a-z]+,)*)[0-9a-z]+);)?)(((((((le)v)e)l)=)[0-9]+);)?)
@@ -728,7 +728,7 @@ s1:  0873499343358893
 
          #A: Steven Smith
          #D: Matches major credit cards including:
-Visa (length 16, prefix 4), Mastercard (length 16, prefix 51-55), Discover (length 16, prefix 6011), American Express (length 15, prefix 34 or 37).  All 16 digit formats accept optional hyphens (-) between each group of four digits. 
+         #D: Visa (length 16, prefix 4), Mastercard (length 16, prefix 51-55), Discover (length 16, prefix 6011), American Express (length 15, prefix 34 or 37).  All 16 digit formats accept optional hyphens (-) between each group of four digits. 
          #U: http://regexlib.com/REDetails.aspx?regexp_id=49
 expr 30: ^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$
 tree:   (((((((((4[0-9]{3})|((5[1-5])[0-9]{2})|(((60)1)1))-?)[0-9]{4})-?)[0-9]{4})-?)[0-9]{4})|((3[,47])[0-9]{13}))
@@ -884,7 +884,7 @@ ERROR:   (\w+?@\w+?\x2E.+)
 
          #A: Prasad DV
          #D: Plucks the last quote of a Stock from the MSN MoneyCentral WebQuote page for any given stock symbol. The URL of the web page where this RegEx should be applied is:
-http://localhost/asp/webquote.htm?ipage=qd&Symbol=,give the stock symbol here> You must also use the singleline option.
+         #D: http://localhost/asp/webquote.htm?ipage=qd&Symbol=,give the stock symbol here> You must also use the singleline option.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=57
 ERROR:   Last.*?(\d+.?\d*)
     rx: prefer-fewer '?' unimplemented: in "Last.*?(\d+.?\d*)"
@@ -1120,7 +1120,7 @@ s6:  79646-7179
 
          #A: Jon van Leuven
          #D: Regular expression to evaluate dutch-style phone numbers. Possible example prefixes: +31, +31(0), (+31)(0), 0, 0031
-followed by 9 numbers (which can contain a space or -).
+         #D: followed by 9 numbers (which can contain a space or -).
          #U: http://regexlib.com/REDetails.aspx?regexp_id=75
 ERROR:   (^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)
     rx: Embedded '^' unimplemented: in "(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)"
@@ -1165,7 +1165,7 @@ ERROR:   \b(\w+)\s+\1\b
 
          #A: Steven Smith
          #D: A very simple ISBN validation expression - it just checks for a 10 digit number where the last digit could also be a capital 'X'.  Complete specs for ISBN available here:
-http://www.isbn.org/standards/home/isbn/international/html/usm4.htm.  An enhancement would be to allow exactly 3 or 0 hyphens or 3 or 0 spaces, since these are also valid formats.
+         #D: http://www.isbn.org/standards/home/isbn/international/html/usm4.htm.  An enhancement would be to allow exactly 3 or 0 hyphens or 3 or 0 spaces, since these are also valid formats.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=79
 expr 48: ^\d{9}[\d|X]$
 tree:   ([0-9]{9}[0-9X|])
@@ -1186,9 +1186,9 @@ s1:  8680099480
 
          #A: Scott Thompson
          #D: Dates
-day: d or dd, <= 31,
-month: m or mm, <= 12,
-year: yy or yyyy >= 1900, <= 2099
+         #D: day: d or dd, <= 31,
+         #D: month: m or mm, <= 12,
+         #D: year: yy or yyyy >= 1900, <= 2099
          #U: http://regexlib.com/REDetails.aspx?regexp_id=80
 expr 49: ^(([1-9])|(0[1-9])|(1[0-2]))\/(([0-9])|([0-2][0-9])|(3[0-1]))\/(([0-9][0-9])|([1-2][0,9][0-9][0-9]))$
 tree:   ((((([1-9]|(0[1-9])|(1[012]))/)([0-9]|([012][0-9])|(3[01])))/)(([0-9][0-9])|((([12][,09])[0-9])[0-9])))
@@ -1253,7 +1253,7 @@ s1:  60944
 
          #A: Sean McAnally
          #D: Regex used in .NET to validate a date.  Matches the following formats mm/dd/yy, mm/dd/yyyy, mm-dd-yy, mm-dd-yyyy
-This covers days with 30 or 31 days but does not handle February, it is allowed 30 days.
+         #D: This covers days with 30 or 31 days but does not handle February, it is allowed 30 days.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=84
 expr 52: ((0?[13578]|10|12)(-|\/)((0[0-9])|([12])([0-9]?)|(3[01]?))(-|\/)((\d{4})|(\d{2}))|(0?[2469]|11)(-|\/)((0[0-9])|([12])([0-9]?)|(3[0]?))(-|\/)((\d{4}|\d{2})))
 tree:   (((((((0?[13578])|(10)|(12))(-|/))((0[0-9])|([12][0-9]?)|(3[01]?)))(-|/))([0-9]{4}|[0-9]{2}))|((((((0?[2469])|(11))(-|/))((0[0-9])|([12][0-9]?)|(30?)))(-|/))([0-9]{4}|[0-9]{2})))
@@ -1275,8 +1275,8 @@ s8:  1-2/6863
 
          #A: Andre Van Der Merwe
          #D: Checks for a valid windows file name (Must be used with the case-insensitive option
-Checks that the file has at lease one char, does not contain any invalid characters and does not have a reserved word as a file name.
-"If you see a " in the regex replace it with a " character"
+         #D: Checks that the file has at lease one char, does not contain any invalid characters and does not have a reserved word as a file name.
+         #D: "If you see a " in the regex replace it with a " character"
          #U: http://regexlib.com/REDetails.aspx?regexp_id=85
 ERROR:   ^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*:\";|/]+$
     rx: '(?...' unimplemented: in "^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*:\";|/]+$"
@@ -1285,8 +1285,8 @@ ERROR:   ^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*
 
          #A: Marc-Antoine Latour
          #D: Match any image insert in a tag .
-simply replace the .jpg in the pattern whit a variable of content type ex:.swf,.js,.gif and loop the pattern to retrieve all tag whit the contenttype pass trought....
-Very useful when you have people uploading html document in your site and you want to retrieve all dependecy.
+         #D: simply replace the .jpg in the pattern whit a variable of content type ex:.swf,.js,.gif and loop the pattern to retrieve all tag whit the contenttype pass trought....
+         #D: Very useful when you have people uploading html document in your site and you want to retrieve all dependecy.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=86
 expr 53: <[^>]*\n?.*=("|')?(.*\.jpg)("|')?.*\n?[^<]*>
 tree:   (((((((((((<[\x01-=?-\u007f]*)[\n]?)[\x01-\u007f]*)=)("|')?)(((([\x01-\u007f]*.)j)p)g))("|')?)[\x01-\u007f]*)[\n]?)[\x01-;=-\u007f]*)>)
@@ -1412,8 +1412,8 @@ s1:  2044/06-04 13:23:02
 
          #A: Rex Po
          #D: - validates a yyyy-mm-dd, yyyy mm dd, or yyyy/mm/dd date
-- makes sure day is within valid range for the month
-- does NOT validate Feb. 29 on a leap year, only that Feb. CAN have 29 days
+         #D: - makes sure day is within valid range for the month
+         #D: - does NOT validate Feb. 29 on a leap year, only that Feb. CAN have 29 days
          #U: http://regexlib.com/REDetails.aspx?regexp_id=95
 expr 59: ^\d{4}[\-\/\s]?((((0[13578])|(1[02]))[\-\/\s]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\-\/\s]?(([0-2][0-9])|(30)))|(02[\-\/\s]?[0-2][0-9]))$
 tree:   (([0-9]{4}[\t-\r /-]?)(((((0[13578])|(1[02]))[\t-\r /-]?)(([012][0-9])|(3[01])))|((((0[469])|(11))[\t-\r /-]?)(([012][0-9])|(30)))|((((02)[\t-\r /-]?)[012])[0-9])))
@@ -1434,8 +1434,8 @@ s1:  44850321
 
          #A: M H
          #D: *CORRECTED: Again thanks for all the comments below. If you want to include internal domain as well change the partial code (\.[\w-_]+)+ to (\.[\w-_]+)?
-See the comments below*
-This is the regular expression I use to add links in my email program. It also ignores those suppose-to-be commas/periods/colons at the end of the URL, like this sentence "check out http://www.yahoo.com/." (the period will be ignored) Note that it requires some modification to match ones that dont start with http.
+         #D: See the comments below*
+         #D: This is the regular expression I use to add links in my email program. It also ignores those suppose-to-be commas/periods/colons at the end of the URL, like this sentence "check out http://www.yahoo.com/." (the period will be ignored) Note that it requires some modification to match ones that dont start with http.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=96
 expr 60: (http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?
 tree:   ((((((((((ht)t)p)|((ft)p)|((((ht)t)p)s)):)/)/)[0-9A-Z_a-z-]+)(.[0-9A-Z_a-z-]+)+)([#%&+-:=?-Z^_a-z~]*[#%&+/-9=?-Z^_a-z~-])?)
@@ -1610,7 +1610,7 @@ s7:  2'566.11
 
          #A: Josh Bailyr
          #D: This expression is an attempt to match the most obvious features of a valid date in American/US format of the form mm/dd/yyyy for any year 1900 through 2003.  It can easily be adapted for different date ranges.  It matches any date where the day part is any number 01-31, the month part is any number 01-12, and the year part is any number 1900-2003.  The only invalid dates that it matches are ones where the day part may be in the range 01-31 but that range might not be valid for the specified month.  An example of an invalid date that it would allow to pass through would be 11/31/2002.  This date is invalid because 11/31 of any year does not exist, but this expression would allow it pass through since the day part is in the range 01-31.
-This regular expression has been used successfully in ASP with VBScript using the windows scripting library RegExp object.
+         #D: This regular expression has been used successfully in ASP with VBScript using the windows scripting library RegExp object.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=109
 expr 68: ^(0[1-9]|1[0-2])\/((0[1-9]|2\d)|3[0-1])\/(19\d\d|200[0-3])$
 tree:   ((((((0[1-9])|(1[012]))/)(((0[1-9])|(2[0-9]))|(3[01])))/)((((19)[0-9])[0-9])|(((20)0)[0-3])))
@@ -1711,11 +1711,11 @@ s1:  2-04-0046
 
          #A: Frederico Knabben
          #D: Use it for breaking-down a URI (URL, URN) reference into its main components: Scheme, Authority, Path, Query and Fragment.
-This is not a simple match regular expression. so it not works to verify a URI. It returns 1 matching group for each URI component.
-For example, for the following URI:
-http://regexlib.com/REDetails.aspx?regexp_id=x#Details
-returns: scheme="http", authority="regexlib.com", path="/REDetails.aspx", query="regexp_id=x" and fragment="Details".
-This is a W3C raccomandation (RFC 2396).
+         #D: This is not a simple match regular expression. so it not works to verify a URI. It returns 1 matching group for each URI component.
+         #D: For example, for the following URI:
+         #D: http://regexlib.com/REDetails.aspx?regexp_id=x#Details
+         #D: returns: scheme="http", authority="regexlib.com", path="/REDetails.aspx", query="regexp_id=x" and fragment="Details".
+         #D: This is a W3C raccomandation (RFC 2396).
          #U: http://regexlib.com/REDetails.aspx?regexp_id=115
 ERROR:   ^(?=[^&])(?:(?<scheme>[^:/?#]+):)?(?://(?<authority>[^/?#]*))?(?<path>[^?#]*)(?:\?(?<query>[^#]*))?(?:#(?<fragment>.*))?
     rx: '(?...' unimplemented: in "^(?=[^&])(?:(?<scheme>[^:/?#]+):)?(?://(?<authority>[^/?#]*))?(?<path>[^?#]*)(?:\?(?<query>[^#]*))?(?:#(?<fragment>.*))?"
@@ -1724,7 +1724,7 @@ ERROR:   ^(?=[^&])(?:(?<scheme>[^:/?#]+):)?(?://(?<authority>[^/?#]*))?(?<path>[
 
          #A: Bill Anderson
          #D: US Telephone Number where this is regular expression excludes the first number, after the area code,from being 0 or 1; it also allows an extension
-to be added where it does not have to be prefixed by 'x'.
+         #D: to be added where it does not have to be prefixed by 'x'.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=116
 expr 72: ^[\\(]{0,1}([0-9]){3}[\\)]{0,1}[ ]?([^0-1]){1}([0-9]){2}[ ]?[-]?[ ]?([0-9]){4}[ ]*((x){0,1}([0-9]){1,5}){0,1}$
 tree:   ((((((((((([(\]?[0-9]{3})[)\]?) ?)[\x01-/2-\u007f])[0-9]{2}) ?)-?) ?)[0-9]{4}) *)(x?[0-9]{1,5})?)
@@ -1855,7 +1855,7 @@ s1:  \"7\"
 
          #A: Carlos Nascimento
          #D: Matches standard 5 digit Brazilian Postal Codes (CEP), or the CEP + 3 digits (distribution identifiers - suffix).
-For more info refer to: http://www.correios.com.br/servicos/cep/Estrutura_CEP.cfm (in portuguese).
+         #D: For more info refer to: http://www.correios.com.br/servicos/cep/Estrutura_CEP.cfm (in portuguese).
          #U: http://regexlib.com/REDetails.aspx?regexp_id=125
 expr 78: ^\d{5}(-\d{3})?$
 tree:   ([0-9]{5}(-[0-9]{3})?)
@@ -1989,19 +1989,19 @@ s1:  03/71
 
          #A: Tom Svensson
          #D: Will match a VBScript string and/or comment
-Ex:
-' userinfo
-strUsername = "tomsve"
-iAge = 20
-' temp
-strPassword = "halloj"
-...Would result in the following matches:
-' userinfo
-"tomsve"
-' temp
-"halloj"
-Good luck!
-Tom S. info@tomsvensson.com
+         #D: Ex:
+         #D: ' userinfo
+         #D: strUsername = "tomsve"
+         #D: iAge = 20
+         #D: ' temp
+         #D: strPassword = "halloj"
+         #D: ...Would result in the following matches:
+         #D: ' userinfo
+         #D: "tomsve"
+         #D: ' temp
+         #D: "halloj"
+         #D: Good luck!
+         #D: Tom S. info@tomsvensson.com
          #U: http://regexlib.com/REDetails.aspx?regexp_id=133
 expr 83: ("[^"]*")|('[^\r]*)(\r\n)?
 tree:   ((("[\x01-!#-\u007f]*)")|(('[\x01-\f\x0e-\u007f]*)([\r][\n])?))
@@ -2023,7 +2023,7 @@ s4:  \"\"
 
          #A: V. Lorz
          #D: GUID Tester.
-This is a modification from the regular expression submitted by James Bray (james@jamesbray.com). It allows the use of mixed upper and lowercase letters in the GUID string.
+         #D: This is a modification from the regular expression submitted by James Bray (james@jamesbray.com). It allows the use of mixed upper and lowercase letters in the GUID string.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=134
 expr 84: ^[A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}$
 tree:   (((((((([0-9A-Za-z]{8}-)[0-9A-Za-z]{4})-)[0-9A-Za-z]{4})-)[0-9A-Za-z]{4})-)[0-9A-Za-z]{12})
@@ -2183,7 +2183,7 @@ s17:  ftp://n.FJ.A
 
          #A: Marco Storti
          #D: This expression validates dates in the ITALIAN d/m/y format from 1/1/1600 - 31/12/9999. The days are validated for the given month and year. Leap years are validated for all 4 digits years from 1600-9999, and all 2 digits years except 00 since it could be any century (1900, 2000, 2100). Days and months must be 1 or 2 digits and may have leading zeros. Years must be 2 or 4 digit years. 4 digit years must be between 1600 and 9999. Date separator may be a slash (/), dash (-), or period (.)
-Thanks to Michael Ash for US Version
+         #D: Thanks to Michael Ash for US Version
          #U: http://regexlib.com/REDetails.aspx?regexp_id=151
 ERROR:   ^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$
     rx: \1 (backref) unimplemented: in "^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"
@@ -2285,9 +2285,9 @@ ERROR:   ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$
 
          #A: Nathan Pitts
          #D: Host/Domain name validation for perl.
-Should be combined with a check for
-length <= 63 characters and that $2
-is in a list of top-level domains.
+         #D: Should be combined with a check for
+         #D: length <= 63 characters and that $2
+         #D: is in a list of top-level domains.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=158
 expr 94: ^([a-zA-Z0-9][-a-zA-Z0-9]*[a-zA-Z0-9]\.)+([a-zA-Z0-9]{3,5})$
 tree:   (((([0-9A-Za-z][0-9A-Za-z-]*)[0-9A-Za-z]).)+[0-9A-Za-z]{3,5})
@@ -2480,7 +2480,7 @@ s3:  $.34
 
          #A: martin devos
          #D: this expression validates a date-time field in European d/m/y h:m:s format. It is a european variation of Michael Ash's date-validation expression in this library.
-The days are validated for the given month and year. Leap years are validated for all 4 digits years from 1600-9999, and all 2 digits years except 00
+         #D: The days are validated for the given month and year. Leap years are validated for all 4 digits years from 1600-9999, and all 2 digits years except 00
          #U: http://regexlib.com/REDetails.aspx?regexp_id=166
 expr 102: ^((((31\/(0?[13578]|1[02]))|((29|30)\/(0?[1,3-9]|1[0-2])))\/(1[6-9]|[2-9]\d)?\d{2})|(29\/0?2\/(((1[6-9]|[2-9]\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))|(0?[1-9]|1\d|2[0-8])\/((0?[1-9])|(1[0-2]))\/((1[6-9]|[2-9]\d)?\d{2})) (20|21|22|23|[0-1]?\d):[0-5]?\d:[0-5]?\d$
 tree:   ((((((((((((((((31)/)((0?[13578])|(1[02])))|((((29)|(30))/)((0?[,13-9])|(1[012]))))/)((1[6-9])|([2-9][0-9]))?)[0-9]{2})|((((((29)/)0?)2)/)((((1[6-9])|([2-9][0-9]))?((0[48])|([2468][048])|([13579][26])))|((((16)|([2468][048])|([3579][26]))0)0)))|((((((0?[1-9])|(1[0-9])|(2[0-8]))/)((0?[1-9])|(1[012])))/)(((1[6-9])|([2-9][0-9]))?[0-9]{2}))) )((20)|(21)|(22)|(23)|([01]?[0-9]))):)[0-5]?)[0-9]):)[0-5]?)[0-9])
@@ -2525,7 +2525,7 @@ s7:  0@4.lEGdL
 
          #A: Greg Burns
          #D: Validate “Time” Data to Work with SQL Server
-This is a fix (I hope) for a problem with the original expression.  It originally allowed any combination of am or pm. For example: ma, aa, mm, mp, etc.
+         #D: This is a fix (I hope) for a problem with the original expression.  It originally allowed any combination of am or pm. For example: ma, aa, mm, mp, etc.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=172
 ERROR:   (^([0-9]|[0-1][0-9]|[2][0-3]):([0-5][0-9])(\s{0,1})(AM|PM|am|pm|aM|Am|pM|Pm{2,2})$)|(^([0-9]|[1][0-9]|[2][0-3])(\s{0,1})(AM|PM|am|pm|aM|Am|pM|Pm{2,2})$)
     rx: Embedded '^' unimplemented: in "(^([0-9]|[0-1][0-9]|[2][0-3]):([0-5][0-9])(\s{0,1})(AM|PM|am|pm|aM|Am|pM|Pm{2,2})$)|(^([0-9]|[1][0-9]|[2][0-3])(\s{0,1})(AM|PM|am|pm|aM|Am|pM|Pm{2,2})$)"
@@ -2542,7 +2542,7 @@ ERROR:   (?!^0*$)(?!^0*\.0*$)^\d{1,5}(\.\d{1,3})?$
 
          #A: Thor Larholm
          #D: Most email validation regexps are outdated and ignore the fact that domain names can contain any foreign character these days, as well as the fact that anything before @ is acceptable. The only roman alphabet restriction is in the TLD, which for a long time has been more than 2 or 3 chars (.museum, .aero, .info). The only dot restriction is that . cannot be placed directly after @.
-This pattern captures any valid, reallife email adress.
+         #D: This pattern captures any valid, reallife email adress.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=174
 expr 104: ^.+@[^\.].*\.[a-z]{2,}$
 tree:   ((((([\x01-\u007f]+@)[\x01-,/-\u007f-])[\x01-\u007f]*).)[a-z]{2,})
@@ -2563,12 +2563,12 @@ s1:  j@m.sq
 
          #A: john hamman
          #D: This will match results in a template situation. For example:
-template reads
-Dear @@Name@@,
-....
-would become
-Dear John,
-If you dont want to use the @@ change the @ to what ever characters you want.
+         #D: template reads
+         #D: Dear @@Name@@,
+         #D: ....
+         #D: would become
+         #D: Dear John,
+         #D: If you dont want to use the @@ change the @ to what ever characters you want.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=175
 expr 105: @{2}((\S)+)@{2}
 tree:   ((@{2}[\x01-\b\x0e-\x1f!-\u007f]+)@{2})
@@ -2905,7 +2905,7 @@ s6:  66742-6047
 
          #A: Fernando Cerqueira
          #D: Validar o do CEP Brasileiro com 8 posicoes podendo usar
-mascara . e - ou somente numeros
+         #D: mascara . e - ou somente numeros
          #U: http://regexlib.com/REDetails.aspx?regexp_id=188
 ERROR:   (^\d{5}-\d{3}|^\d{2}.\d{3}-\d{3}|\d{8})
     rx: Embedded '^' unimplemented: in "(^\d{5}-\d{3}|^\d{2}.\d{3}-\d{3}|\d{8})"
@@ -2971,11 +2971,11 @@ s7:  x@p.aPuvbrU
 
          #A: Mike T Spike
          #D: Checks for Date in the typical MySQL DB Format. Not mutch but simple to for converting to German date format:
-$date = "2003-12-03";
-if (ereg ("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})", $date, $regs))
-{
-echo "$regs[3].$regs[2].$regs[1]"; // prints 03.12.2003
-}
+         #D: $date = "2003-12-03";
+         #D: if (ereg ("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})", $date, $regs))
+         #D: {
+         #D: echo "$regs[3].$regs[2].$regs[1]"; // prints 03.12.2003
+         #D: }
          #U: http://regexlib.com/REDetails.aspx?regexp_id=193
 expr 111: ([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})
 tree:   (((([0-9]{4}-)[0-9]{1,2})-)[0-9]{1,2})
@@ -2997,7 +2997,7 @@ s9:  2462-6-98
 
          #A: Andrew Polshaw
          #D: This matches an IP address, putting each number in its own group that can be retrieved by number. If you do not care about capturing the numbers, then you can make this shorter by putting everything after ^ until immediately after the first \. in a group ( ) with a {3} after it. Then put the number matching regex in once more.
-It only permits numbers in the range 0-255.
+         #D: It only permits numbers in the range 0-255.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=194
 expr 112: ^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$
 tree:   ((((((([0-9]{1,2}|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5])).)([0-9]{1,2}|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5]))).)([0-9]{1,2}|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5]))).)([0-9]{1,2}|((1[0-9])[0-9])|((2[0-4])[0-9])|((25)[0-5])))
@@ -3093,7 +3093,7 @@ s2:  8{8
 
          #A: Fernando Cerqueira
          #D: Valida os todos Estados Brasileiros (UF)
-e o distrito Federal
+         #D: e o distrito Federal
          #U: http://regexlib.com/REDetails.aspx?regexp_id=199
 expr 116: ^(ac|AC|al|AL|am|AM|ap|AP|ba|BA|ce|CE|df|DF|es|ES|go|GO|ma|MA|mg|MG|ms|MS|mt|MT|pa|PA|pb|PB|pe|PE|pi|PI|pr|PR|rj|RJ|rn|RN|ro|RO|rr|RR|rs|RS|sc|SC|se|SE|sp|SP|to|TO)$
 tree:   ((ac)|(AC)|(al)|(AL)|(am)|(AM)|(ap)|(AP)|(ba)|(BA)|(ce)|(CE)|(df)|(DF)|(es)|(ES)|(go)|(GO)|(ma)|(MA)|(mg)|(MG)|(ms)|(MS)|(mt)|(MT)|(pa)|(PA)|(pb)|(PB)|(pe)|(PE)|(pi)|(PI)|(pr)|(PR)|(rj)|(RJ)|(rn)|(RN)|(ro)|(RO)|(rr)|(RR)|(rs)|(RS)|(sc)|(SC)|(se)|(SE)|(sp)|(SP)|(to)|(TO))
@@ -3114,13 +3114,13 @@ s1:  AL
 
          #A: Henk de Vries
          #D: Checks whether the string specified is in the same format as the UK postcode format defined on:
-http://www.magma.ca/~djcl/postcd.txt
-It allows:
-A = Letter
-N = Number
-AN NAA, ANA NAA, ANN NAA, AAN NAA, AAA NAA (rare), AANN NAA, AANA NAA
-It gives the option to have the two parts of the uk postcode to be separated by a space or a hyphen.
-(restriction is set to all-capitals)
+         #D: http://www.magma.ca/~djcl/postcd.txt
+         #D: It allows:
+         #D: A = Letter
+         #D: N = Number
+         #D: AN NAA, ANA NAA, ANN NAA, AAN NAA, AAA NAA (rare), AANN NAA, AANA NAA
+         #D: It gives the option to have the two parts of the uk postcode to be separated by a space or a hyphen.
+         #D: (restriction is set to all-capitals)
          #U: http://regexlib.com/REDetails.aspx?regexp_id=200
 expr 117: ^([A-Z]{1,2}[0-9]{1,2}|[A-Z]{3}|[A-Z]{1,2}[0-9][A-Z])( |-)[0-9][A-Z]{2}
 tree:   ((((([A-Z]{1,2}[0-9]{1,2})|[A-Z]{3}|(([A-Z]{1,2}[0-9])[A-Z]))( |-))[0-9])[A-Z]{2})
@@ -3181,8 +3181,8 @@ s1:  O3646
 
          #A: Henk de Vries
          #D: Postcode check for France (including colonies)
------
-Edited; sorry I didn't know about Corsica, no offense :)
+         #D: -----
+         #D: Edited; sorry I didn't know about Corsica, no offense :)
          #U: http://regexlib.com/REDetails.aspx?regexp_id=203
 expr 120: ^(F-)?((2[A|B])|[0-9]{2})[0-9]{3}$
 tree:   (((F-)?((2[AB|])|[0-9]{2}))[0-9]{3})
@@ -3263,7 +3263,7 @@ s1:  04419
 
          #A: Serafeim Zanikolas
          #D: matches any day of
-month 0?1-31
+         #D: month 0?1-31
          #U: http://regexlib.com/REDetails.aspx?regexp_id=209
 expr 124: ^((0?[1-9])|((1|2)[0-9])|30|31)$
 tree:   ((0?[1-9])|((1|2)[0-9])|(30)|(31))
@@ -3409,7 +3409,7 @@ ERROR:   </?([a-zA-Z][-A-Za-z\d\.]{0,71})(\s+(\S+)(\s*=\s*([-\w\.]{1,1024}|"[^"]
 
          #A: Henric Rosvall
          #D: Will locate an URL in a webpage.
-It'll search in 2 ways - first it will try to locate a href=, and then go to the end of the link. If there is nu href=, it will search for the end of the file instead (.asp, .htm and so on), and then take the data between the "xxxxxx" or 'xxxxxx'
+         #D: It'll search in 2 ways - first it will try to locate a href=, and then go to the end of the link. If there is nu href=, it will search for the end of the file instead (.asp, .htm and so on), and then take the data between the "xxxxxx" or 'xxxxxx'
          #U: http://regexlib.com/REDetails.aspx?regexp_id=222
 ERROR:   (("|')[a-z0-9\/\.\?\=\&]*(\.htm|\.asp|\.php|\.jsp)[a-z0-9\/\.\?\=\&]*("|'))|(href=*?[a-z0-9\/\.\?\=\&"']*)
     rx: prefer-fewer '?' unimplemented: in "(("|')[a-z0-9\/\.\?\=\&]*(\.htm|\.asp|\.php|\.jsp)[a-z0-9\/\.\?\=\&]*("|'))|(href=*?[a-z0-9\/\.\?\=\&"']*)"
@@ -3556,7 +3556,7 @@ s8:  GIR 0AA
 
          #A: Spring Zhang
          #D: This is a regular expression to validate a date string in "MM/DD/YYYY" format, a date time string in "MM/DD/YYYY HH:MM" or a date time string in "MM/DD/YYYY HH:MM:SS" format.
-It can validate date from 1600 to 2199.
+         #D: It can validate date from 1600 to 2199.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=230
 expr 136: ^([0]\d|[1][0-2])\/([0-2]\d|[3][0-1])\/([2][01]|[1][6-9])\d{2}(\s([0-1]\d|[2][0-3])(\:[0-5]\d){1,2})?$
 tree:   ((((((((0[0-9])|(1[012]))/)(([012][0-9])|(3[01])))/)((2[01])|(1[6-9])))[0-9]{2})(([\t-\r ](([01][0-9])|(2[0-3])))((:[0-5])[0-9]){1,2})?)
@@ -3693,43 +3693,43 @@ s1:  (667)-760-7011
 
          #A: Bob Duffett
          #D: MM-DD-20YY HH:MM AP
-MM-DD-20YY H:MM AP
-MM-DD-20YY HH:MM
-MM-DD-20YY H:MM
-MM-DD-YY HH:MM AP
-MM-DD-YY H:MM AP
-MM-DD-YY HH:MM
-MM-DD-YY H:MM
-M-D-YY HH:MM AP
-M-D-YY H:MM AP
-M-D-YY HH:MM
-M-D-YY H:MM
-where - can be / or - or .
-where : can be : or - or .
-Definition:
-^(                       ;Start of Line
-([0]?[1-9]|[1][0-2])     ;00-09 or 10-12 or 1-9
-[\/|\-|\.]               ;/ or - or .
-([0-2]\d|[3][0-1]|[1-9]) ;00-29 or 30-31 or 1-9
-[\/|\-|\.]               ;/ or - or .
-([2][0])?\d{2}           ;2000-2099 or 00-99
-\s+                      ;one or more spaces
-(                        ;must be either 12H notation w/AM|PM
-(
-([0][0-9]|[1][0-2]|[0-9])
-[\:|\-|\.]              ;: or - or .
-([0-5]\d)               ;01 thru 59
-\s*                     ;zero or more spaces
-([aApP][mM])?           ;nothing or AM or PM (case insensitive)
-)
-|                        ;or 24H notation w/out AM|PM
-(
-([0-1][0-9]|[2][0-3]|[0-9]) ;00-19 or 20-23
-[\:|\-|\.]              ;: or - or .
-([0-5]\d)               ;00-59
-)
-)
-)$                       ;End of Line
+         #D: MM-DD-20YY H:MM AP
+         #D: MM-DD-20YY HH:MM
+         #D: MM-DD-20YY H:MM
+         #D: MM-DD-YY HH:MM AP
+         #D: MM-DD-YY H:MM AP
+         #D: MM-DD-YY HH:MM
+         #D: MM-DD-YY H:MM
+         #D: M-D-YY HH:MM AP
+         #D: M-D-YY H:MM AP
+         #D: M-D-YY HH:MM
+         #D: M-D-YY H:MM
+         #D: where - can be / or - or .
+         #D: where : can be : or - or .
+         #D: Definition:
+         #D: ^(                       ;Start of Line
+         #D: ([0]?[1-9]|[1][0-2])     ;00-09 or 10-12 or 1-9
+         #D: [\/|\-|\.]               ;/ or - or .
+         #D: ([0-2]\d|[3][0-1]|[1-9]) ;00-29 or 30-31 or 1-9
+         #D: [\/|\-|\.]               ;/ or - or .
+         #D: ([2][0])?\d{2}           ;2000-2099 or 00-99
+         #D: \s+                      ;one or more spaces
+         #D: (                        ;must be either 12H notation w/AM|PM
+         #D: (
+         #D: ([0][0-9]|[1][0-2]|[0-9])
+         #D: [\:|\-|\.]              ;: or - or .
+         #D: ([0-5]\d)               ;01 thru 59
+         #D: \s*                     ;zero or more spaces
+         #D: ([aApP][mM])?           ;nothing or AM or PM (case insensitive)
+         #D: )
+         #D: |                        ;or 24H notation w/out AM|PM
+         #D: (
+         #D: ([0-1][0-9]|[2][0-3]|[0-9]) ;00-19 or 20-23
+         #D: [\:|\-|\.]              ;: or - or .
+         #D: ([0-5]\d)               ;00-59
+         #D: )
+         #D: )
+         #D: )$                       ;End of Line
          #U: http://regexlib.com/REDetails.aspx?regexp_id=241
 expr 142: ^(([0]?[1-9]|[1][0-2])[\/|\-|\.]([0-2]\d|[3][0-1]|[1-9])[\/|\-|\.]([2][0])?\d{2}\s+((([0][0-9]|[1][0-2]|[0-9])[\:|\-|\.]([0-5]\d)\s*([aApP][mM])?)|(([0-1][0-9]|[2][0-3]|[0-9])[\:|\-|\.]([0-5]\d))))$
 tree:   (((((((((0?[1-9])|(1[012]))[./|-])(([012][0-9])|(3[01])|[1-9]))[./|-])(20)?)[0-9]{2})[\t-\r ]+)(((((((0[0-9])|(1[012])|[0-9])[.:|-])([0-5][0-9]))[\t-\r ]*)([APap][Mm])?)|(((([01][0-9])|(2[0-3])|[0-9])[.:|-])([0-5][0-9]))))
@@ -3759,10 +3759,10 @@ ERROR:   ^[1-9]{1}$|^[1-4]{1}[0-9]{1}$|^50$
 
          #A: Mekonnen Mekonnen
          #D: Matches dates with the following format
-Month - either MM (like 01) or M (like 1) - from 1 to 12
-Day - either DD (like 01) or D ( like 1) - from 1 to 31
-Year - either YYYY ( like 1998) or YY (like 98)
-Separater - either - or /
+         #D: Month - either MM (like 01) or M (like 1) - from 1 to 12
+         #D: Day - either DD (like 01) or D ( like 1) - from 1 to 31
+         #D: Year - either YYYY ( like 1998) or YY (like 98)
+         #D: Separater - either - or /
          #U: http://regexlib.com/REDetails.aspx?regexp_id=244
 expr 143: ^([1][12]|[0]?[1-9])[\/-]([3][01]|[12]\d|[0]?[1-9])[\/-](\d{4}|\d{2})$
 tree:   ((((((1[12])|(0?[1-9]))[/-])((3[01])|([12][0-9])|(0?[1-9])))[/-])([0-9]{4}|[0-9]{2}))
@@ -3827,10 +3827,10 @@ s9:  2:00
 
          #A: Diego dos Santos
          #D: Validate brazilian date formats: dd/mm/yyyy or d/m/yy or d.m.yyyy
-with separators: . - /
-Valid dates only! d (1-31)/ m (1-12)/ y (0..)
-(rizzipereira.com.br)
-For American date format: http://www.regexlib.com/REDetails.aspx?regexp_id=932
+         #D: with separators: . - /
+         #D: Valid dates only! d (1-31)/ m (1-12)/ y (0..)
+         #D: (rizzipereira.com.br)
+         #D: For American date format: http://www.regexlib.com/REDetails.aspx?regexp_id=932
          #U: http://regexlib.com/REDetails.aspx?regexp_id=250
 expr 146: ^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$
 tree:   ((((((0?[1-9])|([12|][0-9])|(3[01|]))[./-])((0?[1-9])|(1[012])))[./-])([0-9]{4}|[0-9]{2}))
@@ -3868,7 +3868,7 @@ ERROR:   (^-\d*\.?\d*[1-9]+\d*$)|(^-[1-9]+\d*\.\d*$)
 
          #A: martix wang
          #D: this is a regular expression that for chinese programer!
-yyyy/mm/dd hh:mm:ss
+         #D: yyyy/mm/dd hh:mm:ss
          #U: http://regexlib.com/REDetails.aspx?regexp_id=253
 ERROR:   ^([2][0]\d{2}\/([0]\d|[1][0-2])\/([0-2]\d|[3][0-1]))$|^([2][0]\d{2}\/([0]\d|[1][0-2])\/([0-2]\d|[3][0-1])\s([0-1]\d|[2][0-3])\:[0-5]\d\:[0-5]\d)$
     rx: Embedded '$' unimplemented: in "^([2][0]\d{2}\/([0]\d|[1][0-2])\/([0-2]\d|[3][0-1]))$|^([2][0]\d{2}\/([0]\d|[1][0-2])\/([0-2]\d|[3][0-1])\s([0-1]\d|[2][0-3])\:[0-5]\d\:[0-5]\d)$"
@@ -3877,7 +3877,7 @@ ERROR:   ^([2][0]\d{2}\/([0]\d|[1][0-2])\/([0-2]\d|[3][0-1]))$|^([2][0]\d{2}\/([
 
          #A: Ramon Durães
          #D: This re was used for set numbers only!
-Somente numeros são requeridos!
+         #D: Somente numeros são requeridos!
          #U: http://regexlib.com/REDetails.aspx?regexp_id=257
 expr 147: ^[+]?\d*$
 tree:   (+?[0-9]*)
@@ -3899,8 +3899,8 @@ s1:  2
 
          #A: Morten Henriksen
          #D: Accepts data of time in format h:mm and hh:mm
-^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])$
-in php [0-23]:[0-59]{2} (posix)
+         #D: ^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])$
+         #D: in php [0-23]:[0-59]{2} (posix)
          #U: http://regexlib.com/REDetails.aspx?regexp_id=261
 expr 148: ^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])$
 tree:   (((([01]?[0-9])|(2[0-3])):)([0-5][0-9]))
@@ -4006,7 +4006,7 @@ ERROR:   ^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){
 
          #A: X Man
          #D: This expression finds all opening and closing tags.  Good for stripping out tags in an XML or HTML document.
-I used it to clean-up HTML documents that had XML mixed in.  It found all the tags, then I just deleted the ones that weren't standard.  I used it in HOMESITES extended find.
+         #D: I used it to clean-up HTML documents that had XML mixed in.  It found all the tags, then I just deleted the ones that weren't standard.  I used it in HOMESITES extended find.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=270
 expr 152: <[^>]+>
 tree:   ((<[\x01-=?-\u007f]+)>)
@@ -4083,8 +4083,8 @@ ERROR:   ^\d{3,3}\.\d{0,2}$|^E\d{3,3}\.\d{0,2}$
 
          #A: Jeff Howden
          #D: [Note: this regex was tested with Macromedia's ColdFusion MX.  I'm sure it'll need some massaging to work with other regex engines.]  Of the few domain validating regular expressions I found in my search I didn't find a single one that reliably handled multiple levels of subdomains or TLDs.  So, I wrote one and thoroughly tested it.  There are a ton of matching and non-matching examples that need to be included to show the completeness of this regex.
-Non-matching:  -.domain.com, -a.domain.com, -domain.com, domain-.com, any domain where the portion before the tld is greater than 63 characters.
-Matching: a.domain.com, a-a.domain.com, a--a.domain.com, a--defg.com, domain.co.uk.
+         #D: Non-matching:  -.domain.com, -a.domain.com, -domain.com, domain-.com, any domain where the portion before the tld is greater than 63 characters.
+         #D: Matching: a.domain.com, a-a.domain.com, a--a.domain.com, a--defg.com, domain.co.uk.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=275
 expr 155: ^([a-z0-9]+([\-a-z0-9]*[a-z0-9]+)?\.){0,}([a-z0-9]+([\-a-z0-9]*[a-z0-9]+)?){1,63}(\.[a-z0-9]{2,7})+$
 tree:   (((([0-9a-z]+([0-9a-z-]*[0-9a-z]+)?).)*([0-9a-z]+([0-9a-z-]*[0-9a-z]+)?){1,63})(.[0-9a-z]{2,7})+)
@@ -4145,7 +4145,7 @@ ERROR:   ^(?![0-9]{6})[0-9a-zA-Z]{6}$
 
          #A: Saurabh Nath
          #D: This Validator Validates any date from 1800 - 9999. It takes special care of Leap years and validates any format of type mm/dd/yyyy , m/dd/yyyy , mm/d/yyyy , m/d/yyyy.
-Since SQL Server does not accept any date before 1/1/1753, so i hope it will meet Your Requirements.(Modified Version of Jason West's Date Validator.)
+         #D: Since SQL Server does not accept any date before 1/1/1753, so i hope it will meet Your Requirements.(Modified Version of Jason West's Date Validator.)
          #U: http://regexlib.com/REDetails.aspx?regexp_id=279
 ERROR:   ((^(10|12|0?[13578])([/])(3[01]|[12][0-9]|0?[1-9])([/])((1[8-9]\d{2})|([2-9]\d{3}))$)|(^(11|0?[469])([/])(30|[12][0-9]|0?[1-9])([/])((1[8-9]\d{2})|([2-9]\d{3}))$)|(^(0?2)([/])(2[0-8]|1[0-9]|0?[1-9])([/])((1[8-9]\d{2})|([2-9]\d{3}))$)|(^(0?2)([/])(29)([/])([2468][048]00)$)|(^(0?2)([/])(29)([/])([3579][26]00)$)|(^(0?2)([/])(29)([/])([1][89][0][48])$)|(^(0?2)([/])(29)([/])([2-9][0-9][0][48])$)|(^(0?2)([/])(29)([/])([1][89][2468][048])$)|(^(0?2)([/])(29)([/])([2-9][0-9][2468][048])$)|(^(0?2)([/])(29)([/])([1][89][13579][26])$)|(^(0?2)([/])(29)([/])([2-9][0-9][13579][26])$))
     rx: Embedded '^' unimplemented: in "((^(10|12|0?[13578])([/])(3[01]|[12][0-9]|0?[1-9])([/])((1[8-9]\d{2})|([2-9]\d{3}))$)|(^(11|0?[469])([/])(30|[12][0-9]|0?[1-9])([/])((1[8-9]\d{2})|([2-9]\d{3}))$)|(^(0?2)([/])(2[0-8]|1[0-9]|0?[1-9])([/])((1[8-9]\d{2})|([2-9]\d{3}))$)|(^(0?2)([/])(29)([/])([2468][048]00)$)|(^(0?2)([/])(29)([/])([3579][26]00)$)|(^(0?2)([/])(29)([/])([1][89][0][48])$)|(^(0?2)([/])(29)([/])([2-9][0-9][0][48])$)|(^(0?2)([/])(29)([/])([1][89][2468][048])$)|(^(0?2)([/])(29)([/])([2-9][0-9][2468][048])$)|(^(0?2)([/])(29)([/])([1][89][13579][26])$)|(^(0?2)([/])(29)([/])([2-9][0-9][13579][26])$))"
@@ -4174,10 +4174,10 @@ s1:  {}
 
          #A: kode kode
          #D: This regular expression matches 10 digit US Phone numbers in different formats. Some examples are
-1)area code in paranthesis.
-2)space between different parts of the phone number.
-3)no space between different parts of the number.
-4)dashes between parts.
+         #D: 1)area code in paranthesis.
+         #D: 2)space between different parts of the phone number.
+         #D: 3)no space between different parts of the number.
+         #D: 4)dashes between parts.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=283
 expr 158: ^\(?[\d]{3}\)?[\s-]?[\d]{3}[\s-]?[\d]{4}$
 tree:   (((((((?[0-9]{3}))?)[\t-\r -]?)[0-9]{3})[\t-\r -]?)[0-9]{4})
@@ -4198,12 +4198,12 @@ s1:  8703800485
 
          #A: Mike t
          #D: Can be used to remove
-&lt;SCRIPT language=&quot;JavaScript&quot;&gt;
-&lt;!--
-//--&gt;
-&lt;/SCRIPT&gt;
-from embeded javascript
-Should be used as case insensitive
+         #D: &lt;SCRIPT language=&quot;JavaScript&quot;&gt;
+         #D: &lt;!--
+         #D: //--&gt;
+         #D: &lt;/SCRIPT&gt;
+         #D: from embeded javascript
+         #D: Should be used as case insensitive
          #U: http://regexlib.com/REDetails.aspx?regexp_id=286
 expr 159: (\/\/-->\s*)?<\/?SCRIPT([^>]*)>(\s*<!--\s)?
 tree:   ((((((((((((((((//)-)-)>)[\t-\r ]*)?<)/?)S)C)R)I)P)T)[\x01-=?-\u007f]*)>)((((([\t-\r ]*<)!)-)-)[\t-\r ])?)
@@ -4225,8 +4225,8 @@ s20:  <SCRIPT><!--
 
          #A: Gavin Sharp
          #D: It verifies that: - Only letters, numbers and email acceptable symbols (+, _, -, .) are allowed - No two different symbols may follow each other - Cannot begin with a symbol - Ending domain must be at least 2 letters - Supports subdomains - TLD must be between 2 and 6 letters (Ex: .ca, .museum) - Only (-) and (.) symbols are allowed in domain, but not consecutively.
-Problems:
-See comments below
+         #D: Problems:
+         #D: See comments below
          #U: http://regexlib.com/REDetails.aspx?regexp_id=295
 expr 160: ^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$
 tree:   (((((((([0-9A-Za-z]+_+)|([0-9A-Za-z]+-+)|([0-9A-Za-z]+.+)|([0-9A-Za-z]+++))*[0-9A-Za-z]+)@)(([0-9A-Z_a-z]+-+)|([0-9A-Z_a-z]+.))*)[0-9A-Z_a-z]{1,63}).)[A-Za-z]{2,6})
@@ -4271,9 +4271,9 @@ s1:  7
 
          #A: Joe Gass
          #D: UK Phone Number Allows leading and trailing spaces and optional spaces after the dialing code.
-Initially the expression I posted was
-\s*0\d{4}\s*\d{6}\s*|\s*0\d{3}\s*\d{7}\s*
-But this didn't include optional brackets e.g. (01603) 123123 or phone numbers in a London format e.g. 0208 123 1234
+         #D: Initially the expression I posted was
+         #D: \s*0\d{4}\s*\d{6}\s*|\s*0\d{3}\s*\d{7}\s*
+         #D: But this didn't include optional brackets e.g. (01603) 123123 or phone numbers in a London format e.g. 0208 123 1234
          #U: http://regexlib.com/REDetails.aspx?regexp_id=297
 expr 162: (\s*\(?0\d{4}\)?\s*\d{6}\s*)|(\s*\(?0\d{3}\)?\s*\d{3}\s*\d{4}\s*)
 tree:   (((((((([\t-\r ]*(?)0)[0-9]{4}))?)[\t-\r ]*)[0-9]{6})[\t-\r ]*)|((((((((([\t-\r ]*(?)0)[0-9]{3}))?)[\t-\r ]*)[0-9]{3})[\t-\r ]*)[0-9]{4})[\t-\r ]*))
@@ -4314,9 +4314,9 @@ s1:  146-7338
 
          #A: Dominic Allkins
          #D: First attempt at reg ex - work in progress - can't quite get it to work absolutely correctly so any comments would be great.
-Matches everything as it should apart from the last part of the IP, i.e. allows http://255.255.255.999 (which obviously it shouldn't but ran out of inspiration) so any corrections humbly and gratefully accepted.
-TLD check is not complete - just added most of the major ones but easy to dd to if you want to.
-BTW - you'll need to replace the & with just the ampersand in the reg ex
+         #D: Matches everything as it should apart from the last part of the IP, i.e. allows http://255.255.255.999 (which obviously it shouldn't but ran out of inspiration) so any corrections humbly and gratefully accepted.
+         #D: TLD check is not complete - just added most of the major ones but easy to dd to if you want to.
+         #D: BTW - you'll need to replace the & with just the ampersand in the reg ex
          #U: http://regexlib.com/REDetails.aspx?regexp_id=301
 expr 164: ^(http|https|ftp)\://(((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])|([a-zA-Z0-9_\-\.])+\.(com|net|org|edu|int|mil|gov|arpa|biz|aero|name|coop|info|pro|museum|uk|me))((:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&%\$#\=~])*)$
 tree:   (((((((((ht)t)p)|((((ht)t)p)s)|((ft)p)):)/)/)((((((25)[0-5])|((2[0-4])[0-9])|((1[0-9])[0-9])|([1-9][0-9])|[0-9]).){3}(((25)[0-5])|((2[0-4])[0-9])|((1[0-9])[0-9])|([1-9][0-9])|[0-9]))|(([.0-9A-Z_a-z-]+.)(((co)m)|((ne)t)|((or)g)|((ed)u)|((in)t)|((mi)l)|((go)v)|(((ar)p)a)|((bi)z)|(((ae)r)o)|(((na)m)e)|(((co)o)p)|(((in)f)o)|((pr)o)|(((((mu)s)e)u)m)|(uk)|(me)))))(((:[0-9A-Za-z]*)?/?)[#-'+-9=?A-Z\_a-z~]*))
@@ -4373,7 +4373,7 @@ s74:  ftp://t.me.museu
 
          #A: Carlos R. L. Rodrigues
          #D: Checks if has the first and the last name, and check the capital letters.
-Use with the RegExp.test method
+         #D: Use with the RegExp.test method
          #U: http://regexlib.com/REDetails.aspx?regexp_id=302
 ERROR:   (^[A-ZÀ-Ü]{1}[a-zà-ü']+\s[a-zA-Zà-üÀ-Ü]+((([\s\.'])|([a-zà-ü']+))|[a-zà-ü']+[a-zA-Zà-üÀ-Ü']+))
     rx: Embedded '^' unimplemented: in "(^[A-ZÀ-Ü]{1}[a-zà-ü']+\s[a-zA-Zà-üÀ-Ü]+((([\s\.'])|([a-zà-ü']+))|[a-zà-ü']+[a-zA-Zà-üÀ-Ü']+))"
@@ -4382,7 +4382,7 @@ ERROR:   (^[A-ZÀ-Ü]{1}[a-zà-ü']+\s[a-zA-Zà-üÀ-Ü]+((([\s\.'])|([a-zà-ü'
 
          #A: Carlos R. L. Rodrigues
          #D: dd/mm/yy
-Check dates between 1/1/1900 - 31/12/2099
+         #D: Check dates between 1/1/1900 - 31/12/2099
          #U: http://regexlib.com/REDetails.aspx?regexp_id=303
 ERROR:   (^((((0[1-9])|([1-2][0-9])|(3[0-1]))|([1-9]))\x2F(((0[1-9])|(1[0-2]))|([1-9]))\x2F(([0-9]{2})|(((19)|([2]([0]{1})))([0-9]{2}))))$)
     rx: Embedded '^' unimplemented: in "(^((((0[1-9])|([1-2][0-9])|(3[0-1]))|([1-9]))\x2F(((0[1-9])|(1[0-2]))|([1-9]))\x2F(([0-9]{2})|(((19)|([2]([0]{1})))([0-9]{2}))))$)"
@@ -4453,7 +4453,7 @@ s1:  Q6U7Y7
 
          #A: Daren Salter
          #D: UK Mobile phone regular expression.
-I usually run this against a telephone field to split out landlines and mobile numbers.
+         #D: I usually run this against a telephone field to split out landlines and mobile numbers.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=308
 expr 168: ^07([\d]{3})[(\D\s)]?[\d]{3}[(\D\s)]?[\d]{3}$
 tree:   ((((((07)[0-9]{3})[\x01-/:-\u007f]?)[0-9]{3})[\x01-/:-\u007f]?)[0-9]{3})
@@ -4543,8 +4543,8 @@ s2:  MCZoNNPkTRZwmbbgYzoXCuxpXvrcUNLngOllx'jrnnbBkHzANX
 
          #A: Michael Matusiewicz
          #D: This Regular expression validates a string that contains all printable characters with a minimum length of 1 and maximum length of 5.
-Obviously the min and max can be changed to meet the users needs.
-^([a-zA-Z0-9!@#$%^&*()-_=+;:'"|~`<>?/{}]{1,5})$ This is the string, I keep getting &lt and other characters when I save it.
+         #D: Obviously the min and max can be changed to meet the users needs.
+         #D: ^([a-zA-Z0-9!@#$%^&*()-_=+;:'"|~`<>?/{}]{1,5})$ This is the string, I keep getting &lt and other characters when I save it.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=310
 expr 170: ^([a-zA-Z0-9!@#$%^&*()-_=+;:'"|~`<>?/{}]{1,5})$
 tree:   [!-~]{1,5}
@@ -4569,7 +4569,7 @@ s2:  MbI8)
 
          #A: gabe g
          #D: Validates US phone numbers. Phone number can be delimited with dashes or spaces. Area code can optionally include parentheses. To optionally validate area codes, try this expression.
-^([\(]{1}[0-9]{3}[\)]{1}[ |\-]{0,1}|^[0-9]{3}[\-| ])?[0-9]{3}(\-| ){1}[0-9]{4}$
+         #D: ^([\(]{1}[0-9]{3}[\)]{1}[ |\-]{0,1}|^[0-9]{3}[\-| ])?[0-9]{3}(\-| ){1}[0-9]{4}$
          #U: http://regexlib.com/REDetails.aspx?regexp_id=314
 ERROR:   ^([\(]{1}[0-9]{3}[\)]{1}[ |\-]{0,1}|^[0-9]{3}[\-| ])?[0-9]{3}(\-| ){1}[0-9]{4}$
     rx: Embedded '^' unimplemented: in "^([\(]{1}[0-9]{3}[\)]{1}[ |\-]{0,1}|^[0-9]{3}[\-| ])?[0-9]{3}(\-| ){1}[0-9]{4}$"
@@ -4606,7 +4606,7 @@ ERROR:   ^(?:(?:(?:0?[1-9]|1\d|2[0-8])\/(?:0?[1-9]|1[0-2]))\/(?:(?:1[6-9]|[2-9]\
 
          #A: Cal Guisti
          #D: This is an update of Paul Miller's RegEx.  It will cut out literal <> but I haven't fully tested it, it's just a quick fix since his didn't work all that well.
-I also took out the \s.  You could add this back in but I use this for very simple password verification, and I certainly have no use for spaces in my passwords.
+         #D: I also took out the \s.  You could add this back in but I use this for very simple password verification, and I certainly have no use for spaces in my passwords.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=317
 expr 172: ^([0-9A-Za-z@.]{1,255})$
 tree:   [.0-9@-Za-z]{1,255}
@@ -4881,10 +4881,10 @@ s2:  @OkDTDOCNSpzuujzr@HTK6lkx6aGQSR8BdEd7FxSbYV1fYczFb7XoNljU9xVT6Z6SXHdAtKxqU@
 
          #A: Markus Unterauer
          #D: Correct German DateTime. Does not check leap year rules!
-Possible Formats of date part:
-D.M.YYYY or D.MM.YYYY or DD.MM.YYYY or DD.M.YYYY
-Possible formats of time part:
-h:mm or hh:mm
+         #D: Possible Formats of date part:
+         #D: D.M.YYYY or D.MM.YYYY or DD.MM.YYYY or DD.M.YYYY
+         #D: Possible formats of time part:
+         #D: h:mm or hh:mm
          #U: http://regexlib.com/REDetails.aspx?regexp_id=319
 ERROR:   ^(([1-9]|[0-2]\d|[3][0-1])\.([1-9]|[0]\d|[1][0-2])\.[2][0]\d{2})$|^(([1-9]|[0-2]\d|[3][0-1])\.([1-9]|[0]\d|[1][0-2])\.[2][0]\d{2}\s([1-9]|[0-1]\d|[2][0-3])\:[0-5]\d)$
     rx: Embedded '$' unimplemented: in "^(([1-9]|[0-2]\d|[3][0-1])\.([1-9]|[0]\d|[1][0-2])\.[2][0]\d{2})$|^(([1-9]|[0-2]\d|[3][0-1])\.([1-9]|[0]\d|[1][0-2])\.[2][0]\d{2}\s([1-9]|[0-1]\d|[2][0-3])\:[0-5]\d)$"
@@ -4893,9 +4893,9 @@ ERROR:   ^(([1-9]|[0-2]\d|[3][0-1])\.([1-9]|[0]\d|[1][0-2])\.[2][0]\d{2})$|^(([1
 
          #A: Dany Lauener
          #D: Date with leap years. Accepts '.' '-' and '/' as separators
-d.m.yy to dd.mm.yyyy (or d.mm.yy, etc)
-Ex: dd-mm-yyyy   d.mm/yy   dd/m.yyyy  etc etc
-Accept 00 years also.
+         #D: d.m.yy to dd.mm.yyyy (or d.mm.yy, etc)
+         #D: Ex: dd-mm-yyyy   d.mm/yy   dd/m.yyyy  etc etc
+         #D: Accept 00 years also.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=320
 expr 173: ^((((0?[1-9]|[12]\d|3[01])[\.\-\/](0?[13578]|1[02])[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}))|((0?[1-9]|[12]\d|30)[\.\-\/](0?[13456789]|1[012])[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}))|((0?[1-9]|1\d|2[0-8])[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}))|(29[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)|00)))|(((0[1-9]|[12]\d|3[01])(0[13578]|1[02])((1[6-9]|[2-9]\d)?\d{2}))|((0[1-9]|[12]\d|30)(0[13456789]|1[012])((1[6-9]|[2-9]\d)?\d{2}))|((0[1-9]|1\d|2[0-8])02((1[6-9]|[2-9]\d)?\d{2}))|(2902((1[6-9]|[2-9]\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)|00))))$
 tree:   ((((((((0?[1-9])|([12][0-9])|(3[01]))[./-])((0?[13578])|(1[02])))[./-])(((1[6-9])|([2-9][0-9]))?[0-9]{2}))|((((((0?[1-9])|([12][0-9])|(30))[./-])((0?[13-9])|(1[012])))[./-])(((1[6-9])|([2-9][0-9]))?[0-9]{2}))|(((((((0?[1-9])|(1[0-9])|(2[0-8]))[./-])0?)2)[./-])(((1[6-9])|([2-9][0-9]))?[0-9]{2}))|((((((29)[./-])0?)2)[./-])((((1[6-9])|([2-9][0-9]))?((0[48])|([2468][048])|([13579][26])))|((((16)|([2468][048])|([3579][26]))0)0)|(00))))|(((((0[1-9])|([12][0-9])|(3[01]))((0[13578])|(1[02])))(((1[6-9])|([2-9][0-9]))?[0-9]{2}))|((((0[1-9])|([12][0-9])|(30))((0[13-9])|(1[012])))(((1[6-9])|([2-9][0-9]))?[0-9]{2}))|(((((0[1-9])|(1[0-9])|(2[0-8]))0)2)(((1[6-9])|([2-9][0-9]))?[0-9]{2}))|((((29)0)2)((((1[6-9])|([2-9][0-9]))?((0[48])|([2468][048])|([13579][26])))|((((16)|([2468][048])|([3579][26]))0)0)|(00)))))
@@ -4979,8 +4979,8 @@ s28:  024892601134-41
 
          #A: Ed Preston
          #D: Pulls out comments (both Rem and ') and string literals from VB or VBScript. Usefull for spell checking or review.
-Notes: The VBScript for "Rem" documentation says that it must be followed by a space but VBScript seems to accept tab characters as well.
-The multiline flag is assumed for this search.
+         #D: Notes: The VBScript for "Rem" documentation says that it must be followed by a space but VBScript seems to accept tab characters as well.
+         #D: The multiline flag is assumed for this search.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=324
 ERROR:   ('.*$|Rem((\t| ).*$|$)|"(.|"")*?")
     rx: Embedded '$' unimplemented: in "('.*$|Rem((\t| ).*$|$)|"(.|"")*?")"
@@ -5009,8 +5009,8 @@ s1:  11 Sep 9484
 
          #A: Dany Lauener
          #D: Date expression validator with format YYMMDD
-Validates leap years.
-Of course, as year has only 2 digits, it's not possible to invalidate years like 2100, 2200, 2300, etc as a non-leap years !
+         #D: Validates leap years.
+         #D: Of course, as year has only 2 digits, it's not possible to invalidate years like 2100, 2200, 2300, etc as a non-leap years !
          #U: http://regexlib.com/REDetails.aspx?regexp_id=326
 expr 178: ^((\d{2}((0[13578]|1[02])(0[1-9]|[12]\d|3[01])|(0[13456789]|1[012])(0[1-9]|[12]\d|30)|02(0[1-9]|1\d|2[0-8])))|([02468][048]|[13579][26])0229)$
 tree:   (([0-9]{2}((((0[13578])|(1[02]))((0[1-9])|([12][0-9])|(3[01])))|(((0[13-9])|(1[012]))((0[1-9])|([12][0-9])|(30)))|((02)((0[1-9])|(1[0-9])|(2[0-8])))))|(((((([02468][048])|([13579][26]))0)2)2)9))
@@ -5051,7 +5051,7 @@ s1:  21-17-52
 
          #A: Roger Ramjet
          #D: Email address validator. Should cover most of RFC 822, including unusual (but still valid) addresses. Does not restrict the top level domain size, but you're better off doing an nslookup or similar if you absolutely must have a valid domain. Accepts IP Addresses instead of the domain, with or without brackets. Believe it or not, this one is valid: !#$%^&amp;amp;*-+~/'`|{}@xyz.com
-Sorry looks like this site is mangling the quote and ampersand characters - you'll have to fix that yourself.
+         #D: Sorry looks like this site is mangling the quote and ampersand characters - you'll have to fix that yourself.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=328
 expr 180: ^((\"[^\"\f\n\r\t\v\b]+\")|([\w\!\#\$\%\&\'\*\+\-\~\/\^\`\|\{\}]+(\.[\w\!\#\$\%\&\'\*\+\-\~\/\^\`\|\{\}]+)*))@((\[(((25[0-5])|(2[0-4][0-9])|([0-1]?[0-9]?[0-9]))\.((25[0-5])|(2[0-4][0-9])|([0-1]?[0-9]?[0-9]))\.((25[0-5])|(2[0-4][0-9])|([0-1]?[0-9]?[0-9]))\.((25[0-5])|(2[0-4][0-9])|([0-1]?[0-9]?[0-9])))\])|(((25[0-5])|(2[0-4][0-9])|([0-1]?[0-9]?[0-9]))\.((25[0-5])|(2[0-4][0-9])|([0-1]?[0-9]?[0-9]))\.((25[0-5])|(2[0-4][0-9])|([0-1]?[0-9]?[0-9]))\.((25[0-5])|(2[0-4][0-9])|([0-1]?[0-9]?[0-9])))|((([A-Za-z0-9\-])+\.)+[A-Za-z\-]+))$
 tree:   ((((("[\x01-\a\x0e-!#-\u007f]+)")|([!#-'*+/-9A-Z^-~-]+(.[!#-'*+/-9A-Z^-~-]+)*))@)((([(((((((((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9]?)[0-9])).)(((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9]?)[0-9]))).)(((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9]?)[0-9]))).)(((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9]?)[0-9]))))])|(((((((((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9]?)[0-9])).)(((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9]?)[0-9]))).)(((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9]?)[0-9]))).)(((25)[0-5])|((2[0-4])[0-9])|(([01]?[0-9]?)[0-9])))|(([0-9A-Za-z-]+.)+[A-Za-z-]+)))
@@ -5119,9 +5119,9 @@ s4:  0:7
 
          #A: bilou mcgyver
          #D: does not allow IP for domain name : hello@154.145.68.12
-does not allow litteral addresses "hello, how are you?"@world.com
-allows numeric domain names
-after the last "." minimum 2 letters
+         #D: does not allow litteral addresses "hello, how are you?"@world.com
+         #D: allows numeric domain names
+         #D: after the last "." minimum 2 letters
          #U: http://regexlib.com/REDetails.aspx?regexp_id=333
 expr 183: ^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$
 tree:   (((((([0-9A-Za-z]([._-]?[0-9A-Za-z]+)*)@)[0-9A-Za-z]+)([.-]?[0-9A-Za-z]+)*).)[A-Za-z]{2,})
@@ -5274,7 +5274,7 @@ ERROR:   (.*\.([wW][mM][aA])|([mM][pP][3])$)
 
          #A: Joseph Warwick
          #D: Heres my sql clause parser regexp for recordset filtering. Does recursive query parsing all by its self. Only problem I cant figure is how to match comma separated lists of quoted strings. Tell me if you figure out how!
-The unicodes in the re was put in by the entry form please replace them with their ascii equivalents to use it.
+         #D: The unicodes in the re was put in by the entry form please replace them with their ascii equivalents to use it.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=347
 expr 188: (NOT)?(\s*\(*)\s*(\w+)\s*(=|<>|<|>|LIKE|IN)\s*(\(([^\)]*)\)|'([^']*)'|(-?\d*\.?\d+))(\s*\)*\s*)(AND|OR)?
 tree:   (((((((((((NO)T)?([\t-\r ]*(*))[\t-\r ]*)[0-9A-Z_a-z]+)[\t-\r ]*)(=|(<>)|<|>|(((LI)K)E)|(IN)))[\t-\r ]*)(((([\x01-(*-\u007f]*)))|(('[\x01-&(-\u007f]*)')|(((-?[0-9]*).?)[0-9]+)))(([\t-\r ]*)*)[\t-\r ]*))(((AN)D)|(OR))?)
@@ -5355,8 +5355,8 @@ s1:  )wU5qByVOIN(qU'~
 
          #A: Doug Moore
          #D: This expression will match all of the commands(escape codes) used in ANSI files.  These are what were used to create the colors/blocks on BBS's for those of us that once dialed into them.
-http://www.wikipedia.org/wiki/ANSI_escape_code has a reference for ANSI escape codes.
-http://idledreams.net/lordscarlet/posts/153.aspx shows an example of the engine I have created surrounding the expression
+         #D: http://www.wikipedia.org/wiki/ANSI_escape_code has a reference for ANSI escape codes.
+         #D: http://idledreams.net/lordscarlet/posts/153.aspx shows an example of the engine I have created surrounding the expression
          #U: http://regexlib.com/REDetails.aspx?regexp_id=354
 ERROR:   (?s)(?:\e\[(?:(\d+);?)*([A-Za-z])(.*?))(?=\e\[|\z)
     rx: '(?...' unimplemented: in "(?s)(?:\e\[(?:(\d+);?)*([A-Za-z])(.*?))(?=\e\[|\z)"
@@ -5365,13 +5365,13 @@ ERROR:   (?s)(?:\e\[(?:(\d+);?)*([A-Za-z])(.*?))(?=\e\[|\z)
 
          #A: Darren Neimke
          #D: Matches C style strings allowing for escaped string delimiters to be included in the match.
-ALTERED 13-Dec-2003
--------------------
-Previous pattern was :
-"([^"](?:\\.|[^\\"]*)*)"
-Changed to:
-"([^"]*(?:\\.|[^\\"]*)*)"
-Making the first character after the opening quote optional allows the pattern to match on empty quotes: "".
+         #D: ALTERED 13-Dec-2003
+         #D: -------------------
+         #D: Previous pattern was :
+         #D: "([^"](?:\\.|[^\\"]*)*)"
+         #D: Changed to:
+         #D: "([^"]*(?:\\.|[^\\"]*)*)"
+         #D: Making the first character after the opening quote optional allows the pattern to match on empty quotes: "".
          #U: http://regexlib.com/REDetails.aspx?regexp_id=355
 expr 190: "([^"](?:\\.|[^\\"]*)*)"
 tree:   (("([\x01-!#-\u007f]((\[\x01-\u007f])|[]\x01-!#-[^-\u007f]*)*))")
@@ -5413,7 +5413,7 @@ s9:  V6@5O.YRV
 
          #A: Darren Neimke
          #D: Matches filenames.
-UPDATED on 1st Jan 2004.
+         #D: UPDATED on 1st Jan 2004.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=357
 ERROR:   ^([a-zA-Z]\:)(\\[^\\/:*?<>"|]*(?<![ ]))*(\.[a-zA-Z]{2,6})$
     rx: '(?...' unimplemented: in "^([a-zA-Z]\:)(\\[^\\/:*?<>"|]*(?<![ ]))*(\.[a-zA-Z]{2,6})$"
@@ -5422,12 +5422,12 @@ ERROR:   ^([a-zA-Z]\:)(\\[^\\/:*?<>"|]*(?<![ ]))*(\.[a-zA-Z]{2,6})$
 
          #A: Volker Roth
          #D: We've come across the situation where we had to extract the IIS-Log entries without the header information. The data is far more complex than the sample given.
-Explanation:
-^[^#] = lines not beginnin with #
-([^ ]+ ){6} = 6 times no space until one space
-[^ ]+ = no spaces allowed...
-$ = ...until end of line
-For further explanation don't hesitate to write E-Mail.
+         #D: Explanation:
+         #D: ^[^#] = lines not beginnin with #
+         #D: ([^ ]+ ){6} = 6 times no space until one space
+         #D: [^ ]+ = no spaces allowed...
+         #D: $ = ...until end of line
+         #D: For further explanation don't hesitate to write E-Mail.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=358
 expr 192: ^[^#]([^ ]+ ){6}[^ ]+$
 tree:   (([\x01-"$-\u007f]([\x01-\x1f!-\u007f]+ ){6})[\x01-\x1f!-\u007f]+)
@@ -5549,7 +5549,7 @@ s1:  3771ZU
 
          #A: sanjayanthan vijayakeerthi
          #D: Accept only (0-9) integer and one decimal point(decimal point is also optional).After decimal point it accepts at least one numeric .This will be usefull in money related
-fields or decimal fields. 
+         #D: fields or decimal fields. 
          #U: http://regexlib.com/REDetails.aspx?regexp_id=368
 expr 197: ^([0-9]*|\d*\.\d{1}?\d*)$
 tree:   ([0-9]*|((([0-9]*.)[0-9])[0-9]*))
@@ -5609,7 +5609,7 @@ s1:  #aAc99f
 
          #A: Mathews Inga
          #D: Date in DD/MM/YYYY format.
-Fecha en formato DD/MM/AAAA.
+         #D: Fecha en formato DD/MM/AAAA.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=374
 expr 199: (((0[1-9]|[12][0-9]|3[01])([/])(0[13578]|10|12)([/])(\d{4}))|(([0][1-9]|[12][0-9]|30)([/])(0[469]|11)([/])(\d{4}))|((0[1-9]|1[0-9]|2[0-8])([/])(02)([/])(\d{4}))|((29)(\.|-|\/)(02)([/])([02468][048]00))|((29)([/])(02)([/])([13579][26]00))|((29)([/])(02)([/])([0-9][0-9][0][48]))|((29)([/])(02)([/])([0-9][0-9][2468][048]))|((29)([/])(02)([/])([0-9][0-9][13579][26])))
 tree:   (((((((0[1-9])|([12][0-9])|(3[01]))/)((0[13578])|(10)|(12)))/)[0-9]{4})|((((((0[1-9])|([12][0-9])|(30))/)((0[469])|(11)))/)[0-9]{4})|((((((0[1-9])|(1[0-9])|(2[0-8]))/)(02))/)[0-9]{4})|(((((29)(.|-|/))(02))/)((([02468][048])0)0))|(((((29)/)(02))/)((([13579][26])0)0))|(((((29)/)(02))/)((([0-9][0-9])0)[48]))|(((((29)/)(02))/)((([0-9][0-9])[2468])[048]))|(((((29)/)(02))/)((([0-9][0-9])[13579])[26])))
@@ -5705,11 +5705,11 @@ ERROR:   (^[0-9]{1,8}|(^[0-9]{1,8}\.{0,1}[0-9]{1,2}))$
 
          #A: David Tersigni
          #D: Simple match for U.S. Amateur Radio Call signs
-Must start with an A,K,N or W.
-1 or two prefix letters (not case sensitive),
-Exactly one zone digit,
-One to three suffix digits( not case sensitive).
-73
+         #D: Must start with an A,K,N or W.
+         #D: 1 or two prefix letters (not case sensitive),
+         #D: Exactly one zone digit,
+         #D: One to three suffix digits( not case sensitive).
+         #D: 73
          #U: http://regexlib.com/REDetails.aspx?regexp_id=380
 expr 203: ^[AaWaKkNn][a-zA-Z]?[0-9][a-zA-Z]{1,3}$
 tree:   ((([AKNWakn][A-Za-z]?)[0-9])[A-Za-z]{1,3})
@@ -5732,7 +5732,7 @@ s4:  k0MOK
 
          #A: Sjef van Leeuwen
          #D: Based of from Steward Haddock's domain nam
-Checks domain names. This is an attempt to deal with some of the issues of the other reg ex in not handling leading periods(.), hypens(-). and valid extension.
+         #D: Checks domain names. This is an attempt to deal with some of the issues of the other reg ex in not handling leading periods(.), hypens(-). and valid extension.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=381
 ERROR:   ^[a-zA-Z0-9]+([a-zA-Z0-9\-\.]+)?\.(aero|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cs|cu|cv|cx|cy|cz|de|dj|dk|dm|do|dz|ec|ee|eg|eh|er|es|et|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly| ma|mc|md|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|om|pa|pe|pf|pg|ph|pk| pl|pm|pn|pr|ps|pt|pw|py|qa|re|ro|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sk|sl|sm|sn|so|sr| st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|um|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zr|zw|AERO|BIZ|COM|COOP|EDU|GOV|INFO|INT|MIL|MUSEUM|NAME|NET|ORG|AC|
     rx: unclosed '(': in "^[a-zA-Z0-9]+([a-zA-Z0-9\-\.]+)?\.(aero|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cs|cu|cv|cx|cy|cz|de|dj|dk|dm|do|dz|ec|ee|eg|eh|er|es|et|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly| ma|mc|md|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|om|pa|pe|pf|pg|ph|pk| pl|pm|pn|pr|ps|pt|pw|py|qa|re|ro|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sk|sl|sm|sn|so|sr| st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|um|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zr|zw|AERO|BIZ|COM|COOP|EDU|GOV|INFO|INT|MIL|MUSEUM|NAME|NET|ORG|AC|"
@@ -5741,7 +5741,7 @@ ERROR:   ^[a-zA-Z0-9]+([a-zA-Z0-9\-\.]+)?\.(aero|biz|com|coop|edu|gov|info|int|m
 
          #A: Yosi Taguri
          #D: using match.Result("$1.$2.$3.$4")
-will return the assembly version of a given c# AssemblyInfo.cs file
+         #D: will return the assembly version of a given c# AssemblyInfo.cs file
          #U: http://regexlib.com/REDetails.aspx?regexp_id=382
 expr 204: ^\[assembly: AssemblyVersion\(\"([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)
 tree:   (((((((((((((((((((((((((((((((((([a)s)s)e)m)b)l)y):) )A)s)s)e)m)b)l)y)V)e)r)s)i)o)n)()")[0-9]+).)[0-9]+).)[0-9]+).)[0-9]+)
@@ -5840,9 +5840,9 @@ s9:  46@9u.63x7
 
          #A: Remi Sabourin
          #D: Checks domain names. This validates domains based on latest specifications (RFCs 952 and 1123 dealing with hostnames and RFC 1035 dealing with domain name system requirements) except that it only includes realistic fully-qualified domains: 1. requires at least one subdomain 2. allows shortest top-level domains like "ca", and "museum" as longest.
-Other validation rules: 1. Labels/parts should be seperated by period. 2. Each label/part has maximum of 63 characters. 3. First and last character of label must be alphanumeric, other characters alphanumeric or hyphen. 4. Does not check maxlength of domain which incidentally is 253 characters of text (255 binary representation).
-For a regular expression that matches ALL domains:
-^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$
+         #D: Other validation rules: 1. Labels/parts should be seperated by period. 2. Each label/part has maximum of 63 characters. 3. First and last character of label must be alphanumeric, other characters alphanumeric or hyphen. 4. Does not check maxlength of domain which incidentally is 253 characters of text (255 binary representation).
+         #D: For a regular expression that matches ALL domains:
+         #D: ^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$
          #U: http://regexlib.com/REDetails.aspx?regexp_id=391
 expr 208: ^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$
 tree:   ((([0-9A-Za-z]([0-9A-Za-z-]{0,61}[0-9A-Za-z])?).)+[A-Za-z]{2,6})
@@ -5867,7 +5867,7 @@ s6:  e.jjKFOa
 
          #A: Max Lu
          #D: Double byte charactors validator.
-The rule applies to double byte charactor input validation.
+         #D: The rule applies to double byte charactor input validation.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=395
 expr 209: ^[\u0081-\uFFFF]{1,}$
 tree:   [\u0081-\uffff]+
@@ -5888,7 +5888,7 @@ s1:  ⏐
 
          #A: Jason N. Gaylord
          #D: This validates the states and territories of the United States in a 2 character uppercase format. Very poor excuse for a regular expression!  ;)
-Written by Jason Gaylord.
+         #D: Written by Jason Gaylord.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=396
 expr 210: ^((AL)|(AK)|(AS)|(AZ)|(AR)|(CA)|(CO)|(CT)|(DE)|(DC)|(FM)|(FL)|(GA)|(GU)|(HI)|(ID)|(IL)|(IN)|(IA)|(KS)|(KY)|(LA)|(ME)|(MH)|(MD)|(MA)|(MI)|(MN)|(MS)|(MO)|(MT)|(NE)|(NV)|(NH)|(NJ)|(NM)|(NY)|(NC)|(ND)|(MP)|(OH)|(OK)|(OR)|(PW)|(PA)|(PR)|(RI)|(SC)|(SD)|(TN)|(TX)|(UT)|(VT)|(VI)|(VA)|(WA)|(WV)|(WI)|(WY))$
 tree:   ((AL)|(AK)|(AS)|(AZ)|(AR)|(CA)|(CO)|(CT)|(DE)|(DC)|(FM)|(FL)|(GA)|(GU)|(HI)|(ID)|(IL)|(IN)|(IA)|(KS)|(KY)|(LA)|(ME)|(MH)|(MD)|(MA)|(MI)|(MN)|(MS)|(MO)|(MT)|(NE)|(NV)|(NH)|(NJ)|(NM)|(NY)|(NC)|(ND)|(MP)|(OH)|(OK)|(OR)|(PW)|(PA)|(PR)|(RI)|(SC)|(SD)|(TN)|(TX)|(UT)|(VT)|(VI)|(VA)|(WA)|(WV)|(WI)|(WY))
@@ -5909,7 +5909,7 @@ s1:  AZ
 
          #A: Jason N. Gaylord
          #D: It is the exact phone number regular expression for '(###) ###-####'.
-Written by Jason Gaylord.
+         #D: Written by Jason Gaylord.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=397
 expr 211: ^([\(]{1}[0-9]{3}[\)]{1}[ ]{1}[0-9]{3}[\-]{1}[0-9]{4})$
 tree:   ((((((([0-9]{3}))) )[0-9]{3})-)[0-9]{4})
@@ -6040,9 +6040,9 @@ s1:  May
 
          #A: Dany Lauener
          #D: dd/MM/yyyy with leap years 100% integrated
-Valid years : from 1600 to 9999
-As usual, many tests have been made.
-I think this one should be fine.
+         #D: Valid years : from 1600 to 9999
+         #D: As usual, many tests have been made.
+         #D: I think this one should be fine.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=409
 expr 216: ^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((1[6-9]|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((1[6-9]|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((1[6-9]|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$
 tree:   (((((((0[1-9])|([12][0-9])|(3[01]))/)((0[13578])|(1[02])))/)(((1[6-9])|([2-9][0-9]))[0-9]{2}))|((((((0[1-9])|([12][0-9])|(30))/)((0[13-9])|(1[012])))/)(((1[6-9])|([2-9][0-9]))[0-9]{2}))|(((((((0[1-9])|(1[0-9])|(2[0-8]))/)0)2)/)(((1[6-9])|([2-9][0-9]))[0-9]{2}))|((((((29)/)0)2)/)((((1[6-9])|([2-9][0-9]))((0[48])|([2468][048])|([13579][26])))|((((16)|([2468][048])|([3579][26]))0)0))))
@@ -6181,7 +6181,7 @@ s1:  MO
 
          #A: Josh Crosby
          #D: This will match single numbers,the first block [1346] checks for single digits of 1, 3, 4 or 6, could easily by [1-5] as well. The second block [10] checks for 10 only.
-This matches inclusively.
+         #D: This matches inclusively.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=420
 ERROR:   ^[1]$|^[3]$|^[4]$|^[6]$|^[1]0$
     rx: Embedded '$' unimplemented: in "^[1]$|^[3]$|^[4]$|^[6]$|^[1]0$"
@@ -6273,12 +6273,12 @@ ERROR:   (?<LastName>[A-Z]\w+\-?[A-Z]?\w*),\s(?<Suffix>Jr\.|Sr\.|IV|III|II)?,?\s
 
          #A: Logan Tran
          #D: HTML Pattern Matching
-PLEASE HELP
-/<[^>]*>/ig
-The above pattern is only successful when html tag are simple (they don't include any javascript).  This mean that the pattern will fail if something like this is within the tag <input type=button value=test onclick='if(n.value>5)do_this();'>.  It will not match the entire open n close sign.
-How do you write a pattern that will pass all these tag so that the pattern will match from the open to the close sign and not when it just see a > within a '' or "".
-Any help would be greatly appreciate.  Thanks a whole lot.
-Logan
+         #D: PLEASE HELP
+         #D: /<[^>]*>/ig
+         #D: The above pattern is only successful when html tag are simple (they don't include any javascript).  This mean that the pattern will fail if something like this is within the tag <input type=button value=test onclick='if(n.value>5)do_this();'>.  It will not match the entire open n close sign.
+         #D: How do you write a pattern that will pass all these tag so that the pattern will match from the open to the close sign and not when it just see a > within a '' or "".
+         #D: Any help would be greatly appreciate.  Thanks a whole lot.
+         #D: Logan
          #U: http://regexlib.com/REDetails.aspx?regexp_id=431
 expr 223: <[^>]*>
 tree:   ((<[\x01-=?-\u007f]*)>)
@@ -6360,7 +6360,7 @@ ERROR:   (?s)/\*.*\*/
 
          #A: Ed Stafford
          #D: My first Expression. This will match US postal codes (zip codes) using simple 5 digit format with optional 4 digit extention seperated by a space or hyphen. Will not accept letters.
-example: 12345 or 12345-1234 or 12345 1234.
+         #D: example: 12345 or 12345-1234 or 12345 1234.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=446
 expr 226: ^[0-9]{5}([\s-]{1}[0-9]{4})?$
 tree:   ([0-9]{5}([\t-\r -][0-9]{4})?)
@@ -6402,10 +6402,10 @@ s3:  w0n
 
          #A: Joe Gass
          #D: Credit card validator
-Works for switch card numbers too
-Switch card bit is (\d{6}[-\s]?\d{12})
-Credit card bit is (\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4})
-I use this as a client side test before running a more comprehensive server side check.
+         #D: Works for switch card numbers too
+         #D: Switch card bit is (\d{6}[-\s]?\d{12})
+         #D: Credit card bit is (\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4})
+         #D: I use this as a client side test before running a more comprehensive server side check.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=455
 expr 228: (\d{6}[-\s]?\d{12})|(\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4})
 tree:   ((([0-9]{6}[\t-\r -]?)[0-9]{12})|(((((([0-9]{4}[\t-\r -]?)[0-9]{4})[\t-\r -]?)[0-9]{4})[\t-\r -]?)[0-9]{4}))
@@ -6447,8 +6447,8 @@ s1:  .com/8
 
          #A: Darren Neimke
          #D: Matches a string to ensure that it does not end with .aspx; sure, you'd probably use string handling to do something this simple but, in the real world you'd whack a regex which validates a valid url to the front of this.
-The pattern was created by Wayne King; you can read about it here:
-http://scottwater.com/blog/posts/10204.aspx 
+         #D: The pattern was created by Wayne King; you can read about it here:
+         #D: http://scottwater.com/blog/posts/10204.aspx 
          #U: http://regexlib.com/REDetails.aspx?regexp_id=457
 ERROR:   .*?$(?<!\.aspx)
     rx: prefer-fewer '?' unimplemented: in ".*?$(?<!\.aspx)"
@@ -6510,7 +6510,7 @@ s10:  po5
 
          #A: Vincent Faller
          #D: It can be used to validate Font Sizes.
-Thanks to Gideon Engelberth for the shorter version of my original expression.
+         #D: Thanks to Gideon Engelberth for the shorter version of my original expression.
          #T: Font Sizes
          #U: http://regexlib.com/REDetails.aspx?regexp_id=462
 expr 232: ^\d+\x20*([pP][xXtT])?$
@@ -6543,11 +6543,11 @@ ERROR:   ISBN\x20(?=.{13}$)\d{1,5}([- ])\d{1,7}\1\d{1,6}\1(\d|X)$
 
          #A: Tanguy Pruvot
          #D: grab all tags attributes...
-(1:img)
-(2: src="truc")
->
-i use it to clean html pages to grab infos...
-use a RegEx Replace with "<$1>" to keep only tags codes...
+         #D: (1:img)
+         #D: (2: src="truc")
+         #D: >
+         #D: i use it to clean html pages to grab infos...
+         #D: use a RegEx Replace with "<$1>" to keep only tags codes...
          #U: http://regexlib.com/REDetails.aspx?regexp_id=464
 expr 233: <([^\s>]*)(\s[^<]*)>
 tree:   (((<[\x01-\b\x0e-\x1f!-=?-\u007f]*)([\t-\r ][\x01-;=-\u007f]*))>)
@@ -6568,7 +6568,7 @@ s1:  < >
 
          #A: Tanguy Pruvot
          #D: All tags in first submatche
-All attributes in second one...
+         #D: All attributes in second one...
          #U: http://regexlib.com/REDetails.aspx?regexp_id=465
 expr 234: <([^<>\s]*)(\s[^<>]*)?>
 tree:   (((<[\x01-\b\x0e-\x1f!-;=?-\u007f]*)([\t-\r ][\x01-;=?-\u007f]*)?)>)
@@ -6589,7 +6589,7 @@ s1:  <>
 
          #A: Eli Robillard
          #D: "Starts with but does not end with."
-I needed a pattern to require certain first (and optional middle) names, but to fail for certain last names. So if Bob, John, and Mary are acceptable first names but the White's are always rejected then...
+         #D: I needed a pattern to require certain first (and optional middle) names, but to fail for certain last names. So if Bob, John, and Mary are acceptable first names but the White's are always rejected then...
          #U: http://regexlib.com/REDetails.aspx?regexp_id=466
 ERROR:   ^((Bob)|(John)|(Mary)).*$(?<!White)
     rx: Embedded '$' unimplemented: in "^((Bob)|(John)|(Mary)).*$(?<!White)"
@@ -6598,7 +6598,7 @@ ERROR:   ^((Bob)|(John)|(Mary)).*$(?<!White)
 
          #A: Shawn Hall
          #D: This pattern returns as much of the first x characters of a string as full words or sentences as a match, where x is currently 20. Change x to adjust the length supported in your database field.
-I'm currently using this within a string shortening utility to shrink large text regions to word/sentance-boundary elements and appending an ellipsis as a text continuator.
+         #D: I'm currently using this within a string shortening utility to shrink large text regions to word/sentance-boundary elements and appending an ellipsis as a text continuator.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=470
 expr 235: ^([\s\S]){1,20}([\s\.])
 tree:   ([\x01-\u007f]{1,20}[\t-\r .])
@@ -6647,16 +6647,16 @@ ERROR:   ^(?-i:A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHIN
 
          #A: Michael Ash
          #D: captures US street address.
-Address format: ##### Street 2ndunit City, ST zip+4
-address1 - must have street number and proper case street name. no punctuation or P.O Box #### punctuation manditory for P.O.
-address2 - optional secondary unit abbr.  Secondary range required for some units.
-City - Proper case city name.
-State - State abbreviation.  All caps
-zip - zip+4. Can't be all zeroes
-Abbreviations for secondary units and States are those used by the US Postal Service.
-http://www.usps.com/ncsc/lookups/usps_abbreviations.html
-Certain secondary units require a secondary range, see the above link
-THis RE isn't unbreakable, Probably will allow some false positives but should work for most addresses.
+         #D: Address format: ##### Street 2ndunit City, ST zip+4
+         #D: address1 - must have street number and proper case street name. no punctuation or P.O Box #### punctuation manditory for P.O.
+         #D: address2 - optional secondary unit abbr.  Secondary range required for some units.
+         #D: City - Proper case city name.
+         #D: State - State abbreviation.  All caps
+         #D: zip - zip+4. Can't be all zeroes
+         #D: Abbreviations for secondary units and States are those used by the US Postal Service.
+         #D: http://www.usps.com/ncsc/lookups/usps_abbreviations.html
+         #D: Certain secondary units require a secondary range, see the above link
+         #D: THis RE isn't unbreakable, Probably will allow some false positives but should work for most addresses.
          #T: U.S. Street Address
          #U: http://regexlib.com/REDetails.aspx?regexp_id=472
 ERROR:   ^(?n:(?<address1>(\d{1,5}(\ 1\/[234])?(\x20[A-Z]([a-z])+)+ )|(P\.O\.\ Box\ \d{1,5}))\s{1,2}(?i:(?<address2>(((APT|B LDG|DEPT|FL|HNGR|LOT|PIER|RM|S(LIP|PC|T(E|OP))|TRLR|UNIT)\x20\w{1,5})|(BSMT|FRNT|LBBY|LOWR|OFC|PH|REAR|SIDE|UPPR)\.?)\s{1,2})?)(?<city>[A-Z]([a-z])+(\.?)(\x20[A-Z]([a-z])+){0,2})\, \x20(?<state>A[LKSZRAP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADL N]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD] |T[NX]|UT|V[AIT]|W[AIVY])\x20(?<zipcode>(?!0{5})\d{5}(-\d {4})?))$
@@ -6707,7 +6707,7 @@ s2:  Y
 
          #A: James Fal
          #D: Updated, changed [\w]* to [\w]+ because pattern should not match Sub (), there would be no function name which would be incorrect.
-Will extract function declarations from ASP or also VB I assume. Will even capture declarations that break across new lines or ones that use the underscore(line continuation character) in Microsoft's VB, VBA, ASP, etc. Had to put this together to document some code on a project and didn't see anything like it on the web. I hope it helps out anyone else who has to re-engineer ASP or VB code. 
+         #D: Will extract function declarations from ASP or also VB I assume. Will even capture declarations that break across new lines or ones that use the underscore(line continuation character) in Microsoft's VB, VBA, ASP, etc. Had to put this together to document some code on a project and didn't see anything like it on the web. I hope it helps out anyone else who has to re-engineer ASP or VB code. 
          #U: http://regexlib.com/REDetails.aspx?regexp_id=476
 expr 238: ^(Function|Sub)(\s+[\w]+)\([^\(\)]*\)
 tree:   ((((((((((((Fu)n)c)t)i)o)n)|((Su)b))([\t-\r ]+[0-9A-Z_a-z]+))()[\x01-'*-\u007f]*)))
@@ -6816,9 +6816,9 @@ ERROR:   ^ISBN\s(?=[-0-9xX ]{13}$)(?:[0-9]+[- ]){3}[0-9]*[xX0-9]$
 
          #A: Dany Lauener
          #D: Matching : dd/MM/yy
-Leap years compatible
-Italian style, just for more fun.
-Please, don't forget to rate it if you use it. THX
+         #D: Leap years compatible
+         #D: Italian style, just for more fun.
+         #D: Please, don't forget to rate it if you use it. THX
          #U: http://regexlib.com/REDetails.aspx?regexp_id=488
 expr 241: ^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/(\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/(\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/(\d{2}))|(29\/02\/((0[48]|[2468][048]|[13579][26])|(00))))$
 tree:   (((((((0[1-9])|([12][0-9])|(3[01]))/)((0[13578])|(1[02])))/)[0-9]{2})|((((((0[1-9])|([12][0-9])|(30))/)((0[13-9])|(1[012])))/)[0-9]{2})|(((((((0[1-9])|(1[0-9])|(2[0-8]))/)0)2)/)[0-9]{2})|((((((29)/)0)2)/)(((0[48])|([2468][048])|([13579][26]))|(00))))
@@ -7110,7 +7110,7 @@ s18:  re:^i,&w\\p<bfxhdfirxe
 
          #A: Roman Lukyanenko
          #D: It matches .jpg files. It allows for a dot in the path. A dot may occur in such directories as: C:\Documents and Settings\roman.lukyanenko\Desktop\stuff\b_card2.jpg
-or C:\Windows\Microsoft.NET etc
+         #D: or C:\Windows\Microsoft.NET etc
          #U: http://regexlib.com/REDetails.aspx?regexp_id=512
 expr 251: ^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w ]*.*))+\.(jpg|JPG)$
 tree:   ((((([A-Za-z]:)|((\{2}[0-9A-Z_a-z]+)$?))(\(([0-9A-Z_a-z][ 0-9A-Z_a-z]*)[\x01-\u007f]*))+).)(((jp)g)|((JP)G)))
@@ -7159,7 +7159,7 @@ s1:  L_-6792
 
          #A: paul Snabilie
          #D: match all danish postal code
-update from last danish postal code expression
+         #D: update from last danish postal code expression
          #U: http://regexlib.com/REDetails.aspx?regexp_id=518
 expr 253: ^[D-d][K-k]( |-)[1-9]{1}[0-9]{3}$
 tree:   (((([D-d][K-k])( |-))[1-9])[0-9]{3})
@@ -7207,7 +7207,7 @@ ERROR:   (\[(\w+)\s*(([\w]*)=('|")?([a-zA-Z0-9|:|\/|=|-|.|\?|&]*)(\5)?)*\])([a-z
 
          #A: Sadaf Ahmed
          #D: Address
-It has now been enhanced to accept # too!!
+         #D: It has now been enhanced to accept # too!!
          #U: http://regexlib.com/REDetails.aspx?regexp_id=521
 expr 255: ^[a-zA-Z\d]+(([\'\,\.\- #][a-zA-Z\d ])?[a-zA-Z\d]*[\.]*)*$
 tree:   ([0-9A-Za-z]+((([ #',.-][ 0-9A-Za-z])?[0-9A-Za-z]*).*)*)
@@ -7245,9 +7245,9 @@ ERROR:   (?i:on(blur|c(hange|lick)|dblclick|focus|keypress|(key|mouse)(down|up)|
 
          #A: W. D.
          #D: Canadian Postal Code / Codes / Canada / Zip
-Google for DFIOQU and you'll see where I got the
-info for this.
-Can anyone simplify this?
+         #D: Google for DFIOQU and you'll see where I got the
+         #D: info for this.
+         #D: Can anyone simplify this?
          #U: http://regexlib.com/REDetails.aspx?regexp_id=526
 expr 256: ^[abceghjklmnprstvxyABCEGHJKLMNPRSTVXY][0-9][abceghjklmnprstvwxyzABCEGHJKLMNPRSTVWXYZ] {0,1}[0-9][abceghjklmnprstvwxyzABCEGHJKLMNPRSTVWXYZ][0-9]$
 tree:   (((((([ABCEGHJ-NPRSTVXYabceghj-nprstvxy][0-9])[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z]) ?)[0-9])[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z])[0-9])
@@ -7283,7 +7283,7 @@ ERROR:   ^(\d{4}-){3}\d{4}$|^(\d{4} ){3}\d{4}$|^\d{16}$
 
          #A: Frederick Samson
          #D: The goal of this regular expression is to replace all & (ampersand) characters by & if they are not the start of HTML entities. I used
-http://www.w3schools.com/html/html_entitiesref.asp as a reference. You can then use RegExp Replace method to do the work. Was helpful for me, might helpful be for you...
+         #D: http://www.w3schools.com/html/html_entitiesref.asp as a reference. You can then use RegExp Replace method to do the work. Was helpful for me, might helpful be for you...
          #U: http://regexlib.com/REDetails.aspx?regexp_id=532
 ERROR:   &(?![a-zA-Z]{2,6};|#[0-9]{3};)
     rx: '(?...' unimplemented: in "&(?![a-zA-Z]{2,6};|#[0-9]{3};)"
@@ -7334,7 +7334,7 @@ ERROR:   ^(?<field1>[^,]+),(?<field2>[^,]+),(?<field3>[^,]+)$
 
          #A: Jerry Schmersahl
          #D: Updated on 3/4/2004 per feedback to additionally exclude SSNs that begin with 666 which, as reported, are also not valid.
-Regular expression for validating US Social Security Numbers. Accepts optional hyphens or spaces as formatting characters. Parses the three subfields of the SSN into three named sub-strings (SSN1, SSN2, and SSN3) to facilitate program use. Rejects matches on all zeros for any individual subfield of the Social Security Number. Matches only on those SSNs that fall within the range of numbers currently allocated by the Social Security Administration.
+         #D: Regular expression for validating US Social Security Numbers. Accepts optional hyphens or spaces as formatting characters. Parses the three subfields of the SSN into three named sub-strings (SSN1, SSN2, and SSN3) to facilitate program use. Rejects matches on all zeros for any individual subfield of the Social Security Number. Matches only on those SSNs that fall within the range of numbers currently allocated by the Social Security Administration.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=539
 ERROR:   ^(?!000)(?!666)(?<SSN3>[0-6]\d{2}|7(?:[0-6]\d|7[012]))([- ]?)(?!00)(?<SSN2>\d\d)\1(?!0000)(?<SSN4>\d{4})$
     rx: '(?...' unimplemented: in "^(?!000)(?!666)(?<SSN3>[0-6]\d{2}|7(?:[0-6]\d|7[012]))([- ]?)(?!00)(?<SSN2>\d\d)\1(?!0000)(?<SSN4>\d{4})$"
@@ -7343,11 +7343,11 @@ ERROR:   ^(?!000)(?!666)(?<SSN3>[0-6]\d{2}|7(?:[0-6]\d|7[012]))([- ]?)(?!00)(?<S
 
          #A: Rob Eberhardt
          #D: regex to validate email address
-noteworthy:
-(1) It allows usernames with 1 or 2 alphanum characters, or 3+ chars can have -._ in the middle. username may NOT start/end with -._ or any other non alphanumeric character.
-(2) It allows heirarchical domain names (e.g. me@really.big.com). Similar -._ placement rules there.
-(3) It allows 2-9 character alphabetic-only TLDs (that oughta cover museum and adnauseum :>).
-(4) No IP email addresses though -- I wouldn't Want to accept that kind of address. 
+         #D: noteworthy:
+         #D: (1) It allows usernames with 1 or 2 alphanum characters, or 3+ chars can have -._ in the middle. username may NOT start/end with -._ or any other non alphanumeric character.
+         #D: (2) It allows heirarchical domain names (e.g. me@really.big.com). Similar -._ placement rules there.
+         #D: (3) It allows 2-9 character alphabetic-only TLDs (that oughta cover museum and adnauseum :>).
+         #D: (4) No IP email addresses though -- I wouldn't Want to accept that kind of address. 
          #T: Email
          #U: http://regexlib.com/REDetails.aspx?regexp_id=541
 expr 258: ^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$
@@ -7376,14 +7376,14 @@ s9:  L@4V.PuvbrUSTk
 
          #A: Paul Haines
          #D: Validates a UNC to conform to \\server\service
-Must have a "\\" at the start
-Server may contain alpha/numeric/underscore/dash,
-Followed by another single "\"
-Service may contain alpha/numeric/underscore/dash/$/space
-Note:
-Service may not start nor end with a space
-Service may only contain one $, and only at the end
-No additional "\" may follow afterwards
+         #D: Must have a "\\" at the start
+         #D: Server may contain alpha/numeric/underscore/dash,
+         #D: Followed by another single "\"
+         #D: Service may contain alpha/numeric/underscore/dash/$/space
+         #D: Note:
+         #D: Service may not start nor end with a space
+         #D: Service may only contain one $, and only at the end
+         #D: No additional "\" may follow afterwards
          #U: http://regexlib.com/REDetails.aspx?regexp_id=542
 ERROR:   ^\\{2}[\w-]+\\(([\w-][\w-\s]*[\w-]+[$$]?$)|([\w-][$$]?$))
     rx: invalid range: in "^\\{2}[\w-]+\\(([\w-][\w-\s]*[\w-]+[$$]?$)|([\w-][$$]?$))"
@@ -7415,8 +7415,8 @@ s3:  8.09
 
          #A: Lloyd Sturge
          #D: This expression will return the src (source) property of an image tag <IMG>. The source returned is limited to the file extensions supplied. It doesn't matter if the image is prefixed with '../' or 'http://..blah' or 'drive\path' or nothing. This expression could be modifed to return other sources or for the tags (ie <BGSOUND>, <SCRIPT>, etc.) depending on the file extensions given.
-I needed this to replace the source of images in a HTML page when I wanted to save the page to a local drive and keep the images intact.
-If anybody could modify this further to include only the <IMG> tag, I would appreciate the effort.
+         #D: I needed this to replace the source of images in a HTML page when I wanted to save the page to a local drive and keep the images intact.
+         #D: If anybody could modify this further to include only the <IMG> tag, I would appreciate the effort.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=544
 expr 260: src[^>]*[^/].(?:jpg|bmp|gif)(?:\"|\')
 tree:   (((((((sr)c)[\x01-=?-\u007f]*)[\x01-.0-\u007f])[\x01-\u007f])(((jp)g)|((bm)p)|((gi)f)))("|'))
@@ -7531,7 +7531,7 @@ s13:  http://9.7/.o
 
          #A: Rohan Pathare
          #D: Validates date format by DD MMM YYYY. Validates days for each month also.
-Ensures that month is uppercase.
+         #D: Ensures that month is uppercase.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=565
 ERROR:   ^((31(?! (FEB|APR|JUN|SEP|NOV)))|((30|29)(?! FEB))|(29(?= FEB (((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)))))|(0?[1-9])|1\d|2[0-8]) (JAN|FEB|MAR|MAY|APR|JUL|JUN|AUG|OCT|SEP|NOV|DEC) ((1[6-9]|[2-9]\d)\d{2})$
     rx: '(?...' unimplemented: in "^((31(?! (FEB|APR|JUN|SEP|NOV)))|((30|29)(?! FEB))|(29(?= FEB (((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)))))|(0?[1-9])|1\d|2[0-8]) (JAN|FEB|MAR|MAY|APR|JUL|JUN|AUG|OCT|SEP|NOV|DEC) ((1[6-9]|[2-9]\d)\d{2})$"
@@ -7721,17 +7721,17 @@ ERROR:   ^(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}
 
          #A: Michael Ash
          #D: YYYY/MM/DD hh:mm:ss format DateTime Regex.
-This regex will validate a date, time or a datetime.
-It will also capture the date fields and the time.
-Dates are in the YYYY/MM/DD format and validated for months, number of days in a month and leap years (29/2)
-Date field can be separated by matched periods(.), dashes(-) or forward slashes(/)
-Time is either 12 hour AM/PM format (hh:mm:ss AM), where minutes and seconds are optional.
-AM or PM required. or 24 hour military format (hh:mm:ss), from 00:00:00 to 23:59:59,
-where hours and minutes fields are required, including leading 0 for hours less than 10.
-Please refer to http://blogs.regexadvice.com/mash/archive/2004/04/23/1021.aspx for additional info
-Datetime is the above date and time formats separated by a space,
-with the date first (YYYY/MM/DD hh:mm:ss)
-!IMPORTANT NOTE: your regex engine must support lookbehinds and named groups to use this expression
+         #D: This regex will validate a date, time or a datetime.
+         #D: It will also capture the date fields and the time.
+         #D: Dates are in the YYYY/MM/DD format and validated for months, number of days in a month and leap years (29/2)
+         #D: Date field can be separated by matched periods(.), dashes(-) or forward slashes(/)
+         #D: Time is either 12 hour AM/PM format (hh:mm:ss AM), where minutes and seconds are optional.
+         #D: AM or PM required. or 24 hour military format (hh:mm:ss), from 00:00:00 to 23:59:59,
+         #D: where hours and minutes fields are required, including leading 0 for hours less than 10.
+         #D: Please refer to http://blogs.regexadvice.com/mash/archive/2004/04/23/1021.aspx for additional info
+         #D: Datetime is the above date and time formats separated by a space,
+         #D: with the date first (YYYY/MM/DD hh:mm:ss)
+         #D: !IMPORTANT NOTE: your regex engine must support lookbehinds and named groups to use this expression
          #T: yyyy/mm/dd hhMMss Date
          #U: http://regexlib.com/REDetails.aspx?regexp_id=581
 ERROR:   ^(?ni:(?=\d)((?'year'((1[6-9])|([2-9]\d))\d\d)(?'sep'[/.-])(?'month'0?[1-9]|1[012])\2(?'day'((?<!(\2((0?[2469])|11)\2))31)|(?<!\2(0?2)\2)(29|30)|((?<=((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|(16|[2468][048]|[3579][26])00)\2\3\2)29)|((0?[1-9])|(1\d)|(2[0-8])))(?:(?=\x20\d)\x20|$))?((?<time>((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2}))?)$
@@ -7749,8 +7749,8 @@ ERROR:   \w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$|^([0-9a-zA-Z'\.]{3,40})\*|(
 
          #A: Senthil Gunabalan
          #D: This is a basic telephone number vaildation which needs a compulsory prefix of a '+' sign with three digits and followed by a hipen, another three digits and finally followed by another hipen and four more digits.
-Regards,
-Senthil Gunabalan
+         #D: Regards,
+         #D: Senthil Gunabalan
          #U: http://regexlib.com/REDetails.aspx?regexp_id=586
 expr 271: ^[+][0-9]\d{2}-\d{3}-\d{4}$
 tree:   ((((((+[0-9])[0-9]{2})-)[0-9]{3})-)[0-9]{4})
@@ -7791,17 +7791,17 @@ s1:  3376436669
 
          #A: W. D.
          #D: U. S. or Canadian telephone number regular expression. <BR>
-//           # Checks phone numbers for validity                           <BR>
-//  [01]?    # optional '0', or '1'                                        <BR>
-//  [- .]?   # optional separator is either a dash, a space, or a period.  <BR>
-//  \(?      # optional parentheses                                        <BR>
-//  [2-9]    # first # of the area code must not be a '0' or '1'           <BR>
-//  \d{2}    # next 2 digits of area code can be 0-9                       <BR>
-//  \)?      # optional parentheses                                        <BR>
-//  [- .]?   # optional separator is either a dash, a space, or a period.  <BR>
-//  \d{3}    # 3-digit prefix                                              <BR>
-//  [- .]?   # optional separator is either a dash, a space, or a period.  <BR>
-//  \d{4}    # 4-digit station number                                      <BR>
+         #D: //           # Checks phone numbers for validity                           <BR>
+         #D: //  [01]?    # optional '0', or '1'                                        <BR>
+         #D: //  [- .]?   # optional separator is either a dash, a space, or a period.  <BR>
+         #D: //  \(?      # optional parentheses                                        <BR>
+         #D: //  [2-9]    # first # of the area code must not be a '0' or '1'           <BR>
+         #D: //  \d{2}    # next 2 digits of area code can be 0-9                       <BR>
+         #D: //  \)?      # optional parentheses                                        <BR>
+         #D: //  [- .]?   # optional separator is either a dash, a space, or a period.  <BR>
+         #D: //  \d{3}    # 3-digit prefix                                              <BR>
+         #D: //  [- .]?   # optional separator is either a dash, a space, or a period.  <BR>
+         #D: //  \d{4}    # 4-digit station number                                      <BR>
          #U: http://regexlib.com/REDetails.aspx?regexp_id=588
 expr 273: ^[01]?[- .]?\(?[2-9]\d{2}\)?[- .]?\d{3}[- .]?\d{4}$
 tree:   ((((((((([01]?[ .-]?)(?)[2-9])[0-9]{2}))?)[ .-]?)[0-9]{3})[ .-]?)[0-9]{4})
@@ -7853,7 +7853,7 @@ ERROR:   (^N/A$)|(^[-]?(\d+)(\.\d{0,3})?$)|(^[-]?(\d{1,3},(\d{3},)*\d{3}(\.\d{1,
 
          #A: Cliff Schneide
          #D: After looking for a date regular expression, I could not find one that meet my need, so I develop one that handles 1 or 2 digets in the month and day and also handle feb up to 29.  This will allow both / and - for separators, which is what I needed.  I hope this helps others too.  Thanks,
-Cliff Schneide
+         #D: Cliff Schneide
          #U: http://regexlib.com/REDetails.aspx?regexp_id=591
 expr 275: ^((((0?[13578])|(1[02]))[\/|\-]?((0?[1-9]|[0-2][0-9])|(3[01])))|(((0?[469])|(11))[\/|\-]?((0?[1-9]|[0-2][0-9])|(30)))|(0?[2][\/\-]?(0?[1-9]|[0-2][0-9])))[\/\-]?\d{2,4}$
 tree:   (((((((0?[13578])|(1[02]))[/|-]?)(((0?[1-9])|([012][0-9]))|(3[01])))|((((0?[469])|(11))[/|-]?)(((0?[1-9])|([012][0-9]))|(30)))|(((0?2)[/-]?)((0?[1-9])|([012][0-9]))))[/-]?)[0-9]{2,4})
@@ -8048,9 +8048,9 @@ s1:  99484732
 
          #A: Matt Wickless
          #D: This pattern handles currency including the following:
-optional period with two or more digits to the right of the period
-optional commas
-optional dollar sign($)
+         #D: optional period with two or more digits to the right of the period
+         #D: optional commas
+         #D: optional dollar sign($)
          #U: http://regexlib.com/REDetails.aspx?regexp_id=604
 expr 283: ^(\$)?((\d+)|(\d{1,3})(\,\d{3})*)(\.\d{2,})?$
 tree:   (($?([0-9]+|([0-9]{1,3}(,[0-9]{3})*)))(.[0-9]{2,})?)
@@ -8076,8 +8076,8 @@ s4:  6,194
 
          #A: JP Honeywell
          #D: Validates *usable* US telephone numbers (possibly Canadian and Caribbean Islands as well?) Numbers cannot beginning with zero, one, (any number)11, or 555. It will allow either a hyphen, space or period as a separator.
-Technically (and contrary to popular belief) most 555- numbers ARE valid numbers [see http://www.nanpa.com/nas/public/form555MasterReport.do?method=display555MasterReport ] but they are unlikely to be used by normal folks. Therefore, excluding them with this regex is useful to prevent bogus/fraudulent telephone numbers in forms.
-FYI, the fictitious 555- numbers used in the movies and TV are only in the range of 555-0100 through 555-0199. Not very many, huh?
+         #D: Technically (and contrary to popular belief) most 555- numbers ARE valid numbers [see http://www.nanpa.com/nas/public/form555MasterReport.do?method=display555MasterReport ] but they are unlikely to be used by normal folks. Therefore, excluding them with this regex is useful to prevent bogus/fraudulent telephone numbers in forms.
+         #D: FYI, the fictitious 555- numbers used in the movies and TV are only in the range of 555-0100 through 555-0199. Not very many, huh?
          #U: http://regexlib.com/REDetails.aspx?regexp_id=605
 ERROR:   ^(?!\d[1]{2}|[5]{3})([2-9]\d{2})([. -]*)\d{4}$
     rx: '(?...' unimplemented: in "^(?!\d[1]{2}|[5]{3})([2-9]\d{2})([. -]*)\d{4}$"
@@ -8643,7 +8643,7 @@ s1:  ©
 
          #A: Steve Wagner
          #D: Validates dates formatted like "dd.mm.yyyy" or "dd.mm.yy". Also the separators "/" and "-" are validated "ok". This expression does not check leap years!
-I did this expression cause I could hardly find any date regex that supports those "dot-formats".
+         #D: I did this expression cause I could hardly find any date regex that supports those "dot-formats".
          #U: http://regexlib.com/REDetails.aspx?regexp_id=653
 ERROR:    ^(0{0,1}[1-9]|[12][0-9]|3[01])[- /.](0{0,1}[1-9]|1[012])[- /.](\d{2}|\d{4})$
     rx: Embedded '^' unimplemented: in " ^(0{0,1}[1-9]|[12][0-9]|3[01])[- /.](0{0,1}[1-9]|1[012])[- /.](\d{2}|\d{4})$"
@@ -8680,7 +8680,7 @@ ERROR:   (^([0-9]|[0-1][0-9]|[2][0-3]):([0-5][0-9])(\s{0,1})([AM|PM|am|pm]{2,2})
 
          #A: Sante Boscolo
          #D: Spam trap
-Catches many and many way to write viagra (replacing letters with similar chars, spacing chars with one space, etc).
+         #D: Catches many and many way to write viagra (replacing letters with similar chars, spacing chars with one space, etc).
          #U: http://regexlib.com/REDetails.aspx?regexp_id=656
 expr 297: [v,V,(\\/)](\W|)[i,I,1,l,L](\W|)[a,A,@,(\/\\)](\W|)[g,G](\W|)[r,R](\W|)[a,A,@,(\/\\))]
 tree:   (((((((((([(),/V\v]([\x01-/:-@[-^`{-\u007f]|()))[,1ILil])([\x01-/:-@[-^`{-\u007f]|()))[(),/@A\a])([\x01-/:-@[-^`{-\u007f]|()))[,Gg])([\x01-/:-@[-^`{-\u007f]|()))[,Rr])([\x01-/:-@[-^`{-\u007f]|()))[(),/@A\a])
@@ -8708,8 +8708,8 @@ s26:  /,A,,,
 
          #A: Vathachira Joseph Bino
          #D: regex which matches UAE mobile phone numbers.
-Its capable to take inputs +97150 3827741, +97-150-3827741, +97150 - 3827741,050 3827741, 050 - 3827741
-Enjoy REGEXXXXXXX!!!!!!!
+         #D: Its capable to take inputs +97150 3827741, +97-150-3827741, +97150 - 3827741,050 3827741, 050 - 3827741
+         #D: Enjoy REGEXXXXXXX!!!!!!!
          #U: http://regexlib.com/REDetails.aspx?regexp_id=658
 expr 298: ^(\+97[\s]{0,1}[\-]{0,1}[\s]{0,1}1|0)50[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$
 tree:   ((((((((((((((+9)7)[\t-\r ]?)-?)[\t-\r ]?)1)|0)5)0)[\t-\r ]?)-?)[\t-\r ]?)[1-9])[0-9]{6})
@@ -8750,7 +8750,7 @@ s1:  091088984
 
          #A: Vathachira Joseph Bino
          #D: The regex that matches the telephone numbers in India.
-####Enjoy Regex####
+         #D: ####Enjoy Regex####
          #U: http://regexlib.com/REDetails.aspx?regexp_id=661
 expr 300: ^0{0,1}[1-9]{1}[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$
 tree:   (((((((0?[1-9])[0-9]{2})[\t-\r ]?)-?)[\t-\r ]?)[1-9])[0-9]{6})
@@ -8799,9 +8799,9 @@ s6:  6557
 
          #A: Dany Lauener
          #D: This regexp has been posted specialy for "Mike O Shea" as he requested a mono digit year validation.
-matches DD/MM/Y or DD/MM/YYYY or D/M/Y or DD/M/YYYY
-Leap years treated. (Italian style with tomato)
-Years 0-9 equal years 2000 to 2009 for leap years
+         #D: matches DD/MM/Y or DD/MM/YYYY or D/M/Y or DD/M/YYYY
+         #D: Leap years treated. (Italian style with tomato)
+         #D: Years 0-9 equal years 2000 to 2009 for leap years
          #U: http://regexlib.com/REDetails.aspx?regexp_id=666
 expr 302: ^(((0?[1-9]|[12]\d|3[01])[\.\-\/](0?[13578]|1[02])[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}|\d))|((0?[1-9]|[12]\d|30)[\.\-\/](0?[13456789]|1[012])[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}|\d))|((0?[1-9]|1\d|2[0-8])[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}|\d))|(29[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)|00|[048])))$
 tree:   (((((((0?[1-9])|([12][0-9])|(3[01]))[./-])((0?[13578])|(1[02])))[./-])((((1[6-9])|([2-9][0-9]))?[0-9]{2})|[0-9]))|((((((0?[1-9])|([12][0-9])|(30))[./-])((0?[13-9])|(1[012])))[./-])((((1[6-9])|([2-9][0-9]))?[0-9]{2})|[0-9]))|(((((((0?[1-9])|(1[0-9])|(2[0-8]))[./-])0?)2)[./-])((((1[6-9])|([2-9][0-9]))?[0-9]{2})|[0-9]))|((((((29)[./-])0?)2)[./-])((((1[6-9])|([2-9][0-9]))?((0[48])|([2468][048])|([13579][26])))|((((16)|([2468][048])|([3579][26]))0)0)|(00)|[048])))
@@ -8829,8 +8829,8 @@ s27:  29/2-16
 
          #A: Chandrasing Patil
          #D: This expression is little tricky since the $ sign is includeded in the
-expression itself. So whenever you want to make use of the expression be
-sure to prepend $ sign to the value if it's not present.
+         #D: expression itself. So whenever you want to make use of the expression be
+         #D: sure to prepend $ sign to the value if it's not present.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=668
 expr 303: ^\$[+-]?([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(\.[0-9]{1,2})?$
 tree:   ((($[+-]?)([0-9]+|([0-9]{1,3}(,[0-9]{3})*)))(.[0-9]{1,2})?)
@@ -9052,7 +9052,7 @@ s1:  ∞
 
          #A: Michael Ash
          #D: Matches any character is the Basic Latin Unicode Range \U0000-U007F  (Ascii 0-127)
-I've blogged about this and other expressions here http://blogs.regexadvice.com/mash/archive/2004/04/17/988.aspx
+         #D: I've blogged about this and other expressions here http://blogs.regexadvice.com/mash/archive/2004/04/17/988.aspx
          #U: http://regexlib.com/REDetails.aspx?regexp_id=679
 ERROR:   \p{IsBasicLatin}
     rx: '\px' unimplemented: in "\p{IsBasicLatin}"
@@ -9099,7 +9099,7 @@ s22:  666-0773 x4
 
          #A: Matt Baskey
          #D: another uk telephone number regex.  This was adapted from another on this site http://www.regexlib.com/REDetails.aspx?regexp_id=297
-I added support for hyphens and for london shorthand numbers ie. 8234-1234 72341234  Still want to be permissive where possible....Still need to sort out the all zeros, also not sure if numbers with 4 digits followed by 7 used in london 0208-234-1234 is the area of the uk where this occurs, or all areas outside of london are in format 5 digits followed by 6 digits ie. 01608 123456.  If that is the case for the 4-7 pattern only 0208 or 0207 could be enforced.
+         #D: I added support for hyphens and for london shorthand numbers ie. 8234-1234 72341234  Still want to be permissive where possible....Still need to sort out the all zeros, also not sure if numbers with 4 digits followed by 7 used in london 0208-234-1234 is the area of the uk where this occurs, or all areas outside of london are in format 5 digits followed by 6 digits ie. 01608 123456.  If that is the case for the 4-7 pattern only 0208 or 0207 could be enforced.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=683
 expr 314: (\s*\(?0\d{4}\)?(\s*|-)\d{3}(\s*|-)\d{3}\s*)|(\s*\(?0\d{3}\)?(\s*|-)\d{3}(\s*|-)\d{4}\s*)|(\s*(7|8)(\d{7}|\d{3}(\-|\s{1})\d{4})\s*)
 tree:   (((((((((([\t-\r ]*(?)0)[0-9]{4}))?)([\t-\r ]*|-))[0-9]{3})([\t-\r ]*|-))[0-9]{3})[\t-\r ]*)|((((((((([\t-\r ]*(?)0)[0-9]{3}))?)([\t-\r ]*|-))[0-9]{3})([\t-\r ]*|-))[0-9]{4})[\t-\r ]*)|((([\t-\r ]*(7|8))([0-9]{7}|(([0-9]{3}(-|[\t-\r ]))[0-9]{4})))[\t-\r ]*))
@@ -9120,7 +9120,7 @@ s1:  84419737
 
          #A: Matt Baskey
          #D: another uk telephone number regex.  This was adapted from another on this site http://www.regexlib.com/REDetails.aspx?regexp_id=297
-I added support for hyphens and for london shorthand numbers ie. 8234-1234 72341234  Still want to be permissive where possible....Still need to sort out the all zeros, also not sure if numbers with 4 digits followed by 7 used in london 0208-234-1234 is the area of the uk where this occurs, or all areas outside of london are in format 5 digits followed by 6 digits ie. 01608 123456.  If that is the case for the 4-7 pattern only 0208 or 0207 could be enforced.
+         #D: I added support for hyphens and for london shorthand numbers ie. 8234-1234 72341234  Still want to be permissive where possible....Still need to sort out the all zeros, also not sure if numbers with 4 digits followed by 7 used in london 0208-234-1234 is the area of the uk where this occurs, or all areas outside of london are in format 5 digits followed by 6 digits ie. 01608 123456.  If that is the case for the 4-7 pattern only 0208 or 0207 could be enforced.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=684
 expr 315: (\s*\(?0\d{4}\)?(\s*|-)\d{3}(\s*|-)\d{3}\s*)|(\s*\(?0\d{3}\)?(\s*|-)\d{3}(\s*|-)\d{4}\s*)|(\s*(7|8)(\d{7}|\d{3}(\-|\s{1})\d{4})\s*)
 tree:   (((((((((([\t-\r ]*(?)0)[0-9]{4}))?)([\t-\r ]*|-))[0-9]{3})([\t-\r ]*|-))[0-9]{3})[\t-\r ]*)|((((((((([\t-\r ]*(?)0)[0-9]{3}))?)([\t-\r ]*|-))[0-9]{3})([\t-\r ]*|-))[0-9]{4})[\t-\r ]*)|((([\t-\r ]*(7|8))([0-9]{7}|(([0-9]{3}(-|[\t-\r ]))[0-9]{4})))[\t-\r ]*))
@@ -9178,9 +9178,9 @@ s1:  557-314-0873
 
          #A: yoram o
          #D: evaluates dates in the format of DD/MM/YY or DD/MM/YYYY
-DD & YY - can be of the form:
-One digit            2
-Zero leading        02
+         #D: DD & YY - can be of the form:
+         #D: One digit            2
+         #D: Zero leading        02
          #U: http://regexlib.com/REDetails.aspx?regexp_id=690
 ERROR:   (?<Day>[0-3][0-9]|[1-9])/(?<Month>[1-9]|1[0-2]|0[1-9])/(?<Year>[12]\d{3}|\d{2})
     rx: '(?...' unimplemented: in "(?<Day>[0-3][0-9]|[1-9])/(?<Month>[1-9]|1[0-2]|0[1-9])/(?<Year>[12]\d{3}|\d{2})"
@@ -9288,12 +9288,12 @@ s0:
 
          #A: ic onur
          #D: will match free floating valid protocol + urls in text ... will not touch the ones wrapped in a tag, so that you can auto-link the ones that aren't :) couple of things to know :
-1. if the url is next to a tag this won't work (eg : <br>http://www.acme.com), the url must either start with a \s, \n or any character other than >.
-2. the pattern will match the preceding \s and \n too, so when you replace put them back in place $1 will either be \s or \n, $2 will be the exact match
-vb usage :
-set re = New RegExp
-re.Pattern ="(\s|\n|^)(\w+://[^\s\n]+)"
-strResult = re.Replace(strText, "$1<a href='$2' target='_new'>$2</a>")
+         #D: 1. if the url is next to a tag this won't work (eg : <br>http://www.acme.com), the url must either start with a \s, \n or any character other than >.
+         #D: 2. the pattern will match the preceding \s and \n too, so when you replace put them back in place $1 will either be \s or \n, $2 will be the exact match
+         #D: vb usage :
+         #D: set re = New RegExp
+         #D: re.Pattern ="(\s|\n|^)(\w+://[^\s\n]+)"
+         #D: strResult = re.Replace(strText, "$1<a href='$2' target='_new'>$2</a>")
          #U: http://regexlib.com/REDetails.aspx?regexp_id=703
 ERROR:   (\s|\n|^)(\w+://[^\s\n]+)
     rx: Embedded '^' unimplemented: in "(\s|\n|^)(\w+://[^\s\n]+)"
@@ -9302,7 +9302,7 @@ ERROR:   (\s|\n|^)(\w+://[^\s\n]+)
 
          #A: marrik
          #D: Match for dutch zipcodes.
-Dutch zipcodes are always in the format of 4 digits and 2 letters.
+         #D: Dutch zipcodes are always in the format of 4 digits and 2 letters.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=705
 expr 322: [0-9]{4}[A-Z]{2}
 tree:   ([0-9]{4}[A-Z]{2})
@@ -9331,8 +9331,8 @@ ERROR:   (?-i:\b\p{Ll}+\b)
 
          #A: Felipe Albacete
          #D: This is the Brazilian Date Format.
-DD/MM/YYYY with the right days per month.
-Dates >=1900 <=2999.
+         #D: DD/MM/YYYY with the right days per month.
+         #D: Dates >=1900 <=2999.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=709
 expr 323: (((0[1-9]|[12][0-9]|3[01])([/])(0[13578]|10|12)([/])([1-2][0,9][0-9][0-9]))|(([0][1-9]|[12][0-9]|30)([/])(0[469]|11)([/])([1-2][0,9][0-9][0-9]))|((0[1-9]|1[0-9]|2[0-8])([/])(02)([/])([1-2][0,9][0-9][0-9]))|((29)(\.|-|\/)(02)([/])([02468][048]00))|((29)([/])(02)([/])([13579][26]00))|((29)([/])(02)([/])([0-9][0-9][0][48]))|((29)([/])(02)([/])([0-9][0-9][2468][048]))|((29)([/])(02)([/])([0-9][0-9][13579][26])))
 tree:   (((((((0[1-9])|([12][0-9])|(3[01]))/)((0[13578])|(10)|(12)))/)((([12][,09])[0-9])[0-9]))|((((((0[1-9])|([12][0-9])|(30))/)((0[469])|(11)))/)((([12][,09])[0-9])[0-9]))|((((((0[1-9])|(1[0-9])|(2[0-8]))/)(02))/)((([12][,09])[0-9])[0-9]))|(((((29)(.|-|/))(02))/)((([02468][048])0)0))|(((((29)/)(02))/)((([13579][26])0)0))|(((((29)/)(02))/)((([0-9][0-9])0)[48]))|(((((29)/)(02))/)((([0-9][0-9])[2468])[048]))|(((((29)/)(02))/)((([0-9][0-9])[13579])[26])))
@@ -9353,8 +9353,8 @@ s1:  07/04/1,03
 
          #A: Felipe Albacete
          #D: Expression to validate values to fields Decimal 5,2 or 5 numbers. values >=100,00 <=99999,99
-100,00=100
-5000,00 = 5000
+         #D: 100,00=100
+         #D: 5000,00 = 5000
          #U: http://regexlib.com/REDetails.aspx?regexp_id=710
 ERROR:   (^\d{3,5}\,\d{2}$)|(^\d{3,5}$)
     rx: Embedded '^' unimplemented: in "(^\d{3,5}\,\d{2}$)|(^\d{3,5}$)"
@@ -9612,12 +9612,12 @@ ERROR:   (^(((\d)|(\d\d)|(\d\d\d))(\xA0|\x20))*((\d)|(\d\d)|(\d\d\d))([,.]\d*)?$
 
          #A: Toby Henderson
          #D: This will match all tags in a string, it's good for stripping HTML or XML tags to get the plain text.It works with attributes that include javascript or "<>".
-It will match all these
-noshade
-color="#000000"
-align="left">
-align="center"><font face="Times New Roman"
-size="5"><b>UNITED STATES</b></font></p>
+         #D: It will match all these
+         #D: noshade
+         #D: color="#000000"
+         #D: align="left">
+         #D: align="center"><font face="Times New Roman"
+         #D: size="5"><b>UNITED STATES</b></font></p>
          #U: http://regexlib.com/REDetails.aspx?regexp_id=746
 ERROR:   <(?:[^"']+?|.+?(?:"|').*?(?:"|')?.*?)*?>
     rx: prefer-fewer '?' unimplemented: in "<(?:[^"']+?|.+?(?:"|').*?(?:"|')?.*?)*?>"
@@ -9690,7 +9690,7 @@ ERROR:   (?#Calandar from January 1st 1 A.D to December 31, 9999 )(?# in yyyy-mm
 
          #A: Michael Ash
          #D: mm/dd/yyyy hh:MM:ss Datetime for all AD years, including leap years.
-Javascript safe version of http://regexlib.com/REDetails.aspx?regexp_id=644.  Please see that regex for details of what is being checked
+         #D: Javascript safe version of http://regexlib.com/REDetails.aspx?regexp_id=644.  Please see that regex for details of what is being checked
          #U: http://regexlib.com/REDetails.aspx?regexp_id=761
 ERROR:   (?=\d)^(?:(?!(?:10\D(?:0?[5-9]|1[0-4])\D(?:1582))|(?:0?9\D(?:0?[3-9]|1[0-3])\D(?:1752)))((?:0?[13578]|1[02])|(?:0?[469]|11)(?!\/31)(?!-31)(?!\.31)|(?:0?2(?=.?(?:(?:29.(?!000[04]|(?:(?:1[^0-6]|[2468][^048]|[3579][^26])00))(?:(?:(?:\d\d)(?:[02468][048]|[13579][26])(?!\x20BC))|(?:00(?:42|3[0369]|2[147]|1[258]|09)\x20BC))))))|(?:0?2(?=.(?:(?:\d\D)|(?:[01]\d)|(?:2[0-8])))))([-.\/])(0?[1-9]|[12]\d|3[01])\2(?!0000)((?=(?:00(?:4[0-5]|[0-3]?\d)\x20BC)|(?:\d{4}(?!\x20BC)))\d{4}(?:\x20BC)?)(?:$|(?=\x20\d)\x20))?((?:(?:0?[1-9]|1[012])(?::[0-5]\d){0,2}(?:\x20[aApP][mM]))|(?:[01]\d|2[0-3])(?::[0-5]\d){1,2})?$
     rx: '(?...' unimplemented: in "(?=\d)^(?:(?!(?:10\D(?:0?[5-9]|1[0-4])\D(?:1582))|(?:0?9\D(?:0?[3-9]|1[0-3])\D(?:1752)))((?:0?[13578]|1[02])|(?:0?[469]|11)(?!\/31)(?!-31)(?!\.31)|(?:0?2(?=.?(?:(?:29.(?!000[04]|(?:(?:1[^0-6]|[2468][^048]|[3579][^26])00))(?:(?:(?:\d\d)(?:[02468][048]|[13579][26])(?!\x20BC))|(?:00(?:42|3[0369]|2[147]|1[258]|09)\x20BC))))))|(?:0?2(?=.(?:(?:\d\D)|(?:[01]\d)|(?:2[0-8])))))([-.\/])(0?[1-9]|[12]\d|3[01])\2(?!0000)((?=(?:00(?:4[0-5]|[0-3]?\d)\x20BC)|(?:\d{4}(?!\x20BC)))\d{4}(?:\x20BC)?)(?:$|(?=\x20\d)\x20))?((?:(?:0?[1-9]|1[012])(?::[0-5]\d){0,2}(?:\x20[aApP][mM]))|(?:[01]\d|2[0-3])(?::[0-5]\d){1,2})?$"
@@ -9706,7 +9706,7 @@ ERROR:   ^(?=\d)(?:(?!(?:(?:0?[5-9]|1[0-4])(?:\.|-|\/)10(?:\.|-|\/)(?:1582))|(?:
 
          #A: Michael Ash
          #D: yyyy/mm/dd hh:MM:ss Datetime for all AD years, including leap years.
-Javascript safe version of http://regexlib.com/REDetails.aspx?regexp_id=760.  Please see that regex for details of what is being checked
+         #D: Javascript safe version of http://regexlib.com/REDetails.aspx?regexp_id=760.  Please see that regex for details of what is being checked
          #U: http://regexlib.com/REDetails.aspx?regexp_id=763
 ERROR:   ^(?=\d)(?:(?!(?:1582(?:\.|-|\/)10(?:\.|-|\/)(?:0?[5-9]|1[0-4]))|(?:1752(?:\.|-|\/)0?9(?:\.|-|\/)(?:0?[3-9]|1[0-3])))(?=(?:(?!000[04]|(?:(?:1[^0-6]|[2468][^048]|[3579][^26])00))(?:(?:\d\d)(?:[02468][048]|[13579][26]))\D0?2\D29)|(?:\d{4}\D(?!(?:0?[2469]|11)\D31)(?!0?2(?:\.|-|\/)(?:29|30))))(\d{4})([-\/.])(0?\d|1[012])\2((?!00)[012]?\d|3[01])(?:$|(?=\x20\d)\x20))?((?:(?:0?[1-9]|1[012])(?::[0-5]\d){0,2}(?:\x20[aApP][mM]))|(?:[01]\d|2[0-3])(?::[0-5]\d){1,2})?$
     rx: '(?...' unimplemented: in "^(?=\d)(?:(?!(?:1582(?:\.|-|\/)10(?:\.|-|\/)(?:0?[5-9]|1[0-4]))|(?:1752(?:\.|-|\/)0?9(?:\.|-|\/)(?:0?[3-9]|1[0-3])))(?=(?:(?!000[04]|(?:(?:1[^0-6]|[2468][^048]|[3579][^26])00))(?:(?:\d\d)(?:[02468][048]|[13579][26]))\D0?2\D29)|(?:\d{4}\D(?!(?:0?[2469]|11)\D31)(?!0?2(?:\.|-|\/)(?:29|30))))(\d{4})([-\/.])(0?\d|1[012])\2((?!00)[012]?\d|3[01])(?:$|(?=\x20\d)\x20))?((?:(?:0?[1-9]|1[012])(?::[0-5]\d){0,2}(?:\x20[aApP][mM]))|(?:[01]\d|2[0-3])(?::[0-5]\d){1,2})?$"
@@ -9753,7 +9753,7 @@ ERROR:   ^\([0-9]{3}\)\s?[0-9]{3}(-|\s)?[0-9]{4}$|^[0-9]{3}-?[0-9]{3}-?[0-9]{4}$
 
          #A: Kristijan Mitrovic
          #D: As I could understand the HTML standard, this is the valid reg.exp. for comments.
-The only differenc from the last one is that the comment can be terminated by two minuses followed by none OR SOME space caracters and then by character >
+         #D: The only differenc from the last one is that the comment can be terminated by two minuses followed by none OR SOME space caracters and then by character >
          #U: http://regexlib.com/REDetails.aspx?regexp_id=793
 ERROR:   <!--[\s\S]*?--[ \t\n\r]*>
     rx: prefer-fewer '?' unimplemented: in "<!--[\s\S]*?--[ \t\n\r]*>"
@@ -9879,9 +9879,9 @@ ERROR:   (?<zip5>^\d{5})([\- ]?(?<plus4>\d{4})?$)
 
          #A: Diego dos Santos
          #D: Validate american date formats: mm/dd/yyyy or m/d/yy or m.d.yyyy with separators: . - /
-Valid dates only! m (1-12)/ d (1-31)/ y (0..)
-(rizzipereira.com.br)
-For Brazilian date format: http://www.regexlib.com/REDetails.aspx?regexp_id=250
+         #D: Valid dates only! m (1-12)/ d (1-31)/ y (0..)
+         #D: (rizzipereira.com.br)
+         #D: For Brazilian date format: http://www.regexlib.com/REDetails.aspx?regexp_id=250
          #U: http://regexlib.com/REDetails.aspx?regexp_id=932
 expr 341: ^([0]?[1-9]|[1][0-2])[./-]([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0-9]{4}|[0-9]{2})$
 tree:   ((((((0?[1-9])|(1[012]))[./-])((0?[1-9])|([12|][0-9])|(3[01|])))[./-])([0-9]{4}|[0-9]{2}))
@@ -9903,7 +9903,7 @@ s8:  1/2/3033
 
          #A: Dennis de Jong
          #D: Meets dutch phone number requirements.. One posted here before didn't allow the 0 after the first digit of the call ID (so the second number or later after the prefix), which should be allowed. I modified that one to meet full requirements now..
-Enjoy!!
+         #D: Enjoy!!
          #U: http://regexlib.com/REDetails.aspx?regexp_id=935
 expr 342: ([0]{1}[6]{1}[-\s]*[1-9]{1}[\s]*([0-9]{1}[\s]*){7})|([0]{1}[1-9]{1}[0-9]{1}[0-9]{1}[-\s]*[1-9]{1}[\s]*([0-9]{1}[\s]*){5})|([0]{1}[1-9]{1}[0-9]{1}[-\s]*[1-9]{1}[\s]*([0-9]{1}[\s]*){6})
 tree:   ((((((06)[\t-\r -]*)[1-9])[\t-\r ]*)([0-9][\t-\r ]*){7})|(((((((0[1-9])[0-9])[0-9])[\t-\r -]*)[1-9])[\t-\r ]*)([0-9][\t-\r ]*){5})|((((((0[1-9])[0-9])[\t-\r -]*)[1-9])[\t-\r ]*)([0-9][\t-\r ]*){6}))
@@ -10032,7 +10032,7 @@ s9:  ,59295
 
          #A: Error Reporter
          #D: Required and regular expression validator. For supporting
--999.99 to +999.99 . Positive and Negative integer/ decimal validations. Percentage sign is also supported. Will not allow empty strings. Can increase/decrease the range as you need.
+         #D: -999.99 to +999.99 . Positive and Negative integer/ decimal validations. Percentage sign is also supported. Will not allow empty strings. Can increase/decrease the range as you need.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=944
 expr 348: ^[-+]?[0-9]\d{0,2}(\.\d{1,2})?%?$
 tree:   (((([+-]?[0-9])[0-9]{0,2})(.[0-9]{1,2})?)%?)
@@ -10221,12 +10221,12 @@ s1:  0823336578
 
          #A: Phil A
          #D: Matches UK postcodes of the below formats. The space is optional.
-AN NAA
-AAN NAA
-ANN NAA
-ANA NAA
-AANA NAA
-AANN NAA
+         #D: AN NAA
+         #D: AAN NAA
+         #D: ANN NAA
+         #D: ANA NAA
+         #D: AANA NAA
+         #D: AANN NAA
          #U: http://regexlib.com/REDetails.aspx?regexp_id=954
 expr 357: ^(([A-Z]{1,2}[0-9]{1,2})|([A-Z]{1,2}[0-9][A-Z]))\s?([0-9][A-Z]{2})$
 tree:   (((([A-Z]{1,2}[0-9]{1,2})|(([A-Z]{1,2}[0-9])[A-Z]))[\t-\r ]?)([0-9][A-Z]{2}))
@@ -10247,10 +10247,10 @@ s1:  W88OO
 
          #A: Jorrit Janszen
          #D: I use this expression to read bounced email addresses returned by the system administrator. The body of the subject should contain the email address somewhere but the location varies.
-Examples:
-To:      blah.v.blah@blah-blah.net ||
-blah-blah.blah@blah.com ||
-blah@blah.net 0n 25-12-2004 21:09
+         #D: Examples:
+         #D: To:      blah.v.blah@blah-blah.net ||
+         #D: blah-blah.blah@blah.com ||
+         #D: blah@blah.net 0n 25-12-2004 21:09
          #U: http://regexlib.com/REDetails.aspx?regexp_id=956
 expr 358: ^[\n <"']*([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+)
 tree:   ([\n "'<]*(([.0-9A-Z_a-z-]+@)[.0-9A-Z_a-z-]+))
@@ -10292,7 +10292,7 @@ s20:  1/0/1932 0:1:6
 
          #A: Evan Tao
          #D: Just test in C#.
-Validates a China Unicom mobile phone number with (or without) the International code.
+         #D: Validates a China Unicom mobile phone number with (or without) the International code.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=962
 ERROR:   ^(?<national>\+?(?:86)?)(?<separator>\s?-?)(?<phone>(?<vender>13[0-4])(?<area>\d{4})(?<id>\d{4}))$
     rx: '(?...' unimplemented: in "^(?<national>\+?(?:86)?)(?<separator>\s?-?)(?<phone>(?<vender>13[0-4])(?<area>\d{4})(?<id>\d{4}))$"
@@ -10321,9 +10321,9 @@ s1:  666709
 
          #A: qi gao
          #D: forbidden tele numbers when it starts with 0,
-860+,8613,character or has any SBC case.
-you can also use it to any international phone dialed by E1 ,etc . this regex has been tested by java, perl,.net
-PS: the last regex [0-9]is in SBC case
+         #D: 860+,8613,character or has any SBC case.
+         #D: you can also use it to any international phone dialed by E1 ,etc . this regex has been tested by java, perl,.net
+         #D: PS: the last regex [0-9]is in SBC case
          #U: http://regexlib.com/REDetails.aspx?regexp_id=966
 ERROR:   (^0.*[1-9]*)|(^860+)|(^8613)|(\D)|([0-9])
     rx: Embedded '^' unimplemented: in "(^0.*[1-9]*)|(^860+)|(^8613)|(\D)|([0-9])"
@@ -10332,7 +10332,7 @@ ERROR:   (^0.*[1-9]*)|(^860+)|(^8613)|(\D)|([0-9])
 
          #A: Jacek Sompel
          #D: This regex will extract the link and the link title for every a href in HTML source. Useful for crawling sites.
-Note that this pattern will also allow for links that are spread over multiple lines.
+         #D: Note that this pattern will also allow for links that are spread over multiple lines.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=968
 ERROR:   <a[\s]+[^>]*?href[\s]?=[\s\"\']+(.*?)[\"\']+.*?>([^<]+|.*?)?<\/a>
     rx: prefer-fewer '?' unimplemented: in "<a[\s]+[^>]*?href[\s]?=[\s\"\']+(.*?)[\"\']+.*?>([^<]+|.*?)?<\/a>"
@@ -10349,7 +10349,7 @@ ERROR:   ^-?[0-9]{0,2}(\.[0-9]{1,2})?$|^-?(100)(\.[0]{1,2})?$
 
          #A: Chris Richards
          #D: This will match just about everything after href=
-Its good if you just need a list of all the href= values
+         #D: Its good if you just need a list of all the href= values
          #U: http://regexlib.com/REDetails.aspx?regexp_id=972
 expr 361: href=[\"\']?((?:[^>]|[^\s]|[^"]|[^'])+)[\"\']?
 tree:   (((((((hr)e)f)=)["']?)([\x01-=?-\u007f]|[\x01-\b\x0e-\x1f!-\u007f]|[\x01-!#-\u007f]|[\x01-&(-\u007f])+)["']?)
@@ -10410,7 +10410,7 @@ s1:  8c5829a1
 
          #A: Alex Cons
          #D: Expresion Regular para Teléfonos con clave lada en México
-separada o no con guiones o espacios. Sirve para teléfonos estacionarios y/o celulares, con o sin paréntesis, 10 números a fuerzas, funciona en .net
+         #D: separada o no con guiones o espacios. Sirve para teléfonos estacionarios y/o celulares, con o sin paréntesis, 10 números a fuerzas, funciona en .net
          #U: http://regexlib.com/REDetails.aspx?regexp_id=979
 ERROR:   ^\(\d{3}\) ?\d{3}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}
     rx: Embedded '^' unimplemented: in "^\(\d{3}\) ?\d{3}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}"
@@ -10513,12 +10513,12 @@ s1:  07901898436
 
          #A: Ross Hammer
          #D: Based on a regular expression from Michael Ash, this captures US street addresses and mailing addresses, single or multi-line (multi-line is more reliable), and breaks them into discrete parts for address line 1 and 2, city, state, and postal code.  This expression is not perfect - with the interpreter I am using, some addresses refuse to match correctly.  It should however work for most addresses, particularly when lines are delimited with carriage returns, tabs, or some other whitespace line delimiter that is not a space (\x20).  Note: For improved compatibility, this expression does not use named groups.
-**Output**
-\1 = Address 1,
-\2 = Address 2,
-\3 = City,
-\4 = State,
-\5 = Postal Code
+         #D: **Output**
+         #D: \1 = Address 1,
+         #D: \2 = Address 2,
+         #D: \3 = City,
+         #D: \4 = State,
+         #D: \5 = Postal Code
          #U: http://regexlib.com/REDetails.aspx?regexp_id=986
 ERROR:   ^\s*((?:(?:\d+(?:\x20+\w+\.?)+(?:(?:\x20+STREET|ST|DRIVE|DR|AVENUE|AVE|ROAD|RD|LOOP|COURT|CT|CIRCLE|LANE|LN|BOULEVARD|BLVD)\.?)?)|(?:(?:P\.\x20?O\.|P\x20?O)\x20*Box\x20+\d+)|(?:General\x20+Delivery)|(?:C[\\\/]O\x20+(?:\w+\x20*)+))\,?\x20*(?:(?:(?:APT|BLDG|DEPT|FL|HNGR|LOT|PIER|RM|S(?:LIP|PC|T(?:E|OP))|TRLR|UNIT|\x23)\.?\x20*(?:[a-zA-Z0-9\-]+))|(?:BSMT|FRNT|LBBY|LOWR|OFC|PH|REAR|SIDE|UPPR))?)\,?\s+((?:(?:\d+(?:\x20+\w+\.?)+(?:(?:\x20+STREET|ST|DRIVE|DR|AVENUE|AVE|ROAD|RD|LOOP|COURT|CT|CIRCLE|LANE|LN|BOULEVARD|BLVD)\.?)?)|(?:(?:P\.\x20?O\.|P\x20?O)\x20*Box\x20+\d+)|(?:General\x20+Delivery)|(?:C[\\\/]O\x20+(?:\w+\x20*)+))\,?\x20*(?:(?:(?:APT|BLDG|DEPT|FL|HNGR|LOT|PIER|RM|S(?:LIP|PC|T(?:E|OP))|TRLR|UNIT|\x23)\.?\x20*(?:[a-zA-Z0-9\-]+))|(?:BSMT|FRNT|LBBY|LOWR|OFC|PH|REAR|SIDE|UPPR))?)?\,?\s+((?:[A-Za-z]+\x20*)+)\,\s+(A[LKSZRAP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])\s+(\d+(?:-\d+)?)\s*$
     rx: complexity 780 exceeds limit of 500: in "^\s*((?:(?:\d+(?:\x20+\w+\.?)+(?:(?:\x20+STREET|ST|DRIVE|DR|AVENUE|AVE|ROAD|RD|LOOP|COURT|CT|CIRCLE|LANE|LN|BOULEVARD|BLVD)\.?)?)|(?:(?:P\.\x20?O\.|P\x20?O)\x20*Box\x20+\d+)|(?:General\x20+Delivery)|(?:C[\\\/]O\x20+(?:\w+\x20*)+))\,?\x20*(?:(?:(?:APT|BLDG|DEPT|FL|HNGR|LOT|PIER|RM|S(?:LIP|PC|T(?:E|OP))|TRLR|UNIT|\x23)\.?\x20*(?:[a-zA-Z0-9\-]+))|(?:BSMT|FRNT|LBBY|LOWR|OFC|PH|REAR|SIDE|UPPR))?)\,?\s+((?:(?:\d+(?:\x20+\w+\.?)+(?:(?:\x20+STREET|ST|DRIVE|DR|AVENUE|AVE|ROAD|RD|LOOP|COURT|CT|CIRCLE|LANE|LN|BOULEVARD|BLVD)\.?)?)|(?:(?:P\.\x20?O\.|P\x20?O)\x20*Box\x20+\d+)|(?:General\x20+Delivery)|(?:C[\\\/]O\x20+(?:\w+\x20*)+))\,?\x20*(?:(?:(?:APT|BLDG|DEPT|FL|HNGR|LOT|PIER|RM|S(?:LIP|PC|T(?:E|OP))|TRLR|UNIT|\x23)\.?\x20*(?:[a-zA-Z0-9\-]+))|(?:BSMT|FRNT|LBBY|LOWR|OFC|PH|REAR|SIDE|UPPR))?)?\,?\s+((?:[A-Za-z]+\x20*)+)\,\s+(A[LKSZRAP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])\s+(\d+(?:-\d+)?)\s*$"
@@ -10596,7 +10596,7 @@ s1:  03
 
          #A: Tim Macrina
          #D: Matches numbers 0 through 99.9
-Allows only one preceding zero and does not require the decimal point
+         #D: Allows only one preceding zero and does not require the decimal point
          #U: http://regexlib.com/REDetails.aspx?regexp_id=994
 expr 371: ^([1-9]{0,1})([0-9]{1})(\.[0-9])?$
 tree:   (([1-9]?[0-9])(.[0-9])?)
@@ -10660,7 +10660,7 @@ s3:  2.
 
          #A: Jeff Johnston
          #D: Matches full and compressed IPv6 addresses as defined in RFC 2373 (http://www.faqs.org/rfcs/rfc2373.html). No useful captures.
-Various implementations require different terminators. (i.e. ^-$ or \b-\b)
+         #D: Various implementations require different terminators. (i.e. ^-$ or \b-\b)
          #U: http://regexlib.com/REDetails.aspx?regexp_id=1000
 ERROR:   ^((([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}:[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){5}:([0-9A-Fa-f]{1,4}:)?[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){4}:([0-9A-Fa-f]{1,4}:){0,2}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){3}:([0-9A-Fa-f]{1,4}:){0,3}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){2}:([0-9A-Fa-f]{1,4}:){0,4}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(([0-9A-Fa-f]{1,4}:){0,5}:((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(::([0-9A-Fa-f]{1,4}:){0,5}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|([0-9A-Fa-f]{1,4}::([0-9A-Fa-f]{1,4}:){0,5}[0-9A-Fa-f]{1,4})|(::([0-9A-Fa-f]{1,4}:){0,6}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){1,7}:))$
     rx: \b (boundary) unimplemented: in "^((([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}:[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){5}:([0-9A-Fa-f]{1,4}:)?[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){4}:([0-9A-Fa-f]{1,4}:){0,2}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){3}:([0-9A-Fa-f]{1,4}:){0,3}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){2}:([0-9A-Fa-f]{1,4}:){0,4}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){6}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(([0-9A-Fa-f]{1,4}:){0,5}:((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|(::([0-9A-Fa-f]{1,4}:){0,5}((\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b)\.){3}(\b((25[0-5])|(1\d{2})|(2[0-4]\d)|(\d{1,2}))\b))|([0-9A-Fa-f]{1,4}::([0-9A-Fa-f]{1,4}:){0,5}[0-9A-Fa-f]{1,4})|(::([0-9A-Fa-f]{1,4}:){0,6}[0-9A-Fa-f]{1,4})|(([0-9A-Fa-f]{1,4}:){1,7}:))$"
@@ -10717,7 +10717,7 @@ s21:  ftp://PI
 
          #A: Joe Lynwood
          #D: Combine Michael Ash's US Dollar amount and Bri Gipson's eliminating zero input to create this RE to accept Optional leading dollar sign, optional well-formed comma separator dollar amount with no zero amount allowed.
-*** Correction: Remove the "+" otherwise it will incorrectly matches 4 leading digits like 1234,345,678.00 03-03-2005
+         #D: *** Correction: Remove the "+" otherwise it will incorrectly matches 4 leading digits like 1234,345,678.00 03-03-2005
          #U: http://regexlib.com/REDetails.aspx?regexp_id=1005
 expr 376: ^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$
 tree:   ((($|())((([1-9][0-9]{0,2})(,[0-9]{3})*)|([1-9][0-9]*)))(.[0-9]{2})?)
@@ -10907,7 +10907,7 @@ s7:  2@G.ywsmSKXvOWUTlfALRsyMAgkpHVkUfMIQmyOSQjmURSHACezLXKGXoJPTuKBxNaTnqyNTHJX
 
          #A: Dan Hall
          #D: This script attempts to return phrases from a string (Example above looks for {3} word phrases)  Combine this with some .Net code, you can display most popular X word phrases in a string.
--If anyone can help me count "Phrase and Phrase as 2 instances of Phrase please contact me
+         #D: -If anyone can help me count "Phrase and Phrase as 2 instances of Phrase please contact me
          #U: http://regexlib.com/REDetails.aspx?regexp_id=1008
 ERROR:   (\b)(\w+(\b|\n|\s)){3}
     rx: \b (boundary) unimplemented: in "(\b)(\w+(\b|\n|\s)){3}"
@@ -11031,12 +11031,12 @@ ERROR:   (?i)(pharmacy)|((p(.{1,3})?h(.{1,3})?a(.{1,3})?r(.{1,3)?m(.{1,3})?a(.{1
 
          #A: Markus Matern
          #D: This is my attempt to find out valid german postal codes (PLZ or Postleitzahlen).
-After the German Unification the numbers were changed to a five digit system. The postal codes starts with the two digit "Leitzahl". This is a number between 00 and 99 excluding the  not yet used numbers: 00, 05, 43 and 62! After that follows directly a three digit number, 000-999.
-Comments welcome. This works for me, however I think it could be written more compact, but could not figure out how ;-)
-For more information on german postal codes see:
-http://de.wikipedia.org/wiki/Liste_der_Postleitbereiche_Deutschland
-http://de.wikipedia.org/wiki/Postleitzahl_%28Deutschland%29
-http://en.wikipedia.org/wiki/List_of_postal_codes_in_Germany
+         #D: After the German Unification the numbers were changed to a five digit system. The postal codes starts with the two digit "Leitzahl". This is a number between 00 and 99 excluding the  not yet used numbers: 00, 05, 43 and 62! After that follows directly a three digit number, 000-999.
+         #D: Comments welcome. This works for me, however I think it could be written more compact, but could not figure out how ;-)
+         #D: For more information on german postal codes see:
+         #D: http://de.wikipedia.org/wiki/Liste_der_Postleitbereiche_Deutschland
+         #D: http://de.wikipedia.org/wiki/Postleitzahl_%28Deutschland%29
+         #D: http://en.wikipedia.org/wiki/List_of_postal_codes_in_Germany
          #U: http://regexlib.com/REDetails.aspx?regexp_id=1026
 ERROR:   \b((?:0[1-46-9]\d{3})|(?:[1-357-9]\d{4})|(?:[4][0-24-9]\d{3})|(?:[6][013-9]\d{3}))\b
     rx: \b (boundary) unimplemented: in "\b((?:0[1-46-9]\d{3})|(?:[1-357-9]\d{4})|(?:[4][0-24-9]\d{3})|(?:[6][013-9]\d{3}))\b"
@@ -11097,7 +11097,7 @@ ERROR:   ^\-?[0-9]{1,3}(\,[0-9]{3})*(\.[0-9]+)?$|^[0-9]+(\.[0-9]+)?$
 
          #A: Harry Chou
          #D: I need a pattern to match the whole number / integer (0-99999...), but also allow users to put comma in the thousand positions.
-This is what I got.
+         #D: This is what I got.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=1041
 ERROR:   ^0$|^[1-9][0-9]*$|^[1-9][0-9]{0,2}(,[0-9]{3})$
     rx: Embedded '$' unimplemented: in "^0$|^[1-9][0-9]*$|^[1-9][0-9]{0,2}(,[0-9]{3})$"
@@ -11121,8 +11121,8 @@ ERROR:   (((^[BEGLMNS][1-9]\d?) | (^W[2-9] ) | ( ^( A[BL] | B[ABDHLNRST] | C[ABF
 
          #A: Bri Gipson
          #D: Allows up to seven digits to the left and up to nine digits to the right of an optional decimal place.
-Leading zeros on the left of the decimal are accepted.
-Only positive values are accepted.
+         #D: Leading zeros on the left of the decimal are accepted.
+         #D: Only positive values are accepted.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=1049
 ERROR:   ^(?=.*[1-9].*$)\d{0,7}(?:\.\d{0,9})?$
     rx: '(?...' unimplemented: in "^(?=.*[1-9].*$)\d{0,7}(?:\.\d{0,9})?$"
@@ -11181,8 +11181,8 @@ s5:  $(36
 
          #A: Gregory Lyons
          #D: Matchs comma delimited numbers. Easily changed to allow for other delimiters. (Edit ",")
-Does not allow a leading 0
-Does not allow groups of numbers with less than 3 numbers, exculding the first group.
+         #D: Does not allow a leading 0
+         #D: Does not allow groups of numbers with less than 3 numbers, exculding the first group.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=1055
 expr 386: ^([1-9]{1}(([0-9])?){2})+(,[0-9]{1}[0-9]{2})*$
 tree:   (([1-9][0-9]?{2})+((,[0-9])[0-9]{2})*)
@@ -11206,7 +11206,7 @@ s7:  1,510
 
          #A: Martin Ille
          #D: You can use this regular expression in your PHP scripts to convert entered URL in text to URL link. Example:
-$text=ereg_replace("(((file|gopher|news|nntp|telnet|http|ftp|https|ftps|sftp)://)|(www\.))+(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(/[a-zA-Z0-9\&%_\./-~-]*)?","<a href=\"./redir.php?url=\\0\" target=\"_blank\">\\0</a>",$text);
+         #D: $text=ereg_replace("(((file|gopher|news|nntp|telnet|http|ftp|https|ftps|sftp)://)|(www\.))+(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(/[a-zA-Z0-9\&%_\./-~-]*)?","<a href=\"./redir.php?url=\\0\" target=\"_blank\">\\0</a>",$text);
          #U: http://regexlib.com/REDetails.aspx?regexp_id=1057
 expr 387: (((file|gopher|news|nntp|telnet|http|ftp|https|ftps|sftp)://)|(www\.))+(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(/[a-zA-Z0-9\&%_\./-~-]*)?
 tree:   ((((((((((fi)l)e)|(((((go)p)h)e)r)|(((ne)w)s)|(((nn)t)p)|(((((te)l)n)e)t)|(((ht)t)p)|((ft)p)|((((ht)t)p)s)|(((ft)p)s)|(((sf)t)p)):)/)/)|(((ww)w).))+((([.0-9A-Z_a-z-]+.)[A-Za-z]{2,6})|(((((([0-9]{1,3}.)[0-9]{1,3}).)[0-9]{1,3}).)[0-9]{1,3})))(/[%&.-~-]*)?)
@@ -11334,7 +11334,7 @@ ERROR:   (((^[BEGLMNS][1-9]\d?)|(^W[2-9])|(^(A[BL]|B[ABDHLNRST]|C[ABFHMORTVW]|D[
 
          #A: Leo Hinojosa
          #D: Registro Federal de Contribuyentes (RFC) , used in Mexico as a unique set of caracters for a person or corporation registration .
-Registro Federal de Contribuyentes utilizado en Mexico para el registro en hacienda.
+         #D: Registro Federal de Contribuyentes utilizado en Mexico para el registro en hacienda.
          #U: http://regexlib.com/REDetails.aspx?regexp_id=1065
 ERROR:   ^([A-Z|a-z|&]{3}\d{2}((0[1-9]|1[012])(0[1-9]|1\d|2[0-8])|(0[13456789]|1[012])(29|30)|(0[13578]|1[02])31)|([02468][048]|[13579][26])0229)(\w{2})([A|a|0-9]{1})$|^([A-Z|a-z]{4}\d{2}((0[1-9]|1[012])(0[1-9]|1\d|2[0-8])|(0[13456789]|1[012])(29|30)|(0[13578]|1[02])31)|([02468][048]|[13579][26])0229)((\w{2})([A|a|0-9]{1})){0,3}$
     rx: Embedded '$' unimplemented: in "^([A-Z|a-z|&]{3}\d{2}((0[1-9]|1[012])(0[1-9]|1\d|2[0-8])|(0[13456789]|1[012])(29|30)|(0[13578]|1[02])31)|([02468][048]|[13579][26])0229)(\w{2})([A|a|0-9]{1})$|^([A-Z|a-z]{4}\d{2}((0[1-9]|1[012])(0[1-9]|1\d|2[0-8])|(0[13456789]|1[012])(29|30)|(0[13578]|1[02])31)|([02468][048]|[13579][26])0229)((\w{2})([A|a|0-9]{1})){0,3}$"
