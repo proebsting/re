@@ -26,7 +26,7 @@ import (
 	"os"
 	"runtime/pprof"
 	"rx"
-	"rx/rsys"
+	"rx/rxsys"
 	"strconv"
 	"time"
 	"unicode/utf8"
@@ -222,7 +222,7 @@ func showDFA(dfa *rx.DFA, treelabel string, showtime bool) *rx.DFA {
 	}
 	if !*opt['u'] {
 		if showtime {
-			rsys.Interval() // reset for timing
+			rxsys.Interval() // reset for timing
 		}
 		dfa = dfa.Minimize()
 		if showtime {
@@ -256,8 +256,8 @@ func synthx(dfa *rx.DFA) {
 
 // setup performs global initialization actions
 func setup() {
-	rsys.Interval() // initialize timestamps
-	options()       // process command-line options
+	rxsys.Interval() // initialize timestamps
+	options()        // process command-line options
 	if verbose {
 		showopts() // show command options
 	}
@@ -404,6 +404,6 @@ func babble(f string, args ...interface{}) {
 //  timestamp issues a time-stamped comment line, if enabled by -t
 func timestamp(s string) {
 	if *opt['t'] {
-		rsys.ShowInterval(s)
+		rxsys.ShowInterval(s)
 	}
 }

@@ -36,7 +36,7 @@ bundle:
 #  If "go fmt" echoes a filename, it has modified that file.
 fmt:
 	go fmt *.go
-	go fmt rsys/*.go
+	go fmt rxsys/*.go
 	go fmt rxcluster/rxcluster.go
 	go fmt rxtime/rxtime.go
 	go fmt rxd/rxd.go

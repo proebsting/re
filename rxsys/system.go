@@ -2,7 +2,7 @@
 //
 //  This file holds system interface functions not usable in the App Engine.
 
-package rsys
+package rxsys
 
 import (
 	"fmt"

@@ -26,7 +26,7 @@ import (
 	"log"
 	"os"
 	"rx"
-	"rx/rsys"
+	"rx/rxsys"
 	"strconv"
 )
 
@@ -69,11 +69,11 @@ func main() {
 		for i, x := range xlist {
 			tlist[i] = exprs[x].Tree
 		}
-		_ = rsys.Interval()             // reset timer
-		dfa1 := rx.MultiDFA(tlist)      // make DFA
-		t1 := rsys.Interval().Seconds() // measure time
-		dfa2 := dfa1.Minimize()         // minimize DFA
-		t2 := rsys.Interval().Seconds() // measure time
+		_ = rxsys.Interval()             // reset timer
+		dfa1 := rx.MultiDFA(tlist)       // make DFA
+		t1 := rxsys.Interval().Seconds() // measure time
+		dfa2 := dfa1.Minimize()          // minimize DFA
+		t2 := rxsys.Interval().Seconds() // measure time
 		fmt.Printf("%6d %6d %8.3f %8.3f",
 			len(dfa1.Dstates), len(dfa2.Dstates), t1, t2)
 		if nways == 1 {
