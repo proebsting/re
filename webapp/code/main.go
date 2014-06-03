@@ -85,6 +85,7 @@ func info(w http.ResponseWriter, r *http.Request) {
 		GoVer   string
 		VID     string
 		Vtime   string
+		MaxCx   int
 	}
 	data.Req = r
 	data.Body, data.BE = ioutil.ReadAll(r.Body)
@@ -94,6 +95,7 @@ func info(w http.ResponseWriter, r *http.Request) {
 	data.GoOs = runtime.GOOS
 	data.GoVer = runtime.Version()
 	data.VID = appengine.VersionID(appengine.NewContext(r))
+	data.MaxCx = rx.MaxComplexity
 
 	var ver int
 	var bigtime int64
@@ -124,6 +126,7 @@ var tInfo = template.Must(template.New("info").Parse(
 <BR>Datacenter: {{.Dctr}} ({{.GoArch}} {{.GoOs}})
 <BR>Go Version: {{.GoVer}}
 <BR>App Version ID: {{.VID}} ({{.Vtime}})
+<BR><BR>MaxComplexity: {{.MaxCx}}
 <H2>Request Header</H2>
 <P>{{range $k, $v := .Req.Header}}{{$k}} : {{$v}}<BR>{{end}}
 <H2>Cookies </H2><P>
