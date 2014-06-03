@@ -116,9 +116,6 @@ func load() ([]*rx.RegExParsed, []rx.Node) {
 
 // echo prints an input record and errors depending on command options
 func echo(l *rx.RegExParsed, i int) {
-	if !l.IsExpr() && l.Meta != nil { // if metadata line
-		return // will print this later; it's been saved
-	}
 	if l.Err != nil { // if an error
 		if !errsilent { // print error unless -y
 			fmt.Println()
@@ -134,7 +131,9 @@ func echo(l *rx.RegExParsed, i int) {
 	}
 	if l.Tree == nil { // if a comment
 		if listopt { // print if wanted
-			fmt.Printf("\n         %s\n", l.Expr)
+			fmt.Println()
+			l.ShowMeta(os.Stdout, "         ")
+			fmt.Printf("         %s\n", l.Expr)
 		}
 		return
 	}

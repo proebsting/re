@@ -23,7 +23,7 @@ var (
 //  If Tree is not nil then the expression was parsed as valid.
 //  If Tree is nil and Err is not, Err is a parsing error.
 //  If Tree is nil and Err is nil, the struct can represent a comment.
-//  Metadata for a comment reflects current line only; otherwise cumulative.
+//  Meta includes all immediately preceding metadata lines.
 type RegExParsed struct {
 	Expr string            // input string
 	Tree Node              // parse tree
@@ -58,11 +58,11 @@ func LoadExpressions(fname string, f func(*RegExParsed)) []*RegExParsed {
 //  LoadFromScanner reads and parses expressions from a bufio.Scanner.
 //
 //  Empty lines and lines beginning with '#' are treated as comments.
-//  If non-nil, the function f is called for each line read.
+//  If non-nil, the function f is called for each non-metadata line read.
 //  The returned array contains only successfully parsed expressions.
 //
 //  Metadata from comments matching the pattern "^#\w+:" is accumulated and
-//  returned with the next non-comment line (whether or not it parses).
+//  returned with the next non-metadata line (whether comment or expr).
 //
 //  The globals InputRegExCount and InputExprErrors are set by this function.
 func LoadFromScanner(efile *bufio.Scanner, f func(*RegExParsed)) []*RegExParsed {
@@ -77,9 +77,10 @@ func LoadFromScanner(efile *bufio.Scanner, f func(*RegExParsed)) []*RegExParsed 
 		if IsComment(line) {
 			r := mpat.FindStringSubmatch(line)
 			if r != nil { // if recognized metadata format
-				e.Meta = make(map[string]string)
-				e.Meta[r[1]] = r[2]       // this line only
-				addMeta(meta, r[1], r[2]) // also accumulate
+				addMeta(meta, r[1], r[2]) // accumulate metadata
+				continue                  // and don't call
+			} else {
+				e.Meta = meta // return accumulation
 			}
 		} else {
 			e.Tree, e.Err = Parse(line) // parse input
@@ -89,12 +90,12 @@ func LoadFromScanner(efile *bufio.Scanner, f func(*RegExParsed)) []*RegExParsed 
 			} else {
 				InputErrorCount++ // else count error
 			}
-			e.Meta = meta                  // accumulated metadata
-			meta = make(map[string]string) // reset meta collection
+			e.Meta = meta // accumulated metadata
 		}
 		if f != nil {
 			f(e)
 		}
+		meta = make(map[string]string) // reset meta collection
 	}
 	CkErr(efile.Err())
 	return elist
