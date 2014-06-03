@@ -1,9 +1,9 @@
 /*
-	rxcombos.go - combine regular expressions n ways
+	rxtime.go - combine regular expressions n ways
 
-	usage:  rxcombos exprfile n
+	usage:  rxtime exprfile n
 
-	Rxcombos reads regular expressions from exprfile and prints statistics,
+	Rxtime reads regular expressions from exprfile and prints statistics,
 	including timings, for all possible combinations of n expressions.
 
 	Each output line shows, in this order:
@@ -30,7 +30,7 @@ import (
 func main() {
 	// get command line options
 	if len(os.Args) < 3 {
-		log.Fatal("usage: rxcombos exprfile n")
+		log.Fatal("usage: rxtime exprfile n")
 	}
 	filename := os.Args[1]
 	nways, err := strconv.Atoi(os.Args[2])
