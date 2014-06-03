@@ -4,15 +4,23 @@ package rx
 
 import (
 	"fmt"
+	"os"
 	"regexp"
 	"strconv"
 )
 
 // MaxComplexity is a crude limit to the size of a parse tree.
 // An expression exceeding this value is rejected with an error.
-// Note that changing MaxComplexity can alter the numbering of expressions,
-// and that few utilities have options for changing the default.
+// It is initialize to $RX_COMPLEXITY, if set, or otherwise to a default value.
+// Note that changing MaxComplexity can alter the numbering of expressions
+// by affecting which ones are successfully parsed without error.
 var MaxComplexity = 500 // usually sufficient, and usually feasible to process
+func init() {
+	n, err := strconv.Atoi(os.Getenv("RX_COMPLEXITY"))
+	if err == nil && n > 0 {
+		MaxComplexity = n
+	}
+}
 
 //  oprstack and exprstack are stacks that move in synchrony.
 var oprstack []rune  // operators associated with pushed expressions

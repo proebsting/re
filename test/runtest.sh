@@ -39,6 +39,7 @@ fi
 
 # loop through the chosen tests
 PATH=$GOPATH/bin:$PATH
+unset RX_COMPLEXITY
 echo ""
 FAILED=
 for F in $*; do
