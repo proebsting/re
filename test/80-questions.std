@@ -4,6 +4,8 @@ Options: -R -T -g -h -i -l -v -I 0
 
          #! rxcluster -i 1
 
+         #! printf 'n\\nn\\nn\\ny\\ny\\ny\\n' | rxquest -i 1 80-questions.rx
+
          
 
          # things to try to distinguish via "20 questions"

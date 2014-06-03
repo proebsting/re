@@ -1,0 +1,233 @@
+seed=1
+mode=0
+size=20
+66 expressions loaded
+rx { 23 } \+1-\d\d\d-\d\d\d-\d\d\d\d
+rx { 45 } (19|20)\d\d(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])
+rx { 53 } (0[1-9]|[12]\d|3[01])(0[1-9]|1[012])(19|20)\d\d
+rx { 47 } (19|20)\d\d\-(0[1-9]|1[012])\-(0[1-9]|[12]\d|3[01])
+rx { 13 } \d{5}
+len dfa list =  66
+length cand =  66
+rx { 49 } [01][0-9][012][0-9][12][90]\d\d 
+rx { 1 } 0|1[01]* 
+rx { 52 } (0?[1-9]|1[012])/(0?[1-9]|[12]\d|3[01])/((19|20)?\d\d) 
+rx { 44 } [12][90]\d\d[01][0-9][012][0-9] 
+rx { 3 } 1?(01)*0? 
+Constructing multiDFA
+eg { 3 } 
+eg { 1 3 } 0
+eg { 1 3 } 1
+eg { 3 } 01
+eg { 1 3 } 10
+eg { 1 } 11
+eg { 3 } 010
+eg { 1 } 100
+eg { 1 3 } 101
+eg { 1 } 111
+eg { 3 } 0101
+eg { 1 } 1001
+eg { 1 3 } 1010
+eg { 1 } 1111
+eg { 3 } 01010
+eg { 1 } 10010
+eg { 1 } 10011
+eg { 1 3 } 10101
+eg { 1 } 11110
+eg { 1 } 11111
+eg { 3 } 010101
+eg { 52 } 1/1/60
+eg { 52 } 1/1/19
+eg { 1 } 100101
+eg { 1 } 100110
+eg { 1 3 } 101010
+eg { 1 } 111110
+eg { 1 } 1001011
+eg { 1 } 1001101
+eg { 1 3 } 1010101
+eg { 1 } 1111101
+eg { 49 } 00201080
+eg { 1 44 } 10010111
+eg { 44 } 10010112
+eg { 1 44 49 } 10011010
+eg { 44 49 } 10011012
+eg { 1 3 44 49 } 10101010
+eg { 1 49 } 11111010
+eg { 1 3 } 101010101
+eg { 1 3 } 1010101010
+max =  13  max word:  101010
+alive = 66 , max eliminate =  13 , maxWord = 101010
+
+Does your language accept this word:  101010
+answers =  { }
+101010
+
+before length of dfaList =  66
+
+length of dfaList =  53
+len dfa list =  53
+length cand =  53
+rx { 49 } www\.[a-z]{3,}\.(com|edu|net|gov|mil|co\.uk)(/.*)? 
+rx { 7 } \d{7}|\d{10} 
+rx { 2 } [+-]?(\d+\.\d*|\.\d+)([dDeE][+-]?\d\d?\d?)? 
+rx { 29 } ([01]\d|2[0-3]):[0-5][0-9](:[0-5][0-9])? 
+rx { 6 } \d{5}-\d{4} 
+Constructing multiDFA
+eg { 10 } .2
+eg { 10 } 1.
+eg { 10 } .2D4
+eg { 10 } .2D40
+eg { 41 } 10:01
+eg { 10 } .2D401
+eg { 16 } 1023221
+eg { 41 } 10:01:53
+eg { 15 } 10232-9194
+eg { 16 } 1023221375
+eg { 62 } www.puj.com
+eg { 62 } www.puj.com/
+max =  3  max word:  .2
+alive = 53 , max eliminate =  3 , maxWord = .2
+
+Does your language accept this word:  .2
+answers =  { }
+.2
+
+before length of dfaList =  53
+
+length of dfaList =  50
+len dfa list =  50
+length cand =  50
+rx { 0 } \d*[1-9] 
+rx { 26 } ([01]\d|2[0-3]):[0-5][0-9](:[0-5][0-9])? 
+rx { 23 } 6(011|5\d\d)\d{12} 
+rx { 21 } 5[1-5]\d{14} 
+rx { 14 } \d\d\d-\d\d-\d\d\d\d 
+Constructing multiDFA
+eg { 5 } 1
+eg { 5 } 2
+eg { 5 } 9
+eg { 5 } 5
+eg { 5 } 6
+eg { 5 } 02
+eg { 5 } 26
+eg { 5 } 53
+eg { 5 } 65
+eg { 5 } 003
+eg { 5 } 534
+eg { 5 } 601
+eg { 5 } 659
+eg { 5 } 0001
+eg { 5 } 5307
+eg { 5 } 6011
+eg { 41 } 00:09
+eg { 5 } 53003
+eg { 5 } 60117
+eg { 5 } 530005
+eg { 5 } 601104
+eg { 5 } 5300009
+eg { 5 } 6011007
+eg { 41 } 00:09:30
+eg { 5 } 53000005
+eg { 5 } 60110009
+eg { 5 } 530000008
+eg { 5 } 601100001
+eg { 5 } 5300000007
+eg { 5 } 6011000006
+eg { 26 } 000-32-6093
+eg { 5 } 53000000008
+eg { 5 } 60110000008
+eg { 5 } 530000000003
+eg { 5 } 601100000007
+eg { 5 } 5300000000003
+eg { 5 } 6011000000007
+eg { 5 } 53000000000008
+eg { 5 } 60110000000001
+eg { 5 } 530000000000002
+eg { 5 } 601100000000007
+eg { 33 } 5300000000000000
+eg { 5 33 } 5300000000000002
+eg { 35 } 6011000000000000
+eg { 5 35 } 6011000000000008
+max =  6  max word:  5300000000000002
+alive = 50 , max eliminate =  6 , maxWord = 5300000000000002
+
+Does your language accept this word:  5300000000000002
+answers =  { }
+5300000000000002
+
+before length of dfaList =  50
+
+length of dfaList =  44
+len dfa list =  44
+length cand =  44
+rx { 36 } [-.'\w]+@\w+(\.\w+)+ 
+rx { 4 } \d{10} 
+rx { 17 } 3[47]\d{13} 
+rx { 15 } ([0-6]\d{2}|7([0-6]\d|7[012]))-\d\d-\d\d\d\d 
+rx { 31 } (0[1-9]|[12]\d|3[01])(0[1-9]|1[012])(19|20)\d\d 
+Constructing multiDFA
+eg { 58 } p@r.W
+eg { 53 } 03081913
+eg { 17 } 0006306478
+eg { 17 } 3482002201
+eg { 28 } 000-82-0836
+eg { 34 } 348200220181727
+max =  4  max word:  p@r.W
+alive = 44 , max eliminate =  4 , maxWord = p@r.W
+
+Does your language accept this word:  p@r.W
+answers =  { 0 }
+p@r.W
+
+before length of dfaList =  44
+
+length of dfaList =  4
+rx { 56 } \w+@\w+\.\w+
+rx { 57 } \w+@\w+(\.\w+)+
+rx { 58 } [-.'\w]+@\w+(\.\w+)+
+rx { 59 } \w[-.'\w]*@\w+(\.\w+)+
+len dfa list =  4
+length cand =  4
+rx { 1 } \w+@\w+(\.\w+)+ 
+rx { 2 } [-.'\w]+@\w+(\.\w+)+ 
+rx { 0 } \w+@\w+\.\w+ 
+rx { 3 } \w[-.'\w]*@\w+(\.\w+)+ 
+Constructing multiDFA
+eg { 58 } -@U.J
+eg { 56 57 58 59 } M@I.1
+eg { 58 59 } M-@i.D
+eg { 57 58 59 } M@I.1.v
+max =  2  max word:  M-@i.D
+alive = 4 , max eliminate =  2 , maxWord = M-@i.D
+
+Does your language accept this word:  M-@i.D
+answers =  { 0 }
+M-@i.D
+
+before length of dfaList =  4
+58 59 
+length of dfaList =  2
+rx { 58 } [-.'\w]+@\w+(\.\w+)+
+rx { 59 } \w[-.'\w]*@\w+(\.\w+)+
+len dfa list =  2
+length cand =  2
+rx { 0 } [-.'\w]+@\w+(\.\w+)+ 
+rx { 1 } \w[-.'\w]*@\w+(\.\w+)+ 
+Constructing multiDFA
+eg { 58 } '@X.U
+eg { 58 59 } q@H.L
+max =  1  max word:  '@X.U
+alive = 2 , max eliminate =  1 , maxWord = '@X.U
+
+Does your language accept this word:  '@X.U
+answers =  { 0 }
+'@X.U
+
+before length of dfaList =  2
+58 
+length of dfaList =  1
+
+Main: The reg ex you are looking for is: rx { 58 } [-.'\w]+@\w+(\.\w+)+
+
+META DATA: 
+

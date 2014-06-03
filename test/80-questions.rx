@@ -1,5 +1,6 @@
 #! rxplor -T
 #! rxcluster -i 1
+#! printf 'n\\nn\\nn\\ny\\ny\\ny\\n' | rxquest -i 1 80-questions.rx
 
 # things to try to distinguish via "20 questions"
 # some of these are deliberately incomplete, imprecise, or even incorrect
