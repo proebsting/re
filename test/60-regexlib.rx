@@ -1,5 +1,7 @@
-# A large number of expressions scraped 4-Apr-2014 from regxlib.com
+#! rxplor -T
+#! rxcluster -i 1
 
+# A large number of expressions scraped 4-Apr-2014 from regexlib.com
 
 #U: http://regexlib.com/REDetails.aspx?regexp_id=1
 #T: One Numeric Digit
