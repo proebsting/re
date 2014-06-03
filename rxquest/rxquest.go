@@ -1,7 +1,7 @@
 /*
-	qq.go -- regular expression selector
+	rxquest.go -- regular expression selector
 
-	usage:  batchQns [options] exprfile
+	usage:  rxquest [options] exprfile
 
 	-g n	set size of expression group for example generation
 	-i n	initialize random seed for reproducible results
@@ -10,7 +10,7 @@
 
 	Questions reads a set of regular expressions and conducts a
 	dialogue with the user to choose one.
-	mode 1 accepts examples and counter examples as input by user then uses 
+	mode 1 accepts examples and counter examples as input by user then uses
 	    algorithm in mode 3
 	mode 2 partitions candidate set into goups of size s, asks the best question
 	    from each partition and records the answers then keeps only the regexs

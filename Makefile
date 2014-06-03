@@ -2,7 +2,7 @@
 
 PKG = rx
 PG1 = $(PKG)/rxd $(PKG)/rxg $(PKG)/rxq $(PKG)/rxr $(PKG)/rxx $(PKG)/rxplor
-PG2 = $(PKG)/rxcluster $(PKG)/rxtime $(PKG)/rxpick $(PKG)/questions
+PG2 = $(PKG)/rxcluster $(PKG)/rxpick $(PKG)/rxquest $(PKG)/rxtime
 PROGS = $(PG1) $(PG2)
 GOBIN = $$GOPATH/bin
 
@@ -44,9 +44,9 @@ fmt:
 	go fmt rxpick/rxpick.go
 	go fmt rxplor/rxplor.go
 	go fmt rxq/rxq.go
+	go fmt rxquest/rxquest.go
 	go fmt rxr/rxr.go
 	go fmt rxx/rxx.go
-	go fmt questions/questions.go
 	go fmt webapp/code/*.go
 
 #  "make demo" displays a graph of the DFA of the exprs defined above.
