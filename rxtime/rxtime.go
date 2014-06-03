@@ -1,10 +1,11 @@
 /*
 	rxtime.go - combine regular expressions n ways
 
-	usage:  rxtime exprfile n
+	usage:  rxtime exprfile [n]
 
 	Rxtime reads regular expressions from exprfile and prints statistics,
-	including timings, for all possible combinations of n expressions.
+	including timings, for all possible combinations of n expressions,
+	just 1 by default.
 
 	Each output line shows, in this order:
 	    Number of states in the initial combined DFA
@@ -13,6 +14,8 @@
 	    Time in seconds to minimize the DFA
 	    If n == 1, the computed "complexity score"
 	    Ordinals of the expressions combined in this DFA
+
+	Erroneous expressions are silently ignored.
 
 	spring 2014 / gmt
 */
@@ -29,12 +32,14 @@ import (
 
 func main() {
 	// get command line options
-	if len(os.Args) < 3 {
-		log.Fatal("usage: rxtime exprfile n")
+	nways := 1
+	if len(os.Args) == 3 {
+		nways, _ = strconv.Atoi(os.Args[2])
+	}
+	if len(os.Args) < 2 || len(os.Args) > 3 || nways < 1 {
+		log.Fatal("usage: rxtime exprfile [n]")
 	}
 	filename := os.Args[1]
-	nways, err := strconv.Atoi(os.Args[2])
-	rx.CkErr(err)
 
 	// load expressions from file
 	exprs := rx.LoadExpressions(filename, nil)
