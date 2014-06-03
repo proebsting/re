@@ -9,4 +9,7 @@ Tucson, Arizona  USA
 
 It is currently a work in progress and not yet ready for distribution.
 
+The "test" directory contains targeted tests *and* other collected expressions.
+The biggest corpus is test/66-regexlib.rx; test/60-regexlib.rx is a subset.
+
 See also:  LICENSE, BUILD, NOTES files.

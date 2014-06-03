@@ -6,7 +6,6 @@ Styling
 Explanatory prose
 
 REGEXPS:
-Add settable complexity limit
 Expand wildcards and classes to include Unicode
 Add POSIX classes?
 Add \b anchor? Embedded ^ and $?

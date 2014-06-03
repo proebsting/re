@@ -1,5 +1,5 @@
 Some notes about the RX code
-[ 25-Mar-2014 / gmt ]
+[ 3-Jun-2014 / gmt ]
 
 This file is a dumping place for random thoughts to help understand and
 navigate the RX code.  See also the TODO file, which is an even more
@@ -8,10 +8,10 @@ cryptic collection of half-baked thoughts about future directions.
 
 PACKAGE ORGANIZATION
 The main package rx is for "library" type routines.
-Subpackages rxr, rxd, etc implement command-level programs.
+The subpackage rx/rxsys holds library routines not acceptable in web apps.
+Subpackages rxplor, rxquest, etc implement command-level programs.
 Most of the significant code should go in the library.
 The programs should just provide an interface to the library.
-(The programs are proliferating and some may be consolidated.)
 
 VISIBILITY
 [Recall: Capitalized symbols are exported from a package.]
