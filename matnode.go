@@ -28,9 +28,6 @@ func IsAccept(d Node) bool {
 	return ok && mnode.Cset.IsEmpty()
 }
 
-//  MatchNode.Data returns a pointer to the embedded NodeData struct.
-func (d *MatchNode) Data() *NodeData { return &d.NodeData }
-
 //  MatchNode.Children returns an empty list.
 func (d *MatchNode) Children() []Node {
 	return barren

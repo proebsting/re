@@ -28,9 +28,6 @@ func IsEpsilon(d Node) bool {
 	return ok && len(anode.Alts) == 0
 }
 
-//  AltNode.Data returns a pointer to the embedded NodeData struct.
-func (d *AltNode) Data() *NodeData { return &d.NodeData }
-
 //  AltNode.Children returns the list of alternative subtrees.
 func (d *AltNode) Children() []Node {
 	return d.Alts

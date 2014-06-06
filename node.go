@@ -42,6 +42,11 @@ type NodeData struct {
 
 var nildata = NodeData{} // convenient for initialization
 
+// Data returns a pointer to the common NodeData struct inside a Node
+func (dp *NodeData) Data() *NodeData {
+	return dp
+}
+
 //  Specimen generates a synthetic example from a parse tree
 func Specimen(tree Node, maxrepl int) string {
 	return string(tree.Example(make([]byte, 0), maxrepl))

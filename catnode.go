@@ -14,9 +14,6 @@ type ConcatNode struct {
 	NodeData
 }
 
-//  ConcatNode.Data returns a pointer to the embedded NodeData struct.
-func (d *ConcatNode) Data() *NodeData { return &d.NodeData }
-
 //  ConcatNode.Children returns a list of the two child nodes.
 func (d *ConcatNode) Children() []Node {
 	return []Node{d.L, d.R}

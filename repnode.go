@@ -19,9 +19,6 @@ type ReplNode struct {
 	NodeData
 }
 
-//  ReplNode.Data returns a pointer to the embedded NodeData struct.
-func (d *ReplNode) Data() *NodeData { return &d.NodeData }
-
 //  ReplNode.Children returns a list consisting of the one child.
 func (d *ReplNode) Children() []Node {
 	return []Node{d.Child}
