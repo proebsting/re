@@ -38,26 +38,24 @@ func (d *ConcatNode) MaxLen() int {
 
 //  ConcatNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *ConcatNode) SetNFL() {
-	L := d.L.Data()
-	R := d.R.Data()
-	d.Nullable = L.Nullable && R.Nullable
-	if L.Nullable {
-		d.FirstPos = L.FirstPos.Or(R.FirstPos)
+	d.Nullable = d.L.nullable() && d.R.nullable()
+	if d.L.nullable() {
+		d.FirstPos = d.L.firstPos().Or(d.R.firstPos())
 	} else {
-		d.FirstPos = L.FirstPos
+		d.FirstPos = d.L.firstPos()
 	}
-	if R.Nullable {
-		d.LastPos = R.LastPos.Or(L.LastPos)
+	if d.R.nullable() {
+		d.LastPos = d.R.lastPos().Or(d.L.lastPos())
 	} else {
-		d.LastPos = R.LastPos
+		d.LastPos = d.R.lastPos()
 	}
 }
 
 //  ConcatNode.SetFollow registers FollowPos nodes due to concatenation.
 func (d *ConcatNode) SetFollow(pmap []*MatchNode) {
-	for _, i := range d.L.Data().LastPos.Members() {
-		for _, f := range d.R.Data().FirstPos.Members() {
-			pmap[i].Data().FollowPos.Set(f)
+	for _, i := range d.L.lastPos().Members() {
+		for _, f := range d.R.firstPos().Members() {
+			pmap[i].followPos().Set(f)
 		}
 	}
 }

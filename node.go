@@ -21,7 +21,11 @@ import (
 //  However, the First/Last/Follow sets only make sense in the context of
 //  the root node with respect to which they were computed.
 type Node interface {
-	Data() *NodeData            // return pointer to common data
+	nullable() bool             // return nullable value
+	firstPos() *BitSet          // return FirstPos value
+	lastPos() *BitSet           // return LastPos value
+	followPos() *BitSet         // return FollowPos value
+	clearFollow()               // clear FollowPos set
 	Children() []Node           // return children for tree walking
 	MinLen() int                // return min len matched (0 if nullable)
 	MaxLen() int                // return max len matched (-1 for infinity)
@@ -32,6 +36,7 @@ type Node interface {
 }
 
 //  NodeData is included (anonymously) in every Node subtype.
+//  Common getter functions are defined below for every field.
 //  The FollowPos sets represent arcs of the NFA implementing the parse tree.
 type NodeData struct {
 	Nullable  bool    // can this subtree match empty string?
@@ -40,12 +45,13 @@ type NodeData struct {
 	FollowPos *BitSet // positions that can follow in NFA
 }
 
-var nildata = NodeData{} // convenient for initialization
+func (dp *NodeData) nullable() bool     { return dp.Nullable }
+func (dp *NodeData) firstPos() *BitSet  { return dp.FirstPos }
+func (dp *NodeData) lastPos() *BitSet   { return dp.LastPos }
+func (dp *NodeData) followPos() *BitSet { return dp.FollowPos }
+func (dp *NodeData) clearFollow()       { dp.FollowPos = &BitSet{} }
 
-// Data returns a pointer to the common NodeData struct inside a Node
-func (dp *NodeData) Data() *NodeData {
-	return dp
-}
+var nildata = NodeData{} // convenient for initialization
 
 //  Specimen generates a synthetic example from a parse tree
 func Specimen(tree Node, maxrepl int) string {
@@ -75,17 +81,16 @@ func (dfa *DFA) ShowTree(f io.Writer, tree Node, label string) {
 	indent := ""
 	Walk(tree, func(d Node) {
 		indent = indent + "   "
-		a := d.Data()
 		c := "F"
-		if a.Nullable {
+		if d.nullable() {
 			c = "T"
 		}
 		fmt.Fprintf(f, "%s{%s, ", indent[3:], c)
-		for _, k := range a.FirstPos.Members() {
+		for _, k := range d.firstPos().Members() {
 			fmt.Fprint(f, dfa.Leaves[k])
 		}
 		fmt.Fprint(f, ", ")
-		for _, k := range a.LastPos.Members() {
+		for _, k := range d.lastPos().Members() {
 			fmt.Fprint(f, dfa.Leaves[k])
 		}
 		fmt.Fprintln(f, "}  ", d)

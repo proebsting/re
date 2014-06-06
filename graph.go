@@ -23,7 +23,7 @@ func (dfa *DFA) GraphNFA(f io.Writer, label string) {
 	fmt.Fprintf(f, "label=%s\n", strconv.Quote(label))
 	fmt.Fprintln(f, "node [shape=circle, height=.3, margin=0, fontsize=10]")
 	startshape := "triangle"
-	for _, p := range dfa.Tree.Data().FirstPos.Members() {
+	for _, p := range dfa.Tree.firstPos().Members() {
 		if IsAccept(dfa.Leaves[p]) {
 			startshape = "doublecircle"
 		} else {

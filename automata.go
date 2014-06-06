@@ -72,8 +72,8 @@ func MultiDFA(tlist []Node) *DFA {
 			n++
 			dfa.Leaves = append(dfa.Leaves, leaf)
 		}
-		d.SetNFL()                     // Nullable, FirstPos, LastPos
-		d.Data().FollowPos = &BitSet{} // init empty FollowPos
+		d.SetNFL()      // Nullable, FirstPos, LastPos
+		d.clearFollow() // clear FollowPos
 	})
 	pmap := dfa.Leaves // map of indexes to nodes
 
@@ -86,7 +86,7 @@ func MultiDFA(tlist []Node) *DFA {
 
 	// initialize first unmarked Dstate
 	posns := &BitSet{}
-	for _, p := range tree.Data().FirstPos.Members() {
+	for _, p := range tree.firstPos().Members() {
 		posns.Set(p)
 	}
 	knownStates := make(map[string]*DFAstate) // make hashtable of states
@@ -185,7 +185,7 @@ func (dfa *DFA) ShowNFA(f io.Writer, label string) {
 	ShowLabel(f, label)
 	fmt.Fprintf(f, "Inputs: %s\n", cset.Bracketed())
 	fmt.Fprintf(f, "Witnesses: %s\n", dfa.Witnesses().Bracketed())
-	fmt.Fprintf(f, "begin => %s\n", dfa.Tree.Data().FirstPos)
+	fmt.Fprintf(f, "begin => %s\n", dfa.Tree.firstPos())
 	for _, m := range dfa.Leaves {
 		fmt.Fprintf(f, "p%d. %s => %s\n", m.Posn, m, m.FollowPos)
 	}

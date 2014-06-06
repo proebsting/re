@@ -44,9 +44,9 @@ func (d *ReplNode) MaxLen() int {
 
 //  ReplNode.SetNFL sets the Nullable, FirstPos, LastPos fields.
 func (d *ReplNode) SetNFL() {
-	d.Nullable = d.Min == 0 || d.Child.Data().Nullable
-	d.FirstPos = d.Child.Data().FirstPos
-	d.LastPos = d.Child.Data().LastPos
+	d.Nullable = d.Min == 0 || d.Child.nullable()
+	d.FirstPos = d.Child.firstPos()
+	d.LastPos = d.Child.lastPos()
 }
 
 //  ReplNode.SetFollow registers FollowPos nodes.
@@ -54,7 +54,7 @@ func (d *ReplNode) SetFollow(pmap []*MatchNode) {
 	if d.Max != 1 { // if just 1, self can't follow
 		for _, i := range d.LastPos.Members() {
 			for _, f := range d.FirstPos.Members() {
-				pmap[i].Data().FollowPos.Set(f)
+				pmap[i].followPos().Set(f)
 			}
 		}
 	}
