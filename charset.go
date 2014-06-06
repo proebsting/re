@@ -4,7 +4,7 @@
 //  No distinct type is defined, however -- it's still a BitSet.
 //
 //  Note that "all characters" (for purposes of wildcarding or complementing)
-//  defines a set of just the ASCII characters [\x01-\x0F].
+//  defines a set of just the ASCII characters [\x01-\x7F].
 
 package rx
 

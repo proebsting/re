@@ -41,7 +41,7 @@ var exprstack []Node // stack of pushed expressions
 //
 //  All trees are "anchored".  An initial '^' and/or final '$' is ignored.
 //
-//  Wildcard character sets (for ".", "\w", "\D", "[%\d]", etc.)
+//  Wildcard character sets (for ".", "\w", "\D", "[^\d]", etc.)
 //  are limited to the ASCII character set [\x01-\x7F].
 func Parse(orgstr string) (Node, error) {
 

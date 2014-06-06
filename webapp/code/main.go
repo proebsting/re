@@ -47,10 +47,13 @@ var tSyntax = template.Must(template.New("syntax").Parse(`
       .  \d \s \w \D \S \W
       [abc]  [^abc]  [a-c]  [\x]
 </PRE>
-<P>We ignore the Perl non-capturing submatch form <CODE>?:</CODE>,
+<P>We ignore the Perl non-capturing submatch form <CODE>(?:</CODE>,
 but other <CODE>(?</CODE> forms are errors.
 <P>All expressions are &ldquo;anchored&rdquo;.
 An initial <CODE>^</CODE> and/or final <CODE>$</CODE> is ignored.
+<P>Wildcard character sets (for
+<CODE>&nbsp; . &nbsp; \w &nbsp; \D &nbsp; [^\d] &nbsp; </CODE> etc.)
+are limited to the ASCII character set [\x01-\x7F].
 `))
 
 //  about generates a page describing and crediting the website
