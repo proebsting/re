@@ -7,6 +7,14 @@ import (
 	"io"
 )
 
+//  Form configuration values.  Code changes are needed to extend beyond 10.
+var (
+	exprlabels = []string{"a0", "a1", "a2", "a3", "a4", "a5"}
+	testlabels = []string{"t0", "t1", "t2", "t3"}
+	Ncompare   = len(exprlabels)
+	Nsuggest   = len(testlabels)
+)
+
 //  putform outputs a form for submitting nx expressions and nt tests
 func putform(w io.Writer, target string, label string,
 	nx int, exprs []string, nt int, tests []string) {

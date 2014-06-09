@@ -12,7 +12,8 @@ import (
 //  compare presents a page asking for multiple expressions
 func compare(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Comparison Query")
-	putform(w, "/combos", "Enter regular expressions:", 5, nil, 3, nil)
+	putform(w, "/combos", "Enter regular expressions:",
+		Ncompare, nil, Nsuggest, nil)
 	tMultiEx.Execute(w, multixamples)
 	putfooter(w, r)
 }
@@ -52,7 +53,6 @@ func combos(w http.ResponseWriter, r *http.Request) {
 
 	// must read all input before writing anything
 	// first get the expressions
-	exprlabels := []string{"a0", "a1", "a2", "a3", "a4"}
 	exprlist := make([]string, 0)
 	for _, l := range exprlabels {
 		arg := r.FormValue(l)
@@ -63,7 +63,6 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	nx := len(exprlist)
 
 	// then get the test strings
-	testlabels := []string{"t0", "t1", "t2"}
 	testlist := make([]string, 0)
 	for _, l := range testlabels {
 		arg := r.FormValue(l)
@@ -108,7 +107,7 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Fprint(w, "<h2>Try again?</h2>")
 	putform(w, "/combos", "Enter regular expressions:",
-		5, exprlist, 3, testlist)
+		Ncompare, exprlist, Nsuggest, testlist)
 	putfooter(w, r)
 }
 
