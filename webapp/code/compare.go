@@ -12,7 +12,7 @@ import (
 //  compare presents a page asking for multiple expressions
 func compare(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Comparison Query")
-	putform(w, "/combos", "Enter regular expressions:", 5, nil)
+	putform(w, "/combos", "Enter regular expressions:", 5, nil, 3, nil)
 	tMultiEx.Execute(w, multixamples)
 	putfooter(w, r)
 }
@@ -51,50 +51,69 @@ var multixamples = []struct {
 func combos(w http.ResponseWriter, r *http.Request) {
 
 	// must read all input before writing anything
-	labels := []string{"a0", "a1", "a2", "a3", "a4"}
-	elist := make([]string, 0, 5)
-	for _, l := range labels {
+	// first get the expressions
+	exprlabels := []string{"a0", "a1", "a2", "a3", "a4"}
+	exprlist := make([]string, 0)
+	for _, l := range exprlabels {
 		arg := r.FormValue(l)
 		if arg != "" {
-			elist = append(elist, arg)
+			exprlist = append(exprlist, arg)
 		}
 	}
-	n := len(elist)
+	nx := len(exprlist)
 
-	tlist := make([]rx.Node, 0, n)
+	// then get the test strings
+	testlabels := []string{"t0", "t1", "t2"}
+	testlist := make([]string, 0)
+	for _, l := range testlabels {
+		arg := r.FormValue(l)
+		if arg != "" {
+			testlist = append(testlist, arg)
+		}
+	}
+
+	// parse and echo the input
+	treelist := make([]rx.Node, 0, nx)
 	putheader(w, r, "Compare Expressions")
-	fmt.Fprintf(w, "<P>%d expressions:\n", n)
-	for i, s := range elist {
+	fmt.Fprintf(w, "<P>%d expressions:\n", nx)
+	for i, s := range exprlist {
 		fmt.Fprintf(w, "<P class=c%d><B>e%d:</B> &nbsp; %s\n",
 			i, i, hx(s))
 		tree, err := rx.Parse(s)
 		if !showerror(w, err) {
-			tlist = append(tlist, rx.Augment(tree, i))
+			treelist = append(treelist, rx.Augment(tree, i))
 		}
 	}
 
-	if n > 0 && len(tlist) == n { // if no errors
-		dfa := rx.MultiDFA(tlist)  // build combined DFA
-		xlist := make([]string, 0) // example list
+	if nx > 0 && len(treelist) == nx { // if no errors
+		dfa := rx.MultiDFA(treelist) // build combined DFA
+		trylist := make([]string, 0) // list of strings to try
+		// tests from form submission
+		for _, x := range testlist {
+			trylist = append(trylist, x)
+		}
+		// examples from DFA
 		synthx := dfa.Synthesize() // synthesize from DFA
 		for _, x := range synthx { // put results on list
-			xlist = append(xlist, x.Example)
+			trylist = append(trylist, x.Example)
 		}
-		for i := 0; i < n; i++ {
-			xlist = append(xlist, rx.Specimen(tlist[i], 1))
-			xlist = append(xlist, rx.Specimen(tlist[i], 2))
-			xlist = append(xlist, rx.Specimen(tlist[i], 3))
-			xlist = append(xlist, rx.Specimen(tlist[i], 5))
+		// examples from parse tree
+		for i := 0; i < nx; i++ {
+			trylist = append(trylist, rx.Specimen(treelist[i], 1))
+			trylist = append(trylist, rx.Specimen(treelist[i], 2))
+			trylist = append(trylist, rx.Specimen(treelist[i], 3))
+			trylist = append(trylist, rx.Specimen(treelist[i], 5))
 		}
-		showgrid(w, dfa, n, xlist) // show examples
+		showgrid(w, dfa, nx, trylist) // show examples
 	}
 	fmt.Fprint(w, "<h2>Try again?</h2>")
-	putform(w, "/combos", "Enter regular expressions:", 5, elist)
+	putform(w, "/combos", "Enter regular expressions:",
+		5, exprlist, 3, testlist)
 	putfooter(w, r)
 }
 
 //  showgrid prints a table matching exprs with specimens (skipping duplicates)
-func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, xlist []string) {
+func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 	seen := make(map[string]bool, 0)
 	fmt.Fprintf(w, "<H2>Results</H2>\n")
 	fmt.Fprintf(w, "<TABLE>\n<TR>")
@@ -102,11 +121,14 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, xlist []string) {
 		fmt.Fprintf(w, "<TH class=c%d>e%d</TH>", i, i)
 	}
 	fmt.Fprintf(w, "<TH class=leftw>example</TH></TR>\n")
-	for _, s := range xlist {
+	for _, s := range trylist {
 		if !seen[s] {
 			seen[s] = true
 			fmt.Fprintf(w, "<TR>")
 			aset := dfa.Accepts(s)
+			if aset == nil {
+				aset = &rx.BitSet{}
+			}
 			n := 0
 			e := -1
 			for i := 0; i < nexpr; i++ {
@@ -120,7 +142,11 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, xlist []string) {
 					fmt.Fprintf(w, "<TD>\u2013</TD>") // -
 				}
 			}
-			if n == 1 {
+			if n == 0 {
+				fmt.Fprintf(w,
+					"<TD class=\"error leftw\">%s</TD></TR>\n",
+					hx(s))
+			} else if n == 1 {
 				fmt.Fprintf(w,
 					"<TD class=\"c%d leftw\">%s</TD></TR>\n",
 					e, hx(s))

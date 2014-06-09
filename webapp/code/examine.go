@@ -15,7 +15,7 @@ const linemax = 79 // max output line length for generated examples
 //  examine presents a query page for examining a single expression
 func examine(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Inspection Query")
-	putform(w, "/details", "Enter a regular expression:", 1, nil)
+	putform(w, "/details", "Enter a regular expression:", 1, nil, 0, nil)
 	tExamples.Execute(w, examples)
 	putfooter(w, r)
 }
@@ -79,7 +79,8 @@ func details(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Fprint(w, "<h2>Try another?</h2>")
-	putform(w, "/details", "Enter a regular expression:", 1, []string{expr})
+	putform(w, "/details", "Enter a regular expression:",
+		1, []string{expr}, 0, nil)
 	putfooter(w, r)
 }
 
