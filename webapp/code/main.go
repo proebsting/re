@@ -5,7 +5,6 @@ package webapp
 import (
 	"fmt"
 	"html"
-	"io"
 	"math/rand"
 	"net/http"
 	"rx"
@@ -24,29 +23,6 @@ func init() {
 	http.HandleFunc("/info", info)       // info.go
 	rand.Seed(int64(time.Now().Nanosecond()))
 	rx.MaxComplexity = 100 //#%#% set a relatively small limit for now
-}
-
-//  putform outputs a form for submitting n expressions
-func putform(w io.Writer, n int, target string, label string, values []string) {
-	fmt.Fprintf(w, "<form action=\"%s\" method=\"post\">\n", target)
-	fmt.Fprintf(w, "<div><div style=\"float:left;\">%s &nbsp;</div>\n",
-		label)
-	fmt.Fprint(w, `<div style="font-size: 67%;">
-<button type=button class=link onclick="clearForm(this.form);">
-(clear form)</button></div></div>
-<div class=reset></div>
-`)
-	for i := 0; i < n; i++ {
-		fmt.Fprintf(w,
-			"<div><input tabindex=%d type=\"text\" name=\"a%d\"",
-			i+1, i)
-		fmt.Fprintf(w, " size=100 maxlength=1000")
-		if values != nil && i < len(values) && values[i] != "" {
-			fmt.Fprintf(w, " value=\"%s\"", hx(values[i]))
-		}
-		fmt.Fprintf(w, "></div>\n")
-	}
-	fmt.Fprintln(w, `<div><input tabindex=99 type="submit" value="Submit"></div></form>`)
 }
 
 //  hx escapes an arbitrary stringable value for output as HTML
