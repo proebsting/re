@@ -41,10 +41,10 @@ BUTTON.link	{ background: none; border: none; padding: 0;
 .c2		{ background-color: #DFC; } /* green */
 .c3		{ background-color: #FFE4FF; } /* magenta */
 .c4		{ background-color: #FFB; } /* yellow*/
-.c5		{ background-color: #AFF; } /* turquoise */
+.c5		{ background-color: #CFF; } /* turquoise */
 .c6		{ background-color: #FBB; } /* red */
-.c7		{ background-color: #DBF; } /* violet */
-.c8		{ background-color: #8DF; } /* blue */
+.c7		{ background-color: #E2C4FF; } /* violet */
+.c8		{ background-color: #ADF; } /* blue */
 .c9		{ background-color: #DDD; } /* gray */
 .cg		{ background-color: #EEE; } /* lt gray */
 
