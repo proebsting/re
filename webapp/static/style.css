@@ -1,4 +1,4 @@
-/* style sheet derived originally from Gregg's HTML pages */
+/* style sheet for regular expression pages */
 
 BODY		{ color: black; background: white url(lborder.png) repeat-y; }
 BODY		{ margin-left: 90px; margin-right: 20px; }
@@ -47,3 +47,6 @@ BUTTON.link	{ background: none; border: none; padding: 0;
 .c8		{ background-color: #8DF; } /* blue */
 .c9		{ background-color: #DDD; } /* gray */
 .cg		{ background-color: #EEE; } /* lt gray */
+
+/* show error messages white on red */
+.error		{ padding: 5px; color: #FFF; background-color: #D00; }

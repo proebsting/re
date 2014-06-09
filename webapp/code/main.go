@@ -60,10 +60,10 @@ func showerror(w http.ResponseWriter, err error) bool {
 		return false
 	}
 	if pe, ok := err.(*rx.ParseError); ok {
-		fmt.Fprintf(w, "<P><B>Error:</B> %s\n<BR>In expression: %s\n",
-			pe.Message, hx(pe.BadExpr))
+		fmt.Fprintf(w, "<P class=error><B>Error:</B> %s\n", pe.Message)
+		fmt.Fprintf(w, "<BR>In expression: %s\n", hx(pe.BadExpr))
 	} else {
-		fmt.Fprintf(w, "<P><B>Error:</B> %s\n", hx(err))
+		fmt.Fprintf(w, "<P class=error><B>Error:</B> %s\n", hx(err))
 	}
 	return true
 }
