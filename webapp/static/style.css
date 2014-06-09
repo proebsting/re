@@ -19,6 +19,7 @@ BLOCKQUOTE	{ margin-top: 0.4em; margin-bottom: 0.4em; }
 UL, OL		{ margin-top: 0.4em; margin-bottom: 0.4em; }
 LI		{ margin-top: 0.2em; }
 
+TABLE		{ border-collapse: collapse; }
 TH, TD		{ padding-left: 0.4em; padding-right: 0.4em; }
 TH, TD		{ vertical-align: top; text-align: center; }
 .leftw		{ text-align: left; border-left: 3px solid white; }
@@ -34,6 +35,7 @@ BUTTON.link	{ background: none; border: none; padding: 0;
 .lstripe	{ float: left; margin-left: 2.0em; margin-top: 3.0em;
 		  border-left: 1px solid black; padding-left: 1.0em; }
 .noadvance	{ margin-top: 0; }
+.topsep		{ border-top: 1px solid black; }
 
 /* highlighting colors */
 .c0		{ background-color: #DEF; } /* indigo */

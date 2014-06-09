@@ -9,6 +9,8 @@ import (
 	"rx"
 )
 
+var DRAWLINE = "\x7F\x7F" // special flag for separator in grid
+
 //  compare presents a page asking for multiple expressions
 func compare(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Comparison Query")
@@ -91,11 +93,13 @@ func combos(w http.ResponseWriter, r *http.Request) {
 		for _, x := range testlist {
 			trylist = append(trylist, x)
 		}
+		trylist = append(trylist, DRAWLINE)
 		// examples from DFA
 		synthx := dfa.Synthesize() // synthesize from DFA
 		for _, x := range synthx { // put results on list
 			trylist = append(trylist, x.Example)
 		}
+		trylist = append(trylist, DRAWLINE)
 		// examples from parse tree
 		for i := 0; i < nx; i++ {
 			trylist = append(trylist, rx.Specimen(treelist[i], 1))
@@ -111,7 +115,8 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	putfooter(w, r)
 }
 
-//  showgrid prints a table matching exprs with specimens (skipping duplicates)
+//  showgrid prints a table matching exprs with specimens (skipping duplicates).
+//  A DRAWLINE line in the list draws a horizontal separator in the table
 func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 	seen := make(map[string]bool, 0)
 	fmt.Fprintf(w, "<H2>Results</H2>\n")
@@ -120,10 +125,18 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 		fmt.Fprintf(w, "<TH class=c%d>e%d</TH>", i, i)
 	}
 	fmt.Fprintf(w, "<TH class=leftw>example</TH></TR>\n")
+	drawline := false
 	for _, s := range trylist {
-		if !seen[s] {
+		if s == DRAWLINE {
+			drawline = true
+		} else if !seen[s] {
 			seen[s] = true
-			fmt.Fprintf(w, "<TR>")
+			if drawline {
+				fmt.Fprintf(w, "<TR class=topsep>")
+				drawline = false
+			} else {
+				fmt.Fprintf(w, "<TR>")
+			}
 			aset := dfa.Accepts(s)
 			if aset == nil {
 				aset = &rx.BitSet{}
