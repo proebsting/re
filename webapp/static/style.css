@@ -19,10 +19,11 @@ BLOCKQUOTE	{ margin-top: 0.4em; margin-bottom: 0.4em; }
 UL, OL		{ margin-top: 0.4em; margin-bottom: 0.4em; }
 LI		{ margin-top: 0.2em; }
 
-TABLE		{ border-collapse: collapse; }
-TH, TD		{ padding-left: 0.4em; padding-right: 0.4em; }
+TABLE		{ border-collapse: collapse; border-bottom: 1px solid black; }
+TR		{ border-top: 1px solid white; }
+TH, TD		{ padding: 2px 0.4em 0 0.4em; }
 TH, TD		{ vertical-align: top; text-align: center; }
-.leftw		{ text-align: left; border-left: 3px solid white; }
+.leftb		{ text-align: left; border-left: 1px solid black; }
 
 A:link		{ background: white; color: #070; }
 A:visited	{ background: white; color: #040; }
@@ -37,18 +38,17 @@ BUTTON.link	{ background: none; border: none; padding: 0;
 .noadvance	{ margin-top: 0; }
 .topsep		{ border-top: 1px solid black; }
 
-/* highlighting colors */
-.c0		{ background-color: #DEF; } /* indigo */
-.c1		{ background-color: #FEC; } /* peach */
-.c2		{ background-color: #DFC; } /* green */
-.c3		{ background-color: #FFE4FF; } /* magenta */
-.c4		{ background-color: #FFB; } /* yellow*/
-.c5		{ background-color: #CFF; } /* turquoise */
-.c6		{ background-color: #FBB; } /* red */
-.c7		{ background-color: #E2C4FF; } /* violet */
-.c8		{ background-color: #ADF; } /* blue */
-.c9		{ background-color: #DDD; } /* gray */
-.cg		{ background-color: #EEE; } /* lt gray */
-
+/* highlighting */
+.c0		{ padding-top: 2px; background-color: #DEF; } /* indigo */
+.c1		{ padding-top: 2px; background-color: #FEC; } /* peach */
+.c2		{ padding-top: 2px; background-color: #DFC; } /* green */
+.c3		{ padding-top: 2px; background-color: #FFE4FF; } /* magenta */
+.c4		{ padding-top: 2px; background-color: #FFB; } /* yellow*/
+.c5		{ padding-top: 2px; background-color: #CFF; } /* turquoise */
+.c6		{ padding-top: 2px; background-color: #FBB; } /* red */
+.c7		{ padding-top: 2px; background-color: #E2C4FF; } /* violet */
+.c8		{ padding-top: 2px; background-color: #ADF; } /* blue */
+.c9		{ padding-top: 2px; background-color: #DDD; } /* gray */
+.cg		{ padding-top: 2px; background-color: #EEE; } /* lt gray */
 /* show error messages white on red */
-.error		{ padding: 5px; color: #FFF; background-color: #D00; }
+.error		{ padding: 4px; color: #FFF; background-color: #D00; }

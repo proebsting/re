@@ -124,8 +124,8 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 	for i := 0; i < nexpr; i++ {
 		fmt.Fprintf(w, "<TH class=c%d>e%d</TH>", i, i)
 	}
-	fmt.Fprintf(w, "<TH class=leftw>example</TH></TR>\n")
-	drawline := false
+	fmt.Fprintf(w, "<TH class=\"cg leftb\">example</TH></TR>\n")
+	drawline := true 
 	for _, s := range trylist {
 		if s == DRAWLINE {
 			drawline = true
@@ -156,19 +156,19 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 			}
 			if n == 0 {
 				fmt.Fprintf(w,
-					"<TD class=\"error leftw\">%s</TD></TR>\n",
+					"<TD class=\"error leftb\">%s</TD></TR>\n",
 					hx(s))
 			} else if n == 1 {
 				fmt.Fprintf(w,
-					"<TD class=\"c%d leftw\">%s</TD></TR>\n",
+					"<TD class=\"c%d leftb\">%s</TD></TR>\n",
 					e, hx(s))
 			} else if n < nexpr {
 				fmt.Fprintf(w,
-					"<TD class=\"cg leftw\">%s</TD></TR>\n",
+					"<TD class=\"cg leftb\">%s</TD></TR>\n",
 					hx(s))
 			} else {
 				fmt.Fprintf(w,
-					"<TD class=leftw>%s</TD></TR>\n", hx(s))
+					"<TD class=leftb>%s</TD></TR>\n", hx(s))
 			}
 		}
 	}
