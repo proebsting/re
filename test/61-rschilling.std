@@ -104,17 +104,13 @@ expr 19: ^([2-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
 
 expr 20: ([0-9])\.([0-9])\.([0-9]).*
 
-ERROR:   (?P<name>[^=]+)="(?P<value>[^"]*)" *
-    rx: '(?...' unimplemented: in "(?P<name>[^=]+)="(?P<value>[^"]*)" *"
+expr 21: (?P<name>[^=]+)="(?P<value>[^"]*)" *
 
-ERROR:   (?P<name>[^:]+):(?P<value>[^,]*),?
-    rx: '(?...' unimplemented: in "(?P<name>[^:]+):(?P<value>[^,]*),?"
+expr 22: (?P<name>[^:]+):(?P<value>[^,]*),?
 
-ERROR:   (?P<name>[^=]+)="(?P<value>[^"]*)" *
-    rx: '(?...' unimplemented: in "(?P<name>[^=]+)="(?P<value>[^"]*)" *"
+expr 23: (?P<name>[^=]+)="(?P<value>[^"]*)" *
 
-ERROR:   (?P<name>[^:]+):(?P<value>[^,]*),?
-    rx: '(?...' unimplemented: in "(?P<name>[^:]+):(?P<value>[^,]*),?"
+expr 24: (?P<name>[^:]+):(?P<value>[^,]*),?
 
 ERROR:   ^<CHAPTER ID=.*?>$
     rx: prefer-fewer '?' unimplemented: in "^<CHAPTER ID=.*?>$"
@@ -122,77 +118,77 @@ ERROR:   ^<CHAPTER ID=.*?>$
 ERROR:   ^<.*?>$
     rx: prefer-fewer '?' unimplemented: in "^<.*?>$"
 
-expr 21: ^\d+\.?$
+expr 25: ^\d+\.?$
 
-expr 22: [^A-Z0-9]
+expr 26: [^A-Z0-9]
 
-expr 23: cygwin|mingw
+expr 27: cygwin|mingw
 
-expr 24: darwin|aix
+expr 28: darwin|aix
 
-expr 25: .*capacity.*operations.*bandwidth
+expr 29: .*capacity.*operations.*bandwidth
 
-expr 26: .*pool.*alloc.*free.*read.*write.*read.*write
+expr 30: .*pool.*alloc.*free.*read.*write.*read.*write
 
-expr 27: .*-----.*-----.*-----
+expr 31: .*-----.*-----.*-----
 
 ERROR:   <([^>]*?)>
     rx: prefer-fewer '?' unimplemented: in "<([^>]*?)>"
 
-expr 28: [\s\u0000-\u001F@,:<>\u007F]
+expr 32: [\s\u0000-\u001F@,:<>\u007F]
 
-expr 29: ^------------------.* testing 
+expr 33: ^------------------.* testing 
 
 ERROR:   (^==== |^------------------.* testing )
     rx: Embedded '^' unimplemented: in "(^==== |^------------------.* testing )"
 
-expr 30: ^\s*T_VIRTUAL_CALL: (\d+) calls on (.*):$
+expr 34: ^\s*T_VIRTUAL_CALL: (\d+) calls on (.*):$
 
-expr 31: ^\s*#(\d+)\s*(.*) \[(0x[0-9A-Za-z]+)\]$
+expr 35: ^\s*#(\d+)\s*(.*) \[(0x[0-9A-Za-z]+)\]$
 
-expr 32: [\x00-\x31\x7f-\xa0]
+expr 36: [\x00-\x31\x7f-\xa0]
 
-expr 33: [\x00-\x31\x7f-\xff]
+expr 37: [\x00-\x31\x7f-\xff]
 
-expr 34: \\([^uUx]|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{2}|U[0-9a-fA-F]{8})
+expr 38: \\([^uUx]|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{2}|U[0-9a-fA-F]{8})
 
-expr 35: "((?:[^"\\]|\\.)*)"
+expr 39: "((?:[^"\\]|\\.)*)"
 
-expr 36: '((?:[^'\\]|\\.)*)'
+expr 40: '((?:[^'\\]|\\.)*)'
 
-expr 37: \\(.)
+expr 41: \\(.)
 
-expr 38: [,()]+
+expr 42: [,()]+
 
 ERROR:   (^.*)_[0-9]+$
     rx: Embedded '^' unimplemented: in "(^.*)_[0-9]+$"
 
-expr 39: ^db\d+$
+expr 43: ^db\d+$
 
-expr 40: ^\s*#\s*tcollector.(\w+)\s*=\s*(.+)$
+expr 44: ^\s*#\s*tcollector.(\w+)\s*=\s*(.+)$
 
-expr 41: [\s\w]+:[\s\w]+$
+expr 45: [\s\w]+:[\s\w]+$
 
-expr 42: ^TEST-.*\.xml$
+expr 46: ^TEST-.*\.xml$
 
-expr 43: ^([^-]+-[^-]+)-(.*)\.fail$
-
-expr 44: [\x00-\x1f\\"\b\f\n\r\t]
-
-expr 45: ([\\"]|[^\ -~])
-
-expr 46: [\x80-\xff]
-
-ERROR:   (.*?)(["\\\x00-\x1f])
-    rx: prefer-fewer '?' unimplemented: in "(.*?)(["\\\x00-\x1f])"
-
-expr 47: [ \t\n\r]*
+expr 47: ^([^-]+-[^-]+)-(.*)\.fail$
 
 expr 48: [\x00-\x1f\\"\b\f\n\r\t]
 
 expr 49: ([\\"]|[^\ -~])
 
 expr 50: [\x80-\xff]
+
+ERROR:   (.*?)(["\\\x00-\x1f])
+    rx: prefer-fewer '?' unimplemented: in "(.*?)(["\\\x00-\x1f])"
+
+expr 51: [ \t\n\r]*
+
+expr 52: [\x00-\x1f\\"\b\f\n\r\t]
+
+expr 53: ([\\"]|[^\ -~])
+
+expr 54: [\x80-\xff]
 
 ERROR:   <a href="(.*?)">(.*?)</a>
     rx: prefer-fewer '?' unimplemented: in "<a href="(.*?)">(.*?)</a>"
@@ -203,73 +199,72 @@ ERROR:   <a id="(.*?)".*?>(.*?)</a>
 ERROR:   \b[a-zA-Z_]+=(?:"(?:\\"|[^"])*"' + '|(?:\\\\.|[^"\'\\s])*' + r"|'(?:\\'|[^'])*
     rx: \b (boundary) unimplemented: in "\b[a-zA-Z_]+=(?:"(?:\\"|[^"])*"' + '|(?:\\\\.|[^"\'\\s])*' + r"|'(?:\\'|[^'])*"
 
-expr 51: (\d+) total matching documents
+expr 55: (\d+) total matching documents
 
-expr 52: %s\.[wj]ar$
+expr 56: %s\.[wj]ar$
 
-expr 53: \.(?:[wj]ar|pom)$
+expr 57: \.(?:[wj]ar|pom)$
 
-expr 54: \.(?:pom|[jw]ar)$
+expr 58: \.(?:pom|[jw]ar)$
 
-expr 55: %s\.[jw]ar$
+expr 59: %s\.[jw]ar$
 
-expr 56: ^pom.xml.template$
+expr 60: ^pom.xml.template$
 
-expr 57: ^.*/?bin/.*.py
+expr 61: ^.*/?bin/.*.py
 
-expr 58: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+expr 62: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
 
-expr 59: ([0-9])\.([0-9])\.([0-9]).*
+expr 63: ([0-9])\.([0-9])\.([0-9]).*
 
-expr 60: [\.\-].split(version)
+expr 64: [\.\-].split(version)
 
-expr 61: \s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
+expr 65: \s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
 
-expr 62: ^.*/?bin/.*.py
+expr 66: ^.*/?bin/.*.py
 
-expr 63: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+expr 67: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
 
-expr 64: ([0-9])\.([0-9])\.([0-9]).*
+expr 68: ([0-9])\.([0-9])\.([0-9]).*
 
-expr 65: [\.\-].split(version)
+expr 69: [\.\-].split(version)
 
-expr 66: \s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
+expr 70: \s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
 
-expr 67: ^.*/?bin/.*.py
+expr 71: ^.*/?bin/.*.py
 
-expr 68: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+expr 72: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
 
-expr 69: ([0-9])\.([0-9])\.([0-9]).*
+expr 73: ([0-9])\.([0-9])\.([0-9]).*
 
-expr 70: ^.*/?bin/.*.py
+expr 74: ^.*/?bin/.*.py
 
-expr 71: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
+expr 75: ^([4-9]\.[0-9])\.[0-9]\.(Final|(Alpha|Beta|CR)[1-9][0-9]?)$
 
-expr 72: ([0-9])\.([0-9])\.([0-9]).*
+expr 76: ([0-9])\.([0-9])\.([0-9]).*
 
-expr 73: [\.\-].split(version)
+expr 77: [\.\-].split(version)
 
-expr 74: \s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
+expr 78: \s*private static final (String (MAJOR|MINOR|MICRO|MODIFIER)|boolean SNAPSHOT)
 
-ERROR:   (?P<params>[\x20-\x3f]*)(?P<final>[\x40-\x7e])
-    rx: '(?...' unimplemented: in "(?P<params>[\x20-\x3f]*)(?P<final>[\x40-\x7e])"
+expr 79: (?P<params>[\x20-\x3f]*)(?P<final>[\x40-\x7e])
 
-expr 75: \s+
+expr 80: \s+
 
-expr 76: ^\s+lib([^=-]+)(?:-[\.0-9]+)?\.so\.[0-9]+ =>
+expr 81: ^\s+lib([^=-]+)(?:-[\.0-9]+)?\.so\.[0-9]+ =>
 
 ERROR:   (.*?)(["\\\x00-\x1f])
     rx: prefer-fewer '?' unimplemented: in "(.*?)(["\\\x00-\x1f])"
 
-expr 77: [ \t\n\r]*
+expr 82: [ \t\n\r]*
 
-expr 78: ^ ?[\?ID] *[1-9 ]*[a-zA-Z]* +(.*)
+expr 83: ^ ?[\?ID] *[1-9 ]*[a-zA-Z]* +(.*)
 
-expr 79: [\.\-].split(version)
+expr 84: [\.\-].split(version)
 
-expr 80: [A-Za-z_][A-Za-z0-9_]*
+expr 85: [A-Za-z_][A-Za-z0-9_]*
 
-expr 81: sockets: used \d+\n
+expr 86: sockets: used \d+\n
 
-expr 82: \s*<!ENTITY\s+(\S+)\s+"&(?:#38;)?#(\d+);
-(36 expression(s) rejected)
+expr 87: \s*<!ENTITY\s+(\S+)\s+"&(?:#38;)?#(\d+);
+(31 expression(s) rejected)

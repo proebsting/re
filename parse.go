@@ -7,6 +7,7 @@ import (
 	"os"
 	"regexp"
 	"strconv"
+	"unicode/utf8"
 )
 
 // MaxComplexity is a crude limit to the size of a parse tree.
@@ -26,6 +27,9 @@ func init() {
 var oprstack []rune  // operators associated with pushed expressions
 var exprstack []Node // stack of pushed expressions
 
+//  return flags from pq processor
+const PQ_ERR, PQ_CMT, PQ_OK = -1, 0, 1
+
 //  Parse parses a regular expression and returns a tree of Nodes.
 //  If there is an error, it returns nil (and an error).
 //
@@ -36,13 +40,15 @@ var exprstack []Node // stack of pushed expressions
 //	.  \d \s \w \D \S \W
 //	[abc]  [^abc]  [a-c]  [\x]
 //
-//  Parse ignores the Perl non-capturing submatch form "(?:",  but other
-//  "(?" forms are errors.
-//
 //  All trees are "anchored".  An initial '^' and/or final '$' is ignored.
+//  Embedded anchors, as well as other anchor forms like \b, are illegal.
 //
 //  Wildcard character sets (for ".", "\w", "\D", "[^\d]", etc.)
 //  are limited to the ASCII character set [\x01-\x7F].
+//
+//  Most Perl "(?" forms are illegal, but two kinds are allowed and ignored:
+//	Comments:  (?#...)
+//	Captures:  (?:  (?'id'  (?<id>  (?P<id>
 func Parse(orgstr string) (Node, error) {
 
 	var curr Node         // current parse tree
@@ -88,16 +94,16 @@ func Parse(orgstr string) (Node, error) {
 			continue
 
 		case '(':
-			// check for "(?..." forms
-			// treat "(?:" as "(" but abort on other "(?...")
 			if len(rexpr) > 1 && rexpr[0] == '?' {
-				if rexpr[1] == ':' {
-					// just ignore "?:"
-					rexpr = rexpr[2:]
-				} else {
+				// handle PCRE "(?" form
+				var f int
+				rexpr, f = pq(rexpr)
+				if f == PQ_ERR {
 					return nil, &ParseError{
 						orgstr, "'(?...' unimplemented"}
-				}
+				} else if f == PQ_CMT {
+					continue // was a comment
+				} // else proceed, treating as simple '('
 			}
 			fallthrough // the rest is common with '|'
 		case '|': // and '(' falling through
@@ -184,6 +190,32 @@ func popAlts(d Node) Node {
 	return d
 }
 
+//  pattern for consuming PCRE comments following '('
+var commentx = regexp.MustCompile(`^\?\#[^)]*\)`)
+
+//  pattern for consuming innocuous PCRE capture instructions following '('
+var capturex = regexp.MustCompile(`^\?(:|'[^']*'|P?<[^>]*>)`)
+
+//  pq interprets a "(?" form from which the "(" has already been consumed.
+//  It returns an updated rexpr and PQ_ERR, PQ_CMT, or PQ_OK.
+func pq(rexpr []rune) ([]rune, int) {
+	// check for a comment
+	rstring := string(rexpr)
+	s := commentx.FindString(rstring)
+	if s != "" {
+		rexpr := rexpr[utf8.RuneCountInString(s):] // trim comment
+		return rexpr, PQ_CMT
+	}
+	// check for one of the "(?..." capture forms
+	s = capturex.FindString(rstring)
+	if s != "" {
+		rexpr := rexpr[utf8.RuneCountInString(s):] // trim capture
+		return rexpr, PQ_OK
+	}
+	// neither one; that's an error
+	return rexpr, PQ_ERR
+}
+
 //  Four helper functions consume regexp characters:
 //  	replicate(), rescape(), bxparse(), and bescape().
 //  These functions obey the following conventions.
@@ -196,7 +228,7 @@ func popAlts(d Node) Node {
 //  If an error is detected, the primary return is nil, and the second return
 //  is an error message as an array of runes.
 
-var replx = regexp.MustCompile("{(\\d*)(,?)(\\d*)}") // expr for {m,n}
+var replx = regexp.MustCompile(`^{(\d*)(,?)(\d*)}`) // expr for {m,n}
 
 //  replicate wraps a replication node around a subtree if it is followed by
 //  posfix ?, *, +, or {m,n}.  It normally returns the resulting tree and

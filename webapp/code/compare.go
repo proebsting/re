@@ -125,7 +125,7 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 		fmt.Fprintf(w, "<TH class=c%d>e%d</TH>", i, i)
 	}
 	fmt.Fprintf(w, "<TH class=\"cg leftb\">example</TH></TR>\n")
-	drawline := true 
+	drawline := true
 	for _, s := range trylist {
 		if s == DRAWLINE {
 			drawline = true

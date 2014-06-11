@@ -191,72 +191,70 @@ expr 88: \s*PRIMARY\s+.*
 
 expr 89: \s*LABEL->SSID\s.+[VM|ANY]\s+.*
 
-ERROR:   \s*(?P<openline><p[^>]*>)\s*(?P<closeline></p>)
-    rx: '(?...' unimplemented: in "\s*(?P<openline><p[^>]*>)\s*(?P<closeline></p>)"
+expr 90: \s*(?P<openline><p[^>]*>)\s*(?P<closeline></p>)
 
 ERROR:   (\s*<p[^>]*>\s*</p>(\s*<div[^>]*>\s*</div>\s*)*){2,}(?!\s*<h\d)
     rx: '(?...' unimplemented: in "(\s*<p[^>]*>\s*</p>(\s*<div[^>]*>\s*</div>\s*)*){2,}(?!\s*<h\d)"
 
-expr 90: (\s*<(p|div)[^>]*>\s*</(p|div)>)
+expr 91: (\s*<(p|div)[^>]*>\s*</(p|div)>)
 
 ERROR:   \s*(?P<openline><p(?!\sclass=\"(softbreak|whitespace)\")[^>]*>)\s*(?P<closeline></p>)
     rx: '(?...' unimplemented: in "\s*(?P<openline><p(?!\sclass=\"(softbreak|whitespace)\")[^>]*>)\s*(?P<closeline></p>)"
 
-expr 91: (\s*<p[^>]*>\s*</p>(\s*<div[^>]*>\s*</div>\s*)*){2,}
+expr 92: (\s*<p[^>]*>\s*</p>(\s*<div[^>]*>\s*</div>\s*)*){2,}
 
-ERROR:   (?<=<p).*?(?=</p>)
-    rx: '(?...' unimplemented: in "(?<=<p).*?(?=</p>)"
+expr 93: (?<=<p).*?(?=</p>)
 
-expr 92: <h[1-3][^>]*>
+expr 94: <h[1-3][^>]*>
 
-expr 93: ^\s*TYPE\s+([A-Z0-9_]+)
-
-expr 94: ^\s*END\s*SUBROUTINE
-
-expr 95: ^\s*END\s*INTERFACE
+expr 95: ^\s*TYPE\s+([A-Z0-9_]+)
 
 expr 96: ^\s*END\s*SUBROUTINE
 
-expr 97: ^\s*TYPE\s+([A-Z0-9_]+)
+expr 97: ^\s*END\s*INTERFACE
 
-expr 98: ^\s*END\s*INTERFACE
+expr 98: ^\s*END\s*SUBROUTINE
 
-expr 99: ''\said\s*=['"][^'"]*['"]''
+expr 99: ^\s*TYPE\s+([A-Z0-9_]+)
+
+expr 100: ^\s*END\s*INTERFACE
+
+expr 101: ''\said\s*=['"][^'"]*['"]''
 
 ERROR:   br'''['"]kindle:pos:fid:([0-9|A-V]+):off:([0-9|A-V]+).*?["']''')
     rx: prefer-fewer '?' unimplemented: in "br'''['"]kindle:pos:fid:([0-9|A-V]+):off:([0-9|A-V]+).*?["']''')"
 
-expr 100: ''(<[^>]*\said\s*=[^>]*>)''
+expr 102: ''(<[^>]*\said\s*=[^>]*>)''
 
 ERROR:   ''(<a.*?href=.*?>)''
     rx: prefer-fewer '?' unimplemented: in "''(<a.*?href=.*?>)''"
 
-expr 101: .* MasterSwitch plus.*
+expr 103: .* MasterSwitch plus.*
 
-expr 102: .*Outlet Control/Configuration.*
+expr 104: .*Outlet Control/Configuration.*
 
-expr 103: .* MasterSwitch plus 2
+expr 105: .* MasterSwitch plus 2
 
-expr 104: .*Outlet Management.*
+expr 106: .*Outlet Management.*
 
 ERROR:   <span.*?</span>
     rx: prefer-fewer '?' unimplemented: in "<span.*?</span>"
 
-expr 105: ^%s
+expr 107: ^%s
 
-expr 106: %s$
+expr 108: %s$
 
-expr 107: %s
+expr 109: %s
 
-expr 108: %s
+expr 110: %s
 
-expr 109: ^%patch(\d*)
+expr 111: ^%patch(\d*)
 
-expr 110: ^(Copyright|Serial)\s*:\s*(\S+)
+expr 112: ^(Copyright|Serial)\s*:\s*(\S+)
 
-expr 111: ^Packager\s*:\s*(\S+)
+expr 113: ^Packager\s*:\s*(\S+)
 
-expr 112: ^Patch(\d*)\s*:\s*(\S+)
+expr 114: ^Patch(\d*)\s*:\s*(\S+)
 
 ERROR:   ^[^#]*(\$RPM_SOURCE_DIR|%{?_sourcedir}?)
     rx: malformed "{m,n}": in "^[^#]*(\$RPM_SOURCE_DIR|%{?_sourcedir}?)"
@@ -264,14 +262,14 @@ ERROR:   ^[^#]*(\$RPM_SOURCE_DIR|%{?_sourcedir}?)
 ERROR:   ^BuildArch(itectures)?\s*:\s*(.+?)\s*$
     rx: prefer-fewer '?' unimplemented: in "^BuildArch(itectures)?\s*:\s*(.+?)\s*$"
 
-expr 113: ^Prefix\s*:\s*(\S+)
+expr 115: ^Prefix\s*:\s*(\S+)
 
 ERROR:   (^|\s|%{?__)make}?\s+(check|test)
     rx: Embedded '^' unimplemented: in "(^|\s|%{?__)make}?\s+(check|test)"
 
-expr 114: \s-P\s+(\d+)\\b
+expr 116: \s-P\s+(\d+)\\b
 
-expr 115: ^BuildRoot\s*:\s*(\S+)
+expr 117: ^BuildRoot\s*:\s*(\S+)
 
 ERROR:   (^|\s)((.*/)?rm|%{?__rm}?) 
     rx: Embedded '^' unimplemented: in "(^|\s)((.*/)?rm|%{?__rm}?) "
@@ -291,7 +289,7 @@ ERROR:   <caption><span>(.*?)</span>
 ERROR:   ^<td class="colLast"><code><strong><a href="[^>]*\.([^>]*?)\.html" title="class in[^>]*">
     rx: prefer-fewer '?' unimplemented: in "^<td class="colLast"><code><strong><a href="[^>]*\.([^>]*?)\.html" title="class in[^>]*">"
 
-expr 116: ^<dt><strong>(Specified by:|Overrides:)</strong></dt>$
+expr 118: ^<dt><strong>(Specified by:|Overrides:)</strong></dt>$
 
 ERROR:   <.*?>
     rx: prefer-fewer '?' unimplemented: in "<.*?>"
@@ -299,8 +297,8 @@ ERROR:   <.*?>
 ERROR:   ^<td class="colLast"><code><strong><a href="[^>]*#([^>]*?)">
     rx: prefer-fewer '?' unimplemented: in "^<td class="colLast"><code><strong><a href="[^>]*#([^>]*?)">"
 
-expr 117: ^<h3>Method Detail</h3>$
+expr 119: ^<h3>Method Detail</h3>$
 
 ERROR:   ^(?:</a>)?<a name="([^>]*?)">$
     rx: prefer-fewer '?' unimplemented: in "^(?:</a>)?<a name="([^>]*?)">$"
-(23 expression(s) rejected)
+(21 expression(s) rejected)

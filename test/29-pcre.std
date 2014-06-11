@@ -1,0 +1,117 @@
+Options: -R -T -g -h -i -l -v -I 0
+
+         # test handling of PCRE extensions
+
+expr 0: a+b+(?#comment)c+d+
+tree:   (((a+b+)c+)d+)
+augmnt: ((((a+b+)c+)d+)#)
+length: 4 to *
+cplxty: 7
+-------------------- Examples --------------------
+ex(0):  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd
+ex(1):  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd
+ex(2):  abbcd  aabbccd  aabbcdd  abbcdd  aabccd  abbcd  abccdd  abccdd  abcdd
+ex(3):  aaabbbcccd  abcccdd  aaabbcdd  abcdd  abbbcccd  aabccddd  abccdd
+ex(5):  abcccccddddd  aaabbccdddd  abbccddddd  aaabccccddddd  aaabccdddd
+ex(8):  aaaaaabccdddddddd  aaaaabbbbbbccccccccdddd  aaabbbbbbcccccdddddddd
+---------------- Examples from DFA ---------------
+s1:  abcd
+
+expr 1: a+b+(?#3IИЯ3)c+d+
+tree:   (((a+b+)c+)d+)
+augmnt: ((((a+b+)c+)d+)#)
+length: 4 to *
+cplxty: 7
+-------------------- Examples --------------------
+ex(0):  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd
+ex(1):  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd  abcd
+ex(2):  abbcd  aabbccd  aabbcdd  abbcdd  aabccd  abbcd  abccdd  abccdd  abcdd
+ex(3):  aaabbbcccd  abcccdd  aaabbcdd  abcdd  abbbcccd  aabccddd  abccdd
+ex(5):  abcccccddddd  aaabbccdddd  abbccddddd  aaabccccddddd  aaabccdddd
+ex(8):  aaaaaabccdddddddd  aaaaabbbbbbccccccccdddd  aaabbbbbbcccccdddddddd
+---------------- Examples from DFA ---------------
+s1:  abcd
+
+expr 2: (?#)o*(?#)
+tree:   o*
+augmnt: (o*#)
+length: 0 to *
+cplxty: 1
+-------------------- Examples --------------------
+ex(0):                                                                        
+ex(1):      o  o  o        o        o      o      o      o  o  o    o    o  o  
+ex(2):  o          oo  o      oo    oo  o  o  oo    oo  oo          oo    oo  
+ex(3):      oo  oo  o  o  ooo  oo    ooo      o    oo  o  o  o  ooo    ooo  oo
+ex(5):  ooo  oo  o    ooooo  oo    ooo  ooooo  ooooo  ooo  oooo  oooo  ooooo  o
+ex(8):  oo  oooooooo  ooo  o  oo  ooooooo  oooooo  ooooooo  ooooo  oooo  oooo
+---------------- Examples from DFA ---------------
+s0:  
+
+expr 3: a*(?:bc)*d*
+tree:   ((a*(bc)*)d*)
+augmnt: (((a*(bc)*)d*)#)
+length: 0 to *
+cplxty: 7
+-------------------- Examples --------------------
+ex(0):                                                                        
+ex(1):  d  abc  bc  bc  a  a  abc  bcd  a  a  bc  bc    a  ad  ad  ad    abc  
+ex(2):  d  abcbc  abcbc  dd  dd  d  add  d  bcbcd  d  aabcdd  add  d  abcbcdd
+ex(3):  bcbc  bcbcbcdd  aabcd  abcbc  aaabcbcd  aaa  aabcbcbcddd  aaabc  bcbcbc
+ex(5):  aaaaabcbcdddd  aabcddd  aaabcd  aaaabcdd  abcbcbcbcdd  abcbcbcdd
+ex(8):  aaaaaaabcbcbcbcbc  aabcbcbcbcbcdddd  aabcbcbcbcbcbcbcbcddd
+---------------- Examples from DFA ---------------
+s0:  
+s2:  d
+s3:  bc
+
+expr 4: a*(?'center'bc)*d*
+tree:   ((a*(bc)*)d*)
+augmnt: (((a*(bc)*)d*)#)
+length: 0 to *
+cplxty: 7
+-------------------- Examples --------------------
+ex(0):                                                                        
+ex(1):  d  abc  bc  bc  a  a  abc  bcd  a  a  bc  bc    a  ad  ad  ad    abc  
+ex(2):  d  abcbc  abcbc  dd  dd  d  add  d  bcbcd  d  aabcdd  add  d  abcbcdd
+ex(3):  bcbc  bcbcbcdd  aabcd  abcbc  aaabcbcd  aaa  aabcbcbcddd  aaabc  bcbcbc
+ex(5):  aaaaabcbcdddd  aabcddd  aaabcd  aaaabcdd  abcbcbcbcdd  abcbcbcdd
+ex(8):  aaaaaaabcbcbcbcbc  aabcbcbcbcbcdddd  aabcbcbcbcbcbcbcbcddd
+---------------- Examples from DFA ---------------
+s0:  
+s2:  d
+s3:  bc
+
+expr 5: a*(?<middle>bc)*d*
+tree:   ((a*(bc)*)d*)
+augmnt: (((a*(bc)*)d*)#)
+length: 0 to *
+cplxty: 7
+-------------------- Examples --------------------
+ex(0):                                                                        
+ex(1):  d  abc  bc  bc  a  a  abc  bcd  a  a  bc  bc    a  ad  ad  ad    abc  
+ex(2):  d  abcbc  abcbc  dd  dd  d  add  d  bcbcd  d  aabcdd  add  d  abcbcdd
+ex(3):  bcbc  bcbcbcdd  aabcd  abcbc  aaabcbcd  aaa  aabcbcbcddd  aaabc  bcbcbc
+ex(5):  aaaaabcbcdddd  aabcddd  aaabcd  aaaabcdd  abcbcbcbcdd  abcbcbcdd
+ex(8):  aaaaaaabcbcbcbcbc  aabcbcbcbcbcdddd  aabcbcbcbcbcbcbcbcddd
+---------------- Examples from DFA ---------------
+s0:  
+s2:  d
+s3:  bc
+
+expr 6: a*(?P<interior>bc)*d*
+tree:   ((a*(bc)*)d*)
+augmnt: (((a*(bc)*)d*)#)
+length: 0 to *
+cplxty: 7
+-------------------- Examples --------------------
+ex(0):                                                                        
+ex(1):  d  abc  bc  bc  a  a  abc  bcd  a  a  bc  bc    a  ad  ad  ad    abc  
+ex(2):  d  abcbc  abcbc  dd  dd  d  add  d  bcbcd  d  aabcdd  add  d  abcbcdd
+ex(3):  bcbc  bcbcbcdd  aabcd  abcbc  aaabcbcd  aaa  aabcbcbcddd  aaabc  bcbcbc
+ex(5):  aaaaabcbcdddd  aabcddd  aaabcd  aaaabcdd  abcbcbcbcdd  abcbcbcdd
+ex(8):  aaaaaaabcbcbcbcbc  aabcbcbcbcbcdddd  aabcbcbcbcbcbcbcbcddd
+---------------- Examples from DFA ---------------
+s0:  
+s2:  d
+s3:  bc
+7 expression(s) loaded

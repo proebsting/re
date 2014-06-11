@@ -6,10 +6,6 @@ Write intro page and other explanatory prose
 Finish & finalize styling
 Always add a blank row for another comparator example [up to 10 total]
 
-REGEXPS:
-Accept/ignore Perl comments (?#
-Accept/ignore capture names (?<identifier>
-
 --------------------------------------------------------------------
 
 Probably not to be done:

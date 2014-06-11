@@ -1,0 +1,8 @@
+# test handling of PCRE extensions
+a+b+(?#comment)c+d+
+a+b+(?#3IИЯ3)c+d+
+(?#)o*(?#)
+a*(?:bc)*d*
+a*(?'center'bc)*d*
+a*(?<middle>bc)*d*
+a*(?P<interior>bc)*d*
