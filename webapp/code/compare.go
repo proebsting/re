@@ -7,6 +7,7 @@ import (
 	"html/template"
 	"net/http"
 	"rx"
+	"strings"
 )
 
 var DRAWLINE = "\x7F\x7F" // special flag for separator in grid
@@ -54,17 +55,17 @@ var multixamples = []struct {
 func combos(w http.ResponseWriter, r *http.Request) {
 
 	// must read all input before writing anything
-	// first get the expressions
+	// first get the expressions, trimming leading/trailing blanks
 	exprlist := make([]string, 0)
 	for _, l := range exprlabels {
-		arg := r.FormValue(l)
+		arg := strings.TrimSpace(r.FormValue(l))
 		if arg != "" {
 			exprlist = append(exprlist, arg)
 		}
 	}
 	nx := len(exprlist)
 
-	// then get the test strings
+	// then get the test strings; these are not trimmed
 	testlist := make([]string, 0)
 	for _, l := range testlabels {
 		arg := r.FormValue(l)

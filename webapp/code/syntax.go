@@ -25,6 +25,7 @@ var tSyntax = template.Must(template.New("syntax").Parse(`
 </PRE>
 <P>All expressions are &ldquo;anchored&rdquo;.
 An initial <CODE>^</CODE> and/or final <CODE>$</CODE> is ignored.
+<BR>(Use these to protect a significant space character at either end.)
 <BR>Embedded anchors, as well as other anchor forms like <CODE>\b</CODE>,
 are illegal.
 <P>Wildcard character sets (for

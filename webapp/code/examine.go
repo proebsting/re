@@ -8,6 +8,7 @@ import (
 	"html/template"
 	"net/http"
 	"rx"
+	"strings"
 )
 
 const linemax = 79 // max output line length for generated examples
@@ -39,7 +40,8 @@ var examples = []struct{ Expr, Caption string }{
 
 //  details responds to an inspection request for a single expression
 func details(w http.ResponseWriter, r *http.Request) {
-	expr := r.FormValue("x0") // must read before any writing
+	expr := r.FormValue("x0")      // must read before any writing
+	expr = strings.TrimSpace(expr) // trim leading/trailing blanks
 	putheader(w, r, "Inspect Expression")
 	tree, err := rx.Parse(expr)
 	if err == nil {
@@ -47,7 +49,6 @@ func details(w http.ResponseWriter, r *http.Request) {
 		// must print (or at least stringize) tree before augmenting
 		fmt.Fprintf(w, "<P>Initial Parse Tree: %s\n", hx(tree))
 
-		//#%#% currently no protection against DOS by huge expr
 		augt := rx.Augment(tree, 0)
 		dfa := rx.BuildDFA(augt)
 		dmin := dfa.Minimize()
