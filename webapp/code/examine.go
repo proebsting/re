@@ -23,7 +23,7 @@ func examine(w http.ResponseWriter, r *http.Request) {
 var tExamples = template.Must(template.New("examples").Parse(
 	`<P>Or choose one of these examples:{{range .}}
 <form action="/details" method="post"><div>
-<input type="hidden" name="a0" value="{{.Expr}}">
+<input type="hidden" name="x0" value="{{.Expr}}">
 <button class=link>{{.Caption}}</button></div></form>{{end}}
 `))
 
@@ -39,7 +39,7 @@ var examples = []struct{ Expr, Caption string }{
 
 //  details responds to an inspection request for a single expression
 func details(w http.ResponseWriter, r *http.Request) {
-	expr := r.FormValue("a0") // must read before any writing
+	expr := r.FormValue("x0") // must read before any writing
 	putheader(w, r, "Inspect Expression")
 	tree, err := rx.Parse(expr)
 	if err == nil {

@@ -15,7 +15,7 @@ var DRAWLINE = "\x7F\x7F" // special flag for separator in grid
 func compare(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Comparison Query")
 	putform(w, "/combos", "Enter regular expressions:",
-		Ncompare, nil, Nsuggest, nil)
+		nCompare, nil, nSuggest, nil)
 	tMultiEx.Execute(w, multixamples)
 	putfooter(w, r)
 }
@@ -23,7 +23,7 @@ func compare(w http.ResponseWriter, r *http.Request) {
 var tMultiEx = template.Must(template.New("multixamples").Parse(
 	`<P>Or choose one of these predefined sets:{{range .}}
 <form action="/combos" method="post"><div>{{range $i, $s := .Exprs}}
-<input type="hidden" name="a{{$i}}" value="{{$s}}">
+<input type="hidden" name="x{{$i}}" value="{{$s}}">
 {{end}}
 <button class=link>{{.Caption}}</button></div></form>{{end}}
 `))
@@ -111,7 +111,7 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Fprint(w, "<h2>Try again?</h2>")
 	putform(w, "/combos", "Enter regular expressions:",
-		Ncompare, exprlist, Nsuggest, testlist)
+		nCompare, exprlist, nSuggest, testlist)
 	putfooter(w, r)
 }
 
