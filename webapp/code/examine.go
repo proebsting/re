@@ -67,12 +67,16 @@ func details(w http.ResponseWriter, r *http.Request) {
 		dfa.ShowNFA(nfaBuffer, "")
 		fmt.Fprintf(w, "<h2>NFA</h2><PRE>\n%s</PRE>\n",
 			hx(string(nfaBuffer.Bytes())))
+		tAskGraph.Execute(w,
+			struct{ Expr, Path string }{expr, "/drawNFA"})
 
 		fmt.Fprintln(w, `</div><div class=lstripe>`)
 		dfaBuffer := &bytes.Buffer{}
 		dmin.ShowStates(dfaBuffer, "")
 		fmt.Fprintf(w, "<h2 class=noadvance>DFA</h2><PRE>\n%s</PRE>\n",
 			hx(string(dfaBuffer.Bytes())))
+		tAskGraph.Execute(w,
+			struct{ Expr, Path string }{expr, "/drawDFA"})
 
 		fmt.Fprintln(w, `</div></div><div class=reset></div>`)
 	} else {
@@ -84,6 +88,12 @@ func details(w http.ResponseWriter, r *http.Request) {
 		1, []string{expr}, 0, nil)
 	putfooter(w, r)
 }
+
+var tAskGraph = template.Must(template.New("askgraph").Parse(
+	`<form action="{{.Path}}" method="post"><div>
+<input type="hidden" name="x0" value="{{.Expr}}">
+<button class=link>draw the graph</button></div></form>
+`))
 
 //  genexamples writes a line of specimen strings matching the expression
 func genexamples(w http.ResponseWriter, tree rx.Node, maxrepl int) {

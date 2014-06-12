@@ -16,6 +16,8 @@ func init() {
 	http.HandleFunc("/", examine)        // anything unmatched
 	http.HandleFunc("/examine", examine) // examine.go
 	http.HandleFunc("/details", details) // examine.go
+	http.HandleFunc("/drawDFA", drawDFA) // draw.go
+	http.HandleFunc("/drawNFA", drawNFA) // draw.go
 	http.HandleFunc("/compare", compare) // compare.go
 	http.HandleFunc("/combos", combos)   // compare.go
 	http.HandleFunc("/syntax", syntax)   // syntax.go
