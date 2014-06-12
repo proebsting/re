@@ -33,11 +33,4 @@ function clearForm(oForm) {
 	}
 }
 
-// pretect(s) -- wrap in <pre>...</pre> and escape [&<>"] characters
-
-function pretect(s) {
-	return "<pre>" + s.replace(/\&/g, "&amp;").replace(/\"/g, "&quot;").
-		replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</pre>";
-}
-
 //-->

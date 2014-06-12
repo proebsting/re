@@ -53,6 +53,10 @@ func draw(w http.ResponseWriter, r *http.Request, which string) {
 var tDraw = template.Must(template.New("draw").Parse(`
 <script type="text/javascript" src="/static/viz.js"></script>
 <script type="text/javascript">
+function pretect(s) {
+	return "<pre>" + s.replace(/\&/g, "&amp;").replace(/\"/g, "&quot;").
+		replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</pre>";
+}
 function render(id) {
 	try {
 		dot = document.getElementById(id).innerHTML;
