@@ -53,32 +53,22 @@ func draw(w http.ResponseWriter, r *http.Request, which string) {
 var tDraw = template.Must(template.New("draw").Parse(`
 <script type="text/javascript" src="/static/viz.js"></script>
 <script type="text/javascript">
-function pretect(s) {
-	return "<pre>" + s.replace(/\&/g, "&amp;").replace(/\"/g, "&quot;").
-		replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</pre>";
+function download(filename, mimetype, data) {
+  var pom = document.createElement('a');
+  pom.setAttribute('href',
+    'data:' + mimetype + ';charset=utf-8,' + encodeURIComponent(data));
+  pom.setAttribute('download', filename);
+  document.body.appendChild(pom)
+  pom.click();
+  document.body.removeChild(pom)
 }
-function render(id) {
-	try {
-		dot = document.getElementById(id).innerHTML;
-		return Viz(dot, "svg");
-	} catch(e) {
-		return pretect(e.toString());
-	}
-}
-function download(filename, data) {
-	var pom = document.createElement('a');
-	pom.setAttribute('href',
-		'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data));
-	pom.setAttribute('download', filename);
-	document.body.appendChild(pom)
-	pom.click();
-	document.body.removeChild(pom)
-}
-
-var svg = render("graph")
+var dot = document.getElementById("graph").innerHTML;
+var svg = Viz(dot, "svg")
 document.body.innerHTML += svg;
 </script>
 <P>
-<input type="button" value="Download SVG file"
-onclick="download('{{.}}.svg', svg);" />
+<input type="button" value="Download SVG image"
+onclick="download('{{.}}.svg', 'image/svg+xml', svg);" />
+<input type="button" value="Download Graphviz commands"
+onclick="download('{{.}}.gv', 'text/vnd.graphviz', dot);" />
 `))
