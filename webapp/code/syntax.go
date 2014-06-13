@@ -25,15 +25,16 @@ var tSyntax = template.Must(template.New("syntax").Parse(`
 </PRE>
 <P>All expressions are &ldquo;anchored&rdquo;.
 An initial <CODE>^</CODE> and/or final <CODE>$</CODE> is ignored.
-<BR>(Use these to protect a significant space character at either end.)
 <BR>Embedded anchors, as well as other anchor forms like <CODE>\b</CODE>,
 are illegal.
 <P>Wildcard character sets (for
 <CODE>&nbsp; . &nbsp; \w &nbsp; \D &nbsp; [^\d] &nbsp; </CODE> etc.)
-are limited to the ASCII character set [\x01-\x7F].
+are limited to the ASCII [\x01-\x7F] subset of Unicode.
 <P>Most Perl <CODE>(?</CODE> forms are illegal,
 but two kinds are allowed and ignored:<PRE>
       Comments:  (?#...)
       Captures:  (?:  (?'id'  (?&lt;id&gt;  (?P&lt;id&gt;
 </PRE>
+<P>Leading and trailing spaces are trimmed to tolerate imprecision in
+cutting and pasting.  To inhibit trimming, parenthesize the expression.
 `))
