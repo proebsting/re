@@ -45,7 +45,7 @@ func draw(w http.ResponseWriter, r *http.Request, which string) {
 	}
 	fmt.Fprintln(w, `</script>`)
 
-	tDraw.Execute(w, nil)
+	tDraw.Execute(w, which)
 
 	putfooter(w, r)
 }
@@ -65,6 +65,20 @@ function render(id) {
 		return pretect(e.toString());
 	}
 }
-document.body.innerHTML += render("graph");
+function download(filename, data) {
+	var pom = document.createElement('a');
+	pom.setAttribute('href',
+		'data:image/xvg+xml;charset=utf-8,' + encodeURIComponent(data));
+	pom.setAttribute('download', filename);
+	document.body.appendChild(pom)
+	pom.click();
+	document.body.removeChild(pom)
+}
+
+var svg = render("graph")
+document.body.innerHTML += svg;
 </script>
+<P>
+<input type="button" value="Download SVG file"
+onclick="download('{{.}}.svg', svg);" />
 `))
