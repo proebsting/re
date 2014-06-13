@@ -68,7 +68,7 @@ function render(id) {
 function download(filename, data) {
 	var pom = document.createElement('a');
 	pom.setAttribute('href',
-		'data:image/xvg+xml;charset=utf-8,' + encodeURIComponent(data));
+		'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data));
 	pom.setAttribute('download', filename);
 	document.body.appendChild(pom)
 	pom.click();
