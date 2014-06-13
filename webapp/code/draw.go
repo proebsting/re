@@ -10,33 +10,59 @@ import (
 	"strings"
 )
 
-//  drawDFA draw a DFA.
+//  askgraph generates a "draw the graph" link
+func askgraph(w http.ResponseWriter, path string, exprlist []string, label string) {
+	tAskGraph.Execute(w,
+		struct {
+			Path     string
+			ExprList []string
+			Label    string
+		}{
+			path, exprlist, label})
+}
+
+var tAskGraph = template.Must(template.New("askgraph").Parse(
+	`<form action="{{.Path}}" method="post"><div>
+{{range $k, $v := .ExprList}}{{if $v}}
+<input type="hidden" name="x{{$k}}" value="{{$v}}">{{end}}{{end}}
+<button class=link>{{.Label}}</button></div></form>
+`))
+
+//  drawDFA draws a DFA.
 func drawDFA(w http.ResponseWriter, r *http.Request) {
 	draw(w, r, "DFA")
 }
 
-//  drawNFA draw a DFA.
+//  drawNFA draws a DFA.
 func drawNFA(w http.ResponseWriter, r *http.Request) {
 	draw(w, r, "NFA")
 }
 
 //  draw produces a Dot file for rendering a DFA or NFA in the user's browser.
 func draw(w http.ResponseWriter, r *http.Request, which string) {
-	expr := r.FormValue("x0")      // must read before any writing
-	expr = strings.TrimSpace(expr) // trim leading/trailing blanks
+	// must read all input before writing anything
+	exprlist := make([]string, 0)
+	treelist := make([]rx.Node, 0)
+	for _, l := range exprlabels {
+		arg := strings.TrimSpace(r.FormValue(l))
+		if arg != "" {
+			exprlist = append(exprlist, arg)
+			tree, err := rx.Parse(arg)
+			if err == nil {
+				treelist = append(treelist,
+					rx.Augment(tree, len(treelist)))
+			}
+		}
+	}
 
 	putheader(w, r, which+" Graph")
-	tree, err := rx.Parse(expr)
-	if err != nil {
-		showerror(w, err)
-		putfooter(w, r)
-		return
-	}
-	augt := rx.Augment(tree, 0)
-	dfa := rx.BuildDFA(augt)
+	dfa := rx.MultiDFA(treelist)
 	dmin := dfa.Minimize()
 
-	fmt.Fprintf(w, "<P>%s\n<P>\n", hx(expr))
+	fmt.Fprintf(w, "<P>\n")
+	for _, e := range exprlist {
+		fmt.Fprintf(w, "%s<BR>\n", hx(e))
+	}
 	fmt.Fprintln(w, `<script type="text/vnd.graphviz" id="graph">`)
 	if which == "NFA" {
 		dmin.GraphNFA(w, "")

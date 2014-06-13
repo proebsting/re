@@ -20,6 +20,7 @@ func init() {
 	http.HandleFunc("/drawNFA", drawNFA) // draw.go
 	http.HandleFunc("/compare", compare) // compare.go
 	http.HandleFunc("/combos", combos)   // compare.go
+	http.HandleFunc("/multaut", multaut) // graph.go
 	http.HandleFunc("/syntax", syntax)   // syntax.go
 	http.HandleFunc("/about", about)     // about.go
 	http.HandleFunc("/info", info)       // info.go
