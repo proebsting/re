@@ -30,6 +30,8 @@ var tExamples = template.Must(template.New("examples").Parse(
 
 var examples = []struct{ Expr, Caption string }{
 	{`(0|1(01*0)*1)*`, "Binary number divisible by 3"},
+	{`A(BA)*B?|B(AB)*A?|A?(BA)*B?C((A(BA)*B?|B(AB)*A?)C)*(A(BA)*B?|B(AB)*A?)?`,
+		"ABCs with no letter doubled"},
 	{`-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d{1,3})?`, "JSON number"},
 	{`\([2-9]\d\d\) [2-9]\d\d\-\d{4}`, "US telephone number"},
 	{`([0-6]\d{2}|7([0-6]\d|7[012]))-\d{2}-\d{4}`, "US social security number"},
