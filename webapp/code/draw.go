@@ -56,22 +56,26 @@ func draw(w http.ResponseWriter, r *http.Request, which string) {
 	}
 
 	putheader(w, r, which+" Graph")
-	dfa := rx.MultiDFA(treelist)
-	dmin := dfa.Minimize()
-
-	fmt.Fprintf(w, "<P>\n")
-	for _, e := range exprlist {
-		fmt.Fprintf(w, "%s<BR>\n", hx(e))
-	}
-	fmt.Fprintln(w, `<script type="text/vnd.graphviz" id="graph">`)
-	if which == "NFA" {
-		dmin.GraphNFA(w, "")
+	if len(treelist) == 0 {
+		fmt.Fprintln(w, `<P>[no valid expressions found]`)
 	} else {
-		dmin.ToDot(w, "")
-	}
-	fmt.Fprintln(w, `</script>`)
+		dfa := rx.MultiDFA(treelist)
+		dmin := dfa.Minimize()
 
-	tDraw.Execute(w, which)
+		fmt.Fprintf(w, "<P>\n")
+		for _, e := range exprlist {
+			fmt.Fprintf(w, "%s<BR>\n", hx(e))
+		}
+		fmt.Fprintln(w, `<script type="text/vnd.graphviz" id="graph">`)
+		if which == "NFA" {
+			dmin.GraphNFA(w, "")
+		} else {
+			dmin.ToDot(w, "")
+		}
+		fmt.Fprintln(w, `</script>`)
+
+		tDraw.Execute(w, which)
+	}
 
 	putfooter(w, r)
 }
