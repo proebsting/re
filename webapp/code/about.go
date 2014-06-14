@@ -28,8 +28,7 @@ layout package as ported to JavaScript by
 using <A HREF="https://github.com/kripken/emscripten/wiki">emscripten</A>.
 This means that Graphviz is running in your own browser to lay out and draw
 the graphs!
-The first graph requires a 2.5 MB download, which should be cached to make
-subsequent graphs draw quickly.
+The first graph fetches a 2.5 MB script, but subsequent graphs draw quickly.
 <P> The “Download” buttons for saving graphs, especially, use
 cutting-edge browser features.  If they don't seem to do anything, look
 in your <CODE>Downloads</CODE> folder for <CODE>NFA.svg</CODE> or
