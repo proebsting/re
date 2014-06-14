@@ -7,20 +7,13 @@ import (
 	"fmt"
 	"net/http"
 	"rx"
-	"strings"
 )
 
 //  multaut displays a multi-NFA and multi-DFA
 func multaut(w http.ResponseWriter, r *http.Request) {
 
 	// must read all input before writing anything
-	exprlist := make([]string, 0)
-	for _, l := range exprlabels {
-		arg := strings.TrimSpace(r.FormValue(l))
-		if arg != "" {
-			exprlist = append(exprlist, arg)
-		}
-	}
+	exprlist := getexprs(r)
 	nx := len(exprlist)
 
 	// parse and echo the input

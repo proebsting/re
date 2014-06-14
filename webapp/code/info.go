@@ -72,7 +72,8 @@ var tInfo = template.Must(template.New("info").Parse(
 <BR>App Version ID: {{.VID}} ({{.Vtime}})
 <BR><BR>MaxComplexity: {{.MaxCx}}
 <H2>Request Header</H2>
-<P>{{range $k, $v := .Req.Header}}{{$k}} : {{$v}}<BR>{{end}}
+<P>{{range $k, $v := .Req.Header}}{{$k}} : {{$v}}<BR>
+{{end}}
 <H2>Cookies </H2><P>
 {{range .Cookies}}{{.Name}} = {{.Value}}<BR>
 {{else}}[none]{{end}}

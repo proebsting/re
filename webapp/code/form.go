@@ -5,6 +5,8 @@ package webapp
 import (
 	"html/template"
 	"io"
+	"net/http"
+	"strings"
 )
 
 //  Form configuration values.  Code changes are needed to extend beyond 10.
@@ -17,6 +19,25 @@ var (
 	testlabels = []string{"t0", "t1", "t2", "t3",
 		"t4", "t5", "t6", "t7", "t8", "t9"}
 )
+
+//  getexprs retrieves and trims submitted expr values
+//  (if called with none by W3C validator, make one up for better validation)
+func getexprs(r *http.Request) []string {
+	exprlist := make([]string, 0)
+	for _, l := range exprlabels {
+		arg := strings.TrimSpace(r.FormValue(l))
+		if arg != "" {
+			exprlist = append(exprlist, arg)
+		}
+	}
+	if len(exprlist) > 0 {
+		return exprlist
+	}
+	if strings.HasPrefix(r.Header.Get("User-Agent"), "W3C_Validator") {
+		return []string{"(a|b)*abb"}
+	}
+	return exprlist
+}
 
 //  putform outputs a form for submitting nx expressions and nt tests
 //  with at least one empty field if possible

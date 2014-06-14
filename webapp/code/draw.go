@@ -7,7 +7,6 @@ import (
 	"html/template"
 	"net/http"
 	"rx"
-	"strings"
 )
 
 //  askgraph generates a "draw the graph" link
@@ -40,32 +39,26 @@ func drawNFA(w http.ResponseWriter, r *http.Request) {
 
 //  draw produces a Dot file for rendering a DFA or NFA in the user's browser.
 func draw(w http.ResponseWriter, r *http.Request, which string) {
-	// must read all input before writing anything
-	exprlist := make([]string, 0)
+
+	exprlist := getexprs(r) // must load data before writing anything
+	nx := len(exprlist)
+
+	putheader(w, r, which+" Graph") // write page header
+	fmt.Fprintln(w, "<P>")
+
 	treelist := make([]rx.Node, 0)
-	for _, l := range exprlabels {
-		arg := strings.TrimSpace(r.FormValue(l))
-		if arg != "" {
-			exprlist = append(exprlist, arg)
-			tree, err := rx.Parse(arg)
-			if err == nil {
-				treelist = append(treelist,
-					rx.Augment(tree, len(treelist)))
-			}
+	for i, e := range exprlist {
+		fmt.Fprintf(w, "%s<BR>\n", hx(e))
+		tree, err := rx.Parse(e)
+		if !showerror(w, err) {
+			treelist = append(treelist, rx.Augment(tree, i))
 		}
 	}
 
-	putheader(w, r, which+" Graph")
-	if len(treelist) == 0 {
-		fmt.Fprintln(w, `<P>[no valid expressions found]`)
-	} else {
-		dfa := rx.MultiDFA(treelist)
-		dmin := dfa.Minimize()
+	if nx > 0 && len(treelist) == nx { // if no errors
+		dfa := rx.MultiDFA(treelist) // build combined DFA
+		dmin := dfa.Minimize()       // minimize it
 
-		fmt.Fprintf(w, "<P>\n")
-		for _, e := range exprlist {
-			fmt.Fprintf(w, "%s<BR>\n", hx(e))
-		}
 		fmt.Fprintln(w, `<script type="text/vnd.graphviz" id="graph">`)
 		if which == "NFA" {
 			dmin.GraphNFA(w, "")
@@ -76,7 +69,6 @@ func draw(w http.ResponseWriter, r *http.Request, which string) {
 
 		tDraw.Execute(w, which)
 	}
-
 	putfooter(w, r)
 }
 
@@ -98,7 +90,7 @@ document.body.innerHTML += svg;
 </script>
 <P>
 <input type="button" value="Download SVG image"
-onclick="download('{{.}}.svg', 'image/svg+xml', svg);" />
+onclick="download('{{.}}.svg', 'image/svg+xml', svg);">
 <input type="button" value="Download Graphviz commands"
-onclick="download('{{.}}.gv', 'text/vnd.graphviz', dot);" />
+onclick="download('{{.}}.gv', 'text/vnd.graphviz', dot);">
 `))

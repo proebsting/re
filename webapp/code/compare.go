@@ -7,7 +7,6 @@ import (
 	"html/template"
 	"net/http"
 	"rx"
-	"strings"
 )
 
 var DRAWLINE = "\x7F\x7F" // special flag for separator in grid
@@ -56,13 +55,7 @@ func combos(w http.ResponseWriter, r *http.Request) {
 
 	// must read all input before writing anything
 	// first get the expressions, trimming leading/trailing blanks
-	exprlist := make([]string, 0)
-	for _, l := range exprlabels {
-		arg := strings.TrimSpace(r.FormValue(l))
-		if arg != "" {
-			exprlist = append(exprlist, arg)
-		}
-	}
+	exprlist := getexprs(r)
 	nx := len(exprlist)
 
 	// then get the test strings; these are not trimmed
