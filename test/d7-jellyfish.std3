@@ -1,7 +1,7 @@
 // DFA: 7 expressions
 digraph DFA {
 label="DFA: 7 expressions"
-node [shape=circle, height=.3, margin=0, fontsize=10]
+node [shape=circle, height=.3, width=.3, margin=0, fontsize=10]
 s0 [shape=triangle, regular=true]
 s0->s1[label=" 0"]
 s0->s10[label=" +"]
@@ -10,50 +10,66 @@ s0->s18[label=" 3"]
 s0->s36[label=" 2"]
 s0->s43[label=" [4-9]"]
 s0->s77[label=" -"]
-s1 [shape=doublecircle]
+s1 [shape=doubleoctagon, label="s1
+A"]
 s1->s16[label=" [1-9]"]
 s1->s44[label=" 0"]
-s2 [shape=doublecircle]
+s2 [shape=doubleoctagon, label="s2
+AG"]
 s2->s81[label=" [0-9]"]
-s3 [shape=doublecircle]
+s3 [shape=doubleoctagon, label="s3
+AF"]
 s3->s81[label=" [0-9]"]
-s4 [shape=doublecircle]
+s4 [shape=doubleoctagon, label="s4
+AFG"]
 s4->s81[label=" [0-9]"]
-s5 [shape=doublecircle]
-s6 [shape=doublecircle]
-s7 [shape=doublecircle]
+s5 [shape=doubleoctagon, label="s5
+C"]
+s6 [shape=doubleoctagon, label="s6
+B"]
+s7 [shape=doubleoctagon, label="s7
+AE"]
 s7->s8[label=" [0-9]"]
-s8 [shape=doublecircle]
+s8 [shape=doubleoctagon, label="s8
+AD"]
 s8->s61[label=" [0-9]"]
 s9->s29[label=" [0-9]"]
 s10->s61[label=" [02-9]"]
 s10->s67[label=" 1"]
-s11 [shape=doublecircle]
+s11 [shape=doubleoctagon, label="s11
+A"]
 s11->s2[label=" [0-9]"]
-s12 [shape=doublecircle]
+s12 [shape=doubleoctagon, label="s12
+A"]
 s12->s11[label=" [0-9]"]
-s13 [shape=doublecircle]
+s13 [shape=doubleoctagon, label="s13
+A"]
 s13->s12[label=" 9"]
 s13->s84[label=" [0-8]"]
-s14 [shape=doublecircle]
+s14 [shape=doubleoctagon, label="s14
+A"]
 s14->s13[label=" 1"]
 s14->s57[label=" 2"]
 s14->s85[label=" [03-9]"]
-s15 [shape=doublecircle]
+s15 [shape=doubleoctagon, label="s15
+A"]
 s15->s14[label=" [1-9]"]
 s15->s25[label=" -"]
 s15->s59[label=" 0"]
-s16 [shape=doublecircle]
+s16 [shape=doubleoctagon, label="s16
+A"]
 s16->s15[label=" 0"]
 s16->s34[label=" [12]"]
 s16->s56[label=" 3"]
 s16->s60[label=" [4-9]"]
-s17 [shape=doublecircle]
+s17 [shape=doubleoctagon, label="s17
+A"]
 s17->s16[label=" [12]"]
 s17->s35[label=" 0"]
 s17->s44[label=" [3-8]"]
 s17->s78[label=" 9"]
-s18 [shape=doublecircle]
+s18 [shape=doubleoctagon, label="s18
+A"]
 s18->s42[label=" [47]"]
 s18->s44[label=" [0-35689]"]
 s19->s5[label=" [0-9]"]
@@ -67,43 +83,58 @@ s26->s51[label=" [0-9]"]
 s27->s26[label=" -"]
 s28->s27[label=" [0-9]"]
 s29->s28[label=" [0-9]"]
-s30 [shape=doublecircle]
+s30 [shape=doubleoctagon, label="s30
+A"]
 s30->s3[label=" [0-9]"]
-s31 [shape=doublecircle]
+s31 [shape=doubleoctagon, label="s31
+A"]
 s31->s30[label=" [012]"]
 s31->s83[label=" [3-9]"]
-s32 [shape=doublecircle]
+s32 [shape=doubleoctagon, label="s32
+A"]
 s32->s31[label=" [0-9]"]
-s33 [shape=doublecircle]
+s33 [shape=doubleoctagon, label="s33
+A"]
 s33->s32[label=" [01]"]
 s33->s85[label=" [2-9]"]
-s34 [shape=doublecircle]
+s34 [shape=doubleoctagon, label="s34
+A"]
 s34->s14[label=" [0-9]"]
 s34->s25[label=" -"]
-s35 [shape=doublecircle]
+s35 [shape=doubleoctagon, label="s35
+A"]
 s35->s66[label=" 0"]
 s35->s72[label=" [12]"]
 s35->s73[label=" [4-9]"]
 s35->s74[label=" 3"]
-s36 [shape=doublecircle]
+s36 [shape=doubleoctagon, label="s36
+A"]
 s36->s44[label=" [1-8]"]
 s36->s78[label=" [09]"]
-s37 [shape=doublecircle]
+s37 [shape=doubleoctagon, label="s37
+A"]
 s37->s58[label=" [0-9]"]
-s38 [shape=doublecircle]
+s38 [shape=doubleoctagon, label="s38
+A"]
 s38->s37[label=" [0-9]"]
-s39 [shape=doublecircle]
+s39 [shape=doubleoctagon, label="s39
+A"]
 s39->s38[label=" [0-9]"]
-s40 [shape=doublecircle]
+s40 [shape=doubleoctagon, label="s40
+A"]
 s40->s39[label=" [0-9]"]
-s41 [shape=doublecircle]
+s41 [shape=doubleoctagon, label="s41
+A"]
 s41->s25[label=" -"]
 s41->s40[label=" [0-9]"]
-s42 [shape=doublecircle]
+s42 [shape=doubleoctagon, label="s42
+A"]
 s42->s41[label=" [0-9]"]
-s43 [shape=doublecircle]
+s43 [shape=doubleoctagon, label="s43
+A"]
 s43->s44[label=" [0-9]"]
-s44 [shape=doublecircle]
+s44 [shape=doubleoctagon, label="s44
+A"]
 s44->s60[label=" [0-9]"]
 s45->s6[label=" [0-9]"]
 s46->s45[label=" [0-9]"]
@@ -112,87 +143,120 @@ s48->s47[label=" [0-9]"]
 s49->s48[label=" -"]
 s50->s49[label=" [0-9]"]
 s51->s50[label=" [0-9]"]
-s52 [shape=doublecircle]
+s52 [shape=doubleoctagon, label="s52
+A"]
 s52->s4[label=" [0-9]"]
-s53 [shape=doublecircle]
+s53 [shape=doubleoctagon, label="s53
+A"]
 s53->s11[label=" [3-9]"]
 s53->s52[label=" [012]"]
-s54 [shape=doublecircle]
+s54 [shape=doubleoctagon, label="s54
+A"]
 s54->s31[label=" [0-8]"]
 s54->s53[label=" 9"]
-s55 [shape=doublecircle]
+s55 [shape=doubleoctagon, label="s55
+A"]
 s55->s32[label=" 0"]
 s55->s54[label=" 1"]
 s55->s57[label=" 2"]
 s55->s85[label=" [3-9]"]
-s56 [shape=doublecircle]
+s56 [shape=doubleoctagon, label="s56
+A"]
 s56->s14[label=" [01]"]
 s56->s25[label=" -"]
 s56->s59[label=" [2-9]"]
-s57 [shape=doublecircle]
+s57 [shape=doubleoctagon, label="s57
+A"]
 s57->s12[label=" 0"]
 s57->s84[label=" [1-9]"]
-s58 [shape=doublecircle]
+s58 [shape=doubleoctagon, label="s58
+A"]
 s58->s79[label=" [0-9]"]
-s59 [shape=doublecircle]
+s59 [shape=doubleoctagon, label="s59
+A"]
 s59->s85[label=" [0-9]"]
-s60 [shape=doublecircle]
+s60 [shape=doubleoctagon, label="s60
+A"]
 s60->s25[label=" -"]
 s60->s59[label=" [0-9]"]
-s61 [shape=doublecircle]
+s61 [shape=doubleoctagon, label="s61
+A"]
 s61->s61[label=" [0-9]"]
-s62 [shape=doublecircle]
+s62 [shape=doubleoctagon, label="s62
+A"]
 s62->s7[label=" [0-9]"]
-s63 [shape=doublecircle]
+s63 [shape=doubleoctagon, label="s63
+A"]
 s63->s62[label=" [0-9]"]
-s64 [shape=doublecircle]
+s64 [shape=doubleoctagon, label="s64
+A"]
 s64->s63[label=" [0-9]"]
-s65 [shape=doublecircle]
+s65 [shape=doubleoctagon, label="s65
+A"]
 s65->s64[label=" [0-9]"]
-s66 [shape=doublecircle]
+s66 [shape=doubleoctagon, label="s66
+A"]
 s66->s25[label=" -"]
 s66->s33[label=" 0"]
 s66->s55[label=" [1-9]"]
-s67 [shape=doublecircle]
+s67 [shape=doubleoctagon, label="s67
+A"]
 s67->s9[label=" -"]
 s67->s61[label=" [0-9]"]
-s68 [shape=doublecircle]
+s68 [shape=doubleoctagon, label="s68
+A"]
 s68->s8[label=" [0-9]"]
-s69 [shape=doublecircle]
+s69 [shape=doubleoctagon, label="s69
+A"]
 s69->s68[label=" [0-9]"]
-s70 [shape=doublecircle]
+s70 [shape=doubleoctagon, label="s70
+A"]
 s70->s69[label=" [0-9]"]
-s71 [shape=doublecircle]
+s71 [shape=doubleoctagon, label="s71
+A"]
 s71->s70[label=" [0-9]"]
-s72 [shape=doublecircle]
+s72 [shape=doubleoctagon, label="s72
+A"]
 s72->s25[label=" -"]
 s72->s55[label=" [0-9]"]
-s73 [shape=doublecircle]
+s73 [shape=doubleoctagon, label="s73
+A"]
 s73->s25[label=" -"]
 s73->s33[label=" [0-9]"]
-s74 [shape=doublecircle]
+s74 [shape=doubleoctagon, label="s74
+A"]
 s74->s25[label=" -"]
 s74->s33[label=" [2-9]"]
 s74->s55[label=" [01]"]
-s75 [shape=doublecircle]
+s75 [shape=doubleoctagon, label="s75
+A"]
 s75->s65[label=" [0-9]"]
-s76 [shape=doublecircle]
+s76 [shape=doubleoctagon, label="s76
+A"]
 s76->s71[label=" [0-9]"]
 s77->s61[label=" [0-9]"]
-s78 [shape=doublecircle]
+s78 [shape=doubleoctagon, label="s78
+A"]
 s78->s73[label=" [0-9]"]
-s79 [shape=doublecircle]
+s79 [shape=doubleoctagon, label="s79
+A"]
 s79->s75[label=" [0-9]"]
-s80 [shape=doublecircle]
+s80 [shape=doubleoctagon, label="s80
+A"]
 s80->s76[label=" [0-9]"]
-s81 [shape=doublecircle]
+s81 [shape=doubleoctagon, label="s81
+A"]
 s81->s80[label=" [0-9]"]
-s82 [shape=doublecircle]
+s82 [shape=doubleoctagon, label="s82
+A"]
 s82->s81[label=" [0-9]"]
-s83 [shape=doublecircle]
+s83 [shape=doubleoctagon, label="s83
+A"]
 s83->s82[label=" [0-9]"]
-s84 [shape=doublecircle]
+s84 [shape=doubleoctagon, label="s84
+A"]
 s84->s83[label=" [0-9]"]
-s85 [shape=doublecircle]
+s85 [shape=doubleoctagon, label="s85
+A"]
 s85->s84[label=" [0-9]"]
 }

@@ -13,14 +13,16 @@ import (
 	"strings"
 )
 
+const AcceptLabels = "ABCDEFGHJKLMNPQRSTUVWXYZ" // state labels for accepts
+
 const FNAME_STDOUT = "-" // write to stdout if used as filename
 const FNAME_VIEW = "@"   // display in viewer if used as filename
 
 //  DFA.GraphNFA generates a Dot (GraphViz) representation of the NFA.
-func (dfa *DFA) GraphNFA(f io.Writer, label string) {
-	fmt.Fprintln(f, "//", label)
+func (dfa *DFA) GraphNFA(f io.Writer, title string) {
+	fmt.Fprintln(f, "//", title)
 	fmt.Fprintln(f, "digraph NFA {")
-	fmt.Fprintf(f, "label=%s\n", strconv.Quote(label))
+	fmt.Fprintf(f, "label=%s\n", strconv.Quote(title))
 	fmt.Fprintln(f, "node [shape=circle, height=.3, margin=0, fontsize=10]")
 	startshape := "triangle"
 	for _, p := range dfa.Tree.firstPos().Members() {
@@ -50,15 +52,27 @@ func (dfa *DFA) GraphNFA(f io.Writer, label string) {
 }
 
 //  DFA.ToDot generates a Dot (GraphViz) representation of the DFA.
-func (dfa *DFA) ToDot(f io.Writer, label string) {
-	fmt.Fprintln(f, "//", label)
+func (dfa *DFA) ToDot(f io.Writer, title string, labels string) {
+	fmt.Fprintln(f, "//", title)
 	fmt.Fprintln(f, "digraph DFA {")
-	fmt.Fprintf(f, "label=%s\n", strconv.Quote(label))
-	fmt.Fprintln(f, "node [shape=circle, height=.3, margin=0, fontsize=10]")
+	fmt.Fprintf(f, "label=%s\n", strconv.Quote(title))
+	fmt.Fprintln(f,
+		"node [shape=circle, height=.3, width=.3, margin=0, fontsize=10]")
 	fmt.Fprintln(f, "s0 [shape=triangle, regular=true]")
 	for _, src := range dfa.Dstates {
 		if src.AccSet != nil {
-			fmt.Fprintf(f, "s%d [shape=doublecircle]\n", src.Index)
+			if labels == "" {
+				fmt.Fprintf(f, "s%d [shape=doublecircle]\n",
+					src.Index)
+			} else {
+				fmt.Fprintf(f,
+					"s%d [shape=doubleoctagon, label=\"s%d\n",
+					src.Index, src.Index)
+				for _, i := range src.AccSet.Members() {
+					fmt.Fprintf(f, "%c", labels[i])
+				}
+				fmt.Fprintf(f, "\"]\n")
+			}
 		}
 		slist, xmap := src.InvertMap()
 		for _, dst := range slist.Members() {

@@ -1,7 +1,7 @@
 // DFA: [+-]?(((\d+\.\d*|\.\d+)([eE][+-]?\d+)?)|(\d+[eE][+-]?\d+))[fFlL]?
 digraph DFA {
 label="DFA: [+-]?(((\\d+\\.\\d*|\\.\\d+)([eE][+-]?\\d+)?)|(\\d+[eE][+-]?\\d+))[fFlL]?"
-node [shape=circle, height=.3, margin=0, fontsize=10]
+node [shape=circle, height=.3, width=.3, margin=0, fontsize=10]
 s0 [shape=triangle, regular=true]
 s0->s2[label=" ."]
 s0->s3[label=" [0-9]"]

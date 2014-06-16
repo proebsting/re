@@ -1,14 +1,16 @@
 // DFA: 2 expressions
 digraph DFA {
 label="DFA: 2 expressions"
-node [shape=circle, height=.3, margin=0, fontsize=10]
+node [shape=circle, height=.3, width=.3, margin=0, fontsize=10]
 s0 [shape=triangle, regular=true]
 s0->s3[label=" b"]
 s0->s4[label=" a"]
-s1 [shape=doublecircle]
+s1 [shape=doubleoctagon, label="s1
+B"]
 s1->s4[label=" a"]
 s1->s5[label=" b"]
-s2 [shape=doublecircle]
+s2 [shape=doubleoctagon, label="s2
+A"]
 s2->s4[label=" a"]
 s2->s7[label=" b"]
 s3->s1[label=" a"]

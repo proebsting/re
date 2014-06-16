@@ -82,8 +82,12 @@ func main() {
 		})
 	}
 	if *val['D'] != "" {
+		labels := ""
+		if len(exprs) > 1 && len(exprs) <= len(rx.AcceptLabels) {
+			labels = rx.AcceptLabels
+		}
 		rx.WriteGraph(*val['D'], func(w io.Writer) {
-			dfa.ToDot(w, "DFA: "+label)
+			dfa.ToDot(w, "DFA: "+label, labels)
 		})
 	}
 }

@@ -48,6 +48,9 @@ func draw(w http.ResponseWriter, r *http.Request, which string) {
 
 	treelist := make([]rx.Node, 0)
 	for i, e := range exprlist {
+		if nx > 1 {
+			fmt.Fprintf(w, "%c. &nbsp; ", rx.AcceptLabels[i])
+		}
 		fmt.Fprintf(w, "%s<BR>\n", hx(e))
 		tree, err := rx.Parse(e)
 		if !showerror(w, err) {
@@ -62,8 +65,10 @@ func draw(w http.ResponseWriter, r *http.Request, which string) {
 		fmt.Fprintln(w, `<script type="text/vnd.graphviz" id="graph">`)
 		if which == "NFA" {
 			dmin.GraphNFA(w, "")
+		} else if nx == 1 {
+			dmin.ToDot(w, "", "")
 		} else {
-			dmin.ToDot(w, "")
+			dmin.ToDot(w, "", rx.AcceptLabels)
 		}
 		fmt.Fprintln(w, `</script>`)
 
