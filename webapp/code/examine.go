@@ -31,11 +31,11 @@ var examples = []struct{ Expr, Caption string }{
 	{`(0|1(01*0)*1)*`, "Binary number divisible by 3"},
 	{`A(BA)*B?|B(AB)*A?|A?(BA)*B?C((A(BA)*B?|B(AB)*A?)C)*(A(BA)*B?|B(AB)*A?)?`,
 		"ABCs with no letter doubled"},
-	{`-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d{1,3})?`, "JSON number"},
+	{`-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?`, "JSON number"},
 	{`\([2-9]\d\d\) [2-9]\d\d\-\d{4}`, "US telephone number"},
-	{`([0-6]\d{2}|7([0-6]\d|7[012]))-\d{2}-\d{4}`, "US social security number"},
+	{`[0-8]\d\d-\d\d-\d{4}`, "US social security number"},
 	{`(19|20)\d\d\-(0[1-9]|1[012])\-(0[1-9]|[12]\d|3[01])`, "ISO 8601 date"},
-	{`([01]\d|2[0-3]):[0-5][0-9]:[0-5][0-9]Z`, "ISO 8601 time"},
+	{`([01]\d|2[0-3]):[0-5]\d:[0-5]\dZ`, "ISO 8601 time"},
 	{`\w+@\w+(\.\w+)+`, "Naive e-mail address"},
 }
 
