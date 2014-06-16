@@ -10,9 +10,7 @@ import (
 )
 
 //  putheader outputs our standard HTML page header
-//  and also initializes cookies
 func putheader(w http.ResponseWriter, r *http.Request, title string) {
-	initSession(w, r)
 	data := struct{ Prefix, Title, Favicon string }{
 		"RX", title, "icon.png"}
 	if r.Host == "localhost:8080" {
