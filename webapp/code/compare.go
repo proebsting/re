@@ -113,7 +113,9 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Fprintln(w, "<P>&nbsp;")
-	askgraph(w, "/multaut", exprlist, "Show the automata")
+	askgraph(w, "/multaut", exprlist, "Show automata states")
+	askgraph(w, "/drawNFA", exprlist, "Draw the NFA")
+	askgraph(w, "/drawDFA", exprlist, "Draw the DFA")
 
 	fmt.Fprint(w, "<h2>Try again?</h2>")
 	putform(w, "/combos", "Enter regular expressions:",
