@@ -80,8 +80,8 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<P style=\"line-height:150%%\">%d expressions:\n", nx)
 	for i, s := range exprlist {
 		fmt.Fprintf(w,
-			"<SPAN class=c%d><BR><B>e%d:</B> &nbsp; %s</SPAN>\n",
-			i, i, hx(s))
+			"<SPAN class=c%d><BR><B>%c:</B> &nbsp; %s</SPAN>\n",
+			i, rx.AcceptLabels[i], hx(s))
 		tree, err := rx.Parse(s)
 		if !showerror(w, err) {
 			treelist = append(treelist, rx.Augment(tree, i))
@@ -128,7 +128,7 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 	fmt.Fprintf(w, "<H2>Results</H2>\n")
 	fmt.Fprintf(w, "<TABLE>\n<TR>")
 	for i := 0; i < nexpr; i++ {
-		fmt.Fprintf(w, "<TH class=c%d>e%d</TH>", i, i)
+		fmt.Fprintf(w, "<TH class=c%d>%c</TH>", i, rx.AcceptLabels[i])
 	}
 	fmt.Fprintf(w, "<TH class=\"cg leftb\">example</TH></TR>\n")
 	drawline := true

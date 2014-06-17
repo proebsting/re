@@ -21,7 +21,8 @@ func multaut(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Multi-expression Automata")
 	fmt.Fprintf(w, "<P>%d expressions:\n", nx)
 	for i, s := range exprlist {
-		fmt.Fprintf(w, "<BR><B>e%d:</B> &nbsp; %s\n", i, hx(s))
+		fmt.Fprintf(w, "<BR><B>%c:</B> &nbsp; %s\n",
+			rx.AcceptLabels[i], hx(s))
 		tree, err := rx.Parse(s)
 		if !showerror(w, err) {
 			treelist = append(treelist, rx.Augment(tree, i))
