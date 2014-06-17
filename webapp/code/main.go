@@ -13,7 +13,7 @@ import (
 
 //  init registers URLs for dispatching and sets a random seed
 func init() {
-	http.HandleFunc("/", examine)        // anything unmatched
+	http.HandleFunc("/", home)           // home.go; anything unmatched
 	http.HandleFunc("/examine", examine) // examine.go
 	http.HandleFunc("/details", details) // examine.go
 	http.HandleFunc("/drawDFA", drawDFA) // draw.go
