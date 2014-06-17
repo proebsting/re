@@ -76,9 +76,10 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	// parse and echo the input
 	treelist := make([]rx.Node, 0, nx)
 	putheader(w, r, "Compare Expressions")
-	fmt.Fprintf(w, "<P>%d expressions:\n", nx)
+	fmt.Fprintf(w, "<P style=\"line-height:150%%\">%d expressions:\n", nx)
 	for i, s := range exprlist {
-		fmt.Fprintf(w, "<P class=c%d><B>e%d:</B> &nbsp; %s\n",
+		fmt.Fprintf(w,
+			"<SPAN class=c%d><BR><B>e%d:</B> &nbsp; %s</SPAN>\n",
 			i, i, hx(s))
 		tree, err := rx.Parse(s)
 		if !showerror(w, err) {
