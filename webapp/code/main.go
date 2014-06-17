@@ -25,7 +25,7 @@ func init() {
 	http.HandleFunc("/about", about)     // about.go
 	http.HandleFunc("/info", info)       // info.go
 	rand.Seed(int64(time.Now().Nanosecond()))
-	rx.MaxComplexity = 100 //#%#% set a relatively small limit for now
+	rx.MaxComplexity = 200 // at least twice what's needed for examples
 }
 
 //  hx escapes an arbitrary stringable value for output as HTML
