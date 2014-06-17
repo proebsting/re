@@ -19,7 +19,7 @@ func multaut(w http.ResponseWriter, r *http.Request) {
 	// parse and echo the input
 	treelist := make([]rx.Node, 0, nx)
 	putheader(w, r, "Multi-expression Automata")
-	fmt.Fprintf(w, "<P>%d expressions:\n", nx)
+	fmt.Fprintf(w, "<P class=xleading>%d expressions:\n", nx)
 	for i, s := range exprlist {
 		fmt.Fprintf(w, "<BR><B>%c:</B> &nbsp; %s\n",
 			rx.AcceptLabels[i], hx(s))

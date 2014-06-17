@@ -44,7 +44,7 @@ func draw(w http.ResponseWriter, r *http.Request, which string) {
 	nx := len(exprlist)
 
 	putheader(w, r, which+" Graph") // write page header
-	fmt.Fprintln(w, "<P>")
+	fmt.Fprintln(w, "<P class=xleading>")
 
 	treelist := make([]rx.Node, 0)
 	for i, e := range exprlist {
