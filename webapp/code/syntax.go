@@ -10,7 +10,7 @@ import (
 //  syntax generates a page outlining the accepted syntax
 func syntax(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Syntax")
-	tSyntax.Execute(w, r)
+	tSyntax.Execute(w, nil)
 	putfooter(w, r)
 }
 

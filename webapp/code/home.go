@@ -10,7 +10,7 @@ import (
 //  about generates a page describing and crediting the website
 func home(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Home")
-	tHome.Execute(w, r)
+	tHome.Execute(w, nil)
 	putfooter(w, r)
 }
 
