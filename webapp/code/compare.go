@@ -14,6 +14,10 @@ var DRAWLINE = "\x7F\x7F" // special flag for separator in grid
 //  compare presents a page asking for multiple expressions
 func compare(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Comparison Query")
+	fmt.Fprintln(w, `<P> Here you can specify multiple expressions
+to see how their languages overlap or differ.
+The results page shows synthesized examples and indicates which expressions
+they match.  You can also submit your own examples for testing.<P>`)
 	putform(w, "/combos", "Enter regular expressions:",
 		nCompare, nil, nSuggest, nil)
 	tMultiEx.Execute(w, multixamples)

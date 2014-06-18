@@ -15,6 +15,15 @@ const linemax = 79 // max output line length for generated examples
 //  examine presents a query page for examining a single expression
 func examine(w http.ResponseWriter, r *http.Request) {
 	putheader(w, r, "Inspection Query")
+	fmt.Fprintln(w, `<P> Here you can specify
+a regular expression to generate several kinds of data:
+parse trees, synthetic examples, and the automata state lists.
+Links from the results page produce diagrams of either the
+<A HREF="http://en.wikipedia.org/wiki/Nondeterministic_finite_automaton">NFA</A>
+or
+<A HREF="http://en.wikipedia.org/wiki/Deterministic_finite_automaton">DFA</A>
+for the language.
+<P>`)
 	putform(w, "/details", "Enter a regular expression:", 1, nil, 0, nil)
 	tExamples.Execute(w, examples)
 	putfooter(w, r)
