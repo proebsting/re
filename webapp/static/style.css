@@ -31,13 +31,15 @@ A:visited	{ background: white; color: #040; }
 BUTTON.link	{ background: none; border: none; padding: 0; 
 		  font-size: 100%; color: #070; text-decoration: underline; }
 
-.xleading	{ line-height: 133%; }
 .reset		{ clear: both; }
+.noadvance	{ margin-top: 0; }
+.topsep		{ border-top: 1px solid black; }
 .lfloat		{ float: left; }
 .lstripe	{ float: left; margin-left: 2.0em; margin-top: 3.0em;
 		  border-left: 1px solid black; padding-left: 1.0em; }
-.noadvance	{ margin-top: 0; }
-.topsep		{ border-top: 1px solid black; }
+.xleading	{ line-height: 133%; }
+.inblock	{ margin: 1em 4em; font-size: 90%;
+		  padding: 1em; border: 1px solid #CCC; }
 
 /* highlighting */
 .c0		{ padding-top: 2px; background-color: #CEF; } /* indigo */

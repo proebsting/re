@@ -79,18 +79,9 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// parse and echo the input
-	treelist := make([]rx.Node, 0, nx)
 	putheader(w, r, "Compare Expressions")
 	fmt.Fprintf(w, "<P class=xleading>%d expressions:\n", nx)
-	for i, s := range exprlist {
-		fmt.Fprintf(w,
-			"<SPAN class=c%d><BR><B>%c:</B> &nbsp; %s</SPAN>\n",
-			i, rx.AcceptLabels[i], hx(s))
-		tree, err := rx.Parse(s)
-		if !showerror(w, err) {
-			treelist = append(treelist, rx.Augment(tree, i))
-		}
-	}
+	treelist := lpxc(w, exprlist)
 
 	if nx > 0 && len(treelist) == nx { // if no errors
 		dfa := rx.MultiDFA(treelist) // build combined DFA
@@ -113,6 +104,7 @@ func combos(w http.ResponseWriter, r *http.Request) {
 			trylist = append(trylist, rx.Specimen(treelist[i], 3))
 			trylist = append(trylist, rx.Specimen(treelist[i], 5))
 		}
+		fmt.Fprintf(w, "<H2>Results</H2>\n")
 		showgrid(w, dfa, nx, trylist) // show examples
 	}
 
@@ -127,11 +119,26 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	putfooter(w, r)
 }
 
+//  lpxc -- list and parse expressions for comparison, returning augtree list
+func lpxc(w http.ResponseWriter, exprlist []string) []rx.Node {
+	treelist := make([]rx.Node, 0)
+
+	for i, s := range exprlist {
+		fmt.Fprintf(w,
+			"<SPAN class=c%d><BR><B>%c:</B> &nbsp; %s</SPAN>\n",
+			i, rx.AcceptLabels[i], hx(s))
+		tree, err := rx.Parse(s)
+		if !showerror(w, err) {
+			treelist = append(treelist, rx.Augment(tree, i))
+		}
+	}
+	return treelist
+}
+
 //  showgrid prints a table matching exprs with specimens (skipping duplicates).
 //  A DRAWLINE line in the list draws a horizontal separator in the table
 func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 	seen := make(map[string]bool, 0)
-	fmt.Fprintf(w, "<H2>Results</H2>\n")
 	fmt.Fprintf(w, "<TABLE>\n<TR>")
 	for i := 0; i < nexpr; i++ {
 		fmt.Fprintf(w, "<TH class=c%d>%c</TH>", i, rx.AcceptLabels[i])
