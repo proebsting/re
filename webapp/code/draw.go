@@ -68,6 +68,7 @@ func draw(w http.ResponseWriter, r *http.Request, which string) {
 		} else if nx == 1 {
 			dmin.ToDot(w, "", "")
 		} else {
+			which = "Multi"
 			dmin.ToDot(w, "", rx.AcceptLabels)
 		}
 		fmt.Fprintln(w, `</script>`)
@@ -93,6 +94,12 @@ var dot = document.getElementById("graph").innerHTML;
 var svg = Viz(dot, "svg")
 document.body.innerHTML += svg;
 </script>
+<P>{{if eq . "NFA"}} The unlabeled node is the start state.
+{{else}} State s0 is the start state.{{end}}
+{{if eq . "Multi"}} Double octagons are acceptance states, with capital
+letters indicating <EM>which</EM> expressions are accepted.
+{{else}} Double circles are acceptance states.{{end}}
+Edge labels indicate input characters or classes of characters.
 <P>
 <input type="button" value="Download SVG image"
 onclick="download('{{.}}.svg', 'image/svg+xml', svg);">
