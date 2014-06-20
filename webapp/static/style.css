@@ -1,7 +1,13 @@
 /* style sheet for regular expression pages */
 
-BODY		{ color: black; background: white url(lborder.png) repeat-y; }
-BODY		{ margin-left: 90px; margin-right: 20px; }
+HTML		{ background: #07A url(border.png); }
+
+BODY		{ color: black; background: white url(background.png) ;
+		  width: 80ex;
+		  margin: 2ex auto;
+		  border: 1px solid #035;
+		  padding: 0 3ex 1.5ex 3ex;
+		  }
 
 BODY, TH, TD	{ font-family: Helvetica, Arial, sans-serif; }
 EM,VAR,DFN,CITE	{ font-style: italic; }
@@ -10,9 +16,9 @@ CODE		{ font-family: Helvetica, Arial, sans-serif; font-weight: bold;}
 PRE, TT		{ font-family: "Lucida Sans Typewriter", Monaco, monospace; }
 
 H1,H2,H3,H4,H5,H6 { font-family:Helvetica,Arial,sans-serif; font-weight:bold; }
-H1		{ font-size: 150%; margin-top: 2.0em; margin-bottom: 0.4em; }
-H2		{ font-size: 125%; margin-top: 2.0em; margin-bottom: 0.4em; }
-H3, H4, H5, H6	{ font-size: 100%; margin-top: 1.5em; margin-bottom: 0.2em; }
+H1		{ font-size: 150%; margin-top: 1.5em; margin-bottom: 0.4em; }
+H2		{ font-size: 125%; margin-top: 1.5em; margin-bottom: 0.4em; }
+H3, H4, H5, H6	{ font-size: 100%; margin-top: 1.2em; margin-bottom: 0.2em; }
 
 P		{ margin-top: 0.9em; margin-bottom: 0.0em; }
 BLOCKQUOTE	{ margin-top: 0.4em; margin-bottom: 0.4em; }
@@ -25,11 +31,13 @@ TH, TD		{ padding: 2px 0.4em 0 0.4em; }
 TH, TD		{ vertical-align: top; text-align: center; }
 .leftb		{ text-align: left; border-left: 1px solid black; }
 
-A:link		{ background: white; color: #070; }
-A:visited	{ background: white; color: #040; }
+A:link		{ background: transparent; color: #08B; }
+A:visited	{ background: transparent; color: #058; }
 
 BUTTON.link	{ background: none; border: none; padding: 0; 
-		  font-size: 100%; color: #070; text-decoration: underline; }
+		  font-size: 100%; color: #08B; text-decoration: underline; }
+
+INPUT[type="text"] { width: 100%; }
 
 .reset		{ clear: both; }
 .noadvance	{ margin-top: 0; }
