@@ -173,22 +173,15 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 					fmt.Fprintf(w, "<TD>\u2013</TD>") // -
 				}
 			}
-			if n == 0 {
-				fmt.Fprintf(w,
-					"<TD class=\"error leftb\">%s</TD></TR>\n",
-					hx(s))
-			} else if n == 1 {
-				fmt.Fprintf(w,
-					"<TD class=\"c%d leftb\">%s</TD></TR>\n",
-					e, hx(s))
-			} else if n < nexpr {
-				fmt.Fprintf(w,
-					"<TD class=\"cg leftb\">%s</TD></TR>\n",
-					hx(s))
-			} else {
-				fmt.Fprintf(w,
-					"<TD class=leftb>%s</TD></TR>\n", hx(s))
+			class := "cg"
+			switch n {
+				case 0:     class = "error"
+				case 1:     class = fmt.Sprintf("c%d", e)
+				case nexpr: class = "cw"
 			}
+			fmt.Fprintf(w,
+				"<TD class=\"leftb %s\">%s</TD></TR>\n",
+				class, hx(s))
 		}
 	}
 	fmt.Fprintf(w, "</TABLE>\n")
