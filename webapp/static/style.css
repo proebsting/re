@@ -33,6 +33,8 @@ TH, TD		{ vertical-align: top; text-align: center; }
 
 A:link		{ background: transparent; color: #08B; }
 A:visited	{ background: transparent; color: #058; }
+A:link.stealthy, A:visited.stealthy	
+		{ background: transparent; color: #EEE; text-decoration: none; }
 
 BUTTON.link	{ background: none; border: none; padding: 0; 
 		  font-size: 100%; color: #08B; text-decoration: underline; }

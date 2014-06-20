@@ -5,7 +5,6 @@ package webapp
 import (
 	"html/template"
 	"io"
-	"math/rand"
 	"net/http"
 )
 
@@ -34,7 +33,7 @@ var tHeader = template.Must(template.New("header").Parse(
 
 //  putfooter outputs our standard HTML page footer
 func putfooter(w io.Writer, r *http.Request) {
-	tFooter.Execute(w, 1000+rand.Intn(9000))
+	tFooter.Execute(w, nil)
 }
 
 var tFooter = template.Must(template.New("footer").Parse(
@@ -46,9 +45,9 @@ var tFooter = template.Must(template.New("footer").Parse(
 | <A title="Syntax" href="/syntax">Syntax</a>
 | <A title="About" href="/about">About</a>
 <span style="float:right;">
-RX {{.}}
-<A title="Info" href="/info">I</a>
-<A title="Val" href="http://validator.w3.org/check?uri=referer&amp;ss=1">V</a>
+<A class=stealthy title="Info" href="/info">⬤</a>
+<A class=stealthy title="Val"
+href="http://validator.w3.org/check?uri=referer&amp;ss=1">⬤</a>
 </span> 
 </body></html>
 `))
