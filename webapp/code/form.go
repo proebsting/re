@@ -67,7 +67,7 @@ func putform(w io.Writer, target string, label string,
 
 var tForm = template.Must(template.New("form").Parse(`
 <form action="{{.Target}}" method=post>
-<div><div style="float:left;">{{.Label}} &nbsp;</div>
+<div style="margin-top: 1em"><div style="float:left;">{{.Label}} &nbsp;</div>
 <div style="font-size: 67%;">
 <button type=button class=link onclick="clearForm(this.form);">
 (clear form)</button></div></div>

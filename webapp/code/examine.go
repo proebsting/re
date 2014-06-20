@@ -23,7 +23,7 @@ Links from the results page produce diagrams of either the
 or
 <A HREF="http://en.wikipedia.org/wiki/Deterministic_finite_automaton">DFA</A>
 for the language.
-<P>`)
+`)
 	putform(w, "/details", "Enter a regular expression:", 1, nil, 0, nil)
 	tExamples.Execute(w, examples)
 	putfooter(w, r)

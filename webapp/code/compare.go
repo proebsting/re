@@ -17,7 +17,7 @@ func compare(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, `<P> Here you can specify multiple expressions
 to see how their languages overlap or differ.
 The results page shows synthesized examples and indicates which expressions
-they match.  You can also submit your own examples for testing.<P>`)
+they match.  You can also submit your own examples for testing.`)
 	putform(w, "/combos", "Enter regular expressions:",
 		nCompare, nil, nSuggest, nil)
 	tMultiEx.Execute(w, multixamples)
