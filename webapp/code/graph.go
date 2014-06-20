@@ -44,14 +44,15 @@ func showaut(w http.ResponseWriter, dfa *rx.DFA, exprlist []string) {
 
 	nfaBuffer := &bytes.Buffer{}
 	dfa.ShowNFA(nfaBuffer, "")
-	fmt.Fprintf(w, "<h2>NFA</h2><PRE>\n%s</PRE>\n",
+	fmt.Fprintf(w, "<h2>NFA</h2><PRE class=smaller>\n%s</PRE>\n",
 		hx(string(nfaBuffer.Bytes())))
 	askgraph(w, "/drawNFA", exprlist, "Draw the graph")
 
 	fmt.Fprintln(w, `</div><div class=lstripe>`)
 	dfaBuffer := &bytes.Buffer{}
 	dfa.ShowStates(dfaBuffer, "")
-	fmt.Fprintf(w, "<h2 class=noadvance>DFA</h2><PRE>\n%s</PRE>\n",
+	fmt.Fprintf(w,
+		"<h2 class=noadvance>DFA</h2><PRE class=smaller>\n%s</PRE>\n",
 		hx(string(dfaBuffer.Bytes())))
 	askgraph(w, "/drawDFA", exprlist, "Draw the graph")
 
