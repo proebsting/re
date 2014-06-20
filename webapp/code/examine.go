@@ -74,6 +74,7 @@ func details(w http.ResponseWriter, r *http.Request) {
 
 		showaut(w, dmin, []string{expr})
 	} else {
+		fmt.Fprint(w, "<P>")
 		showerror(w, err)
 	}
 

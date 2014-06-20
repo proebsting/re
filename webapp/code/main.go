@@ -38,11 +38,13 @@ func showerror(w http.ResponseWriter, err error) bool {
 	if err == nil {
 		return false
 	}
+	fmt.Fprintf(w, "<BR><SPAN class=error><B>Error:</B>\n")
 	if pe, ok := err.(*rx.ParseError); ok {
-		fmt.Fprintf(w, "<P class=error><B>Error:</B> %s\n", pe.Message)
-		fmt.Fprintf(w, "<BR>In expression: %s\n", hx(pe.BadExpr))
+		fmt.Fprintf(w, " %s<BR>In expression: %s",
+			pe.Message, hx(pe.BadExpr))
 	} else {
-		fmt.Fprintf(w, "<P class=error><B>Error:</B> %s\n", hx(err))
+		fmt.Fprintf(w, "%s", hx(err))
 	}
+	fmt.Fprintf(w, " </SPAN>\n");
 	return true
 }
