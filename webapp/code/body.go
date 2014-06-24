@@ -11,7 +11,7 @@ import (
 //  putheader outputs our standard HTML page header
 func putheader(w http.ResponseWriter, r *http.Request, title string) {
 	data := struct{ Prefix, Title, Favicon string }{
-		"RX", title, "icon.png"}
+		"RegEx", title, "icon.png"}
 	if r.Host == "localhost:8080" {
 		data.Favicon = "itest.png"
 	}
