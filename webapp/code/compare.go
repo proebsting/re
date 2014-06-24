@@ -96,7 +96,9 @@ func combos(w http.ResponseWriter, r *http.Request) {
 		for _, x := range synthx { // put results on list
 			trylist = append(trylist, x.Example)
 		}
-		trylist = append(trylist, DRAWLINE)
+		// DON'T separate parse tree examples
+		// (confusing in the the absence of a published explanation)
+		// trylist = append(trylist, DRAWLINE)
 		// examples from parse tree
 		for i := 0; i < nx; i++ {
 			trylist = append(trylist, rx.Specimen(treelist[i], 1))
