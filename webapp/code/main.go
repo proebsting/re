@@ -45,6 +45,6 @@ func showerror(w http.ResponseWriter, err error) bool {
 	} else {
 		fmt.Fprintf(w, "%s", hx(err))
 	}
-	fmt.Fprintf(w, " </SPAN>\n");
+	fmt.Fprintf(w, " </SPAN>\n")
 	return true
 }

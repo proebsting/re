@@ -175,9 +175,12 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 			}
 			class := "cg"
 			switch n {
-				case 0:     class = "error"
-				case 1:     class = fmt.Sprintf("c%d", e)
-				case nexpr: class = "cw"
+			case 0:
+				class = "error"
+			case 1:
+				class = fmt.Sprintf("c%d", e)
+			case nexpr:
+				class = "cw"
 			}
 			fmt.Fprintf(w,
 				"<TD class=\"leftb %s\">%s</TD></TR>\n",

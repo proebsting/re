@@ -53,7 +53,7 @@ func info(w http.ResponseWriter, r *http.Request) {
 
 	putheader(w, r, "Info")
 
-	fmt.Fprint(w, 
+	fmt.Fprint(w,
 		"<P>(Information for use of the website maintainers.)\n<P>")
 	for i := 0; i < 10; i++ {
 		fmt.Fprintf(w, "<span class=c%d>= c%d =</span>&nbsp;\n", i, i)
