@@ -11,6 +11,9 @@ import (
 	"time"
 )
 
+//  address for sending mail (generates a mailto: link)
+const MAILTO = `<script type="text/javascript">atcs('regex',null,'RegEx website');</script>`
+
 //  init registers URLs for dispatching and sets a random seed
 func init() {
 	http.HandleFunc("/", home)           // home.go; anything unmatched
@@ -23,6 +26,7 @@ func init() {
 	http.HandleFunc("/multaut", multaut) // graph.go
 	http.HandleFunc("/syntax", syntax)   // syntax.go
 	http.HandleFunc("/about", about)     // about.go
+	http.HandleFunc("/contact", contact) // contact.go
 	http.HandleFunc("/info", info)       // info.go
 	rand.Seed(int64(time.Now().Nanosecond()))
 	rx.MaxComplexity = 200 // at least twice what's needed for examples

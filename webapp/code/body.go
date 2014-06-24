@@ -26,7 +26,7 @@ var tHeader = template.Must(template.New("header").Parse(
 <meta http-equiv="Content-Script-Type" content="text/javascript">
 <link rel="icon" type="image/png" href="/static/{{.Favicon}}">
 <link rel="stylesheet" type="text/css" href="/static/style.css">
-<script src="/static/scripts.js" type="text/javascript" defer></script>
+<script src="/static/functions.js" type="text/javascript"></script>
 </head><body>
 <h1>{{.Prefix}}: {{.Title}}</h1>
 `))
@@ -44,6 +44,7 @@ var tFooter = template.Must(template.New("footer").Parse(
 | <A title="Compare" href="/compare">Compare</a>
 | <A title="Syntax" href="/syntax">Syntax</a>
 | <A title="About" href="/about">About</a>
+| <A title="Contact" href="/contact">Contact</a>
 <span style="float:right;">
 <A class=stealthy title="Info" href="/info">⬤</a>
 <A class=stealthy title="Val"
