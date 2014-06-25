@@ -31,6 +31,9 @@ implement multiple formal languages simultaneously.
 `)
 	refexamine(w)
 	refcompare(w)
+	fmt.Fprintln(w, `
+<P> The <A HREF="/syntax">Syntax</A> page briefly outlines the 
+forms of regular expressions implemented here.`)
 	putfooter(w, r)
 }
 
