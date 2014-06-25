@@ -4,7 +4,6 @@ package webapp
 
 import (
 	"fmt"
-	"html/template"
 	"net/http"
 	"rx"
 	"strings"
@@ -25,16 +24,12 @@ or
 for the language.
 `)
 	putform(w, "/details", "Enter a regular expression:", 1, nil, 0, nil)
-	tExamples.Execute(w, examples)
+	fmt.Fprintln(w, `<P>Or choose one of these examples:`)
+	for _, x := range examples {
+		genexam(w, x.Caption, x.Expr)
+	}
 	putfooter(w, r)
 }
-
-var tExamples = template.Must(template.New("examples").Parse(
-	`<P>Or choose one of these examples:{{range .}}
-<form action="/details" method="post"><div>
-<input type="hidden" name="x0" value="{{.Expr}}">
-<button class=link>{{.Caption}}</button></div></form>{{end}}
-`))
 
 var examples = []struct{ Expr, Caption string }{
 	{`(0|1(01*0)*1)*`, "Binary number divisible by 3"},

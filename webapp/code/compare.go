@@ -4,7 +4,6 @@ package webapp
 
 import (
 	"fmt"
-	"html/template"
 	"net/http"
 	"rx"
 )
@@ -20,17 +19,12 @@ The results page shows synthesized examples and indicates which expressions
 they match.  You can also submit your own examples for testing.`)
 	putform(w, "/combos", "Enter regular expressions:",
 		nCompare, nil, nSuggest, nil)
-	tMultiEx.Execute(w, multixamples)
+	fmt.Fprintln(w, `<P>Or choose one of these predefined sets:`)
+	for _, x := range multixamples {
+		gencomp(w, x.Caption, x.Exprs)
+	}
 	putfooter(w, r)
 }
-
-var tMultiEx = template.Must(template.New("multixamples").Parse(
-	`<P>Or choose one of these predefined sets:{{range .}}
-<form action="/combos" method="post"><div>{{range $i, $s := .Exprs}}
-<input type="hidden" name="x{{$i}}" value="{{$s}}">
-{{end}}
-<button class=link>{{.Caption}}</button></div></form>{{end}}
-`))
 
 var multixamples = []struct {
 	Caption string

@@ -79,3 +79,30 @@ var tForm = template.Must(template.New("form").Parse(`
 <div><input tabindex=2{{$k}} type=text name=t{{$k}} size=100 maxlength=1000 value="{{$v}}"></div>{{end}}
 <div><input tabindex=99 type=submit value=Submit></div></form>
 `))
+
+//  genexam generates a link (actually a form) to "examine" one predefined regex
+func genexam(w io.Writer, label string, expr string) {
+	formlink(w, "/details", label, []string{expr})
+}
+
+//  gencomp generates a link (actually a form) to "compare" multiple regexes
+func gencomp(w io.Writer, label string, exprs []string) {
+	formlink(w, "/combos", label, exprs)
+}
+
+//  formlink generates a link-like form for submitting canned examples
+func formlink(w io.Writer, path string, label string, exprs []string) {
+	tFormLink.Execute(w, struct {
+		Path  string
+		Label string
+		Exprs []string
+	}{
+		path, label, exprs,
+	})
+}
+
+var tFormLink = template.Must(template.New("formlink").Parse(`
+<form action="{{.Path}}" method="post"><div>{{range $i, $s := .Exprs}}
+<input type="hidden" name="x{{$i}}" value="{{$s}}">{{end}}
+<button class=link>{{.Label}}</button></div></form>
+`))
