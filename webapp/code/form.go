@@ -74,7 +74,7 @@ var tForm = template.Must(template.New("form").Parse(`
 <div class=reset></div>
 {{range $k, $v := .Exprs}}
 <div><input tabindex=1{{$k}} type=text name=x{{$k}} size=100 maxlength=1000 value="{{$v}}"></div>{{end}}
-{{if len .Tests}}<div><BR>Enter examples (optional):</div>{{end}}
+{{if len .Tests}}<div style="margin-top: .7ex">Enter examples (optional):</div>{{end}}
 {{range $k, $v := .Tests}}
 <div><input tabindex=2{{$k}} type=text name=t{{$k}} size=100 maxlength=1000 value="{{$v}}"></div>{{end}}
 <div><input tabindex=99 type=submit value=Submit></div></form>
