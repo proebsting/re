@@ -37,7 +37,7 @@ func putfooter(w io.Writer, r *http.Request) {
 }
 
 var tFooter = template.Must(template.New("footer").Parse(
-	`<P><BR><BR><HR>
+	`<P><BR><HR>
 <P style="text-align:left;">
 <A title="Home" href="/">Home</a>
 | <A title="Examine" href="/examine">Examine</a>
