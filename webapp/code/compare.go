@@ -30,12 +30,13 @@ var multixamples = []struct {
 	Caption string
 	Exprs   []string
 }{
-	{"Binary integers", []string{
-		`[01]*`, `[01]+`, `0|1[01]*`, `(0|1(01*0)*1)*`, `1?(01)*0?`}},
+	{HomeCmpLabel, HomeCompare},
 	{"Decimal numbers", []string{
 		`[1-9]\d*`, `0|-?[1-9]\d*`,
 		`\d+(\.\d+)?`, `\d*\.\d+|\d+\.\d*`,
 		`-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?`}},
+	{"Binary integers", []string{
+		`[01]*`, `[01]+`, `0|1[01]*`, `(0|1(01*0)*1)*`, `1?(01)*0?`}},
 	{"Times of the Day", []string{
 		`\d?\d:\d\d`,
 		`\d\d:\d\d`,

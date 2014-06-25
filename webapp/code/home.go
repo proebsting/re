@@ -8,8 +8,13 @@ import (
 	"rx"
 )
 
-var HomeExample = `\d+(\.\d*)?(e\d+)?`
-var HomeCompare = []string{`\d+\.\d*`, `\d+\.\d+`, `\d*\.\d+`}
+// examples used on home page and labels for referencing them used elsewhere
+var (
+	HomeExLabel  = "Simple fixed or floating number"
+	HomeExample  = `\d+(\.\d*)?(e\d+)?`
+	HomeCmpLabel = "Simple decimal numbers"
+	HomeCompare  = []string{`\d+\.\d*`, `\d+\.\d+`, `\d*\.\d+`}
+)
 
 //  about generates a page describing and crediting the website
 func home(w http.ResponseWriter, r *http.Request) {
