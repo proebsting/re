@@ -8,8 +8,8 @@ import (
 	"rx"
 )
 
-var ex1 = `\d+(\.\d*)?(e\d+)?`
-var ex3 = []string{`\d+\.\d*`, `\d+\.\d+`, `\d*\.\d+`}
+var HomeExample = `\d+(\.\d*)?(e\d+)?`
+var HomeCompare = []string{`\d+\.\d*`, `\d+\.\d+`, `\d*\.\d+`}
 
 //  about generates a page describing and crediting the website
 func home(w http.ResponseWriter, r *http.Request) {
@@ -41,18 +41,18 @@ or
 <A HREF="http://en.wikipedia.org/wiki/Deterministic_finite_automaton">DFA</A>
 for the language.
 `)
-	tree, _ := rx.Parse(ex1)
+	tree, _ := rx.Parse(HomeExample)
 	augt := rx.Augment(tree, 0)
 	fmt.Fprintf(w, `
 <DIV CLASS=inblock>Regular Expression: %s
 <BR>Augmented Parse Tree: %s
-<BR class=xleading>Examples:<BR>`, hx(ex1), hx(augt))
+<BR class=xleading>Examples:<BR>`, hx(HomeExample), hx(augt))
 	genexamples(w, augt, 0)
 	genexamples(w, augt, 2)
 	genexamples(w, augt, 4)
-	fmt.Fprint(w, `
-</DIV>
-`)
+	fmt.Fprintln(w, `<DIV class="rside smaller">`)
+	genexam(w, "submit this example to see full output", HomeExample)
+	fmt.Fprintln(w, `</DIV></DIV>`)
 }
 
 // refcompare advertises the Compare page
@@ -66,8 +66,8 @@ You can also submit your own examples for testing.
 Again, there are links to produce automata diagrams.
 <DIV CLASS="inblock xleading">
 %d expressions:
-`, len(ex3))
-	treelist := lpxc(w, ex3)
+`, len(HomeCompare))
+	treelist := lpxc(w, HomeCompare)
 	dfa := rx.MultiDFA(treelist)
 	synthx := dfa.Synthesize()
 	trylist := make([]string, 0)
@@ -76,5 +76,7 @@ Again, there are links to produce automata diagrams.
 	}
 	fmt.Fprintln(w, `<BR><BR>`)
 	showgrid(w, dfa, len(treelist), trylist)
-	fmt.Fprintln(w, `</DIV>`)
+	fmt.Fprintln(w, `<DIV class="rside smaller">`)
+	gencomp(w, "submit this example to see full output", HomeCompare)
+	fmt.Fprintln(w, `</DIV></DIV>`)
 }

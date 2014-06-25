@@ -48,9 +48,10 @@ INPUT[type="text"] { width: 100%; }
 .lstripe	{ float: left; margin-left: 2.0em; margin-top: 2.0em;
 		  border-left: 1px solid black; padding-left: 1.0em; }
 .xleading	{ line-height: 133%; }
-.inblock	{ margin: 1em 4em; font-size: 90%;
-		  padding: 1em; border: 1px solid #CCC; }
+.inblock	{ margin: 1em 4em 0.5em 1em; font-size: 90%;
+		  padding: 1em 1em 0 1em; border: 1px solid #CCC; }
 .smaller	{ font-size: 80%; }
+.rside		{ width: 100%; text-align: right; }
 
 /* highlighting */
 .c0		{ padding-top: 2px; background-color: #CEF; } /* indigo */
