@@ -22,8 +22,8 @@ function atcs(uname, label, subj) {
 function clearForm(oForm) {
 	var elements = oForm.elements; 
 	oForm.reset();
-	for (i=0; i<elements.length; i++) {
-		field_type = elements[i].type.toLowerCase();
+	for (var i = 0; i < elements.length; i++) {
+		var field_type = elements[i].type.toLowerCase();
 		switch(field_type) {
 			case "text": 
 			case "password": 
