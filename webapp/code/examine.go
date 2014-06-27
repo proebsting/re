@@ -46,7 +46,8 @@ var examples = []struct{ Expr, Caption string }{
 
 //  details responds to an inspection request for a single expression
 func details(w http.ResponseWriter, r *http.Request) {
-	expr := r.FormValue("v20")     // must read before any writing
+	field := fmt.Sprintf("v%d", baseExpr)
+	expr := r.FormValue(field)     // must read before any writing
 	expr = strings.TrimSpace(expr) // trim leading/trailing blanks
 	putheader(w, r, "Inspect Expression")
 	tree, err := rx.Parse(expr)

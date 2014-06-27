@@ -12,12 +12,12 @@ import (
 
 //  Form configuration values.
 var (
-	nExpr    = 4  // default number of comparison fields
-	nTest    = 2  // default number of example labels
-	baseExpr = 20 // base for numbering expressions
-	baseTest = 60 // base for numbering test cases
-	maxExpr  = 10 // limited by number of defined colors
-	maxTest  = len(rx.AcceptLabels)
+	nExpr    = 4                    // default number of comparison fields
+	nTest    = 2                    // default number of example labels
+	baseExpr = 100                  // base for numbering expressions
+	baseTest = 200                  // base for numbering test cases
+	maxExpr  = len(rx.AcceptLabels) // limit on exprs we can label
+	maxTest  = maxExpr              // arbitrarily make this same
 )
 
 //  getexprs retrieves and trims submitted expr values
@@ -53,8 +53,16 @@ func putform(w io.Writer, target string, label string,
 <div style="margin-top: 1em"><div style="float:left;">%s &nbsp;</div>
 <div style="font-size: 67%%;">
 <button type=button class=link onclick="clearForm(this.form);">
-(clear form)</button></div></div>
-<div class=reset></div>`, target, label)
+(clear form)</button>`, target, label)
+	if nx > 1 && nt > 1 {
+		fmt.Fprintf(w, `
+<button type=button class=link onclick="addslot(%d,%d);addslot(%d,%d);">
+(add slots)</button>`,
+			baseExpr, maxExpr, baseTest, maxTest)
+	}
+	fmt.Fprintf(w, `
+</div></div>
+<div class=reset></div>`)
 	putfields(w, exprs, nx, baseExpr, maxExpr)
 	if nt > 0 {
 		fmt.Fprintf(w, `
@@ -62,7 +70,7 @@ func putform(w io.Writer, target string, label string,
 		putfields(w, tests, nt, baseTest, maxTest)
 	}
 	fmt.Fprintf(w, `
-<div><input tabindex=99 type=submit value=Submit></div></form>`)
+<div><input tabindex=999 type=submit value=Submit></div></form>`)
 }
 
 //  putfields outputs a sequence of text input fields.
