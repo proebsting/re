@@ -14,4 +14,9 @@ It comprises a library of Go language functions for experimenting with
 regular expressions and some associated command-line Unix utilities.
 It implements the regex.cs.arizona.edu website.
 
+This is primarily a research project, so there is no separate formal
+documentation.  Library functions have comments designed for use with
+the godoc utility.  Utility programs are also documented with comments
+which in this case are most easily viewed in a text editor.
+
 See also:  LICENSE, BUILD, NOTES files.
