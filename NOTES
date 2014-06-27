@@ -1,17 +1,15 @@
 Some notes about the RX code
-[ 3-Jun-2014 / gmt ]
 
-This file is a dumping place for random thoughts to help understand and
-navigate the RX code.  See also the TODO file, which is an even more
-cryptic collection of half-baked thoughts about future directions.
+Here are some random thoughts to help understand and navigate the RX code.
 
 
 PACKAGE ORGANIZATION
 The main package rx is for "library" type routines.
 The subpackage rx/rxsys holds library routines not acceptable in web apps.
+Most of the significant code should go in the library;
+utility programs should just provide an interface to the library.
 Subpackages rxplor, rxquest, etc implement command-level programs.
-Most of the significant code should go in the library.
-The programs should just provide an interface to the library.
+Subtree webapp implements the regex.cs.arizona.edu website.
 
 VISIBILITY
 [Recall: Capitalized symbols are exported from a package.]
@@ -34,4 +32,3 @@ COMMENTING
 Terminology is based on the "Dragon book" [Aho & Ullman 1977].
 Struct, func, and package comments should work with "godoc"
 (so: no blank line between header comment and struct or func).
-The comment notation "#%#%" indicates something to be revisited later.

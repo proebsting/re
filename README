@@ -4,12 +4,14 @@ Todd Proebsting
 Gregg Townsend
 Jasmin Uribe
 
+Department of Computer Science
 The University of Arizona
 Tucson, Arizona  USA
 
-It is currently a work in progress and not yet ready for distribution.
+regex@cs.arizona.edu
 
-The "test" directory contains targeted tests *and* other collected expressions.
-The biggest corpus is test/66-regexlib.rx; test/60-regexlib.rx is a subset.
+It comprises a library of Go language functions for experimenting with
+regular expressions and some associated command-line Unix utilities.
+It implements the regex.cs.arizona.edu website.
 
 See also:  LICENSE, BUILD, NOTES files.
