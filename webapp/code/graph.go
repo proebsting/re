@@ -46,7 +46,7 @@ func showaut(w http.ResponseWriter, dfa *rx.DFA, exprlist []string) {
 	dfa.ShowNFA(nfaBuffer, "")
 	fmt.Fprintf(w, "<h2>NFA</h2><PRE class=smaller>\n%s</PRE>\n",
 		hx(string(nfaBuffer.Bytes())))
-	askgraph(w, "/drawNFA", exprlist, "Draw the graph")
+	formlink(w, "/drawNFA", exprlist, "Draw the graph")
 
 	fmt.Fprintln(w, `</div><div class=lstripe>`)
 	dfaBuffer := &bytes.Buffer{}
@@ -54,7 +54,7 @@ func showaut(w http.ResponseWriter, dfa *rx.DFA, exprlist []string) {
 	fmt.Fprintf(w,
 		"<h2 class=noadvance>DFA</h2><PRE class=smaller>\n%s</PRE>\n",
 		hx(string(dfaBuffer.Bytes())))
-	askgraph(w, "/drawDFA", exprlist, "Draw the graph")
+	formlink(w, "/drawDFA", exprlist, "Draw the graph")
 
 	fmt.Fprintln(w, `</div></div><div class=reset></div>`)
 }

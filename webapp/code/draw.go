@@ -9,24 +9,6 @@ import (
 	"rx"
 )
 
-//  askgraph generates a "draw the graph" link
-func askgraph(w http.ResponseWriter, path string, exprlist []string, label string) {
-	tAskGraph.Execute(w,
-		struct {
-			Path     string
-			ExprList []string
-			Label    string
-		}{
-			path, exprlist, label})
-}
-
-var tAskGraph = template.Must(template.New("askgraph").Parse(
-	`<form action="{{.Path}}" method="post"><div>
-{{range $k, $v := .ExprList}}{{if $v}}
-<input type="hidden" name="x{{$k}}" value="{{$v}}">{{end}}{{end}}
-<button class=link>{{.Label}}</button></div></form>
-`))
-
 //  drawDFA draws a DFA.
 func drawDFA(w http.ResponseWriter, r *http.Request) {
 	draw(w, r, "DFA")

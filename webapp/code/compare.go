@@ -18,7 +18,7 @@ to see how their languages overlap or differ.
 The results page shows synthesized examples and indicates which expressions
 they match.  You can also submit your own examples for testing.`)
 	putform(w, "/combos", "Enter regular expressions:",
-		nCompare, nil, nSuggest, nil)
+		nExpr, nil, nTest, nil)
 	fmt.Fprintln(w, `<P>Or choose one of these predefined sets:`)
 	for _, x := range multixamples {
 		gencomp(w, x.Caption, x.Exprs)
@@ -66,8 +66,8 @@ func combos(w http.ResponseWriter, r *http.Request) {
 
 	// then get the test strings; these are not trimmed
 	testlist := make([]string, 0)
-	for _, l := range testlabels {
-		arg := r.FormValue(l)
+	for i := 0; i < maxTest; i++ {
+		arg := r.FormValue(fmt.Sprintf("v%d", baseTest+i))
 		if arg != "" {
 			testlist = append(testlist, arg)
 		}
@@ -106,13 +106,13 @@ func combos(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Fprintln(w, "<P>&nbsp;")
-	askgraph(w, "/multaut", exprlist, "Show automata states")
-	askgraph(w, "/drawNFA", exprlist, "Draw the NFA")
-	askgraph(w, "/drawDFA", exprlist, "Draw the DFA")
+	formlink(w, "/multaut", exprlist, "Show automata states")
+	formlink(w, "/drawNFA", exprlist, "Draw the NFA")
+	formlink(w, "/drawDFA", exprlist, "Draw the DFA")
 
 	fmt.Fprint(w, "<h2>Try again?</h2>")
 	putform(w, "/combos", "Enter regular expressions:",
-		nCompare, exprlist, nSuggest, testlist)
+		nExpr, exprlist, nTest, testlist)
 	putfooter(w, r)
 }
 
