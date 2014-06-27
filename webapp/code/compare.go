@@ -9,6 +9,7 @@ import (
 )
 
 var DRAWLINE = "\x7F\x7F" // special flag for separator in grid
+var NCOLORS = 9           // number of defined color classes
 
 //  compare presents a page asking for multiple expressions
 func compare(w http.ResponseWriter, r *http.Request) {
@@ -122,8 +123,8 @@ func lpxc(w http.ResponseWriter, exprlist []string) []rx.Node {
 
 	for i, s := range exprlist {
 		fmt.Fprintf(w,
-			"<SPAN class=c%d><BR><B>%c:</B> &nbsp; %s</SPAN>\n",
-			i, rx.AcceptLabels[i], hx(s))
+			"<SPAN class=%s><BR><B>%c:</B> &nbsp; %s</SPAN>\n",
+			colorname(i), rx.AcceptLabels[i], hx(s))
 		tree, err := rx.Parse(s)
 		if !showerror(w, err) {
 			treelist = append(treelist, rx.Augment(tree, i))
@@ -138,7 +139,8 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 	seen := make(map[string]bool, 0)
 	fmt.Fprintf(w, "<TABLE>\n<TR>")
 	for i := 0; i < nexpr; i++ {
-		fmt.Fprintf(w, "<TH class=c%d>%c</TH>", i, rx.AcceptLabels[i])
+		fmt.Fprintf(w, "<TH class=%s>%c</TH>",
+			colorname(i), rx.AcceptLabels[i])
 	}
 	fmt.Fprintf(w, "<TH class=\"cg leftb\">example</TH></TR>\n")
 	drawline := true
@@ -163,9 +165,9 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 				if aset.Test(i) {
 					n++
 					e = i
-					fmt.Fprintf(w,
-						"<TD class=c%d>\u2713</TD>",
-						i) // highlighted checkmark
+					fmt.Fprintf(w, // highlighted checkmark
+						"<TD class=%s>\u2713</TD>",
+						colorname(i))
 				} else {
 					fmt.Fprintf(w, "<TD>\u2013</TD>") // -
 				}
@@ -175,7 +177,7 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 			case 0:
 				class = "error"
 			case 1:
-				class = fmt.Sprintf("c%d", e)
+				class = fmt.Sprintf("%s", colorname(e))
 			case nexpr:
 				class = "cw"
 			}
@@ -185,4 +187,9 @@ func showgrid(w http.ResponseWriter, dfa *rx.DFA, nexpr int, trylist []string) {
 		}
 	}
 	fmt.Fprintf(w, "</TABLE>\n")
+}
+
+//  colorname returns the CSS class name associated with a color
+func colorname(i int) string {
+	return fmt.Sprintf("c%d", i%NCOLORS)
 }

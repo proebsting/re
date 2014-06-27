@@ -55,11 +55,12 @@ func info(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Fprint(w,
 		"<P>(Information for use of the website maintainers.)\n<P>")
-	for i := 0; i < 10; i++ {
-		fmt.Fprintf(w, "<span class=c%d>= c%d =</span>&nbsp;\n", i, i)
-	}
 	fmt.Fprintf(w, "<span class=cg>= cg =</span>&nbsp;\n") // .cg
 	fmt.Fprintf(w, "<span class=cw>= cw =</span>&nbsp;\n") // .cw
+	for i := 0; i < NCOLORS; i++ {
+		fmt.Fprintf(w, "<span class=%s>= %s =</span>&nbsp;\n",
+			colorname(i), colorname(i))
+	}
 	fmt.Fprintln(w)
 	tInfo.Execute(w, data)
 	putfooter(w, r)

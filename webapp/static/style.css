@@ -63,7 +63,6 @@ INPUT[type="text"] { width: 100%; }
 .c6		{ padding-top: 2px; background-color: #FDB; } /* orange */
 .c7		{ padding-top: 2px; background-color: #DDF; } /* violet */
 .c8		{ padding-top: 2px; background-color: #EFC; } /* pale green */
-.c9		{ padding-top: 2px; background-color: #ADF; } /* blue */
 .cg		{ padding-top: 2px; background-color: #DDD; } /* lt gray */
 .cw		{ padding-top: 2px; background-color: #FFF; } /* white */
 /* show error messages white on red */
