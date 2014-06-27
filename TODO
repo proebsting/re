@@ -1,14 +1,6 @@
 RX TO-DO LIST
-
-WEB APP:
-Change name?
-Write intro page and other explanatory prose
-Finish & finalize styling
-Always add a blank row for another comparator example [up to 10 total]
-
---------------------------------------------------------------------
-
-Probably not to be done:
+(Things to consider)
+(All items still remaining will probably not be done.)
 
 REGEXPS:
 Expand wildcards and classes to include Unicode
@@ -21,7 +13,6 @@ UTILITIES:
 Handle newlines in exprs somehow?  
 Add metadata to the JSON output of rxg
 In rxcluster, subdivide large clusters
-Show WHICH pattern accepts on DOT output
 
 CLEANUP:
 Add func for "canonizing" DFA (clearer output, easier testing)
