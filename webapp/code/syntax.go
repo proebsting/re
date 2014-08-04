@@ -29,7 +29,7 @@ An initial <CODE>^</CODE> and/or final <CODE>$</CODE> is ignored.
 are illegal.
 <P>Wildcard character sets (for
 <CODE>&nbsp; . &nbsp; \w &nbsp; \D &nbsp; [^\d] &nbsp; </CODE> etc.)
-are limited to the ASCII [\x01-\x7F] subset of Unicode.
+are limited to the ASCII subset [\x01-\x7F] of Unicode.
 <P>Most Perl <CODE>(?</CODE> forms are illegal,
 but two kinds are allowed and ignored:<PRE>
       Comments:  (?#...)
