@@ -9,7 +9,7 @@ import (
 )
 
 var DRAWLINE = "\x7F\x7F" // special flag for separator in grid
-var NCOLORS = 9           // number of defined color classes
+var NCOLORS = 9           // number of defined cn color classes in style.css
 
 //  compare presents a page asking for multiple expressions
 func compare(w http.ResponseWriter, r *http.Request) {
