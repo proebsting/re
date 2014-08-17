@@ -21,6 +21,8 @@ func about(w http.ResponseWriter, r *http.Request) {
 <P> Send mail to %s.
 <P> The website uses our own custom regular expression software written in the
 <A HREF="http://golang.org/">Go</A> programming language.
+Source code is available at
+<A HREF="https://github.com/proebsting/re">GitHub</A>.
 <P> Graph drawing uses the <A HREF="http://www.graphviz.org">Graphviz</A>
 layout package as ported to JavaScript by
 <A HREF="https://github.com/mdaines/viz.js/blob/master/README.txt">Viz.js</A>
