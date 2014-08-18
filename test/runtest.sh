@@ -12,18 +12,18 @@
 
 
 # function definition
-runtest() {	 # runtest basename n command -- run one test and check output
-    B=$1
-    N=$2
-    C=$3
-    I=$B.rx
-    O=$B.out${N%1}
-    S=$B.std${N%1}
+runtest() {	# runtest basename n command -- run one test and check output
+    B=$1		# basename
+    N=$2		# subtest number
+    C=$3		# program command
+    I=$B.rx		# input file
+    O=$B.out${N%1}	# output file
+    S=$B.std${N%1}	# standard file for comparison
 
     printf "%-16s %s\n" "$B.$N:" "$C"
-    eval "$C" <$I >$O
+    eval "$C" <$I >$O	# run the command
     if [ $? -eq 0 ] && cmp $S $O; then
-    	rm $O
+	rm $O		# normal exit, files match, so remove output file
     else
 	diff -u $S $O | sed 18q
 	echo ------------------------------------------------------------------
@@ -34,7 +34,7 @@ runtest() {	 # runtest basename n command -- run one test and check output
 
 # if no test files are specified, run them all
 if [ $# = 0 ]; then
-    set - `ls *.rx`
+    set - `ls *.rx`			# add all .rx files as command args
 fi
 
 # loop through the chosen tests
@@ -42,24 +42,24 @@ PATH=$GOPATH/bin:$PATH
 unset RX_COMPLEXITY
 echo ""
 FAILED=
-for F in $*; do
-    B=${F%.*}
-    I=$B.rx
-    N=0
-    exec <$I
+for F in $*; do				# for each file on command line
+    B=${F%.*}	# basename
+    I=$B.rx	# input file
+    N=0		# number of tests run
+    exec <$I	# redirect stdin 
     while read LINE; do
-    	case "$LINE" in
-	    "#!"*)
-		N=$(($N+1))
-		CMD=${LINE#??}
-		runtest $B $N "$CMD"
+	case "$LINE" in	
+	    "#!"*)			# this is a test spec
+		N=$(($N+1))		# count it
+		CMD=${LINE#??}		# extract the command
+		runtest $B $N "$CMD"	# run it as a test
 		;;
 	    ""|*)
 		break;;
 	esac
     done
-    if [ $N = 0 ]; then
-	runtest $B 1 " rxplor -T"
+    if [ $N = 0 ]; then			# if no explicit test named in file
+	runtest $B 1 " rxplor -T"	# then run rxplor -T
     fi
 done
 
