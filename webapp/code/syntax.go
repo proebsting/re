@@ -36,5 +36,5 @@ but two kinds are allowed and ignored:<PRE>
       Captures:  (?:  (?'id'  (?&lt;id&gt;  (?P&lt;id&gt;
 </PRE>
 <P>Leading and trailing spaces are trimmed to tolerate imprecision in
-cutting and pasting.  To inhibit trimming, parenthesize the expression.
+copying and pasting.  To inhibit trimming, parenthesize the expression.
 `))
