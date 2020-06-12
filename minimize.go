@@ -158,7 +158,7 @@ func (p *Partition) distinguish() int {
 //  Partition.divide repartitions this partition based on input x.
 func (p *Partition) divideBy(x int) {
 	if DBG_MIN {
-		fmt.Printf("[partition %d by %#v]\n", p.Index, string(x))
+		fmt.Printf("[partition %d by %#v]\n", p.Index, rune(x))
 	}
 	// get a list of partition members
 	// and note all that are distinguishable from the first by input x
