@@ -11,7 +11,7 @@ import (
 	"testing"
 )
 
-//  TestBrackets runs a series of self-contained small tests.
+// TestBrackets runs a series of self-contained small tests.
 func TestBrackets(t *testing.T) {
 	fmt.Println("bkt_test.go: TestBrackets")
 	// try(t, string, expected)
@@ -91,9 +91,9 @@ func TestBrackets(t *testing.T) {
 	try(t, `[\u173]`, `malformed '\uhhhh'`)
 	try(t, `[\umass]`, `malformed '\uhhhh'`)
 	// big sets \D \W \S
-	try(t, `[\D]`, `[\x01-/:-\u007f]`)
-	try(t, `[\W]`, "[\\x01-/:-@[-^`{-\\u007f]")
-	try(t, `[\S]`, `[\x01-\b\x0e-\x1f!-\u007f]`)
+	try(t, `[\D]`, `[\x01-/:-\x7f]`)
+	try(t, `[\W]`, "[\\x01-/:-@[-^`{-\\x7f]")
+	try(t, `[\S]`, `[\x01-\b\x0e-\x1f!-\x7f]`)
 	// the following pairs should be identical
 	try(t, `[\d]`, `[0-9]`)
 	try(t, `[^\D]`, `[0-9]`)
@@ -102,15 +102,15 @@ func TestBrackets(t *testing.T) {
 	try(t, `[\s]`, `[\t-\r ]`)
 	try(t, `[^\S]`, `[\t-\r ]`)
 	// complemented character sets
-	try(t, "[^ -`]", `[\x01-\x1fa-\u007f]`)
-	try(t, `[^ -@]`, `[\x01-\x1fA-\u007f]`)
-	try(t, `[^ -/]`, `[\x01-\x1f0-\u007f]`)
-	try(t, "[^ -/:-@[-`{-~]", `[\x01-\x1f0-9A-Za-z\u007f]`)
-	try(t, `[^0-9]`, `[\x01-/:-\u007f]`)
-	try(t, `[^A-Za-z0-9]`, "[\\x01-/:-@[-`{-\\u007f]")
+	try(t, "[^ -`]", `[\x01-\x1fa-\x7f]`)
+	try(t, `[^ -@]`, `[\x01-\x1fA-\x7f]`)
+	try(t, `[^ -/]`, `[\x01-\x1f0-\x7f]`)
+	try(t, "[^ -/:-@[-`{-~]", `[\x01-\x1f0-9A-Za-z\x7f]`)
+	try(t, `[^0-9]`, `[\x01-/:-\x7f]`)
+	try(t, `[^A-Za-z0-9]`, "[\\x01-/:-@[-`{-\\x7f]")
 	// these last two should be identical (under -Z)
-	try(t, `[^A-Za-z0-9_]`, "[\\x01-/:-@[-^`{-\\u007f]")
-	try(t, `[^\w]`, "[\\x01-/:-@[-^`{-\\u007f]")
+	try(t, `[^A-Za-z0-9_]`, "[\\x01-/:-@[-^`{-\\x7f]")
+	try(t, `[^\w]`, "[\\x01-/:-@[-^`{-\\x7f]")
 	// erroneous
 	try(t, `[`, `unclosed '['`)
 	try(t, `[^`, `unclosed '['`)
@@ -121,8 +121,8 @@ func TestBrackets(t *testing.T) {
 	try(t, `[def\]`, `unclosed '['`)
 }
 
-//  try parses one string and checks the result.
-//  The input string should begin with the initial '[' to be ignored.
+// try parses one string and checks the result.
+// The input string should begin with the initial '[' to be ignored.
 func try(t *testing.T, input string, expected string) {
 	var output string
 	subj := []rune(input[1:])

@@ -358,8 +358,8 @@ s1:  z
          # big sets \D \W \S
 
 expr 23: [\D]+
-tree:   [\x01-/:-\u007f]+
-augmnt: ([\x01-/:-\u007f]+#)
+tree:   [\x01-/:-\x7f]+
+augmnt: ([\x01-/:-\x7f]+#)
 length: 1 to *
 cplxty: 1
 -------------------- Examples --------------------
@@ -373,8 +373,8 @@ ex(8):  e\\iW  ;tP  _xBtwkZ{  Gxw]  $  @  DC)j\\  H  /*U?x  -y(xZS  [d\"/~RS/
 s1:  +
 
 expr 24: [\W]+
-tree:   [\x01-/:-@[-^`{-\u007f]+
-augmnt: ([\x01-/:-@[-^`{-\u007f]+#)
+tree:   [\x01-/:-@[-^`{-\x7f]+
+augmnt: ([\x01-/:-@[-^`{-\x7f]+#)
 length: 1 to *
 cplxty: 1
 -------------------- Examples --------------------
@@ -388,8 +388,8 @@ ex(8):  @#~  =$!  (![<;;^  $&;;,:]  &)%\"}#  ;'^^|'~  ~  |;.|?\\@`  <?</*+%@
 s1:  ]
 
 expr 25: [\S]+
-tree:   [\x01-\b\x0e-\x1f!-\u007f]+
-augmnt: ([\x01-\b\x0e-\x1f!-\u007f]+#)
+tree:   [\x01-\b\x0e-\x1f!-\x7f]+
+augmnt: ([\x01-\b\x0e-\x1f!-\x7f]+#)
 length: 1 to *
 cplxty: 1
 -------------------- Examples --------------------

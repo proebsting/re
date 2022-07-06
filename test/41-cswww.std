@@ -29,8 +29,8 @@ ERROR:   \&([[:alnum:]]*([^;[:alnum:]]|
          # functions.php: mailto
 
 expr 1: ([^@]+)@(.*)\.arizona\.edu
-tree:   (((((((((((((([\x01-?A-\u007f]+@)[\x01-\u007f]*).)a)r)i)z)o)n)a).)e)d)u)
-augmnt: ((((((((((((((([\x01-?A-\u007f]+@)[\x01-\u007f]*).)a)r)i)z)o)n)a).)e)d)u)#)
+tree:   (((((((((((((([\x01-?A-\x7f]+@)[\x01-\x7f]*).)a)r)i)z)o)n)a).)e)d)u)
+augmnt: ((((((((((((((([\x01-?A-\x7f]+@)[\x01-\x7f]*).)a)r)i)z)o)n)a).)e)d)u)#)
 length: 14 to *
 cplxty: 29
 -------------------- Examples --------------------
